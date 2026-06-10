@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AgenticIT – RevOps Cockpit</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
+<style>
+:root{ color-scheme: light; --bg:#f6f8f7; --card:#ffffff; --ink:#0f1c17; --muted:#5b6b64; --line:#e3e9e6; --accent:#0f766e; --accent2:#10b981; --warn:#b45309; }
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;padding:20px}
+h1{font-size:20px;margin:0 0 2px}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:26px 0 10px;font-weight:700}
+.sub{color:var(--muted);font-size:12px;margin-bottom:6px}
+.grid{display:grid;gap:14px}
+.g4{grid-template-columns:repeat(4,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+@media(max-width:820px){.g4,.g3,.g2{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.g4,.g3,.g2{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.kpi .lbl{font-size:12px;color:var(--muted)}
+.kpi .val{font-size:26px;font-weight:700;margin-top:4px}
+.kpi .val.sm{font-size:20px}
+.tag{display:inline-block;font-size:11px;color:var(--accent);background:#e6f4f1;border-radius:999px;padding:2px 8px}
+.tag.man{color:var(--warn);background:#fef3e2}
+input.edit{font:inherit;font-weight:700;font-size:22px;border:none;border-bottom:1px dashed var(--line);background:transparent;color:var(--ink);width:100%;padding:2px 0}
+input.edit.sm{font-size:16px}
+input.edit:focus{outline:none;border-bottom-color:var(--accent)}
+.bar{height:10px;background:var(--line);border-radius:999px;overflow:hidden;margin-top:10px}
+.bar>i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.muted{color:var(--muted)}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:none}
+ul.tasks{list-style:none;margin:0;padding:0}
+ul.tasks li{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--line)}
+ul.tasks li.done span{text-decoration:line-through;color:var(--muted)}
+ul.tasks li span{flex:1}
+.x{cursor:pointer;color:var(--muted);border:none;background:none;font-size:15px}
+.addrow{display:flex;gap:8px;margin-top:8px}
+.addrow input{flex:1;font:inherit;padding:7px 10px;border:1px solid var(--line);border-radius:8px}
+.addrow button,.note{font:inherit}
+.addrow button{padding:7px 12px;border:none;border-radius:8px;background:var(--accent);color:#fff;cursor:pointer}
+.note{font-size:12px;color:var(--muted);margin-top:6px}
+.foot{margin-top:24px;font-size:11px;color:var(--muted);text-align:center}
+.live{font-size:11px;color:var(--accent2)}
+.miniinput{font:inherit;font-weight:700;border:none;border-bottom:1px dashed var(--line);background:transparent;color:var(--ink);width:90px;text-align:right}
+.miniinput:focus{outline:none;border-bottom-color:var(--accent)}
+canvas{max-height:200px}
+</style>
+</head>
+<body>
+<h1>AgenticIT · RevOps Cockpit</h1>
+<div class="sub">KI-Agent-geführte Revenue Operations · Kennzahlen aktualisieren beim Öffnen (Reload-Button oben). <span class="live">●</span> = live aus Zoho · <span class="tag man">manuell</span> = bis Datenquelle angebunden.</div>
+
+<!-- EIGENE KPIs -->
+<h2>Eigene Ziele (AgenticIT)</h2>
+<div class="grid g4">
+  <div class="card kpi">
+    <div class="lbl">Umsatz bisher (CHF) <span class="tag man">manuell</span></div>
+    <input class="edit" data-key="rev_ytd" inputmode="numeric" value="0">
+  </div>
+  <div class="card kpi">
+    <div class="lbl">Jahresziel Umsatz (CHF) <span class="tag man">manuell</span></div>
+    <input class="edit" data-key="rev_goal" inputmode="numeric" value="150000">
+  </div>
+  <div class="card kpi">
+    <div class="lbl">MRR-Schätzung (CHF)</div>
+    <div class="val" id="mrr">–</div>
+    <div class="note">aktive Kunden × 4'500 Service-Pauschale</div>
+  </div>
+  <div class="card kpi">
+    <div class="lbl">Aktive Kunden <span class="live">● live</span></div>
+    <div class="val" id="kunden">–</div>
+  </div>
+</div>
+<div class="card" style="margin-top:14px">
+  <div class="row" style="border:none"><strong>Fortschritt Jahresziel</strong><span id="goalpct" class="muted">–</span></div>
+  <div class="bar"><i id="goalbar" style="width:0%"></i></div>
+</div>
+
+<!-- PIPELINE & LEADS -->
+<h2>Pipeline & Leads <span class="live">● live aus CRM</span></h2>
+<div class="grid g2">
+  <div class="card"><strong>Deals nach Phase</strong><canvas id="pipeChart"></canvas><div id="pipeEmpty" class="note"></div></div>
+  <div class="card">
+    <strong>Leads</strong>
+    <div class="grid g2" style="margin-top:10px">
+      <div class="kpi"><div class="lbl">Diesen Monat</div><div class="val sm" id="leadsMonth">–</div></div>
+      <div class="kpi"><div class="lbl">Gesamt offen</div><div class="val sm" id="leadsTotal">–</div></div>
+    </div>
+    <div id="leadSources" style="margin-top:10px"></div>
+    <div id="leadEmpty" class="note"></div>
+  </div>
+</div>
+
+<!-- WEBSITE / SEO -->
+<h2>Eigenes Marketing · agenticit.ch <span class="tag man">manuell · Quelle Semrush</span></h2>
+<div class="grid g4">
+  <div class="card kpi"><div class="lbl">Sichtbarkeit (%)</div><input class="edit sm" data-key="seo_vis" value="0"></div>
+  <div class="card kpi"><div class="lbl">Keywords Top 10</div><input class="edit sm" data-key="seo_top10" value="0"></div>
+  <div class="card kpi"><div class="lbl">Organischer Traffic / Mt</div><input class="edit sm" data-key="seo_traffic" value="0"></div>
+  <div class="card kpi"><div class="lbl">Backlinks</div><input class="edit sm" data-key="seo_bl" value="0"></div>
+</div>
+<div class="note">GEO/AIO/SEO: Werte aus Semrush hier eintragen, bis die Live-Anbindung steht. Position Tracking läuft auf die hinterlegten CH-Keywords.</div>
+
+<!-- E-MAIL -->
+<h2>E-Mail-Kampagne <span class="tag man">manuell</span></h2>
+<div class="grid g4">
+  <div class="card kpi"><div class="lbl">Versendet</div><input class="edit sm" data-key="mail_sent" value="0"></div>
+  <div class="card kpi"><div class="lbl">Öffnungsrate (%)</div><input class="edit sm" data-key="mail_open" value="0"></div>
+  <div class="card kpi"><div class="lbl">Klickrate (%)</div><input class="edit sm" data-key="mail_click" value="0"></div>
+  <div class="card kpi"><div class="lbl">Leads daraus</div><input class="edit sm" data-key="mail_leads" value="0"></div>
+</div>
+
+<!-- KUNDEN-ERFOLGE -->
+<h2>Kunden-Erfolge <span class="tag man">manuell · bis Kampagnen live</span></h2>
+<div class="grid g2">
+  <div class="card">
+    <strong>Lüthi & Kohler · Gerlafingen</strong>
+    <div class="row"><span class="muted">Leads geliefert</span><input class="miniinput" data-key="lk_leads" value="0"></div>
+    <div class="row"><span class="muted">Abschlüsse</span><input class="miniinput" data-key="lk_close" value="0"></div>
+    <div class="row"><span class="muted">Ø Kosten / Lead (CHF)</span><input class="miniinput" data-key="lk_cpl" value="0"></div>
+  </div>
+  <div class="card">
+    <strong>Simply · Gümligen</strong>
+    <div class="row"><span class="muted">Leads geliefert</span><input class="miniinput" data-key="sy_leads" value="0"></div>
+    <div class="row"><span class="muted">Abschlüsse</span><input class="miniinput" data-key="sy_close" value="0"></div>
+    <div class="row"><span class="muted">Ø Kosten / Lead (CHF)</span><input class="miniinput" data-key="sy_cpl" value="0"></div>
+  </div>
+</div>
+
+<!-- TASKS -->
+<h2>Meine Tasks</h2>
+<div class="card">
+  <ul class="tasks" id="taskList"></ul>
+  <div class="addrow"><input id="taskInput" placeholder="Neue Aufgabe…" onkeydown="if(event.key==='Enter')addTask()"><button onclick="addTask()">+ Hinzufügen</button></div>
+</div>
+
+<div class="foot" id="foot">AgenticIT RevOps Cockpit</div>
+
+<script>
+const CRM = "mcp__abd4f1b0-557a-4432-92e4-7342c6f01ddf__getRecords";
+const CHF = n => isNaN(n)?"–":new Intl.NumberFormat("de-CH",{maximumFractionDigits:0}).format(n);
+
+/* ---- localStorage editable fields ---- */
+function bindEdits(){
+  document.querySelectorAll("[data-key]").forEach(el=>{
+    const k="cockpit_"+el.dataset.key, v=localStorage.getItem(k);
+    if(v!==null) el.value=v;
+    el.addEventListener("input",()=>{localStorage.setItem(k,el.value); recalcGoal();});
+  });
+}
+function recalcGoal(){
+  const ytd=+(localStorage.getItem("cockpit_rev_ytd")||0);
+  const goal=+(localStorage.getItem("cockpit_rev_goal")||0)||1;
+  const pct=Math.max(0,Math.min(100,Math.round(ytd/goal*100)));
+  document.getElementById("goalbar").style.width=pct+"%";
+  document.getElementById("goalpct").textContent="CHF "+CHF(ytd)+" / "+CHF(goal)+"  ("+pct+"%)";
+}
+
+/* ---- tasks ---- */
+function loadTasks(){return JSON.parse(localStorage.getItem("cockpit_tasks")||"[]");}
+function saveTasks(t){localStorage.setItem("cockpit_tasks",JSON.stringify(t));}
+function renderTasks(){
+  const ul=document.getElementById("taskList"),t=loadTasks();ul.innerHTML="";
+  if(!t.length){ul.innerHTML='<li class="muted" style="border:none">Noch keine Aufgaben.</li>';}
+  t.forEach((task,i)=>{
+    const li=document.createElement("li");if(task.done)li.className="done";
+    li.innerHTML=`<input type="checkbox" ${task.done?"checked":""}><span></span><button class="x">✕</button>`;
+    li.querySelector("span").textContent=task.text;
+    li.querySelector("input").onchange=()=>{t[i].done=!t[i].done;saveTasks(t);renderTasks();};
+    li.querySelector(".x").onclick=()=>{t.splice(i,1);saveTasks(t);renderTasks();};
+    ul.appendChild(li);
+  });
+}
+function addTask(){const inp=document.getElementById("taskInput"),v=inp.value.trim();if(!v)return;const t=loadTasks();t.push({text:v,done:false});saveTasks(t);inp.value="";renderTasks();}
+
+/* ---- live CRM ---- */
+function unwrap(r){
+  try{ if(typeof r==="string")return JSON.parse(r);
+    if(r&&r.content&&r.content[0]&&r.content[0].text)return JSON.parse(r.content[0].text);
+    return r; }catch(e){ return r; }
+}
+async function getModule(mod){
+  try{
+    const res=await window.cowork.callMcpTool(CRM,{path_variables:{module:mod},query_params:{per_page:200}});
+    const d=unwrap(res); return (d&&d.data)?d.data:[];
+  }catch(e){ return null; }
+}
+async function loadLive(){
+  /* Kunden */
+  const acc=await getModule("Accounts");
+  if(acc){
+    const cust=acc.filter(a=>(a.Account_Type||"").toLowerCase()==="customer");
+    const n=cust.length||acc.length;
+    document.getElementById("kunden").textContent=n;
+    document.getElementById("mrr").textContent="CHF "+CHF(n*4500);
+  }else{document.getElementById("kunden").textContent="—";}
+
+  /* Deals -> Pipeline */
+  const deals=await getModule("Deals");
+  const pipeEmpty=document.getElementById("pipeEmpty");
+  if(deals&&deals.length){
+    const byStage={};deals.forEach(d=>{const s=d.Stage||"–";byStage[s]=(byStage[s]||0)+1;});
+    new Chart(document.getElementById("pipeChart"),{type:"bar",data:{labels:Object.keys(byStage),datasets:[{data:Object.values(byStage),backgroundColor:"#10b981"}]},options:{plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,ticks:{precision:0}}}}});
+  }else{pipeEmpty.textContent=deals===null?"Konnte nicht laden.":"Noch keine Deals im CRM.";}
+
+  /* Leads */
+  const leads=await getModule("Leads");
+  const lE=document.getElementById("leadEmpty");
+  if(leads&&leads.length){
+    const now=new Date(),mStart=new Date(now.getFullYear(),now.getMonth(),1);
+    const thisM=leads.filter(l=>l.Created_Time&&new Date(l.Created_Time)>=mStart).length;
+    document.getElementById("leadsMonth").textContent=thisM;
+    document.getElementById("leadsTotal").textContent=leads.length;
+    const src={};leads.forEach(l=>{const s=l.Lead_Source||"Unbekannt";src[s]=(src[s]||0)+1;});
+    document.getElementById("leadSources").innerHTML=Object.entries(src).map(([k,v])=>`<div class="row"><span class="muted">${k}</span><strong>${v}</strong></div>`).join("");
+  }else{
+    document.getElementById("leadsMonth").textContent="0";
+    document.getElementById("leadsTotal").textContent="0";
+    lE.textContent=leads===null?"Konnte nicht laden.":"Noch keine Leads im CRM.";
+  }
+}
+
+/* ---- init ---- */
+bindEdits();recalcGoal();renderTasks();
+document.getElementById("foot").textContent="AgenticIT RevOps Cockpit · Stand "+new Date().toLocaleString("de-CH");
+loadLive();
+</script>
+</body>
+</html>

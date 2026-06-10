@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@100;200;300;700;900&family=JetBrains+Mono:wght@300;400&display=swap");
+
+/* Avantgarde-Typografie: ultradünn + weite Laufweite vs. bold Kontrast */
+.fashionWord {
+  font-family: "Archivo", "Helvetica Neue", system-ui, sans-serif;
+  font-weight: 200;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #f4f4f6;
+  text-shadow: 0 0 24px rgba(180, 200, 255, 0.25);
+}
+
+.fashionWordBold {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.kicker {
+  font-family: "Archivo", system-ui, sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: rgba(220, 228, 245, 0.7);
+}
+
+.mono {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  letter-spacing: 0.05em;
+}
+
+/* ── Glitch ──────────────────────────────────────────────── */
+.glitch {
+  position: relative;
+}
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.7;
+}
+.glitch::before {
+  color: #5ff;
+  animation: glitchTop 2.4s infinite linear alternate-reverse;
+  clip-path: inset(0 0 55% 0);
+}
+.glitch::after {
+  color: #f5a;
+  animation: glitchBot 1.8s infinite linear alternate-reverse;
+  clip-path: inset(55% 0 0 0);
+}
+@keyframes glitchTop {
+  0%, 92%, 100% { transform: translate(0, 0); }
+  93% { transform: translate(-2px, -1px); }
+  95% { transform: translate(2px, 1px); }
+  97% { transform: translate(-1px, 1px); }
+}
+@keyframes glitchBot {
+  0%, 90%, 100% { transform: translate(0, 0); }
+  91% { transform: translate(2px, 1px); }
+  94% { transform: translate(-2px, -1px); }
+  96% { transform: translate(1px, -1px); }
+}
+
+/* dezentes Erscheinen */
+.fadeUp {
+  animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hairline {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(220, 228, 245, 0.6), transparent);
+}
