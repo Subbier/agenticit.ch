@@ -104,19 +104,29 @@ export const omnichannelFaqs: FaqItem[] = [
 
 export const intelligenceFaqs: FaqItem[] = [
   {
-    question: "Was ist Predicting Lead Scoring?",
+    question: "Worin liegt der Mehrwert von Predicting Lead Scoring gegenüber klassischem Lead Scoring?",
     answer:
-      "Predicting Lead Scoring bewertet Leads in Echtzeit aus Gesprächsinhalten, Verhalten und CRM-Daten. AgenticIT erkennt Kaufabsichten früh und übergibt heisse Leads direkt an Ihr Vertriebsteam.",
+      "Predicting Lead Scoring (predictive lead scoring) bewertet Leads in Echtzeit anhand von Gesprächsinhalten, Verhalten und CRM-Signalen. Dadurch werden Kaufabsichten früher erkannt, Prioritäten transparent, Segmente nach Buyer Persona, Potenzial und Dringlichkeit erstellt und automatische Alerts an Sales gesendet. Ergebnis: bessere Speed-to-Lead, höherer Fokus auf heisse Leads und steigende Abschlusschancen.",
   },
   {
-    question: "Was ist Lead Qualifizierung mit KI?",
+    question: "Wie priorisiert AgenticIT „Hot Leads“ konkret und was passiert danach?",
     answer:
-      "KI-gestützte Lead Qualifizierung analysiert jede Anfrage nach Bedarf, Budget, Dringlichkeit und Absicht. Manuelle Triage entfällt – Ihr Team erhält vorqualifizierte Leads mit vollem Kontext.",
+      "AgenticIT berechnet für jeden Lead Kaufwahrscheinlichkeit, Bedarf und Timing – diese Lead-Priorisierung zeigt Sales sofort, welche Anfragen jetzt Abschlusschancen haben und wo manuell nachgefasst werden muss. Automatische Alerts signalisieren kaufbereite Accounts, und Conversation Intelligence liefert die nächsten Schritte ohne manuelle Auswertung.",
   },
   {
-    question: "Welche Daten nutzt AgenticIT Intelligence?",
+    question: "Wie hilft Conversation Intelligence Vertrieb, Marketing und Service?",
     answer:
-      "Gesprächstranskripte, Web-Interaktionen, CRM-Signale, Kanalverhalten und historische Abschlussdaten. AgenticIT leitet daraus Scores, Dashboards und Handlungsempfehlungen für Sales und Marketing ab.",
+      "Conversation Intelligence strukturiert jedes Gespräch mit semantischen Zusammenfassungen und Themenclustern, erkennt wiederkehrende Fragen, Reibungen und Abschlussbarrieren und übersetzt diese Erkenntnisse in klare Handlungsempfehlungen. So erhält Sales präzise Follow-ups, Marketing echte First-Party-Signale für Botschaften und Angebote, und Service sieht Engpässe frühzeitig.",
+  },
+  {
+    question: "Welche Transparenz bietet das Management-Cockpit?",
+    answer:
+      "Das Management-Cockpit bündelt als Lead-Scoring-Dashboard kanalübergreifend Kennzahlen und Trends: Speed-to-Lead-, Conversion- und Follow-up-KPIs, verpasste Chancen und Reaktionslücken sowie die Automationen mit dem grössten ROI-Hebel. Es dient als strategische Entscheidungsgrundlage für Wachstum und Budget – CRM-integriert und messbar.",
+  },
+  {
+    question: "Was umfasst das Potenzial-Audit und welche Ergebnisse sind zu erwarten?",
+    answer:
+      "Im Potenzial-Audit analysiert AgenticIT Ihre Speed-to-Lead, möglichen Lead-Burnout und das CRM-Setup. Das Ergebnis sind konkrete Hebel mit klarem Zeitplan, eine Architektur-Skizze für Ihre Systeme und eine Roadmap mit messbarem Quick Win – inklusive Vorschlägen für passende KI-Agenten und Automationen.",
   },
 ]
 
