@@ -22,6 +22,8 @@ import { LeadForm } from "@/components/site/lead-form"
 import { FlywheelMiniInteractive } from "@/components/site/flywheel"
 import { AgentsInteractive, BrandsInteractive } from "@/components/site/pillar-visuals"
 import { JsonLd } from "@/components/site/json-ld"
+import { FaqSection } from "@/components/site/faq-section"
+import { homeFaqs } from "@/lib/seo-faqs"
 import { industries, industryLabels } from "@/lib/lead-pricing"
 import { getDemand, DEFAULT_DEMAND } from "@/lib/demand-data"
 
@@ -381,6 +383,11 @@ export function HomePage({ jsonLd }: HomePageProps) {
             </div>
           </section>
 
+          <FaqSection
+            title="Häufige Fragen zu Leadgenerierung & digitalem Vertrieb"
+            intro="Wir erschließen bestehende Nachfrage in der Deutschschweiz und leiten kaufbereite Interessenten mit datengetriebenen Maßnahmen direkt zu Ihnen. Wir übernehmen Ihren digitalen Vertrieb end-to-end – Marketing, Vertrieb und Service –, automatisieren Prozesse mit Marketing-Automation und optimieren kontinuierlich für messbares Wachstum. Durch KI-gestützte Umsetzung statt großer Agentur-Setups erhalten Sie schneller und kosteneffizienter Ergebnisse – starten Sie mit einem 3-Monats-Test ohne Startkosten."
+            faqs={homeFaqs}
+          />
           <Footer />
         </div>
       </main>

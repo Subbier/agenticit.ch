@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { HomePage } from "@/components/site/home-page"
-import { createPageMetadata, serviceJsonLd } from "@/lib/seo"
-import { pageSeo } from "@/lib/seo-faqs"
+import { createPageMetadata, serviceJsonLd, faqPageJsonLd } from "@/lib/seo"
+import { pageSeo, homeFaqs } from "@/lib/seo-faqs"
 
 export const metadata: Metadata = {
   ...createPageMetadata({
@@ -22,6 +22,7 @@ export default function Page() {
               "Interaktiver Rechner: monatliche Such-Nachfrage nach Ihrer Branche in der Deutschschweiz – und wie viel davon ungenutzt bleibt.",
             path: "/",
           }),
+          faqPageJsonLd(homeFaqs),
         ]}
       />
     </>

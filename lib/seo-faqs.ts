@@ -2,34 +2,34 @@ import type { FaqItem } from "@/lib/seo"
 
 export const homeFaqs: FaqItem[] = [
   {
-    question: "Was ist AgenticIT?",
+    question: "Was bedeutet „digitaler Vertrieb end-to-end“ für mich?",
     answer:
-      "Ein Schweizer Partner, der Ihnen die digitale Kundengewinnung komplett abnimmt – von der ersten Anfrage bis zum vorbereiteten, anrufbereiten Kontakt. Sie konzentrieren sich aufs Abschliessen.",
+      "Wir übernehmen Ihren gesamten digitalen Vertriebsprozess vom ersten Klick bis zur Empfehlung: Marketing, Vertrieb und Service arbeiten nahtlos zusammen, werden per Marketing-Automation verknüpft und kontinuierlich datenbasiert optimiert – so läuft die Neukundengewinnung messbar, effizient und ohne Mehraufwand für Ihr Team.",
   },
   {
-    question: "Was habe ich konkret davon?",
+    question: "Wie ermittelt ihr die Nachfrage in meiner Branche und woher kommen die Leads?",
     answer:
-      "Mehr warme Anfragen, weniger Aufwand und einen einzigen Ansprechpartner für alles. Sie brauchen kein technisches Wissen.",
+      "Grundlage sind relevante Top-Suchbegriffe Ihrer Branche bei Google in der Deutschschweiz. Wir platzieren Ihr Angebot genau im Moment höchster Kaufbereitschaft, kombinieren Anzeigen, Inhalte und starken Auftritt – so entstehen kaufbereite, digital vorüberzeugte Kontakte, die gezielt Ihr Angebot anfordern und direkt in Ihrem System landen.",
   },
   {
-    question: "Für wen eignet sich das?",
+    question: "Was genau umfasst der 3-Monats-Test – und welches Risiko gehe ich ein?",
     answer:
-      "Für Schweizer KMU mit digitalem Kundenkontakt – besonders Versicherung, Finanz, Solar, Immobilien, Treuhand und Dienstleister mit Termin- oder Offertprozessen.",
+      "Sie starten ohne Startkosten für drei Monate, erhalten einen klaren Fahrplan und sehen messbare Ergebnisse aus laufender Optimierung; nach dem Test entscheiden Sie in Ruhe, ob Sie weitermachen – ohne Verkaufsdruck.",
   },
   {
-    question: "Muss ich meine Systeme umstellen?",
+    question: "Worin unterscheidet ihr euch von klassischen Agenturen?",
     answer:
-      "Nein. Wir fügen uns in das ein, was bei Ihnen schon läuft, und ändern nichts daran.",
+      "Statt großer Teams steuert ein erfahrener Experte smarte KI-Agenten – dadurch erhalten Sie die Leistung einer ganzen Abteilung schneller, präziser und deutlich kosteneffizienter als mit klassischen, kostenintensiven Setups.",
   },
   {
-    question: "Wie schnell geht das los?",
+    question: "Was passiert im kurzen, unverbindlichen Rückruf?",
     answer:
-      "Schnell. Keine hohen Startkosten, keine monatelange Vorbereitung – und Sie können 3 Monate unverbindlich testen.",
+      "Sie bekommen exakte Kennzahlen für Ihre Branche in der Deutschschweiz, einen transparenten Kosten- und Zeitplan sowie einen klaren Fahrplan zu qualifizierten Kundenanfragen – inklusive konkreter Skizze Ihrer Kundenreise, ohne Vorbereitung und ohne Verkaufsdruck.",
   },
   {
-    question: "Wie funktioniert der Rechner?",
+    question: "Wie funktioniert der Lead-Rechner?",
     answer:
-      "Sie wählen Ihre Branche und sehen sofort einen Richtwert, was eine neue Anfrage bei uns kostet. Die Details besprechen wir gern persönlich.",
+      "Sie wählen Ihre Branche und sehen sofort einen Richtwert, wie viel monatliche Such-Nachfrage in der Deutschschweiz bereitsteht und was eine neue Anfrage kostet. Die Details besprechen wir gern persönlich.",
   },
 ]
 
