@@ -53,24 +53,24 @@ export const roiCalculatorFaqs: FaqItem[] = [
 
 export const aiAgentsFaqs: FaqItem[] = [
   {
-    question: "Was sind KI Agenten?",
+    question: "Was sind KI-Agenten?",
     answer:
-      "KI Agenten sind autonome Software-Assistenten von AgenticIT, die Anfragen per Telefon, Web, WhatsApp und E-Mail entgegennehmen, Leads qualifizieren, Termine buchen und komplexe Fälle an Ihr Team übergeben – 24/7 ohne Wartezeit.",
+      "KI-Agenten sind autonome Software-Assistenten von AgenticIT, die Anfragen per Telefon, Web, WhatsApp und E-Mail entgegennehmen, Leads qualifizieren, Termine buchen und komplexe Fälle an Ihr Team übergeben – 24/7 ohne Wartezeit.",
   },
   {
     question: "Was ist Conversational AI?",
     answer:
-      "Conversational AI ermöglicht natürliche Dialoge zwischen Mensch und Maschine. AgenticIT nutzt Conversational AI für Vertriebs- und Service-Automation, Lead-Qualifizierung und CRM-Integration bei Schweizer Unternehmen.",
+      "Conversational AI ermöglicht natürliche Dialoge zwischen Mensch und Maschine. AgenticIT nutzt Conversational AI für Vertriebs- und Service-Automation, Lead-Qualifizierung und CRM-Integration bei Schweizer Unternehmen. Mit Conversational AI werden Dialoge kontextbezogen gesteuert und effizient umgesetzt.",
   },
   {
-    question: "Ersetzen KI Agenten mein Vertriebsteam?",
+    question: "Ersetzen KI-Agenten mein Vertriebsteam?",
     answer:
-      "Nein. KI Agenten übernehmen Erstqualifizierung, Routineanfragen und Follow-ups. Ihr Vertriebsteam bearbeitet nur noch vorqualifizierte Chancen mit der höchsten Abschlusswahrscheinlichkeit.",
+      "Nein. KI-Agenten übernehmen Erstqualifizierung, Routineanfragen und Follow-ups. Ihr Vertriebsteam bearbeitet nur noch vorqualifizierte Chancen mit der höchsten Abschlusswahrscheinlichkeit.",
   },
   {
     question: "Welche Kanäle unterstützen die AI Agents?",
     answer:
-      "Telefon, Website-Chat, WhatsApp Business API, E-Mail und weitere Kanäle. AgenticIT erfasst alle Interaktionen zentral und synchronisiert sie mit CRM, Kalender und bestehenden Tools.",
+      "Telefon, Website-Chat, WhatsApp Business API, E-Mail und weitere Kanäle (inklusive WhatsApp Business API Integration). AgenticIT erfasst alle Interaktionen zentral und synchronisiert sie via Conversational-AI-CRM-Integration mit CRM, Kalender und bestehenden Tools.",
   },
 ]
 

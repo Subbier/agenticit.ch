@@ -136,7 +136,7 @@ export function AiAgentsPage() {
           {/* FAQ */}
           <FaqSection
             title="Häufige Fragen zu AI Agents"
-            intro="Was KI-Agenten für Sie übernehmen – kurz und ohne Fachjargon."
+            intro="KI-Agenten und Conversational AI von AgenticIT übernehmen Kundenservice und Vertrieb rund um die Uhr: Anfragen über Telefon, Web, WhatsApp Business API und E-Mail werden in Sekunden beantwortet, qualifiziert und per Conversational-AI-CRM-Integration sauber ins CRM übergeben. Gerade KI im Kundenservice zeigt hier den grössten Effekt – schnellere Antworten, weniger Wartezeit, höhere Zufriedenheit."
             faqs={aiAgentsFaqs}
           />
 
