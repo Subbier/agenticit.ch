@@ -10,6 +10,8 @@ export type LeadSource =
   | "smart-apps"
   | "case-studies"
   | "blog"
+  | "agentic-ai"
+  | "ki-agenten-unternehmen"
 
 export type ServiceSlug = Exclude<LeadSource, "home">
 

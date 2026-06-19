@@ -238,6 +238,8 @@ export const INDEXABLE_ROUTES = [
   "/ai-agents",
   "/excellence",
   "/smart-apps",
+  "/agentic-ai",
+  "/ki-agenten-unternehmen",
   "/services",
   "/omnichannel",
   "/intelligence",

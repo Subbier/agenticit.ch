@@ -27,6 +27,13 @@ const footerLinks: FooterSection[] = [
     ],
   },
   {
+    label: "Agentic AI",
+    links: [
+      { title: "Agentic AI", href: "/agentic-ai" },
+      { title: "KI-Agenten für Unternehmen", href: "/ki-agenten-unternehmen" },
+    ],
+  },
+  {
     label: "Unternehmen",
     links: [
       { title: "Über uns", href: "/ueber-uns" },
