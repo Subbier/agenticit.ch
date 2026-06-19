@@ -309,7 +309,7 @@ export const pageSeo = {
     keywords: ["Revenue Operations", "RevOps Schweiz", "Lead Generierung", "Kundengewinnung", "AgenticIT"],
   },
   excellence: {
-    title: "Social Media, SEO & Performance Marketing für die Deutschschweiz",
+    title: "Social Media, SEO & Performance Marketing Schweiz",
     description:
       "Alle Kanäle aus einer Hand: Social Media, SEO, Performance-Marketing, Content und Omnichannel-Dialog für KMU in der Deutschschweiz – meisterhaft kombiniert von AgenticIT.",
     keywords: [
@@ -341,13 +341,13 @@ export const pageSeo = {
     keywords: ["Smart Apps", "KI Mini-Apps", "Digital Giveaway", "advok.app"],
   },
   services: {
-    title: "KI Services & Paket-Benchmark Schweiz | AgenticIT",
+    title: "KI Services & Paket-Benchmark Schweiz",
     description:
       "Interaktiver MRR-Benchmark plus KI Agenten, Omnichannel und Lead Scoring – für Schweizer Finanzberater und KMU mit messbarem ROI.",
     keywords: ["KI Services Schweiz", "Agentic AI", "Enterprise Automation", "MRR Benchmark"],
   },
   blog: {
-    title: "Speed-to-Lead Blog: Lead-Burnout vermeiden | AgenticIT",
+    title: "Speed-to-Lead Blog: Lead-Burnout vermeiden",
     description:
       "78 % der Leads kaufen beim schnellsten Anbieter. Wie Lead-Burnout entsteht, was es kostet und wie KI Agenten das Problem in der Schweiz lösen.",
     keywords: ["Speed to Lead", "Lead Burnout", "Lead Qualifizierung", "KI Vertrieb Schweiz"],
