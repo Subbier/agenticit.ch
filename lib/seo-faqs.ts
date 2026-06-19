@@ -143,24 +143,29 @@ export const blogFaqs: FaqItem[] = [
 
 export const revopsFaqs: FaqItem[] = [
   {
-    question: "Was ist Revenue Operations (RevOps) bei AgenticIT?",
+    question: "Was bedeutet Revenue Operations (RevOps) für mein KMU konkret?",
     answer:
-      "RevOps bedeutet, dass Marketing, Vertrieb und Daten als ein System zusammenarbeiten. AgenticIT übernimmt diesen ganzen Ablauf – von der ersten Anfrage bis zum anrufbereiten Kontakt –, damit Sie sich aufs Abschliessen konzentrieren.",
+      "RevOps verbindet Marketing, digitalen Vertrieb und Betreuung zu einem durchgängigen System. KI-Agenten führen jede Anfrage von der ersten Aufmerksamkeit bis über den Abschluss hinaus, entwickeln Bestandskunden weiter und machen aus Zufriedenen echte Empfehler. Statt eines Flickwerks aus Tools erhalten Sie einen Motor, der Ergebnisse liefert: vorqualifizierte, anrufbereite Kontakte, weniger Reibung in Übergaben und Umsatz, der sich dank Cross-/Up-Selling und Weiterempfehlungen wie ein Flywheel selbst verstärkt.",
   },
   {
-    question: "Was habe ich konkret davon?",
+    question: "Wie arbeiten die KI-Agenten entlang der Kundenreise?",
     answer:
-      "Mehr warme Anfragen, weniger Aufwand und einen einzigen Ansprechpartner für den ganzen Ablauf. Sie brauchen kein technisches Wissen – wir betreiben alles im Hintergrund.",
+      "Die KI-Agenten reagieren sofort – auch abends und am Wochenende –, qualifizieren Interessenten, führen strukturierte Follow-ups durch und übergeben nur warme, anrufbereite Leads. Nach dem Abschluss hören sie nicht auf: Sie betreuen weiter, schlagen passende Erweiterungen vor (Cross- und Up-Selling) und fördern Empfehlungen, sodass aus Kunden Fans und Multiplikatoren werden.",
   },
   {
-    question: "Muss ich meine Systeme umstellen?",
+    question: "Was heisst „Business auf Autopilot“ – was übernimmt das System, was bleibt bei uns?",
     answer:
-      "Nein. Wir fügen uns in das ein, was bei Ihnen schon läuft, und ändern nichts daran. Die Übergabe in Ihr CRM erfolgt sauber und ohne doppelte Datenpflege.",
+      "Auf Autopilot bedeutet: Sichtbarkeit aufbauen (Anzeigen, Inhalte, starker Auftritt), sofort antworten, qualifizieren, nachfassen und nach dem Kauf weiterentwickeln – alles als durchgängige Marketing Automatisation. Ihr Part bleibt fokussiert: Gespräche führen, abschliessen und Ihr Kerngeschäft machen. Kaltakquise entfällt, weil nur warme, vorqualifizierte Anfragen bei Ihnen landen.",
   },
   {
-    question: "Wie schnell geht das los?",
+    question: "Müssen wir unsere bestehenden Systeme umstellen oder technisches Know-how mitbringen?",
     answer:
-      "Schnell und ohne hohe Startkosten. Sie können 3 Monate unverbindlich testen und sehen früh erste warme Anfragen.",
+      "Nein. AgenticIT fügt sich in Ihre bestehende Umgebung ein. Die Übergabe in Ihr CRM erfolgt sauber und ohne doppelte Datenpflege. Es entsteht für Sie kein Technik-Aufwand – der Betrieb läuft im Hintergrund.",
+  },
+  {
+    question: "Wie schnell können wir starten und wann sehen wir Ergebnisse?",
+    answer:
+      "Der Start ist schnell und ohne hohe Einstiegshürden. Sie können 3 Monate unverbindlich testen – ohne Startkosten – und typischerweise früh erste warme Anfragen sehen. In einem kurzen, unverbindlichen Gespräch zeigen wir Ihnen Ihre konkrete Kundenreise und wie das Schnupper-Abo in Ihrer Branche aussieht.",
   },
 ]
 

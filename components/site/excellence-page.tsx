@@ -193,7 +193,7 @@ export function ExcellencePage() {
           {/* FAQ */}
           <FaqSection
             title="Häufige Fragen zu Excellence"
-            intro="Was hinter unserer Kundengewinnung steckt – kurz und ohne Fachjargon."
+            intro="Ein nahtlos orchestriertes System aus Social Media, SEO, Performance-Marketing, Content, Omnichannel und CRM steigert in der Deutschschweiz Sichtbarkeit und Anfragen. Als Social Media Agentur Schweiz und SEO Agentur Schweiz verbinden wir diese Disziplinen mit Performance Marketing Schweiz und Content Marketing Schweiz – nahtlos und messbar. Der Kontext bleibt kanalübergreifend erhalten, jede Anfrage landet per CRM-Integration sauber im bestehenden System, und wir priorisieren Leads via Lead Scoring. Ergebnis: gefunden werden, überzeugen und mehr qualifizierte Anfragen ohne Mehraufwand."
             faqs={excellenceFaqs}
           />
 
