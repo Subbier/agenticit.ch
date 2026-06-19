@@ -76,19 +76,29 @@ export const aiAgentsFaqs: FaqItem[] = [
 
 export const omnichannelFaqs: FaqItem[] = [
   {
-    question: "Was ist Omnichannel Marketing?",
+    question: "Was meint AgenticIT mit „Eine Konversation. Jeder Kanal. Vollständige Kontinuität.“?",
     answer:
-      "Omnichannel Marketing verbindet WhatsApp, Web, E-Mail und Telefon zu einer durchgängigen Customer Journey. Der Kontext bleibt bei AgenticIT erhalten – unabhängig davon, auf welchem Kanal der Kunde antwortet.",
+      "Alle Kontaktpunkte – WhatsApp Business API, Web, E-Mail und Telefon – werden zu einem einzigen, durchgängigen Dialog zusammengeführt. Der gesamte Kontext bleibt erhalten, sodass Anfragen nahtlos weitergeführt und bei Bedarf mit vollständigem Verlauf an menschliche Teams übergeben werden – eine echte Omnichannel Customer Journey ohne Brüche.",
   },
   {
-    question: "Was ist die WhatsApp Business API?",
+    question: "Wie setzt AgenticIT die WhatsApp Business API in der Schweiz konkret ein?",
     answer:
-      "Die WhatsApp Business API ermöglicht automatisierte, skalierbare und CRM-integrierte WhatsApp-Kommunikation. AgenticIT nutzt sie für Lead-Qualifizierung, Terminbuchung und personalisierte Follow-ups in der Schweiz.",
+      "AgenticIT adressiert Anforderungen rund um die WhatsApp Business API Schweiz und integriert sie sauber ins CRM (WhatsApp Business API CRM-Integration). Typische Einsätze sind Lead-Qualifizierung, Terminbuchung und personalisierte Follow-ups – automatisiert, skalierbar und stets kontextbewahrt innerhalb der Omnichannel Journey.",
   },
   {
-    question: "Warum verlieren Unternehmen Leads trotz mehrerer Kanäle?",
+    question: "Welche Use Cases profitieren am stärksten von der Omnichannel-Lösung?",
     answer:
-      "Anfragen landen in isolierten Postfächern und Kontext geht verloren. AgenticIT Omnichannel-Automation bearbeitet jede Anfrage sofort und übergibt sie nahtlos an das richtige Team.",
+      "Drei Bereiche: Lead Nurturing (relevante Antworten und nächste Schritte auch ausserhalb der Arbeitszeiten), Termin- und Angebotsstrecken (automatische Bestätigungen, Erinnerungen und kanalgenaue Nachfassaktionen) und Premium Support (schnelle Hilfe auf dem bevorzugten Kanal, ohne dass der Kunde sein Anliegen erneut erklären muss).",
+  },
+  {
+    question: "Wie wird der Impact messbar und wo liegen die Hebel?",
+    answer:
+      "Über drei Hebel mit klarem KPI-Fokus: kanalübergreifende Gesprächsführung (ein Dialog über WhatsApp, Web, Mail und Telefon mit zentraler Lead-Historie), automatisierte Touchpoints (Trigger für neue Anfragen, offene Angebote und verpasste Termine) und Journey-Design für Wachstum mit präzisem Customer Journey Design. Alle Ergebnisse sind CRM-integriert und damit transparent nachvollziehbar – etwa Speed-to-Lead und Lead-Qualifizierung.",
+  },
+  {
+    question: "Was umfasst das Potenzial-Audit von AgenticIT?",
+    answer:
+      "Eine fokussierte Analyse: Prüfung von Speed-to-Lead, möglichem Lead-Burnout und CRM-Setup, Skizzierung passender KI-Agenten und Automationen, eine Architektur-Skizze Ihrer Systeme sowie eine Roadmap mit messbarem Quick Win.",
   },
 ]
 
