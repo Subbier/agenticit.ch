@@ -134,12 +134,27 @@ export const smartAppsFaqs: FaqItem[] = [
   {
     question: "Was sind Smart Apps bei AgenticIT?",
     answer:
-      "Smart Apps sind branchenspezifische KI-Mini-Apps – z. B. advok.app für Rechtsberatung – die echten Nutzen liefern, Leads generieren und gleichzeitig Datenqualität für Vertrieb und Marketing steigern.",
+      "Smart Apps sind branchenspezifische KI-Mini-Apps (z. B. advok.app für Rechtsberatung), die Endkundinnen und Endkunden konkreten Nutzen bieten. Dadurch erzeugen sie qualifizierte Interaktionen, liefern hochwertige First-Party-Daten und steigern die Lead-Generierung sowie die Datenqualität für Vertrieb und Marketing.",
   },
   {
     question: "Wie unterscheiden sich Smart Apps von klassischen Chatbots?",
     answer:
-      "Smart Apps sind vollständige digitale Produkte mit klarer Nutzenlogik, Lead-Scoring und CRM-Integration – nicht nur ein Chat-Widget auf der Website.",
+      "Smart Apps sind vollständige digitale Produkte mit klarer Nutzenlogik, Lead-Scoring und CRM-Integration. Sie verbinden Beratung, Qualifizierung und konkrete nächste Schritte in einem durchgängigen Flow – statt nur ein Chat-Widget auf der Website zu sein.",
+  },
+  {
+    question: "Für welche Anwendungsfelder gibt es Beispiele?",
+    answer:
+      "Drei Hebel mit messbarem Impact: Lifestyle & Alltag (z. B. Good Habits, Fitness-App, Long-Livity) für hohe Wiederkehr und First-Party-Daten; Reise, Community & Familie (z. B. Ferien-Info, Expats-App, Learn-App) für Informationszugang und langfristige Bindung; sowie Finance, Legal & Utility (z. B. Finance Budget, advok.app, Food-Foto-Kalorien) für conversion-orientierte Flows bis zum nächsten Schritt.",
+  },
+  {
+    question: "Wie entsteht der messbare Impact – und wie startet die Zusammenarbeit?",
+    answer:
+      "Aus Kontaktpunkten wird ein Wachstumssystem: Jeder Use Case verbessert Speed-to-Lead und Lead-Qualifizierung, nahtlos CRM-integriert. Der Start erfolgt im persönlichen Gespräch, in dem Grenzen, Prioritäten und Zielmetriken definiert werden. Anschliessend führt ein Potenzial-Audit die Analyse von Speed-to-Lead, Lead-Burnout und CRM-Setup durch – Ergebnis sind eine Architektur-Skizze und eine Roadmap mit messbarem Quick Win.",
+  },
+  {
+    question: "Wie lassen sich Smart Apps im Marketing einsetzen?",
+    answer:
+      "Nach dem Prinzip „Mehrwert vor Werbung“ liefern die Apps zuerst konkreten Nutzen und erzeugen daraus nachhaltige Interaktion. Viele Unternehmen nutzen ausgewählte Lösungen zusätzlich als digitales Give-away oder Werbegeschenk auf Messen und in Kampagnen, um Reichweite und Erinnerungswert zu steigern.",
   },
 ]
 
