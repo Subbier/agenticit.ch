@@ -1,389 +1,221 @@
-"use client"
-
-import { useEffect, useRef, useState } from "react"
-import {
-  ArrowRight,
-  PhoneCall,
-  Megaphone,
-  TrendingUp,
-  Bot,
-  Users,
-  Zap,
-  CheckCircle2,
-} from "lucide-react"
-import dynamic from "next/dynamic"
-import { GlassmorphismNav } from "@/components/glassmorphism-nav"
-
-// Footer lädt framer-motion – lazy, damit es nicht im kritischen Bundle der Startseite landet
-const Footer = dynamic(() => import("@/components/footer").then((m) => m.Footer))
-import Aurora from "@/components/site/aurora-bg"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { LeadForm } from "@/components/site/lead-form"
-import { FlywheelMiniInteractive } from "@/components/site/flywheel"
-import { AgentsInteractive, BrandsInteractive } from "@/components/site/pillar-visuals"
-import { JsonLd } from "@/components/site/json-ld"
-import { industries, industryLabels } from "@/lib/lead-pricing"
-import { getDemand, DEFAULT_DEMAND } from "@/lib/demand-data"
+import Link from "next/link"
+import { ROICalculatorSection } from "@/components/roi-calculator-section"
+import { SiteHeader } from "@/components/site/site-header"
 
 type HomePageProps = {
   jsonLd?: Record<string, unknown>[]
 }
 
-const nf = new Intl.NumberFormat("de-CH")
+const WORLDS = [
+  { icon: "🚀", title: "Lösungen", text: "Kundendienst-KI, Prozessautomatisierung und RevOps & Growth – die Hebel, die sofort Zeit sparen oder Umsatz bringen.", href: "/loesungen" },
+  { icon: "🧠", title: "Technologie", text: "Autonome KI-Agenten, Multi-Agenten-Systeme und Enterprise-Integration. Ein Chatbot redet – ein KI-Agent handelt.", href: "/technologie" },
+  { icon: "🔒", title: "Sicherheit", text: "Datensouveränität, lokale KI-Infrastruktur, private Enterprise-KI. Schweizer Datenhaltung, DSG-konform, auf Wunsch offline.", href: "/sicherheit" },
+  { icon: "🏢", title: "Branchen", text: "Finanzwesen & Treuhand, Professional Services, Industrie & Handel. Keine Lösung von der Stange, sondern in Ihrer Sprache.", href: "/branchen" },
+  { icon: "🤝", title: "Unternehmen", text: "Eine KI-Agentur aus der Schweiz, die Technologie in messbare Resultate übersetzt – und Ihre Belegschaft aktiv mitnimmt.", href: "/unternehmen" },
+  { icon: "📈", title: "Praxisbeispiele", text: "Echte Vorher-Nachher-Kennzahlen aus umgesetzten Projekten – nach Branche filterbar.", href: "/case-studies" },
+]
 
-function useCountUp(target: number, duration = 900) {
-  const [value, setValue] = useState(target)
-  const fromRef = useRef(target)
-  useEffect(() => {
-    const from = fromRef.current
-    const start = performance.now()
-    let raf = 0
-    const tick = (now: number) => {
-      const t = Math.min(1, (now - start) / duration)
-      const eased = 1 - Math.pow(1 - t, 3)
-      setValue(Math.round(from + (target - from) * eased))
-      if (t < 1) raf = requestAnimationFrame(tick)
-      else fromRef.current = target
-    }
-    raf = requestAnimationFrame(tick)
-    return () => cancelAnimationFrame(raf)
-  }, [target, duration])
-  return value
+const STATS = [
+  { b: "bis 84 %", s: "kürzere Bearbeitungszeit" },
+  { b: "CHF 8–25k", s: "Ersparnis pro Monat" },
+  { b: "171 %", s: "ROI im Schnitt" },
+]
+
+const TRUST = [
+  { ic: "🇨🇭", b: "Schweizer Server", s: "Lokale Infrastruktur" },
+  { ic: "📜", b: "DSG-konform", s: "Schweizer Datenschutz" },
+  { ic: "🔌", b: "Offline-fähig", s: "Läuft auch ohne Internet" },
+  { ic: "🛡️", b: "Private KI", s: "Nur für Ihr Unternehmen" },
+]
+
+function Eyebrow({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="inline-block rounded-full bg-[#16C7C0]/12 px-[13px] py-[6px] text-[12px] font-extrabold uppercase tracking-[0.7px] text-[#0a8f89]">
+      {children}
+    </span>
+  )
 }
 
-const pillars = [
-  {
-    key: "revops",
-    tab: "RevOps",
-    href: "/revops",
-    title: "Wir steuern Ihren gesamten Vertrieb.",
-    text: "Vom ersten Klick bis zur Empfehlung – wir treiben Ihr digitales Schwungrad an. Effizient, messbar und ohne Aufwand für Ihr Team.",
-    bullets: [
-      "Nahtlose Prozesse: Marketing, Vertrieb und Service verschmelzen zu einer automatisierten Einheit.",
-      "Datengesteuertes Wachstum: Kontinuierliche Optimierung maximiert Ihre Conversion-Rate.",
-      "Volle Entlastung: Die Neukundengewinnung läuft verlässlich im Hintergrund.",
-    ],
-    visual: FlywheelMiniInteractive,
-  },
-  {
-    key: "aiagents",
-    tab: "AI Agents",
-    href: "/ai-agents",
-    title: "Ein KI-Agent erledigt die Arbeit eines ganzen Teams.",
-    text: "Ein KI-Manager koordiniert spezialisierte Sub-Agenten für Ihre gesamte Kundenreise – tippen Sie sich einfach durch:",
-    bullets: [
-      "Strategie-Agent: Analysiert den Markt und steuert Kampagnen live.",
-      "Content-Agent: Erstellt konvertierende Werbemittel und Landingpages.",
-      "Daten-Agent: Optimiert Budgets rund um die Uhr für maximale Effizienz.",
-    ],
-    visual: AgentsInteractive,
-  },
-  {
-    key: "excellence",
-    tab: "Excellence",
-    href: "/excellence",
-    title: "Akkreditiert in allen wichtigen Plattformen.",
-    text: "Wir sind in den führenden Tools zertifiziert, die Ihren Erfolg sichern. Tippen Sie eine Plattform an:",
-    bullets: [
-      "Performance: Google Ads, Meta und LinkedIn für maximale Reichweite.",
-      "CRM & Automation: Smarte Integration in HubSpot, Salesforce oder Make.",
-      "Web & SEO: Modernste Infrastruktur für messbar mehr Anfragen.",
-    ],
-    visual: BrandsInteractive,
-  },
-] as const
-
-export function HomePage({ jsonLd }: HomePageProps) {
-  const [industry, setIndustry] = useState<string>(DEFAULT_DEMAND)
-  const [activePillar, setActivePillar] = useState<string>("revops")
-  const demand = getDemand(industry)
-  const hasNumber = demand.monthlySearches > 0
-  const animated = useCountUp(demand.monthlySearches)
-  const perDay = Math.round(demand.monthlySearches / 30)
-  const pillar = pillars.find((p) => p.key === activePillar) ?? pillars[0]
-  const PillarVisual = pillar.visual
-
+export function HomePage({ jsonLd = [] }: HomePageProps) {
   return (
-    <div className="min-h-screen bg-black overflow-hidden">
-      {jsonLd ? <JsonLd data={jsonLd} /> : null}
-      <main className="min-h-screen relative overflow-hidden">
-        <div className="fixed inset-0 w-full h-full">
-          <Aurora colorStops={["#475569", "#64748b", "#475569"]} amplitude={1.2} blend={0.6} speed={0.8} />
+    <main className="min-h-screen bg-white text-[#0B1F3A]">
+      {jsonLd.map((obj, i) => (
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(obj) }} />
+      ))}
+
+      {/* HEADER (dunkel, mit Dropdown-Navigation) */}
+      <SiteHeader />
+
+      {/* HERO (dunkelblau) – horizontal zentriert */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#0B1F3A] to-[#13294B] px-6 pb-16 pt-16 text-center">
+        <div className="pointer-events-none absolute left-1/2 top-0 h-[420px] w-[820px] -translate-x-1/2 rounded-full bg-[#16C7C0]/10 blur-[120px]" />
+        <div className="relative mx-auto max-w-[1120px]">
+          <span className="inline-block rounded-full bg-[#16C7C0]/15 px-[13px] py-[6px] text-[12px] font-extrabold uppercase tracking-[0.7px] text-[#16C7C0]">
+            KI-Agentur aus der Schweiz
+          </span>
+          <div className="mt-4 flex justify-center md:translate-x-[20%]">
+            <h1 className="max-w-[880px] text-[clamp(30px,5vw,50px)] font-extrabold leading-[1.1] tracking-[-1px] text-white">
+              Sie prägen die Vision.{" "}
+              <span className="bg-gradient-to-r from-[#16C7C0] to-[#5ee0da] bg-clip-text text-transparent">
+                Wir bauen den Antrieb.
+              </span>
+            </h1>
+          </div>
+          <div className="mt-[18px] flex justify-center md:translate-x-[20%]">
+            <p className="max-w-[680px] text-[clamp(16px,2.2vw,20px)] text-[#b9c6da]">
+              Ihr digitales Team für Vertrieb, Service und Prozesse – sicher, messbar, ab Tag eins. Die Routine läuft im
+              Hintergrund, Ihre besten Leute machen das, was zählt.
+            </p>
+          </div>
+          <div className="mt-[26px] flex flex-wrap justify-center gap-3">
+            <a href="#kontakt" className="rounded-[12px] bg-gradient-to-br from-[#3BD974] to-[#22C55E] px-[22px] py-[14px] text-[15px] font-extrabold text-white shadow-[0_10px_24px_rgba(34,197,94,0.32)] transition hover:-translate-y-[1px]">
+              Kostenloses Erstgespräch sichern
+            </a>
+            <a href="#rechner" className="rounded-[12px] bg-gradient-to-br from-[#FB923C] to-[#F97316] px-[22px] py-[14px] text-[15px] font-extrabold text-white shadow-[0_10px_24px_rgba(249,115,22,0.3)] transition hover:-translate-y-[1px]">
+              → Potenzial berechnen
+            </a>
+          </div>
+          <div className="mt-[34px] flex flex-wrap justify-center gap-[14px]">
+            {STATS.map((s) => (
+              <div key={s.b} className="min-w-[150px] rounded-[14px] border border-white/10 bg-white/5 px-5 py-[14px] backdrop-blur">
+                <b className="block text-[26px] text-white">{s.b}</b>
+                <span className="text-[12.5px] text-[#9fb0c8]">{s.s}</span>
+              </div>
+            ))}
+          </div>
         </div>
+      </section>
 
-        <div className="relative z-10">
-          <GlassmorphismNav />
+      {/* ROI RECHNER */}
+      <div id="rechner" className="scroll-mt-20 bg-gradient-to-b from-[#F1F8FF] to-white">
+        <ROICalculatorSection />
+      </div>
 
-          {/* HERO + POTENZIALRECHNER */}
-          <section className="px-4 pt-28 pb-12 sm:pt-32 sm:pb-16">
-            <div className="max-w-4xl mx-auto text-center">
-              <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm font-medium mb-8">
-                <span className="w-2 h-2 bg-emerald-300 rounded-full mr-2 animate-pulse shrink-0" />
-                Ihr Potenzial in der Deutschschweiz – in 5 Sekunden
-              </div>
-              <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-white text-balance mb-5 leading-tight">
-                Sie prägen die Vision.
-                <br />
-                <span className="bg-gradient-to-r from-white to-emerald-200 bg-clip-text text-transparent">
-                  Wir bauen den Antrieb.
-                </span>
-              </h1>
-              <p className="text-base sm:text-xl text-white/75 max-w-2xl mx-auto leading-relaxed font-light mb-10">
-                Wählen Sie Ihre Branche: Sehen Sie sofort, wie viel Nachfrage in der Deutschschweiz bereitsteht – und
-                wie wir sie direkt zu Ihnen lenken.
-              </p>
-
-              <div className="mx-auto max-w-2xl rounded-3xl border border-white/15 bg-white/[0.05] p-6 sm:p-8 backdrop-blur-xl shadow-2xl shadow-black/30">
-                <label className="block text-sm font-medium text-white/70 mb-3">Ihre Branche</label>
-                <Select value={industry} onValueChange={setIndustry}>
-                  <SelectTrigger aria-label="Ihre Branche" className="h-12 bg-white/10 border-white/20 text-white">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent className="bg-gray-900 border-gray-700">
-                    {industries.map((ind) => (
-                      <SelectItem key={ind.value} value={ind.value}>
-                        {ind.label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-
-                {hasNumber ? (
-                  <div className="mt-8">
-                    <p className="overline text-sm uppercase tracking-[0.18em] text-emerald-200">Suchvolumen pro Monat</p>
-                    <div className="mt-1 text-5xl sm:text-6xl font-bold text-white tabular-nums">{nf.format(animated)}</div>
-                    <p className="mt-2 text-sm text-white/60">
-                      ≈ {nf.format(perDay)} Menschen suchen täglich in der Deutschschweiz exakt danach.
-                    </p>
-                    <div className="mt-6">
-                      <div className="flex h-4 w-full overflow-hidden rounded-full bg-white/10">
-                        <div className="h-full bg-emerald-300" style={{ width: "4%" }} />
-                        <div className="h-full bg-white/15" style={{ width: "96%" }} />
-                      </div>
-                      <div className="mt-2 flex justify-between text-xs text-white/55">
-                        <span className="text-emerald-200">Heute bei Ihnen</span>
-                        <span>Ungenutzter Umsatz</span>
-                      </div>
-                    </div>
-                    <p className="mt-6 text-base text-white/80 leading-relaxed">
-                      Diese Nachfrage ist da. Die Frage ist nur: Landet sie bei Ihnen – oder bei jemand anderem? In
-                      einem kurzen, unverbindlichen Rückruf zeigen wir Ihnen, wie Ihre Kundenreise konkret aussähe.
-                    </p>
-                    <a
-                      href="#contact"
-                      className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-base font-semibold text-black transition hover:scale-105 hover:bg-gray-50"
-                    >
-                      Diese Anfragen sichern
-                      <ArrowRight className="h-5 w-5" />
-                    </a>
-                    <p className="mt-3 text-xs text-white/50">
-                      3 Monate testen – keine Startkosten. Sie entscheiden danach in Ruhe.
-                    </p>
-                  </div>
-                ) : (
-                  <div className="mt-8">
-                    <p className="text-base text-white/80 leading-relaxed">
-                      Sagen Sie uns Ihre Branche im Gespräch – wir ermitteln Ihre genaue Nachfrage in der Deutschschweiz
-                      und zeigen Ihnen, wie wir diese Anfragen zu Ihnen bringen.
-                    </p>
-                    <a
-                      href="#contact"
-                      className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-base font-semibold text-black transition hover:scale-105 hover:bg-gray-50"
-                    >
-                      Mein Potenzial ermitteln
-                      <ArrowRight className="h-5 w-5" />
-                    </a>
-                  </div>
-                )}
-              </div>
-              <p className="mt-4 text-xs text-white/60">
-                Basis: Relevante Top-Suchbegriffe Ihrer Branche (Google, Deutschschweiz).
-              </p>
-            </div>
-          </section>
-
-          {/* PROBLEM */}
-          <section className="px-4 py-12 sm:py-16">
-            <div className="max-w-3xl mx-auto text-center">
-              <p className="overline text-sm font-semibold uppercase tracking-[0.2em] text-emerald-200">Der Hebel</p>
-              <h2 className="mt-3 text-2xl sm:text-3xl md:text-4xl font-bold text-white text-balance">
-                Die Nachfrage ist längst da. Sie sucht nach Ihnen.
-              </h2>
-              <p className="mt-5 text-base sm:text-lg text-white/75 leading-relaxed font-light">
-                Täglich suchen Kunden Ihre Expertise. Es fehlt nur der digitale Weg, der sie im perfekten Moment zu
-                Ihnen führt. Sichern Sie sich diese Abschlüsse direkt in Ihrem System – wir automatisieren das für Sie.
-              </p>
-            </div>
-          </section>
-
-          {/* INTERAKTIVER 3-SÄULEN-SLIDER */}
-          <section className="px-4 py-12 sm:py-16">
-            <div className="max-w-5xl mx-auto">
-              <div className="text-center mb-8">
-                <p className="overline text-sm font-semibold uppercase tracking-[0.2em] text-emerald-200">Alles aus einer Hand</p>
-                <h2 className="mt-3 text-2xl sm:text-3xl md:text-4xl font-bold text-white text-balance">
-                  Ihr Partner für den gesamten digitalen Vertrieb.
-                </h2>
-              </div>
-
-              {/* Tabs */}
-              <div className="mx-auto mb-6 flex max-w-md gap-2 rounded-full border border-white/12 bg-white/[0.04] p-1.5 backdrop-blur-sm">
-                {pillars.map((p) => (
-                  <button
-                    key={p.key}
-                    onClick={() => setActivePillar(p.key)}
-                    className={`flex-1 rounded-full px-3 py-2 text-sm font-semibold transition ${
-                      activePillar === p.key ? "bg-white text-black" : "text-white/70 hover:text-white"
-                    }`}
-                  >
-                    {p.tab}
-                  </button>
-                ))}
-              </div>
-
-              <div className="grid items-center gap-8 rounded-3xl border border-white/10 bg-white/[0.04] p-6 sm:p-10 backdrop-blur-sm md:grid-cols-2">
-                <div className="order-2 md:order-1">
-                  <h3 className="text-xl sm:text-2xl font-bold text-white text-balance">{pillar.title}</h3>
-                  <p className="mt-4 text-base text-white/72 leading-relaxed">{pillar.text}</p>
-                  <ul className="mt-5 space-y-2.5">
-                    {pillar.bullets.map((b) => (
-                      <li key={b} className="flex items-start gap-3 text-sm text-white/80">
-                        <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-emerald-300" />
-                        <span>{b}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <a
-                    href={pillar.href}
-                    className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-emerald-200 hover:underline underline-offset-4"
-                  >
-                    Mehr zu {pillar.tab}
-                    <ArrowRight className="size-4" />
-                  </a>
-                </div>
-                <div className="order-1 w-full md:order-2">
-                  <PillarVisual />
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* DREI STRIPES */}
-          <section className="px-4 py-12 sm:py-16">
-            <div className="max-w-4xl mx-auto space-y-4">
-              {[
-                {
-                  icon: Megaphone,
-                  title: "Digitale Sichtbarkeit, die direkt überzeugt.",
-                  text: "Perfekt platziert: Ihr Angebot erscheint exakt im Moment der höchsten Kaufbereitschaft Ihrer Zielgruppe.",
-                },
-                {
-                  icon: PhoneCall,
-                  title: "Kaufbereite Kontakte für Sie.",
-                  text: "Keine Kaltakquise mehr: Der Interessent ist bereits digital vorüberzeugt und fordert gezielt Ihr Angebot an.",
-                },
-                {
-                  icon: Zap,
-                  title: "Vollautomatische Prozesse.",
-                  text: "Unser System läuft im Hintergrund, damit Sie sich ganz auf Ihre Kernkompetenz fokussieren.",
-                },
-              ].map((s, i) => (
-                <div
-                  key={i}
-                  className="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-5 sm:p-6 backdrop-blur-sm"
-                >
-                  <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-emerald-300/15 text-emerald-200">
-                    <s.icon className="size-5" />
-                  </span>
-                  <div>
-                    <h3 className="text-xl sm:text-2xl font-bold text-white text-balance">{s.title}</h3>
-                    <p className="mt-1 text-sm leading-7 text-white/65">{s.text}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* AGENTUR-VERGLEICH */}
-          <section className="px-4 py-12 sm:py-16">
-            <div className="max-w-4xl mx-auto rounded-3xl border border-white/10 bg-white/[0.04] p-8 sm:p-10 backdrop-blur-sm">
-              <div className="grid gap-8 md:grid-cols-[1.1fr_0.9fr] md:items-center">
-                <div>
-                  <p className="overline text-sm font-semibold uppercase tracking-[0.2em] text-emerald-200">Der Unterschied</p>
-                  <h2 className="mt-3 text-2xl sm:text-3xl md:text-4xl font-bold text-white text-balance">
-                    Wo andere Teams aufblähen, nutzen wir KI.
-                  </h2>
-                  <p className="mt-4 text-base text-white/72 leading-relaxed">
-                    Klassische Agenturen kosten Zeit und hohe Budgets. Bei uns steuert ein einziger Experte smarte
-                    KI-Agenten. Das Ergebnis: Die Leistung einer ganzen Abteilung – schneller, präziser und deutlich
-                    kosteneffizienter.
-                  </p>
-                </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-center">
-                    <Users className="mx-auto size-6 text-white/40" />
-                    <div className="mt-2 text-3xl font-bold text-white/70">15</div>
-                    <p className="mt-1 text-xs text-white/50">Spezialisten<br />klassische Agentur</p>
-                  </div>
-                  <div className="rounded-2xl border border-emerald-300/30 bg-emerald-300/10 p-5 text-center">
-                    <Bot className="mx-auto size-6 text-emerald-200" />
-                    <div className="mt-2 text-3xl font-bold text-white">1</div>
-                    <p className="mt-1 text-xs text-emerald-100/80">Person + KI-Agenten<br />AgenticIT</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* CONTACT */}
-          <section id="contact" className="scroll-mt-24 px-4 py-16 sm:py-20">
-            <div className="max-w-5xl mx-auto grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-              <div>
-                <p className="overline text-sm font-semibold uppercase tracking-[0.2em] text-emerald-200">Unverbindlich anfragen</p>
-                <h2 className="mt-4 text-3xl md:text-4xl font-light text-white leading-tight text-balance">
-                  Wie schnell und zu welchen Konditionen bringen wir diese Kunden zu Ihnen?
-                </h2>
-                <p className="mt-6 text-base md:text-lg text-white/70 leading-relaxed">
-                  Tragen Sie sich kurz ein. Bei unserem unverbindlichen Rückruf präsentieren wir Ihnen exakte Daten für
-                  Ihre Branche und den direkten Fahrplan zu Ihren neuen, qualifizierten Kundenanfragen.
-                </p>
-                <div className="mt-7 grid gap-3 text-sm text-white/70">
-                  {[
-                    "Kurzer, unverbindlicher Rückruf",
-                    "Exakte Kennzahlen für Ihre Branche",
-                    "Transparente Kosten & klarer Zeitplan",
-                  ].map((b) => (
-                    <div key={b} className="flex items-center gap-3 rounded-lg border border-white/10 bg-white/[0.04] p-3">
-                      <TrendingUp className="size-4 shrink-0 text-emerald-200" />
-                      <span>{b}</span>
-                    </div>
-                  ))}
-                </div>
-                <p className="mt-5 text-sm text-white/55">
-                  Kein Verkaufsdruck, keine Vorbereitung nötig – ein kurzer Rückruf, ein konkreter Plan für Ihre Branche.
-                </p>
-              </div>
-
-              <LeadForm
-                source="home"
-                title="Lassen Sie uns starten."
-                description="Hinterlassen Sie Ihre Daten für einen schnellen, unverbindlichen Strategie-Rückruf."
-                submitLabel="Rückruf anfragen"
-                selectFields={[
-                  { name: "industry", label: "Branche", options: industryLabels },
-                  {
-                    name: "goal",
-                    label: "Ihr Ziel",
-                    options: ["Mehr Anfragen", "Planbarer Umsatz", "Zeit gewinnen", "Weiss ich noch nicht"],
-                  },
-                ]}
-              />
-            </div>
-          </section>
-
-          <Footer />
+      {/* FÜNF WELTEN */}
+      <section id="loesungen" className="scroll-mt-20 px-6 py-14">
+        <div className="mx-auto max-w-[1120px]">
+          <div className="mx-auto mb-9 max-w-[720px] text-center">
+            <Eyebrow>Alles aus einer Hand</Eyebrow>
+            <h2 className="mt-[10px] text-[clamp(24px,3.4vw,34px)] font-extrabold">Fünf Welten, ein Wachstumsmotor.</h2>
+            <p className="mt-3 text-[16px] text-[#5A6B82]">Sie brauchen keine fünf Anbieter. Sie brauchen einen Partner, der alles verzahnt.</p>
+          </div>
+          <div className="grid grid-cols-1 gap-[18px] sm:grid-cols-2 lg:grid-cols-3">
+            {WORLDS.map((w) => (
+              <Link key={w.title} href={w.href} className="group flex h-full flex-col rounded-[16px] border border-[#E3E9F2] bg-white p-6 shadow-[0_6px_20px_rgba(11,31,58,0.07)] transition hover:-translate-y-[3px] hover:border-[#16C7C0]/40 hover:shadow-[0_18px_48px_rgba(11,31,58,0.12)]">
+                <div className="mb-[14px] grid h-[46px] w-[46px] place-items-center rounded-[12px] bg-[#F1F8FF] text-[22px]">{w.icon}</div>
+                <h3 className="text-[19px] font-bold text-[#0B1F3A]">{w.title}</h3>
+                <p className="my-2 text-[14.5px] text-[#5A6B82]">{w.text}</p>
+                <span className="mt-auto text-[14px] font-extrabold text-[#0a8f89]">Mehr erfahren →</span>
+              </Link>
+            ))}
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* DIFFERENZIERUNG */}
+      <section className="bg-[#F5F8FC] px-6 py-14">
+        <div className="mx-auto max-w-[1120px]">
+          <div className="mx-auto mb-9 max-w-[720px] text-center">
+            <Eyebrow>Der Unterschied</Eyebrow>
+            <h2 className="mt-[10px] text-[clamp(24px,3.4vw,34px)] font-extrabold">Wo andere Teams aufblähen, nutzen wir KI.</h2>
+            <p className="mt-3 text-[16px] text-[#5A6B82]">Bei uns steuert ein einziger Experte smarte KI-Agenten – und liefert die Leistung einer ganzen Abteilung.</p>
+          </div>
+          <div className="mb-[26px] flex flex-wrap items-center justify-center gap-[26px]">
+            <div className="text-center">
+              <div className="text-[54px] font-extrabold leading-none text-[#0B1F3A]">15</div>
+              <small className="text-[13px] text-[#5A6B82]">Spezialisten · klassische Agentur</small>
+            </div>
+            <div className="text-[18px] font-extrabold text-[#5A6B82]">vs.</div>
+            <div className="text-center">
+              <div className="text-[54px] font-extrabold leading-none text-[#0a8f89]">1</div>
+              <small className="text-[13px] text-[#5A6B82]">Person + KI-Agenten · AgenticIT</small>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+            {STATS.map((s) => (
+              <div key={s.b} className="rounded-[14px] border border-[#E3E9F2] bg-white p-[18px] text-center">
+                <b className="block text-[22px] text-[#0B1F3A]">{s.b}</b>
+                <span className="text-[13.5px] text-[#5A6B82]">{s.s}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SICHERHEIT */}
+      <section className="px-6 py-14">
+        <div className="mx-auto max-w-[1120px]">
+          <div className="mx-auto mb-9 max-w-[720px] text-center">
+            <Eyebrow>So einfach wie Office. So sicher wie ein Schweizer Tresor.</Eyebrow>
+            <h2 className="mt-[10px] text-[clamp(24px,3.4vw,34px)] font-extrabold">Ihre Daten bleiben in der Schweiz.</h2>
+            <p className="mt-3 text-[16px] text-[#5A6B82]">Keine Schulungswochen, kein IT-Studium. Ihr Team ist vom ersten Tag an dabei – und Ihre Daten bleiben unter Ihrer Kontrolle.</p>
+          </div>
+          <div className="grid grid-cols-2 gap-[14px] md:grid-cols-4">
+            {TRUST.map((t) => (
+              <div key={t.b} className="rounded-[14px] border border-[#E3E9F2] bg-white p-[18px] text-center">
+                <div className="text-[24px]">{t.ic}</div>
+                <b className="mt-2 block text-[15px] text-[#0B1F3A]">{t.b}</b>
+                <span className="text-[12.5px] text-[#5A6B82]">{t.s}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FINAL CTA */}
+      <section id="kontakt" className="scroll-mt-20 bg-gradient-to-b from-[#F1F8FF] to-white px-6 py-14">
+        <div className="mx-auto max-w-[1120px]">
+          <div className="rounded-[22px] border border-[#E3E9F2] bg-gradient-to-br from-[#F1F8FF] to-[#EAF9F7] p-10 text-center shadow-[0_6px_20px_rgba(11,31,58,0.07)]">
+            <Eyebrow>Der zweitbeste Zeitpunkt ist jetzt</Eyebrow>
+            <h2 className="mt-[10px] text-[clamp(24px,3.4vw,32px)] font-extrabold">Sehen Sie, was ein digitaler Kollege für Sie tut.</h2>
+            <p className="mx-auto mb-[22px] mt-3 max-w-[560px] text-[#5A6B82]">
+              In einem kostenlosen Gespräch zeigen wir Ihnen genau eine Aufgabe, die wir ab nächster Woche automatisieren könnten – mit konkreter Zahl, was das bringt.
+            </p>
+            <div className="flex flex-wrap justify-center gap-3">
+              <a href="#" className="rounded-[12px] bg-gradient-to-br from-[#3BD974] to-[#22C55E] px-[22px] py-[14px] text-[15px] font-extrabold text-white shadow-[0_10px_24px_rgba(34,197,94,0.32)] transition hover:-translate-y-[1px]">
+                Kostenlosen Termin sichern
+              </a>
+              <a href="#" className="rounded-[12px] bg-gradient-to-br from-[#FB923C] to-[#F97316] px-[22px] py-[14px] text-[15px] font-extrabold text-white shadow-[0_10px_24px_rgba(249,115,22,0.3)] transition hover:-translate-y-[1px]">
+                💬 Mit dem KI-Assistenten starten
+              </a>
+            </div>
+            <p className="mt-4 text-[11px] text-[#9aa9bf]">
+              Hinweis: Jede KI-Interaktion startet mit „Ich bin der KI-Assistent von AgenticIT.“ · DSG-konform.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="bg-[#0B1F3A] py-9 text-[#c6d2e4]">
+        <div className="mx-auto flex max-w-[1120px] flex-wrap justify-between gap-10 px-6">
+          <div className="max-w-[280px]">
+            <div className="text-[19px] font-extrabold text-white">Agentic<span className="text-[#16C7C0]">IT</span></div>
+            <p className="mt-[10px] text-[13px] text-[#9fb0c8]">KI-Agenten, Omnichannel-Automation und Predictive Lead Scoring für Schweizer Unternehmen.</p>
+          </div>
+          <div>
+            <b className="mb-[10px] block text-[13px] tracking-[0.3px] text-white">LÖSUNGEN</b>
+            <Link href="/loesungen" className="block py-[3px] text-[#9fb0c8] hover:text-white">Kundendienst-KI</Link>
+            <Link href="/loesungen" className="block py-[3px] text-[#9fb0c8] hover:text-white">Prozessautomatisierung</Link>
+            <Link href="/loesungen" className="block py-[3px] text-[#9fb0c8] hover:text-white">RevOps & Growth</Link>
+          </div>
+          <div>
+            <b className="mb-[10px] block text-[13px] tracking-[0.3px] text-white">TECHNOLOGIE</b>
+            <Link href="/technologie" className="block py-[3px] text-[#9fb0c8] hover:text-white">Autonome KI-Agenten</Link>
+            <Link href="/technologie" className="block py-[3px] text-[#9fb0c8] hover:text-white">Multi-Agenten-Systeme</Link>
+            <Link href="/technologie" className="block py-[3px] text-[#9fb0c8] hover:text-white">Enterprise-Integration</Link>
+          </div>
+          <div>
+            <b className="mb-[10px] block text-[13px] tracking-[0.3px] text-white">UNTERNEHMEN</b>
+            <Link href="/unternehmen" className="block py-[3px] text-[#9fb0c8] hover:text-white">Über uns</Link>
+            <Link href="/datenschutz" className="block py-[3px] text-[#9fb0c8] hover:text-white">Datenschutz</Link>
+            <Link href="/impressum" className="block py-[3px] text-[#9fb0c8] hover:text-white">Impressum</Link>
+          </div>
+        </div>
+        <div className="mx-auto mt-6 max-w-[1120px] border-t border-white/10 px-6 pt-4 text-[12px] text-[#8294ad]">
+          © 2026 AgenticIT. Alle Rechte vorbehalten.
+        </div>
+      </footer>
+    </main>
   )
 }

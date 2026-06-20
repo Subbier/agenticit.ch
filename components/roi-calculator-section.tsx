@@ -1,336 +1,327 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useEffect, useMemo, useState } from "react"
+import { AnimatePresence, motion, useMotionValue, useTransform, animate } from "framer-motion"
+import { ChevronDown, Check, Info, FileDown } from "lucide-react"
 import { Slider } from "@/components/ui/slider"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Card } from "@/components/ui/card"
-import { TrendingUp, Users, DollarSign, Clock, Tag } from "lucide-react"
+import { cn } from "@/lib/utils"
 import { formatChf } from "@/lib/format-currency"
-import { industries, DEFAULT_INDUSTRY, getIndustryByValue } from "@/lib/lead-pricing"
+import { PILLARS, computeRoi, type Scenario } from "@/lib/microservices"
 
-interface CalculatorInputs {
-  monthlyVisitors: number
-  currentConversionRate: number
-  averageOrderValue: number
-  businessType: string
+const SCENARIOS: { key: Scenario; label: string; hint: string }[] = [
+  { key: "min", label: "Vorsichtig", hint: "tief gerechnet" },
+  { key: "schnitt", label: "Realistisch", hint: "Durchschnitt" },
+  { key: "pro", label: "Optimistisch", hint: "Best Case" },
+]
+
+function AnimatedChf({ value }: { value: number }) {
+  const mv = useMotionValue(value)
+  const text = useTransform(mv, (v) => formatChf(v))
+  useEffect(() => {
+    const controls = animate(mv, value, { duration: 0.45, ease: "easeOut" })
+    return controls.stop
+  }, [value, mv])
+  return <motion.span>{text}</motion.span>
+}
+
+/** Kleines „i“ mit Tooltip – versteckt Quellen/Belege, bis man drüberfährt. */
+function InfoDot({ text }: { text: string }) {
+  return (
+    <span
+      tabIndex={0}
+      title={text}
+      aria-label={`Quelle: ${text}`}
+      className="inline-grid h-[18px] w-[18px] flex-none cursor-help place-items-center rounded-full border border-[#c7d3e6] bg-white text-[#5A6B82] outline-none transition hover:border-[#16C7C0] hover:text-[#0a8f89] focus-visible:ring-2 focus-visible:ring-[#16C7C0]/40"
+    >
+      <Info className="h-[11px] w-[11px]" />
+    </span>
+  )
+}
+
+/** Nummern-Badge, macht die zwei Schritte als oberste Ebene erkennbar. */
+function StepBadge({ n }: { n: number }) {
+  return (
+    <span className="grid h-[28px] w-[28px] flex-none place-items-center rounded-full bg-[#0B1F3A] text-[14px] font-extrabold text-white">
+      {n}
+    </span>
+  )
 }
 
 export function ROICalculatorSection() {
-  const [inputs, setInputs] = useState<CalculatorInputs>({
-    monthlyVisitors: 10000,
-    currentConversionRate: 2,
-    averageOrderValue: getIndustryByValue(DEFAULT_INDUSTRY).avgOrder,
-    businessType: DEFAULT_INDUSTRY,
-  })
+  const [scenario, setScenario] = useState<Scenario>("schnitt")
+  const [selected, setSelected] = useState<Set<string>>(new Set(["lead", "sales", "bot"]))
+  const [open, setOpen] = useState<Set<string>>(new Set(["revops"]))
+  const [investment, setInvestment] = useState(60000)
+  const [showNotes, setShowNotes] = useState(false)
 
-  const [isVisible, setIsVisible] = useState(false)
+  const result = useMemo(() => computeRoi(selected, scenario, investment), [selected, scenario, investment])
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true)
-          }
-        })
-      },
-      { threshold: 0.1 },
-    )
-
-    const section = document.getElementById("roi-calculator")
-    if (section) {
-      observer.observe(section)
-    }
-
-    return () => observer.disconnect()
-  }, [])
-
-  useEffect(() => {
-    const defaults = getIndustryByValue(inputs.businessType)
-    setInputs((prev) => ({ ...prev, averageOrderValue: defaults.avgOrder }))
-  }, [inputs.businessType])
-
-  const businessConfig = getIndustryByValue(inputs.businessType)
-  const leadPrice = businessConfig.leadPrice
-  const improvements = {
-    conversion: businessConfig.conversion,
-    response: businessConfig.response,
-    satisfaction: businessConfig.satisfaction,
+  const toggle = (set: Set<string>, key: string, fn: (s: Set<string>) => void) => {
+    const next = new Set(set)
+    next.has(key) ? next.delete(key) : next.add(key)
+    fn(next)
   }
 
-  // Current metrics
-  const currentLeads = Math.round((inputs.monthlyVisitors * inputs.currentConversionRate) / 100)
-  const currentRevenue = currentLeads * inputs.averageOrderValue
-
-  // Improved metrics with AI chatbot
-  const newConversionRate = inputs.currentConversionRate * (1 + improvements.conversion / 100)
-  const newLeads = Math.round((inputs.monthlyVisitors * newConversionRate) / 100)
-  const newRevenue = newLeads * inputs.averageOrderValue
-
-  // Gains
-  const additionalLeads = newLeads - currentLeads
-  const additionalRevenue = newRevenue - currentRevenue
-  const revenueIncrease = ((newRevenue - currentRevenue) / currentRevenue) * 100
-
   return (
-    <section id="roi-calculator" className="py-16 md:py-20 px-4 relative">
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
-        <div
-          className={`text-center mb-12 md:mb-16 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-6">
-            <TrendingUp className="w-4 h-4 text-primary" />
-            <span className="text-sm font-medium text-white/80">ROI Calculator</span>
-          </div>
+    <section id="roi-calculator" className="relative py-20 md:py-28">
+      <div className="mx-auto max-w-3xl px-4 text-center">
+        <span className="inline-block rounded-full bg-[#16C7C0]/12 px-[13px] py-[6px] text-[12px] font-extrabold uppercase tracking-[0.7px] text-[#0a8f89]">
+          Erst die Zahl, dann die Technik
+        </span>
+        <h2 className="mt-3 text-[clamp(26px,3.6vw,36px)] font-extrabold tracking-[-0.5px] text-[#0B1F3A]">
+          Rechnen Sie nach – in 20 Sekunden.
+        </h2>
+        <p className="mx-auto mt-4 max-w-2xl text-[17px] leading-[1.6] text-[#475569]">
+          Andere verkaufen Tools. Wir zeigen Ihnen zuerst, welches Jahrespotenzial in Ihrem Betrieb steckt –
+          konservativ gerechnet, auf belegten Studienwerten.
+        </p>
+      </div>
 
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6 text-balance">
-            Ihr potenzielles{" "}
-            <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-              Umsatzwachstum
+      {/* Weisse Rechner-Karte (äusserer Rahmen) */}
+      <div className="mx-auto mt-10 max-w-[1120px] px-6">
+        <div className="overflow-hidden rounded-[20px] border border-[#E3E9F2] border-t-[4px] border-t-[#16C7C0] bg-white text-[#0B1F3A] shadow-[0_18px_48px_rgba(11,31,58,0.28)]">
+          {/* Head */}
+          <div className="border-b border-[#E3E9F2] bg-[#FAFCFF] px-5 pb-5 pt-6 md:px-8 md:pb-6 md:pt-7">
+            <span className="mb-3 inline-block rounded-full bg-[#16C7C0]/15 px-[12px] py-[6px] text-[12px] font-extrabold uppercase tracking-[0.6px] text-[#0a8f89]">
+              ROI-Rechner
             </span>
-          </h2>
+            <h3 className="text-[clamp(26px,3.8vw,36px)] font-extrabold leading-[1.1] tracking-[-0.6px] text-[#0B1F3A]">
+              Was bringt Ihnen ein digitales Team?
+            </h3>
+            <p className="mt-2 text-[15px] font-medium leading-[1.55] text-[#475569] md:text-[16px]">
+              In 2 Schritten zu Ihrer Zahl: erst festlegen, wie vorsichtig wir rechnen, dann die Bereiche wählen.
+              Ihr <b className="font-bold text-[#0B1F3A]">Jahrespotenzial</b> aktualisiert sich live.
+            </p>
+          </div>
 
-          <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto text-balance">
-            Wählen Sie Ihre Branche und sehen Sie in Sekunden, was möglich ist.
-          </p>
-        </div>
+          {/* Body: Desktop 2-spaltig (Eingaben links, Ergebnis rechts), Mobile gestapelt */}
+          <div className="grid grid-cols-1 gap-6 px-4 pb-6 pt-5 md:px-8 md:pb-8 md:pt-7 lg:grid-cols-[1fr_minmax(350px,430px)] lg:gap-9">
+            {/* Spalte 1 · Eingaben */}
+            <div className="space-y-5">
+              {/* SCHRITT 1 (innerer Block) */}
+              <div className="rounded-[16px] border border-[#CBD6E6] bg-[#FAFCFF] p-4 md:p-5">
+                <div className="flex items-start gap-3">
+                  <StepBadge n={1} />
+                  <div>
+                    <h4 className="text-[16px] font-bold leading-snug text-[#1f3553] md:text-[17px]">
+                      Wie vorsichtig sollen wir rechnen?
+                    </h4>
+                    <p className="mt-1 text-[14px] leading-[1.5] text-[#5A6B82]">
+                      „Vorsichtig“ rechnet bewusst tief – so ist Ihre Zahl garantiert nicht schöngerechnet.
+                    </p>
+                  </div>
+                </div>
+                <div className="mt-4 flex gap-[6px] rounded-[14px] bg-[#F1F8FF] p-[5px]">
+                  {SCENARIOS.map((s) => {
+                    const active = scenario === s.key
+                    return (
+                      <button
+                        key={s.key}
+                        type="button"
+                        onClick={() => setScenario(s.key)}
+                        aria-pressed={active}
+                        className={cn(
+                          "flex-1 rounded-[10px] py-[11px] text-[14px] font-bold transition",
+                          active
+                            ? "bg-white text-[#0B1F3A] shadow-[0_3px_10px_rgba(11,31,58,0.12)] ring-1 ring-[#16C7C0]/55"
+                            : "text-[#5A6B82] hover:bg-white/60",
+                        )}
+                      >
+                        {s.label}
+                        <span className={cn("block text-[11px] font-semibold", active ? "text-[#0a8f89]" : "text-[#9aa9bf]")}>
+                          {s.hint}
+                        </span>
+                      </button>
+                    )
+                  })}
+                </div>
+              </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-stretch">
-          {/* Calculator Inputs */}
-          <div
-            className={`transition-all duration-700 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-          >
-            <Card className="p-6 md:p-8 bg-[radial-gradient(35%_128px_at_50%_0%,theme(backgroundColor.white/15%),theme(backgroundColor.white/5%))] border-white/20 backdrop-blur-sm shadow-2xl h-full flex flex-col">
-              <h3 className="text-xl md:text-2xl font-semibold text-white mb-6 md:mb-8">Ihre Business-Kennzahlen</h3>
+              {/* SCHRITT 2 (innerer Block) */}
+              <div className="rounded-[16px] border border-[#CBD6E6] bg-[#FAFCFF] p-4 md:p-5">
+                <div className="flex items-start gap-3">
+                  <StepBadge n={2} />
+                  <div>
+                    <h4 className="text-[16px] font-bold leading-snug text-[#1f3553] md:text-[17px]">
+                      Wobei soll die KI Sie entlasten?
+                    </h4>
+                    <p className="mt-1 text-[14px] leading-[1.5] text-[#5A6B82]">
+                      Wählen Sie Ihre Bereiche – jede Auswahl erhöht Ihr Jahrespotenzial. Tippen Sie auf einen Bereich für Details.
+                    </p>
+                  </div>
+                </div>
 
-              <div className="space-y-8 flex-1">
-                {/* Business Type */}
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-3">Branche</label>
-                  <Select
-                    value={inputs.businessType}
-                    onValueChange={(value) => setInputs((prev) => ({ ...prev, businessType: value }))}
+                <div className="mt-4 space-y-[10px]">
+                  {PILLARS.map((p) => {
+                    const cnt = p.products.filter((x) => selected.has(x.id)).length
+                    const isOpen = open.has(p.key)
+                    return (
+                      <div
+                        key={p.key}
+                        className={cn(
+                          "overflow-hidden rounded-[14px] border-2 bg-white transition",
+                          cnt ? "border-[#0a8f89] shadow-[0_4px_16px_rgba(10,143,137,0.16)]" : "border-[#D7E0EC]",
+                        )}
+                      >
+                        <button
+                          type="button"
+                          onClick={() => toggle(open, p.key, setOpen)}
+                          aria-expanded={isOpen}
+                          className="flex w-full items-center gap-[12px] px-[15px] py-[14px] text-left"
+                        >
+                          <span className="grid h-[38px] w-[38px] flex-none place-items-center rounded-[11px] bg-[#F1F8FF] text-[19px]">
+                            {p.icon}
+                          </span>
+                          <span className="flex-1">
+                            <span className="block text-[16px] font-extrabold leading-[1.2] text-[#0B1F3A]">{p.plain}</span>
+                            <span className="mt-[2px] block text-[12.5px] font-medium text-[#5A6B82]">
+                              {p.benefit} · <span className="text-[#9aa9bf]">{p.name}</span>
+                            </span>
+                          </span>
+                          <span
+                            className={cn(
+                              "min-w-[38px] rounded-full px-[10px] py-[4px] text-center text-[12.5px] font-extrabold",
+                              cnt ? "bg-[#16C7C0]/15 text-[#0a8f89]" : "bg-[#F1F8FF] text-[#5A6B82]",
+                            )}
+                          >
+                            {cnt}/{p.products.length}
+                          </span>
+                          <motion.span animate={{ rotate: isOpen ? 180 : 0 }} className="flex-none">
+                            <ChevronDown className="h-[18px] w-[18px] text-[#5A6B82]" />
+                          </motion.span>
+                        </button>
+                        <AnimatePresence initial={false}>
+                          {isOpen && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: "auto", opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.2 }}
+                            >
+                              <div className="flex flex-col gap-2 border-t border-[#EEF2F7] bg-[#FAFCFF] px-3 pb-3 pt-3">
+                                {p.products.map((x) => {
+                                  const on = selected.has(x.id)
+                                  return (
+                                    <button
+                                      key={x.id}
+                                      type="button"
+                                      onClick={() => toggle(selected, x.id, setSelected)}
+                                      aria-pressed={on}
+                                      className={cn(
+                                        "flex items-center gap-[12px] rounded-[12px] border bg-white px-3 py-[11px] text-left transition",
+                                        on ? "border-[#5fd8d2] bg-[#16C7C0]/[0.06]" : "border-[#EEF2F7] hover:border-[#dbe3ee]",
+                                      )}
+                                    >
+                                      <span
+                                        className={cn(
+                                          "grid h-[22px] w-[22px] flex-none place-items-center rounded-[7px] border-[1.5px] transition",
+                                          on ? "border-[#16C7C0] bg-[#16C7C0] text-white" : "border-[#cdd8e8]",
+                                        )}
+                                      >
+                                        {on && <Check className="h-[14px] w-[14px]" />}
+                                      </span>
+                                      <span className="flex-1">
+                                        <span className="block text-[15px] font-bold leading-[1.25] text-[#0B1F3A]">{x.name}</span>
+                                        <span className="mt-[1px] block text-[12.5px] leading-[1.4] text-[#5A6B82]">{x.desc}</span>
+                                      </span>
+                                      <InfoDot text={x.src} />
+                                    </button>
+                                  )
+                                })}
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    )
+                  })}
+                </div>
+              </div>
+            </div>
+
+            {/* Spalte 2 · Ergebnis (Desktop: klebend) */}
+            <div className="self-start lg:sticky lg:top-24">
+              <div className="rounded-[16px] border border-[#E3E9F2] bg-gradient-to-br from-[#F1F8FF] to-[#EAF9F7] p-5 md:p-6">
+                <div className="text-[13px] font-bold uppercase tracking-[0.4px] text-[#5A6B82]">
+                  Ihr Return on Invest (ROI)
+                </div>
+                <div className="my-1 text-[clamp(40px,6.2vw,56px)] font-extrabold leading-[1.0] tracking-[-1.5px] text-[#0a8f89]">
+                  {result.roi > 0 ? "+" : ""}
+                  {Math.round(result.roi).toLocaleString("de-CH")} %
+                </div>
+                <div className="text-[15px] font-semibold text-[#475569]">
+                  Jahrespotenzial{" "}
+                  <b className="font-extrabold text-[#0B1F3A]">
+                    <AnimatedChf value={result.annual} />
+                  </b>
+                </div>
+                <div className="mt-3 text-[13px] leading-[1.5] text-[#5A6B82]">
+                  {result.count ? (
+                    <>
+                      Basis: <b className="font-bold text-[#0B1F3A]">{result.count} Bereich(e)</b> · 3-Jahres-Effekt{" "}
+                      <b className="font-bold text-[#0B1F3A]">{formatChf(result.threeYear)}</b> · Jahres-Ersparnis{" "}
+                      <b className="font-bold text-[#0B1F3A]">{formatChf(result.savings)}</b>
+                    </>
+                  ) : (
+                    "Bitte mindestens einen Bereich wählen."
+                  )}
+                </div>
+
+                <div className="mt-4 border-t border-[#D5E6F0] pt-4">
+                  <div className="flex items-center justify-between text-[13.5px] font-semibold text-[#475569]">
+                    <span>Ihre Jahres-Investition</span>
+                    <b className="text-[15px] font-extrabold text-[#0B1F3A]">{formatChf(investment)}</b>
+                  </div>
+                  <Slider
+                    className="mt-3"
+                    min={12000}
+                    max={360000}
+                    step={6000}
+                    value={[investment]}
+                    onValueChange={(v) => setInvestment(v[0])}
+                  />
+                </div>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => {
+                  /* TODO: PDF-Auswertung erzeugen / Lead-Formular (DSG-konform) anbinden */
+                }}
+                className="mt-4 flex w-full items-center justify-center gap-2 rounded-[13px] bg-gradient-to-br from-[#3BD974] to-[#22C55E] py-[15px] text-center text-[16px] font-extrabold text-white shadow-[0_8px_20px_rgba(34,197,94,0.3)] transition hover:-translate-y-[1px]"
+              >
+                <FileDown className="h-[18px] w-[18px]" />
+                Auswertung als PDF sichern
+              </button>
+
+              {/* Hinweise/Quellen hinter „i“ – hält die Karte ruhig */}
+              <button
+                type="button"
+                onClick={() => setShowNotes((v) => !v)}
+                aria-expanded={showNotes}
+                className="mx-auto mt-3 flex items-center gap-[6px] text-[12.5px] font-semibold text-[#5A6B82] transition hover:text-[#0a8f89]"
+              >
+                <Info className="h-[14px] w-[14px]" />
+                Hinweise &amp; Quellen
+                <ChevronDown className={cn("h-[13px] w-[13px] transition", showNotes && "rotate-180")} />
+              </button>
+              <AnimatePresence initial={false}>
+                {showNotes && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
                   >
-                    <SelectTrigger className="bg-gray-700/50 border-gray-600 text-white">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent className="bg-gray-800 border-gray-700">
-                      {industries.map((industry) => (
-                        <SelectItem key={industry.value} value={industry.value}>
-                          {industry.label}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                {/* Monthly Visitors */}
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-3">
-                    Monatliche Website-Besucher:{" "}
-                    <span className="text-white font-semibold">{inputs.monthlyVisitors.toLocaleString()}</span>
-                  </label>
-                  <Slider
-                    value={[inputs.monthlyVisitors]}
-                    onValueChange={([value]) => setInputs((prev) => ({ ...prev, monthlyVisitors: value }))}
-                    max={100000}
-                    min={1000}
-                    step={1000}
-                    className="w-full"
-                  />
-                  <div className="flex justify-between text-xs text-gray-400 mt-1">
-                    <span>1K</span>
-                    <span>100K</span>
-                  </div>
-                </div>
-
-                {/* Conversion Rate */}
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-3">
-                    Aktuelle Conversion Rate:{" "}
-                    <span className="text-white font-semibold">{inputs.currentConversionRate}%</span>
-                  </label>
-                  <Slider
-                    value={[inputs.currentConversionRate]}
-                    onValueChange={([value]) => setInputs((prev) => ({ ...prev, currentConversionRate: value }))}
-                    max={10}
-                    min={0.5}
-                    step={0.1}
-                    className="w-full"
-                  />
-                  <div className="flex justify-between text-xs text-gray-400 mt-1">
-                    <span>0.5%</span>
-                    <span>10%</span>
-                  </div>
-                </div>
-
-                {/* Average Order Value */}
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-3">
-                    Ø Auftragswert:{" "}
-                    <span className="text-white font-semibold">{formatChf(inputs.averageOrderValue)}</span>
-                  </label>
-                  <Slider
-                    value={[inputs.averageOrderValue]}
-                    onValueChange={([value]) => setInputs((prev) => ({ ...prev, averageOrderValue: value }))}
-                    max={businessConfig.maxOrder}
-                    min={25}
-                    step={businessConfig.step}
-                    className="w-full"
-                  />
-                  <div className="flex justify-between text-xs text-gray-400 mt-1">
-                    <span>{formatChf(25)}</span>
-                    <span>{formatChf(businessConfig.maxOrder)}</span>
-                  </div>
-                </div>
-
-                <div className="flex-1"></div>
-              </div>
-
-              <div className="mt-6 lg:hidden">
-                <div className="flex items-center justify-center gap-2 p-3 rounded-lg bg-primary/10 border border-primary/20">
-                  <div className="animate-bounce">
-                    <svg className="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M19 14l-7 7m0 0l-7-7m7 7V3"
-                      />
-                    </svg>
-                  </div>
-                  <span className="text-sm text-primary font-medium">Nach unten scrollen für Ihre Resultate</span>
-                </div>
-              </div>
-
-              <div className="mt-8 pt-6 border-t border-gray-700/50">
-                <div className="space-y-4">
-                  <h4 className="text-sm font-semibold text-gray-300 mb-3">💡 Gut zu wissen</h4>
-                  <div className="space-y-3">
-                    <div className="flex items-start gap-3 p-3 rounded-lg bg-white/5">
-                      <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></div>
-                      <div>
-                        <p className="text-sm text-gray-300">
-                          <span className="font-medium text-white">Schnelle Antwort, mehr Abschlüsse</span> – meist
-                          innerhalb der ersten 30 Tage spürbar.
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3 p-3 rounded-lg bg-white/5">
-                      <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></div>
-                      <div>
-                        <p className="text-sm text-gray-300">
-                          <span className="font-medium text-white">Immer erreichbar</span> – auch ausserhalb der
-                          Bürozeiten.
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3 p-3 rounded-lg bg-white/5">
-                      <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></div>
-                      <div>
-                        <p className="text-sm text-gray-300">
-                          <span className="font-medium text-white">Zufriedene Kunden</span> – weil sich jemand sofort
-                          kümmert.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Card>
+                    <p className="mt-2 text-center text-[11.5px] leading-[1.5] text-[#9aa9bf]">
+                      Unverbindlich · Ihre personalisierte PDF-Auswertung erhalten Sie nach kurzer Kontaktangabe (DSG-konform).
+                      Werte sind indikativ und beruhen auf belegten Studienwerten. KI-gestützter Entwurf – vor Nutzung menschlich geprüft.
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
-
-          {/* Results */}
-          <div
-            className={`transition-all duration-700 delay-400 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-          >
-            <Card className="p-6 md:p-8 bg-[radial-gradient(35%_128px_at_50%_0%,theme(backgroundColor.white/15%),theme(backgroundColor.white/5%))] border-white/20 backdrop-blur-sm shadow-2xl h-full flex flex-col">
-              <h3 className="text-xl md:text-2xl font-semibold text-white mb-6 md:mb-8">
-                Ihr Potenzial mit AgenticIT
-              </h3>
-
-              <div className="space-y-6 flex-1">
-                {/* Current vs New Metrics */}
-                <div className="grid grid-cols-2 gap-3 md:gap-4">
-                  <div className="text-center p-3 md:p-4 rounded-lg bg-gray-700/30">
-                    <div className="text-xs md:text-sm text-gray-400 mb-1">Heute</div>
-                    <div className="text-xl md:text-2xl font-bold text-white">{currentLeads}</div>
-                    <div className="text-xs text-gray-400">Leads / Monat</div>
-                  </div>
-                  <div className="text-center p-3 md:p-4 rounded-lg bg-white/10 border border-white/20">
-                    <div className="text-xs md:text-sm text-gray-300 mb-1">Mit AgenticIT</div>
-                    <div className="text-xl md:text-2xl font-bold text-white">{newLeads}</div>
-                    <div className="text-xs text-gray-300">Leads / Monat</div>
-                  </div>
-                </div>
-
-                <div className="space-y-3 md:space-y-4">
-                  <div className="flex items-center justify-between p-3 md:p-4 rounded-lg bg-white/5 border border-white/10">
-                    <div className="flex items-center gap-3">
-                      <Users className="w-4 h-4 md:w-5 md:h-5 text-gray-300" />
-                      <span className="text-sm md:text-base text-white">Zusätzliche Leads</span>
-                    </div>
-                    <span className="text-lg md:text-xl font-bold text-white">+{additionalLeads}</span>
-                  </div>
-
-                  <div className="flex items-center justify-between p-3 md:p-4 rounded-lg bg-white/5 border border-white/10">
-                    <div className="flex items-center gap-3">
-                      <DollarSign className="w-4 h-4 md:w-5 md:h-5 text-gray-300" />
-                      <span className="text-sm md:text-base text-white">Zusätzlicher Umsatz</span>
-                    </div>
-                    <span className="text-lg md:text-xl font-bold text-white">{formatChf(additionalRevenue)}</span>
-                  </div>
-
-                  <div className="flex items-center justify-between p-3 md:p-4 rounded-lg bg-white/5 border border-white/10">
-                    <div className="flex items-center gap-3">
-                      <TrendingUp className="w-4 h-4 md:w-5 md:h-5 text-gray-300" />
-                      <span className="text-sm md:text-base text-white">Umsatzsteigerung</span>
-                    </div>
-                    <span className="text-lg md:text-xl font-bold text-white">+{revenueIncrease.toFixed(1)}%</span>
-                  </div>
-
-                  <div className="flex items-center justify-between p-3 md:p-4 rounded-lg bg-white/5 border border-white/10">
-                    <div className="flex items-center gap-3">
-                      <Clock className="w-4 h-4 md:w-5 md:h-5 text-gray-300" />
-                      <span className="text-sm md:text-base text-white">Reaktionszeit</span>
-                    </div>
-                    <span className="text-lg md:text-xl font-bold text-white">{improvements.response}% schneller</span>
-                  </div>
-                </div>
-
-                {/* Lead-Preis */}
-                <div className="flex items-start gap-3 p-4 rounded-lg bg-emerald-300/10 border border-emerald-300/25">
-                  <Tag className="w-4 h-4 md:w-5 md:h-5 text-emerald-200 mt-0.5 shrink-0" />
-                  <p className="text-sm md:text-base text-white/90 leading-relaxed">
-                    Eine neue Anfrage in Ihrer Branche: rund{" "}
-                    <span className="font-semibold text-white">{formatChf(leadPrice)}</span> – oft ein Bruchteil dessen,
-                    was klassische Wege kosten.
-                  </p>
-                </div>
-
-                {/* Annual Projection */}
-                <div className="mt-6 md:mt-8 p-4 md:p-6 rounded-lg bg-white/5 border border-white/10">
-                  <div className="text-center">
-                    <div className="text-xs md:text-sm text-gray-300 mb-2">Projizierter Jahresumsatz-Zuwachs</div>
-                    <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2">
-                      {formatChf(additionalRevenue * 12)}
-                    </div>
-                    <div className="text-xs md:text-sm text-gray-400">
-                      Basierend auf Ihren Kennzahlen und Branchen-Benchmarks.
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Card>
-          </div>
-        </div>
-
-        {/* CTA */}
-        <div
-          className={`text-center mt-12 md:mt-16 transition-all duration-700 delay-600 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-        >
-          <p className="text-sm text-gray-400 mt-4">* Die Werte basieren auf Branchen-Durchschnitten und können je nach Geschäftsmodell variieren.</p>
         </div>
       </div>
     </section>
