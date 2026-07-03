@@ -61,7 +61,7 @@ export async function POST(request: Request) {
     Nachname: parsed.nachname,
     Telefon: parsed.telefon,
     Email: parsed.email,
-    PLZ: parsed.plz || null,
+    Plz: parsed.plz || null,
     Aktuelle_Krankenkasse: parsed.kasse,
     Franchise: parsed.franchise || null,
     Interesse: "Zusatzversicherung",
