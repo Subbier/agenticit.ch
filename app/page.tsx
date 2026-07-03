@@ -19,7 +19,7 @@ export default function Page() {
           webApplicationJsonLd({
             name: "AgenticIT Potenzialrechner",
             description:
-              "Interaktiver Rechner: monatliche Such-Nachfrage nach Ihrer Branche in der Deutschschweiz – und wie viel davon ungenutzt bleibt.",
+              "Interaktiver ROI-Rechner: Wählen Sie Ihre Bereiche und sehen Sie in 20 Sekunden Ihr Jahrespotenzial – konservativ gerechnet auf belegten Studienwerten.",
             path: "/",
           }),
         ]}

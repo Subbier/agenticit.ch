@@ -54,11 +54,11 @@ export type ServicePageContent = {
 }
 
 export const navItems = [
-  { name: "RevOps", href: "/revops" },
-  { name: "AI Agents", href: "/ai-agents" },
+  { name: "Lösungen", href: "/loesungen" },
+  { name: "Technologie", href: "/technologie" },
   { name: "Excellence", href: "/excellence" },
   { name: "Case Studies", href: "/case-studies" },
-  { name: "Über uns", href: "/ueber-uns" },
+  { name: "Kontakt", href: "/kontakt" },
 ]
 
 export const servicePages: Record<ServicePageSlug, ServicePageContent> = {

@@ -1,0 +1,22 @@
+# Fremd-/Dump-Ordner, gehören nicht in den Build
+Neuer Inhalt Agentic Text/
+agenticit-repo-files/
+agenticit-seo-fix/
+Concepta/
+blog/
+
+# Temp-/Check-Artefakte
+.tc/
+.tcx/
+.tcz/
+.tmpcheck/
+.tmpchk2/
+tsconfig.check.json
+
+# Grosse Quell-/Datendateien (nicht fürs Web-Deploy)
+*.xlsx
+*.docx
+*.csv
+analyse-sample*.pdf
+revops-cockpit.html
+*.command

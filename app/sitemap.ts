@@ -11,7 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority:
       route === "/"
         ? 1
-        : route === "/revops" || route === "/ai-agents" || route === "/excellence"
+        : route === "/excellence"
           ? 0.9
           : 0.7,
   }))

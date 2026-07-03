@@ -14,7 +14,7 @@ export const datenschutzSections: readonly LegalSectionContent[] = [
       "3072 Ostermundigen",
       "Schweiz",
     ],
-    links: [{ label: "hello@agenticit.ch", href: "mailto:hello@agenticit.ch" }],
+    links: [{ label: "info@agenticit.ch", href: "mailto:info@agenticit.ch" }],
   },
   {
     title: "Technische Umsetzung der Website",
@@ -68,7 +68,7 @@ export const datenschutzSections: readonly LegalSectionContent[] = [
     title: "Ihre Rechte",
     paragraphs: [
       "Sie haben im Rahmen des anwendbaren Datenschutzrechts insbesondere das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Bearbeitung, Datenherausgabe sowie Widerspruch gegen bestimmte Bearbeitungen. Zudem können Sie eine erteilte Einwilligung jederzeit widerrufen.",
-      "Für Anfragen zu Ihren Datenschutzrechten wenden Sie sich bitte an hello@agenticit.ch.",
+      "Für Anfragen zu Ihren Datenschutzrechten wenden Sie sich bitte an info@agenticit.ch.",
     ],
   },
   {

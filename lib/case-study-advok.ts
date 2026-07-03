@@ -193,7 +193,7 @@ export const advokCaseStudy = {
     title: "advok.app für Ihr Unternehmen?",
     description:
       "Kostenloses Strategiegespräch: In 45 Minuten zeigen wir Lead-Potenzial, Partner-Setup und ROI-Projektion für Ihre Struktur.",
-    email: "hello@agenticit.ch",
+    email: "info@agenticit.ch",
   },
   tags: [
     "advok.app",

@@ -12,7 +12,7 @@ export const impressumSections: readonly LegalSectionContent[] = [
   },
   {
     title: "Kontakt",
-    links: [{ label: "hello@agenticit.ch", href: "mailto:hello@agenticit.ch" }],
+    links: [{ label: "info@agenticit.ch", href: "mailto:info@agenticit.ch" }],
   },
   {
     title: "Verantwortlich für den Inhalt",

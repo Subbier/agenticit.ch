@@ -4,32 +4,32 @@ export const homeFaqs: FaqItem[] = [
   {
     question: "Was ist AgenticIT?",
     answer:
-      "Ein Schweizer Partner, der Ihnen die digitale Kundengewinnung komplett abnimmt – von der ersten Anfrage bis zum vorbereiteten, anrufbereiten Kontakt. Sie konzentrieren sich aufs Abschliessen.",
+      "Ein Schweizer Partner, der Ihnen digitale Kollegen für Vertrieb, Kundendienst und Prozesse baut – sicher, messbar und ab Tag eins. Sie prägen die Vision, wir bauen den Antrieb.",
   },
   {
     question: "Was habe ich konkret davon?",
     answer:
-      "Mehr warme Anfragen, weniger Aufwand und einen einzigen Ansprechpartner für alles. Sie brauchen kein technisches Wissen.",
+      "Weniger Routine, schnellere Reaktionszeiten und messbares Potenzial – berechnet, bevor wir über Technik sprechen. Ein Partner statt fünf Anbieter.",
   },
   {
     question: "Für wen eignet sich das?",
     answer:
-      "Für Schweizer KMU mit digitalem Kundenkontakt – besonders Versicherung, Finanz, Solar, Immobilien, Treuhand und Dienstleister mit Termin- oder Offertprozessen.",
+      "Für Schweizer KMU und Mittelständler, die Vertrieb, Service oder interne Prozesse mit KI skalieren wollen – besonders Finanz, Treuhand, Professional Services und Industrie.",
   },
   {
-    question: "Muss ich meine Systeme umstellen?",
+    question: "Bleiben meine Daten in der Schweiz?",
     answer:
-      "Nein. Wir fügen uns in das ein, was bei Ihnen schon läuft, und ändern nichts daran.",
+      "Ja. Schweizer Datenhaltung, DSG-konform, lokale Infrastruktur – auf Wunsch sogar offline. Ihre Daten bleiben Ihr Kapital.",
   },
   {
     question: "Wie schnell geht das los?",
     answer:
-      "Schnell. Keine hohen Startkosten, keine monatelange Vorbereitung – und Sie können 3 Monate unverbindlich testen.",
+      "Ohne Schulungswochen und ohne IT-Studium. Ihr Team ist vom ersten Tag an dabei – und wir zeigen Ihnen in einem Gespräch eine Aufgabe, die ab nächster Woche automatisiert werden kann.",
   },
   {
-    question: "Wie funktioniert der Rechner?",
+    question: "Wie funktioniert der ROI-Rechner?",
     answer:
-      "Sie wählen Ihre Branche und sehen sofort einen Richtwert, was eine neue Anfrage bei uns kostet. Die Details besprechen wir gern persönlich.",
+      "Sie wählen Ihre Bereiche und sehen in 20 Sekunden Ihr Jahrespotenzial – konservativ gerechnet auf belegten Studienwerten. Die detaillierte Auswertung erhalten Sie gegen Kontaktangabe.",
   },
 ]
 
@@ -282,17 +282,18 @@ export const servicesRelatedLinks = [
 
 export const pageSeo = {
   home: {
-    title: "Leadgenerierung & digitaler Vertrieb für die Deutschschweiz | AgenticIT",
+    title: "KI für Unternehmen aus der Schweiz | Vertrieb, Service & Prozesse – AgenticIT",
     description:
-      "AgenticIT bringt kaufbereite Kundenanfragen direkt zu Ihnen: Online-Marketing, Leadgenerierung und KI-Vertrieb für KMU in der Deutschschweiz – alles aus einer Hand.",
+      "Ihr digitales Team für Vertrieb, Kundendienst und Prozesse. Schweizer Datenhaltung, messbarer ROI, startklar ohne Schulung. Berechnen Sie Ihr Potenzial in 20 Sekunden.",
     keywords: [
-      "Leadgenerierung Schweiz",
-      "Online-Marketing-Agentur Schweiz",
-      "Kundengewinnung",
-      "digitaler Vertrieb",
-      "KI Marketing",
-      "Deutschschweiz",
-      "Revenue Operations",
+      "KI für Unternehmen Schweiz",
+      "AI Agent",
+      "KI Beratung",
+      "Prozessautomatisierung",
+      "Marketing Automatisierung",
+      "KI-Agentur Schweiz",
+      "RevOps",
+      "Datensouveränität",
       "AgenticIT",
     ],
   },

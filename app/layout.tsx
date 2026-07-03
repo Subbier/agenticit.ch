@@ -9,6 +9,7 @@ import { Dancing_Script, Caveat } from "next/font/google"
 import { GeistSans } from "geist/font/sans"
 import { GeistMono } from "geist/font/mono"
 import { JsonLd } from "@/components/site/json-ld"
+import { ChatbotWidget } from "@/components/chatbot-widget"
 import { organizationJsonLd, SITE_NAME, SITE_URL, websiteJsonLd } from "@/lib/seo"
 
 const dancingScript = Dancing_Script({
@@ -70,6 +71,7 @@ export default function RootLayout({
 
         <JsonLd data={[organizationJsonLd(), websiteJsonLd()]} />
         <Suspense fallback={null}>{children}</Suspense>
+        <ChatbotWidget />
         <Analytics />
         <SpeedInsights />
       </body>

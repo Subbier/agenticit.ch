@@ -1,0 +1,73 @@
+<!--
+  FIX für Semrush-Fehler #45 (3 Items mit Markup-Fehlern):
+  Das aktuelle JSON-LD vom Typ "SoftwareApplication" ist ungültig, weil die laut
+  Google erforderlichen Felder "aggregateRating" und "review" fehlen.
+
+  WICHTIG (Compliance): KEINE Bewertungen erfinden. Da AgenticIT (noch) keine
+  echten, verifizierbaren Bewertungen hat, ist der korrekte Fix:
+  -> Den "SoftwareApplication"-Block ENTFERNEN und durch "ProfessionalService"
+     ersetzen (passender Typ für eine Agentur, ohne Rating-Pflicht).
+
+  Einbau: im <head> der Startseite (/) als <script type="application/ld+json">.
+  Die bereits vorhandenen, validen Blöcke (Organization, WebSite/SearchBox,
+  FAQPage, BreadcrumbList) bleiben unverändert bestehen.
+-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "https://agenticit.ch/#organization",
+  "name": "AgenticIT",
+  "legalName": "Agentic IT GmbH",
+  "url": "https://agenticit.ch",
+  "logo": "https://agenticit.ch/icon.svg",
+  "image": "https://agenticit.ch/og-image.jpg",
+  "description": "RevOps- und KI-Agentur aus der Deutschschweiz. AgenticIT automatisiert die Kundenreise von Schweizer KMU mit KI-Agenten: Online-Marketing, Leadgenerierung und digitaler Vertrieb als ein System.",
+  "email": "hello@agenticit.ch",
+  "telephone": "+41762020136",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "CH",
+    "addressRegion": "Deutschschweiz"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "Schweiz"
+  },
+  "knowsAbout": [
+    "Revenue Operations",
+    "Leadgenerierung",
+    "KI-Agenten",
+    "Marketing-Automation",
+    "Neukundengewinnung",
+    "Omnichannel-Automation",
+    "Predictive Lead Scoring"
+  ],
+  "founder": {
+    "@type": "Person",
+    "name": "Sabir Rastoder",
+    "jobTitle": "CTO"
+  },
+  "sameAs": [
+    "https://www.linkedin.com/company/agenticit"
+  ]
+}
+</script>
+
+<!--
+  OPTIONAL, empfohlen: Service-Schema je Leistungsseite (z. B. /revops).
+  Stärkt thematische Relevanz für "Revenue Operations" / "RevOps".
+-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Revenue Operations (RevOps)",
+  "name": "Revenue Operations für Schweizer KMU",
+  "provider": { "@id": "https://agenticit.ch/#organization" },
+  "areaServed": { "@type": "Country", "name": "Schweiz" },
+  "description": "AgenticIT übernimmt die digitale Kundengewinnung als ein System: Marketing, Vertrieb und Betreuung greifen ineinander – warme, qualifizierte und anrufbereite Anfragen, ohne Technik-Aufwand.",
+  "url": "https://agenticit.ch/revops"
+}
+</script>

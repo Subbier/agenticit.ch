@@ -1,21 +1,27 @@
 import Link from "next/link"
 import { SUBPAGES_BY_PARENT } from "@/lib/subpage-content"
+import { ANGEBOT_NAV_SUBS } from "@/lib/angebot-content"
 
-type NavHub = { label: string; slug: string }
+type NavSub = { navLabel: string; slug: string }
+type NavHub = {
+  label: string
+  slug: string
+  /** Explizite Dropdown-Einträge (überschreiben die automatisch aus Subpages abgeleiteten). */
+  subs?: NavSub[]
+}
 
 const HUBS: NavHub[] = [
   { label: "Lösungen", slug: "loesungen" },
   { label: "Technologie", slug: "technologie" },
-  { label: "Sicherheit", slug: "sicherheit" },
+  { label: "Angebot", slug: "angebot", subs: ANGEBOT_NAV_SUBS },
   { label: "Branchen", slug: "branchen" },
-  { label: "Unternehmen", slug: "unternehmen" },
+  { label: "Unternehmen", slug: "unternehmen", subs: [{ navLabel: "Sicherheit", slug: "sicherheit" }] },
 ]
 
-// Kontaktdaten – E-Mail wie im restlichen Repo (Impressum/Datenschutz).
-// ⚠️ Telefonnummer ist ein Platzhalter – bitte durch die echte Nummer ersetzen.
-const CONTACT_EMAIL = "hello@agenticit.ch"
-const CONTACT_PHONE_TEL = "+41000000000"
-const CONTACT_PHONE_LABEL = "+41 00 000 00 00"
+// Kontaktdaten – einheitlich auf der ganzen Seite.
+const CONTACT_EMAIL = "info@agenticit.ch"
+const CONTACT_PHONE_TEL = "+41445052027"
+const CONTACT_PHONE_LABEL = "044 505 20 27"
 
 function PhoneIcon({ className = "" }: { className?: string }) {
   return (
@@ -50,7 +56,7 @@ export function SiteHeader({ activeSlug }: { activeSlug?: string }) {
         {/* Desktop-Navigation mit Dropdowns */}
         <nav className="ml-3 hidden items-center gap-2 md:flex lg:gap-3">
           {HUBS.map((hub) => {
-            const subs = SUBPAGES_BY_PARENT[hub.slug] ?? []
+            const subs = hub.subs ?? SUBPAGES_BY_PARENT[hub.slug] ?? []
             const isActive = activeSlug === hub.slug || activeSlug?.startsWith(`${hub.slug}/`)
             return (
               <div key={hub.slug} className="group relative">
@@ -110,14 +116,14 @@ export function SiteHeader({ activeSlug }: { activeSlug?: string }) {
           >
             <PhoneIcon className="h-[18px] w-[18px]" />
           </a>
-          <a
-            href={`mailto:${CONTACT_EMAIL}`}
-            aria-label={`E-Mail schreiben: ${CONTACT_EMAIL}`}
-            title={`E-Mail schreiben: ${CONTACT_EMAIL}`}
+          <Link
+            href="/kontakt"
+            aria-label="Kontakt – Nachricht schreiben"
+            title="Kontakt – Nachricht schreiben"
             className="grid h-9 w-9 place-items-center rounded-full border border-white/15 text-white/80 transition hover:border-[#16C7C0]/60 hover:bg-white/5 hover:text-white"
           >
             <MailIcon className="h-[18px] w-[18px]" />
-          </a>
+          </Link>
         </div>
 
         <a
@@ -137,7 +143,7 @@ export function SiteHeader({ activeSlug }: { activeSlug?: string }) {
           </summary>
           <div className="absolute right-0 top-full mt-2 max-h-[70vh] w-[280px] overflow-auto rounded-[14px] border border-[#E3E9F2] bg-white p-3 shadow-[0_18px_48px_rgba(11,31,58,0.28)]">
             {HUBS.map((hub) => {
-              const subs = SUBPAGES_BY_PARENT[hub.slug] ?? []
+              const subs = hub.subs ?? SUBPAGES_BY_PARENT[hub.slug] ?? []
               return (
                 <div key={hub.slug} className="mb-2 last:mb-0">
                   <Link href={`/${hub.slug}`} className="block rounded-[9px] px-2 py-2 text-[14px] font-extrabold text-[#0B1F3A] hover:bg-[#F1F8FF]">
@@ -157,9 +163,9 @@ export function SiteHeader({ activeSlug }: { activeSlug?: string }) {
               <a href={`tel:${CONTACT_PHONE_TEL}`} className="flex items-center justify-center gap-2 rounded-[10px] border border-[#E3E9F2] px-3 py-[10px] text-[13.5px] font-bold text-[#0B1F3A] hover:bg-[#F1F8FF]">
                 <PhoneIcon className="h-4 w-4 text-[#0a8f89]" /> Anrufen
               </a>
-              <a href={`mailto:${CONTACT_EMAIL}`} className="flex items-center justify-center gap-2 rounded-[10px] border border-[#E3E9F2] px-3 py-[10px] text-[13.5px] font-bold text-[#0B1F3A] hover:bg-[#F1F8FF]">
-                <MailIcon className="h-4 w-4 text-[#0a8f89]" /> Schreiben
-              </a>
+              <Link href="/kontakt" className="flex items-center justify-center gap-2 rounded-[10px] border border-[#E3E9F2] px-3 py-[10px] text-[13.5px] font-bold text-[#0B1F3A] hover:bg-[#F1F8FF]">
+                <MailIcon className="h-4 w-4 text-[#0a8f89]" /> Kontakt
+              </Link>
             </div>
             <a href="/#kontakt" className="mt-2 block rounded-[10px] bg-gradient-to-br from-[#3BD974] to-[#22C55E] px-3 py-[11px] text-center text-[14px] font-extrabold text-white">
               Jetzt starten →

@@ -4,6 +4,8 @@ import type { ComponentProps, ReactNode } from "react"
 import { motion, useReducedMotion } from "framer-motion"
 import { LinkedinIcon, MailIcon } from "lucide-react"
 import { AgenticITWordmark } from "@/components/agenticit-wordmark"
+import { WHATSAPP_URL } from "@/components/whatsapp-button"
+import { SITE_TRUST_LINE } from "@/lib/site-trust-line"
 
 interface FooterLink {
   title: string
@@ -20,17 +22,18 @@ const footerLinks: FooterSection[] = [
   {
     label: "Services",
     links: [
-      { title: "RevOps", href: "/revops" },
-      { title: "AI Agents", href: "/ai-agents" },
+      { title: "Lösungen", href: "/loesungen" },
+      { title: "Technologie", href: "/technologie" },
+      { title: "RevOps & Growth", href: "/loesungen/revops-growth" },
       { title: "Excellence", href: "/excellence" },
-      { title: "Smart Apps", href: "/smart-apps" },
     ],
   },
   {
     label: "Unternehmen",
     links: [
-      { title: "Über uns", href: "/ueber-uns" },
       { title: "Kontakt", href: "#contact" },
+      { title: "WhatsApp", href: WHATSAPP_URL },
+      { title: "Case Studies", href: "/case-studies" },
       { title: "Datenschutz", href: "/datenschutz" },
       { title: "Impressum", href: "/impressum" },
     ],
@@ -94,10 +97,11 @@ export function Footer() {
 
       <div className="md:hidden mt-8 text-center space-y-2">
         <p className="text-muted-foreground text-sm">© {new Date().getFullYear()} AgenticIT. Alle Rechte vorbehalten.</p>
+        <p className="text-muted-foreground text-xs">{SITE_TRUST_LINE}</p>
       </div>
 
-      <div className="hidden md:block mt-8 pt-6 border-t border-foreground/10 w-full">
-        <p className="text-muted-foreground text-xs text-center">Made by expertico's ai workforce</p>
+      <div className="hidden md:block mt-8 pt-6 border-t border-foreground/10 w-full space-y-2">
+        <p className="text-muted-foreground text-xs text-center">{SITE_TRUST_LINE}</p>
       </div>
     </footer>
   )

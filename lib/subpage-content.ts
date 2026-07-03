@@ -20,6 +20,16 @@ export type SubPageContent = {
     easyText?: string
   }
   interactive?: { label: string; text: string }
+  voiceAgent?: {
+    agentId: string
+    branchId?: string
+    eyebrow?: string
+    title?: string
+    description?: string
+  }
+  chooseAgentDemo?: boolean
+  multiAgentTimeWin?: boolean
+  enterpriseOrgChart?: boolean
   cta: { title: string; text: string; primary: string; assistant: string }
   contact?: { email?: string; phone?: string; address?: string; calendar?: string }
   meta: { title: string; description: string }
@@ -126,7 +136,7 @@ export const SUBPAGES: Record<string, SubPageContent> = {
         { lead: "Kein Abtippen mehr:", text: "Daten fliessen automatisch von A nach B." },
         { lead: "Weniger Fehler,", text: "weil keine Handarbeit mehr im Spiel ist." },
         { lead: "Mehr Tempo:", text: "Abläufe starten in dem Moment, in dem der Auslöser eintrifft." },
-        { lead: "Spürbare Ersparnis:", text: "Schweizer KMU mit klarem Anwendungsfall sparen CHF 8.000–25.000 pro Monat." },
+        { lead: "Spürbare Ersparnis:", text: "Schweizer KMU mit klarem Anwendungsfall sparen CHF 8'000–25'000 pro Monat." },
       ],
       easyTitle: "So einfach wie Microsoft Office",
       easyText:
@@ -194,6 +204,14 @@ export const SUBPAGES: Record<string, SubPageContent> = {
       label: "Live-Element: Wachstumsrechner",
       text: "Geben Sie Lead-Zahl und Abschlussquote ein und sehen Sie, wie sich Umsatz und bediente Kontakte mit einem Agenten verändern – Vorher/Nachher in Sekunden.",
     },
+    voiceAgent: {
+      agentId: "agent_0201kwjmq83cf1btc17d9048pf8n",
+      branchId: "agtbrch_6601kvjmepw7fa6thh05fk60s626",
+      eyebrow: "RevOps live testen",
+      title: "Sprechen Sie mit unserem RevOps-Agenten.",
+      description:
+        "Testen Sie Lead-Nachfassung, Qualifizierung und Wachstum – sprechen Sie direkt mit dem Agenten, der für RevOps & Growth trainiert ist.",
+    },
     cta: {
       title: "Sehen Sie, wie viel Umsatz aktuell liegen bleibt.",
       text: "In einer kostenlosen Analyse zeigen wir Ihnen, wo in Ihrem Funnel Leads verloren gehen – und was es bringt, das zu schliessen.",
@@ -253,6 +271,7 @@ export const SUBPAGES: Record<string, SubPageContent> = {
       label: "Live-Element: „Wähle deinen Agenten“",
       text: "Bestimmen Sie eine Rolle, der Agent demonstriert live seinen Task (Telefon klingelt → meldet sich → qualifiziert → bucht Termin).",
     },
+    chooseAgentDemo: true,
     cta: {
       title: "Lassen Sie einen Agenten eine echte Aufgabe übernehmen.",
       text: "In einer kurzen Demo zeigen wir Ihnen einen Agenten, der eine Aufgabe aus Ihrem Alltag erledigt.",
@@ -309,6 +328,7 @@ export const SUBPAGES: Record<string, SubPageContent> = {
       label: "Live-Element: Zeitgewinn-Visualisierung",
       text: "Eine Aufgabe wird in Segmente geteilt, mehrere Sub-Agenten laufen parallel. Ein Fortschrittsbalken zeigt den Zeitgewinn gegenüber „nacheinander“.",
     },
+    multiAgentTimeWin: true,
     cta: {
       title: "Sehen Sie, wie ein Agenten-Team Ihre Aufgabe halbiert.",
       text: "Wir zeigen Ihnen an einem echten Beispiel, wie viel schneller ein Multi-Agenten-System arbeitet.",
@@ -365,6 +385,7 @@ export const SUBPAGES: Record<string, SubPageContent> = {
       label: "Live-Element: Org-Chart-Andockung",
       text: "Ein Org-Chart, in dem auf jeder Ebene ein „digitaler Kollege“ andockt und seinen Beitrag zeigt (Kundendienst ↑, lästige Aufgaben ↓, zufriedene Mitarbeiter).",
     },
+    enterpriseOrgChart: true,
     cta: {
       title: "Sehen Sie, wie KI in Ihre Systemlandschaft passt.",
       text: "In einem kostenlosen Gespräch zeigen wir Ihnen, wo ein digitaler Kollege bei Ihnen andocken würde – ohne Umbau.",
@@ -378,486 +399,6 @@ export const SUBPAGES: Record<string, SubPageContent> = {
     },
   },
 
-  // ───────────────────────── SICHERHEIT ─────────────────────────
-  "sicherheit/datensouveraenitaet": {
-    slug: "sicherheit/datensouveraenitaet",
-    parentSlug: "sicherheit",
-    parentLabel: "Sicherheit",
-    navLabel: "Datensouveränität",
-    problem: {
-      title: "Daten wandern ins Ausland.",
-      body: [
-        "Die meisten KI-Dienste verarbeiten Ihre Eingaben auf fremden Servern – häufig ausserhalb der Schweiz, unter fremdem Recht.",
-        "Sie geben Ihre wertvollsten Informationen aus der Hand, ohne genau zu wissen, wohin sie gehen und wer Zugriff hat.",
-      ],
-    },
-    agitate: {
-      title: "Bei Mandanten- und Kundendaten ist „irgendwo im Ausland“ keine Option.",
-      intro: "Gerade in der Schweiz steht viel auf dem Spiel:",
-      bullets: [
-        { lead: "Vertrauensbruch:", text: "Erfährt ein Kunde, dass seine Daten im Ausland liegen, ist das Vertrauen weg." },
-        { lead: "Rechtliches Risiko:", text: "Das Schweizer Datenschutzgesetz stellt klare Anforderungen – Verstösse können teuer werden." },
-        { lead: "Kontrollverlust:", text: "Liegen Daten erst beim fremden Anbieter, bestimmt dessen Recht, nicht Ihres." },
-      ],
-      outro: ["Ein einziger Vorfall kann Reputation kosten, die Sie über Jahre aufgebaut haben."],
-    },
-    solution: {
-      title: "Sie entscheiden, wo Ihre Daten liegen. Punkt.",
-      intro: ["Bei uns bestimmen Sie den Speicherort – nicht der Anbieter."],
-      changeTitle: "Das bedeutet konkret:",
-      bullets: [
-        { text: "Daten werden in der Schweiz gespeichert und verarbeitet." },
-        { text: "Klar geregelt nach Schweizer Datenschutzgesetz (DSG)." },
-        { lead: "Volle Transparenz:", text: "Sie wissen jederzeit, wo welche Daten liegen." },
-      ],
-      easyTitle: "So einfach wie Microsoft Office",
-      easyText:
-        "Sie müssen kein Datenschutzexperte sein – die sichere Datenhaltung läuft im Hintergrund. Sie nutzen modernste KI und behalten die volle Hoheit.",
-    },
-    interactive: {
-      label: "Live-Element: Toggle „Cloud vs. Schweiz/On-Premise“",
-      text: "Schieben Sie einen Regler und sehen Sie visuell, wo die Daten in jedem Szenario bleiben.",
-    },
-    cta: {
-      title: "Sehen Sie, wo Ihre Daten liegen würden.",
-      text: "In einem kostenlosen Gespräch zeigen wir Ihnen Ihre Optionen – verständlich und auf Ihre Branche bezogen.",
-      primary: "Jetzt Sicherheits-Gespräch sichern",
-      assistant: "Mit dem KI-Assistenten starten",
-    },
-    meta: {
-      title: "Datensouveränität – Ihre Daten bleiben in der Schweiz | AgenticIT",
-      description:
-        "Sie bestimmen, wo Ihre Daten liegen – Cloud Schweiz oder On-Premise. DSG-konform, transparent, jederzeit nachvollziehbar. KI nutzen ohne Kontrollverlust.",
-    },
-  },
-
-  "sicherheit/lokale-ki-infrastruktur": {
-    slug: "sicherheit/lokale-ki-infrastruktur",
-    parentSlug: "sicherheit",
-    parentLabel: "Sicherheit",
-    navLabel: "Lokale KI-Infrastruktur",
-    problem: {
-      title: "KI steht still ohne Internet.",
-      body: [
-        "Cloud-basierte KI braucht ständig Internet und einen externen Anbieter. Fällt einer davon aus, steht Ihr digitaler Kollege still.",
-        "Und jede Anfrage verlässt dabei Ihr Haus – über Leitungen, die Sie nicht kontrollieren.",
-      ],
-    },
-    agitate: {
-      title: "Abhängigkeit ist ein Risiko, das sich im falschen Moment rächt.",
-      intro: "Wer komplett auf fremde Server angewiesen ist:",
-      bullets: [
-        { lead: "Steht still bei Ausfall", text: "– Internetstörung oder Anbieterproblem legt den Betrieb lahm." },
-        { lead: "Gibt bei jeder Anfrage Daten nach aussen", text: "– ein Einfallstor, das man nicht braucht." },
-        { lead: "Ist Preis- und Regeländerungen ausgeliefert,", text: "die der Anbieter diktiert." },
-      ],
-      outro: [
-        "Bei besonders sensiblen Daten – Finanzen, Recht, Gesundheit – ist allein der Weg nach draussen schon zu viel Risiko.",
-      ],
-    },
-    solution: {
-      title: "Eine KI, die direkt bei Ihnen läuft – auch ohne Internet.",
-      intro: ["Unsere KI braucht nicht zwingend die Cloud. Sie kann lokal in Ihrem Haus laufen."],
-      changeTitle: "Das bringt es Ihnen:",
-      bullets: [
-        { lead: "Keine Abhängigkeit", text: "von externen Diensten oder Anbietern." },
-        { text: "Läuft weiter, auch wenn das Internet ausfällt." },
-        { lead: "Maximale Sicherheit:", text: "Was lokal bleibt, kann nicht abfliessen." },
-      ],
-      easyTitle: "So einfach wie Microsoft Office",
-      easyText:
-        "Die Technik richten wir ein – Sie nutzen die KI wie gewohnt, nur eben sicher im eigenen Haus. Kein IT-Studium nötig.",
-    },
-    interactive: {
-      label: "Live-Element: Offline-Demo",
-      text: "Ein kleines, lokal laufendes Sprachmodell beantwortet eine Frage „ohne Internet“ – mit durchgestrichenem Netzwerk-Symbol als Beweis.",
-    },
-    cta: {
-      title: "Erleben Sie KI, die offline funktioniert.",
-      text: "Wir zeigen Ihnen live, wie unsere lokale KI arbeitet – ohne dass ein Byte Ihr Haus verlässt.",
-      primary: "Jetzt Live-Demo sichern",
-      assistant: "Lokale KI entdecken",
-    },
-    meta: {
-      title: "Lokale KI-Infrastruktur – KI, die sogar offline läuft | AgenticIT",
-      description:
-        "KI direkt bei Ihnen im Haus – ohne Abhängigkeit von externen Diensten, auf Wunsch komplett offline. Maximale Sicherheit für sensible Daten.",
-    },
-  },
-
-  "sicherheit/private-enterprise-ki": {
-    slug: "sicherheit/private-enterprise-ki",
-    parentSlug: "sicherheit",
-    parentLabel: "Sicherheit",
-    navLabel: "Private Enterprise KI",
-    problem: {
-      title: "Öffentliche KI füttert die Konkurrenz.",
-      body: [
-        "Viele KI-Tools lernen aus dem, was Nutzer eingeben. Im Zweifel landen Ihre Firmeninterna in einem Modell, das auch andere nutzen.",
-        "Wer genau Zugriff hat und wofür Ihre Eingaben verwendet werden, bleibt oft im Dunkeln.",
-      ],
-    },
-    agitate: {
-      title: "Was einmal im fremden Modell steckt, holen Sie nicht zurück.",
-      intro: "Bei geteilten, öffentlichen KI-Diensten droht:",
-      bullets: [
-        { lead: "Ihr Wissen wird Allgemeingut:", text: "Strategien, Zahlen, Mandanteninfos – als Trainingsmaterial für andere." },
-        { lead: "Kein klarer Zugriffsschutz:", text: "Sie wissen nicht sicher, wer mitliest." },
-        { lead: "Compliance-Lücke:", text: "Bei sensiblen Daten ein kaum tragbares Risiko." },
-      ],
-      outro: [
-        "Ein einziges durchgesickertes Detail kann einen Wettbewerbsvorteil zunichtemachen, den Sie sich hart erarbeitet haben.",
-      ],
-    },
-    solution: {
-      title: "Ihre eigene KI – abgeschottet, exklusiv, unter Ihrer Kontrolle.",
-      intro: ["Eine Private Enterprise KI arbeitet nur für Sie. Keine geteilte Lösung, kein Training Ihrer Daten für Fremde."],
-      changeTitle: "Das bringt es Ihnen:",
-      bullets: [
-        { text: "Ihre Informationen fliessen nicht in öffentliche Modelle." },
-        { lead: "Zugriff streng geregelt", text: "– nur Ihr Unternehmen." },
-        { lead: "Klare Checkliste „Was bleibt bei Ihnen“", text: "– einfach und nachvollziehbar." },
-      ],
-      easyTitle: "So einfach wie Microsoft Office",
-      easyText:
-        "Sie bekommen die Leistung modernster KI – aber in einem geschlossenen Raum, der nur Ihnen gehört. Bedienung wie gewohnt, Schutz im Hintergrund.",
-    },
-    interactive: {
-      label: "Live-Element: „Was bleibt bei Ihnen“-Checkliste",
-      text: "Eine kurze, abhakbare Liste, die in Sekunden zeigt, welche Daten das Haus nie verlassen.",
-    },
-    cta: {
-      title: "Sichern Sie sich Ihre eigene, private KI.",
-      text: "In einem kostenlosen Gespräch zeigen wir Ihnen, wie eine abgeschottete KI für Ihr Unternehmen aussähe.",
-      primary: "Jetzt Sicherheits-Gespräch sichern",
-      assistant: "Private KI entdecken",
-    },
-    meta: {
-      title: "Private Enterprise KI – eine KI nur für Ihr Unternehmen | AgenticIT",
-      description:
-        "Ihre eigene, abgeschottete KI: Ihre Daten trainieren keine fremden Modelle, Zugriff streng geregelt. Volle Kontrolle, klare Checkliste. Schweizer Datenhaltung.",
-    },
-  },
-
-  // ───────────────────────── BRANCHEN ─────────────────────────
-  "branchen/finanzwesen-treuhand": {
-    slug: "branchen/finanzwesen-treuhand",
-    parentSlug: "branchen",
-    parentLabel: "Branchen",
-    navLabel: "Finanzwesen & Treuhand",
-    problem: {
-      title: "Belege statt Beratung.",
-      body: [
-        "Belege abtippen, Fristen überwachen, dieselben Standardfragen beantworten: Aufgaben, die Stunden kosten, aber kein Honorar bringen.",
-        "Die wertvolle Beratungszeit – das, wofür Mandanten Sie wirklich bezahlen – bleibt dabei auf der Strecke.",
-      ],
-    },
-    agitate: {
-      title: "Jede Stunde Routine ist eine Stunde, die kein Mandat finanziert.",
-      intro: "Im Treuhand- und Finanzalltag heisst das:",
-      bullets: [
-        { lead: "Teure Köpfe für günstige Arbeit:", text: "Fachkräfte verbringen den Tag mit Erfassung statt Beratung." },
-        { lead: "Wachstum nur mit Neueinstellung:", text: "Mehr Mandate bedeuten mehr Handarbeit – und höhere Kosten." },
-        { lead: "Fehlerrisiko bei Fristen und Zahlen,", text: "das im schlimmsten Fall den Mandanten kostet." },
-      ],
-      outro: [
-        "Und während Sie abtippen, gewinnt die Kanzlei nebenan, die ihre Routine längst automatisiert hat, mehr Mandate mit demselben Team.",
-      ],
-    },
-    solution: {
-      title: "Ein digitaler Kollege übernimmt die Routine – Sie übernehmen die Beratung.",
-      intro: ["Unsere Lösungen, übersetzt in die Sprache des Treuhands:"],
-      bullets: [
-        { lead: "Belege und Daten", text: "werden automatisch erfasst und zugeordnet." },
-        { lead: "Mandantenanfragen", text: "beantwortet die KI rund um die Uhr." },
-        { lead: "Fristen", text: "im Blick, ohne manuelles Nachhalten." },
-        { lead: "Ihr Vorteil:", text: "mehr Mandate betreuen, ohne mehr Personal." },
-      ],
-      easyTitle: "Sicher nach Schweizer Standard",
-      easyText:
-        "Mandantendaten sind heilig – sie bleiben in der Schweiz, DSG-konform, auf Wunsch lokal. So einfach zu nutzen wie ein Office-Programm.",
-    },
-    interactive: {
-      label: "Live-Element: Treuhand-Use-Case mit ROI",
-      text: "2–3 konkrete Anwendungsfälle plus ROI-Beispiel (z. B. gesparte Stunden pro Monat bei der Belegerfassung).",
-    },
-    cta: {
-      title: "Sehen Sie Ihren Treuhand-Anwendungsfall.",
-      text: "In einem kostenlosen Gespräch zeigen wir Ihnen eine konkrete Aufgabe aus Ihrem Kanzleialltag – automatisiert, mit klarer Zahl.",
-      primary: "Jetzt Treuhand-Gespräch sichern",
-      assistant: "Treuhand-Anwendungsfall ansehen",
-    },
-    meta: {
-      title: "KI & Digitalisierung für Treuhand & Finanzwesen | AgenticIT",
-      description:
-        "Belege automatisch erfassen, Fristen im Griff, Mandantenfragen rund um die Uhr beantwortet. Mehr Mandate ohne mehr Personal – Daten in der Schweiz.",
-    },
-  },
-
-  "branchen/professional-services": {
-    slug: "branchen/professional-services",
-    parentSlug: "branchen",
-    parentLabel: "Branchen",
-    navLabel: "Professional Services",
-    problem: {
-      title: "Administration frisst Honorare.",
-      body: [
-        "Beratungen, Kanzleien und Agenturen leben von fakturierbaren Stunden.",
-        "Doch ein grosser Teil des Tages geht für Terminkoordination, Nachfassen und Dokumente drauf – Arbeit, die niemand bezahlt.",
-      ],
-    },
-    agitate: {
-      title: "Jede nicht-fakturierbare Stunde ist Umsatz, der nie entsteht.",
-      intro: "Im Professional-Services-Alltag bedeutet das:",
-      bullets: [
-        { lead: "Verschenkter Umsatz:", text: "Administration frisst Zeit, die Sie verrechnen könnten." },
-        { lead: "Gespräche mit den Falschen:", text: "unqualifizierte Anfragen kosten Stunden ohne Ergebnis." },
-        { lead: "Wachstumsgrenze:", text: "mehr Mandate gehen nur mit mehr Overhead – oder schlechterem Service." },
-      ],
-      outro: [
-        "Während Sie Termine koordinieren, gewinnt der Mitbewerber, der das automatisiert hat, mehr Mandate bei höherer Marge.",
-      ],
-    },
-    solution: {
-      title: "Gewinnen Sie Ihre abrechenbare Zeit zurück.",
-      intro: ["Unsere Lösungen, übersetzt in Ihren Alltag:"],
-      bullets: [
-        { lead: "Termine, Nachfassungen und Dokumente", text: "laufen automatisch." },
-        { lead: "Anfragen werden vorqualifiziert", text: "– Sie sprechen nur mit den Richtigen." },
-        { lead: "Ihr Vorteil:", text: "höhere Auslastung, mehr Umsatz pro Kopf." },
-      ],
-      easyTitle: "Sicher & einfach",
-      easyText:
-        "Vertrauliche Unterlagen bleiben in der Schweiz, DSG-konform. Die Bedienung ist so vertraut wie ein Office-Programm – ohne Schulung.",
-    },
-    interactive: {
-      label: "Live-Element: Use-Case mit ROI",
-      text: "2–3 Anwendungsfälle plus ROI-Beispiel (z. B. zurückgewonnene fakturierbare Stunden pro Woche).",
-    },
-    cta: {
-      title: "Sehen Sie, wie viel abrechenbare Zeit Sie zurückgewinnen.",
-      text: "In einem kostenlosen Gespräch zeigen wir Ihnen eine konkrete Aufgabe aus Ihrem Alltag – automatisiert, mit klarer Zahl.",
-      primary: "Jetzt Gespräch sichern",
-      assistant: "Anwendungsfall ansehen",
-    },
-    meta: {
-      title: "KI & Digitalisierung für Kanzleien, Beratungen, Agenturen | AgenticIT",
-      description:
-        "Mehr fakturierbare Stunden: Termine, Nachfassungen und Dokumente laufen automatisch. Anfragen vorqualifiziert. Höhere Auslastung – Daten in der Schweiz.",
-    },
-  },
-
-  "branchen/industrie-handel": {
-    slug: "branchen/industrie-handel",
-    parentSlug: "branchen",
-    parentLabel: "Branchen",
-    navLabel: "Industrie & Handel",
-    problem: {
-      title: "Handarbeit bremst jede Lieferung.",
-      body: [
-        "Aufträge erfassen, Lagerbestände abgleichen, mit Lieferanten kommunizieren: viele Schritte, viele Übergaben, viele Fehlerquellen.",
-        "Jeder manuelle Handgriff kostet Zeit – und ein einziger Fehler kann eine ganze Lieferkette ins Stocken bringen.",
-      ],
-    },
-    agitate: {
-      title: "Ein Zahlendreher im Lager kann eine ganze Lieferung kippen.",
-      intro: "In Industrie und Handel bedeutet Handarbeit konkret:",
-      bullets: [
-        { lead: "Teure Fehler:", text: "falsche Mengen, verpasste Nachbestellungen, verärgerte Kunden." },
-        { lead: "Langsame Durchlaufzeiten:", text: "Aufträge warten auf den nächsten freien Mitarbeiter." },
-        { lead: "Höhere Prozesskosten:", text: "jeder manuelle Schritt frisst Marge." },
-      ],
-      outro: [
-        "Und der Wettbewerber, der seine Abläufe automatisiert hat, liefert schneller und günstiger – während Sie noch Bestände abgleichen.",
-      ],
-    },
-    solution: {
-      title: "Verbinden Sie Ihre Abläufe – und liefern Sie schneller, mit weniger Fehlern.",
-      intro: ["Unsere Lösungen, übersetzt in Ihren Betrieb:"],
-      bullets: [
-        { lead: "Aufträge", text: "werden automatisch erfasst und weitergeleitet." },
-        { lead: "Lagerabgleich und Nachbestellung", text: "laufen im Hintergrund." },
-        { text: "Weniger manuelle Fehler, schnellere Durchlaufzeiten." },
-        { lead: "Ihr Vorteil:", text: "zufriedenere Kunden, tiefere Prozesskosten." },
-      ],
-      easyTitle: "Sicher & einfach",
-      easyText:
-        "Wir docken an Ihre bestehenden Systeme an – kein Umbau. Bedienung so vertraut wie ein Office-Programm, Daten in der Schweiz.",
-    },
-    interactive: {
-      label: "Live-Element: Use-Case mit ROI",
-      text: "2–3 Anwendungsfälle plus ROI-Beispiel (z. B. reduzierte Durchlaufzeit oder Fehlerquote pro Monat).",
-    },
-    cta: {
-      title: "Sehen Sie Ihren Anwendungsfall für Industrie & Handel.",
-      text: "In einem kostenlosen Gespräch zeigen wir Ihnen einen Ihrer Abläufe automatisiert – mit klarer Zahl, was er spart.",
-      primary: "Jetzt Gespräch sichern",
-      assistant: "Anwendungsfall ansehen",
-    },
-    meta: {
-      title: "KI & Automatisierung für Industrie & Handel | AgenticIT",
-      description:
-        "Bestellungen, Lagerabgleich und Lieferanten-Kommunikation laufen automatisch. Weniger Fehler, schnellere Durchlaufzeiten, tiefere Prozesskosten.",
-    },
-  },
-
-  // ───────────────────────── UNTERNEHMEN ─────────────────────────
-  "unternehmen/ueber-uns": {
-    slug: "unternehmen/ueber-uns",
-    parentSlug: "unternehmen",
-    parentLabel: "Unternehmen",
-    navLabel: "Über uns",
-    problem: {
-      title: "KI scheitert an der Angst.",
-      body: [
-        "Viele Unternehmen zögern – nicht weil die Technologie fehlt, sondern weil sie kompliziert, riskant und „nichts für uns“ wirkt.",
-        "Und genau hier lassen die meisten Anbieter ihre Kunden allein: Sie liefern Tools, aber nehmen niemanden mit.",
-      ],
-    },
-    agitate: {
-      title: "Eine Technologie, die das Team nicht versteht, wird zum teuren Stillstand.",
-      intro: "Wo KI ohne den Menschen eingeführt wird, passiert das:",
-      bullets: [
-        { lead: "Berührungsängste lähmen", text: "– das Team meidet, was es nicht versteht." },
-        { lead: "Investitionen verpuffen,", text: "weil niemand die neue Lösung wirklich nutzt." },
-        { lead: "Frust statt Fortschritt", text: "– und am Ende heisst es: „KI funktioniert bei uns nicht.“" },
-      ],
-      outro: ["Die Technologie war nie das Problem. Der fehlende Partner an Ihrer Seite war es."],
-    },
-    solution: {
-      title: "Wir sind der Partner, der KI greifbar macht – für Sie und Ihr Team.",
-      intro: [
-        "Wir sind keine starren Theoretiker und kein anonymes Tech-Haus. Wir sind Ihr partnerschaftlicher Wegbegleiter in die KI.",
-      ],
-      changeTitle: "Drei Werte tragen alles, was wir tun:",
-      bullets: [
-        { lead: "Ganzheitlich:", text: "ein digitaler Kollege auf jeder Unternehmensebene – ein Team, nicht ein einzelnes Tool." },
-        { lead: "Swissness & Souveränität:", text: "lokale Infrastruktur, Schweizer Datenhaltung, funktioniert auch offline." },
-        { lead: "ROI statt Schickschnack:", text: "jede Lösung wird am messbaren Nutzen verkauft, nie an der Technik." },
-      ],
-      easyTitle: "Wir nehmen Ihre Belegschaft aktiv mit",
-      easyText:
-        "Wir bauen Berührungsängste ab – denn KI wirkt nur, wenn die Menschen sie nutzen. Schon das erste Gespräch ist klar, konkret und ohne Fachjargon: Sie verstehen sofort, was möglich ist und was es bringt.",
-    },
-    cta: {
-      title: "Lernen wir uns kennen.",
-      text: "Sehen Sie in einem kostenlosen Erstgespräch, wie wir arbeiten – und welche eine Aufgabe wir für Sie automatisieren würden.",
-      primary: "Jetzt kostenloses Erstgespräch buchen",
-      assistant: "Mit dem KI-Assistenten starten",
-    },
-    meta: {
-      title: "Über AgenticIT | Die KI-Agentur, die Menschen mitnimmt",
-      description:
-        "Wir machen KI greifbar – ganzheitlich, schweizerisch souverän, am ROI gemessen. Lernen Sie das Team kennen, das Ihr digitales Team aufbaut.",
-    },
-  },
-
-  "unternehmen/praxisbeispiele": {
-    slug: "unternehmen/praxisbeispiele",
-    parentSlug: "unternehmen",
-    parentLabel: "Unternehmen",
-    navLabel: "Praxisbeispiele",
-    problem: {
-      title: "Versprechen ohne Zahlen.",
-      body: [
-        "Versprechen gibt es viele. Was Entscheider wirklich brauchen, ist der Beweis: Funktioniert das auch in einem Betrieb wie meinem?",
-        "Ohne konkrete Resultate bleibt jede KI-Behauptung nur ein Marketing-Satz.",
-      ],
-    },
-    agitate: {
-      title: "Ohne Beweise bleibt die Entscheidung Bauchgefühl – und das blockiert.",
-      intro: "Wer kein konkretes Resultat sieht:",
-      bullets: [
-        { lead: "zögert,", text: "weil das Risiko ungreifbar wirkt;" },
-        { lead: "vergleicht Äpfel mit Birnen,", text: "weil jeder Anbieter „Effizienz“ verspricht;" },
-        { lead: "verschiebt die Entscheidung", text: "– und verliert weiter Zeit und Geld an den Status quo." },
-      ],
-      outro: ["Genau dieses Zögern kostet Sie jeden Monat mehr, als die Lösung kosten würde."],
-    },
-    solution: {
-      title: "Zahlen, die für sich sprechen.",
-      intro: [
-        "Hier zeigen wir echte Vorher-Nachher-Kennzahlen aus umgesetzten Projekten – betrieben von unserer eigenen KI und IT.",
-      ],
-      changeTitle: "Was Sie hier finden:",
-      bullets: [
-        { lead: "Konkrete Fälle", text: "statt Werbefloskeln." },
-        { lead: "Vorher/Nachher mit Zahlen:", text: "gesparte Stunden, kürzere Durchlaufzeiten, mehr bediente Kunden." },
-        { lead: "Nach Branche gefiltert,", text: "damit Sie sofort Ihren eigenen Fall erkennen." },
-      ],
-      easyTitle: "Beispiel-Kennzahlen aus dem Markt (Orientierung, projektabhängig)",
-      easyText:
-        "bis zu 84 % kürzere Bearbeitungszeiten · im Schnitt 171 % ROI · CHF 8.000–25.000 monatliche Ersparnis bei klarem Anwendungsfall.",
-    },
-    interactive: {
-      label: "Live-Element: Case-Filter",
-      text: "Filtern Sie Praxisbeispiele nach Branche und sehen Sie je Fall die wichtigste Kennzahl. Ein Klick führt zur Detail-Story (Ausgangslage → Lösung → Resultat in Zahlen).",
-    },
-    cta: {
-      title: "Schreiben wir Ihre Erfolgsgeschichte.",
-      text: "Sehen Sie in einem kostenlosen Gespräch, welches Resultat in Ihrem Betrieb realistisch ist – mit einer konkreten Zahl.",
-      primary: "Jetzt kostenloses Gespräch buchen",
-      assistant: "Passendes Beispiel ansehen",
-    },
-    meta: {
-      title: "Praxisbeispiele – KI-Resultate mit echten Zahlen | AgenticIT",
-      description:
-        "Echte Vorher-Nachher-Zahlen aus umgesetzten Projekten: gesparte Stunden, kürzere Durchlaufzeiten, mehr bediente Kunden. Nach Branche gefiltert.",
-    },
-  },
-
-  "unternehmen/kontakt": {
-    slug: "unternehmen/kontakt",
-    parentSlug: "unternehmen",
-    parentLabel: "Unternehmen",
-    navLabel: "Kontakt",
-    problem: {
-      title: "Der erste Schritt fühlt sich gross an.",
-      body: [
-        "Lange Kontaktformulare, unklare „Wir melden uns“-Versprechen, die Sorge vor Verkaufsdruck.",
-        "Genau das hält viele davon ab, den einen kleinen Schritt zu machen, der alles ins Rollen bringt.",
-      ],
-    },
-    agitate: {
-      title: "Jeder Tag „später“ ist ein Tag mit unnötigen Kosten.",
-      intro: "Aufschieben fühlt sich sicher an – ist es aber nicht:",
-      bullets: [
-        { lead: "Die Routine frisst weiter Zeit und Geld,", text: "Tag für Tag." },
-        { lead: "Der Vorsprung der Konkurrenz wächst,", text: "während Sie warten." },
-        { lead: "Der „richtige Moment“ kommt nie von allein", text: "– er entsteht durch den ersten Schritt." },
-      ],
-    },
-    solution: {
-      title: "Ihr erster Schritt dauert 60 Sekunden. Ohne Druck.",
-      intro: ["Kein langes Formular, kein Verkaufsgespräch – nur ein einfacher Weg zum Gespräch."],
-      changeTitle: "So einfach geht's:",
-      bullets: [
-        { lead: "Online-Termin buchen:", text: "Sie wählen den Slot, der Ihnen passt." },
-        { lead: "Oder sofort mit dem KI-Assistenten starten", text: "– er beantwortet Ihre erste Frage in Sekunden." },
-        { text: "Persönlich, schnell, unverbindlich." },
-      ],
-      easyTitle: "Was Sie im Erstgespräch erhalten",
-      easyText:
-        "Im kostenlosen Erstgespräch zeigen wir Ihnen eine konkrete Aufgabe, die wir für Sie automatisieren könnten – mit einer klaren Zahl, was das bringt.",
-    },
-    cta: {
-      title: "Machen Sie den ersten Schritt.",
-      text: "Buchen Sie ein kostenloses Erstgespräch oder starten Sie direkt mit dem KI-Assistenten.",
-      primary: "Jetzt kostenloses Erstgespräch buchen",
-      assistant: "Mit dem KI-Assistenten starten",
-    },
-    contact: {
-      email: "hello@agenticit.ch",
-      phone: "[Platzhalter – Telefon]",
-      address: "[Platzhalter – Adresse]",
-      calendar: "[Platzhalter – Buchungslink einbinden]",
-    },
-    meta: {
-      title: "Kontakt & Terminbuchung | AgenticIT",
-      description:
-        "Ihr erster Schritt dauert 60 Sekunden: Termin online buchen oder direkt mit dem KI-Assistenten starten. Kostenlos, unverbindlich, konkret.",
-    },
-  },
 }
 
 export const SUBPAGE_SLUGS = Object.keys(SUBPAGES)

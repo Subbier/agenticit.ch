@@ -994,3 +994,40 @@ li {
     --font-size-h3: 18px;
   }
 }
+
+/* ElevenLabs Voice Agent – inline im Seitenabschnitt */
+.voice-agent-shell {
+  min-height: 480px;
+}
+
+.voice-agent-shell elevenlabs-convai {
+  position: relative !important;
+  inset: auto !important;
+  bottom: auto !important;
+  right: auto !important;
+  left: auto !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-height: 480px !important;
+  --elevenlabs-convai-widget-width: 100%;
+  --elevenlabs-convai-widget-height: 480px;
+  z-index: 1 !important;
+}
+
+/* Hero-Aurora – dezent driftende Verlaufsflächen (CSS-only, leichtgewichtig) */
+@keyframes aurora-drift-1 {
+  0%, 100% { transform: translate(-50%, 0) scale(1); opacity: 0.9; }
+  50% { transform: translate(-44%, 5%) scale(1.12); opacity: 1; }
+}
+@keyframes aurora-drift-2 {
+  0%, 100% { transform: translate(-50%, 0) scale(1.05); opacity: 0.8; }
+  50% { transform: translate(-58%, -7%) scale(0.92); opacity: 1; }
+}
+@keyframes aurora-drift-3 {
+  0%, 100% { transform: translate(-50%, 0) scale(1); opacity: 0.75; }
+  50% { transform: translate(-42%, 8%) scale(1.1); opacity: 0.95; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aurora-blob { animation: none !important; }
+}

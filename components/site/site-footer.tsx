@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { Linkedin, Mail, MapPin } from "lucide-react"
 import { navItems } from "@/lib/site-content"
+import { SITE_TRUST_LINE } from "@/lib/site-trust-line"
 
 export function SiteFooter() {
   return (
@@ -56,7 +57,10 @@ export function SiteFooter() {
       </div>
 
       <div className="mx-auto mt-10 flex max-w-7xl flex-col gap-3 border-t border-white/10 pt-6 text-xs text-white/42 sm:flex-row sm:items-center sm:justify-between">
-        <p>© {new Date().getFullYear()} AgenticIT. Alle Rechte vorbehalten.</p>
+        <div>
+          <p>© {new Date().getFullYear()} AgenticIT. Alle Rechte vorbehalten.</p>
+          <p className="mt-1">{SITE_TRUST_LINE}</p>
+        </div>
         <div className="flex gap-4">
           <Link href="/datenschutz" className="transition hover:text-white">
             Datenschutz

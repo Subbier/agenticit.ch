@@ -35,8 +35,8 @@ export const PAGES: Record<string, PageContent> = {
       { icon: "⚙️", title: "Prozessautomatisierung", subtitle: "Das Ende der Fleissarbeit", text: "Wir verbinden Ihre Systeme und lassen wiederkehrende Abläufe von allein laufen – im Hintergrund, fehlerfrei.", bullets: ["Keine Fehler", "Automatisch starten", "CHF 8–25k/Monat"] },
       { icon: "🚀", title: "RevOps & Growth", subtitle: "Marketing, Vertrieb und Service als ein Motor", text: "Wir verbinden die drei zu einem Wachstumsmotor – datengestützt und automatisiert.", bullets: ["Schneller abschliessen", "Kein Lead verloren", "171 % ROI"] },
     ],
-    closingTitle: "Sehen Sie, was ein digitaler Kollege für Sie tut.",
-    closingText: "In einem kostenlosen Gespräch zeigen wir Ihnen genau eine Aufgabe, die wir ab nächster Woche automatisieren könnten – mit konkreter Zahl, was das bringt.",
+    closingTitle: "Finden wir Ihren grössten Hebel.",
+    closingText: "In einem kostenlosen Gespräch zeigen wir Ihnen genau eine Aufgabe, die sich ab nächster Woche automatisieren lässt – samt konkreter Zahl, was Ihnen das bringt.",
     meta: { title: "KI-Lösungen für Unternehmen | Kundendienst, Prozesse & Wachstum – AgenticIT", description: "Ihr digitales Team für Kundendienst-KI, Prozessautomatisierung und Wachstum. Schweizer Datenhaltung, messbarer ROI, startklar ohne Schulung." },
   },
 
