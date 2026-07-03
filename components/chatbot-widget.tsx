@@ -4,11 +4,10 @@
 // Geführter Dialog: kommuniziert mit Besuchern und vereinbart einen
 // Rückruftermin (Name, Telefon, optional E-Mail, Thema, Tag + Uhrzeit).
 // Die Buchung geht an /api/callback (Zoho-Termin + Bestätigungsmail).
-// Klare KI-Kennzeichnung gemäss Transparenzpflicht. WhatsApp als Fallback.
+// Klare KI-Kennzeichnung gemäss Transparenzpflicht.
 
 import { useEffect, useRef, useState } from "react"
 import { Send, X, Check } from "lucide-react"
-import { WHATSAPP_URL } from "@/components/whatsapp-button"
 
 type Phase =
   | "greeting"
@@ -161,8 +160,7 @@ export function ChatbotWidget() {
     } catch {
       setPhase("error")
       pushBot(
-        "Das hat leider nicht geklappt. Schreiben Sie uns am einfachsten direkt per WhatsApp – wir kümmern uns sofort.",
-        [{ label: "Auf WhatsApp schreiben", value: "open_whatsapp" }],
+        "Das hat leider nicht geklappt. Rufen Sie uns am einfachsten direkt an: 044 505 20 27 – wir kümmern uns sofort.",
       )
     }
   }
@@ -176,14 +174,14 @@ export function ChatbotWidget() {
         if (value === "intent_analyse") {
           pushBot(
             "Unsere kostenlose KI-Analyse zeigt in wenigen Minuten Ihre grössten Wachstums- und Effizienz-Hebel. Am besten besprechen wir das Ergebnis kurz persönlich – soll ich einen Rückruf einrichten?",
-            [{ label: "Ja, Rückruf vereinbaren", value: "intent_callback" }, { label: "Lieber per WhatsApp", value: "open_whatsapp" }],
+            [{ label: "Ja, Rückruf vereinbaren", value: "intent_callback" }],
           )
           return
         }
         if (value === "intent_info") {
           pushBot(
             "Wir bauen Wachstumsmotoren: KI-Agenten, Omnichannel-Automation, Lead-Generierung und RevOps – End-to-End. Die Details klären wir am schnellsten im kurzen Gespräch. Darf ich einen Rückruf für Sie vereinbaren?",
-            [{ label: "Ja, gerne", value: "intent_callback" }, { label: "Lieber per WhatsApp", value: "open_whatsapp" }],
+            [{ label: "Ja, gerne", value: "intent_callback" }],
           )
           return
         }
@@ -285,10 +283,6 @@ export function ChatbotWidget() {
   }
 
   function handleQuick(qr: QuickReply) {
-    if (qr.value === "open_whatsapp") {
-      window.open(WHATSAPP_URL, "_blank", "noopener,noreferrer")
-      return
-    }
     process(qr.value, qr.label)
   }
 
