@@ -7,7 +7,12 @@
 // Klare KI-Kennzeichnung gemäss Transparenzpflicht.
 
 import { useEffect, useRef, useState } from "react"
+import { usePathname } from "next/navigation"
 import { Send, X, Check } from "lucide-react"
+
+// Auf diesen Seiten wird der AgenticIT-Chat ausgeblendet
+// (z. B. Kampagnenseiten mit eigenem Fremd-Branding).
+const HIDDEN_PATHS = ["/kktermin"]
 
 type Phase =
   | "greeting"
@@ -68,6 +73,7 @@ type Booking = { name: string; phone: string; email: string; topic: string; date
 const EMPTY: Booking = { name: "", phone: "", email: "", topic: "", date: "", time: "" }
 
 export function ChatbotWidget() {
+  const pathname = usePathname()
   const [open, setOpen] = useState(false)
   const [phase, setPhase] = useState<Phase>("greeting")
   const [messages, setMessages] = useState<Msg[]>([])
@@ -296,6 +302,9 @@ export function ChatbotWidget() {
 
   const inputDisabled = typing || phase === "submitting" || phase === "done"
   const showInput = !["ask_topic", "ask_day", "ask_time", "confirm", "done", "submitting"].includes(phase)
+
+  // Kein AgenticIT-Chat auf Fremd-Branding-Seiten (z. B. /kktermin).
+  if (pathname && HIDDEN_PATHS.some((p) => pathname.startsWith(p))) return null
 
   return (
     <div className="fixed bottom-5 right-5 z-[80] flex flex-col items-end gap-3">
