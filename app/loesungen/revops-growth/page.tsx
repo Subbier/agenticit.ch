@@ -3,7 +3,8 @@ import { SubPage } from "@/components/site/subpage"
 import { SUBPAGES } from "@/lib/subpage-content"
 import { createPageMetadata } from "@/lib/seo"
 
-const SLUG = "loesungen/revops-growth"
+// Alt-Slug "revops-growth" -> "gtm-markteintritt" (siehe permanenter Redirect in next.config.mjs).
+const SLUG = "loesungen/gtm-markteintritt"
 
 export const metadata: Metadata = createPageMetadata({
   title: SUBPAGES[SLUG].meta.title,

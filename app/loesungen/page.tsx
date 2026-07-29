@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { HubPage } from "@/components/site/hub-page"
+import { CarbonHubPage } from "@/components/site/carbon-hub-page"
 import { PAGES } from "@/lib/page-content"
 import { createPageMetadata } from "@/lib/seo"
 
@@ -10,5 +10,5 @@ export const metadata: Metadata = createPageMetadata({
 })
 
 export default function Page() {
-  return <HubPage slug="loesungen" />
+  return <CarbonHubPage slug="loesungen" />
 }

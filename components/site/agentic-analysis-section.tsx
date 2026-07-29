@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useCallback, useMemo, useState } from "react"
 import {
@@ -10,7 +10,6 @@ import {
   Lock,
   MapPin,
   FileDown,
-  Sparkles,
   Globe,
   Mail,
   Phone,
@@ -23,7 +22,7 @@ import { BRANCH_PRESETS, type PresetItem } from "@/lib/analyse/branch-presets"
 /* =================================================================== *
  *  Farbwelt: White Core · Hellblau · Hellorange · schwarze Typo
  * =================================================================== */
-const BLUE = "#2DA8FF"
+const BLUE = "#1F9A5E"
 const ORANGE = "#F97316"
 
 type UseCasePick = { title: string; benefit: string; trigger: string; ablauf: string; bereich: string; aufwand: string; branchSpecific: boolean }
@@ -71,18 +70,16 @@ const deNum = (n: number) => new Intl.NumberFormat("de-CH").format(n)
 type Choice = { id: string; q: string; opts: string[] }
 
 const AREA1: Choice[] = [
-  { id: "web_zufriedenheit", q: "Wie zufrieden sind Sie mit Ihrer aktuellen Website?", opts: ["Sehr zufrieden", "Geht so", "Eher unzufrieden", "Noch keine Website"] },
-  { id: "sichtbarkeit", q: "Wie gut werden Sie bei Google & Co. gefunden?", opts: ["Sehr gut", "Mittel", "Kaum", "Weiss ich nicht"] },
-  { id: "marketing", q: "Investieren Sie aktuell in Online-Marketing?", opts: ["Ja, regelmässig", "Sporadisch", "Nein"] },
-  { id: "web_anfragen", q: "Wie viele Anfragen kommen monatlich über die Website?", opts: ["Über 20", "5–20", "Unter 5", "Keine"] },
+  { id: "sichtbarkeit", q: "Wie gut werden Sie bei Google gefunden?", opts: ["Sehr gut", "Mittel", "Kaum", "Weiss nicht"] },
+  { id: "web_anfragen", q: "Wie viele Anfragen bringt Ihre Website pro Monat?", opts: ["Über 20", "5–20", "Unter 5", "Keine"] },
 ]
 const ROUTINE: Choice = {
   id: "routine_stunden",
-  q: "Wie viele Stunden pro Woche gehen für Routine/Administration drauf?",
+  q: "Wie viele Stunden pro Woche gehen bei Ihnen für Büroarbeit drauf?",
   opts: ["Unter 5", "5–15", "15–30", "Über 30"],
 }
 
-const STEPS = ["Online-Erfolg", "Automatisierung", "RevOps", "Report"]
+const STEPS = ["Sichtbarkeit", "Alltag", "Wachstum", "Ergebnis"]
 type ItemStatus = "ja" | "nein"
 type Status = "idle" | "loading" | "done" | "error"
 
@@ -228,33 +225,36 @@ export function AgenticAnalysisSection() {
     <section id="rechner" aria-labelledby="analyse-heading" className="relative scroll-mt-20 overflow-hidden">
       {/* Hintergrund: nahtloser Übergang Hero (Navy) → Hellblau → Weiss */}
       <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#13294B] from-0% via-[#1a3358] via-[8%] via-[#dceaf8] via-[32%] to-white to-[92%]"
+        className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,#FAFAF7_0%,#FFFFFF_55%)]"
         aria-hidden="true"
       />
-      <div className="pointer-events-none absolute -left-[20%] top-[6%] h-[min(520px,70vw)] w-[min(520px,70vw)] rounded-full bg-[#2DA8FF]/14 blur-[110px]" aria-hidden="true" />
-      <div className="pointer-events-none absolute -right-[15%] top-[28%] h-[min(440px,60vw)] w-[min(440px,60vw)] rounded-full bg-[#F97316]/11 blur-[100px]" aria-hidden="true" />
-      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent to-white" aria-hidden="true" />
+
+      {/* Navy-Kopfzone: mobil trägt sie Titel + Fortschritt, ab sm nur ein schmaler Anschluss an den Hero */}
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-[400px] bg-[#0A0C10] sm:h-10"
+        aria-hidden="true"
+      />
+      
+      
+      
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.22]"
         style={{
           backgroundImage:
-            "linear-gradient(to right, rgba(45,168,255,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(45,168,255,0.06) 1px, transparent 1px)",
+            "linear-gradient(to right, rgba(31,154,94,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(31,154,94,0.06) 1px, transparent 1px)",
           backgroundSize: "48px 48px",
           maskImage: "linear-gradient(to bottom, transparent 0%, black 18%, black 75%, transparent 100%)",
         }}
         aria-hidden="true"
       />
 
-      <div className="relative mx-auto max-w-[920px] px-5 py-16 sm:px-6 sm:py-20">
+      <div className="relative mx-auto max-w-[920px] px-4 pb-16 pt-14 sm:px-6 sm:pb-20 sm:pt-[104px]">
         <div className="mx-auto mb-8 max-w-[640px] text-center">
-          <span className="inline-flex items-center gap-2 rounded-full bg-[#EAF4FF] px-4 py-2 text-[12px] font-extrabold uppercase tracking-[0.6px] text-[#1E6FB8] shadow-[0_2px_8px_rgba(45,168,255,0.18)]">
-            <Sparkles size={14} className="text-[#2DA8FF]" /> Unverbindliche Analyse
-          </span>
-          <h2 id="analyse-heading" className="mt-4 text-[clamp(28px,4.8vw,40px)] font-extrabold tracking-[-0.6px] text-white sm:text-[#0B1F3A]">
-            Bereit für <span className="text-[#7ec8ff] sm:text-[#2DA8FF]">KI-Erfolg?</span>
+          <h2 id="analyse-heading" className="text-[clamp(28px,4.8vw,40px)] font-extrabold leading-tight tracking-[-0.6px] text-white sm:text-[#0A0C10]">
+            Wie viel Zeit und Geld <span className="text-[#57C7FF] sm:text-[#57C7FF]">liegen bei Ihnen brach?</span>
           </h2>
           <p className="mt-2.5 text-[clamp(15px,2.2vw,17px)] font-semibold leading-relaxed text-[#e2ecf7] sm:text-[#334155]">
-            Jetzt Fragen beantworten und die Magie der KI geniessen.
+            Ein paar kurze Fragen – und Sie sehen Ihr Sparpotenzial in Franken. Kostenlos, in 20 Sekunden.
           </p>
         </div>
 
@@ -266,9 +266,9 @@ export function AgenticAnalysisSection() {
                 <span
                   className={`flex h-7 w-7 flex-none items-center justify-center rounded-full text-[12px] font-extrabold transition-colors ${
                     i < progressIndex
-                      ? "bg-[#2DA8FF] text-white"
+                      ? "bg-[#8FE05A] text-[#122400]"
                       : i === progressIndex
-                        ? "bg-[#2DA8FF] text-white shadow-[0_4px_12px_rgba(45,168,255,0.4)] ring-2 ring-[#2DA8FF]/30"
+                        ? "bg-[#8FE05A] text-[#122400] shadow-[0_4px_12px_rgba(31,154,94,0.4)] ring-2 ring-[#1F9A5E]/30"
                         : "bg-white/15 text-white/80 sm:bg-[#E2E9F2] sm:text-[#475569]"
                   }`}
                 >
@@ -276,12 +276,12 @@ export function AgenticAnalysisSection() {
                 </span>
                 <span
                   className={`hidden text-[12.5px] font-bold sm:inline ${
-                    i === progressIndex ? "text-white sm:text-[#0B1F3A]" : "text-white/75 sm:text-[#475569]"
+                    i === progressIndex ? "text-white sm:text-[#0A0C10]" : "text-white/75 sm:text-[#475569]"
                   }`}
                 >
                   {s}
                 </span>
-                {i < STEPS.length - 1 && <span className="h-px flex-1 bg-white/20 sm:bg-[#EEF2F7]" />}
+                {i < STEPS.length - 1 && <span className="h-px flex-1 bg-white/20 sm:bg-[#F1F3F5]" />}
               </div>
             ))}
           </div>
@@ -289,7 +289,7 @@ export function AgenticAnalysisSection() {
             <button
               type="button"
               onClick={resetAnalysis}
-              className="inline-flex shrink-0 items-center gap-1.5 rounded-[10px] border border-white/25 bg-white/10 px-3 py-2 text-[12px] font-bold text-white backdrop-blur-sm transition hover:bg-white/20 sm:border-[#E3E9F1] sm:bg-white sm:text-[#5B6675] sm:hover:border-[#2DA8FF]/50 sm:hover:text-[#111418]"
+              className="inline-flex shrink-0 items-center gap-1.5 rounded-[10px] border border-white/25 bg-white/10 px-3 py-2 text-[12px] font-bold text-white backdrop-blur-sm transition hover:bg-white/20 sm:border-[#E1E4E8] sm:bg-white sm:text-[#5B6675] sm:hover:border-[#1F9A5E]/50 sm:hover:text-[#111418]"
               title="Analyse zurücksetzen und von vorne beginnen"
             >
               <RotateCcw size={14} />
@@ -299,18 +299,19 @@ export function AgenticAnalysisSection() {
         </div>
 
         {/* CARD SHELL */}
-        <div className="relative overflow-hidden rounded-[24px] border border-[#ECF1F6] bg-white shadow-[0_20px_60px_rgba(17,20,24,0.08)]">
+        <div className="relative overflow-hidden rounded-[24px] border border-[#F1F3F5] bg-white shadow-[0_20px_60px_rgba(17,20,24,0.08)]">
           {status === "loading" ? (
             <div className="absolute inset-0 z-20 flex flex-col items-center justify-center gap-3 rounded-[24px] bg-white/92 backdrop-blur-[2px]">
-              <Loader2 size={32} className="animate-spin text-[#2DA8FF]" />
-              <p className="text-[14px] font-bold text-[#111418]">Analyse läuft im Hintergrund…</p>
-              <p className="max-w-[280px] text-center text-[12px] text-[#6B7686]">
-                Domain prüfen · PDF erstellen · Versand vorbereiten
+              <Loader2 size={32} className="animate-spin text-[#57C7FF]" />
+              <p className="text-[14px] font-bold text-[#111418]">Wir prüfen Ihre Website jetzt live …</p>
+              <p className="max-w-[320px] text-center text-[12px] leading-relaxed text-[#6B7686]">
+                Sichtbarkeit bei Google (SEMrush) · Tempo Ihrer Website · Ihr Potenzial in Franken · PDF-Report
               </p>
+              <p className="text-[11px] font-semibold text-[#9AA7B8]">Dauert 20–40 Sekunden – echte Live-Daten.</p>
             </div>
           ) : null}
           {/* dünne Akzentlinie oben */}
-          <div className="h-1 w-full" style={{ background: `linear-gradient(90deg, ${BLUE}, ${ORANGE})` }} />
+          <div className="h-1 w-full" style={{ background: "#1F9A5E" }} />
 
           <div className="p-6 sm:p-9">
             {/* ============ CARD 0 · INTRO (Flyer-Stil) ============ */}
@@ -322,18 +323,19 @@ export function AgenticAnalysisSection() {
                     Was bringt Ihnen <span style={{ color: BLUE }}>KI wirklich?</span>
                   </h2>
                   <p className="mt-4 max-w-[460px] text-[16px] font-medium leading-relaxed text-[#3A4453]">
-                    Nutzen Sie die Online-Revolution und sichern Sie sich Ihren Vorsprung.
+                    In 2 Minuten wissen Sie, wie viel Zeit und Geld in Ihrem Betrieb steckt – live geprüft mit echten
+                    Google- und SEMrush-Daten. Ergebnis sofort, PDF per E-Mail.
                   </p>
                   <button
                     onClick={() => setCard(1)}
-                    className="mt-6 inline-flex items-center gap-2 rounded-[12px] px-6 py-3.5 text-[15px] font-bold text-white shadow-[0_10px_24px_rgba(45,168,255,0.35)] transition-transform hover:-translate-y-0.5"
-                    style={{ background: `linear-gradient(90deg, ${BLUE}, #1E8FE6)` }}
+                    className="mt-6 inline-flex items-center gap-2 rounded-[12px] px-6 py-3.5 text-[15px] font-bold text-white shadow-[0_10px_24px_rgba(31,154,94,0.35)] transition-transform hover:-translate-y-0.5"
+                    style={{ background: "#1F9A5E" }}
                   >
                     Analyse starten <ArrowRight size={17} />
                   </button>
 
                   {/* Trust-Badges */}
-                  <div className="mt-5 grid grid-cols-2 gap-x-4 gap-y-2.5 border-t border-[#EEF2F7] pt-4 text-[12px] font-semibold text-[#3A4453]">
+                  <div className="mt-5 grid grid-cols-2 gap-x-4 gap-y-2.5 border-t border-[#F1F3F5] pt-4 text-[12px] font-semibold text-[#3A4453]">
                     <span className="inline-flex items-center gap-1.5"><MapPin size={14} style={{ color: ORANGE }} /> Daten in der Schweiz</span>
                     <span className="inline-flex items-center gap-1.5"><Lock size={14} style={{ color: BLUE }} /> SSL-verschlüsselt</span>
                     <span className="inline-flex items-center gap-1.5"><ShieldCheck size={14} style={{ color: BLUE }} /> revDSG / DSGVO-konform</span>
@@ -344,14 +346,14 @@ export function AgenticAnalysisSection() {
                 {/* Rechts: Beispiel der Auswertung (Musteranalyse als Bild) */}
                 <div className="flex justify-center">
                   <div className="relative w-full max-w-[300px]">
-                    <span className="absolute -left-3 -top-3 z-10 rotate-[-6deg] rounded-[10px] bg-[#2DA8FF] px-3.5 py-1.5 text-[12px] font-extrabold uppercase tracking-wide text-white shadow-[0_8px_20px_rgba(45,168,255,0.45)]">
+                    <span className="absolute -left-3 -top-3 z-10 rotate-[-6deg] rounded-[10px] bg-[#8FE05A] px-3.5 py-1.5 text-[12px] font-extrabold uppercase tracking-wide text-[#122400] shadow-[0_8px_20px_rgba(31,154,94,0.45)]">
                       Analyse
                     </span>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src="/musteranalyse-1.png"
                       alt="Beispiel einer AgenticIT-Standortbestimmung"
-                      className="w-full rotate-[3deg] rounded-[12px] border border-[#ECF1F6] shadow-[0_24px_60px_rgba(17,20,24,0.22)]"
+                      className="w-full rotate-[3deg] rounded-[12px] border border-[#F1F3F5] shadow-[0_24px_60px_rgba(17,20,24,0.22)]"
                     />
                   </div>
                 </div>
@@ -362,8 +364,8 @@ export function AgenticAnalysisSection() {
             {card >= 1 && card <= 3 && (
               <div>
                 <div className="flex items-start justify-between gap-3">
-                  <h3 className="text-[clamp(20px,3.2vw,26px)] font-extrabold leading-[1.15] tracking-[-0.4px] text-[#111418]">
-                    {card === 1 ? "Webauftritt & Sichtbarkeit" : card === 2 ? "Automatisierung in Ihrer Branche" : "Wachstum & Vertrieb (RevOps)"}
+                  <h3 className="text-[clamp(21px,3.2vw,27px)] font-extrabold leading-[1.15] tracking-[-0.4px] text-[#111418]">
+                    {card === 1 ? "Werden Sie gefunden?" : card === 2 ? "Was kostet Sie heute Zeit?" : "Wie gewinnen Sie neue Kunden?"}
                   </h3>
                   <span className="mt-1 shrink-0 rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-[0.5px]" style={{ background: "#FFF1E6", color: "#C2540C" }}>
                     Schritt {card} von 3
@@ -373,17 +375,17 @@ export function AgenticAnalysisSection() {
                 {/* CARD 1: Branche + Web-Fragen */}
                 {card === 1 && (
                   <>
-                    <div className="mt-5 rounded-[14px] border border-[#E3E9F1] bg-[#FAFCFE] p-4">
+                    <div className="mt-5 rounded-[14px] border border-[#E1E4E8] bg-[#FAFAF7] p-4">
                       <p className="text-[15px] font-bold text-[#111418]">
-                        <span className="mr-1.5 text-[#2DA8FF]">★</span>In welcher Branche sind Sie tätig?
+                        <span className="mr-1.5 text-[#57C7FF]">★</span>In welcher Branche sind Sie tätig?
                       </p>
                       <p className="mt-1 text-[12.5px] text-[#6B7686]">
-                        Danach legen wir Ihnen die in Ihrer Branche üblichen Maßnahmen vor – keine Zufallsauswahl.
+                        So wird Ihre Analyse auf Ihre Branche zugeschnitten.
                       </p>
                       <select
                         value={branche}
                         onChange={(e) => pick("branche", e.target.value)}
-                        className="mt-3 w-full rounded-[11px] border border-[#E3E9F1] bg-white px-3 py-2.5 text-[14px] font-semibold text-[#111418] outline-none focus:border-[#2DA8FF]"
+                        className="mt-3 w-full rounded-[11px] border border-[#E1E4E8] bg-white px-3 py-2.5 text-[14px] font-semibold text-[#111418] outline-none focus:border-[#1F9A5E]"
                       >
                         <option value="">Bitte wählen …</option>
                         {BRANCHEN.map((b) => (
@@ -401,11 +403,11 @@ export function AgenticAnalysisSection() {
                           <div
                             key={q.id}
                             className={`rounded-[14px] border p-4 transition ${
-                              answered ? "border-[#2DA8FF]/70 bg-[#F2F9FF] shadow-[0_2px_10px_rgba(45,168,255,0.10)]" : "border-[#E3E9F1] bg-[#FAFCFE]"
+                              answered ? "border-[#1F9A5E]/70 bg-[#FAFAF7] shadow-[0_2px_10px_rgba(31,154,94,0.10)]" : "border-[#E1E4E8] bg-[#FAFAF7]"
                             }`}
                           >
                             <p className="text-[15px] font-bold text-[#111418]">
-                              <span className="mr-1.5 text-[#2DA8FF]">{qi + 1}.</span>
+                              <span className="mr-1.5 text-[#57C7FF]">{qi + 1}.</span>
                               {q.q}
                             </p>
                             <div className="mt-2.5 flex flex-wrap gap-2">
@@ -416,7 +418,7 @@ export function AgenticAnalysisSection() {
                                     key={o}
                                     onClick={() => pick(q.id, o)}
                                     className={`rounded-[11px] border px-3.5 py-2.5 text-[13.5px] font-semibold transition-all ${
-                                      on ? "text-white" : "border-[#E3E9F1] bg-white text-[#3A4453] hover:border-[#2DA8FF]/50"
+                                      on ? "text-white" : "border-[#E1E4E8] bg-white text-[#3A4453] hover:border-[#1F9A5E]/50"
                                     }`}
                                     style={on ? { background: BLUE, borderColor: BLUE } : undefined}
                                   >
@@ -435,7 +437,7 @@ export function AgenticAnalysisSection() {
                 {/* CARD 2: branchenübliche Automatisierungen + Routine-Stunden */}
                 {card === 2 && (
                   <>
-                    <div className="mt-5 rounded-[14px] border border-[#E3E9F1] bg-[#FAFCFE] p-4">
+                    <div className="mt-5 rounded-[14px] border border-[#E1E4E8] bg-[#FAFAF7] p-4">
                       <p className="text-[15px] font-bold text-[#111418]">{ROUTINE.q}</p>
                       <div className="mt-2.5 flex flex-wrap gap-2">
                         {ROUTINE.opts.map((o) => {
@@ -445,7 +447,7 @@ export function AgenticAnalysisSection() {
                               key={o}
                               onClick={() => pick(ROUTINE.id, o)}
                               className={`rounded-[11px] border px-3.5 py-2.5 text-[13.5px] font-semibold transition-all ${
-                                on ? "text-white" : "border-[#E3E9F1] bg-white text-[#3A4453] hover:border-[#2DA8FF]/50"
+                                on ? "text-white" : "border-[#E1E4E8] bg-white text-[#3A4453] hover:border-[#1F9A5E]/50"
                               }`}
                               style={on ? { background: BLUE, borderColor: BLUE } : undefined}
                             >
@@ -456,8 +458,7 @@ export function AgenticAnalysisSection() {
                       </div>
                     </div>
                     <p className="mt-5 text-[14px] font-semibold text-[#3A4453]">
-                      Diese Automatisierungen sind in <b className="text-[#111418]">{presetLabel}</b> üblich. Was machen Sie schon,
-                      was noch nicht?
+                      Das erledigen andere Firmen in <b className="text-[#111418]">{presetLabel}</b> bereits automatisch. Und Sie?
                     </p>
                     <div className="mt-3 space-y-2.5">
                       {preset.automation.map((it) => (
@@ -471,8 +472,7 @@ export function AgenticAnalysisSection() {
                 {card === 3 && (
                   <>
                     <p className="mt-5 text-[14px] font-semibold text-[#3A4453]">
-                      In <b className="text-[#111418]">{presetLabel}</b> gewinnt und bindet man Kunden typischerweise so. Was davon
-                      setzen Sie schon ein?
+                      So gewinnt und hält man in <b className="text-[#111418]">{presetLabel}</b> heute Kunden. Was davon nutzen Sie?
                     </p>
                     <div className="mt-3 space-y-2.5">
                       {preset.revops.map((it) => (
@@ -489,8 +489,8 @@ export function AgenticAnalysisSection() {
                   <button
                     onClick={() => areaComplete(card) && setCard((c) => c + 1)}
                     disabled={!areaComplete(card)}
-                    className="inline-flex items-center gap-2 rounded-[11px] px-5 py-3 text-[14px] font-bold text-white shadow-[0_8px_22px_rgba(45,168,255,0.3)] transition-transform hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:translate-y-0"
-                    style={{ background: `linear-gradient(90deg, ${BLUE}, #1E8FE6)` }}
+                    className="inline-flex items-center gap-2 rounded-[11px] px-5 py-3 text-[14px] font-bold text-white shadow-[0_8px_22px_rgba(31,154,94,0.3)] transition-transform hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:translate-y-0"
+                    style={{ background: "#1F9A5E" }}
                   >
                     {card === 3 ? "Weiter zum Report" : "Weiter"} <ArrowRight size={16} />
                   </button>
@@ -507,17 +507,18 @@ export function AgenticAnalysisSection() {
                   </span>
                   <span className="text-[13px] font-bold text-[#111418]">Report anfordern</span>
                 </div>
-                <h3 className="mt-3 text-[clamp(19px,3vw,22px)] font-extrabold text-[#111418]">Wohin dürfen wir Ihren Report senden?</h3>
+                <h3 className="mt-3 text-[clamp(20px,3vw,24px)] font-extrabold tracking-[-0.3px] text-[#111418]">Wohin dürfen wir Ihren Report senden?</h3>
                 <p className="mt-1 text-[14px] text-[#5A6B82]">
-                  Sobald Sie absenden, werten wir Ihre Domain live aus und zeigen Ihr Ergebnis sofort an – das ausführliche PDF kommt zusätzlich per E-Mail.
+                  Ihr Ergebnis erscheint sofort hier auf der Seite – gleichzeitig senden wir Ihnen das vollständige PDF
+                  per E-Mail. Kein Warten.
                 </p>
 
-                <div className="mt-5 rounded-[14px] border border-[#E3E9F1] bg-[#FAFCFE] p-4 sm:p-5">
+                <div className="mt-5 rounded-[14px] border border-[#E1E4E8] bg-[#FAFAF7] p-4 sm:p-5">
                   <div className="mb-3 flex items-center gap-4 text-[13px] text-[#5B6675]">
                     <span className="font-semibold">Anrede *</span>
                     {(["Herr", "Frau"] as const).map((a) => (
                       <label key={a} className="inline-flex cursor-pointer items-center gap-1.5">
-                        <input type="radio" name="anrede" checked={form.anrede === a} onChange={() => setForm({ ...form, anrede: a })} className="h-4 w-4 flex-none accent-[#2DA8FF]" />
+                        <input type="radio" name="anrede" checked={form.anrede === a} onChange={() => setForm({ ...form, anrede: a })} className="h-4 w-4 flex-none accent-[#1F9A5E]" />
                         <span>{a}</span>
                       </label>
                     ))}
@@ -536,11 +537,11 @@ export function AgenticAnalysisSection() {
                   <input type="text" tabIndex={-1} autoComplete="off" value={honey} onChange={(e) => setHoney(e.target.value)} className="absolute left-[-9999px] h-0 w-0 opacity-0" aria-hidden="true" />
 
                   <label className="mt-4 flex items-start gap-2.5 text-[12.5px] leading-snug text-[#5B6675]">
-                    <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="mt-0.5 h-4 w-4 flex-none accent-[#2DA8FF]" />
+                    <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="mt-0.5 h-4 w-4 flex-none accent-[#1F9A5E]" />
                     <span>Ich bin einverstanden, dass AgenticIT meine Angaben zur Erstellung der Analyse verarbeitet und mich kontaktiert.</span>
                   </label>
                   <label className="mt-3 flex items-start gap-2.5 text-[12.5px] leading-snug text-[#5B6675]">
-                    <input type="checkbox" checked={whatsappOptIn} onChange={(e) => setWhatsappOptIn(e.target.checked)} className="mt-0.5 h-4 w-4 flex-none accent-[#2DA8FF]" />
+                    <input type="checkbox" checked={whatsappOptIn} onChange={(e) => setWhatsappOptIn(e.target.checked)} className="mt-0.5 h-4 w-4 flex-none accent-[#1F9A5E]" />
                     <span>Ja, AgenticIT darf mich für die schnellste Rückmeldung auch per <strong>WhatsApp</strong> kontaktieren (optional, jederzeit widerrufbar).</span>
                   </label>
                 </div>
@@ -562,7 +563,7 @@ export function AgenticAnalysisSection() {
                     onClick={submit}
                     disabled={!validForm || status === "loading"}
                     className="inline-flex items-center gap-2 rounded-[12px] px-6 py-3.5 text-[15px] font-bold text-white shadow-[0_10px_24px_rgba(249,115,22,0.35)] transition-transform hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:translate-y-0"
-                    style={{ background: `linear-gradient(90deg, ${ORANGE}, #EA6A0C)` }}
+                    style={{ background: "#E879F9" }}
                   >
                     {status === "loading" ? (<><Loader2 size={16} className="animate-spin" /> Analyse wird erstellt…</>) : (<><FileDown size={16} /> Report anfordern</>)}
                   </button>
@@ -574,21 +575,21 @@ export function AgenticAnalysisSection() {
             {card === 5 && (
               <div className="py-1">
                 <div className="text-center">
-                  <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#EAF4FF]" style={{ color: BLUE }}>
+                  <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#F1F3F5]" style={{ color: BLUE }}>
                     <Check size={28} />
                   </div>
                   <h3 className="mt-4 text-[clamp(21px,3.4vw,28px)] font-extrabold tracking-[-0.4px] text-[#111418]">
                     Ihre Standortbestimmung, {form.vorname}
                   </h3>
                   <p className="mx-auto mt-2 max-w-[500px] text-[14px] leading-relaxed text-[#5B6675]">
-                    Die Kernergebnisse für <b className="text-[#111418]">{form.firma}</b> auf einen Blick.{" "}
+                    Das sind Ihre Ergebnisse für <b className="text-[#111418]">{form.firma}</b>.{" "}
                     {mailSent ? (
                       <>
-                        Die ausführliche Analyse ist zusätzlich unterwegs an{" "}
-                        <b className="text-[#111418]">{form.email}</b>.
+                        Das vollständige PDF wurde soeben an <b className="text-[#111418]">{form.email}</b> gesendet –
+                        und Sie können es hier direkt herunterladen.
                       </>
                     ) : (
-                      <>Ihre vollständige, mehrseitige Analyse können Sie hier direkt öffnen.</>
+                      <>Ihre vollständige, mehrseitige Analyse können Sie hier direkt herunterladen.</>
                     )}
                   </p>
 
@@ -597,10 +598,10 @@ export function AgenticAnalysisSection() {
                       <button
                         type="button"
                         onClick={openPdf}
-                        className="inline-flex items-center gap-2 rounded-[12px] px-6 py-3.5 text-[15px] font-bold text-white shadow-[0_10px_24px_rgba(45,168,255,0.35)] transition-transform hover:-translate-y-0.5"
-                        style={{ background: `linear-gradient(90deg, ${BLUE}, #1E8FE6)` }}
+                        className="inline-flex items-center gap-2 rounded-[12px] px-6 py-3.5 text-[15px] font-bold text-white shadow-[0_10px_24px_rgba(31,154,94,0.35)] transition-transform hover:-translate-y-0.5"
+                        style={{ background: "#1F9A5E" }}
                       >
-                        <FileDown size={17} /> Vollständige Analyse als PDF öffnen
+                        <FileDown size={17} /> Analyse als PDF herunterladen
                       </button>
                     </div>
                   ) : null}
@@ -610,15 +611,15 @@ export function AgenticAnalysisSection() {
                   <div className="mt-7 space-y-5">
                     {/* Sichtbarkeit */}
                     <ResultBlock
-                      title="Digitale Sichtbarkeit"
+                      title="So gut werden Sie heute gefunden"
                       hint={
                         result.semrush.found
-                          ? `Live gemessen${
+                          ? `✓ Live geprüft mit SEMrush${
                               result.semrush.organicTraffic != null
-                                ? ` · ~${deNum(result.semrush.organicTraffic)} organische Besuche/Monat`
+                                ? ` · ~${deNum(result.semrush.organicTraffic)} Besucher/Monat über Google`
                                 : ""
                             }`
-                          : "Geschätzt – keine Live-Daten für diese Domain"
+                          : "Geschätzt – für diese Domain liegen keine Live-Daten vor"
                       }
                     >
                       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
@@ -637,14 +638,14 @@ export function AgenticAnalysisSection() {
 
                     {/* Website-Technik (Lighthouse) */}
                     {result.lighthouse?.found ? (
-                      <ResultBlock title="Website-Technik" hint="Google Lighthouse · mobil">
+                      <ResultBlock title="So schnell ist Ihre Website" hint="✓ Live geprüft mit Google (mobil)">
                         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
                           {result.lighthouse.performance != null ? (
                             <ScoreBar label="Performance" value={result.lighthouse.performance} />
                           ) : null}
                           {result.lighthouse.seo != null ? <ScoreBar label="SEO" value={result.lighthouse.seo} /> : null}
                           {result.lighthouse.lcp != null ? (
-                            <div className="rounded-[12px] border border-[#E8EEF5] bg-[#FAFCFE] p-3 text-center">
+                            <div className="rounded-[12px] border border-[#F1F3F5] bg-[#FAFAF7] p-3 text-center">
                               <div className="text-[22px] font-extrabold leading-none text-[#111418]">
                                 {String(result.lighthouse.lcp).replace(".", ",")}s
                               </div>
@@ -657,7 +658,7 @@ export function AgenticAnalysisSection() {
 
                     {/* Suchnachfrage in der Branche (die „Rechnung") */}
                     {result.searchDemand?.total ? (
-                      <ResultBlock title="Suchnachfrage in Ihrer Branche" hint={result.branchLabel || undefined}>
+                      <ResultBlock title="So viele Kunden suchen Ihre Leistung" hint={result.branchLabel || undefined}>
                         <div className="flex flex-wrap items-end gap-x-6 gap-y-2">
                           <div>
                             <div className="text-[30px] font-extrabold leading-none" style={{ color: BLUE }}>
@@ -687,11 +688,11 @@ export function AgenticAnalysisSection() {
                     {/* Keywords & Suchnachfrage */}
                     {result.semrush.topKeywords.length ? (
                       <ResultBlock
-                        title="Keywords & Suchnachfrage"
+                        title="Dafür werden Sie bereits gefunden"
                         hint={
                           result.semrush.organicKeywords != null
-                            ? `${deNum(result.semrush.organicKeywords)} Keywords ranken`
-                            : "live aus SEMrush"
+                            ? `✓ SEMrush live · ${deNum(result.semrush.organicKeywords)} Suchbegriffe insgesamt`
+                            : "✓ live aus SEMrush"
                         }
                       >
                         <ul className="space-y-2">
@@ -709,7 +710,7 @@ export function AgenticAnalysisSection() {
 
                     {/* Zeit + Wertbeitrag */}
                     <div className="grid gap-5 md:grid-cols-2">
-                      <ResultBlock title="Freigesetzte Zeit">
+                      <ResultBlock title="So viel Zeit gewinnen Sie zurück">
                         <div className="flex items-end gap-2">
                           <span className="text-[34px] font-extrabold leading-none" style={{ color: BLUE }}>
                             {result.freed.weeklyHours}
@@ -721,20 +722,20 @@ export function AgenticAnalysisSection() {
                           {result.freed.fte === 1 ? "" : "n"}.
                         </p>
                       </ResultBlock>
-                      <ResultBlock title="Möglicher Wertbeitrag / Jahr">
+                      <ResultBlock title="So viel ist das pro Jahr wert">
                         <div className="text-[30px] font-extrabold leading-none" style={{ color: ORANGE }}>
                           {chf(result.roi.total)}
                         </div>
                         <p className="mt-2 text-[13px] leading-relaxed text-[#5B6675]">
-                          Zeitwert {chf(result.roi.timeValue)} · Mehr-Abschlüsse {chf(result.roi.dealsValue)} · Bindung{" "}
-                          {chf(result.roi.retentionValue)}. Amortisation ~{result.roi.paybackMonths} Monate.
+                          Gesparte Arbeitszeit {chf(result.roi.timeValue)} · zusätzliche Aufträge {chf(result.roi.dealsValue)} ·
+                          treuere Kunden {chf(result.roi.retentionValue)}. Rechnet sich nach ~{result.roi.paybackMonths} Monaten.
                         </p>
                       </ResultBlock>
                     </div>
 
                     {/* Würdigung: was schon läuft */}
                     {autoDoneCount + revDoneCount > 0 ? (
-                      <div className="flex items-start gap-2.5 rounded-[14px] border border-[#22C55E]/30 bg-[#F0FDF4] p-4 text-[13.5px] font-semibold text-[#15803D]">
+                      <div className="flex items-start gap-2.5 rounded-[14px] border border-[#1F9A5E]/30 bg-[#F0FDF4] p-4 text-[13.5px] font-semibold text-[#57C7FF]">
                         <Check size={16} className="mt-0.5 flex-none" />
                         <span>
                           Bereits im Einsatz: {autoDoneCount} Automatisierung{autoDoneCount === 1 ? "" : "en"} und{" "}
@@ -746,27 +747,27 @@ export function AgenticAnalysisSection() {
                     {/* Empfohlen: branchenüblich, aber noch nicht im Einsatz */}
                     {result.automation.length ? (
                       <ResultBlock
-                        title="Empfohlene Automatisierungen"
-                        hint={result.branchLabel ? `noch offen · ${result.branchLabel}` : "noch offen"}
+                        title="Das nimmt Ihnen ab sofort Arbeit ab"
+                        hint={result.branchLabel ? `Ihre grössten Hebel · ${result.branchLabel}` : "Ihre grössten Hebel"}
                       >
                         <PickList picks={result.automation} />
                       </ResultBlock>
                     ) : null}
 
                     {result.revops.length ? (
-                      <ResultBlock title="Empfohlene RevOps-Maßnahmen" hint="noch offen · Wachstum & Bindung">
+                      <ResultBlock title="So gewinnen Sie mehr Kunden" hint="Wachstum & Kundenbindung">
                         <PickList picks={result.revops} />
                       </ResultBlock>
                     ) : null}
 
                     {/* Strategische Top-Empfehlungen */}
                     {result.recommendations.length ? (
-                      <ResultBlock title="Strategische Schwerpunkte">
+                      <ResultBlock title="Ihre nächsten Schritte">
                         <ul className="space-y-2.5">
                           {result.recommendations.map((r) => (
                             <li key={r.title} className="flex items-start gap-2.5">
                               <span
-                                className="mt-[2px] flex h-5 w-5 flex-none items-center justify-center rounded-full bg-[#EAF4FF]"
+                                className="mt-[2px] flex h-5 w-5 flex-none items-center justify-center rounded-full bg-[#F1F3F5]"
                                 style={{ color: BLUE }}
                               >
                                 <Check size={13} />
@@ -788,17 +789,17 @@ export function AgenticAnalysisSection() {
                 )}
 
                 {/* CTA + Trust */}
-                <div className="mt-7 flex flex-col items-center gap-3 border-t border-[#EEF2F7] pt-6 sm:flex-row sm:justify-center">
+                <div className="mt-7 flex flex-col items-center gap-3 border-t border-[#F1F3F5] pt-6 sm:flex-row sm:justify-center">
                   <a
                     href="#kontakt"
-                    className="inline-flex items-center gap-2 rounded-[12px] bg-gradient-to-br from-[#3BD974] to-[#22C55E] px-6 py-3.5 text-[15px] font-bold text-white shadow-[0_10px_24px_rgba(34,197,94,0.32)] transition-transform hover:-translate-y-0.5"
+                    className="inline-flex items-center gap-2 rounded-[12px] bg-[#8FE05A] px-6 py-3.5 text-[15px] font-bold text-[#122400] shadow-[0_6px_16px_rgba(10,12,16,0.18)] transition-transform hover:-translate-y-0.5"
                   >
                     Kostenloses Erstgespräch sichern <ArrowRight size={17} />
                   </a>
                   <button
                     type="button"
                     onClick={resetAnalysis}
-                    className="inline-flex items-center gap-2 rounded-[12px] border border-[#E3E9F1] px-5 py-3 text-[14px] font-bold text-[#5B6675] transition hover:border-[#2DA8FF]/50 hover:text-[#111418]"
+                    className="inline-flex items-center gap-2 rounded-[12px] border border-[#E1E4E8] px-5 py-3 text-[14px] font-bold text-[#5B6675] transition hover:border-[#1F9A5E]/50 hover:text-[#111418]"
                   >
                     <RotateCcw size={16} />
                     Neue Analyse
@@ -820,7 +821,7 @@ function Field({
   icon, placeholder, value, onChange, type = "text",
 }: { icon: React.ReactNode; placeholder: string; value: string; onChange: (v: string) => void; type?: string }) {
   return (
-    <div className="flex items-center gap-2 rounded-[11px] border border-[#E3E9F1] bg-white px-3 py-2.5 focus-within:border-[#2DA8FF] focus-within:shadow-[0_0_0_1px_#2DA8FF]">
+    <div className="flex items-center gap-2 rounded-[11px] border border-[#E1E4E8] bg-white px-3 py-2.5 focus-within:border-[#1F9A5E] focus-within:shadow-[0_0_0_1px_#1F9A5E]">
       <span className="text-[#9AA7B8]">{icon}</span>
       <input
         type={type}
@@ -835,7 +836,7 @@ function Field({
 
 function ResultBlock({ title, hint, children }: { title: string; hint?: string; children: React.ReactNode }) {
   return (
-    <div className="rounded-[16px] border border-[#ECF1F6] bg-white p-5 shadow-[0_2px_10px_rgba(17,20,24,0.04)]">
+    <div className="rounded-[16px] border border-[#F1F3F5] bg-white p-5 shadow-[0_2px_10px_rgba(17,20,24,0.04)]">
       <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
         <h4 className="text-[13px] font-extrabold uppercase tracking-[0.5px] text-[#111418]">{title}</h4>
         {hint ? <span className="text-[11.5px] font-medium text-[#9AA7B8]">{hint}</span> : null}
@@ -857,23 +858,15 @@ function StatusRow({
   const answered = Boolean(status)
   return (
     <div
-      className={`rounded-[14px] border p-4 transition ${
-        answered ? "border-[#2DA8FF]/60 bg-[#F2F9FF]" : "border-[#E3E9F1] bg-[#FAFCFE]"
+      className={`rounded-[12px] border p-3 transition ${
+        answered ? "border-[#1F9A5E]/60 bg-[#FAFAF7]" : "border-[#E1E4E8] bg-[#FAFAF7]"
       }`}
     >
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+      <div className="flex flex-col gap-2.5 sm:flex-row sm:items-center sm:justify-between">
         <div className="min-w-0">
-          <p className="text-[14.5px] font-bold text-[#111418]">
-            {item.title}
-            {item.branchSpecific ? (
-              <span className="ml-2 inline-block rounded-full bg-[#EAF4FF] px-2 py-0.5 text-[10.5px] font-bold uppercase tracking-[0.4px] text-[#1E6FB8]">
-                branchentypisch
-              </span>
-            ) : null}
-          </p>
-          <p className="mt-1 text-[12.5px] leading-snug text-[#6B7686]">
+          <p className="text-[14px] font-bold leading-snug text-[#111418]">{item.title}</p>
+          <p className="mt-0.5 text-[12.5px] leading-snug text-[#6B7686]">
             <span className="font-semibold text-[#3A4453]">{item.benefit}</span>
-            {item.ablauf ? <span className="text-[#9AA7B8]"> · {item.ablauf}</span> : null}
           </p>
         </div>
         <div className="flex flex-none gap-2">
@@ -881,7 +874,7 @@ function StatusRow({
             type="button"
             onClick={() => onSet(item.title, "ja")}
             className={`rounded-[10px] border px-3 py-2 text-[12.5px] font-bold transition ${
-              status === "ja" ? "border-[#22C55E] bg-[#22C55E] text-white" : "border-[#E3E9F1] bg-white text-[#3A4453] hover:border-[#22C55E]/60"
+              status === "ja" ? "border-[#8FE05A] bg-[#8FE05A] text-[#122400]" : "border-[#E1E4E8] bg-white text-[#3A4453] hover:border-[#1F9A5E]/60"
             }`}
           >
             Machen wir
@@ -890,7 +883,7 @@ function StatusRow({
             type="button"
             onClick={() => onSet(item.title, "nein")}
             className={`rounded-[10px] border px-3 py-2 text-[12.5px] font-bold transition ${
-              status === "nein" ? "border-[#2DA8FF] bg-[#2DA8FF] text-white" : "border-[#E3E9F1] bg-white text-[#3A4453] hover:border-[#2DA8FF]/60"
+              status === "nein" ? "border-[#8FE05A] bg-[#8FE05A] text-[#122400]" : "border-[#E1E4E8] bg-white text-[#3A4453] hover:border-[#1F9A5E]/60"
             }`}
           >
             Noch nicht
@@ -907,7 +900,7 @@ function PickList({ picks }: { picks: UseCasePick[] }) {
       {picks.map((p, i) => (
         <li key={p.title + i} className="flex items-start gap-2.5">
           <span
-            className="mt-[2px] flex h-5 w-5 flex-none items-center justify-center rounded-full bg-[#EAF4FF]"
+            className="mt-[2px] flex h-5 w-5 flex-none items-center justify-center rounded-full bg-[#F1F3F5]"
             style={{ color: BLUE }}
           >
             <Check size={13} />
@@ -915,10 +908,6 @@ function PickList({ picks }: { picks: UseCasePick[] }) {
           <span className="text-[13.5px] leading-snug text-[#3A4453]">
             <b className="text-[#111418]">{p.title}</b> — {p.benefit}
             {p.ablauf ? <span className="mt-0.5 block text-[12.5px] text-[#5B6675]">So läuft&apos;s: {p.ablauf}</span> : null}
-            <span className="mt-0.5 block text-[12px] text-[#9AA7B8]">
-              Auslöser: {p.trigger} · Aufwand: {p.aufwand}
-              {p.branchSpecific ? " · branchentypisch" : ""}
-            </span>
           </span>
         </li>
       ))}
@@ -928,12 +917,12 @@ function PickList({ picks }: { picks: UseCasePick[] }) {
 
 function ScoreBar({ label, value }: { label: string; value: number }) {
   return (
-    <div className="rounded-[12px] border border-[#E8EEF5] bg-[#FAFCFE] p-3 text-center">
+    <div className="rounded-[12px] border border-[#F1F3F5] bg-[#FAFAF7] p-3 text-center">
       <div className="text-[22px] font-extrabold leading-none text-[#111418]">
         {value}
         <span className="text-[12px] font-bold text-[#9AA7B8]">/100</span>
       </div>
-      <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-[#E8EEF5]">
+      <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-[#F1F3F5]">
         <div className="h-full rounded-full" style={{ width: `${value}%`, background: `linear-gradient(90deg, ${BLUE}, ${ORANGE})` }} />
       </div>
       <div className="mt-1.5 text-[12px] font-semibold text-[#5B6675]">{label}</div>

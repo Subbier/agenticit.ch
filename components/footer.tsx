@@ -32,6 +32,7 @@ const footerLinks: FooterSection[] = [
     label: "Unternehmen",
     links: [
       { title: "Kontakt", href: "#contact" },
+      { title: "Karriere", href: "/karriere" },
       { title: "WhatsApp", href: WHATSAPP_URL },
       { title: "Case Studies", href: "/case-studies" },
       { title: "Datenschutz", href: "/datenschutz" },

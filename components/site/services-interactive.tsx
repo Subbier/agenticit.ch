@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useMemo, useState, type ComponentType } from "react"
 import {
@@ -67,7 +67,7 @@ function ProposalView({ text }: { text: string }) {
       {text.split("\n").map((line, i) => {
         if (line.startsWith("## "))
           return (
-            <h3 key={i} className="pt-2 text-lg font-semibold text-emerald-200">
+            <h3 key={i} className="pt-2 text-lg font-semibold text-[#57C7FF]">
               {line.slice(3)}
             </h3>
           )
@@ -113,7 +113,7 @@ function TierToggle({
     <div className="rounded-xl border border-white/10 bg-black/30 p-4">
       <div className="flex items-center justify-between gap-4">
         <div className="flex items-center gap-2">
-          <Icon className="size-4 text-emerald-200" />
+          <Icon className="size-4 text-[#57C7FF]" />
           <span className="font-medium text-white">{title}</span>
         </div>
         <Switch checked={enabled} onCheckedChange={onEnabled} />
@@ -133,7 +133,7 @@ function TierToggle({
             </SelectContent>
           </Select>
           <p className="text-xs text-white/55">{options.find((o) => o.id === tier)?.description}</p>
-          <p className="text-sm font-semibold text-emerald-200">{priceLabel}</p>
+          <p className="text-sm font-semibold text-[#57C7FF]">{priceLabel}</p>
         </div>
       )}
     </div>
@@ -164,7 +164,7 @@ export function ServicesInteractive() {
       <div className="grid gap-4 sm:grid-cols-3">
         {benchmarkKpis.map((kpi) => (
           <Card key={kpi.label} className="border-white/15 bg-white/5 p-6 text-center backdrop-blur-sm">
-            <p className="text-4xl font-bold text-emerald-200">{kpi.value}</p>
+            <p className="text-4xl font-bold text-[#57C7FF]">{kpi.value}</p>
             <p className="mt-2 text-sm text-white/65">{kpi.label}</p>
           </Card>
         ))}
@@ -192,7 +192,7 @@ export function ServicesInteractive() {
         <TabsContent value="simulator" className="space-y-6">
           <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
             <Card className="border-white/15 bg-white/5 p-6 backdrop-blur-sm sm:p-8">
-              <div className="flex items-center gap-2 text-emerald-200">
+              <div className="flex items-center gap-2 text-[#57C7FF]">
                 <Sparkles className="size-5" />
                 <span className="text-sm font-semibold uppercase tracking-[0.16em]">Paket-Rechner</span>
               </div>
@@ -293,7 +293,7 @@ export function ServicesInteractive() {
 
             <div className="space-y-4">
               <Card className="border-emerald-400/30 bg-emerald-400/10 p-6 backdrop-blur-sm">
-                <p className="text-xs uppercase tracking-widest text-emerald-200/80">Live MRR</p>
+                <p className="text-xs uppercase tracking-widest text-[#57C7FF]/80">Live MRR</p>
                 <p className="mt-2 text-4xl font-bold text-white">{formatChf(mrr.totalMrr)}</p>
                 <p className="mt-1 text-sm text-white/60">pro Monat · {formatChf(mrr.annualValue)} / Jahr</p>
                 <div className="mt-6 space-y-2 text-sm text-white/75">
@@ -392,7 +392,7 @@ export function ServicesInteractive() {
                     <Tooltip {...tooltipProps} />
                     <Legend />
                     <Line type="monotone" dataKey="seminar" stroke="#94a3b8" strokeWidth={2} name="Seminar" />
-                    <Line type="monotone" dataKey="micro" stroke="#10b981" strokeWidth={2} name="Micro-Learning" />
+                    <Line type="monotone" dataKey="micro" stroke="#1F9A5E" strokeWidth={2} name="Micro-Learning" />
                   </LineChart>
                 </ResponsiveContainer>
               </div>

@@ -1,9 +1,15 @@
 // Schlanker SEMrush-API-Client (Standard-API, api.semrush.com).
 // Doku: type=domain_rank / domain_organic. Antwort = CSV (;-getrennt) mit Header.
+//
+// Robustheit: Jeder Call wird bei Netzwerkfehlern einmal wiederholt, und wenn die
+// Schweizer Datenbank nichts liefert, prüfen wir zusätzlich DE und US. So entsteht
+// nur noch in echten Ausnahmefällen eine "geschätzte" Beurteilung.
 
 import type { SemrushResult } from "./types"
 
 const BASE = "https://api.semrush.com/"
+const CALL_TIMEOUT_MS = 15_000
+const DATABASES = ["ch", "de", "us"] as const
 
 export function normalizeDomain(input: string): string {
   if (!input) return ""
@@ -25,19 +31,40 @@ function parseCsv(text: string): Record<string, string>[] {
   })
 }
 
-async function call(params: Record<string, string>, signal?: AbortSignal): Promise<string> {
+async function callOnce(params: Record<string, string>): Promise<string> {
   const url = new URL(BASE)
   Object.entries(params).forEach(([k, v]) => url.searchParams.set(k, v))
-  const res = await fetch(url.toString(), { signal })
-  const text = await res.text()
-  return text
+  const controller = new AbortController()
+  const timeout = setTimeout(() => controller.abort(), CALL_TIMEOUT_MS)
+  try {
+    const res = await fetch(url.toString(), { signal: controller.signal })
+    return await res.text()
+  } finally {
+    clearTimeout(timeout)
+  }
+}
+
+// Ein Retry bei Netzwerk-/Timeout-Fehlern, damit ein kurzer Aussetzer der API
+// nicht sofort zu "geschätzten" Werten führt.
+async function call(params: Record<string, string>): Promise<string> {
+  try {
+    return await callOnce(params)
+  } catch {
+    await new Promise((r) => setTimeout(r, 600))
+    return callOnce(params)
+  }
+}
+
+function isEmpty(raw: string): boolean {
+  return /ERROR|NOTHING FOUND/i.test(raw) || !raw.includes(";")
 }
 
 /**
- * Holt Domain-Overview + Top-Keywords. Liefert bei fehlendem Key oder
- * "NOTHING FOUND" einen sauberen `found:false`-Zustand (kein Throw).
+ * Holt Domain-Overview + Top-Keywords. Prüft CH, dann DE, dann US.
+ * Liefert bei fehlendem Key oder komplett fehlenden Daten einen sauberen
+ * `found:false`-Zustand (kein Throw).
  */
-export async function fetchSemrush(domain: string, database = "ch"): Promise<SemrushResult> {
+export async function fetchSemrush(domain: string): Promise<SemrushResult> {
   // Akzeptiert beide Variablennamen: SEMRUSH_API_KEY (Doku-Standard) ODER SEMRUSH
   // (so ist der Key aktuell in Vercel hinterlegt). So greift der Key unabhängig vom Namen.
   const key = process.env.SEMRUSH_API_KEY || process.env.SEMRUSH
@@ -45,23 +72,24 @@ export async function fetchSemrush(domain: string, database = "ch"): Promise<Sem
   if (!key) return { ...empty, note: "SEMrush-Key fehlt – Sichtbarkeitswerte geschätzt." }
   if (!domain) return { ...empty, note: "Keine Domain angegeben." }
 
-  const controller = new AbortController()
-  const timeout = setTimeout(() => controller.abort(), 12_000)
-  try {
-    const overviewRaw = await call(
-      {
+  let lastNote = "Für diese Domain liegen (noch) keine SEMrush-Daten vor."
+
+  for (const database of DATABASES) {
+    let overviewRaw: string
+    try {
+      overviewRaw = await call({
         type: "domain_rank",
         key,
         domain,
         database,
         export_columns: "Dn,Rk,Or,Ot,Oc,Ad",
-      },
-      controller.signal,
-    )
-
-    if (/ERROR|NOTHING FOUND/i.test(overviewRaw) || !overviewRaw.includes(";")) {
-      return { ...empty, note: "Für diese Domain liegen (noch) keine SEMrush-Daten vor." }
+      })
+    } catch {
+      lastNote = "SEMrush zeitweise nicht erreichbar – Sichtbarkeitswerte geschätzt."
+      continue
     }
+
+    if (isEmpty(overviewRaw)) continue
 
     const ov = parseCsv(overviewRaw)[0] ?? {}
     const result: SemrushResult = {
@@ -72,22 +100,22 @@ export async function fetchSemrush(domain: string, database = "ch"): Promise<Sem
       paidKeywords: num(ov["Adwords Keywords"]),
       topKeywords: [],
     }
+    if (database !== "ch") {
+      result.note = `Datenbasis: SEMrush ${database.toUpperCase()} (für CH liegen keine Daten vor).`
+    }
 
     // Top-Keywords (best effort, blockiert das Ergebnis nicht)
     try {
-      const kwRaw = await call(
-        {
-          type: "domain_organic",
-          key,
-          domain,
-          database,
-          display_limit: "6",
-          display_sort: "tr_desc",
-          export_columns: "Ph,Po,Nq,Cp",
-        },
-        controller.signal,
-      )
-      if (kwRaw.includes(";") && !/ERROR|NOTHING FOUND/i.test(kwRaw)) {
+      const kwRaw = await call({
+        type: "domain_organic",
+        key,
+        domain,
+        database,
+        display_limit: "10",
+        display_sort: "tr_desc",
+        export_columns: "Ph,Po,Nq,Cp",
+      })
+      if (!isEmpty(kwRaw)) {
         result.topKeywords = parseCsv(kwRaw)
           .map((r) => ({
             keyword: r["Keyword"] ?? "",
@@ -96,18 +124,16 @@ export async function fetchSemrush(domain: string, database = "ch"): Promise<Sem
             cpc: parseFloat((r["CPC"] ?? "0").replace(",", ".")) || 0,
           }))
           .filter((k) => k.keyword)
-          .slice(0, 6)
+          .slice(0, 10)
       }
     } catch {
       /* Keywords optional */
     }
 
     return result
-  } catch {
-    return { ...empty, note: "SEMrush nicht erreichbar – Sichtbarkeitswerte geschätzt." }
-  } finally {
-    clearTimeout(timeout)
   }
+
+  return { ...empty, note: lastNote }
 }
 
 function num(v: string | undefined): number | undefined {

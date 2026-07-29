@@ -12,17 +12,17 @@ export type CalculatorReportContact = {
 function baseStyles() {
   return `
     * { box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: #0B1F3A; margin: 0; padding: 40px; background: #fff; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: #0A0C10; margin: 0; padding: 40px; background: #fff; }
     .brand { font-size: 22px; font-weight: 800; margin-bottom: 4px; }
-    .brand span { color: #16C7C0; }
-    .eyebrow { display: inline-block; background: rgba(22,199,192,.12); color: #0a8f89; font-size: 11px; font-weight: 800; letter-spacing: .6px; text-transform: uppercase; padding: 6px 12px; border-radius: 999px; margin: 16px 0 8px; }
+    .brand span { color: #1F9A5E; }
+    .eyebrow { display: inline-block; background: rgba(31,154,94,.12); color: #1F9A5E; font-size: 11px; font-weight: 800; letter-spacing: .6px; text-transform: uppercase; padding: 6px 12px; border-radius: 999px; margin: 16px 0 8px; }
     h1 { font-size: 28px; line-height: 1.15; margin: 0 0 12px; }
     p { color: #475569; line-height: 1.55; font-size: 14px; }
     .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 24px 0; }
-    .card { border: 1px solid #E3E9F2; border-radius: 14px; padding: 16px; background: #FAFCFF; }
-    .card b { display: block; font-size: 26px; color: #0a8f89; margin-top: 4px; }
+    .card { border: 1px solid #E1E4E8; border-radius: 14px; padding: 16px; background: #FAFAF7; }
+    .card b { display: block; font-size: 26px; color: #1F9A5E; margin-top: 4px; }
     .card span { font-size: 12px; color: #5A6B82; text-transform: uppercase; letter-spacing: .4px; font-weight: 700; }
-    .footer { margin-top: 32px; padding-top: 16px; border-top: 1px solid #E3E9F2; font-size: 11px; color: #9aa9bf; }
+    .footer { margin-top: 32px; padding-top: 16px; border-top: 1px solid #E1E4E8; font-size: 11px; color: #9aa9bf; }
     @media print { body { padding: 24px; } }
   `
 }

@@ -1,7 +1,7 @@
 import type { LegalSectionContent } from "@/lib/legal-types"
 
 export const impressumMeta = {
-  title: "Impressum – AgenticIT Schweiz",
+  title: "Impressum",
   description: "Impressum und Kontakt der Agentic IT GmbH (AgenticIT) – KI Agenten und Lead Automation aus der Schweiz.",
 }
 

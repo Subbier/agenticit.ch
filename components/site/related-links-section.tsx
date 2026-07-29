@@ -1,4 +1,4 @@
-import Link from "next/link"
+﻿import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 
 type RelatedLink = {
@@ -29,7 +29,7 @@ export function RelatedLinksSection({
             >
               <div className="flex items-center justify-between gap-3">
                 <h3 className="text-base font-semibold text-white">{link.label}</h3>
-                <ArrowRight className="size-4 shrink-0 text-emerald-200 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="size-4 shrink-0 text-[#57C7FF] transition-transform group-hover:translate-x-1" />
               </div>
               <p className="mt-2 text-sm leading-6 text-white/65">{link.description}</p>
             </Link>

@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useEffect, useState } from "react"
 import Link from "next/link"
@@ -53,7 +53,7 @@ export function SiteNav() {
                 key={item.href}
                 href={item.href}
                 className={`text-sm font-medium transition ${
-                  active ? "text-emerald-200" : "text-white/72 hover:text-white"
+                  active ? "text-[#57C7FF]" : "text-white/72 hover:text-white"
                 }`}
               >
                 {item.name}

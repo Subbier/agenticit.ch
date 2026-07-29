@@ -8,7 +8,7 @@ const INK = "#16233B"
 const SUB = "#5C6B82"
 const HAIR = "#E6ECF3"
 const SURF = "#F6F8FB"
-const BLUE = "#2DA8FF"
+const BLUE = "#57C7FF"
 const ORANGE = "#F97316"
 const GREEN = "#2BB673"
 const AMBER = "#E69A2E"
@@ -215,7 +215,7 @@ export async function generatePdf(a: Analysis): Promise<Buffer> {
       label(doc, M, y, "SUCHNACHFRAGE IN IHRER BRANCHE")
       y += 16
       doc.roundedRect(M, y, CW, 54, 12).fill(INK)
-      doc.font("Helvetica").fontSize(9).fillColor("#9FB0C8").text("Suchanfragen / Monat (Auswahl)", M + 20, y + 11)
+      doc.font("Helvetica").fontSize(9).fillColor("#9AA6B2").text("Suchanfragen / Monat (Auswahl)", M + 20, y + 11)
       doc.font("Helvetica-Bold").fontSize(23).fillColor("#FFFFFF").text(n(a.searchDemand.total), M + 20, y + 24)
       doc.font("Helvetica").fontSize(9).fillColor(BLUE).text(
         `bei guter Sichtbarkeit: ~${n(a.searchDemand.potentialVisitors)} Besucher  ·  ~${n(a.searchDemand.potentialLeads)} Anfragen / Mt.`,
@@ -322,7 +322,7 @@ export async function generatePdf(a: Analysis): Promise<Buffer> {
     y += 2
     // Total band (dunkel)
     doc.roundedRect(M, y, CW, 60, 12).fill(INK)
-    doc.font("Helvetica").fontSize(9.5).fillColor("#9FB0C8").text("Geschätzter Jahresbeitrag", M + 22, y + 14)
+    doc.font("Helvetica").fontSize(9.5).fillColor("#9AA6B2").text("Geschätzter Jahresbeitrag", M + 22, y + 14)
     doc.font("Helvetica-Bold").fontSize(26).fillColor("#FFFFFF").text(`rund ${chf(a.roi.total)}`, M + 22, y + 28)
     doc.font("Helvetica-Bold").fontSize(11).fillColor(BLUE).text(`Amortisation unter ${a.roi.paybackMonths} Monaten`, W - M - 230, y + 22, { width: 212, align: "right" })
     y += 60 + 18
@@ -434,11 +434,11 @@ export async function generatePdf(a: Analysis): Promise<Buffer> {
     doc.roundedRect(M, y, CW, ctaH, 14).fill(INK)
     tick(doc, M + 24, y + 22, BLUE)
     doc.font("Helvetica-Bold").fontSize(17).fillColor("#FFFFFF").text("Was machen wir als Nächstes?", M + 24, y + 34)
-    doc.font("Helvetica").fontSize(10).fillColor("#9FB0C8").text("Sichern Sie sich Ihr unverbindliches Strategiegespräch mit AgenticIT.", M + 24, y + 58, { width: CW - 180 })
+    doc.font("Helvetica").fontSize(10).fillColor("#9AA6B2").text("Sichern Sie sich Ihr unverbindliches Strategiegespräch mit AgenticIT.", M + 24, y + 58, { width: CW - 180 })
     doc.roundedRect(M + 24, y + 76, 180, 24, 12).fill(BLUE)
     doc.font("Helvetica-Bold").fontSize(10).fillColor(INK).text("agenticit.ch/#kontakt", M + 24, y + 83, { width: 180, align: "center" })
     doc.image(qr, W - M - 92, y + 20, { width: 70, height: 70 })
-    doc.font("Helvetica").fontSize(7).fillColor("#9FB0C8").text("Scannen & Termin sichern", W - M - 110, y + 92, { width: 100, align: "center" })
+    doc.font("Helvetica").fontSize(7).fillColor("#9AA6B2").text("Scannen & Termin sichern", W - M - 110, y + 92, { width: 100, align: "center" })
     footer(doc)
 
     doc.end()

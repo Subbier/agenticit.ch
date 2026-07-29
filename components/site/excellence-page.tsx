@@ -1,8 +1,8 @@
-"use client"
+﻿"use client"
 
 import { ArrowRight, CheckCircle2, Search, Megaphone, Plug } from "lucide-react"
 import { GlassmorphismNav } from "@/components/glassmorphism-nav"
-import { Footer } from "@/components/footer"
+import { CarbonFooter } from "@/components/site/carbon-footer"
 import Aurora from "@/components/site/aurora-bg"
 import { ExcellenceMap } from "@/components/site/excellence-map"
 import { OmnichannelWheel } from "@/components/site/omnichannel-wheel"
@@ -69,7 +69,7 @@ export function ExcellencePage() {
           {/* INSIGHT */}
           <section className="px-4 py-12 sm:py-16">
             <div className="max-w-3xl mx-auto text-center">
-              <p className="overline text-sm font-semibold uppercase tracking-[0.2em] text-emerald-200">Der Gedanke dahinter</p>
+              <p className="overline text-sm font-semibold uppercase tracking-[0.2em] text-[#57C7FF]">Der Gedanke dahinter</p>
               <h2 className="mt-3 text-2xl sm:text-3xl md:text-4xl font-bold text-white text-balance">
                 Einzelne Tools bringen wenig. Das Zusammenspiel bringt Kunden.
               </h2>
@@ -85,7 +85,7 @@ export function ExcellencePage() {
           <section id="disziplinen" className="scroll-mt-24 px-4 py-12 sm:py-16">
             <div className="max-w-5xl mx-auto grid gap-10 lg:grid-cols-2 lg:items-center">
               <div>
-                <p className="overline text-sm font-semibold uppercase tracking-[0.2em] text-emerald-200">Unsere Meisterschaft</p>
+                <p className="overline text-sm font-semibold uppercase tracking-[0.2em] text-[#57C7FF]">Unsere Meisterschaft</p>
                 <h2 className="mt-3 text-2xl sm:text-3xl md:text-4xl font-bold text-white text-balance">
                   Sechs Disziplinen. Ein Ergebnis.
                 </h2>
@@ -101,7 +101,7 @@ export function ExcellencePage() {
                     "Übergeben – jede Anfrage sauber in Ihrem CRM.",
                   ].map((t) => (
                     <li key={t} className="flex items-start gap-3 text-sm sm:text-base text-white/80">
-                      <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-emerald-300" />
+                      <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-[#57C7FF]" />
                       <span>{t}</span>
                     </li>
                   ))}
@@ -115,7 +115,7 @@ export function ExcellencePage() {
           <section id="omnichannel" className="scroll-mt-24 px-4 py-12 sm:py-16">
             <div className="max-w-6xl mx-auto grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
               <div>
-                <p className="overline text-sm font-semibold uppercase tracking-[0.2em] text-emerald-200">Omnichannel</p>
+                <p className="overline text-sm font-semibold uppercase tracking-[0.2em] text-[#57C7FF]">Omnichannel</p>
                 <h2 className="mt-3 text-2xl sm:text-3xl md:text-4xl font-bold text-white text-balance">
                   Ein Kanal-Erlebnis. Über alle Kanäle hinweg.
                 </h2>
@@ -131,7 +131,7 @@ export function ExcellencePage() {
                     "Tippen Sie einen Kanal an und sehen Sie, was wir dort für Sie übernehmen.",
                   ].map((t) => (
                     <li key={t} className="flex items-start gap-3 text-sm sm:text-base text-white/80">
-                      <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-emerald-300" />
+                      <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-[#57C7FF]" />
                       <span>{t}</span>
                     </li>
                   ))}
@@ -148,7 +148,7 @@ export function ExcellencePage() {
                 <BrandsInteractive />
               </div>
               <div className="order-1 lg:order-2">
-                <div className="mb-5 inline-flex size-12 items-center justify-center rounded-2xl bg-emerald-300/15 text-emerald-200">
+                <div className="mb-5 inline-flex size-12 items-center justify-center rounded-2xl bg-emerald-300/15 text-[#57C7FF]">
                   <Plug className="size-6" />
                 </div>
                 <h2 className="text-2xl sm:text-3xl font-bold text-white text-balance">
@@ -167,7 +167,7 @@ export function ExcellencePage() {
           <section className="px-4 py-12 sm:py-16">
             <div className="max-w-5xl mx-auto">
               <div className="text-center mb-10">
-                <p className="overline text-sm font-semibold uppercase tracking-[0.2em] text-emerald-200">Was das für Sie heisst</p>
+                <p className="overline text-sm font-semibold uppercase tracking-[0.2em] text-[#57C7FF]">Was das für Sie heisst</p>
                 <h2 className="mt-3 text-2xl sm:text-3xl md:text-4xl font-bold text-white text-balance">
                   Mehr Sichtbarkeit. Mehr Anfragen. Kein Aufwand.
                 </h2>
@@ -179,7 +179,7 @@ export function ExcellencePage() {
                   { icon: Plug, title: "Keine Lernkurve", text: "Wir fügen uns in Ihre bestehende Tool-Welt ein. Sie arbeiten weiter wie bisher." },
                 ].map((c) => (
                   <div key={c.title} className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-sm">
-                    <div className="mb-4 inline-flex size-10 items-center justify-center rounded-xl bg-emerald-300/15 text-emerald-200">
+                    <div className="mb-4 inline-flex size-10 items-center justify-center rounded-xl bg-emerald-300/15 text-[#57C7FF]">
                       <c.icon className="size-5" />
                     </div>
                     <h3 className="text-lg font-semibold text-white">{c.title}</h3>
@@ -201,7 +201,7 @@ export function ExcellencePage() {
           <section id="contact" className="scroll-mt-24 px-4 py-16 sm:py-20">
             <div className="max-w-5xl mx-auto grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
               <div>
-                <p className="overline text-sm font-semibold uppercase tracking-[0.2em] text-emerald-200">Kennenlernen</p>
+                <p className="overline text-sm font-semibold uppercase tracking-[0.2em] text-[#57C7FF]">Kennenlernen</p>
                 <h2 className="mt-4 text-3xl md:text-4xl font-light text-white leading-tight text-balance">
                   Neugierig, wie sichtbar Sie in Ihrer Branche werden können?
                 </h2>
@@ -216,7 +216,7 @@ export function ExcellencePage() {
                     "Keine Umstellung, keine Lernkurve",
                   ].map((b) => (
                     <div key={b} className="flex items-center gap-3 rounded-lg border border-white/10 bg-white/[0.04] p-3">
-                      <CheckCircle2 className="size-4 shrink-0 text-emerald-200" />
+                      <CheckCircle2 className="size-4 shrink-0 text-[#57C7FF]" />
                       <span>{b}</span>
                     </div>
                   ))}
@@ -233,7 +233,7 @@ export function ExcellencePage() {
             </div>
           </section>
 
-          <Footer />
+          <CarbonFooter />
         </div>
       </main>
     </div>

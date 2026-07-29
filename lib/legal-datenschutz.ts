@@ -1,7 +1,7 @@
 import type { LegalSectionContent } from "@/lib/legal-types"
 
 export const datenschutzMeta = {
-  title: "Datenschutz – AgenticIT",
+  title: "Datenschutz",
   description: "Datenschutzerklärung der Agentic IT GmbH (AgenticIT) gemäss Schweizer DSG und DSGVO – Lead-Formulare und Website.",
 }
 

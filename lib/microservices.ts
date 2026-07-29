@@ -95,6 +95,7 @@ export function computeRoi(selected: Set<string>, scenario: Scenario, investment
     count++
   })
   const annual = threeYear / 3 + savings
-  const roi = investment > 0 ? ((annual - investment) / investment) * 100 : 0
+  // Ohne Auswahl steht der Rechner auf 0 (statt -100 % gegen die Investition).
+  const roi = count > 0 && investment > 0 ? ((annual - investment) / investment) * 100 : 0
   return { annual, threeYear, savings, roi, count }
 }

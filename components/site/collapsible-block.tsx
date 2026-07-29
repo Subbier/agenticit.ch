@@ -1,4 +1,4 @@
-import type { ReactNode } from "react"
+﻿import type { ReactNode } from "react"
 
 type CollapsibleBlockProps = {
   summary: string
@@ -18,7 +18,7 @@ export function CollapsibleBlock({
       ? "border-slate-200 bg-slate-50 open:border-emerald-300/40"
       : "border-white/10 bg-white/[0.03] open:border-emerald-300/25"
 
-  const summaryStyles = variant === "light" ? "text-emerald-800" : "text-emerald-200"
+  const summaryStyles = variant === "light" ? "text-[#57C7FF]" : "text-[#57C7FF]"
   const bodyStyles = variant === "light" ? "text-slate-600" : "text-white/72"
 
   return (

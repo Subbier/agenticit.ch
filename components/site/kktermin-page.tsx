@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 // Kampagnen-Landingpage (Demo) der fiktiven "Maklerservice AG".
 // Aufbau nach PAS: Pain -> Agitate -> Solution. Ziel: Lead ins
@@ -75,7 +75,7 @@ export function KkTerminPage() {
               <Leaf className="h-5 w-5" />
             </span>
             <span className="text-lg font-bold tracking-tight">
-              Maklerservice <span className="text-emerald-700">AG</span>
+              Maklerservice <span className="text-[#57C7FF]">AG</span>
             </span>
           </div>
           <a
@@ -89,12 +89,12 @@ export function KkTerminPage() {
 
       {/* PAIN */}
       <section className="mx-auto max-w-5xl px-5 pt-14 pb-10 text-center">
-        <p className="mb-4 inline-block rounded-full bg-emerald-700/10 px-4 py-1.5 text-sm font-semibold text-emerald-800">
+        <p className="mb-4 inline-block rounded-full bg-emerald-700/10 px-4 py-1.5 text-sm font-semibold text-[#57C7FF]">
           Für alle, die auf Alternativmedizin setzen
         </p>
         <h1 className="mx-auto max-w-3xl text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
           Sie zahlen jeden Monat Prämien –{" "}
-          <span className="text-emerald-700">Ihre Alternativmedizin aber aus der eigenen Tasche?</span>
+          <span className="text-[#57C7FF]">Ihre Alternativmedizin aber aus der eigenen Tasche?</span>
         </h1>
         <p className="mx-auto mt-5 max-w-2xl text-lg text-slate-600">
           Osteopathie, TCM, Akupunktur, Naturheilkunde: Genau die Behandlungen, die Ihnen guttun,
@@ -106,19 +106,19 @@ export function KkTerminPage() {
       <section className="mx-auto max-w-5xl px-5 pb-12">
         <div className="grid gap-4 sm:grid-cols-3">
           <div className="rounded-2xl border border-emerald-900/10 bg-white p-6">
-            <p className="text-3xl font-extrabold text-emerald-700">CHF 120–180</p>
+            <p className="text-3xl font-extrabold text-[#57C7FF]">CHF 120–180</p>
             <p className="mt-2 text-sm text-slate-600">
               kostet eine einzige Sitzung beim Osteopathen oder Naturheilpraktiker – selbst bezahlt.
             </p>
           </div>
           <div className="rounded-2xl border border-emerald-900/10 bg-white p-6">
-            <p className="text-3xl font-extrabold text-emerald-700">CHF 1'500+</p>
+            <p className="text-3xl font-extrabold text-[#57C7FF]">CHF 1'500+</p>
             <p className="mt-2 text-sm text-slate-600">
               geben regelmässige Nutzer von Komplementärmedizin pro Jahr aus – Jahr für Jahr.
             </p>
           </div>
           <div className="rounded-2xl border border-emerald-900/10 bg-white p-6">
-            <p className="text-3xl font-extrabold text-emerald-700">1× im Jahr</p>
+            <p className="text-3xl font-extrabold text-[#57C7FF]">1× im Jahr</p>
             <p className="mt-2 text-sm text-slate-600">
               haben Sie die Chance zu optimieren. Wer den Termin verpasst, zahlt zwölf weitere Monate drauf.
             </p>
@@ -143,7 +143,7 @@ export function KkTerminPage() {
           </p>
           <div className="mt-8 grid gap-4 sm:grid-cols-3">
             <div className="flex items-start gap-3 rounded-xl bg-[#f7faf8] p-5">
-              <PhoneCall className="mt-0.5 h-6 w-6 shrink-0 text-emerald-700" />
+              <PhoneCall className="mt-0.5 h-6 w-6 shrink-0 text-[#57C7FF]" />
               <div>
                 <p className="font-semibold">1. Rückruf in Minuten</p>
                 <p className="mt-1 text-sm text-slate-600">
@@ -153,7 +153,7 @@ export function KkTerminPage() {
               </div>
             </div>
             <div className="flex items-start gap-3 rounded-xl bg-[#f7faf8] p-5">
-              <Clock className="mt-0.5 h-6 w-6 shrink-0 text-emerald-700" />
+              <Clock className="mt-0.5 h-6 w-6 shrink-0 text-[#57C7FF]" />
               <div>
                 <p className="font-semibold">2. Termin nach Wunsch</p>
                 <p className="mt-1 text-sm text-slate-600">
@@ -163,7 +163,7 @@ export function KkTerminPage() {
               </div>
             </div>
             <div className="flex items-start gap-3 rounded-xl bg-[#f7faf8] p-5">
-              <ShieldCheck className="mt-0.5 h-6 w-6 shrink-0 text-emerald-700" />
+              <ShieldCheck className="mt-0.5 h-6 w-6 shrink-0 text-[#57C7FF]" />
               <div>
                 <p className="font-semibold">3. Ihr Berater übernimmt</p>
                 <p className="mt-1 text-sm text-slate-600">
@@ -182,7 +182,7 @@ export function KkTerminPage() {
           {state === "done" ? (
             <div className="py-8 text-center">
               <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-emerald-700/10">
-                <Check className="h-7 w-7 text-emerald-700" />
+                <Check className="h-7 w-7 text-[#57C7FF]" />
               </span>
               <h3 className="mt-5 text-2xl font-bold">Merci, Ihre Anfrage ist da!</h3>
               <p className="mx-auto mt-3 max-w-md text-slate-600">
@@ -232,7 +232,7 @@ export function KkTerminPage() {
                     type="checkbox"
                     checked={form.consent}
                     onChange={(e) => set("consent", e.target.checked)}
-                    className="mt-1 h-4 w-4 rounded border-emerald-900/30 text-emerald-700 focus:ring-emerald-600"
+                    className="mt-1 h-4 w-4 rounded border-emerald-900/30 text-[#57C7FF] focus:ring-emerald-600"
                   />
                   <span>
                     Ich bin einverstanden, dass die Maklerservice AG mich zur Terminvereinbarung

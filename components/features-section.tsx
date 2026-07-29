@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
@@ -504,14 +504,14 @@ export function FeaturesSection() {
                     <feature.demo isActive={activeDemo === index || isVisible} />
                   </div>
 
-                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4 group-hover:text-emerald-700 transition-colors duration-300">
+                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4 group-hover:text-[#57C7FF] transition-colors duration-300">
                     {feature.title}
                   </h3>
 
                   <p className="text-slate-600 text-sm sm:text-base leading-relaxed">{feature.description}</p>
 
                   {feature.href && feature.href.startsWith("/") && (
-                    <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-emerald-700">
+                    <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#57C7FF]">
                       Mehr erfahren
                       <svg className="size-4 transition group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

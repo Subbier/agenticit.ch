@@ -37,9 +37,9 @@ function useInView<T extends HTMLElement>() {
   return { ref, shown }
 }
 
-const GRID = "#E3E9F2"
+const GRID = "#E1E4E8"
 const MUTED = "#94A3B8"
-const INK = "#0B1F3A"
+const INK = "#0A0C10"
 
 /* ----------------------------- RADAR (Acquire) ----------------------------- */
 function RadarChart({ data, accent }: { data: ChartRadar; accent: string }) {
@@ -135,7 +135,7 @@ function FunnelChart({ data, accent }: { data: ChartFunnel; accent: string }) {
               {s.label}
             </div>
           </div>
-          <div className="text-right text-[12.5px] font-extrabold tabular-nums text-[#0B1F3A]">{s.pct}%</div>
+          <div className="text-right text-[12.5px] font-extrabold tabular-nums text-[#0A0C10]">{s.pct}%</div>
         </div>
       ))}
     </div>
@@ -253,10 +253,10 @@ function DonutChart({ data }: { data: ChartDonut }) {
         </svg>
         <div className="mt-4 grid w-full grid-cols-1 gap-x-4 gap-y-1.5 sm:grid-cols-2">
           {data.segments.map((seg) => (
-            <div key={seg.label} className="flex items-center gap-2 text-[12.5px] font-semibold text-[#314866]">
+            <div key={seg.label} className="flex items-center gap-2 text-[12.5px] font-semibold text-[#2A3340]">
               <span className="h-2.5 w-2.5 flex-none rounded-[3px]" style={{ background: seg.color }} aria-hidden="true" />
               <span className="flex-1">{seg.label}</span>
-              <span className="tabular-nums text-[#8294ad]">{seg.value}%</span>
+              <span className="tabular-nums text-[#8A96A3]">{seg.value}%</span>
             </div>
           ))}
         </div>

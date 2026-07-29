@@ -92,7 +92,7 @@ export function LeadForm({
       className="rounded-lg border border-white/[0.12] bg-white/[0.06] p-5 shadow-2xl shadow-black/20 backdrop-blur-md sm:p-6"
     >
       <div className="mb-6">
-        <p className="overline text-sm font-semibold uppercase tracking-[0.18em] text-emerald-200">Lead-Formular</p>
+        <p className="overline text-sm font-semibold uppercase tracking-[0.18em] text-[#57C7FF]">Lead-Formular</p>
         <h3 className={`${compact ? "text-2xl" : "text-3xl"} mt-3 font-semibold tracking-tight text-white`}>
           {title}
         </h3>
@@ -162,7 +162,7 @@ export function LeadForm({
       <button
         type="submit"
         disabled={state === "loading"}
-        className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-neutral-950 transition hover:bg-emerald-100 disabled:cursor-not-allowed disabled:opacity-70"
+        className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#8FE05A] px-5 py-3 text-sm font-semibold text-[#122400] transition hover:bg-[#A2E874] disabled:cursor-not-allowed disabled:opacity-70"
       >
         {state === "loading" ? <Loader2 className="size-4 animate-spin" /> : <Send className="size-4" />}
         {state === "loading" ? "Wird gesendet..." : submitLabel}
@@ -172,7 +172,7 @@ export function LeadForm({
         <div
           className={`mt-4 flex items-start gap-2 rounded-lg border px-3 py-3 text-sm ${
             state === "success"
-              ? "border-emerald-300/25 bg-emerald-300/10 text-emerald-100"
+              ? "border-emerald-300/25 bg-emerald-300/10 text-[#57C7FF]"
               : "border-red-300/25 bg-red-300/10 text-red-100"
           }`}
           role="status"

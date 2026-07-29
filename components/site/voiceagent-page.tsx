@@ -1,15 +1,15 @@
-import Link from "next/link"
+﻿import Link from "next/link"
 import { SiteHeader } from "@/components/site/site-header"
 import { VoiceAgentSection } from "@/components/site/voice-agent-section"
 import { CtaContactForm } from "@/components/site/cta-contact-form"
-import { SITE_TRUST_LINE } from "@/lib/site-trust-line"
+import { CarbonFooter } from "@/components/site/carbon-footer"
 
 const VOICE_AGENT_ID =
   process.env.NEXT_PUBLIC_ELEVENLABS_AGENT_ID ?? "agent_0201kwjmq83cf1btc17d9048pf8n"
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-block rounded-full bg-[#16C7C0]/12 px-[13px] py-[6px] text-[12px] font-extrabold uppercase tracking-[0.7px] text-[#0a8f89]">
+    <span className="inline-block rounded-full bg-[#1F9A5E]/12 px-[13px] py-[6px] text-[12px] font-extrabold uppercase tracking-[0.7px] text-[#57C7FF]">
       {children}
     </span>
   )
@@ -112,23 +112,23 @@ const STATS = [
 
 export function VoiceAgentPage() {
   return (
-    <main className="min-h-screen bg-white text-[#0B1F3A]">
+    <main className="min-h-screen bg-white text-[#0A0C10]">
       <SiteHeader />
 
       {/* HERO */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#0B1F3A] to-[#13294B] px-6 pb-20 pt-20 text-center">
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#0A0C10] to-[#1E2631] px-6 pb-20 pt-20 text-center">
         <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-          <div className="absolute left-1/2 top-[-12%] h-[460px] w-[820px] -translate-x-1/2 rounded-full bg-[#16C7C0]/20 blur-[130px]" />
-          <div className="absolute left-[80%] top-[8%] h-[340px] w-[480px] -translate-x-1/2 rounded-full bg-[#2DA8FF]/14 blur-[120px]" />
+          <div className="absolute left-1/2 top-[-12%] h-[460px] w-[820px] -translate-x-1/2 rounded-full bg-[#1F9A5E]/20 blur-[130px]" />
+          <div className="absolute left-[80%] top-[8%] h-[340px] w-[480px] -translate-x-1/2 rounded-full bg-[#57C7FF]/14 blur-[120px]" />
         </div>
 
         <div className="relative mx-auto flex max-w-[1120px] flex-col items-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-[#16C7C0]/15 px-[13px] py-[6px] text-[12px] font-extrabold uppercase tracking-[0.7px] text-[#16C7C0]">
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-[#1F9A5E]/15 px-[13px] py-[6px] text-[12px] font-extrabold uppercase tracking-[0.7px] text-[#57C7FF]">
             🔒 Exklusiv · Vertraulich für ausgewählte Partner
           </span>
           <h1 className="mx-auto mt-5 max-w-[900px] text-[clamp(31px,5vw,52px)] font-extrabold leading-[1.08] tracking-[-1px] text-white">
             Ihr KI-Telefonassistent für{" "}
-            <span className="bg-gradient-to-r from-[#16C7C0] to-[#5ee0da] bg-clip-text text-transparent">
+            <span className="bg-[#1F9A5E] bg-clip-text text-transparent">
               Finanzdienstleister.
             </span>
           </h1>
@@ -139,13 +139,13 @@ export function VoiceAgentPage() {
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <a
               href="#voice-agent"
-              className="rounded-[12px] bg-gradient-to-br from-[#16C7C0] to-[#0a8f89] px-[26px] py-[15px] text-[15px] font-extrabold text-white shadow-[0_10px_24px_rgba(22,199,192,0.32)] transition hover:-translate-y-[1px]"
+              className="rounded-[12px] bg-gradient-to-br from-[#1F9A5E] to-[#1F9A5E] px-[26px] py-[15px] text-[15px] font-extrabold text-white shadow-[0_10px_24px_rgba(31,154,94,0.32)] transition hover:-translate-y-[1px]"
             >
               🎙️ Live-Demo starten
             </a>
             <a
               href="#kontakt"
-              className="rounded-[12px] border border-white/20 px-[24px] py-[15px] text-[15px] font-extrabold text-white/90 transition hover:border-[#16C7C0]/60 hover:text-white"
+              className="rounded-[12px] border border-white/20 px-[24px] py-[15px] text-[15px] font-extrabold text-white/90 transition hover:border-[#1F9A5E]/60 hover:text-white"
             >
               Erstgespräch vereinbaren →
             </a>
@@ -192,12 +192,12 @@ export function VoiceAgentPage() {
             {CAPABILITIES.map((c) => (
               <div
                 key={c.title}
-                className="flex h-full flex-col rounded-[16px] border border-[#E3E9F2] bg-white p-6 shadow-[0_6px_20px_rgba(11,31,58,0.07)]"
+                className="flex h-full flex-col rounded-[16px] border border-[#E1E4E8] bg-white p-6 shadow-[0_6px_20px_rgba(10,12,16,0.07)]"
               >
-                <div className="mb-[14px] grid h-[46px] w-[46px] place-items-center rounded-[12px] bg-[#F1F8FF] text-[22px]">
+                <div className="mb-[14px] grid h-[46px] w-[46px] place-items-center rounded-[12px] bg-[#FAFAF7] text-[22px]">
                   {c.icon}
                 </div>
-                <h3 className="text-[18px] font-bold text-[#0B1F3A]">{c.title}</h3>
+                <h3 className="text-[18px] font-bold text-[#0A0C10]">{c.title}</h3>
                 <p className="mt-2 flex-1 text-[14.5px] leading-relaxed text-[#5A6B82]">{c.text}</p>
               </div>
             ))}
@@ -206,7 +206,7 @@ export function VoiceAgentPage() {
       </section>
 
       {/* BRANCHEN-SZENARIEN */}
-      <section className="bg-[#F5F8FC] px-6 py-16">
+      <section className="bg-[#F1F3F5] px-6 py-16">
         <div className="mx-auto max-w-[1120px]">
           <div className="mx-auto mb-10 max-w-[720px] text-center">
             <Eyebrow>Für Ihre Sparte gedacht</Eyebrow>
@@ -221,14 +221,14 @@ export function VoiceAgentPage() {
             {VERTICALS.map((v) => (
               <div
                 key={v.title}
-                className="flex h-full flex-col rounded-[16px] border border-[#E3E9F2] bg-white p-7 shadow-[0_6px_20px_rgba(11,31,58,0.07)]"
+                className="flex h-full flex-col rounded-[16px] border border-[#E1E4E8] bg-white p-7 shadow-[0_6px_20px_rgba(10,12,16,0.07)]"
               >
-                <span className="text-[11px] font-extrabold uppercase tracking-[0.5px] text-[#0a8f89]">{v.tag}</span>
-                <h3 className="mt-1 text-[19px] font-bold text-[#0B1F3A]">{v.title}</h3>
+                <span className="text-[11px] font-extrabold uppercase tracking-[0.5px] text-[#57C7FF]">{v.tag}</span>
+                <h3 className="mt-1 text-[19px] font-bold text-[#0A0C10]">{v.title}</h3>
                 <ul className="mt-3 space-y-2">
                   {v.points.map((p) => (
-                    <li key={p} className="flex items-start gap-2 text-[14.5px] leading-snug text-[#314866]">
-                      <span className="mt-[7px] h-1.5 w-1.5 flex-none rounded-full bg-[#16C7C0]" aria-hidden="true" />
+                    <li key={p} className="flex items-start gap-2 text-[14.5px] leading-snug text-[#2A3340]">
+                      <span className="mt-[7px] h-1.5 w-1.5 flex-none rounded-full bg-[#1F9A5E]" aria-hidden="true" />
                       <span className="font-semibold">{p}</span>
                     </li>
                   ))}
@@ -248,11 +248,11 @@ export function VoiceAgentPage() {
           </div>
           <div className="grid grid-cols-1 gap-[18px] sm:grid-cols-2 lg:grid-cols-4">
             {STEPS.map((s) => (
-              <div key={s.n} className="rounded-[16px] border border-[#E3E9F2] bg-white p-6 shadow-[0_6px_20px_rgba(11,31,58,0.07)]">
-                <div className="grid h-[40px] w-[40px] place-items-center rounded-full bg-gradient-to-br from-[#16C7C0] to-[#0a8f89] text-[16px] font-extrabold text-white">
+              <div key={s.n} className="rounded-[16px] border border-[#E1E4E8] bg-white p-6 shadow-[0_6px_20px_rgba(10,12,16,0.07)]">
+                <div className="grid h-[40px] w-[40px] place-items-center rounded-full bg-gradient-to-br from-[#1F9A5E] to-[#1F9A5E] text-[16px] font-extrabold text-white">
                   {s.n}
                 </div>
-                <h3 className="mt-4 text-[16px] font-bold text-[#0B1F3A]">{s.t}</h3>
+                <h3 className="mt-4 text-[16px] font-bold text-[#0A0C10]">{s.t}</h3>
                 <p className="mt-2 text-[14px] leading-relaxed text-[#5A6B82]">{s.d}</p>
               </div>
             ))}
@@ -261,17 +261,17 @@ export function VoiceAgentPage() {
       </section>
 
       {/* SICHERHEIT & COMPLIANCE */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#0B1F3A] to-[#13294B] px-6 py-16">
-        <div className="pointer-events-none absolute left-1/2 top-0 h-[360px] w-[760px] -translate-x-1/2 rounded-full bg-[#2DA8FF]/12 blur-[120px]" />
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#0A0C10] to-[#1E2631] px-6 py-16">
+        <div className="pointer-events-none absolute left-1/2 top-0 h-[360px] w-[760px] -translate-x-1/2 rounded-full bg-[#57C7FF]/12 blur-[120px]" />
         <div className="relative mx-auto max-w-[1120px]">
           <div className="mx-auto mb-10 max-w-[720px] text-center">
-            <span className="inline-block rounded-full bg-[#2DA8FF]/15 px-[13px] py-[6px] text-[12px] font-extrabold uppercase tracking-[0.7px] text-[#7ec8ff]">
+            <span className="inline-block rounded-full bg-[#57C7FF]/15 px-[13px] py-[6px] text-[12px] font-extrabold uppercase tracking-[0.7px] text-[#57C7FF]">
               Vertrauen & Compliance
             </span>
             <h2 className="mt-3 text-[clamp(26px,3.8vw,38px)] font-extrabold tracking-[-0.5px] text-white">
               Datenschutz, der zur Finanzbranche passt.
             </h2>
-            <p className="mx-auto mt-4 max-w-[680px] text-[16px] leading-relaxed text-[#b9c6da]">
+            <p className="mx-auto mt-4 max-w-[680px] text-[16px] leading-relaxed text-[#C3CBD3]">
               Sensible Daten brauchen klare Regeln. Der Voice Agent läuft auf Schweizer Infrastruktur, weist sich
               transparent als KI aus und übergibt jederzeit an einen Menschen.
             </p>
@@ -281,7 +281,7 @@ export function VoiceAgentPage() {
               <div key={t.b} className="rounded-[14px] border border-white/10 bg-white/5 p-[18px] text-center backdrop-blur">
                 <div className="text-[24px]">{t.ic}</div>
                 <b className="mt-2 block text-[15px] text-white">{t.b}</b>
-                <span className="text-[12.5px] text-[#9fb0c8]">{t.s}</span>
+                <span className="text-[12.5px] text-[#9AA6B2]">{t.s}</span>
               </div>
             ))}
           </div>
@@ -289,11 +289,11 @@ export function VoiceAgentPage() {
       </section>
 
       {/* FINAL CTA */}
-      <section id="kontakt" className="scroll-mt-20 bg-gradient-to-b from-[#F1F8FF] to-white px-6 py-16">
+      <section id="kontakt" className="scroll-mt-20 bg-gradient-to-b from-[#FAFAF7] to-white px-6 py-16">
         <div className="mx-auto max-w-[1120px]">
-          <div className="flex flex-col items-center rounded-[22px] border border-[#E3E9F2] bg-gradient-to-br from-[#F1F8FF] to-[#EAF9F7] p-10 text-center shadow-[0_6px_20px_rgba(11,31,58,0.07)]">
+          <div className="flex flex-col items-center rounded-[22px] border border-[#E1E4E8] bg-gradient-to-br from-[#FAFAF7] to-[#F1F3F5] p-10 text-center shadow-[0_6px_20px_rgba(10,12,16,0.07)]">
             <Eyebrow>Unverbindlich · Persönlich</Eyebrow>
-            <h2 className="mt-[10px] text-[clamp(26px,3.6vw,36px)] font-extrabold tracking-[-0.5px] text-[#0B1F3A]">
+            <h2 className="mt-[10px] text-[clamp(26px,3.6vw,36px)] font-extrabold tracking-[-0.5px] text-[#0A0C10]">
               Bringen wir Ihren Voice Agent ans Telefon.
             </h2>
             <p className="mt-3 max-w-[520px] text-[16px] leading-relaxed text-[#5A6B82]">
@@ -305,34 +305,8 @@ export function VoiceAgentPage() {
         </div>
       </section>
 
-      <footer className="bg-[#0B1F3A] py-12 text-[#c6d2e4]">
-        <div className="mx-auto flex max-w-[1120px] flex-wrap justify-between gap-10 px-6">
-          <div className="max-w-[300px]">
-            <div className="text-[19px] font-extrabold text-white">
-              Agentic<span className="text-[#16C7C0]">IT</span>
-            </div>
-            <p className="mt-[10px] text-[13px] leading-relaxed text-[#9fb0c8]">
-              Ihr digitales Team für Kundendienst, Automatisierung und Wachstum – sicher gehostet in der Schweiz.
-            </p>
-          </div>
-          <div>
-            <b className="mb-[10px] block text-[13px] tracking-[0.3px] text-white">KONTAKT</b>
-            <a href="tel:+41445052027" className="block py-[3px] text-[#9fb0c8] hover:text-white">044 505 20 27</a>
-            <a href="mailto:info@agenticit.ch" className="block py-[3px] text-[#9fb0c8] hover:text-white">info@agenticit.ch</a>
-          </div>
-          <div>
-            <b className="mb-[10px] block text-[13px] tracking-[0.3px] text-white">UNTERNEHMEN</b>
-            <Link href="/kontakt" className="block py-[3px] text-[#9fb0c8] hover:text-white">Kontakt</Link>
-            <Link href="/sicherheit" className="block py-[3px] text-[#9fb0c8] hover:text-white">Sicherheit</Link>
-            <Link href="/datenschutz" className="block py-[3px] text-[#9fb0c8] hover:text-white">Datenschutz</Link>
-            <Link href="/impressum" className="block py-[3px] text-[#9fb0c8] hover:text-white">Impressum</Link>
-          </div>
-        </div>
-        <div className="mx-auto mt-8 max-w-[1120px] border-t border-white/10 px-6 pt-5 text-[12px] text-[#8294ad]">
-          <p>© 2026 AgenticIT. Alle Rechte vorbehalten.</p>
-          <p className="mt-1">{SITE_TRUST_LINE}</p>
-        </div>
-      </footer>
+      {/* FOOTER — zentral in carbon-footer.tsx (ein Footer für die ganze Seite) */}
+      <CarbonFooter />
     </main>
   )
 }

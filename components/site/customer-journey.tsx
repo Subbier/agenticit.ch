@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { Fragment, useEffect, useState } from "react"
 import { Megaphone, MessageCircle, Target, CheckCircle2, TrendingUp, Heart, Hand } from "lucide-react"
@@ -49,7 +49,7 @@ export function CustomerJourney() {
   return (
     <div className="max-w-4xl mx-auto">
       <div className="text-center mb-8">
-        <p className="overline text-sm font-semibold uppercase tracking-[0.2em] text-emerald-200">Ihre Kundenreise</p>
+        <p className="overline text-sm font-semibold uppercase tracking-[0.2em] text-[#57C7FF]">Ihre Kundenreise</p>
         <h2 className="mt-3 text-2xl sm:text-3xl md:text-4xl font-bold text-white text-balance">So sieht das bei Ihnen aus.</h2>
         <p className="mt-4 text-base text-white/70 max-w-2xl mx-auto">
           Wählen Sie Ihre Branche – wir zeigen Ihnen, wie wir Ihre Kundenreise von der ersten Aufmerksamkeit bis zur
@@ -89,7 +89,7 @@ export function CustomerJourney() {
                     isActive
                       ? "scale-110 border-emerald-300 bg-emerald-300 text-black shadow-lg shadow-emerald-300/20"
                       : done
-                        ? "border-emerald-300/40 bg-emerald-300/15 text-emerald-200"
+                        ? "border-emerald-300/40 bg-emerald-300/15 text-[#57C7FF]"
                         : "border-white/15 bg-white/[0.04] text-white/45"
                   }`}
                 >
@@ -112,7 +112,7 @@ export function CustomerJourney() {
           {stages.map((s, i) => (
             <span
               key={s.label}
-              className={`text-center text-xs leading-tight transition-colors ${i === active ? "text-emerald-200 font-semibold" : "text-white/45"}`}
+              className={`text-center text-xs leading-tight transition-colors ${i === active ? "text-[#57C7FF] font-semibold" : "text-white/45"}`}
             >
               {s.label}
             </span>
@@ -123,7 +123,7 @@ export function CustomerJourney() {
       {/* Detail-Karte */}
       <div className="mt-8 rounded-3xl border border-white/12 bg-white/[0.05] p-6 sm:p-8 backdrop-blur-sm">
         <div className="flex items-center gap-4">
-          <span className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-emerald-300/15 text-emerald-200">
+          <span className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-emerald-300/15 text-[#57C7FF]">
             <Icon className="size-6" />
           </span>
           <div>
@@ -137,7 +137,7 @@ export function CustomerJourney() {
       </div>
 
       <p className="mt-6 text-center text-sm text-white/50">
-        Beispielhafte Reise für <span className="text-emerald-200 font-medium">{industryLabel}</span> – die Details
+        Beispielhafte Reise für <span className="text-[#57C7FF] font-medium">{industryLabel}</span> – die Details
         stimmen wir in einem kurzen Gespräch auf Sie ab.
       </p>
     </div>

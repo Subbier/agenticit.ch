@@ -5,6 +5,30 @@ export const SITE_NAME = "AgenticIT"
 export const SITE_LOCALE = "de_CH"
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/icon.svg`
 
+// Verifizierte Social-/Autoritätsprofile für sameAs (E-E-A-T-Signal).
+// Sobald die offiziellen Profile bekannt sind (LinkedIn, Zefix, etc.) hier eintragen.
+export const SOCIAL_PROFILES: readonly string[] = []
+
+// Themen, die AgenticIT nachweislich beherrscht – ausgerichtet auf die
+// Ziel-Keyword-Cluster (Basis für thematische Relevanz in Google & KI-Antworten).
+export const ENTITY_TOPICS: readonly string[] = [
+  "KI-Agenten",
+  "Agentische KI",
+  "Multi-Agenten-Systeme",
+  "KI-Automatisierung",
+  "Prozessautomatisierung",
+  "Workflow-Automatisierung",
+  "RevOps",
+  "Revenue Operations",
+  "KI im Vertrieb",
+  "Lead-Generierung",
+  "Marketing Automation",
+  "KI-Beratung",
+  "Digitale Transformation",
+  "Kundendienst-Automatisierung",
+  "Schweizer Datenhaltung",
+]
+
 export type FaqItem = {
   question: string
   answer: string
@@ -30,8 +54,18 @@ export function absoluteUrl(path: string) {
   return `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`
 }
 
+/**
+ * Entfernt einen bereits im Seitentitel enthaltenen Marken-Zusatz
+ * (" | AgenticIT" / " – AgenticIT" / " - AgenticIT").
+ * Das Root-Layout hängt die Marke über `title.template` ohnehin an —
+ * ohne diese Bereinigung stünde "AgenticIT" doppelt im Titel.
+ */
+function stripBrandSuffix(title: string): string {
+  return title.replace(/\s*[|–—-]\s*AgenticIT\s*$/i, "").trim()
+}
+
 export function createPageMetadata({
-  title,
+  title: rawTitle,
   description,
   path,
   keywords,
@@ -40,6 +74,7 @@ export function createPageMetadata({
   modifiedTime,
 }: PageMetaInput): Metadata {
   const url = absoluteUrl(path)
+  const title = stripBrandSuffix(rawTitle)
 
   return {
     title,
@@ -80,8 +115,11 @@ export function organizationJsonLd() {
     alternateName: SITE_NAME,
     url: SITE_URL,
     logo: `${SITE_URL}/icon.svg`,
+    image: `${SITE_URL}/icon.svg`,
+    description:
+      "Schweizer Agentur für KI-Agenten, agentische Automatisierung und RevOps. Wir automatisieren Vertrieb, Kundendienst und Prozesse – mit Datenhaltung in der Schweiz und messbarem ROI.",
     email: "info@agenticit.ch",
-    telephone: "+41445052027",
+    telephone: "+41315394444",
     address: {
       "@type": "PostalAddress",
       streetAddress: "Postfach",
@@ -90,23 +128,67 @@ export function organizationJsonLd() {
       addressRegion: "Bern",
       addressCountry: "CH",
     },
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+41315394444",
+      email: "info@agenticit.ch",
+      contactType: "sales",
+      areaServed: "CH",
+      availableLanguage: ["de", "de-CH"],
+    },
     areaServed: {
       "@type": "Country",
       name: "Switzerland",
     },
-    sameAs: [],
-    knowsAbout: [
-      "KI Agenten",
-      "Conversational AI",
-      "Lead Scoring",
-      "Predicting Lead Scoring",
-      "Omnichannel Marketing",
-      "WhatsApp Business API",
-      "Speed-to-Lead",
-      "Lead Qualifizierung",
-      "Smart Apps",
-      "advok.app",
+    sameAs: [...SOCIAL_PROFILES],
+    knowsAbout: [...ENTITY_TOPICS],
+  }
+}
+
+export function localBusinessJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "@id": `${SITE_URL}/#localbusiness`,
+    name: "Agentic IT GmbH",
+    alternateName: SITE_NAME,
+    url: SITE_URL,
+    logo: `${SITE_URL}/icon.svg`,
+    image: `${SITE_URL}/icon.svg`,
+    description:
+      "KI-Agentur aus Bern (Ostermundigen): KI-Agenten, Prozessautomatisierung und RevOps für Schweizer KMU – Daten sicher in der Schweiz.",
+    email: "info@agenticit.ch",
+    telephone: "+41315394444",
+    priceRange: "$$",
+    currenciesAccepted: "CHF",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Postfach",
+      postalCode: "3072",
+      addressLocality: "Ostermundigen",
+      addressRegion: "Bern",
+      addressCountry: "CH",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 46.9564,
+      longitude: 7.4906,
+    },
+    areaServed: {
+      "@type": "Country",
+      name: "Switzerland",
+    },
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "08:00",
+        closes: "18:00",
+      },
     ],
+    parentOrganization: { "@id": `${SITE_URL}/#organization` },
+    sameAs: [...SOCIAL_PROFILES],
+    knowsAbout: [...ENTITY_TOPICS],
   }
 }
 
@@ -239,20 +321,22 @@ export function webApplicationJsonLd(input: {
 export const INDEXABLE_ROUTES = [
   "/",
   "/kontakt",
+  "/potenzial",
   "/loesungen",
-  "/loesungen/kundendienst-ki",
-  "/loesungen/prozessautomatisierung",
-  "/loesungen/revops-growth",
+  "/loesungen/gtm-markteintritt",
+  "/loesungen/revops-umsatzgenerierung",
   "/technologie",
   "/technologie/autonome-ki-agenten",
   "/technologie/multi-agenten-systeme",
   "/technologie/enterprise-integration",
   "/angebot",
-  "/angebot/acquire",
-  "/angebot/convert",
-  "/angebot/retain",
-  "/angebot/operate",
+  "/angebot/begeistern",
+  "/angebot/umsetzen",
+  "/angebot/erschaffen",
+  "/angebot/erweitern",
+  "/branchen",
   "/sicherheit",
+  "/karriere",
   "/excellence",
   "/case-studies",
   "/impressum",

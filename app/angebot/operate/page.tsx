@@ -3,7 +3,8 @@ import { AngebotAreaPage } from "@/components/site/angebot-area-page"
 import { ANGEBOT_BY_KEY } from "@/lib/angebot-content"
 import { createPageMetadata } from "@/lib/seo"
 
-const area = ANGEBOT_BY_KEY.operate
+// Alt-Slug "operate" -> "erweitern" (siehe permanenter Redirect in next.config.mjs).
+const area = ANGEBOT_BY_KEY.erweitern
 
 export const metadata: Metadata = createPageMetadata({
   title: area.meta.title,

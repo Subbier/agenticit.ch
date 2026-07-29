@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useState } from "react"
 import { Hand, Layers, Megaphone, Share2, Search, PenTool, MessageCircle, Database } from "lucide-react"
@@ -71,7 +71,7 @@ export function ExcellenceMap() {
             sel === "center" ? "border-emerald-300 bg-emerald-300/20 scale-105" : "border-emerald-300/40 bg-emerald-300/10"
           }`}
         >
-          <Layers className="size-6 text-emerald-200" />
+          <Layers className="size-6 text-[#57C7FF]" />
           <span className="mt-1 text-xs font-bold text-white">AgenticIT</span>
         </button>
 
@@ -88,11 +88,11 @@ export function ExcellenceMap() {
               style={{ left: n.left, top: n.top }}
             >
               <span className={`flex size-12 items-center justify-center rounded-2xl border transition ${
-                isSel ? "border-emerald-300 bg-emerald-300 text-black scale-110" : "border-white/15 bg-black/60 text-emerald-200"
+                isSel ? "border-emerald-300 bg-emerald-300 text-black scale-110" : "border-white/15 bg-black/60 text-[#57C7FF]"
               }`}>
                 <Icon className="size-5" />
               </span>
-              <span className={`text-[11px] sm:text-xs leading-tight ${isSel ? "font-semibold text-emerald-200" : "text-white/60"}`}>
+              <span className={`text-[11px] sm:text-xs leading-tight ${isSel ? "font-semibold text-[#57C7FF]" : "text-white/60"}`}>
                 {n.label}
               </span>
             </button>
@@ -110,7 +110,7 @@ export function ExcellenceMap() {
         <h3 className="text-lg font-bold text-white">{active.label}</h3>
         <p className="mt-1 text-sm leading-6 text-white/70">{active.desc}</p>
       </div>
-      {!touched && <p className="mt-2 text-center text-xs text-emerald-200/90">Tippen Sie auf eine Disziplin – sie zeigt, was wir für Sie übernehmen.</p>}
+      {!touched && <p className="mt-2 text-center text-xs text-[#57C7FF]/90">Tippen Sie auf eine Disziplin – sie zeigt, was wir für Sie übernehmen.</p>}
     </div>
   )
 }

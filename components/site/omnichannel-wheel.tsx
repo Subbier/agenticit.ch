@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useState } from "react"
 import {
@@ -97,12 +97,12 @@ function WheelSvg({ sel, pick }: { sel: SegId | null; pick: (id: SegId) => void 
     <svg viewBox="0 0 720 570" className="w-full h-auto select-none">
       <defs>
         <linearGradient id="ocOmni" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#10b981" />
+          <stop offset="0%" stopColor="#1F9A5E" />
           <stop offset="100%" stopColor="#0c7a64" />
         </linearGradient>
         <linearGradient id="ocDigital" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0%" stopColor="#34d399" />
-          <stop offset="100%" stopColor="#10b981" />
+          <stop offset="100%" stopColor="#1F9A5E" />
         </linearGradient>
         <filter id="ocShadow" x="-30%" y="-30%" width="160%" height="160%">
           <feDropShadow dx="0" dy="5" stdDeviation="9" floodColor="#000000" floodOpacity="0.4" />
@@ -227,7 +227,7 @@ export function OmnichannelWheel() {
         )}
       </div>
       <div className="mt-5 rounded-2xl border border-white/12 bg-white/[0.05] p-5 sm:p-6 backdrop-blur-sm">
-        <p className="overline text-sm font-semibold uppercase tracking-[0.18em] text-emerald-200">{d.tag}</p>
+        <p className="overline text-sm font-semibold uppercase tracking-[0.18em] text-[#57C7FF]">{d.tag}</p>
         <h3 className="mt-1 text-xl sm:text-2xl font-bold text-white">{d.title}</h3>
         <p className="mt-2 text-base leading-7 text-white/75">{d.desc}</p>
       </div>

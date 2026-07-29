@@ -16,7 +16,7 @@ export const AGENT_DEMOS: AgentDemo[] = [
     id: "empfang",
     icon: "📞",
     name: "Empfangs-Agent",
-    color: "#16C7C0",
+    color: "#1F9A5E",
     trigger: "Das Telefon klingelt – unbekannte Nummer, Dienstagabend 21:47 Uhr.",
     say: "„Ich bin der <em>KI-Assistent von AgenticIT</em>. Wie kann ich Ihnen helfen?“",
     steps: [
@@ -37,7 +37,7 @@ export const AGENT_DEMOS: AgentDemo[] = [
     id: "vertrieb",
     icon: "🎯",
     name: "Vertriebs-Agent",
-    color: "#2DA8FF",
+    color: "#57C7FF",
     trigger: "Neuer Lead trifft über das Website-Formular ein.",
     say: "„Ich bin der <em>KI-Assistent von AgenticIT</em> – ich habe Ihre Anfrage gesehen und melde mich direkt.“",
     steps: [
@@ -58,7 +58,7 @@ export const AGENT_DEMOS: AgentDemo[] = [
     id: "support",
     icon: "💬",
     name: "Support-Agent",
-    color: "#7C5CFF",
+    color: "#57C7FF",
     trigger: "Kunde schreibt: „Ihre letzte Rechnung stimmt nicht.“",
     say: "„Ich bin der <em>KI-Assistent von AgenticIT</em>. Ich schaue mir Ihre Rechnung sofort an.“",
     steps: [

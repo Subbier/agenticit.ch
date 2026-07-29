@@ -12,7 +12,7 @@ export function AngebotAccordion({ items, accent }: { items: AngebotFaq[]; accen
   const [open, setOpen] = useState<number | null>(0)
 
   return (
-    <div className="mx-auto max-w-[820px] divide-y divide-[#E3E9F2] overflow-hidden rounded-[18px] border border-[#E3E9F2] bg-white shadow-[0_10px_30px_rgba(11,31,58,0.06)]">
+    <div className="mx-auto max-w-[820px] divide-y divide-[#E1E4E8] overflow-hidden rounded-[18px] border border-[#E1E4E8] bg-white shadow-[0_10px_30px_rgba(10,12,16,0.06)]">
       {items.map((it, i) => {
         const isOpen = open === i
         const panelId = `acc-panel-${i}`
@@ -47,7 +47,7 @@ export function AngebotAccordion({ items, accent }: { items: AngebotFaq[]; accen
                     />
                   </svg>
                 </span>
-                <span className="flex-1 text-[15px] font-bold leading-snug text-[#0B1F3A] sm:text-[16px]">
+                <span className="flex-1 text-[15px] font-bold leading-snug text-[#0A0C10] sm:text-[16px]">
                   {it.q}
                 </span>
               </button>

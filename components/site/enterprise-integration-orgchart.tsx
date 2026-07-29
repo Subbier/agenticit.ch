@@ -116,7 +116,7 @@ export function EnterpriseIntegrationOrgchart() {
   return (
     <section
       id="enterprise-integration-orgchart"
-      className="eio-section scroll-mt-20 border-y border-[#E3E9F2] bg-gradient-to-b from-[#0B1F3A] to-[#13294B] px-5 py-12 sm:px-6 sm:py-16"
+      className="eio-section scroll-mt-20 border-y border-[#E1E4E8] bg-gradient-to-b from-[#0A0C10] to-[#1E2631] px-5 py-12 sm:px-6 sm:py-16"
     >
       <div className="mx-auto max-w-[600px]">
         <div className="eio-intro">

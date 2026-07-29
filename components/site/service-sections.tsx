@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { Bot, BrainCircuit, CheckCircle2, Layers, Network, Smartphone, Sparkles } from "lucide-react"
 import { CollapsibleBlock } from "@/components/site/collapsible-block"
@@ -34,7 +34,7 @@ export function ServiceSections({ page }: { page: ServicePageContent }) {
               style={{ transitionDelay: `${index * 120}ms` }}
             >
               <div className="flex items-center gap-3 mb-4">
-                <span className="flex size-10 items-center justify-center rounded-xl bg-emerald-300/15 text-emerald-100">
+                <span className="flex size-10 items-center justify-center rounded-xl bg-emerald-300/15 text-[#57C7FF]">
                   {(() => {
                     const Icon = iconSet[index % iconSet.length]
                     return <Icon className="size-5" />
@@ -47,7 +47,7 @@ export function ServiceSections({ page }: { page: ServicePageContent }) {
                 <ul className="space-y-2">
                   {section.bullets.map((bullet) => (
                     <li key={bullet} className="flex items-start gap-2 text-sm text-white/70">
-                      <CheckCircle2 className="size-4 shrink-0 text-emerald-300 mt-0.5" />
+                      <CheckCircle2 className="size-4 shrink-0 text-[#57C7FF] mt-0.5" />
                       {bullet}
                     </li>
                   ))}

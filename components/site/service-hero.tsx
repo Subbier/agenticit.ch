@@ -78,7 +78,7 @@ export function ServiceHero({ page }: { page: ServicePageContent }) {
             <a href="#contact">
               <Button
                 size="lg"
-                className="bg-white text-black rounded-full px-8 py-4 text-lg font-medium transition-all duration-300 hover:bg-gray-50 hover:scale-105 hover:shadow-lg group cursor-pointer"
+                className="bg-[#8FE05A] text-[#122400] rounded-full px-8 py-4 text-lg font-medium transition-all duration-300 hover:bg-gray-50 hover:scale-105 hover:shadow-lg group cursor-pointer"
               >
                 {page.primaryCta}
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
@@ -103,7 +103,7 @@ export function ServiceHero({ page }: { page: ServicePageContent }) {
               <p className="text-xs uppercase tracking-[0.18em] text-white/50">AgenticIT Console</p>
               <h2 className="mt-1 text-lg font-semibold text-white">{page.navLabel}</h2>
             </div>
-            <span className="inline-flex items-center gap-2 rounded-full bg-emerald-300/15 px-3 py-1 text-xs font-medium text-emerald-100 border border-emerald-300/30">
+            <span className="inline-flex items-center gap-2 rounded-full bg-emerald-300/15 px-3 py-1 text-xs font-medium text-[#57C7FF] border border-emerald-300/30">
               <span className="size-2 rounded-full bg-emerald-300 animate-pulse" />
               Live
             </span>
@@ -117,7 +117,7 @@ export function ServiceHero({ page }: { page: ServicePageContent }) {
                   className="rounded-xl border border-white/10 bg-white/5 p-4 transition-all duration-300 hover:bg-white/10 hover:border-emerald-300/30"
                 >
                   <div className="flex items-start gap-3">
-                    <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-emerald-300/15 text-emerald-100">
+                    <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-emerald-300/15 text-[#57C7FF]">
                       <Icon className="size-4" />
                     </span>
                     <div>

@@ -1,8 +1,8 @@
 .matw-section {
-  --matw-line: #1e2c4d;
+  --matw-line: #1E2631;
   --matw-txt: #eaf0ff;
-  --matw-dim: #9fb0c8;
-  --matw-teal: #16c7c0;
+  --matw-dim: #9AA6B2;
+  --matw-teal: #1F9A5E;
   --matw-green: #2bb673;
   --matw-rose: #f2667a;
 }
@@ -15,7 +15,7 @@
 .matw-ey {
   display: inline-block;
   border-radius: 99px;
-  background: rgba(22, 199, 192, 0.15);
+  background: rgba(31, 154, 94, 0.15);
   color: var(--matw-teal);
   font-size: 11px;
   font-weight: 800;
@@ -34,7 +34,7 @@
 }
 
 .matw-go {
-  background: linear-gradient(90deg, var(--matw-teal), #2da8ff);
+  background: linear-gradient(90deg, var(--matw-teal), #57C7FF);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -88,8 +88,8 @@
   width: 20px;
   height: 20px;
   border-radius: 6px;
-  background: conic-gradient(from 200deg, var(--matw-teal), #2da8ff, #7c5cff, #f5a623, var(--matw-teal));
-  box-shadow: 0 0 14px rgba(45, 168, 255, 0.6);
+  background: conic-gradient(from 200deg, var(--matw-teal), #57C7FF, #57C7FF, #f5a623, var(--matw-teal));
+  box-shadow: 0 0 14px rgba(87, 199, 255, 0.6);
 }
 
 .matw-task {
@@ -121,7 +121,7 @@
   align-items: center;
   gap: 9px;
   border: 1px solid color-mix(in srgb, var(--matw-teal) 50%, var(--matw-line));
-  background: color-mix(in srgb, var(--matw-teal) 12%, #0a1226);
+  background: color-mix(in srgb, var(--matw-teal) 12%, #07090C);
   border-radius: 12px;
   padding: 8px 13px;
   z-index: 2;
@@ -132,7 +132,7 @@
   height: 28px;
   border-radius: 8px;
   background: var(--matw-teal);
-  color: #06101e;
+  color: #07090C;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -167,7 +167,7 @@
   align-items: center;
   justify-content: center;
   font-size: 14px;
-  background: #111c36;
+  background: #141A24;
   border: 1px solid var(--matw-line);
   color: var(--ac, #fff);
   opacity: 0.35;
@@ -234,7 +234,7 @@
   border-radius: 9px;
   overflow: hidden;
   border: 1px solid var(--matw-line);
-  background: #0a1226;
+  background: #07090C;
   display: flex;
 }
 
@@ -286,7 +286,7 @@
   border-radius: 8px;
   overflow: hidden;
   border: 1px solid var(--matw-line);
-  background: #0a1226;
+  background: #07090C;
 }
 
 .matw-lane .matw-fill {
@@ -294,7 +294,7 @@
   inset: 0;
   width: 0;
   border-radius: 7px;
-  background: linear-gradient(90deg, color-mix(in srgb, var(--lc) 75%, #0a1226), var(--lc));
+  background: linear-gradient(90deg, color-mix(in srgb, var(--lc) 75%, #07090C), var(--lc));
 }
 
 .matw-lane .matw-lab {
@@ -330,7 +330,7 @@
   margin-top: 16px;
   border-radius: 14px;
   border: 1px solid color-mix(in srgb, var(--matw-teal) 40%, var(--matw-line));
-  background: linear-gradient(180deg, color-mix(in srgb, var(--matw-teal) 10%, #0a1226), #0a1226);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--matw-teal) 10%, #07090C), #07090C);
   padding: 14px;
   opacity: 0;
   transform: translateY(8px);
@@ -378,7 +378,7 @@
 
 .matw-res .matw-stat {
   flex: 1;
-  background: #0a1226;
+  background: #07090C;
   border: 1px solid var(--matw-line);
   border-radius: 10px;
   padding: 9px 11px;
@@ -430,9 +430,9 @@
 }
 
 .matw-btn.primary {
-  background: linear-gradient(90deg, var(--matw-teal), #2da8ff);
-  color: #06101e;
-  box-shadow: 0 8px 22px rgba(45, 168, 255, 0.35);
+  background: linear-gradient(90deg, var(--matw-teal), #57C7FF);
+  color: #07090C;
+  box-shadow: 0 8px 22px rgba(87, 199, 255, 0.35);
 }
 
 .matw-btn.primary:hover {
@@ -448,7 +448,7 @@
 }
 
 .matw-seg-toggle button {
-  background: #111c36;
+  background: #141A24;
   border: none;
   color: var(--matw-dim);
   cursor: pointer;
@@ -459,7 +459,7 @@
 }
 
 .matw-seg-toggle button.on {
-  background: color-mix(in srgb, var(--matw-teal) 20%, #111c36);
+  background: color-mix(in srgb, var(--matw-teal) 20%, #141A24);
   color: #fff;
 }
 
@@ -484,5 +484,5 @@
 }
 
 .matw-disc b {
-  color: #b9c6da;
+  color: #C3CBD3;
 }

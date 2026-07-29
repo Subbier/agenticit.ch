@@ -1,4 +1,4 @@
-import type { ReactNode } from "react"
+﻿import type { ReactNode } from "react"
 import Link from "next/link"
 import {
   ArrowRight,
@@ -11,7 +11,7 @@ import {
   Users,
 } from "lucide-react"
 import Aurora from "@/components/site/aurora-bg"
-import { Footer } from "@/components/footer"
+import { CarbonFooter } from "@/components/site/carbon-footer"
 import { GlassmorphismNav } from "@/components/glassmorphism-nav"
 import { CaseStudiesSectionNav } from "@/components/site/case-studies-section-nav"
 import { CollapsibleBlock } from "@/components/site/collapsible-block"
@@ -70,7 +70,7 @@ export function CaseStudiesPage() {
                     key={kpi.label}
                     className="group bg-black/50 px-4 py-6 text-center backdrop-blur-sm transition-colors hover:bg-white/5"
                   >
-                    <p className="text-3xl font-bold tracking-tight text-white transition-colors group-hover:text-emerald-100 sm:text-4xl">
+                    <p className="text-3xl font-bold tracking-tight text-white transition-colors group-hover:text-[#57C7FF] sm:text-4xl">
                       {kpi.value}
                     </p>
                     <p className="mt-2 text-xs leading-5 text-white/60 sm:text-sm">{kpi.label}</p>
@@ -150,12 +150,12 @@ export function CaseStudiesPage() {
                     key={role.num}
                     className="group grid overflow-hidden rounded-2xl border border-white/15 bg-white/5 transition-all hover:border-emerald-300/30 hover:bg-white/[0.07] md:grid-cols-[72px_1fr]"
                   >
-                    <div className="flex items-center justify-center bg-emerald-300/15 text-lg font-black text-emerald-100 md:min-h-full">
+                    <div className="flex items-center justify-center bg-emerald-300/15 text-lg font-black text-[#57C7FF] md:min-h-full">
                       {role.num}
                     </div>
                     <div className="p-6">
                       <div className="flex items-center gap-3">
-                        <span className="flex size-9 items-center justify-center rounded-lg bg-emerald-300/15 text-emerald-100">
+                        <span className="flex size-9 items-center justify-center rounded-lg bg-emerald-300/15 text-[#57C7FF]">
                           <Icon className="size-4" />
                         </span>
                         <h3 className="text-lg font-semibold text-white">{role.title}</h3>
@@ -180,7 +180,7 @@ export function CaseStudiesPage() {
                   key={step.num}
                   className="group grid overflow-hidden rounded-xl border border-white/10 bg-white/[0.04] transition-all hover:border-emerald-300/25 md:grid-cols-[48px_1fr]"
                 >
-                  <div className="flex items-center justify-center bg-emerald-300/20 text-sm font-bold text-emerald-100">
+                  <div className="flex items-center justify-center bg-emerald-300/20 text-sm font-bold text-[#57C7FF]">
                     {step.num}
                   </div>
                   <div className="p-4 sm:p-5">
@@ -203,10 +203,10 @@ export function CaseStudiesPage() {
                 <table className="w-full min-w-[640px] text-left text-sm">
                   <thead>
                     <tr className="border-b border-emerald-300/30 bg-black/50">
-                      <th className="px-4 py-3 font-semibold text-emerald-200">Kennzahl</th>
+                      <th className="px-4 py-3 font-semibold text-[#57C7FF]">Kennzahl</th>
                       <th className="px-4 py-3 font-semibold text-white/45">Vorher</th>
                       <th className="px-4 py-3 font-semibold text-white">Nachher</th>
-                      <th className="px-4 py-3 font-semibold text-emerald-200">Veränderung</th>
+                      <th className="px-4 py-3 font-semibold text-[#57C7FF]">Veränderung</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -220,7 +220,7 @@ export function CaseStudiesPage() {
                         <td className="px-4 py-3 text-white/75">{row.metric}</td>
                         <td className="px-4 py-3 text-center text-white/45">{row.before}</td>
                         <td className="px-4 py-3 text-center font-semibold text-white">{row.after}</td>
-                        <td className="px-4 py-3 text-center font-semibold text-emerald-200">{row.change}</td>
+                        <td className="px-4 py-3 text-center font-semibold text-[#57C7FF]">{row.change}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -232,13 +232,13 @@ export function CaseStudiesPage() {
               <p className="text-lg font-medium italic leading-relaxed text-white/90 sm:text-xl">
                 «{cs.results.quote.text}»
               </p>
-              <footer className="mt-5 text-sm font-semibold uppercase tracking-wider text-emerald-200">
+              <footer className="mt-5 text-sm font-semibold uppercase tracking-wider text-[#57C7FF]">
                 — {cs.results.quote.author}
               </footer>
             </blockquote>
 
             <div className="mt-6 rounded-2xl border border-l-4 border-emerald-300/25 border-l-emerald-300 bg-emerald-300/5 p-6">
-              <p className="text-xs font-bold uppercase tracking-wider text-emerald-200">✓ Fazit</p>
+              <p className="text-xs font-bold uppercase tracking-wider text-[#57C7FF]">✓ Fazit</p>
               <p className="mt-2 text-sm leading-7 text-white/80 sm:text-base">{cs.results.conclusion}</p>
             </div>
           </CaseStudySection>
@@ -255,7 +255,7 @@ export function CaseStudiesPage() {
                   key={phase.period}
                   className="grid overflow-hidden rounded-xl border border-white/10 bg-white/[0.04] transition-all hover:border-white/20 md:grid-cols-[120px_1fr]"
                 >
-                  <div className="flex items-center justify-center bg-black/30 px-3 py-4 text-center text-xs font-bold uppercase tracking-wide text-emerald-200">
+                  <div className="flex items-center justify-center bg-black/30 px-3 py-4 text-center text-xs font-bold uppercase tracking-wide text-[#57C7FF]">
                     {phase.period}
                   </div>
                   <div className="p-4 sm:p-5">
@@ -280,7 +280,7 @@ export function CaseStudiesPage() {
                   className="bg-black/40 p-6 backdrop-blur-sm transition-colors hover:bg-white/[0.04]"
                 >
                   <h3 className="flex items-center gap-2 text-base font-semibold text-white">
-                    <CheckCircle2 className="size-4 shrink-0 text-emerald-300" />
+                    <CheckCircle2 className="size-4 shrink-0 text-[#57C7FF]" />
                     {fit.title}
                   </h3>
                   <p className="mt-2 text-sm leading-7 text-white/65">{fit.text}</p>
@@ -311,7 +311,7 @@ export function CaseStudiesPage() {
             <div className="grid gap-px overflow-hidden rounded-2xl border border-white/15 bg-white/10 sm:grid-cols-3">
               {blog.stats.map((stat) => (
                 <div key={stat.label} className="bg-black/40 p-6 text-center backdrop-blur-sm">
-                  <div className="text-3xl font-bold text-emerald-300">{stat.value}</div>
+                  <div className="text-3xl font-bold text-[#57C7FF]">{stat.value}</div>
                   <p className="mt-2 text-sm leading-6 text-white/65">{stat.label}</p>
                 </div>
               ))}
@@ -356,7 +356,7 @@ export function CaseStudiesPage() {
             ]}
           />
 
-          <Footer />
+          <CarbonFooter />
         </div>
       </main>
     </div>
@@ -379,7 +379,7 @@ function CaseStudySection({
   return (
     <section id={id} className="scroll-mt-28 px-4 py-10 sm:px-6 sm:py-14">
       <div className="mx-auto max-w-6xl">
-        <p className="overline text-sm font-semibold uppercase tracking-[0.2em] text-emerald-200">{eyebrow}</p>
+        <p className="overline text-sm font-semibold uppercase tracking-[0.2em] text-[#57C7FF]">{eyebrow}</p>
         <h2 className="mt-3 text-balance text-2xl font-semibold text-white sm:text-3xl md:text-4xl">{title}</h2>
         {intro ? <p className="mt-4 max-w-4xl text-base leading-8 text-white/72 sm:text-lg">{intro}</p> : null}
         <div className="mt-8">{children}</div>

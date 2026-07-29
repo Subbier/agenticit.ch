@@ -49,7 +49,7 @@ export function RoiCalculator() {
     <section id="roi" className="px-4 py-20 sm:px-6">
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="overline text-sm font-semibold uppercase tracking-[0.22em] text-emerald-200">Growth-Kalkulator</p>
+          <p className="overline text-sm font-semibold uppercase tracking-[0.22em] text-[#57C7FF]">Growth-Kalkulator</p>
           <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-5xl">
             Ihr unentdecktes Umsatzpotenzial
           </h2>
@@ -107,7 +107,7 @@ export function RoiCalculator() {
             </div>
 
             <div className="mt-8 rounded-lg border border-emerald-300/[0.18] bg-emerald-300/[0.08] p-4">
-              <h4 className="text-sm font-semibold text-emerald-100">Marktdynamik</h4>
+              <h4 className="text-sm font-semibold text-[#57C7FF]">Marktdynamik</h4>
               <div className="mt-3 grid gap-3 text-sm leading-6 text-white/68">
                 <p>Performance-Boost: innovative Betriebe sehen rund {config.conversion}% mehr Conversions.</p>
                 <p>Speed-to-Lead: autonome Agents reagieren rund {config.response}% schneller.</p>
@@ -198,7 +198,7 @@ function Metric({
 }) {
   return (
     <div className="rounded-lg border border-neutral-200 bg-neutral-50 p-4">
-      <Icon className="size-4 text-emerald-700" />
+      <Icon className="size-4 text-[#57C7FF]" />
       <p className="mt-4 text-xs font-medium uppercase tracking-[0.16em] text-neutral-500">{label}</p>
       <p className="mt-1 text-2xl font-semibold">{value}</p>
       <p className="text-xs text-neutral-500">{detail}</p>
@@ -210,7 +210,7 @@ function ResultRow({ label, value, icon: Icon }: { label: string; value: string;
   return (
     <div className="flex items-center justify-between gap-3 rounded-lg border border-neutral-200 px-4 py-3">
       <span className="inline-flex items-center gap-2 text-sm text-neutral-600">
-        <Icon className="size-4 text-emerald-700" />
+        <Icon className="size-4 text-[#57C7FF]" />
         {label}
       </span>
       <strong className="text-right text-sm">{value}</strong>

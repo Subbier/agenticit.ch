@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { Zap } from "lucide-react"
 import type { ServicePageContent } from "@/lib/site-content"
@@ -12,7 +12,7 @@ export function ServiceUseCases({ page }: { page: ServicePageContent }) {
       <div className="max-w-7xl mx-auto rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md p-8 sm:p-12">
         <div className={`grid gap-10 lg:grid-cols-[0.8fr_1.2fr] transition-all duration-1000 ${revealClass}`}>
           <div>
-            <p className="overline text-sm font-semibold uppercase tracking-[0.22em] text-emerald-200">Wirkung</p>
+            <p className="overline text-sm font-semibold uppercase tracking-[0.22em] text-[#57C7FF]">Wirkung</p>
             <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white text-balance">
               Vom Kontaktpunkt zum{" "}
               <span className="bg-gradient-to-r from-white to-emerald-200 bg-clip-text text-transparent">
@@ -35,7 +35,7 @@ export function ServiceUseCases({ page }: { page: ServicePageContent }) {
                   transitionDelay: visible ? `${400 + index * 150}ms` : "0ms",
                 }}
               >
-                <div className="flex size-10 items-center justify-center rounded-lg bg-emerald-300/15 text-emerald-100 mb-4">
+                <div className="flex size-10 items-center justify-center rounded-lg bg-emerald-300/15 text-[#57C7FF] mb-4">
                   <Zap className="size-5" />
                 </div>
                 <h3 className="font-semibold text-white">{item.title}</h3>

@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { HomePage } from "@/components/site/home-page"
-import { createPageMetadata, webApplicationJsonLd } from "@/lib/seo"
-import { pageSeo } from "@/lib/seo-faqs"
+import { createPageMetadata, faqPageJsonLd, webApplicationJsonLd } from "@/lib/seo"
+import { pageSeo, homeAllFaqs } from "@/lib/seo-faqs"
 
 export const metadata: Metadata = {
   ...createPageMetadata({
@@ -17,11 +17,12 @@ export default function Page() {
       <HomePage
         jsonLd={[
           webApplicationJsonLd({
-            name: "AgenticIT Potenzialrechner",
+            name: "AgenticIT Branchen-Radar",
             description:
-              "Interaktiver ROI-Rechner: Wählen Sie Ihre Bereiche und sehen Sie in 20 Sekunden Ihr Jahrespotenzial – konservativ gerechnet auf belegten Studienwerten.",
+              "Interaktives Nachfrage-Tool: Branche und Region wählen und sofort sehen, wie viele Suchanfragen pro Monat auf Ihren Markt entfallen und welche 10 Anbieter die Google-Rangliste anführen. Datenbasis Ubersuggest/Google, Schweiz.",
             path: "/",
           }),
+          faqPageJsonLd(homeAllFaqs),
         ]}
       />
     </>

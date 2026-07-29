@@ -15,7 +15,7 @@ const AlertTriangle = () => (
 )
 
 const CheckCircle = () => (
-  <svg className="h-5 w-5 text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg className="h-5 w-5 text-[#57C7FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -87,7 +87,7 @@ export function ProblemSolutionSection() {
             Der Unterschied, den Tempo macht
           </div>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white text-balance mb-4 sm:mb-6">
-            Wer zuerst antwortet, <span className="text-emerald-300">gewinnt</span>.
+            Wer zuerst antwortet, <span className="text-[#57C7FF]">gewinnt</span>.
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-white/70 max-w-3xl mx-auto font-light leading-relaxed">
             Die meisten Interessenten entscheiden sich für den, der als Erster für sie da ist. Genau dort sind wir – rund um die Uhr, auch nach Feierabend und am Wochenende. Jede Anfrage bekommt sofort eine freundliche Antwort und landet als warmer Kontakt bei Ihnen.
@@ -149,12 +149,12 @@ export function ProblemSolutionSection() {
                 <div className="p-2 rounded-lg bg-emerald-500/20">
                   <CheckCircle />
                 </div>
-                <h3 className="text-xl sm:text-2xl font-bold text-emerald-300">Unsere Agenten</h3>
+                <h3 className="text-xl sm:text-2xl font-bold text-[#57C7FF]">Unsere Agenten</h3>
               </div>
 
               {/* Key Stat */}
               <div className="bg-emerald-500/10 backdrop-blur-sm border border-emerald-500/20 rounded-xl p-4 sm:p-6 mb-6">
-                <div className="text-3xl sm:text-4xl font-bold text-emerald-300 mb-2">24/7</div>
+                <div className="text-3xl sm:text-4xl font-bold text-[#57C7FF] mb-2">24/7</div>
                 <p className="text-white/80 text-sm sm:text-base">
                   KI Agenten reagieren in Echtzeit, qualifizieren Leads und sichern Deals – rund um die Uhr.
                 </p>
@@ -220,7 +220,7 @@ export function ProblemSolutionSection() {
           <Button
             onClick={scrollToContact}
             size="lg"
-            className="bg-white text-black rounded-full px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-medium transition-all duration-300 hover:bg-gray-50 hover:scale-105 hover:shadow-lg group cursor-pointer"
+            className="bg-[#8FE05A] text-[#122400] rounded-full px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-medium transition-all duration-300 hover:bg-gray-50 hover:scale-105 hover:shadow-lg group cursor-pointer"
           >
             Sehen, was bei mir möglich ist
             <ArrowRight />

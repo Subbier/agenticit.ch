@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { CalendarCheck, DatabaseZap, Mail } from "lucide-react"
 import type { LucideIcon } from "lucide-react"
@@ -11,7 +11,7 @@ export function CaseStudiesContact() {
       <div className="mx-auto max-w-6xl rounded-2xl border border-white/15 bg-white/[0.04] p-6 sm:p-10">
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <div>
-            <p className="overline text-sm font-semibold uppercase tracking-[0.22em] text-emerald-200">Nächster Schritt</p>
+            <p className="overline text-sm font-semibold uppercase tracking-[0.22em] text-[#57C7FF]">Nächster Schritt</p>
             <h2 className="mt-4 text-balance text-3xl font-light text-white sm:text-4xl">{cs.cta.title}</h2>
             <p className="mt-4 text-base leading-7 text-white/70">{cs.cta.description}</p>
             <div className="mt-6 grid gap-3 text-sm text-white/70">
@@ -21,7 +21,7 @@ export function CaseStudiesContact() {
             </div>
             <a
               href={`mailto:${cs.cta.email}`}
-              className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-emerald-200 transition-colors hover:text-white"
+              className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-[#57C7FF] transition-colors hover:text-white"
             >
               <Mail className="size-4" />
               {cs.cta.email}
@@ -55,7 +55,7 @@ export function CaseStudiesContact() {
 function Benefit({ icon: Icon, text }: { icon: LucideIcon; text: string }) {
   return (
     <div className="flex items-center gap-3 rounded-lg border border-white/10 bg-white/[0.04] p-3">
-      <Icon className="size-4 shrink-0 text-emerald-200" />
+      <Icon className="size-4 shrink-0 text-[#57C7FF]" />
       <span>{text}</span>
     </div>
   )

@@ -27,11 +27,47 @@ export const homeFaqs: FaqItem[] = [
       "Ohne Schulungswochen und ohne IT-Studium. Ihr Team ist vom ersten Tag an dabei – und wir zeigen Ihnen in einem Gespräch eine Aufgabe, die ab nächster Woche automatisiert werden kann.",
   },
   {
-    question: "Wie funktioniert der ROI-Rechner?",
+    question: "Wie funktioniert der Branchen-Radar?",
     answer:
-      "Sie wählen Ihre Bereiche und sehen in 20 Sekunden Ihr Jahrespotenzial – konservativ gerechnet auf belegten Studienwerten. Die detaillierte Auswertung erhalten Sie gegen Kontaktangabe.",
+      "Sie wählen Ihre Branche und Ihre Region – und sehen sofort, wie viele Suchanfragen pro Monat auf Ihren Markt entfallen, was diese Nachfrage im Werbemarkt wert ist und welche 10 Anbieter die Google-Rangliste in Ihrer Region anführen. Datenbasis: rund 50 Endkunden-Keywords je Branche (Ubersuggest/Google, Schweiz).",
   },
 ]
+
+// AIO/GEO-optimierte Definitions-FAQs: beantworten die Ziel-Frage-Keywords
+// („Was ist ein KI-Agent", „agentische KI", „RevOps" …) direkt in der ersten
+// Zeile, faktisch und mit konkreten Zahlen – das Format, das Google AI Overviews,
+// ChatGPT und Perplexity bevorzugt zitieren.
+export const homeAioFaqs: FaqItem[] = [
+  {
+    question: "Was ist ein KI-Agent?",
+    answer:
+      "Ein KI-Agent ist eine autonome Software, die Aufgaben eigenständig erledigt: Sie versteht eine Anfrage, trifft Entscheidungen, nutzt Werkzeuge wie CRM, Kalender oder E-Mail und liefert ein Ergebnis – ohne dass ein Mensch jeden Schritt auslöst. In Unternehmen übernehmen KI-Agenten typischerweise das Beantworten von Anfragen, das Qualifizieren von Leads, Terminbuchungen und Routineabläufe. AgenticIT baut solche Agenten mit Datenhaltung in der Schweiz.",
+  },
+  {
+    question: "Was ist agentische KI?",
+    answer:
+      "Agentische KI (englisch: agentic AI) bezeichnet KI-Systeme, die nicht nur antworten, sondern eigenständig handeln – sie planen mehrere Schritte, nutzen Werkzeuge und arbeiten auf ein Ziel hin. Der Unterschied zu einem klassischen Chatbot: Ein Chatbot antwortet, ein agentisches System erledigt die Aufgabe. Mehrere Agenten können als Multi-Agenten-System zusammenarbeiten.",
+  },
+  {
+    question: "Was ist RevOps (Revenue Operations)?",
+    answer:
+      "Revenue Operations, kurz RevOps, verbindet Marketing, Vertrieb und Kundendienst zu einem einzigen, datengetriebenen Umsatzsystem statt drei getrennter Silos. Ziel ist ein durchgängiger Ablauf von der ersten Anfrage bis zum Abschluss – mit sauberen Daten und klaren Übergaben. AgenticIT betreibt diesen Ablauf für Schweizer KMU end-to-end.",
+  },
+  {
+    question: "Was ist Prozessautomatisierung?",
+    answer:
+      "Prozessautomatisierung bedeutet, wiederkehrende Arbeitsabläufe von Software statt von Menschen erledigen zu lassen – etwa Anfragen weiterleiten, Daten erfassen, Offerten nachfassen oder Dokumente verarbeiten. Mit KI-Agenten lassen sich auch Aufgaben automatisieren, die Verständnis und Entscheidungen erfordern, nicht nur starre Wenn-dann-Regeln.",
+  },
+  {
+    question: "Was kostet eine KI-Agentur in der Schweiz?",
+    answer:
+      "Die Kosten hängen vom Anwendungsfall ab – von wenigen hundert Franken pro Monat für einen einzelnen KI-Agenten bis zu mehrstufigen Projekten für ganze Abläufe. Entscheidend ist der Nutzen: In Vorzeige-Projekten liegen die Einsparungen bei CHF 8'000–25'000 pro Monat bei einem ROI von rund 171 %. AgenticIT rechnet das Potenzial vorab konservativ und unverbindlich durch.",
+  },
+]
+
+// Kombinierte Startseiten-FAQ: definitorische AIO-Fragen zuerst, dann die
+// bestehenden Conversion-Fragen. Sichtbarer Inhalt == FAQPage-Schema.
+export const homeAllFaqs: FaqItem[] = [...homeAioFaqs, ...homeFaqs]
 
 export const roiCalculatorFaqs: FaqItem[] = [
   {
@@ -282,9 +318,9 @@ export const servicesRelatedLinks = [
 
 export const pageSeo = {
   home: {
-    title: "KI für Unternehmen aus der Schweiz | Vertrieb, Service & Prozesse – AgenticIT",
+    title: "KI für Schweizer KMU – Vertrieb & Prozesse | AgenticIT",
     description:
-      "Ihr digitales Team für Vertrieb, Kundendienst und Prozesse. Schweizer Datenhaltung, messbarer ROI, startklar ohne Schulung. Berechnen Sie Ihr Potenzial in 20 Sekunden.",
+      "Ihr digitales Team für Vertrieb, Kundendienst und Prozesse. Schweizer Datenhaltung, messbarer ROI, startklar ohne Schulung.",
     keywords: [
       "KI für Unternehmen Schweiz",
       "AI Agent",
@@ -310,9 +346,9 @@ export const pageSeo = {
     keywords: ["Revenue Operations", "RevOps Schweiz", "Lead Generierung", "Kundengewinnung", "AgenticIT"],
   },
   excellence: {
-    title: "Social Media, SEO & Performance Marketing für die Deutschschweiz",
+    title: "Social Media, SEO & Performance Marketing",
     description:
-      "Alle Kanäle aus einer Hand: Social Media, SEO, Performance-Marketing, Content und Omnichannel-Dialog für KMU in der Deutschschweiz – meisterhaft kombiniert von AgenticIT.",
+      "Alle Kanäle aus einer Hand: Social Media, SEO, Performance-Marketing, Content und Omnichannel-Dialog für KMU in der Deutschschweiz.",
     keywords: [
       "Social Media Marketing Schweiz",
       "SEO Agentur Schweiz",
@@ -354,7 +390,7 @@ export const pageSeo = {
     keywords: ["Speed to Lead", "Lead Burnout", "Lead Qualifizierung", "KI Vertrieb Schweiz"],
   },
   "case-studies": {
-    title: "Case Study advok.app – KI-Rechtsassistent Schweiz",
+    title: "Case Study advok.app – KI-Rechtsassistent",
     description:
       "advok.app: 74 % mehr qualifizierte Mandate, Reaktionszeit unter 3 Minuten. KI-Rechtsassistent als Digital Giveaway für Rechtsschutz und Kanzleien.",
     keywords: ["Case Study KI", "advok.app", "Lead Generation Rechtsschutz", "KI Rechtsassistent"],

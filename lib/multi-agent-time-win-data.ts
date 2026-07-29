@@ -1,4 +1,4 @@
-export const SEG_COLORS = ["#16C7C0", "#2DA8FF", "#7C5CFF", "#2BB673", "#F5A623", "#F2667A"] as const
+export const SEG_COLORS = ["#1F9A5E", "#57C7FF", "#57C7FF", "#2BB673", "#F5A623", "#F2667A"] as const
 
 export type WorkSegment = { n: string; d: number; c: string }
 

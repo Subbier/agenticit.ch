@@ -70,15 +70,15 @@ export function HeroSection() {
 
         <p className="text-sm sm:text-base text-white/60 text-balance max-w-sm sm:max-w-2xl mx-auto mb-8 sm:mb-12 leading-relaxed px-4 sm:px-0">
           Schweizer Anbieter für{" "}
-          <a href="/revops" className="text-emerald-200/90 underline-offset-2 hover:underline">
+          <a href="/revops" className="text-[#57C7FF]/90 underline-offset-2 hover:underline">
             Revenue Operations
           </a>
           ,{" "}
-          <a href="/ai-agents" className="text-emerald-200/90 underline-offset-2 hover:underline">
+          <a href="/ai-agents" className="text-[#57C7FF]/90 underline-offset-2 hover:underline">
             KI Agenten
           </a>{" "}
           und{" "}
-          <a href="/excellence" className="text-emerald-200/90 underline-offset-2 hover:underline">
+          <a href="/excellence" className="text-[#57C7FF]/90 underline-offset-2 hover:underline">
             Omnichannel & Lead Scoring
           </a>
           .
@@ -89,7 +89,7 @@ export function HeroSection() {
           <a href="#contact">
             <Button
               size="lg"
-              className="bg-white text-black rounded-full px-8 py-4 text-lg font-medium transition-all duration-300 hover:bg-gray-50 hover:scale-105 hover:shadow-lg group cursor-pointer relative overflow-hidden"
+              className="bg-[#8FE05A] text-[#122400] rounded-full px-8 py-4 text-lg font-medium transition-all duration-300 hover:bg-gray-50 hover:scale-105 hover:shadow-lg group cursor-pointer relative overflow-hidden"
             >
               Unverbindlich kennenlernen
               <ArrowRight />

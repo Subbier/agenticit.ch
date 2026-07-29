@@ -1,6 +1,6 @@
-import Link from "next/link"
+﻿import Link from "next/link"
 import Aurora from "@/components/site/aurora-bg"
-import { Footer } from "@/components/footer"
+import { CarbonFooter } from "@/components/site/carbon-footer"
 import { GlassmorphismNav } from "@/components/glassmorphism-nav"
 import type { LegalSectionContent } from "@/lib/legal-types"
 
@@ -33,14 +33,14 @@ export function LegalPageLayout({ title, intro, sections }: LegalPageLayoutProps
               </div>
 
               <p className="mt-10 text-sm text-white/55">
-                <Link href="/" className="text-emerald-200 transition hover:text-white">
+                <Link href="/" className="text-[#57C7FF] transition hover:text-white">
                   ← Zurück zur Startseite
                 </Link>
               </p>
             </div>
           </section>
 
-          <Footer />
+          <CarbonFooter />
         </div>
       </main>
     </div>
@@ -67,7 +67,7 @@ function LegalSection({ title, paragraphs, list, links, extra }: LegalSectionCon
         <ul className="mt-3 space-y-1 text-sm">
           {links.map((link) => (
             <li key={link.href}>
-              <a href={link.href} className="text-emerald-200 transition hover:text-white">
+              <a href={link.href} className="text-[#57C7FF] transition hover:text-white">
                 {link.label}
               </a>
             </li>

@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useState } from "react"
 import { Hand, Bot, Target, PenTool, MessageCircle, Filter, CalendarCheck, LineChart } from "lucide-react"
@@ -49,7 +49,7 @@ export function AgentTeam() {
             sel === "manager" ? "border-emerald-300/70 bg-emerald-300/15" : "border-emerald-300/40 bg-emerald-300/[0.08] hover:bg-emerald-300/15"
           }`}
         >
-          <span className={`flex size-12 items-center justify-center rounded-xl ${sel === "manager" ? "bg-emerald-300 text-black" : "bg-emerald-300/20 text-emerald-200"}`}>
+          <span className={`flex size-12 items-center justify-center rounded-xl ${sel === "manager" ? "bg-emerald-300 text-black" : "bg-emerald-300/20 text-[#57C7FF]"}`}>
             <Bot className="size-6" />
           </span>
           <span className="text-sm font-bold text-white">KI-Manager</span>
@@ -77,10 +77,10 @@ export function AgentTeam() {
                 isSel ? "border-emerald-300/60 bg-emerald-300/15" : "border-white/12 bg-white/[0.04] hover:bg-white/[0.07]"
               }`}
             >
-              <span className={`flex size-10 items-center justify-center rounded-lg ${isSel ? "bg-emerald-300 text-black" : "bg-white/[0.06] text-emerald-200"}`}>
+              <span className={`flex size-10 items-center justify-center rounded-lg ${isSel ? "bg-emerald-300 text-black" : "bg-white/[0.06] text-[#57C7FF]"}`}>
                 <Icon className="size-5" />
               </span>
-              <span className={`text-center text-[11px] sm:text-xs leading-tight ${isSel ? "font-semibold text-emerald-200" : "text-white/60"}`}>
+              <span className={`text-center text-[11px] sm:text-xs leading-tight ${isSel ? "font-semibold text-[#57C7FF]" : "text-white/60"}`}>
                 {n.label}
               </span>
             </button>
@@ -97,7 +97,7 @@ export function AgentTeam() {
         <h3 className="text-lg font-bold text-white">{active.label}</h3>
         <p className="mt-1 text-sm leading-6 text-white/70">{active.desc}</p>
       </div>
-      {!touched && <p className="mt-2 text-center text-xs text-emerald-200/90">Tippen Sie auf einen Agenten – er zeigt, was er für Sie übernimmt.</p>}
+      {!touched && <p className="mt-2 text-center text-xs text-[#57C7FF]/90">Tippen Sie auf einen Agenten – er zeigt, was er für Sie übernimmt.</p>}
     </div>
   )
 }

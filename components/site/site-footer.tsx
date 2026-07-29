@@ -1,7 +1,6 @@
-import Link from "next/link"
+﻿import Link from "next/link"
 import { Linkedin, Mail, MapPin } from "lucide-react"
 import { navItems } from "@/lib/site-content"
-import { SITE_TRUST_LINE } from "@/lib/site-trust-line"
 
 export function SiteFooter() {
   return (
@@ -37,18 +36,18 @@ export function SiteFooter() {
           <h2 className="text-sm font-semibold text-white">Kontakt</h2>
           <ul className="mt-4 grid gap-3 text-sm text-white/60">
             <li className="flex items-center gap-2">
-              <MapPin className="size-4 text-emerald-200" />
+              <MapPin className="size-4 text-[#57C7FF]" />
               Schweiz
             </li>
             <li>
               <a href="mailto:hello@agenticit.ch" className="flex items-center gap-2 transition hover:text-white">
-                <Mail className="size-4 text-emerald-200" />
+                <Mail className="size-4 text-[#57C7FF]" />
                 hello@agenticit.ch
               </a>
             </li>
             <li>
               <a href="#" className="flex items-center gap-2 transition hover:text-white">
-                <Linkedin className="size-4 text-emerald-200" />
+                <Linkedin className="size-4 text-[#57C7FF]" />
                 LinkedIn
               </a>
             </li>
@@ -59,7 +58,6 @@ export function SiteFooter() {
       <div className="mx-auto mt-10 flex max-w-7xl flex-col gap-3 border-t border-white/10 pt-6 text-xs text-white/42 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <p>© {new Date().getFullYear()} AgenticIT. Alle Rechte vorbehalten.</p>
-          <p className="mt-1">{SITE_TRUST_LINE}</p>
         </div>
         <div className="flex gap-4">
           <Link href="/datenschutz" className="transition hover:text-white">

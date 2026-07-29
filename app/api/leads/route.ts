@@ -5,7 +5,7 @@ const optionalText = (max = 500) =>
   z.preprocess((value) => (value === "" ? undefined : value), z.string().trim().max(max).optional())
 
 const leadSchema = z.object({
-  source: z.enum(["home", "ai-agents", "revops", "excellence", "omnichannel", "intelligence", "smart-apps", "case-studies", "blog"]),
+  source: z.enum(["home", "ai-agents", "revops", "excellence", "omnichannel", "intelligence", "smart-apps", "case-studies", "blog", "potenzialrechner", "gtm-checkliste"]),
   name: z.string().trim().min(2).max(120),
   email: z.string().trim().email().max(180),
   consent: z.literal(true),

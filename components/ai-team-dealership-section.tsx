@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useEffect, useRef, useState } from "react"
 
@@ -304,7 +304,7 @@ export function AiTeamDealershipSection() {
                         <p className="text-xs text-slate-500">Real-time inventory</p>
                       </div>
                     </div>
-                    <span className="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-bold rounded-full">
+                    <span className="px-3 py-1 bg-orange-100 text-[#57C7FF] text-xs font-bold rounded-full">
                       {partsQuotes} Quotes Today
                     </span>
                   </div>

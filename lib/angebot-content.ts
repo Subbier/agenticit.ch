@@ -1,4 +1,5 @@
-// AgenticIT · Inhalte der Angebot-Seiten (Acquire · Convert · Retain · Operate)
+// AgenticIT · Inhalte der Angebot-Seiten (Begeistern · Umsetzen · Erschaffen · Erweitern)
+// GTM: Begeistern + Umsetzen · RevOps: Erschaffen + Erweitern
 // Quelle: Leistungs-Flyer (v3) + «KI & Agentic Services – Alle Leistungen auf einen Blick».
 // ⚠️ Human-in-the-Loop: ROI-/Studien-Richtwerte vor Live-Schaltung menschlich prüfen.
 
@@ -48,10 +49,12 @@ export type ChartDonut = {
 export type AngebotChartData = ChartRadar | ChartFunnel | ChartLine | ChartDonut
 
 export type AngebotArea = {
-  slug: string // z. B. "angebot/acquire"
-  key: "acquire" | "convert" | "retain" | "operate"
-  navLabel: string // "Acquire"
-  name: string // "Agentic Acquire"
+  slug: string // z. B. "angebot/begeistern"
+  key: "begeistern" | "umsetzen" | "erschaffen" | "erweitern"
+  /** Übergeordnete Journey-Phase: begeistern/umsetzen = GTM, erschaffen/erweitern = RevOps. */
+  journey: "gtm" | "revops"
+  navLabel: string // "Begeistern"
+  name: string // "Agentic Begeistern"
   german: string // "Gewinnen"
   icon: string
   eyebrow: string // "Neukunden gewinnen"
@@ -72,18 +75,19 @@ export const ANGEBOT_COMPLIANCE = COMPLIANCE_LINE
 
 export const ANGEBOT_AREAS: AngebotArea[] = [
   {
-    slug: "angebot/acquire",
-    key: "acquire",
-    navLabel: "Acquire",
-    name: "Agentic Acquire",
-    german: "Gewinnen",
+    slug: "angebot/begeistern",
+    key: "begeistern",
+    journey: "gtm",
+    navLabel: "Begeistern",
+    name: "Agentic Begeistern",
+    german: "Aufmerksamkeit wecken",
     icon: "🎯",
     eyebrow: "Neukunden gewinnen",
     tagline: "Mehr qualifizierte Termine — ohne dass Ihr Team mehr arbeitet.",
     nutzen:
       "Ein digitales Team füllt planbar die Kalender Ihrer Berater — Sie zahlen für Resultate, nicht für Aufwand.",
-    accent: "#2DA8FF",
-    accentSoft: "#EAF5FF",
+    accent: "#57C7FF",
+    accentSoft: "#E7F6FF",
     stats: [
       { value: "+200%", label: "mehr Conversions (Websites)", source: "Branchenstudie" },
       { value: "−70%", label: "Kosten pro Lead", source: "Branchenstudie" },
@@ -194,24 +198,25 @@ export const ANGEBOT_AREAS: AngebotArea[] = [
       },
     ],
     meta: {
-      title: "Agentic Acquire – Neukunden gewinnen mit KI | AgenticIT",
+      title: "Agentic Begeistern – Neukunden gewinnen mit KI | AgenticIT",
       description:
-        "Mehr qualifizierte Termine ohne Mehraufwand: Leadgenerierung, Reaktivierung, Sekunden-Reaktion und automatische Terminvereinbarung. Schweizer KI, revDSG-konform.",
+        "Mehr qualifizierte Termine ohne Mehraufwand: Leadgenerierung, Reaktivierung, Sekunden-Reaktion. Schweizer KI, revDSG-konform.",
     },
   },
   {
-    slug: "angebot/convert",
-    key: "convert",
-    navLabel: "Convert",
-    name: "Agentic Convert",
-    german: "Konvertieren",
+    slug: "angebot/umsetzen",
+    key: "umsetzen",
+    journey: "gtm",
+    navLabel: "Umsetzen",
+    name: "Agentic Umsetzen",
+    german: "Zum Abschluss führen",
     icon: "⚡",
     eyebrow: "Schneller abschliessen",
     tagline: "Aus Interessenten werden Kunden — schneller und mit höherer Quote.",
     nutzen:
       "Weniger liegengebliebene Chancen, kürzere Verkaufszyklen und mehr Abschlüsse aus denselben Leads.",
-    accent: "#22C55E",
-    accentSoft: "#EAFBF0",
+    accent: "#57C7FF",
+    accentSoft: "#E7F6FF",
     stats: [
       { value: "bis +20%", label: "Abschlussquote (Ø)", source: "Branchenstudie" },
       { value: "−40%", label: "Zeit bis zur Offerte", source: "Branchenstudie" },
@@ -305,24 +310,25 @@ export const ANGEBOT_AREAS: AngebotArea[] = [
       },
     ],
     meta: {
-      title: "Agentic Convert – schneller abschliessen mit KI | AgenticIT",
+      title: "Agentic Umsetzen – schneller abschliessen mit KI | AgenticIT",
       description:
         "Aus Interessenten werden Kunden: Blitz-Offerten, Abschluss-Pilot, Einwand-Assistent und digitale Unterschrift. Höhere Quote, kürzere Verkaufszyklen.",
     },
   },
   {
-    slug: "angebot/retain",
-    key: "retain",
-    navLabel: "Retain",
-    name: "Agentic Retain",
-    german: "Binden",
+    slug: "angebot/erschaffen",
+    key: "erschaffen",
+    journey: "revops",
+    navLabel: "Erschaffen",
+    name: "Agentic Erschaffen",
+    german: "Beziehung erschaffen",
     icon: "🔄",
     eyebrow: "Kunden halten & ausbauen",
     tagline: "Mehr Umsatz pro Kunde — und Kunden, die bleiben und weiterempfehlen.",
     nutzen:
       "Höhere Verlängerungsquoten, weniger Abwanderung und planbare Empfehlungen statt teurer Neuakquise.",
-    accent: "#16C7C0",
-    accentSoft: "#E6FAF8",
+    accent: "#1F9A5E",
+    accentSoft: "#E6F5EC",
     stats: [
       { value: "−20%", label: "Abwanderung (Frühwarnung)", source: "Branchenstudie" },
       { value: "+70%", label: "Umsatz via Empfehlungen", source: "Branchenstudie" },
@@ -403,24 +409,25 @@ export const ANGEBOT_AREAS: AngebotArea[] = [
       },
     ],
     meta: {
-      title: "Agentic Retain – Kunden binden & ausbauen mit KI | AgenticIT",
+      title: "Agentic Erschaffen – Kunden binden mit KI",
       description:
         "Höhere Verlängerungsquoten, weniger Abwanderung, mehr Empfehlungen: Willkommens-Strecke, Kündigungs-Frühwarnung, Win-back und Empfehlungs-Programm.",
     },
   },
   {
-    slug: "angebot/operate",
-    key: "operate",
-    navLabel: "Operate",
-    name: "Agentic Operate",
-    german: "Betreiben",
+    slug: "angebot/erweitern",
+    key: "erweitern",
+    journey: "revops",
+    navLabel: "Erweitern",
+    name: "Agentic Erweitern",
+    german: "Kapazität erweitern",
     icon: "⚙️",
     eyebrow: "Betrieb automatisieren",
     tagline: "Stunden zurückgewinnen — Ihr Team konzentriert sich aufs Wesentliche.",
     nutzen:
       "Spürbar weniger Administration, tiefere Kosten und ein Betrieb, der auch dann läuft, wenn niemand Zeit hat.",
-    accent: "#F59E0B",
-    accentSoft: "#FFF4E2",
+    accent: "#1F9A5E",
+    accentSoft: "#E6F5EC",
     stats: [
       { value: "70%", label: "weniger Admin-Zeit", source: "Branchenstudie" },
       { value: "50%", label: "schnellere Bearbeitung", source: "Branchenstudie" },
@@ -525,7 +532,7 @@ export const ANGEBOT_AREAS: AngebotArea[] = [
       },
     ],
     meta: {
-      title: "Agentic Operate – Betrieb automatisieren mit KI | AgenticIT",
+      title: "Agentic Erweitern – Betrieb automatisieren",
       description:
         "Stunden zurückgewinnen: CRM-Hygiene, Buchhaltung, Mail-Assistent, Termin-Koordination und KI-Telefonempfang. Weniger Admin, tiefere Prozesskosten.",
     },
@@ -549,7 +556,7 @@ export const ANGEBOT_NAV_SUBS = ANGEBOT_AREAS.map((a) => ({
 // Kuratierte „Auswahl" wie auf dem Leistungs-Flyer (8 Highlights pro Bereich).
 // Bewusst kürzer als die vollständige Liste (= Accordion „Alle Leistungen im Detail").
 export const ANGEBOT_AUSWAHL: Record<string, { lead: string; text: string }[]> = {
-  acquire: [
+  begeistern: [
     { lead: "Leadgenerierung auf allen Kanälen", text: "Suche, Social & E-Mail — planbar neue Anfragen." },
     { lead: "Wunschkunden-Radar", text: "Genau die Kontakte, die jetzt kaufbereit sind." },
     { lead: "Archiv- & Bestands-Reaktivierung", text: "Umsatz aus Kontakten, die Sie längst haben." },
@@ -559,7 +566,7 @@ export const ANGEBOT_AUSWAHL: Record<string, { lead: string; text: string }[]> =
     { lead: "Sichtbarkeit in Suche & KI", text: "Gefunden werden, wo Kunden suchen." },
     { lead: "Automatische Terminvereinbarung", text: "Volle Berater-Kalender, ganz automatisch." },
   ],
-  convert: [
+  umsetzen: [
     { lead: "Beratungs-Briefing & Blitz-Offerte", text: "Alles parat — Angebote in Minuten." },
     { lead: "Foto-Erfassung statt Abtippen", text: "Dokumente fotografieren, fertig." },
     { lead: "Abschluss-Pilot & Follow-up", text: "Kein Abschluss bleibt liegen." },
@@ -569,7 +576,7 @@ export const ANGEBOT_AUSWAHL: Record<string, { lead: string; text: string }[]> =
     { lead: "Deal-Retter & Kaufreue-Schutz", text: "Festgefahrene Fälle lösen, Stornos vermeiden." },
     { lead: "Omnichannel-Telefonie & Transkript", text: "Wählen, Notizen & Mitschrift automatisch." },
   ],
-  retain: [
+  erschaffen: [
     { lead: "Willkommens-Strecke", text: "Starker Start ab Tag eins." },
     { lead: "Verlängerungs-Pilot (90/60/30 T.)", text: "Höhere Verlängerungsquote, automatisch." },
     { lead: "Kündigungs-Frühwarnung", text: "Abwanderung stoppen, bevor sie passiert." },
@@ -579,7 +586,7 @@ export const ANGEBOT_AUSWAHL: Record<string, { lead: string; text: string }[]> =
     { lead: "Bewertungs-Booster", text: "Mehr und bessere Bewertungen." },
     { lead: "Kunden-Lebenszeit-Management", text: "Mehr Wert über die ganze Beziehung." },
   ],
-  operate: [
+  erweitern: [
     { lead: "CRM-Management & Datenhygiene", text: "Saubere Daten, auf die Verlass ist." },
     { lead: "Buchhaltung & Belege automatisch", text: "Rechnungen, Mahnwesen, Spesen ohne Aufwand." },
     { lead: "KI-Mail- & Korrespondenz-Assistent", text: "Posteingang & Schriftverkehr im Griff." },

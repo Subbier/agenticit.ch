@@ -73,7 +73,7 @@ export function ChooseYourAgent() {
   const agent = AGENT_DEMOS[current]
 
   return (
-    <section id="waehle-deinen-agenten" className="cyoa-section scroll-mt-20 border-y border-[#E3E9F2] bg-gradient-to-b from-[#0B1F3A] to-[#13294B] px-5 py-12 sm:px-6 sm:py-16">
+    <section id="waehle-deinen-agenten" className="cyoa-section scroll-mt-20 border-y border-[#E1E4E8] bg-gradient-to-b from-[#0A0C10] to-[#1E2631] px-5 py-12 sm:px-6 sm:py-16">
       <div className="mx-auto max-w-[560px]">
         <div className="cyoa-intro">
           <span className="cyoa-ey">Live-Element · Autonome KI-Agenten</span>

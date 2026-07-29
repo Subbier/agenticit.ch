@@ -109,8 +109,16 @@ export async function POST(request: Request) {
     let mailSent = false
     let whatsappStarted = false
 
-    // WhatsApp-first: Bei Opt-in zuerst die WhatsApp-Nachricht senden und die E-Mail
-    // zurückhalten. Die Mail geht nur als Fallback raus (Cron, nach 2 h ohne Termin).
+    // E-Mail IMMER sofort senden – der Besucher soll den Report ohne Wartezeit erhalten.
+    if (pdf) {
+      const r = await sendReportMail(analysis, pdf).catch(() => ({ sent: false, note: "Mailversand fehlgeschlagen." }))
+      mailSent = r.sent
+      if (r.note) notes.push(r.note)
+    } else {
+      notes.push("PDF konnte nicht erzeugt werden – kein Mailversand.")
+    }
+
+    // WhatsApp zusätzlich (parallel zur Mail), wenn Opt-in vorliegt.
     const wantsWhatsApp =
       payload.whatsapp_opt_in === true &&
       Boolean(analysis.contact.phone) &&
@@ -127,27 +135,18 @@ export async function POST(request: Request) {
       }))
       if (wa.ok) {
         whatsappStarted = true
+        // Status "mail_sent": Der 2-h-Fallback-Cron darf KEINE zweite Mail senden.
         await kvSetJson(
           `wa:pending:${normalizePhone(c.phone)}`,
-          { analysis, createdAt: Date.now(), status: "pending" },
+          { analysis, createdAt: Date.now(), status: mailSent ? "mail_sent" : "pending" },
           60 * 60 * 72,
         ).catch(() => {})
-        notes.push("WhatsApp-Flow gestartet – die E-Mail folgt nur, falls kein Termin zustande kommt.")
+        notes.push("WhatsApp-Flow gestartet – Mail wurde bereits direkt gesendet.")
       } else {
-        notes.push(`WhatsApp nicht gestartet (${wa.note ?? "?"}) – E-Mail wird direkt gesendet.`)
+        notes.push(`WhatsApp nicht gestartet (${wa.note ?? "?"}).`)
       }
     }
-
-    // Klassischer Sofort-Mailweg (kein Opt-in ODER WhatsApp fehlgeschlagen).
-    if (!whatsappStarted) {
-      if (pdf) {
-        const r = await sendReportMail(analysis, pdf).catch(() => ({ sent: false, note: "Mailversand fehlgeschlagen." }))
-        mailSent = r.sent
-        if (r.note) notes.push(r.note)
-      } else {
-        notes.push("PDF konnte nicht erzeugt werden – kein Mailversand.")
-      }
-    }
+    void whatsappStarted
 
     if (zoho.note) notes.push(zoho.note)
     if (analysis.semrush.note) notes.push(analysis.semrush.note)

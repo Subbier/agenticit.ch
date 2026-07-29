@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react"
 import {
@@ -34,9 +34,9 @@ import {
 type PhaseKey = "akquise" | "termin" | "angebot" | "onboard" | "bindung" | "langfrist"
 
 const PHASES: Record<PhaseKey, { color: string; label: string }> = {
-  akquise: { color: "#16C7C0", label: "Akquise" },
-  termin: { color: "#2DA8FF", label: "Terminierung" },
-  angebot: { color: "#7C5CFF", label: "Angebot & Abschluss" },
+  akquise: { color: "#1F9A5E", label: "Akquise" },
+  termin: { color: "#57C7FF", label: "Terminierung" },
+  angebot: { color: "#57C7FF", label: "Angebot & Abschluss" },
   onboard: { color: "#2BB673", label: "Onboarding" },
   bindung: { color: "#F5A623", label: "Bindung & Wachstum" },
   langfrist: { color: "#F2667A", label: "Lebenslange Betreuung" },
@@ -153,15 +153,15 @@ export function LifetimeJourneyTimeline() {
   let lastDay = -1
 
   return (
-    <section className="bg-gradient-to-b from-[#13294B] to-[#0B1F3A] px-5 py-12 sm:px-6 sm:py-16">
+    <section className="bg-gradient-to-b from-[#1E2631] to-[#0A0C10] px-5 py-12 sm:px-6 sm:py-16">
       <div className="mx-auto max-w-[640px] text-center">
-        <span className="inline-block rounded-full bg-[#16C7C0]/15 px-[13px] py-[6px] text-[11px] font-extrabold uppercase tracking-[0.7px] text-[#16C7C0] sm:text-[12px]">
+        <span className="inline-block rounded-full bg-[#1F9A5E]/15 px-[13px] py-[6px] text-[11px] font-extrabold uppercase tracking-[0.7px] text-[#57C7FF] sm:text-[12px]">
           Live-Demo
         </span>
         <h2 className="mt-3 text-[clamp(24px,5vw,34px)] font-extrabold leading-[1.1] tracking-[-0.6px] text-white">
           Ein Lead trifft ein. Der Rest läuft von selbst.
         </h2>
-        <p className="mx-auto mt-3 max-w-[460px] text-[clamp(14px,3.2vw,16px)] leading-relaxed text-[#9fb0c8]">
+        <p className="mx-auto mt-3 max-w-[460px] text-[clamp(14px,3.2vw,16px)] leading-relaxed text-[#9AA6B2]">
           Drücke den Knopf und sieh zu, wie der Wachstumsmotor jeden Schritt von Tag 1 bis Tag 730 selbst übernimmt.
         </p>
       </div>
@@ -176,18 +176,18 @@ export function LifetimeJourneyTimeline() {
               className="h-[22px] w-[22px] flex-none rounded-[7px]"
               style={{
                 background:
-                  "conic-gradient(from 200deg,#16C7C0,#2DA8FF,#7C5CFF,#F5A623,#16C7C0)",
-                boxShadow: "0 0 16px rgba(45,168,255,.6)",
+                  "conic-gradient(from 200deg,#1F9A5E,#57C7FF,#57C7FF,#F5A623,#1F9A5E)",
+                boxShadow: "0 0 16px rgba(87,199,255,.6)",
               }}
             />
             <span>
               AgenticIT
-              <span className="block text-[10.5px] font-medium tracking-[0.4px] text-[#8ea0c8]">
+              <span className="block text-[10.5px] font-medium tracking-[0.4px] text-[#98A4B4]">
                 LIFETIME CUSTOMER JOURNEY
               </span>
             </span>
           </div>
-          <div className="text-right text-[11px] leading-[1.3] tabular-nums text-[#8ea0c8]">
+          <div className="text-right text-[11px] leading-[1.3] tabular-nums text-[#98A4B4]">
             <b className="text-[13px] text-white">{Math.max(0, i + 1)}</b>/23
             <br />
             <span>{done ? "Abgeschlossen" : active ? PHASES[active.p].label : "Bereit"}</span>
@@ -200,7 +200,7 @@ export function LifetimeJourneyTimeline() {
             className="absolute inset-0 rounded-full transition-[width] duration-500"
             style={{
               width: `${progress}%`,
-              background: "linear-gradient(90deg,#16C7C0,#2DA8FF,#7C5CFF,#2BB673,#F5A623,#F2667A)",
+              background: "linear-gradient(90deg,#1F9A5E,#57C7FF,#57C7FF,#2BB673,#F5A623,#F2667A)",
             }}
           />
         </div>
@@ -214,10 +214,10 @@ export function LifetimeJourneyTimeline() {
             }`}
             style={{
               background:
-                "linear-gradient(90deg,rgba(34,211,238,0),rgba(45,168,255,.1),rgba(34,211,238,0))",
+                "linear-gradient(90deg,rgba(34,211,238,0),rgba(87,199,255,.1),rgba(34,211,238,0))",
             }}
           >
-            <span className="absolute left-3 top-[6px] text-[8.5px] tracking-[2px] text-[#8ea0c8]">
+            <span className="absolute left-3 top-[6px] text-[8.5px] tracking-[2px] text-[#98A4B4]">
               JETZT
             </span>
           </div>
@@ -229,8 +229,8 @@ export function LifetimeJourneyTimeline() {
               started ? "opacity-100" : "opacity-0"
             }`}
             style={{
-              background: "radial-gradient(circle at 35% 30%,#fff,#16C7C0)",
-              boxShadow: "0 0 0 6px rgba(22,199,192,.18),0 0 26px rgba(22,199,192,.9)",
+              background: "radial-gradient(circle at 35% 30%,#fff,#1F9A5E)",
+              boxShadow: "0 0 0 6px rgba(31,154,94,.18),0 0 26px rgba(31,154,94,.9)",
             }}
           />
 
@@ -240,7 +240,7 @@ export function LifetimeJourneyTimeline() {
             className="absolute inset-x-0 top-0 px-4 transition-transform duration-[1050ms] [transition-timing-function:cubic-bezier(.5,.02,.2,1)]"
           >
             {/* spine */}
-            <div className="pointer-events-none absolute bottom-2 left-[43px] top-2 w-0.5 bg-gradient-to-b from-transparent via-[#1e2c4d] to-transparent" />
+            <div className="pointer-events-none absolute bottom-2 left-[43px] top-2 w-0.5 bg-gradient-to-b from-transparent via-[#1E2631] to-transparent" />
 
             {STEPS.map((s, idx) => {
               const showDay = s.d !== lastDay
@@ -253,10 +253,10 @@ export function LifetimeJourneyTimeline() {
                 <div key={idx}>
                   {showDay && (
                     <div className="relative z-[2] flex h-[42px] items-center gap-[10px] pl-0.5">
-                      <b className="whitespace-nowrap rounded-full border border-[#1e2c4d] bg-[#111c36] px-[9px] py-1 text-[10px] tracking-[1.5px] text-[#8ea0c8]">
+                      <b className="whitespace-nowrap rounded-full border border-[#1E2631] bg-[#141A24] px-[9px] py-1 text-[10px] tracking-[1.5px] text-[#98A4B4]">
                         TAG {s.d}
                       </b>
-                      <span className="h-px flex-1 bg-[#1e2c4d]" />
+                      <span className="h-px flex-1 bg-[#1E2631]" />
                     </div>
                   )}
                   <div
@@ -270,9 +270,9 @@ export function LifetimeJourneyTimeline() {
                     } ${isActive ? "translate-x-0.5" : ""}`}
                   >
                     <div
-                      className="relative flex h-[54px] w-[54px] flex-none items-center justify-center rounded-[15px] border bg-[#111c36] transition-all duration-400"
+                      className="relative flex h-[54px] w-[54px] flex-none items-center justify-center rounded-[15px] border bg-[#141A24] transition-all duration-400"
                       style={{
-                        borderColor: lit ? `color-mix(in srgb, ${color} 55%, #1e2c4d)` : "#1e2c4d",
+                        borderColor: lit ? `color-mix(in srgb, ${color} 55%, #1E2631)` : "#1E2631",
                         boxShadow: isActive
                           ? `0 0 0 4px color-mix(in srgb, ${color} 22%, transparent), 0 0 26px color-mix(in srgb, ${color} 55%, transparent)`
                           : "none",
@@ -280,7 +280,7 @@ export function LifetimeJourneyTimeline() {
                       }}
                     >
                       <span
-                        className="absolute -right-[7px] -top-[7px] flex h-[19px] w-[19px] items-center justify-center rounded-full text-[10px] font-extrabold text-[#06101e] shadow-[0_2px_8px_rgba(0,0,0,.4)]"
+                        className="absolute -right-[7px] -top-[7px] flex h-[19px] w-[19px] items-center justify-center rounded-full text-[10px] font-extrabold text-[#07090C] shadow-[0_2px_8px_rgba(0,0,0,.4)]"
                         style={{ background: color }}
                       >
                         {idx + 1}
@@ -293,7 +293,7 @@ export function LifetimeJourneyTimeline() {
                         {PHASES[s.p].label}
                       </div>
                       <div
-                        className="overflow-hidden text-[11.5px] leading-[1.35] text-[#8ea0c8] transition-all duration-400"
+                        className="overflow-hidden text-[11.5px] leading-[1.35] text-[#98A4B4] transition-all duration-400"
                         style={{
                           maxHeight: isActive ? 60 : 0,
                           opacity: isActive ? 1 : 0,
@@ -319,18 +319,18 @@ export function LifetimeJourneyTimeline() {
           <button
             onClick={toggle}
             aria-label="Abspielen / Pause"
-            className="flex h-[38px] w-[38px] flex-none items-center justify-center rounded-[11px] border border-[#1e2c4d] bg-[#111c36] text-white transition-colors hover:border-[#2c3f6b] hover:bg-[#16234a]"
+            className="flex h-[38px] w-[38px] flex-none items-center justify-center rounded-[11px] border border-[#1E2631] bg-[#141A24] text-white transition-colors hover:border-[#2c3f6b] hover:bg-[#16234a]"
           >
             {playing ? <Pause size={16} /> : <Play size={16} />}
           </button>
           <button
             onClick={restart}
             aria-label="Neu starten"
-            className="flex h-[38px] w-[38px] flex-none items-center justify-center rounded-[11px] border border-[#1e2c4d] bg-[#111c36] text-white transition-colors hover:border-[#2c3f6b] hover:bg-[#16234a]"
+            className="flex h-[38px] w-[38px] flex-none items-center justify-center rounded-[11px] border border-[#1E2631] bg-[#141A24] text-white transition-colors hover:border-[#2c3f6b] hover:bg-[#16234a]"
           >
             <RotateCcw size={16} />
           </button>
-          <div className="min-w-0 flex-1 truncate text-[11.5px] text-[#8ea0c8]">
+          <div className="min-w-0 flex-1 truncate text-[11.5px] text-[#98A4B4]">
             {done ? (
               <b className="text-white">23/23 Schritte – vollautomatisch.</b>
             ) : active ? (
@@ -344,7 +344,7 @@ export function LifetimeJourneyTimeline() {
           <button
             onClick={cycleSpeed}
             aria-label="Geschwindigkeit"
-            className="flex h-[38px] flex-none items-center justify-center rounded-[11px] border border-[#1e2c4d] bg-[#111c36] px-[11px] text-[11px] font-bold text-[#16C7C0] transition-colors hover:border-[#2c3f6b] hover:bg-[#16234a]"
+            className="flex h-[38px] flex-none items-center justify-center rounded-[11px] border border-[#1E2631] bg-[#141A24] px-[11px] text-[11px] font-bold text-[#57C7FF] transition-colors hover:border-[#2c3f6b] hover:bg-[#16234a]"
           >
             {speed}×
           </button>
@@ -355,19 +355,19 @@ export function LifetimeJourneyTimeline() {
           <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-[18px] bg-[radial-gradient(80%_60%_at_50%_40%,rgba(13,19,38,.6),rgba(5,8,15,.92))] px-7 text-center backdrop-blur-[2px]">
             <h3 className="max-w-[15ch] text-[clamp(18px,5vw,24px)] font-bold leading-[1.18] text-white">
               Ein Lead trifft ein.{" "}
-              <span className="bg-gradient-to-r from-[#16C7C0] to-[#7C5CFF] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#1F9A5E] to-[#57C7FF] bg-clip-text text-transparent">
                 Was dann passiert, läuft vollautomatisch.
               </span>
             </h3>
-            <p className="max-w-[30ch] text-[12.5px] leading-[1.5] text-[#8ea0c8]">
+            <p className="max-w-[30ch] text-[12.5px] leading-[1.5] text-[#98A4B4]">
               23 Schritte. Ein Klick. Von Tag 1 bis Tag 730.
             </p>
             <button
               onClick={start}
-              className="group relative mt-1 inline-flex items-center gap-[10px] rounded-full bg-gradient-to-r from-[#16C7C0] to-[#2DA8FF] px-[26px] py-[15px] text-[14.5px] font-bold text-[#06101e] shadow-[0_10px_30px_rgba(45,168,255,.45)] transition-transform hover:-translate-y-0.5"
+              className="group relative mt-1 inline-flex items-center gap-[10px] rounded-full bg-gradient-to-r from-[#1F9A5E] to-[#57C7FF] px-[26px] py-[15px] text-[14.5px] font-bold text-[#07090C] shadow-[0_10px_30px_rgba(87,199,255,.45)] transition-transform hover:-translate-y-0.5"
             >
-              <span className="absolute -inset-1.5 animate-ping rounded-full border-2 border-[#16C7C0] opacity-60" />
-              <Play size={18} className="fill-[#06101e]" />
+              <span className="absolute -inset-1.5 animate-ping rounded-full border-2 border-[#1F9A5E] opacity-60" />
+              <Play size={18} className="fill-[#07090C]" />
               Lead eintreffen lassen
             </button>
           </div>
@@ -375,7 +375,7 @@ export function LifetimeJourneyTimeline() {
       </div>
 
       {/* hint */}
-      <p className="mx-auto mt-4 max-w-[520px] text-center text-[11px] text-[#9fb0c8]">
+      <p className="mx-auto mt-4 max-w-[520px] text-center text-[11px] text-[#9AA6B2]">
         Tippe oder fahre über einen Schritt für Details · ↺ erneut abspielen. Der KI-Terminanruf ist transparent als
         KI gekennzeichnet.
       </p>

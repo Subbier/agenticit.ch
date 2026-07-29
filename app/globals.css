@@ -9,74 +9,74 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: oklch(0.05 0 0);
-  --foreground: oklch(0.98 0 0);
-  --card: oklch(0.08 0 0);
+  --background: #0A0C10;
+  --foreground: #F2F5F8;
+  --card: #141A24;
   --card-foreground: oklch(0.98 0 0);
-  --popover: oklch(0.08 0 0);
+  --popover: #141A24;
   --popover-foreground: oklch(0.98 0 0);
-  --primary: oklch(0.7 0.15 142);
-  --primary-foreground: oklch(0.05 0 0);
-  --secondary: oklch(0.15 0 0);
+  --primary: #8FE05A;
+  --primary-foreground: #122400;
+  --secondary: #1E2631;
   --secondary-foreground: oklch(0.98 0 0);
-  --muted: oklch(0.12 0 0);
-  --muted-foreground: oklch(0.6 0 0);
-  --accent: oklch(0.15 0 0);
+  --muted: #1E2631;
+  --muted-foreground: #9AA6B2;
+  --accent: #1E2631;
   --accent-foreground: oklch(0.98 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.2 0 0);
-  --input: oklch(0.15 0 0);
-  --ring: oklch(0.7 0.15 142);
-  --chart-1: oklch(0.7 0.15 142);
+  --border: #2A3340;
+  --input: #1E2631;
+  --ring: #8FE05A;
+  --chart-1: #8FE05A;
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.5 0.07 227.392);
   --chart-4: oklch(0.8 0.189 84.429);
   --chart-5: oklch(0.75 0.188 70.08);
   --radius: 0.75rem;
-  --sidebar: oklch(0.08 0 0);
+  --sidebar: #141A24;
   --sidebar-foreground: oklch(0.98 0 0);
-  --sidebar-primary: oklch(0.7 0.15 142);
+  --sidebar-primary: #8FE05A;
   --sidebar-primary-foreground: oklch(0.05 0 0);
   --sidebar-accent: oklch(0.15 0 0);
   --sidebar-accent-foreground: oklch(0.98 0 0);
   --sidebar-border: oklch(0.2 0 0);
-  --sidebar-ring: oklch(0.7 0.15 142);
+  --sidebar-ring: #8FE05A;
 }
 
 .dark {
-  --background: oklch(0.05 0 0);
-  --foreground: oklch(0.98 0 0);
-  --card: oklch(0.08 0 0);
+  --background: #0A0C10;
+  --foreground: #F2F5F8;
+  --card: #141A24;
   --card-foreground: oklch(0.98 0 0);
-  --popover: oklch(0.08 0 0);
+  --popover: #141A24;
   --popover-foreground: oklch(0.98 0 0);
-  --primary: oklch(0.7 0.15 142);
-  --primary-foreground: oklch(0.05 0 0);
-  --secondary: oklch(0.15 0 0);
+  --primary: #8FE05A;
+  --primary-foreground: #122400;
+  --secondary: #1E2631;
   --secondary-foreground: oklch(0.98 0 0);
-  --muted: oklch(0.12 0 0);
-  --muted-foreground: oklch(0.6 0 0);
-  --accent: oklch(0.15 0 0);
+  --muted: #1E2631;
+  --muted-foreground: #9AA6B2;
+  --accent: #1E2631;
   --accent-foreground: oklch(0.98 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.2 0 0);
-  --input: oklch(0.15 0 0);
-  --ring: oklch(0.7 0.15 142);
-  --chart-1: oklch(0.7 0.15 142);
+  --border: #2A3340;
+  --input: #1E2631;
+  --ring: #8FE05A;
+  --chart-1: #8FE05A;
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.5 0.07 227.392);
   --chart-4: oklch(0.8 0.189 84.429);
   --chart-5: oklch(0.75 0.188 70.08);
-  --sidebar: oklch(0.08 0 0);
+  --sidebar: #141A24;
   --sidebar-foreground: oklch(0.98 0 0);
-  --sidebar-primary: oklch(0.7 0.15 142);
+  --sidebar-primary: #8FE05A;
   --sidebar-primary-foreground: oklch(0.05 0 0);
   --sidebar-accent: oklch(0.15 0 0);
   --sidebar-accent-foreground: oklch(0.98 0 0);
   --sidebar-border: oklch(0.2 0 0);
-  --sidebar-ring: oklch(0.7 0.15 142);
+  --sidebar-ring: #8FE05A;
 }
 
 @theme inline {
@@ -84,6 +84,12 @@
   --font-mono: var(--font-geist-mono);
   --font-script: "Dancing Script", cursive;
   --font-handwriting: "Caveat", cursive;
+
+  /* Design-System "Carbon & Signal" – Zusatz-Fonts für Lösungen/Angebot/Technologie/Branchen.
+     Additiv: --font-sans/--font-mono oben bleiben unverändert. */
+  --font-display: var(--font-space-grotesk);
+  --font-mono-signal: var(--font-jetbrains-mono);
+  --font-carbon-text: var(--font-geist-sans);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -132,6 +138,16 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+  /* Carbon & Signal Typografie (26.07.2026): Space Grotesk als Display-Schrift
+     für alle Titel — sitewide inkl. Startseite. Fliesstext bleibt Inter.
+     Utility-Klassen auf einzelnen Headings überschreiben diese Basis-Regel weiterhin. */
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-space-grotesk), var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: -0.015em;
   }
 }
 
@@ -940,7 +956,7 @@
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--color-accent);
-  margin: 0 0 var(--mb-overline);
+  margin-block: 0 var(--mb-overline);
 }
 
 /* 2 — H1 (einzigartig, ganz oben) */
@@ -948,7 +964,7 @@ h1 {
   font-size: var(--font-size-h1);
   font-weight: var(--fw-bold);
   line-height: var(--lh-h1);
-  margin: 0 0 var(--mb-h1);
+  margin-block: 0 var(--mb-h1);
 }
 
 /* 3 — H2 (Sektions-Überschriften) */
@@ -956,7 +972,7 @@ h2 {
   font-size: var(--font-size-h2);
   font-weight: var(--fw-bold);
   line-height: var(--lh-h2);
-  margin: 0 0 var(--mb-h2);
+  margin-block: 0 var(--mb-h2);
 }
 
 /* 4 — H3 (Teaser- & Box-Überschriften) */
@@ -964,7 +980,7 @@ h3 {
   font-size: var(--font-size-h3);
   font-weight: var(--fw-semibold);
   line-height: var(--lh-h3);
-  margin: 0 0 var(--mb-h3);
+  margin-block: 0 var(--mb-h3);
 }
 
 /* 5 — Fließtext & Listen (Farbe bleibt bei den Elementen) */
@@ -979,7 +995,9 @@ li,
 p,
 ul,
 ol {
-  margin: 0 0 var(--mb-body);
+  /* Nur vertikale Abstände setzen — sonst überschreibt diese ungeschichtete
+     Regel Tailwinds mx-auto und zentrierte Absätze rutschen nach links. */
+  margin-block: 0 var(--mb-body);
 }
 
 li {

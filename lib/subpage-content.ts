@@ -1,14 +1,22 @@
 // AgenticIT · Inhalte der Unterseiten (aus den PAS-Drafts, Stand 20.06.2026).
 // ⚠️ Human-in-the-Loop: Marktzahlen/ROI sowie DSG-Aussagen vor Live-Schaltung
 // menschlich (und wo nötig juristisch) prüfen und mit Quellen belegen.
+//
+// GTM/RevOps-Split (26.07.2026, SEMrush-validiert): "loesungen" hat neu genau
+// zwei Hub-Seiten — gtm-markteintritt (Kunden holen) und revops-umsatzgenerierung
+// (aus Kunden mehr machen). Die alten drei Seiten (kundendienst-ki,
+// prozessautomatisierung, revops-growth) wurden in diese zwei aufgeteilt und
+// per 301 dorthin umgeleitet, siehe next.config.mjs.
+
+import type { AngebotChartData } from "@/lib/angebot-content"
 
 export type SubBullet = { lead?: string; text: string }
 
 export type SubPageContent = {
-  slug: string // voller Pfad-Slug, z. B. "loesungen/kundendienst-ki"
+  slug: string // voller Pfad-Slug, z. B. "loesungen/gtm-markteintritt"
   parentSlug: string // "loesungen"
   parentLabel: string // "Lösungen"
-  navLabel: string // "Kundendienst-KI"
+  navLabel: string // "GTM: Markteintritt"
   problem: { title: string; body: string[]; kicker?: string }
   agitate: { title: string; intro?: string; bullets: SubBullet[]; outro?: string[] }
   solution: {
@@ -19,6 +27,11 @@ export type SubPageContent = {
     easyTitle?: string
     easyText?: string
   }
+  /** Optionales Style-Visual (wiederverwendet die Angebot-Chart-Bibliothek). */
+  chart?: AngebotChartData
+  chartAccent?: string
+  /** Cross-Links zu passenden Angebot-Bereichen (z. B. GTM → Begeistern/Umsetzen). */
+  relatedAngebot?: Array<"begeistern" | "umsetzen" | "erschaffen" | "erweitern">
   interactive?: { label: string; text: string }
   voiceAgent?: {
     agentId: string
@@ -30,6 +43,8 @@ export type SubPageContent = {
   chooseAgentDemo?: boolean
   multiAgentTimeWin?: boolean
   enterpriseOrgChart?: boolean
+  /** GTM-Seite: Story-Sektion "Warum Go-to-Market entscheidet" + Checklisten-Lead-Magnet. */
+  gtmPlaybook?: boolean
   cta: { title: string; text: string; primary: string; assistant: string }
   contact?: { email?: string; phone?: string; address?: string; calendar?: string }
   meta: { title: string; description: string }
@@ -37,191 +52,141 @@ export type SubPageContent = {
 
 export const SUBPAGES: Record<string, SubPageContent> = {
   // ───────────────────────── LÖSUNGEN ─────────────────────────
-  "loesungen/kundendienst-ki": {
-    slug: "loesungen/kundendienst-ki",
+  "loesungen/gtm-markteintritt": {
+    slug: "loesungen/gtm-markteintritt",
     parentSlug: "loesungen",
     parentLabel: "Lösungen",
-    navLabel: "Kundendienst-KI",
+    navLabel: "GTM: Markteintritt",
     problem: {
-      title: "Wartende Kunden gehen verloren.",
+      title: "Ihre Kunden suchen längst. Nur nicht bei Ihnen.",
       body: [
-        "Eine Anfrage kommt um 19 Uhr. Niemand antwortet bis morgen früh.",
-        "Das Telefon klingelt, während alle im Gespräch sind. Der Anrufer legt auf.",
-        "Eine simple Standardfrage bindet schon wieder einen Ihrer besten Mitarbeiter.",
-        "Kundenservice ist heute ein Wettlauf um Sekunden – und die meisten Unternehmen verlieren ihn, ohne es zu merken.",
+        "Jeden Monat suchen Tausende in der Schweiz genau das, was Sie anbieten – bei Google, und immer öfter direkt bei ChatGPT. Gefunden wird, wer dort steht. Die anderen existieren für den Kunden schlicht nicht.",
+        "Und wenn doch eine Anfrage kommt: 19 Uhr, Feierabend. Bis morgen früh hat der Interessent längst beim Nächsten unterschrieben.",
       ],
-      kicker: "Kommt Ihnen bekannt vor?",
+      kicker: "Der Markt wartet nicht.",
     },
     agitate: {
-      title: "Jede unbeantwortete Anfrage ist eine Einladung an Ihre Konkurrenz.",
-      intro: "Was wirklich passiert, während niemand antwortet:",
+      title: "Jede unbeantwortete Anfrage ist ein Geschenk an Ihre Konkurrenz.",
       bullets: [
-        { lead: "Der Kunde ist weg.", text: "Wer keine schnelle Antwort bekommt, fragt beim Nächsten an – oft nur einen Klick entfernt." },
-        { lead: "Ihr Team brennt aus.", text: "Ständige Unterbrechungen durch Routinefragen kosten Konzentration, Motivation und am Ende gute Leute." },
-        { lead: "Ihr Ruf leidet.", text: "Eine schlechte Bewertung wegen langsamer Antwort liest jeder künftige Interessent mit." },
+        { lead: "Die KI-Suche kennt Sie nicht.", text: "Immer mehr Kunden fragen ChatGPT statt Google – wer dort nicht auftaucht, wird nicht einmal verglichen." },
+        { lead: "Nach 5 Minuten ist der Lead kalt.", text: "Die Abschlusswahrscheinlichkeit fällt um ein Vielfaches, wenn die Antwort Stunden statt Sekunden dauert." },
+        { lead: "Kaltakquise verpufft.", text: "Streuverlust statt planbarer Termine – und Ihre besten Leute verbrennen ihre Zeit am Telefon." },
       ],
-      outro: [
-        "Und das Bittere: Diese Verluste tauchen in keiner Rechnung auf. Sie sehen nicht, was Sie verlieren – Sie spüren nur, dass es zäher läuft, als es müsste.",
-        "Mit jedem Monat ohne Lösung wird der Rückstand auf die grösser, die ihren Service längst automatisiert haben.",
-      ],
+      outro: ["Jeder Monat ohne System vergrössert den Vorsprung der Konkurrenz, die längst automatisiert gefunden wird und automatisiert antwortet."],
     },
     solution: {
-      title: "Ein digitaler Kollege, der jede Anfrage sofort beantwortet – Tag und Nacht.",
+      title: "Der agentische Markteintritt: gefunden werden, sofort antworten, Termin sichern.",
       intro: [
-        "Unsere Kundendienst-KI nimmt Anfragen entgegen, beantwortet die häufigsten Fragen selbstständig und bucht sogar Termine – über Chat und Telefon, rund um die Uhr.",
-        "Kein Kunde wartet mehr. Kein Anruf geht verloren. Ihr Team hat den Rücken frei.",
+        "Wir bauen Ihre Kundengewinnung als System: Zuerst messen wir mit dem Branchen-Radar die echte Nachfrage in Ihrer Region – dann besetzen KI-Agenten jeden Schritt vom ersten Klick bis zum vollen Kalender.",
       ],
       changeTitle: "Das ändert sich ab Tag eins:",
       bullets: [
-        { lead: "Sofort-Antwort, immer:", text: "24 Stunden, 7 Tage – ohne Überstunden, ohne Pause." },
-        { lead: "Bis zu 84 % kürzere Bearbeitungszeiten", text: "in Vorzeige-Projekten." },
-        { lead: "Ihr Team konzentriert sich", text: "auf die kniffligen Fälle, nicht auf Routine." },
-        { lead: "Termine landen direkt im Kalender", text: "– ohne Hin und Her." },
+        { lead: "Sichtbar in Google & KI-Antworten", text: "– SEO und AIO/GEO sorgen dafür, dass Google UND ChatGPT Sie empfehlen, bevor die Konkurrenz genannt wird." },
+        { lead: "Kampagnen mit klarem Preisschild", text: "– bezahlte Werbung, gesteuert auf Kosten pro Termin statt auf Klicks. Sie sehen jeden Franken und was er bringt." },
+        { lead: "Speed-to-Lead in Sekunden", text: "– ob Formular, Anruf oder WhatsApp: ein Agent meldet sich sofort, qualifiziert und bucht den Termin. 24/7, auch am Sonntag." },
+        { lead: "Nachfassen läuft automatisch", text: "– kein Interessent geht mehr vergessen: freundliche Follow-ups per E-Mail und Telefon, bis der Termin steht oder ein klares Nein." },
+        { lead: "Volle Kalender statt Telefon-Pingpong", text: "– der Agent vereinbart Termine direkt in Ihrer Agenda und erinnert beide Seiten." },
       ],
       easyTitle: "So einfach wie Microsoft Office",
-      easyText:
-        "Keine Schulungswochen, kein IT-Wissen. Sie sehen ein klares Dashboard, der Rest läuft im Hintergrund. Ihre Daten bleiben dabei in der Schweiz – DSG-konform.",
+      easyText: "Kein neues Tool zum Lernen. Ein klares Dashboard zeigt Nachfrage, Anfragen und Termine – der Rest läuft automatisiert. Daten bleiben in der Schweiz.",
     },
+    chart: {
+      type: "funnel",
+      title: "Vom Unsichtbaren zum Kunden",
+      steps: [
+        { label: "Sichtbar", pct: 100 },
+        { label: "Anfrage", pct: 62 },
+        { label: "Termin", pct: 38 },
+        { label: "Kunde", pct: 22 },
+      ],
+    },
+    chartAccent: "#57C7FF",
+    relatedAngebot: ["begeistern", "umsetzen"],
+    gtmPlaybook: true,
     interactive: {
-      label: "Live-Element: Sprechender Avatar „Kai“",
-      text: "Stellen Sie „Kai“ live eine Kundenanfrage – er antwortet und vereinbart einen Termin. In 30 Sekunden sehen Sie, was die Kundendienst-KI im echten Betrieb leistet.",
+      label: "Live-Element: Speed-to-Lead-Simulator",
+      text: "Eine Anfrage trifft ein – sehen Sie live, wie ein Agent in Sekunden antwortet und einen Termin bucht.",
     },
     cta: {
-      title: "Erleben Sie Ihren digitalen Kundendienst – live.",
-      text: "Lassen Sie unsere KI eine echte Anfrage aus Ihrem Alltag beantworten. Sie sehen sofort, wie das bei Ihren Kunden ankäme – und was es an Zeit spart.",
-      primary: "Jetzt kostenlose Live-Demo sichern",
-      assistant: "Kundendienst-KI testen",
+      title: "Sehen Sie Ihren Markteintritt in Zahlen.",
+      text: "Der Branchen-Radar zeigt, wie viele Menschen in Ihrer Region jeden Monat nach Ihrem Angebot suchen – und wer diese Anfragen heute bekommt. Spoiler: Es muss nicht die Konkurrenz sein.",
+      primary: "Jetzt kostenlosen Rückruf sichern",
+      assistant: "Markteintritt prüfen",
     },
     meta: {
-      title: "KI Kundenservice & Chatbot, der Termine bucht – AgenticIT",
+      title: "GTM: Kundengewinnung mit KI-Agenten",
       description:
-        "Ein Chatbot, der Anfragen löst und Termine bucht – rund um die Uhr. Antwortzeiten runter, Kundenzufriedenheit rauf. Schweizer Datenhaltung. Jetzt live erleben.",
+        "Go-to-Market als System: Sichtbarkeit in Google & KI-Antworten (SEO/AIO), Kampagnen auf Kosten pro Termin, Speed-to-Lead in Sekunden, automatische Termine. Planbar statt Kaltakquise.",
     },
   },
 
-  "loesungen/prozessautomatisierung": {
-    slug: "loesungen/prozessautomatisierung",
+  "loesungen/revops-umsatzgenerierung": {
+    slug: "loesungen/revops-umsatzgenerierung",
     parentSlug: "loesungen",
     parentLabel: "Lösungen",
-    navLabel: "Prozessautomatisierung",
+    navLabel: "RevOps: Umsatzgenerierung",
     problem: {
-      title: "Fleissarbeit statt Facharbeit.",
+      title: "Kunden sind da. Der Umsatz bleibt trotzdem liegen.",
       body: [
-        "Daten aus einer E-Mail ins System übertragen. Belege manuell erfassen. Dieselbe Excel-Tabelle zum dritten Mal aktualisieren.",
-        "Tag für Tag verschwinden so Stunden – für Arbeit, die niemand bemerkt, solange sie erledigt ist, und alle bemerken, sobald sie liegen bleibt.",
+        "Dieselbe Excel-Tabelle zum dritten Mal aktualisiert. Ein Vertrag läuft unbemerkt aus.",
+        "Marketing, Vertrieb und Service arbeiten nebeneinander – in den Lücken dazwischen verschwindet Ihr Umsatz.",
       ],
-      kicker: "Wertvolle Zeit, die in stupider Fleissarbeit versickert.",
+      kicker: "Wachstum, das nicht ankommt.",
     },
     agitate: {
-      title: "Handarbeit ist nicht nur langsam. Sie ist teuer – und riskant.",
-      intro: "Was diese manuellen Abläufe Sie wirklich kosten:",
+      title: "Jeder manuelle Prozess kostet mehr als ein neuer Kunde einbringt.",
       bullets: [
-        { lead: "Versteckte Personalkosten:", text: "Ihre Fachkräfte verbringen einen Teil ihres Tages mit Aufgaben, für die Sie sie nicht eingestellt haben." },
-        { lead: "Fehler, die nachher teuer werden:", text: "Ein Zahlendreher beim Abtippen, eine vergessene Frist – manuelle Schritte sind die häufigste Fehlerquelle überhaupt." },
-        { lead: "Tempo, das nicht reicht:", text: "Während Ihre Abläufe auf den nächsten freien Mitarbeiter warten, liefert die automatisierte Konkurrenz längst." },
+        { lead: "Abwanderung unbemerkt.", text: "Kündigungen kommen selten aus heiterem Himmel – die Warnsignale werden nur übersehen." },
+        { lead: "Fleissarbeit statt Facharbeit.", text: "Ihre besten Leute tippen Daten ab, statt zu beraten." },
+        { lead: "Bestand ungenutzt.", text: "Der günstigste Umsatz – aus bestehenden Kunden – bleibt liegen." },
       ],
-      outro: [
-        "Und je mehr Ihr Unternehmen wächst, desto schlimmer wird es. Mehr Aufträge bedeuten mehr Handarbeit – bis Sie neue Leute nur einstellen, um Routine abzuarbeiten.",
-        "Das ist kein Wachstum. Das ist ein Bremsklotz, den Sie jeden Monat teurer bezahlen.",
-      ],
+      outro: ["Das ist kein Wachstum. Das ist ein Bremsklotz, den Sie jeden Monat teurer bezahlen."],
     },
     solution: {
-      title: "Verbinden Sie Ihre Systeme – und lassen Sie die Abläufe von allein laufen.",
+      title: "Der agentische RevOps-Motor: binden, ausbauen, automatisieren.",
       intro: [
-        "Unsere Prozessautomatisierung (im Fachjargon RPA) übernimmt genau die wiederkehrenden Schritte, die heute Zeit fressen: erfassen, übertragen, prüfen, weiterleiten.",
-        "Ein Auslöser kommt – der Ablauf startet. Im Hintergrund, fehlerfrei, ohne Ihr Zutun.",
+        "Wir verbinden Marketing, Vertrieb und Service zu einem System, das Kunden hält, ausbaut – und den Betrieb im Hintergrund am Laufen.",
       ],
       changeTitle: "Das ändert sich ab Tag eins:",
       bullets: [
-        { lead: "Kein Abtippen mehr:", text: "Daten fliessen automatisch von A nach B." },
-        { lead: "Weniger Fehler,", text: "weil keine Handarbeit mehr im Spiel ist." },
-        { lead: "Mehr Tempo:", text: "Abläufe starten in dem Moment, in dem der Auslöser eintrifft." },
-        { lead: "Spürbare Ersparnis:", text: "Schweizer KMU mit klarem Anwendungsfall sparen CHF 8'000–25'000 pro Monat." },
-      ],
-      easyTitle: "So einfach wie Microsoft Office",
-      easyText:
-        "Sie müssen nichts programmieren und nichts umstellen. Wir docken an Ihre bestehenden Systeme an, Sie behalten den Überblick über ein klares Dashboard. Ihre Daten bleiben in der Schweiz – DSG-konform.",
-    },
-    interactive: {
-      label: "Live-Element: Branchen-Trigger",
-      text: "Wählen Sie Ihre Branche und lösen Sie per Klick einen Auslöser aus – ein branchenspezifischer Ablauf läuft live und automatisiert durch (z. B. „Anfrage eingeht → Daten erfasst → Angebot erstellt → versendet“).",
-    },
-    cta: {
-      title: "Rechnen Sie nach, was bei Ihnen frei wird.",
-      text: "Zeigen Sie uns einen Ihrer zeitfressenden Abläufe – wir zeigen Ihnen, wie er automatisiert aussähe und wie viele Stunden pro Woche das spart.",
-      primary: "Jetzt kostenlose Prozess-Analyse sichern",
-      assistant: "Sparpotenzial entdecken",
-    },
-    meta: {
-      title: "Prozessautomatisierung für KMU – Schluss mit Fleissarbeit | AgenticIT",
-      description:
-        "Wiederkehrende Abläufe laufen ab jetzt von allein – fehlerfrei und im Hintergrund. Weniger Handarbeit, mehr Tempo, messbare Ersparnis. Schweizer Datenhaltung.",
-    },
-  },
-
-  "loesungen/revops-growth": {
-    slug: "loesungen/revops-growth",
-    parentSlug: "loesungen",
-    parentLabel: "Lösungen",
-    navLabel: "RevOps & Growth",
-    problem: {
-      title: "Leads verloren, bevor jemand reagiert.",
-      body: [
-        "Eine Anfrage kommt rein und bleibt im Postfach liegen. Ein Interessent meldet sich, doch die Nachfassung vergisst sich im Tagesgeschäft.",
-        "Marketing, Vertrieb und Kundenservice arbeiten nebeneinander statt miteinander – und in den Lücken dazwischen verschwindet Ihr Umsatz.",
-      ],
-    },
-    agitate: {
-      title: "Jeder verlorene Lead ist Geld, das Sie schon ausgegeben haben.",
-      intro: "Sie zahlen für Werbung, Website und Reichweite – aber:",
-      bullets: [
-        { lead: "Die teuer gewonnenen Kontakte versanden,", text: "weil niemand schnell genug reagiert." },
-        { lead: "Ihr Vertrieb rät,", text: "statt zu wissen, welcher Lead heiss ist." },
-        { lead: "Niemand sieht das ganze Bild:", text: "Marketing kennt die Abschlüsse nicht, der Vertrieb kennt die Kampagnen nicht." },
-      ],
-      outro: [
-        "Das Ergebnis: Sie arbeiten härter für Wachstum, das eigentlich schon bezahlt und zum Greifen nah war. Und die Konkurrenz, die ihre Leads automatisiert nachfasst, schnappt sie Ihnen vor der Nase weg.",
-      ],
-    },
-    solution: {
-      title: "Ein Wachstumsmotor, der keinen Lead mehr fallen lässt.",
-      intro: [
-        "Wir verbinden Marketing, Vertrieb und Service zu einem System – datengestützt und automatisiert.",
-        "Jeder Kontakt wird erfasst, bewertet und automatisch weitergeführt, bis aus dem Interessenten ein Kunde wird.",
-      ],
-      changeTitle: "Das ändert sich:",
-      bullets: [
-        { lead: "Kein Lead geht verloren", text: "– jede Anfrage wird automatisch erfasst und nachgefasst." },
-        { lead: "Heisse Kontakte zuerst:", text: "Ihr Vertrieb spricht mit den Richtigen, im richtigen Moment." },
-        { lead: "Aus Interessenten werden schneller Kunden.", text: "" },
+        { lead: "Kündigungs-Frühwarnung", text: "erkennt Abwanderung, bevor sie passiert." },
+        { lead: "Bestands-Ausbau", text: "– mehr Umsatz aus Kunden, die Sie längst haben." },
+        { lead: "Prozesse laufen von allein", text: "– erfassen, prüfen, weiterleiten, fehlerfrei." },
         { lead: "Referenz aus dem Markt:", text: "vergleichbare KI-Systeme erreichen im Schnitt 171 % ROI." },
       ],
       easyTitle: "So einfach wie Microsoft Office",
-      easyText:
-        "Ein klares Dashboard zeigt Ihnen jederzeit, wo jeder Kontakt steht. Kein Tool-Wirrwarr, kein Vorwissen nötig. Ihre Daten bleiben in der Schweiz.",
+      easyText: "Ein klares Dashboard zeigt jederzeit, wo jeder Kunde steht. Kein Tool-Wirrwarr, Daten bleiben in der Schweiz.",
     },
+    chart: {
+      type: "line",
+      title: "Umsatz pro Kunde über Zeit (Index)",
+      xLabels: ["Start", "+3 Mt.", "+6 Mt.", "+12 Mt."],
+      agentic: [100, 122, 148, 178],
+      now: [100, 103, 106, 107],
+    },
+    chartAccent: "#1F9A5E",
+    relatedAngebot: ["erschaffen", "erweitern"],
     interactive: {
       label: "Live-Element: Wachstumsrechner",
-      text: "Geben Sie Lead-Zahl und Abschlussquote ein und sehen Sie, wie sich Umsatz und bediente Kontakte mit einem Agenten verändern – Vorher/Nachher in Sekunden.",
+      text: "Geben Sie Kundenzahl und Abwanderungsquote ein und sehen Sie, wie sich Ihr Umsatz über 12 Monate verändert.",
     },
     voiceAgent: {
       agentId: "agent_0201kwjmq83cf1btc17d9048pf8n",
       branchId: "agtbrch_6601kvjmepw7fa6thh05fk60s626",
       eyebrow: "RevOps live testen",
       title: "Sprechen Sie mit unserem RevOps-Agenten.",
-      description:
-        "Testen Sie Lead-Nachfassung, Qualifizierung und Wachstum – sprechen Sie direkt mit dem Agenten, der für RevOps & Growth trainiert ist.",
+      description: "Testen Sie Kundenbindung, Nachfassung und Wachstum – sprechen Sie direkt mit dem Agenten.",
     },
     cta: {
       title: "Sehen Sie, wie viel Umsatz aktuell liegen bleibt.",
-      text: "In einer kostenlosen Analyse zeigen wir Ihnen, wo in Ihrem Funnel Leads verloren gehen – und was es bringt, das zu schliessen.",
+      text: "In einer kostenlosen Analyse zeigen wir Ihnen, wo Umsatz versickert – und was es bringt, das zu schliessen.",
       primary: "Jetzt kostenlose Wachstums-Analyse sichern",
       assistant: "Wachstumspotenzial berechnen",
     },
     meta: {
-      title: "RevOps & Marketing Automatisierung – mehr Umsatz, kein Lead verloren | AgenticIT",
+      title: "RevOps: mehr Umsatz aus bestehenden Kunden",
       description:
-        "Marketing, Vertrieb und Service als ein Wachstumsmotor. Automatisierte Leadgenerierung, kein verlorener Kontakt, messbarer ROI. Schweizer Datenhaltung.",
+        "Kundenbindung, Customer Lifetime Value und Prozessautomatisierung als ein RevOps-Motor. Kein Umsatz versickert mehr. Schweizer Datenhaltung.",
     },
   },
 
@@ -279,7 +244,7 @@ export const SUBPAGES: Record<string, SubPageContent> = {
       assistant: "Agenten ausprobieren",
     },
     meta: {
-      title: "Autonome KI-Agenten, die Aufgaben wirklich erledigen | AgenticIT",
+      title: "Autonome KI-Agenten fÃ¼r Unternehmen",
       description:
         "Ein KI-Agent, der selbstständig handelt: Anruf annehmen, qualifizieren, Termin buchen – rund um die Uhr. Sie bestimmen die Regeln. Schweizer Datenhaltung.",
     },
@@ -336,7 +301,7 @@ export const SUBPAGES: Record<string, SubPageContent> = {
       assistant: "Multi-Agenten-System erleben",
     },
     meta: {
-      title: "Multi-Agenten-Systeme – Teamarbeit, die Zeit halbiert | AgenticIT",
+      title: "Multi-Agenten-Systeme für Unternehmen",
       description:
         "Mehrere KI-Agenten arbeiten gleichzeitig an einer Aufgabe – schneller und präziser als ein einzelner. Skaliert mit Ihrem Bedarf. Schweizer Datenhaltung.",
     },
@@ -393,7 +358,7 @@ export const SUBPAGES: Record<string, SubPageContent> = {
       assistant: "Integration prüfen",
     },
     meta: {
-      title: "KI-Integration & Systemintegration für Unternehmen | AgenticIT",
+      title: "KI- und Systemintegration für Unternehmen",
       description:
         "KI dockt an Ihre bestehenden Systeme an – E-Mail, CRM, Telefonie, Buchhaltung. Kein Systemwechsel, kein Umbau. Auf jeder Ebene ein digitaler Kollege.",
     },

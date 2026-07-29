@@ -1,11 +1,11 @@
 .eio-section {
-  --eio-line: #1e2c4d;
+  --eio-line: #1E2631;
   --eio-txt: #eaf0ff;
-  --eio-dim: #9fb0c8;
-  --eio-teal: #16c7c0;
+  --eio-dim: #9AA6B2;
+  --eio-teal: #1F9A5E;
   --eio-green: #2bb673;
   --eio-rose: #f2667a;
-  --eio-blue: #2da8ff;
+  --eio-blue: #57C7FF;
 }
 
 .eio-intro {
@@ -16,7 +16,7 @@
 .eio-ey {
   display: inline-block;
   border-radius: 99px;
-  background: rgba(22, 199, 192, 0.15);
+  background: rgba(31, 154, 94, 0.15);
   color: var(--eio-teal);
   font-size: 11px;
   font-weight: 800;
@@ -89,8 +89,8 @@
   width: 20px;
   height: 20px;
   border-radius: 6px;
-  background: conic-gradient(from 200deg, var(--eio-teal), var(--eio-blue), #7c5cff, #f5a623, var(--eio-teal));
-  box-shadow: 0 0 14px rgba(45, 168, 255, 0.6);
+  background: conic-gradient(from 200deg, var(--eio-teal), var(--eio-blue), #57C7FF, #f5a623, var(--eio-teal));
+  box-shadow: 0 0 14px rgba(87, 199, 255, 0.6);
 }
 
 .eio-state {
@@ -163,7 +163,7 @@
   font-size: 9.5px;
   font-weight: 700;
   color: var(--eio-dim);
-  background: #0a1226;
+  background: #07090C;
   border: 1px solid var(--eio-line);
   border-radius: 99px;
   padding: 3px 8px;
@@ -181,7 +181,7 @@
   border-radius: 10px;
   padding: 7px 9px;
   border: 1px dashed var(--eio-line);
-  background: #0a1226;
+  background: #07090C;
   max-height: 0;
   opacity: 0;
   overflow: hidden;
@@ -200,14 +200,14 @@
   transform: none;
   border-style: solid;
   border-color: color-mix(in srgb, var(--eio-teal) 55%, var(--eio-line));
-  background: color-mix(in srgb, var(--eio-teal) 10%, #0a1226);
+  background: color-mix(in srgb, var(--eio-teal) 10%, #07090C);
 }
 
 .eio-box.docked {
   border-color: color-mix(in srgb, var(--eio-teal) 45%, var(--eio-line));
   box-shadow:
     0 0 0 1px color-mix(in srgb, var(--eio-teal) 35%, transparent),
-    0 10px 26px rgba(22, 199, 192, 0.12);
+    0 10px 26px rgba(31, 154, 94, 0.12);
 }
 
 .eio-dock .eio-ai {
@@ -216,7 +216,7 @@
   flex: none;
   border-radius: 8px;
   background: var(--eio-teal);
-  color: #06101e;
+  color: #07090C;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -302,7 +302,7 @@
   margin-top: 14px;
   border-radius: 12px;
   border: 1px solid var(--eio-line);
-  background: #0a1226;
+  background: #07090C;
   padding: 10px 12px;
   overflow: hidden;
   transition: 0.4s;
@@ -310,7 +310,7 @@
 
 .eio-bus.on {
   border-color: color-mix(in srgb, var(--eio-blue) 45%, var(--eio-line));
-  background: color-mix(in srgb, var(--eio-blue) 8%, #0a1226);
+  background: color-mix(in srgb, var(--eio-blue) 8%, #07090C);
 }
 
 .eio-bus .eio-blab {
@@ -338,7 +338,7 @@
 }
 
 .eio-bus.on .eio-blab .eio-pill {
-  background: rgba(45, 168, 255, 0.18);
+  background: rgba(87, 199, 255, 0.18);
   color: #8fd0ff;
 }
 
@@ -395,7 +395,7 @@
 }
 
 .eio-kpi {
-  background: #0a1226;
+  background: #07090C;
   border: 1px solid var(--eio-line);
   border-radius: 12px;
   padding: 11px;
@@ -496,8 +496,8 @@
 
 .eio-btn.primary {
   background: linear-gradient(90deg, var(--eio-teal), var(--eio-blue));
-  color: #06101e;
-  box-shadow: 0 8px 22px rgba(45, 168, 255, 0.35);
+  color: #07090C;
+  box-shadow: 0 8px 22px rgba(87, 199, 255, 0.35);
 }
 
 .eio-btn.primary:hover {
@@ -505,7 +505,7 @@
 }
 
 .eio-btn.ghost {
-  background: #111c36;
+  background: #141A24;
   border: 1px solid var(--eio-line);
   color: var(--eio-txt);
 }
@@ -535,7 +535,7 @@
 }
 
 .eio-disc b {
-  color: #b9c6da;
+  color: #C3CBD3;
 }
 
 @media (max-width: 430px) {

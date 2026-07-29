@@ -216,8 +216,8 @@ export function ProblemSolutionComparison() {
                             />
                             <defs>
                               <linearGradient id="greenGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="0%" stopColor="#22c55e" stopOpacity="0.8" />
-                                <stop offset="100%" stopColor="#10b981" stopOpacity="0.8" />
+                                <stop offset="0%" stopColor="#1F9A5E" stopOpacity="0.8" />
+                                <stop offset="100%" stopColor="#1F9A5E" stopOpacity="0.8" />
                               </linearGradient>
                             </defs>
                           </svg>
@@ -337,8 +337,8 @@ export function ProblemSolutionComparison() {
                         />
                         <defs>
                           <linearGradient id="greenGradientMobile" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%" stopColor="#22c55e" stopOpacity="0.8" />
-                            <stop offset="100%" stopColor="#10b981" stopOpacity="0.8" />
+                            <stop offset="0%" stopColor="#1F9A5E" stopOpacity="0.8" />
+                            <stop offset="100%" stopColor="#1F9A5E" stopOpacity="0.8" />
                           </linearGradient>
                         </defs>
                       </svg>

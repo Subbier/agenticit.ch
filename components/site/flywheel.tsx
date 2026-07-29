@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useState } from "react"
 import { Hand } from "lucide-react"
@@ -95,7 +95,7 @@ function WheelSvg({ sel, pick }: { sel: SegId | null; pick: (id: SegId) => void 
         </linearGradient>
         <radialGradient id="fwCenter" cx="50%" cy="42%" r="62%">
           <stop offset="0%" stopColor="#6ee7b7" />
-          <stop offset="100%" stopColor="#10b981" />
+          <stop offset="100%" stopColor="#1F9A5E" />
         </radialGradient>
         <filter id="fwShadow" x="-20%" y="-20%" width="140%" height="140%">
           <feDropShadow dx="0" dy="6" stdDeviation="10" floodColor="#000000" floodOpacity="0.45" />
@@ -186,7 +186,7 @@ export function Flywheel() {
         )}
       </div>
       <div className="mt-5 rounded-2xl border border-white/12 bg-white/[0.05] p-5 sm:p-6 backdrop-blur-sm">
-        <p className="overline text-sm font-semibold uppercase tracking-[0.18em] text-emerald-200">{d.sub}</p>
+        <p className="overline text-sm font-semibold uppercase tracking-[0.18em] text-[#57C7FF]">{d.sub}</p>
         <h3 className="mt-1 text-2xl font-bold text-white">{d.title}</h3>
         <p className="mt-2 text-base leading-7 text-white/75">{d.desc}</p>
       </div>
@@ -214,7 +214,7 @@ export function FlywheelMiniInteractive() {
         )}
       </div>
       <div className="mt-4 min-h-[84px] rounded-xl border border-white/10 bg-white/[0.04] p-4 text-center">
-        <p className="overline text-sm font-semibold text-emerald-200">{d.sub}</p>
+        <p className="overline text-sm font-semibold text-[#57C7FF]">{d.sub}</p>
         <p className="text-base font-bold text-white">{d.title}</p>
         <p className="mt-1 text-sm leading-6 text-white/70">{d.desc}</p>
       </div>

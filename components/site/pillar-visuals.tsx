@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useState } from "react"
 import { Hand, BadgeCheck, Bot, Target, PenTool, LineChart } from "lucide-react"
@@ -27,7 +27,7 @@ export function AgentsInteractive() {
       {/* Haupt-Agent */}
       <div className="flex justify-center">
         <div className="inline-flex items-center gap-2 rounded-2xl border border-emerald-300/40 bg-emerald-300/10 px-5 py-2.5">
-          <Bot className="size-6 text-emerald-200" />
+          <Bot className="size-6 text-[#57C7FF]" />
           <span className="text-base font-bold text-white">KI-Manager</span>
         </div>
       </div>
@@ -48,10 +48,10 @@ export function AgentsInteractive() {
                 isSel ? "border-emerald-300/60 bg-emerald-300/15" : "border-white/12 bg-white/[0.04] hover:bg-white/[0.07]"
               }`}
             >
-              <span className={`flex size-9 items-center justify-center rounded-lg ${isSel ? "bg-emerald-300 text-black" : "bg-white/[0.06] text-emerald-200"}`}>
+              <span className={`flex size-9 items-center justify-center rounded-lg ${isSel ? "bg-emerald-300 text-black" : "bg-white/[0.06] text-[#57C7FF]"}`}>
                 <SubIcon className="size-5" />
               </span>
-              <span className={`text-center text-[11px] sm:text-xs leading-tight ${isSel ? "font-semibold text-emerald-200" : "text-white/55"}`}>
+              <span className={`text-center text-[11px] sm:text-xs leading-tight ${isSel ? "font-semibold text-[#57C7FF]" : "text-white/55"}`}>
                 {ag.label}
               </span>
             </button>
@@ -68,7 +68,7 @@ export function AgentsInteractive() {
         <p className="text-sm font-semibold text-white">Sub-Agent: {a.label}</p>
         <p className="mt-1 text-xs leading-5 text-white/65">{a.desc}</p>
       </div>
-      {!touched && <p className="mt-2 text-center text-xs text-emerald-200/90">Tippen Sie auf einen Sub-Agenten</p>}
+      {!touched && <p className="mt-2 text-center text-xs text-[#57C7FF]/90">Tippen Sie auf einen Sub-Agenten</p>}
     </div>
   )
 }
@@ -112,7 +112,7 @@ function BrandLogo({ brand, active }: { brand: Brand; active: boolean }) {
   const [idx, setIdx] = useState(0)
 
   if (idx >= sources.length) {
-    return <span className={`text-lg font-bold tracking-tight ${active ? "text-emerald-200" : "text-white/80"}`}>{brand.mono}</span>
+    return <span className={`text-lg font-bold tracking-tight ${active ? "text-[#57C7FF]" : "text-white/80"}`}>{brand.mono}</span>
   }
   return (
     // eslint-disable-next-line @next/next/no-img-element
@@ -137,7 +137,7 @@ export function BrandsInteractive() {
 
   return (
     <div className="rounded-2xl border border-white/10 bg-black/30 p-3 sm:p-6">
-      <div className="mb-4 flex items-center justify-center gap-2 text-emerald-200">
+      <div className="mb-4 flex items-center justify-center gap-2 text-[#57C7FF]">
         <BadgeCheck className="size-5" />
         <span className="text-xs font-semibold uppercase tracking-[0.16em]">Akkreditiert &amp; zertifiziert</span>
       </div>
@@ -167,7 +167,7 @@ export function BrandsInteractive() {
         <p className="text-sm font-semibold text-white">{b.name}</p>
         <p className="mt-0.5 text-xs leading-5 text-white/65">{b.use}</p>
       </div>
-      {!touched && <p className="mt-2 text-center text-xs text-emerald-200/90">Tippen Sie auf eine Plattform</p>}
+      {!touched && <p className="mt-2 text-center text-xs text-[#57C7FF]/90">Tippen Sie auf eine Plattform</p>}
     </div>
   )
 }
