@@ -64,6 +64,7 @@ export const NAV_HUBS: NavHub[] = [
     href: "/kontakt",
     items: [
       { label: "Branchen", href: "/branchen" },
+      { label: "Blog", href: "/blog" },
       { label: "Karriere", href: "/karriere" },
       { label: "Kontakt", href: "/kontakt" },
     ],

@@ -1,0 +1,9 @@
+ki-einfuehrung-schritt-fuer-schritt	KI-Einführung Schritt für Schritt: Der 7-Phasen-Fahrplan für Schweizer KMU	KI-Grundlagen	nein
+haeufige-ki-fehler-vermeiden	Die 9 häufigsten KI-Fehler in Unternehmen – und wie Sie sie vermeiden	KI-Grundlagen	nein
+ki-sprachassistent-telefonie	KI-Sprachassistent für die Telefonie: Wie Voice-Agenten Ihre Anrufe übernehmen	KI-Agenten	nein
+ki-email-management	KI-E-Mail-Management: Posteingang automatisieren, Antwortzeit halbieren	KI-Automatisierung	nein
+ki-social-media-automatisierung	KI-Social-Media-Automatisierung: Mehr Reichweite mit weniger Aufwand	KI-Automatisierung	nein
+ki-datenanalyse-kmu	KI-Datenanalyse für KMU: Aus vorhandenen Daten bessere Entscheidungen	RevOps	nein
+ki-trends-2026-schweiz	KI-Trends 2026 für die Schweiz: Was KMU jetzt wissen müssen	KI-Grundlagen	nein
+ki-vs-mensch-im-service	KI vs. Mensch im Kundenservice: Wer macht was besser?	KI-Agenten	nein
+NAHE-DOPPLUNG	ki-vs-mensch-im-service	ki-im-kundenservice-leitfaden (W3_T4_blog-ki-kundenservice.md, Keyword-Überschneidung «kundenservice ki»; Fokus hier: Vergleich/Hybridmodell)

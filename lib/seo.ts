@@ -335,6 +335,7 @@ export const INDEXABLE_ROUTES = [
   "/angebot/erschaffen",
   "/angebot/erweitern",
   "/branchen",
+  "/blog",
   "/sicherheit",
   "/karriere",
   "/excellence",

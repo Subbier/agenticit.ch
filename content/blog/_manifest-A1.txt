@@ -1,0 +1,15 @@
+revops-as-a-service	RevOps as a Service: Wie Schweizer B2B-Unternehmen Umsatzprozesse skalieren (2026)	RevOps	ja
+ki-agenten	KI-Agenten: Der komplette Leitfaden für Schweizer Unternehmen (2026)	KI-Agenten	ja
+ki-automatisierung-vertrieb	KI-Automatisierung im Vertrieb: Praxisleitfaden für Schweizer B2B	KI-Automatisierung	nein
+leadgenerierung-ki	Leadgenerierung mit KI: 7 Wege, wie KI-Agenten Ihre Pipeline füllen (2026)	Vertrieb & Leads	nein
+leadgenerierung-mit-ki-leitfaden	Leadgenerierung mit KI: Der praktische Leitfaden für Schweizer KMU (2026)	Vertrieb & Leads	nein
+ki-im-kundenservice-leitfaden	KI im Kundenservice: Wie Sie 24/7 erreichbar sind, ohne Ihr Team zu überlasten	KI-Automatisierung	nein
+ki-agenten-sicherheit-compliance	KI-Agenten sicher einsetzen: Der Compliance- und Sicherheits-Leitfaden für KMU	Recht & Sicherheit	nein
+prozessautomatisierung-kmu-leitfaden	Prozessautomatisierung für KMU: Wo Sie 2026 wirklich anfangen sollten	KI-Automatisierung	nein
+revops-metriken-kennzahlen	RevOps-Metriken: Die 9 Kennzahlen, die Ihr Wachstum wirklich steuern	RevOps	nein
+speed-to-lead-5-minuten-regel	Speed-to-Lead: Warum die ersten 5 Minuten über Ihren Umsatz entscheiden	RevOps	nein
+SKIPPED	W1_T4_00_Themen-Cluster-Plan.md	Redaktionsplan, kein Artikel
+SKIPPED	W1_T4_01_Pillar_RevOps.md	Gleiches Haupt-Keyword "revops" wie W2_T4_pillar-revops-as-a-service – W2-Version konvertiert
+SKIPPED	W1_T4_02_Pillar_KI-Agenten.md	Durch W2_T4_pillar-ki-agenten.md ersetzt
+SKIPPED	W1_T4_03_Cluster_RevOps-as-a-Service.md	Slug-Kollision "revops-as-a-service" mit W2-Pillar – umfassendere W2-Version behalten
+SKIPPED	W2_T4_cluster-kundenservice-ki-automatisieren.md	Gleiches Haupt-Keyword "kundenservice ki" wie W3_T4_blog-ki-kundenservice – umfassendere W3-Version konvertiert

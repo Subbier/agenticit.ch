@@ -1,0 +1,153 @@
+/* Typografie für gerenderte Blog-Artikel (Markdown → HTML).
+   Design "Carbon & Signal": Space Grotesk für Titel, Inter für Fliesstext,
+   flache Flächen, keine Glow-Effekte. Scoped über .blog-article. */
+
+.blog-article {
+  font-family: var(--font-carbon-text, var(--font-geist-sans), Inter, sans-serif);
+  color: #2a323b;
+  font-size: 16.5px;
+  line-height: 1.75;
+}
+
+.blog-article > *:first-child {
+  margin-top: 0;
+}
+
+.blog-article h2 {
+  font-family: var(--font-space-grotesk), var(--font-display, inherit);
+  font-size: clamp(22px, 4.4vw, 29px);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  color: #101418;
+  margin: 44px 0 14px;
+}
+
+.blog-article h3 {
+  font-family: var(--font-space-grotesk), var(--font-display, inherit);
+  font-size: clamp(18px, 3.6vw, 21px);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #101418;
+  margin: 30px 0 10px;
+}
+
+.blog-article p {
+  margin: 14px 0;
+}
+
+.blog-article a {
+  color: #0e7490;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(14, 116, 144, 0.35);
+  text-underline-offset: 3px;
+}
+
+.blog-article a:hover {
+  text-decoration-color: #0e7490;
+}
+
+.blog-article strong {
+  color: #101418;
+  font-weight: 700;
+}
+
+.blog-article ul,
+.blog-article ol {
+  margin: 14px 0;
+  padding-left: 24px;
+}
+
+.blog-article li {
+  margin: 7px 0;
+}
+
+.blog-article ul li::marker {
+  color: #1f9a5e;
+}
+
+.blog-article ol li::marker {
+  color: #101418;
+  font-weight: 700;
+}
+
+/* Kurzfassungs-/Callout-Blockquotes: dunkles Panel mit Signal-Kante —
+   die zitierfähige Direktantwort (GEO/AIO) soll optisch herausstechen. */
+.blog-article blockquote {
+  margin: 26px 0;
+  padding: 20px 24px;
+  background: #141a24;
+  border-left: 3px solid #8fe05a;
+  border-radius: 0 14px 14px 0;
+  color: #d5dce4;
+}
+
+.blog-article blockquote p {
+  margin: 8px 0;
+}
+
+.blog-article blockquote strong {
+  color: #ffffff;
+}
+
+.blog-article blockquote a {
+  color: #57c7ff;
+  text-decoration-color: rgba(87, 199, 255, 0.35);
+}
+
+.blog-article table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-size: 14.5px;
+  line-height: 1.5;
+}
+
+.blog-article th {
+  background: #f1f3f5;
+  color: #101418;
+  font-family: var(--font-space-grotesk), var(--font-display, inherit);
+  font-weight: 700;
+  text-align: left;
+  padding: 11px 14px;
+  border-bottom: 2px solid #e1e4e8;
+}
+
+.blog-article td {
+  padding: 11px 14px;
+  border-bottom: 1px solid #e1e4e8;
+  vertical-align: top;
+}
+
+.blog-article code {
+  font-family: var(--font-mono-signal, ui-monospace, monospace);
+  font-size: 0.9em;
+  background: #f1f3f5;
+  border: 1px solid #e1e4e8;
+  border-radius: 6px;
+  padding: 1px 6px;
+  color: #101418;
+}
+
+.blog-article pre {
+  background: #141a24;
+  color: #d5dce4;
+  border-radius: 14px;
+  padding: 18px 22px;
+  overflow-x: auto;
+  margin: 24px 0;
+}
+
+.blog-article pre code {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  color: inherit;
+}
+
+.blog-article hr {
+  border: 0;
+  border-top: 1px solid #e1e4e8;
+  margin: 36px 0;
+}

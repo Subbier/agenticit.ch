@@ -5,6 +5,7 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import { PAGES } from "@/lib/page-content"
 import { SUBPAGES_BY_PARENT } from "@/lib/subpage-content"
+import { BRANCHEN_LPS } from "@/lib/branchen-content"
 import { CarbonHeader } from "@/components/site/carbon-header"
 import { CarbonFooter } from "@/components/site/carbon-footer"
 import { Reveal } from "@/components/site/reveal"
@@ -160,6 +161,41 @@ export function CarbonHubPage({ slug }: { slug: string }) {
           </div>
         </div>
       </section>
+
+      {/* BRANCHEN-LÖSUNGEN — nur auf /branchen: Verticals aus lib/branchen-content */}
+      {page.slug === "branchen" && BRANCHEN_LPS.length ? (
+        <section className="bg-[#FAFAF7] px-5 py-16 sm:px-6 sm:py-20">
+          <div className="mx-auto max-w-[1000px]">
+            <Reveal className="mx-auto mb-10 flex max-w-[680px] flex-col items-center text-center">
+              <Eyebrow>Vertikale Lösungen</Eyebrow>
+              <h2 className="mt-3 font-[family-name:var(--font-display)] text-[clamp(24px,4.8vw,34px)] font-bold leading-[1.1] tracking-[-0.015em]">
+                Ihre Branche. Ihre Abläufe. Ihre KI-Agenten.
+              </h2>
+              <p className="mt-4 max-w-[600px] font-[family-name:var(--font-carbon-text)] text-[clamp(15px,3.5vw,17px)] leading-relaxed text-[#4A545F]">
+                Dieselben Prinzipien, auf Ihre Branche übersetzt: Wir automatisieren die Abläufe,
+                die in Ihrem Alltag wirklich Zeit kosten.
+              </p>
+            </Reveal>
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+              {BRANCHEN_LPS.map((lp, i) => (
+                <Reveal key={lp.slug} delay={i * 60} className="h-full">
+                  <Link
+                    href={`/branchen/${lp.slug}`}
+                    className="flex h-full flex-col justify-between rounded-[14px] border border-[#E1E4E8] bg-white p-5 transition hover:-translate-y-[2px] hover:border-[#8FE05A]"
+                  >
+                    <span className="font-[family-name:var(--font-display)] text-[15.5px] font-bold leading-snug text-[#101418]">
+                      {lp.navLabel}
+                    </span>
+                    <span className="mt-3 font-[family-name:var(--font-carbon-text)] text-[13px] font-semibold text-[#1F9A5E]">
+                      Zur Lösung →
+                    </span>
+                  </Link>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       {/* TRUST — als Chip-Reihe wie im Design-System-Dokument */}
       <section className="bg-white px-6 py-16 sm:py-20">

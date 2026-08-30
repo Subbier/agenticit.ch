@@ -1,0 +1,12 @@
+buchhaltung-automatisieren-ki	Buchhaltung automatisieren mit KI: Was heute geht – und was der Mensch behält	KI-Automatisierung	nein
+change-management-mit-ki	Change Management mit KI: Wie Teams KI-Agenten wirklich annehmen	KI-Grundlagen	nein
+eigene-ki-agenten-vs-chatgpt	Eigene KI-Agenten vs. ChatGPT: Wann sich der eigene Agent lohnt	KI-Agenten	nein
+ki-agenten-praxisbeispiele-schweiz	KI-Agenten in der Praxis: 9 konkrete Anwendungsfälle für Schweizer KMU	KI-Agenten	nein
+ki-datenschutz-schweiz-ndsg	KI und Datenschutz in der Schweiz: Der nDSG-Leitfaden für KMU	Recht & Sicherheit	nein
+ki-im-verkaufsgespraech	KI im Verkaufsgespräch: Wie Agenten den B2B-Sales-Prozess unterstützen	Vertrieb & Leads	nein
+ki-roi-berechnen	KI-ROI berechnen: So rechnen Sie ein Automatisierungsprojekt ehrlich durch	RevOps	nein
+multi-agenten-systeme-erklaert	Multi-Agenten-Systeme einfach erklärt: Wenn KI-Agenten im Team arbeiten	KI-Grundlagen	nein
+kundenakquise-methoden	Kundenakquise: 7 Methoden, die für KMU 2026 funktionieren	Vertrieb & Leads	nein
+werbung-fuer-kmu	Werbung für KMU: Was 2026 wirklich neue Kunden bringt	Vertrieb & Leads	nein
+neukundengewinnung-kmu-schweiz	Neukundengewinnung für KMU in der Schweiz: Der komplette Leitfaden	Vertrieb & Leads	ja
+SKIPPED	/home/claude/site/v1-main/blog/cluster-speed-to-lead.md	Dedup: gleiches Haupt-Keyword "speed-to-lead" und gleicher Fokus wie W3_T4_blog-speed-to-lead.md (Slug speed-to-lead-5-minuten-regel); interne Links auf /blog/speed-to-lead wurden auf /blog/speed-to-lead-5-minuten-regel umgestellt

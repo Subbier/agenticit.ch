@@ -408,6 +408,25 @@ export function KarrierePage() {
             <p className="mt-3 text-[13.5px] leading-relaxed text-[#98A2AD]">
               Wir suchen Menschen, die lieber Agenten dirigieren als Formulare ausfüllen.
             </p>
+            <a
+              href="https://www.swissict.ch"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-5 inline-flex flex-col items-center opacity-75 transition hover:opacity-100"
+              title="swissICT – Schweizer Fachverband für IT & Kommunikationstechnologie"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/logos/swissict-white.png"
+                alt="swissICT – Schweizer Fachverband für IT & Kommunikationstechnologie"
+                className="h-10 w-auto object-contain"
+              />
+              <span className="mt-2 text-center text-[11px] leading-snug text-[#9AA6B2]">
+                Schweizer Fachverband für IT &amp;
+                <br />
+                Kommunikationstechnologie
+              </span>
+            </a>
           </div>
           <div>
             <b className="mb-[10px] block text-[13px] tracking-[0.3px] text-white">KONTAKT</b>
@@ -424,6 +443,7 @@ export function KarrierePage() {
           <div>
             <b className="mb-[10px] block text-[13px] tracking-[0.3px] text-white">UNTERNEHMEN</b>
             <Link href="/" className="block py-[3px] text-[#98A2AD] hover:text-white">Startseite</Link>
+            <Link href="/blog" className="block py-[3px] text-[#98A2AD] hover:text-white">Blog</Link>
             <Link href="/sicherheit" className="block py-[3px] text-[#98A2AD] hover:text-white">Sicherheit</Link>
             <Link href="/datenschutz" className="block py-[3px] text-[#98A2AD] hover:text-white">Datenschutz</Link>
             <Link href="/impressum" className="block py-[3px] text-[#98A2AD] hover:text-white">Impressum</Link>

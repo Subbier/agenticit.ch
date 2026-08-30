@@ -260,13 +260,12 @@ export function HomePage({ jsonLd = [] }: HomePageProps) {
           {/* Lösungen / Technologie */}
           <div>
             <b className="mb-[10px] block text-[13px] tracking-[0.3px] text-white">IT Lösungen für</b>
-            <Link href="/loesungen/gtm-markteintritt" className="block py-[3px] text-[#9AA6B2] hover:text-white">Markteintritt</Link>
-            <Link href="/loesungen/revops-umsatzgenerierung" className="block py-[3px] text-[#9AA6B2] hover:text-white">Umsatzgenerierung</Link>
+            <Link href="/loesungen/gtm-markteintritt" className="block py-[3px] text-[#9AA6B2] hover:text-white">GTM</Link>
+            <Link href="/loesungen/revops-umsatzgenerierung" className="block py-[3px] text-[#9AA6B2] hover:text-white">RevOps</Link>
             <b className="mb-[10px] mt-4 block text-[13px] tracking-[0.3px] text-white">TECHNOLOGIE</b>
-            <Link href="/technologie" className="block py-[3px] text-[#9AA6B2] hover:text-white">Übersicht</Link>
-            <Link href="/technologie/autonome-ki-agenten" className="block py-[3px] text-[#9AA6B2] hover:text-white">Autonome KI-Agenten</Link>
-            <Link href="/technologie/multi-agenten-systeme" className="block py-[3px] text-[#9AA6B2] hover:text-white">Multi-Agenten-Systeme</Link>
-            <Link href="/technologie/enterprise-integration" className="block py-[3px] text-[#9AA6B2] hover:text-white">Enterprise-Integration</Link>
+            <Link href="/technologie/autonome-ki-agenten" className="block py-[3px] text-[#9AA6B2] hover:text-white">KI Agenten</Link>
+            <Link href="/technologie/multi-agenten-systeme" className="block py-[3px] text-[#9AA6B2] hover:text-white">Agenten Teams</Link>
+            <Link href="/technologie/enterprise-integration" className="block py-[3px] text-[#9AA6B2] hover:text-white">Enterprise</Link>
           </div>
 
           {/* Bereiche */}
@@ -276,6 +275,9 @@ export function HomePage({ jsonLd = [] }: HomePageProps) {
             <Link href="/angebot/umsetzen" className="block py-[3px] text-[#9AA6B2] hover:text-white">Umsetzen</Link>
             <Link href="/angebot/erschaffen" className="block py-[3px] text-[#9AA6B2] hover:text-white">Erschaffen</Link>
             <Link href="/angebot/erweitern" className="block py-[3px] text-[#9AA6B2] hover:text-white">Erweitern</Link>
+            <b className="mb-[10px] mt-4 block text-[13px] tracking-[0.3px] text-white">WISSEN</b>
+            <Link href="/blog" className="block py-[3px] text-[#9AA6B2] hover:text-white">Blog</Link>
+            <Link href="/branchen" className="block py-[3px] text-[#9AA6B2] hover:text-white">Branchen</Link>
           </div>
         </div>
 

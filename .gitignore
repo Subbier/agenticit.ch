@@ -32,6 +32,11 @@ pnpm-debug.log*
 *.pem
 .idea
 .vscode
+.claude/settings.local.json
+
+# local working documents and design drafts
+*.docx
+/logo-entwurf/
 
 # misc / scratch
 write-test

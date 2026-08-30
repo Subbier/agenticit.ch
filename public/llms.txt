@@ -1,0 +1,52 @@
+# AgenticIT — Agentic IT GmbH
+
+> Schweizer Agentur für KI-Agenten, agentische Automatisierung und RevOps (Revenue Operations). AgenticIT automatisiert Vertrieb, Kundendienst und Prozesse von Schweizer KMU — mit Datenhaltung in der Schweiz, klarer KI-Kennzeichnung, Human-in-the-Loop und messbarem ROI.
+
+AgenticIT (Agentic IT GmbH) ist eine spezialisierte KI- und RevOps-Agentur aus der Schweiz (Raum Bern). Der Fokus: KI-Agenten, die wiederkehrende Aufgaben in Vertrieb, Service und Administration übernehmen — von der ersten Anfrage (Speed-to-Lead) über Qualifizierung und Terminbuchung bis zur laufenden Kundenbetreuung. Statt vieler Tools und manueller Übergaben entsteht ein durchgängiger, automatisierter Wachstumsmotor.
+
+## Leistungen
+
+- [GTM: Markteintritt](https://agenticit.ch/loesungen/gtm-markteintritt): Sichtbarkeit, Leads und Termine für den Markteintritt — KI-beschleunigt.
+- [RevOps: Umsatzgenerierung](https://agenticit.ch/loesungen/revops-umsatzgenerierung): Marketing, Vertrieb und Service als ein automatisiertes System; mehr Umsatz pro Kunde.
+- [Autonome KI-Agenten](https://agenticit.ch/technologie/autonome-ki-agenten): Agenten, die Absichten verstehen, Tools nutzen (CRM, Kalender, E-Mail) und Ziele erreichen.
+- [Multi-Agenten-Systeme](https://agenticit.ch/technologie/multi-agenten-systeme): Spezialisierte Agenten arbeiten im Team — Rechercheur, Verfasser, Prüfer.
+- [Enterprise-Integration](https://agenticit.ch/technologie/enterprise-integration): Anbindung an bestehende Systeme und Datenflüsse.
+- [Bereiche: Begeistern, Umsetzen, Erschaffen, Erweitern](https://agenticit.ch/angebot): Das Angebot entlang der ganzen Kundenreise.
+- [Branchenlösungen](https://agenticit.ch/branchen): u. a. Treuhand, Versicherungen, Gastronomie, Gesundheit, Autohaus, Immobilien, Fitness, Handwerk, Beratung, Hotellerie.
+- [Blog / Wissen](https://agenticit.ch/blog): Leitfäden zu KI-Agenten, RevOps, Leadgenerierung, Prozessautomatisierung und KI-Recht (nDSG).
+
+## Häufige Fragen zu KI-Agenten, KI-Automatisierung & RevOps
+
+- KI-Agentur Kosten (CH): typisch Setup CHF 5'000–25'000 + laufender Betrieb (Retainer ab ca. CHF 1'500/Monat) oder erfolgsbasiert. Preistreiber: Integrationstiefe, Autonomiegrad, Compliance. Bandbreiten, keine Zusicherung.
+- Einführungsdauer: erster produktiver KI-Agent bei klarem Use Case 4–8 Wochen; komplexe Multi-Agenten-Systeme 3–6 Monate.
+- KI-Agent vs. Chatbot: Ein Chatbot antwortet nach Skript; ein KI-Agent versteht Absichten, handelt über mehrere Schritte, nutzt Tools (CRM, Kalender) und erreicht Ziele — mit Human-in-the-Loop bei kritischen Aktionen.
+- KI-Automatisierung vs. klassische Automatisierung: Regelbasiert für stabile Abläufe; KI-Agenten für variable, sprachlastige, urteilsabhängige Aufgaben.
+- Multi-Agenten-System: Mehrere spezialisierte Agenten arbeiten zusammen; sinnvoll bei komplexen Aufgaben mit Arbeitsteilung.
+- RevOps: bündelt Marketing, Vertrieb und Service unter gemeinsamen Prozessen, Daten und Zielen; KI hält Daten sauber, qualifiziert Leads, automatisiert Übergaben und liefert Echtzeit-Reporting.
+- Speed-to-Lead: Wer Anfragen innert 5 Minuten beantwortet, qualifiziert deutlich mehr Leads; KI-Agenten senken die Reaktionszeit auf unter 60 Sekunden — rund um die Uhr.
+- Datenschutz: KI-Automatisierung ist nDSG/DSGVO-konform möglich bei Zweckbindung, Datenminimierung, CH/EU-Verarbeitung, Auftragsverarbeitungsvertrag und dokumentierten Datenflüssen.
+- Human-in-the-Loop: Ein Mensch prüft und gibt kritische KI-Aktionen frei (z. B. vor Mail-Versand oder Publikation). Standard bei AgenticIT.
+- KI-Kennzeichnung: Nutzende erkennen jederzeit, dass sie mit einer KI interagieren; klare Kennzeichnung plus Eskalation an Menschen. Standard bei AgenticIT.
+- KI-Agentur vs. Inhouse-Team: Agentur liefert in Wochen und planbar; Inhouse-Aufbau dauert Monate bis Jahre mit hohen Fixkosten — lohnt sich bei dauerhaftem KI-Kern.
+
+## Für wen
+
+- Schweizer KMU in der Deutschschweiz, u. a. Treuhand, Versicherungen/Krankenkassen, Gastronomie und Hotellerie, Gesundheitswesen, Autohäuser, Immobilien, Fitness- und Gesundheitsstudios, Handwerk sowie Beratung/Consulting.
+
+## Kernbegriffe
+
+- KI-Agenten, Agentische KI, Multi-Agenten-Systeme, KI-Automatisierung, Prozessautomatisierung, RevOps (Revenue Operations), Speed-to-Lead, Leadgenerierung Schweiz, Neukundengewinnung, KI im Vertrieb, GEO/AIO (Generative Engine Optimization), Schweizer Datenhaltung, nDSG.
+
+## Kontakt & Unternehmen
+
+- [Kontakt](https://agenticit.ch/kontakt): info@agenticit.ch, +41 31 539 44 44
+- [Branchen-Radar & Potenzialrechner](https://agenticit.ch/potenzial)
+- [Sicherheit & Datenhaltung](https://agenticit.ch/sicherheit)
+- [Case Studies](https://agenticit.ch/case-studies)
+- [Karriere](https://agenticit.ch/karriere)
+- [Impressum](https://agenticit.ch/impressum)
+- [Datenschutz](https://agenticit.ch/datenschutz)
+
+## Hinweis
+
+Inhalte werden KI-gestützt erstellt und von Menschen geprüft (Human-in-the-Loop). Kostenangaben sind typische Bandbreiten, keine Zusicherungen. Keine erfundenen Kundenreferenzen.
