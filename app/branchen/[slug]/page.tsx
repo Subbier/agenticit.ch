@@ -10,8 +10,9 @@ export function generateStaticParams() {
   return BRANCHEN_LPS.map((lp) => ({ slug: lp.slug }))
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const lp = BRANCHEN_LP_BY_SLUG[params.slug]
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const lp = BRANCHEN_LP_BY_SLUG[slug]
   if (!lp) return {}
   return createPageMetadata({
     title: lp.meta.title,
@@ -21,7 +22,8 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   })
 }
 
-export default function Page({ params }: { params: { slug: string } }) {
-  if (!BRANCHEN_LP_BY_SLUG[params.slug]) notFound()
-  return <BranchenLpPage slug={params.slug} />
+export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  if (!BRANCHEN_LP_BY_SLUG[slug]) notFound()
+  return <BranchenLpPage slug={slug} />
 }

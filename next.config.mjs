@@ -81,17 +81,15 @@ const nextConfig = {
   transpilePackages: ["@elevenlabs/react", "@elevenlabs/client"],
   // Diese Node-Bibliotheken NICHT bundlen – sonst gehen interne Dateien verloren
   // (pdfkit-Schriften .afm, nodemailer, qrcode). Werden zur Laufzeit aus node_modules geladen.
-  experimental: {
-    serverComponentsExternalPackages: ["pdfkit", "qrcode", "nodemailer"],
-    // pdfkit liest seine Schrift-Metriken (data/*.afm) und das sRGB-ICC-Profil zur
-    // Laufzeit per fs.readFileSync. Vercels File-Tracing erkennt diese dynamischen
-    // Pfade nicht und kopiert den data/-Ordner sonst NICHT ins Serverless-Lambda
-    // → ENOENT "Helvetica.afm" → "Analyse konnte nicht erstellt werden".
-    // Diese Includes erzwingen, dass die Dateien ins /api/analyse-Bundle gelangen.
-    outputFileTracingIncludes: {
-      "/api/analyse": ["./node_modules/pdfkit/js/data/**/*"],
-      "/api/analyse/route": ["./node_modules/pdfkit/js/data/**/*"],
-    },
+  serverExternalPackages: ["pdfkit", "qrcode", "nodemailer"],
+  // pdfkit liest seine Schrift-Metriken (data/*.afm) und das sRGB-ICC-Profil zur
+  // Laufzeit per fs.readFileSync. Vercels File-Tracing erkennt diese dynamischen
+  // Pfade nicht und kopiert den data/-Ordner sonst NICHT ins Serverless-Lambda
+  // → ENOENT "Helvetica.afm" → "Analyse konnte nicht erstellt werden".
+  // Diese Includes erzwingen, dass die Dateien ins /api/analyse-Bundle gelangen.
+  outputFileTracingIncludes: {
+    "/api/analyse": ["./node_modules/pdfkit/js/data/**/*"],
+    "/api/analyse/route": ["./node_modules/pdfkit/js/data/**/*"],
   },
   images: {
     formats: ["image/avif", "image/webp"],
