@@ -67,6 +67,7 @@ export const NAV_HUBS: NavHub[] = [
       { label: "Blog", href: "/blog" },
       { label: "Karriere", href: "/karriere" },
       { label: "Kontakt", href: "/kontakt" },
+      { label: "Admin", href: "https://agenticit-admin.vercel.app" },
     ],
   },
 ]
