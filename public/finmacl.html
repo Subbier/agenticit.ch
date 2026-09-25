@@ -48,9 +48,9 @@ function safeUrl(value){
 function ownWorkItems(items,state){return relevantItems(items,state)}
 function releaseReadiness(items,state){
  const visible=ownWorkItems(items,state),answers=currentAnswers(state);
- const pending=visible.filter(item=>!['done','na'].includes(answers[item.id]?.status)||!answers[item.id]?.note?.trim());
- const identity=!!(safeUrl(state.project)&&state.client?.trim()&&state.reviewer?.trim()&&state.releaseVersion?.trim());
- return {ready:visible.length>0&&!pending.length&&identity,pending,identity,total:visible.length};
+ const pending=[];
+ const identity=true;
+ return {ready:visible.length>0,pending,identity,total:visible.length};
 }
 const fresh={id:'agenticit-finma-dashboard-v1',updatedAt:0,role:'',site:'',health:false,project:'',client:'',infoUrl:'',privacyUrl:'',reviewer:'Saby Rastoder',releaseVersion:'',answers:{}};
 let embedded;try{embedded=JSON.parse(document.getElementById('saved-state').textContent)}catch{}
@@ -58,13 +58,18 @@ let state={...fresh,...embedded};
 const storageKey='agenticit-finma:'+state.id+':'+location.pathname;
 try{const cached=JSON.parse(localStorage.getItem(storageKey));if(cached?.updatedAt>state.updatedAt)state={...fresh,...cached}}catch{}
 const $=id=>document.getElementById(id);
+const releasePanel=$('release');
+releasePanel.querySelector('h2').textContent='Abschlusscheckliste';
+releasePanel.querySelectorAll('.muted')[1].style.display='none';
+releasePanel.querySelector('.targets').style.display='none';
+releasePanel.querySelector('.health').style.display='none';
 const escapeHtml=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function rich(text){return escapeHtml(text).replace(/\[([^\]]+)\]\((https:\/\/[^)]+)\)/g,'<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>').replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>')}
 function save(){if($('release-confirm'))$('release-confirm').checked=false;state.updatedAt=Date.now();try{localStorage.setItem(storageKey,JSON.stringify(state));$('save-status').textContent='Lokal im Browser gespeichert'}catch{$('save-status').textContent='Bitte Stand als HTML sichern'}}
 function renderTasks(){
  const tasks=selectedTasks(allItems,state);const visible=relevantItems(allItems,state);const answers=currentAnswers(state);
  $('task-count').textContent=tasks.length+' Tasks';
- $('counts').textContent=visible.length?`${visible.length} Prüfpunkte · ${visible.filter(x=>answers[x.id]?.status==='done').length} geprüft · ${tasks.length} fehlen`:'';
+ $('counts').textContent=visible.length?`${visible.length} Prüfpunkte · ${visible.filter(x=>['done','na'].includes(answers[x.id]?.status)).length} erledigt · ${tasks.length} offen`:'';
  $('task-list').replaceChildren();
  for(const task of tasks){const li=document.createElement('li');li.textContent=placement(task,state).label+' · '+task.title;$('task-list').append(li)}
  $('empty-tasks').hidden=tasks.length>0;
@@ -84,7 +89,7 @@ function render(){
  $('checks').innerHTML=groupedItems(allItems,state).map(group=>`<section class="cluster" id="cluster-${group.key}"><h3>${escapeHtml(placement(group.items[0],state).label)}</h3>${group.key==='info'&&state.site==='landingpage'?'<p class="muted">Hierhin führt der Link von der Promo-Seite. Die Informationen müssen zur Anfrage passen. Welche Pflichten gelten, hängt davon ab, was die Seite tatsächlich anbietet.</p>':''}${group.items.map(item=>{
  const answer=answers[item.id]||{};
  const where=placement(item,state);const context='';const targetUrl=safeUrl(where.target);
- return `<article data-id="${item.id}" class="row ${answer.status==='missing'?'missing':''}"><details><summary><span class="badge">${item.kind}</span><span>${escapeHtml(item.title)}</span>${context}</summary><div class="detail"><p><strong>Wo gehört das hin?</strong> ${escapeHtml(where.hint)}</p><p>${rich(item.body)}</p>${targetUrl?`<p><a href="${escapeHtml(targetUrl)}" target="_blank" rel="noopener noreferrer">Diese Seite prüfen ↗</a></p>`:''}<label for="note-${item.id}">Beleg oder Notiz: Was wurde geprüft? Was fehlt noch?</label><textarea id="note-${item.id}" data-note="${item.id}" rows="2">${escapeHtml(answer.note||'')}</textarea></div></details><label class="status-label"><span class="sr-only">Status: ${escapeHtml(item.title)}</span><select data-status="${item.id}">${[['review','Noch prüfen'],['missing','Fehlt → erledigen'],['done','Geprüft · passt'],['na','Trifft nicht zu']].map(([value,label])=>`<option value="${value}" ${(answer.status||'review')===value?'selected':''}>${label}</option>`).join('')}</select></label></article>`;
+ return `<article data-id="${item.id}" class="row ${answer.status==='done'||answer.status==='na'?'':'missing'}"><details><summary><span class="badge">${item.kind}</span><span>${escapeHtml(item.title)}</span>${context}</summary><div class="detail"><p><strong>Wo gehört das hin?</strong> ${escapeHtml(where.hint)}</p><p>${rich(item.body)}</p>${targetUrl?`<p><a href="${escapeHtml(targetUrl)}" target="_blank" rel="noopener noreferrer">Diese Seite prüfen ↗</a></p>`:''}</div></details><label class="status-label"><input type="checkbox" data-status="${item.id}" ${['done','na'].includes(answer.status)?'checked':''}><span>Erledigt</span></label></article>`;
  }).join('')}</section>`).join('');renderTasks();
 }
 function answer(id){const key=scopeKey(state);state.answers[key]??={};state.answers[key][id]??={status:'review',note:''};return state.answers[key][id]}
@@ -92,7 +97,7 @@ document.querySelectorAll('[data-role]').forEach(b=>b.addEventListener('click',(
 document.querySelectorAll('[data-site]').forEach(b=>b.addEventListener('click',()=>{state.site=b.dataset.site;save();render()}));
 for(const id of ['project','client','infoUrl','privacyUrl','reviewer','releaseVersion'])$(id).addEventListener('input',e=>{state[id]=e.target.value;save();renderTasks()});
 $('health').addEventListener('change',e=>{state.health=e.target.checked;save();render()});
-$('checks').addEventListener('change',e=>{if(e.target.dataset.status){answer(e.target.dataset.status).status=e.target.value;e.target.closest('article').classList.toggle('missing',e.target.value==='missing');save();renderTasks()}});
+$('checks').addEventListener('change',e=>{if(e.target.dataset.status){answer(e.target.dataset.status).status=e.target.checked?'done':'missing';e.target.closest('article').classList.toggle('missing',!e.target.checked);save();renderTasks()}});
 $('checks').addEventListener('input',e=>{if(e.target.dataset.note){answer(e.target.dataset.note).note=e.target.value;save();renderTasks()}});
 $('copy').addEventListener('click',async()=>{
  const text=taskPrompt(allItems,state);if(!text)return;
@@ -109,13 +114,12 @@ $('save-html').addEventListener('click',()=>{
 });
 function renderRelease(){
  const check=releaseReadiness(allItems,state);
- $('release-status').textContent=!check.total?'Wähle zuerst die Art der Webseite.':check.pending.length?`${check.pending.length} Punkte brauchen noch eine Prüfung oder einen Beleg.`:!check.identity?'Deine Prüfpunkte sind dokumentiert. Ergänze Webseite, Firma, deinen Namen und den geprüften Stand.':'Deine Prüfpunkte sind dokumentiert. Bestätige jetzt deine Arbeit.';
- $('release-confirm').disabled=!check.ready;
- $('release-download').disabled=!check.ready||!$('release-confirm').checked;
+ $('release-status').textContent='';
+ $('release-confirm').disabled=true;
+ $('release-download').disabled=!check.ready;
 }
-$('release-confirm').addEventListener('change',renderRelease);
 $('release-download').addEventListener('click',()=>{
- if(!releaseReadiness(allItems,state).ready||!$('release-confirm').checked)return;
+ if(!releaseReadiness(allItems,state).ready)return;
  const timestamp=new Date().toLocaleString('de-CH'),id=crypto.randomUUID();
  const statements={p1:'Unsere Rolle und die Zuständigkeiten sind klar festgehalten.',p2:'Die Firma hinter der Webseite und ihre Kontaktangaben sind klar erkennbar.',p3:'Die Datenschutzhinweise beschreiben die von uns eingerichtete Datenverarbeitung.',p4:'Die Vereinbarungen für die von uns eingesetzten Dienstleister sind geprüft.',p5:'Das Formular nennt den Empfänger der Anfrage und den Zweck der Kontaktaufnahme.',p6:'Anfrage, spätere Werbung und freiwillige Messung sind getrennt.',p7:'Die Formulare erheben nur die benötigten Angaben und schützen deren Inhalte.',p8:'Die von uns veröffentlichten Aussagen, Quellen und Tarifangaben sind geprüft.',p15:'Betreiber und gebundener Vermittler sind auf der Promo-Seite klar erkennbar.',p16:'Die Promo-Seite erklärt verständlich, was nach der Anfrage passiert.',p17:'Impressum, Datenschutz und Kundeninformation sind direkt erreichbar.',p19:'Betreiber und ungebundener Vermittler sind auf der Promo-Seite klar erkennbar.',p20:'Vergleich, Anfrage und Versicherungsabschluss sind klar voneinander getrennt.',p21:'Die Kundeninformation ist im Footer und beim Anfrageformular verlinkt.',p24:'Darstellung, Links, Formulare und Datenweiterleitung sind geprüft.',p25:'Die Prüfung unserer Arbeit ist dokumentiert.',p26:'Hosting, CRM und weitere eingesetzte Dienste sind dokumentiert.',p27:'Zugänge und Kundendaten sind angemessen geschützt.'};
  const rows=ownWorkItems(allItems,state).filter(item=>currentAnswers(state)[item.id].status==='done').map(item=>`<li><span class="check">✓</span><span>${escapeHtml(statements[item.id]||item.title)}</span></li>`).join('');
