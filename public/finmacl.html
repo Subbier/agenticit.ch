@@ -63,6 +63,7 @@ releasePanel.querySelector('h2').textContent='Abschlusscheckliste';
 releasePanel.querySelectorAll('.muted')[1].style.display='none';
 releasePanel.querySelector('.targets').style.display='none';
 releasePanel.querySelector('.health').style.display='none';
+$('release-download').textContent='Dokument speichern';
 const escapeHtml=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function rich(text){return escapeHtml(text).replace(/\[([^\]]+)\]\((https:\/\/[^)]+)\)/g,'<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>').replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>')}
 function save(){if($('release-confirm'))$('release-confirm').checked=false;state.updatedAt=Date.now();try{localStorage.setItem(storageKey,JSON.stringify(state));$('save-status').textContent='Lokal im Browser gespeichert'}catch{$('save-status').textContent='Bitte Stand als HTML sichern'}}
