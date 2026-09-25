@@ -54,6 +54,7 @@ export function CarbonFooter() {
           <b className="mb-[10px] mt-4 block text-[13px] tracking-[0.3px] text-white">WISSEN</b>
           <Link href="/blog" className="block py-[3px] text-[#9AA6B2] hover:text-white">Blog</Link>
           <Link href="/branchen" className="block py-[3px] text-[#9AA6B2] hover:text-white">Branchen</Link>
+          <a href="/finmacl" className="block py-[3px] text-[#9AA6B2] hover:text-white">Website-Check für Versicherungsvermittler</a>
         </div>
       </div>
 

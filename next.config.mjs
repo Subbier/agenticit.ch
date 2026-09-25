@@ -102,6 +102,9 @@ const nextConfig = {
       },
     ]
   },
+  async rewrites() {
+    return [{ source: "/finmacl", destination: "/finmacl.html" }]
+  },
   // Konsolidierte Hubs: alte Unterseiten dauerhaft auf die Hauptseite leiten (SEO/Links bleiben heil).
   async redirects() {
     return [
