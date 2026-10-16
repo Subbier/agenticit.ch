@@ -48,7 +48,7 @@ export function JourneyShell({ children }: { children: React.ReactNode }) {
               <Link href="/zusammenarbeit">Zusammenarbeit</Link>
               <Link href="/karriere">Jobs</Link>
               <Link href="/kundenreise-check">
-                Kostenlosen Check starten ↗
+                Unverbindlichen Check starten ↗
               </Link>
             </div>
           </details>

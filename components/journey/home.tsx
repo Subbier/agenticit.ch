@@ -37,7 +37,7 @@ export function JourneyHome() {
               </p>
               <div className={styles.actions}>
                 <Link href="/kundenreise-check" className={styles.button}>
-                  Kostenlosen Check starten{" "}
+                  Unverbindlichen Check starten{" "}
                   <ArrowUpRight size={18} aria-hidden="true" />
                 </Link>
                 <a className={styles.textLink} href="#firmenvideo">
@@ -45,7 +45,7 @@ export function JourneyHome() {
                 </a>
               </div>
               <p className={`${styles.fine} ${styles.heroFine}`}>
-                Kostenloser Check · Ergebnis sofort · Ohne E-Mail-Pflicht
+                Unverbindlicher Check · Ergebnis sofort · Ohne E-Mail-Pflicht
               </p>
             </div>
             <ServiceShowcase />

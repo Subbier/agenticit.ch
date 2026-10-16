@@ -164,7 +164,8 @@ export function JourneyCta() {
         <p>Wenige Fragen. Ein konkreter Plan. Direkt für Sie nutzbar.</p>
       </div>
       <Link href="/kundenreise-check" className={styles.button}>
-        Kostenlosen Check starten <ArrowRight size={17} aria-hidden="true" />
+        Unverbindlichen Check starten{" "}
+        <ArrowRight size={17} aria-hidden="true" />
       </Link>
     </div>
   )

@@ -72,10 +72,10 @@ export function CompanyVideo() {
         <p className={styles.fine}>
           Wo steckt Ihr Zeitpotenzial?
           <br />
-          Kostenloser Check · Ergebnis sofort · Ohne E-Mail-Pflicht
+          Unverbindlicher Check · Ergebnis sofort · Ohne E-Mail-Pflicht
         </p>
         <Link href="/automatisierungs-check" className={styles.button}>
-          Kostenlosen Check starten
+          Unverbindlichen Check starten
           <ArrowUpRight size={18} aria-hidden="true" />
         </Link>
       </div>
