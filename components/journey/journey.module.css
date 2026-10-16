@@ -191,127 +191,272 @@
 .heroFine {
   margin-top: 14px !important;
 }
-.serviceIllustration {
-  background: #222a25;
-  color: #f4f8f0;
-  border-radius: 12px;
-  padding: 28px;
-  overflow: hidden;
-}
-.serviceEyebrow {
-  display: block;
-  color: #b2c1b0;
-  font-size: 10px;
-  letter-spacing: 1.6px;
-  text-transform: uppercase;
-  text-align: center;
-}
-.serviceHub {
+.showcase {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  width: fit-content;
-  margin: 22px auto 36px;
-  padding: 16px 22px;
-  border: 1px solid #729b5e;
-  border-radius: 10px;
-  background: #2c392d;
+  min-width: 0;
+  overflow: hidden;
+  padding: 24px 28px 0;
+  border: 1px solid #344b38;
+  border-radius: 20px;
+  background:
+    radial-gradient(ellipse at 90% 8%, #34512d 0, transparent 55%),
+    linear-gradient(145deg, #14201a, #202f24);
+  color: #f6fbf2;
+  box-shadow: 0 24px 60px rgb(24 45 28 / 12%);
 }
-.serviceHub:after {
+.showcase:before {
   position: absolute;
   content: "";
-  bottom: -18px;
-  left: 50%;
-  height: 18px;
-  width: 1px;
-  background: #729b5e;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.15;
+  background-image:
+    linear-gradient(#9ccd7b 1px, transparent 1px),
+    linear-gradient(90deg, #9ccd7b 1px, transparent 1px);
+  background-size: 52px 52px;
+  mask-image: radial-gradient(ellipse at 100% 0%, black, transparent 65%);
 }
-.serviceHub svg {
-  flex: none;
-  color: var(--green);
+.showcaseToolbar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
 }
-.serviceHub strong {
-  display: block;
-  font-size: 22px;
-  font-weight: 600;
+.showcaseCounter {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #e4f5d7;
+}
+.showcaseCounter span {
+  color: #8a9e85;
+}
+.showcasePlayback {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #52644c;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 3%);
+  color: #c7dfb8;
+}
+.showcasePlayback:hover {
+  background: rgb(255 255 255 / 9%);
+}
+.showcaseStage {
+  position: relative;
+  height: 300px;
+  animation: showcaseEnter 0.55s ease-out both;
+}
+.showcaseArt {
+  position: absolute;
+  top: -54px;
+  right: -26px;
+  width: 260px;
+  height: 260px;
+  pointer-events: none;
+  animation: showcaseFloat 6s ease-in-out infinite;
+}
+.showcaseArt span {
+  position: absolute;
+  inset: 36px;
+  border: 1px solid rgb(173 245 121 / 55%);
+  border-radius: 50%;
+  background: linear-gradient(130deg, rgb(163 242 113 / 8%), transparent 65%);
+  box-shadow:
+    inset 1px 1px 0 rgb(231 255 213 / 12%),
+    0 16px 32px rgb(6 21 7 / 12%);
+}
+.showcaseArt[data-area="marketing"] span:nth-child(1) {
+  transform: rotateX(58deg) rotateZ(-30deg);
+}
+.showcaseArt[data-area="marketing"] span:nth-child(2) {
+  transform: rotateY(58deg) rotateZ(30deg);
+}
+.showcaseArt[data-area="marketing"] span:nth-child(3) {
+  transform: rotateX(25deg) rotateY(-35deg);
+}
+.showcaseArt > svg {
+  position: absolute;
+  top: 98px;
+  left: 99px;
+  color: #bdff90;
+  filter: drop-shadow(0 6px 18px rgb(150 235 91 / 20%));
+}
+.showcaseArt[data-area="revenue"] span {
+  inset: auto;
+  bottom: 48px;
+  width: 40px;
+  border-radius: 8px 8px 3px 3px;
+  background: linear-gradient(145deg, #a5ec77, #496b3d 80%);
+  transform: skewY(-12deg);
+}
+.showcaseArt[data-area="revenue"] span:nth-child(1) {
+  left: 42px;
+  height: 54px;
+}
+.showcaseArt[data-area="revenue"] span:nth-child(2) {
+  left: 100px;
+  height: 94px;
+}
+.showcaseArt[data-area="revenue"] span:nth-child(3) {
+  left: 158px;
+  height: 142px;
+}
+.showcaseArt[data-area="revenue"] > svg {
+  top: 45px;
+  left: 49px;
+  width: 47px;
+}
+.showcaseArt[data-area="automation"] span {
+  inset: 59px;
+  border-radius: 22px;
+  background: linear-gradient(
+    145deg,
+    rgb(172 239 128 / 16%),
+    rgb(31 58 34 / 80%)
+  );
+}
+.showcaseArt[data-area="automation"] span:nth-child(1) {
+  transform: translateY(35px) rotate(-27deg) skew(12deg);
+}
+.showcaseArt[data-area="automation"] span:nth-child(2) {
+  transform: translateY(14px) rotate(-27deg) skew(12deg);
+}
+.showcaseArt[data-area="automation"] span:nth-child(3) {
+  transform: translateY(-7px) rotate(-27deg) skew(12deg);
+}
+.showcaseArt[data-area="automation"] > svg {
+  top: 90px;
+}
+.showcaseCopy {
+  position: relative;
+  z-index: 1;
+  padding-top: 103px;
+}
+.showcaseCopy h2 {
+  margin: 0;
+  font-size: clamp(32px, 3.4vw, 44px);
+  font-weight: 550;
+  line-height: 1.1;
+  letter-spacing: -1.7px;
+}
+.showcaseCopy p {
+  margin-top: 15px;
+  color: #cee1c4;
+  font-size: 23px;
+  font-weight: 400;
   line-height: 1.3;
+  letter-spacing: -0.4px;
+  white-space: pre-line;
 }
-.serviceHub span {
+.showcaseCopy > span {
   display: block;
-  margin-top: 3px;
-  color: #c2d0bb;
-  font-size: 10px;
+  margin-top: 18px;
+  color: #9db595;
+  font-size: 12px;
 }
-.serviceBranches {
+.showcaseNav {
   position: relative;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
+  border-top: 1px solid #3e543d;
 }
-.serviceBranches:before {
-  position: absolute;
-  content: "";
-  top: -18px;
-  left: 16.666%;
-  right: 16.666%;
-  height: 1px;
-  background: #729b5e;
-}
-.serviceNode {
+.showcaseNav button {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
-  padding: 19px 10px 17px;
-  border: 1px solid #455442;
-  border-radius: 9px;
-  background: #29332b;
-  text-align: center;
-}
-.serviceNode:before {
-  position: absolute;
-  content: "";
-  top: -18px;
-  left: 50%;
-  width: 1px;
-  height: 18px;
-  background: #729b5e;
-}
-.serviceNode svg {
-  color: var(--green);
-}
-.serviceNode strong {
-  font-size: 13px;
-  font-weight: 550;
-  line-height: 1.35;
-}
-.serviceNode span {
-  color: #b8c8b2;
-  font-size: 11px;
-  line-height: 1.6;
-}
-.serviceExamples {
-  display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 7px;
-  margin-top: 23px;
-}
-.serviceExamples span {
-  padding: 5px 9px;
-  border: 1px solid #455442;
-  border-radius: 5px;
-  color: #d1dfca;
-  font-size: 10px;
-}
-.serviceSupport {
-  margin-top: 17px !important;
-  color: #aebfaa;
-  font-size: 10px !important;
+  gap: 9px;
+  min-height: 76px;
+  padding: 12px 4px 17px;
+  border: 0;
+  background: transparent;
+  color: #a2b69a;
+  font-size: 11px;
+  line-height: 1.3;
   text-align: center;
+}
+.showcaseNav button:hover,
+.showcaseNav button[aria-pressed="true"] {
+  color: #effbe8;
+}
+.showcaseDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #64775d;
+}
+.showcaseNav button[aria-pressed="true"] .showcaseDot {
+  background: var(--green);
+  box-shadow: 0 0 13px rgb(143 224 90 / 50%);
+}
+.showcaseProgress {
+  position: absolute;
+  right: 6px;
+  bottom: 0;
+  left: 6px;
+  height: 2px;
+  background: var(--green);
+  transform-origin: left;
+}
+.showcase[data-running="true"] .showcaseProgress {
+  animation: showcaseProgress 6s linear both;
+}
+.showcase[data-running="false"] .showcaseArt {
+  animation-play-state: paused;
+}
+.showcase :where(button):focus-visible {
+  outline-color: var(--green);
+  outline-offset: -4px;
+}
+.showcaseAnnouncement {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+@keyframes showcaseEnter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes showcaseFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-3deg);
+  }
+  50% {
+    transform: translateY(-7px) rotate(3deg);
+  }
+}
+@keyframes showcaseProgress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .showcaseStage,
+  .showcaseArt,
+  .showcaseProgress {
+    animation: none !important;
+  }
 }
 .section {
   padding-block: 80px;
@@ -1421,8 +1566,8 @@
   .nav .button {
     padding-inline: 13px;
   }
-  .serviceIllustration {
-    padding: 23px;
+  .showcase {
+    padding-inline: 22px;
   }
   .challengeCard {
     padding: 22px;
@@ -1520,26 +1665,31 @@
     margin-top: 22px;
     gap: 12px;
   }
-  .serviceIllustration {
-    padding: 22px 18px;
+  .showcase {
+    padding: 20px 22px 0;
+    border-radius: 16px;
   }
-  .serviceNode {
-    padding: 16px 7px;
-    gap: 9px;
+  .showcaseStage {
+    height: 300px;
   }
-  .serviceNode strong {
-    font-size: 12px;
+  .showcaseCopy h2 {
+    font-size: 32px;
+    letter-spacing: -1.2px;
   }
-  .serviceNode span {
+  .showcaseCopy p {
+    font-size: 21px;
+  }
+  .showcaseCopy > span {
+    font-size: 11px;
+  }
+  .showcaseArt {
+    right: -37px;
+    top: -45px;
+    transform-origin: right top;
+  }
+  .showcaseNav button {
+    min-height: 76px;
     font-size: 10px;
-  }
-  .serviceExamples {
-    gap: 6px;
-    margin-top: 19px;
-  }
-  .serviceExamples span {
-    font-size: 9px;
-    padding: 4px 7px;
   }
   .section {
     padding-block: 46px;

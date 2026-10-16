@@ -1,12 +1,5 @@
 import Link from "next/link"
-import {
-  ArrowUpRight,
-  Network,
-  Play,
-  Target,
-  TrendingUp,
-  Workflow,
-} from "lucide-react"
+import { ArrowUpRight, Play } from "lucide-react"
 import { JourneyShell } from "./shell"
 import {
   ChallengeCards,
@@ -18,25 +11,8 @@ import {
 import { JourneyMap } from "./journey-map"
 import { CompanyVideo } from "./company-video"
 import { Careers } from "./careers"
+import { ServiceShowcase } from "./service-showcase"
 import styles from "./journey.module.css"
-
-const services = [
-  {
-    icon: Target,
-    title: "Marktstrategie",
-    detail: "Zielgruppen, Angebote & Positionierung",
-  },
-  {
-    icon: TrendingUp,
-    title: "Umsatzmotor",
-    detail: "Website, Marketing & Vertrieb",
-  },
-  {
-    icon: Workflow,
-    title: "Digital & KI",
-    detail: "CRM, Telefonie & Automatisierung",
-  },
-]
 
 export function JourneyHome() {
   return (
@@ -72,38 +48,7 @@ export function JourneyHome() {
                 Kostenloser Check · Ergebnis sofort · Ohne E-Mail-Pflicht
               </p>
             </div>
-            <div
-              className={styles.serviceIllustration}
-              aria-label="AgenticIT verbindet Marktstrategie, Kundengewinnung und Digitalisierung für Ihr Unternehmen"
-            >
-              <span className={styles.serviceEyebrow}>
-                Das verbinden wir für Sie
-              </span>
-              <div className={styles.serviceHub}>
-                <Network size={30} aria-hidden="true" />
-                <div>
-                  <strong>AgenticIT</strong>
-                  <span>Ein Partner für Ihr Unternehmen</span>
-                </div>
-              </div>
-              <div className={styles.serviceBranches}>
-                {services.map(({ icon: Icon, title, detail }) => (
-                  <div className={styles.serviceNode} key={title}>
-                    <Icon size={24} aria-hidden="true" />
-                    <strong>{title}</strong>
-                    <span>{detail}</span>
-                  </div>
-                ))}
-              </div>
-              <div className={styles.serviceExamples}>
-                <span>KI-Telefonie</span>
-                <span>Digitales Fahrtenbuch</span>
-                <span>Meetings → Aufgaben</span>
-              </div>
-              <p className={styles.serviceSupport}>
-                Beratung · Einrichtung · Begleitung im Betrieb
-              </p>
-            </div>
+            <ServiceShowcase />
           </section>
           <CompanyVideo />
           <section className={styles.section} id="ansatzpunkt">
