@@ -67,15 +67,18 @@
   font-weight: 400;
 }
 :is(.header, .footer) .brand {
-  font-size: 45px;
+  font-size: 36px;
   line-height: 1;
 }
 :is(.header, .footer) .brandIcon {
   width: 35.2px;
   height: 35.2px;
 }
-:is(.header, .footer) .brand :is(span, strong) {
+:is(.header, .footer) .brand span {
   font-weight: 650;
+}
+:is(.header, .footer) .brand strong {
+  font-weight: 300;
 }
 .nav {
   display: flex;
@@ -1744,7 +1747,7 @@
     padding-block: 17px;
   }
   :is(.header, .footer) .brand {
-    font-size: 41px;
+    font-size: 32.8px;
     gap: 9px;
   }
   :is(.header, .footer) .brandIcon {

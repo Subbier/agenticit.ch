@@ -36,12 +36,12 @@ body {
   font-weight: 400;
 }
 :is(.site-header, .site-footer) .site-brand {
-  font-size: 45px;
+  font-size: 36px;
   line-height: 1;
   font-weight: 650;
 }
 :is(.site-header, .site-footer) .site-brand strong {
-  font-weight: 650;
+  font-weight: 300;
 }
 :is(.site-header, .site-footer) .site-brand img {
   width: 35.2px;
@@ -256,7 +256,7 @@ summary:focus-visible {
     padding-block: 17px;
   }
   :is(.site-header, .site-footer) .site-brand {
-    font-size: 41px;
+    font-size: 32.8px;
     gap: 9px;
   }
   :is(.site-header, .site-footer) .site-brand img {
@@ -318,7 +318,7 @@ summary:focus-visible {
 }
 @media (max-width: 360px) {
   :is(.site-header, .site-footer) .site-brand {
-    font-size: 37.5px;
+    font-size: 30px;
     gap: 7px;
     letter-spacing: -2px;
   }
