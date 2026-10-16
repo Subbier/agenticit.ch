@@ -20,10 +20,12 @@ export const challenges = [
   },
   {
     id: "admin",
-    label: "Weniger Routine im Team",
-    description: "Nacharbeit und doppelte Eingaben gezielt reduzieren.",
-    magnet: "Ihr Zeitpotenzial-Check",
-    result: "Eine Schätzrechnung und der erste geeignete Ablauf.",
+    label: "Mehr Zeit. Weniger Handarbeit.",
+    description:
+      "Wiederkehrende Aufgaben automatisieren – von der Datenerfassung bis zur Nacharbeit nach Meetings.",
+    magnet: "Ihr Automatisierungs-Check",
+    result:
+      "Ihre manuellen Aufgaben, Ihr Zeitpotenzial und ein erster Ansatzpunkt.",
     packageId: "workflow",
     icon: "clock",
   },
@@ -54,6 +56,16 @@ export const challenges = [
     result: "Eine Struktur für Kontaktanlässe und Verantwortung.",
     packageId: "workflow",
     icon: "heart",
+  },
+  {
+    id: "partnership",
+    label: "Ein Partner für Ihre Digitalisierung",
+    description:
+      "Website, CRM, Marketing, Telefonie und Support verbinden. Mit einem Ansprechpartner und einem klaren Fahrplan.",
+    magnet: "Ihr Digitalisierungs-Fahrplan",
+    result: "Eine Übersicht Ihrer Systeme, Partner und nächsten Schritte.",
+    packageId: "workflow",
+    icon: "network",
   },
 ] as const
 
@@ -266,6 +278,15 @@ const playbooks: Record<
     template:
       "BETREUUNGSPLAN\nKunde / Verantwortlich / letzter Kontakt / nächster vereinbarter Anlass / offenes Anliegen / erlaubter Kontaktweg\n\nGeeignete Anlässe:\n- Erster Ergebnischeck nach dem Start\n- Vereinbarte Leistungsbesprechung\n- Bestätigte Änderung im Bedarf\n- Rückfrage zu einem offenen Anliegen\n\nVor Reaktivierung prüfen: Kontakterlaubnis, Ablehnung und Abmeldung, tatsächlicher Anlass. Zusatzbedarf im Gespräch bestätigen; Angebote vor Versand menschlich freigeben.",
   },
+  partnership: {
+    focus: "Ein Plan. Ein Ansprechpartner. Klare Übergaben.",
+    action:
+      "Bringen Sie Website, CRM, Marketing, Telefonie und Support in eine gemeinsame Übersicht. Halten Sie Zuständigkeiten und Abhängigkeiten fest. Bestimmen Sie eine Person, die den Gesamtplan mit Ihrem Team koordiniert.",
+    measure:
+      "Abstimmungszeit, ungeklärte Zuständigkeiten und erledigte Meilensteine im vereinbarten Fahrplan.",
+    template:
+      "IHR DIGITALISIERUNGS-FAHRPLAN\n\nBESTAND AUFNEHMEN\nBereich | System / Partner | Verantwortlich | laufende Kosten | nächste Entscheidung\nWebsite und Inhalte | | | |\nCRM und Kundendaten | | | |\nMarketing und Kampagnen | | | |\nTelefonie und Internet | | | |\nSupport und Betrieb | | | |\n\nZUSAMMENARBEIT KLÄREN\nGesamtverantwortliche Person:\nGemeinsamer Ort für Aufgaben und Status:\nWer gibt Inhalte und Änderungen frei?\nWer übernimmt bei Störungen?\n\nSCHRITTE PRIORISIEREN\nHerausforderung | Nutzen | Abhängigkeiten | Zuständig | Termin | Abnahme\n1.\n2.\n3.\n\nMit einem abgegrenzten Vorhaben beginnen. Bestehende Verträge, Zugänge und Schnittstellen vor einer Umstellung prüfen. Keine Passwörter in dieser Übersicht speichern.",
+  },
 }
 
 export function buildJourneyPlan(answers: JourneyAnswers) {
@@ -283,7 +304,22 @@ export function buildJourneyPlan(answers: JourneyAnswers) {
       : answers.system === "crm"
         ? "Nutzen Sie Ihr CRM als gemeinsame Sicht. Prüfen Sie zuerst genau eine manuelle Übergabe und testen Sie auch den Fehlerfall."
         : "Ihre Systeme sind bereits verbunden. Prüfen Sie eine bestehende Übergabe auf doppelte Einträge, fehlende Angaben und menschliche Übernahme."
-  const steps = [intake, playbook.action, system]
+  const partnershipIntake = {
+    web: "Beginnen Sie bei Website und Formularen: Wer betreut Inhalte und Technik, wohin gehen Anfragen und wer übernimmt sie im CRM?",
+    phone:
+      "Gehen Sie einen Kontakt über Telefon und E-Mail durch: Welche Anbieter, Postfächer und Systeme sind beteiligt, wer pflegt sie und wo entsteht Abstimmungsaufwand?",
+    mixed:
+      "Ein gemeinsamer Eingang ist nur der Anfang: Erfassen Sie, welche Partner und Systeme an Website, CRM, Marketing, Telefonie und Support beteiligt sind.",
+  }
+  const steps = [
+    answers.challenge === "partnership"
+      ? partnershipIntake[answers.channel]
+      : intake,
+    playbook.action,
+    answers.challenge === "partnership"
+      ? `${system} Dokumentieren Sie den Gesamtstatus, die nächste Entscheidung und die Abnahme an einem gemeinsamen Ort.`
+      : system,
+  ]
   const download = [
     "AGENTICIT · IHR KUNDENREISE-PLAN",
     "",

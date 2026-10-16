@@ -138,3 +138,23 @@ test("existing lead sources remain compatible and keep their original follow-up"
     false,
   )
 })
+
+test("the digitalisation roadmap covers partner coordination and is accepted by intake", () => {
+  const answers = {
+    challenge: "partnership",
+    channel: "mixed",
+    system: "manual",
+  } as const
+  const plan = buildJourneyPlan(answers)
+  for (const topic of ["Website", "CRM", "Marketing", "Telefonie", "Support"]) {
+    assert.ok(plan.template.includes(topic))
+  }
+  const parsed = leadSchema.parse({
+    ...sample,
+    journey: { version: 1, ...answers },
+  })
+  const payload = prepareLeadPayload(parsed, "2026-10-16T12:00:00.000Z")
+  assert.ok(payload.tags.includes("herausforderung:partnership"))
+  assert.ok(payload.message?.includes("Digitalisierungs-Fahrplan"))
+  assert.equal(payload.marketingConsent, false)
+})

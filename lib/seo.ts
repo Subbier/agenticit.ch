@@ -321,6 +321,7 @@ export function webApplicationJsonLd(input: {
 export const INDEXABLE_ROUTES = [
   "/",
   "/kundenreise-check",
+  "/automatisierungs-check",
   "/werkzeuge",
   "/pakete",
   "/zusammenarbeit",

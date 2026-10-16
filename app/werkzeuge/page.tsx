@@ -7,7 +7,7 @@ import styles from "@/components/journey/journey.module.css"
 export const metadata = createPageMetadata({
   title: "Kostenlose Checks und Vorlagen für Ihre Kundenreise",
   description:
-    "Anfrage-Check, Follow-up-Plan, Zeitpotenzial, Empfangsleitfaden und Onboarding-Checkliste. Finden Sie eine direkt nutzbare Hilfe für Ihre Herausforderung.",
+    "Automatisierungs-Check, Digitalisierungs-Fahrplan und Vorlagen für Ihre Kundenreise. Finden Sie eine direkt nutzbare Hilfe für Ihre Herausforderung.",
   path: "/werkzeuge",
 })
 

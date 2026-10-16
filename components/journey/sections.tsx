@@ -9,6 +9,7 @@ import {
   Phone,
   Search,
   ClipboardCheck,
+  Network,
 } from "lucide-react"
 import { challenges, journeyFaqs, packages } from "@/lib/journey"
 import styles from "./journey.module.css"
@@ -20,6 +21,7 @@ const icons = {
   check: ClipboardCheck,
   phone: Phone,
   heart: HeartHandshake,
+  network: Network,
 }
 
 export function ChallengeCards() {
@@ -29,9 +31,13 @@ export function ChallengeCards() {
         const Icon = icons[challenge.icon]
         return (
           <Link
-            href={`/kundenreise-check?thema=${challenge.id}`}
+            href={
+              challenge.id === "admin"
+                ? "/automatisierungs-check"
+                : `/kundenreise-check?thema=${challenge.id}`
+            }
             key={challenge.id}
-            className={styles.challengeCard}
+            className={`${styles.challengeCard} ${challenge.id === "partnership" ? styles.challengeWide : ""}`}
           >
             <span className={styles.cardIcon}>
               <Icon size={21} strokeWidth={1.5} aria-hidden="true" />

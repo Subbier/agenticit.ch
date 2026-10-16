@@ -62,6 +62,49 @@ test("lead endpoint validates before forwarding and handles delivery failure hon
       },
     )
     await suite.test(
+      "automation calculation is validated and forwarded once with human review",
+      async () => {
+        const response = await POST(
+          request(
+            {
+              source: "automation-check",
+              name: "Internal Test",
+              email: "automation-route@example.invalid",
+              company: "Test organisation",
+              consent: true,
+              automation: {
+                version: 1,
+                industryIds: ["versicherung"],
+                tasks: [
+                  {
+                    id: "intake",
+                    weeklyCount: 20,
+                    minutes: 15,
+                    automationPercent: 80,
+                  },
+                ],
+                hourlyRate: 100,
+              },
+            },
+            "192.0.2.7",
+          ),
+        )
+        assert.equal(response.status, 200)
+        assert.equal(calls, 2)
+        assert.ok(
+          (forwarded.tags as string[]).includes(
+            "quelle:automatisierungs-check",
+          ),
+        )
+        assert.equal(
+          forwarded.followUpTask,
+          "Automatisierungs-Check persönlich prüfen",
+        )
+        assert.ok(String(forwarded.message).includes("4 Stunden/Woche"))
+        assert.equal(forwarded.marketingConsent, false)
+      },
+    )
+    await suite.test(
       "failed forwarding is not reported as success",
       async () => {
         globalThis.fetch = async () => new Response("", { status: 503 })
