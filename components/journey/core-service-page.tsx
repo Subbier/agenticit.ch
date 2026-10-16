@@ -7,7 +7,7 @@ import {
   ShieldCheck,
 } from "lucide-react"
 import { coreServices, type CoreService } from "@/lib/core-services"
-import { breadcrumbJsonLd, serviceJsonLd } from "@/lib/seo"
+import { breadcrumbJsonLd, faqPageJsonLd, serviceJsonLd } from "@/lib/seo"
 import { JsonLd } from "@/components/site/json-ld"
 import { JourneyShell } from "./shell"
 import shared from "./journey.module.css"
@@ -29,6 +29,7 @@ export function CoreServicePage({ service }: { service: CoreService }) {
             { name: "Services", path: "/pakete" },
             { name: service.name, path },
           ]),
+          faqPageJsonLd([...service.faqs]),
         ]}
       />
       <main className={`${shared.container} ${styles.main}`}>

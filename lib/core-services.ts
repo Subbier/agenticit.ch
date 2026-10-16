@@ -329,6 +329,231 @@ export const coreServices = [
       },
     ],
   },
+  {
+    slug: "gtm-markteintritt",
+    name: "Marketing",
+    title: "Online-Marketing für Schweizer KMU: Strategie & Setup",
+    description:
+      "Zielgruppe, Angebot, Website und Werbekonten aufeinander abstimmen. AgenticIT bereitet Ihr Marketing vor und verbindet den Anfrageweg mit Ihrem Vertrieb.",
+    eyebrow: "Ihr Angebot. Klar im Markt.",
+    headline: "Marketing, das Ihre Kunden anspricht.",
+    intro:
+      "Für beratende und vertriebsorientierte KMU verbinden wir Zielgruppe, Angebot und digitalen Auftritt. Wir bereiten Inhalte, Tools und Werbekonten vor – bis der Weg von der Kampagne zur Anfrage steht.",
+    checkHref: "/marketing-setup-check",
+    checkLabel: "Marketing-Setup prüfen",
+    visualLabel: "Vom Angebot zum Start",
+    visualTitle: "Ein Angebot. Ein klarer Anfrageweg.",
+    visualSteps: [
+      [
+        "Kunden verstehen",
+        "Zielgruppe, Anliegen und Nutzen aufeinander abstimmen",
+      ],
+      [
+        "Auftritt vorbereiten",
+        "Website, Inhalte und passende Kanäle verbinden",
+      ],
+      ["Startklar werden", "Konten, Freigaben und Übergabe gemeinsam prüfen"],
+    ],
+    resultTitle: "Eine Grundlage, auf der Ihr Marketing aufbauen kann.",
+    resultCopy:
+      "Ein neuer Markt, ein neues Angebot oder ein gewachsener Auftritt: Wir ordnen die Grundlagen und bereiten die Umsetzung vor. Sie wissen, was als Nächstes ansteht und wer es übernimmt.",
+    benefits: [
+      [
+        "Ihr Angebot schärfen",
+        "Eine konkrete Zielgruppe und ihr Anliegen bestimmen. Den Nutzen so formulieren, dass ein Gespräch für die richtigen Menschen interessant wird.",
+      ],
+      [
+        "Ihren Auftritt vorbereiten",
+        "Website, Landingpages, Inhalte und nützliche Lead-Magnete auf ein gemeinsames Angebot und einen klaren nächsten Schritt ausrichten.",
+      ],
+      [
+        "Konten und Tools einrichten",
+        "Google Ads und weitere vereinbarte Kanäle vorbereiten. Eigentümer, Zugänge, Budget und Messung vor dem Start klären.",
+      ],
+      [
+        "Den Anfrageweg verbinden",
+        "Formular, Bestätigung und Übergabe an Ihr Team zusammen prüfen. Zuständigkeiten und benötigte Angaben festlegen.",
+      ],
+    ],
+    examples: [
+      [
+        "Ein Beratungsangebot verständlich machen",
+        "Eine Beratungsfirma richtet Angebot, Landingpage und Check auf eine konkrete Kundenfrage aus. Der Vertrieb erhält das Anliegen mit dem vereinbarten Kontext.",
+      ],
+      [
+        "Einen regionalen Markt erschliessen",
+        "Ein Dienstleister prüft Suchanfragen und Mitbewerber in seinem Zielgebiet. Daraus entstehen passende Inhalte und ein vorbereiteter Kampagnenplan.",
+      ],
+      [
+        "Bestehende Grundlagen ordnen",
+        "Website, Werbekonten und Einzeltools werden auf ihren gemeinsamen Zweck geprüft. Ihr Team erhält eine priorisierte Liste für den nächsten Start.",
+      ],
+    ],
+    processIntro:
+      "Wir bereiten Ihren Markteintritt oder die nächste Marketing-Etappe mit Ihrem Team vor. Bestehende Inhalte, Konten und Erfahrungen fliessen ein.",
+    steps: [
+      [
+        "Ziel und Markt klären",
+        "Kundengruppe, Angebot, Nachfrage und heutigen Stand gemeinsam einordnen.",
+      ],
+      [
+        "Auftritt und Inhalte gestalten",
+        "Botschaft, Zielseite und passende Entscheidungshilfe aufeinander abstimmen.",
+      ],
+      [
+        "Tools und Übergabe einrichten",
+        "Konten, benötigte Daten, Messung und Zuständigkeiten verbinden.",
+      ],
+      [
+        "Start gemeinsam freigeben",
+        "Den Anfrageweg durchspielen und Kampagne, Budget und Betreuung vereinbaren.",
+      ],
+    ],
+    magnetTitle: "Wie startklar ist Ihr Marketing?",
+    magnetCopy:
+      "Fünf kurze Fragen zu Angebot, Auftritt, Konten, Messung und Übergabe. Sie erhalten Ihre nächsten Prioritäten und einen Plan zum Speichern.",
+    faqs: [
+      {
+        question: "Was gehört zu Ihrem Marketing-Service?",
+        answer:
+          "Wir klären Zielgruppe und Angebot, gestalten den digitalen Auftritt und bereiten Inhalte, Werbekonten und den Anfrageweg vor. Welche Kanäle und Leistungen dazugehören, legen wir gemeinsam fest. Die laufende Kampagnenbetreuung kann anschliessend mit unserem Sales-Service verbunden werden.",
+      },
+      {
+        question: "Brauchen wir dafür eine neue Website?",
+        answer:
+          "Wir prüfen zuerst Ihren bestehenden Auftritt. Häufig lassen sich Inhalte, einzelne Zielseiten oder Formulare verbessern. Ein kompletter Neubau wird nur Teil des Auftrags, wenn er für das vereinbarte Ziel sinnvoll ist.",
+      },
+      {
+        question: "Können wir mit Google Ads starten?",
+        answer:
+          "Wir prüfen Zielgruppe, Nachfrage, Angebot und Zielseite. Danach bereiten wir das vereinbarte Konto und die Kampagne vor. Kontoeigentümer, Zugänge, Budget und Freigabe stehen vor dem Start fest. Werbeausgaben weisen wir getrennt von unseren Leistungen aus.",
+      },
+      {
+        question: "Woran erkennen wir, ob das Marketing wirkt?",
+        answer:
+          "Wir vereinbaren, welche Schritte wir messen: etwa Check-Nutzung, eingegangene Anfragen, passende Gespräche und Aufträge. Eine Anfrage wird erst als qualifiziert bewertet, wenn die vereinbarten Kriterien geprüft sind. Rankings, Klicks und Downloads allein belegen keinen gewonnenen Kunden.",
+      },
+      {
+        question: "Was kostet das Marketing-Setup?",
+        answer:
+          "Der Aufwand hängt vom vorhandenen Auftritt, den Konten, Inhalten und Anbindungen ab. Vor dem Auftrag erhalten Sie einen klaren Umfang mit Ergebnis, Kosten und Abnahme. Laufende Betreuung, Lizenzen und Werbebudget werden separat ausgewiesen.",
+      },
+    ],
+  },
+  {
+    slug: "revops-umsatzgenerierung",
+    name: "Sales & CRM",
+    title: "Sales & CRM-Beratung für Schweizer KMU",
+    description:
+      "Kampagnen umsetzen, Anfragen im CRM weiterführen und Ihr Vertriebsteam unterstützen. AgenticIT verbindet Kundenakquise, Nachfassen und Kundenbetreuung.",
+    eyebrow: "Vom ersten Kontakt zur Kundenbeziehung",
+    headline: "Sales und CRM. Damit Anfragen weiterkommen.",
+    intro:
+      "Wir setzen abgestimmte Kampagnen um und geben Ihrem Vertrieb einen klaren Ablauf: Anfragen bearbeiten, Gespräche vorbereiten und den nächsten Schritt im CRM festhalten. Ihr Team bleibt nah am Kunden.",
+    checkHref: "/kundenreise-check?thema=conversion",
+    checkLabel: "Ihren Follow-up-Plan erstellen",
+    visualLabel: "Ein gemeinsamer Vertriebsablauf",
+    visualTitle: "Kontakt. Gespräch. Kundenbeziehung.",
+    visualSteps: [
+      [
+        "Kampagnen umsetzen",
+        "Das vorbereitete Angebot im vereinbarten Kanal starten",
+      ],
+      [
+        "Anfragen weiterführen",
+        "Anliegen, Zuständigkeit und nächste Aktion im CRM verbinden",
+      ],
+      [
+        "Kunden begleiten",
+        "Gespräche, Offerten und Betreuung nachvollziehbar fortsetzen",
+      ],
+    ],
+    resultTitle: "Ihr Vertrieb weiss, was als Nächstes ansteht.",
+    resultCopy:
+      "Für Beratung, Telesales und Aussendienst gestalten wir einen gemeinsamen Weg von der Anfrage bis zur Betreuung. Marketing und Vertrieb sehen denselben Stand und lernen aus den tatsächlichen Rückmeldungen.",
+    benefits: [
+      [
+        "Kampagnen gezielt umsetzen",
+        "Freigegebene Kampagnen starten und nach vereinbarten Kriterien verbessern. Rückmeldungen aus den Gesprächen fliessen ins Marketing zurück.",
+      ],
+      [
+        "Anfragen im CRM weiterführen",
+        "Anliegen strukturiert erfassen, einer Person zuordnen und eine nächste Aktion hinterlegen. Dubletten und fehlgeschlagene Übergaben mitprüfen.",
+      ],
+      [
+        "Ihr Team im Alltag unterstützen",
+        "Gesprächsvorbereitung, Aufgaben und vereinbarte Erinnerungen passend einrichten. Neue Abläufe mit dem Team an realistischen Fällen üben.",
+      ],
+      [
+        "Kundenbeziehungen entwickeln",
+        "Offerten nachhalten, den Kundenstart vorbereiten und Betreuungstermine im Blick behalten. Weiteren Bedarf im passenden Gespräch klären.",
+      ],
+    ],
+    examples: [
+      [
+        "Eine Anfrage erreicht die richtige Person",
+        "Nach dem Formular geht das Anliegen mit den vereinbarten Angaben ins CRM. Eine verantwortliche Person erhält den nächsten Bearbeitungsschritt; Fehler werden sichtbar.",
+      ],
+      [
+        "Telesales und Aussendienst arbeiten zusammen",
+        "Das Telefonteam dokumentiert Anliegen und Vereinbarung. Der Aussendienst kann das Gespräch vorbereitet übernehmen und seine Rückmeldung am gleichen Vorgang ergänzen.",
+      ],
+      [
+        "Aus einer Offerte wird ein klarer nächster Schritt",
+        "Das Team hält fest, welcher Punkt offen ist und wann der Kontakt wieder aufgenommen werden soll. Vereinbarte Betreuung führt die Kundenbeziehung weiter.",
+      ],
+    ],
+    processIntro:
+      "Wir schauen uns eine konkrete Anfrage mit Ihrem Team an und gestalten daran den künftigen Ablauf. CRM, Kampagnen und Zusammenarbeit werden gemeinsam geprüft.",
+    steps: [
+      [
+        "Vertriebsweg verstehen",
+        "Eingangskanäle, Bearbeitung, Übergaben und Entscheidungsschritte aufnehmen.",
+      ],
+      [
+        "CRM und Kampagnen verbinden",
+        "Daten, Rollen, Status und nächste Aktionen auf den vereinbarten Ablauf ausrichten.",
+      ],
+      [
+        "Mit dem Team prüfen",
+        "Normale Fälle, Dubletten, Ablehnungen und ausgefallene Übergaben durchspielen.",
+      ],
+      [
+        "Begleitet weiterentwickeln",
+        "Anfragen, passende Gespräche und Aufträge getrennt auswerten und den Ablauf verbessern.",
+      ],
+    ],
+    magnetTitle: "Was braucht Ihre nächste Anfrage?",
+    magnetCopy:
+      "Ordnen Sie Ihren heutigen Anfrageweg ein. Der Kundenreise-Check liefert einen Follow-up-Plan und anpassbare Vorlagen für den nächsten Kontakt.",
+    faqs: [
+      {
+        question: "Was bringt eine CRM-Beratung unserem Vertrieb?",
+        answer:
+          "Wir übersetzen Ihren Vertriebsablauf in klare Daten, Rollen, Status und nächste Schritte. Dazu gehören die Übergaben aus Formularen oder Telefonie und die Arbeit mit Offerten und Kunden. Ziel ist ein gemeinsam nutzbarer Ablauf, dessen Funktion wir mit Ihrem Team prüfen.",
+      },
+      {
+        question: "Müssen wir unser CRM ersetzen?",
+        answer:
+          "Wir prüfen zuerst, wie Ihr vorhandenes CRM den gewünschten Ablauf unterstützt und welche Anbindungen möglich sind. Falls eine Auswahl oder ein Wechsel nötig wird, vergleichen wir Anforderungen, Datenübernahme, Bedienung und laufende Kosten, bevor Sie entscheiden.",
+      },
+      {
+        question: "Wie unterstützt KI unser Sales-Team?",
+        answer:
+          "KI kann Anliegen strukturieren, Gesprächsnotizen vorbereiten und nächste Schritte vorschlagen. Wir legen fest, welche Aufgaben sie übernehmen darf und wann Menschen eingreifen. Ausgehende Sales-Nachrichten benötigen eine menschliche Freigabe. Kundenorientierte KI-Assistenten geben sich als KI zu erkennen.",
+      },
+      {
+        question: "Übernehmen Sie auch Kampagnen und Nachfassen?",
+        answer:
+          "Wir können die vereinbarten Kampagnen umsetzen und die Bearbeitung im Team unterstützen. Für Nachfasskontakte klären wir Anlass, Kontaktweg, Freigabe und gewünschte Zeitpunkte. Ablehnungen und Abmeldungen werden berücksichtigt. Den Umfang vereinbaren wir passend zu Ihren Ressourcen.",
+      },
+      {
+        question: "Wie planen wir Kosten und Erfolg?",
+        answer:
+          "Vor dem Auftrag halten wir Umfang, Ergebnisse, Kosten und Abnahme fest. Einführung, Betreuung, Lizenzen und Werbeausgaben werden getrennt geplant. Für die Auswertung unterscheiden wir Anfrageeingang, qualifizierte Kontakte, Gespräche und Aufträge; daraus entsteht keine Zusage einer bestimmten Abschlussquote.",
+      },
+    ],
+  },
 ] as const
 
 export type CoreService = (typeof coreServices)[number]
@@ -338,6 +563,10 @@ export const serviceDetailLinks: Record<
   readonly { label: string; href: string }[]
 > = {
   acquisition: [
+    {
+      label: "Marketing und Markteintritt",
+      href: "/loesungen/gtm-markteintritt",
+    },
     { label: "Webdesign und Websites", href: "/loesungen/webdesign" },
   ],
   appointments: [

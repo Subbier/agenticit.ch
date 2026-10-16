@@ -6,6 +6,8 @@ const services = [
   ["ki-entwicklung", /KI-Entwicklung/],
   ["webdesign", /Webdesign/],
   ["prozessautomatisierung", /Prozessautomatisierung/],
+  ["gtm-markteintritt", /Marketing/],
+  ["revops-umsatzgenerierung", /Sales/],
 ] as const
 
 for (const [slug, intent] of services) {
@@ -31,6 +33,38 @@ for (const [slug, intent] of services) {
       /href="\/(automatisierungs-check|kundenreise-check|marketing-setup-check)/,
     )
     assert.ok((html.match(/<details\b/g) ?? []).length >= 4)
+  })
+}
+
+for (const [slug, checkHref] of [
+  ["gtm-markteintritt", "/marketing-setup-check"],
+  ["revops-umsatzgenerierung", "/kundenreise-check?thema=conversion"],
+]) {
+  test(`${slug} explains the service without invented results and offers a relevant check`, async () => {
+    const response = await fetch(new URL(`/loesungen/${slug}`, baseUrl))
+    const html = await response.text()
+    const main = html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/)?.[1] ?? ""
+    assert.ok(main.includes(`href="${checkHref}"`))
+    assert.ok(
+      !/171\s*%|fehlerfrei|24\/7, auch am Sonntag|Daten bleiben in der Schweiz/.test(
+        main,
+      ),
+    )
+    const data = [
+      ...html.matchAll(
+        /<script type="application\/ld\+json">([\s\S]*?)<\/script>/g,
+      ),
+    ].flatMap(([, json]) => JSON.parse(json))
+    const faq = data.find((item) => item["@type"] === "FAQPage")
+    assert.equal(faq?.mainEntity.length, 5)
+    for (const question of faq.mainEntity) {
+      assert.ok(main.includes(question.name.replace(/&/g, "&amp;")))
+      assert.ok(
+        main.includes(question.acceptedAnswer.text.replace(/&/g, "&amp;")),
+      )
+    }
+    assert.ok(main.includes("Freigabe"), "The team must retain control")
+    assert.ok(main.includes("Kosten"), "Scope and costs must be explained")
   })
 }
 

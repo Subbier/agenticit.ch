@@ -1,16 +1,15 @@
-import type { Metadata } from "next"
-import { SubPage } from "@/components/site/subpage"
-import { SUBPAGES } from "@/lib/subpage-content"
+import { CoreServicePage } from "@/components/journey/core-service-page"
+import { coreServices } from "@/lib/core-services"
 import { createPageMetadata } from "@/lib/seo"
 
-const SLUG = "loesungen/gtm-markteintritt"
+const service = coreServices[3]
 
-export const metadata: Metadata = createPageMetadata({
-  title: SUBPAGES[SLUG].meta.title,
-  description: SUBPAGES[SLUG].meta.description,
-  path: `/${SLUG}`,
+export const metadata = createPageMetadata({
+  title: service.title,
+  description: service.description,
+  path: `/loesungen/${service.slug}`,
 })
 
 export default function Page() {
-  return <SubPage slug={SLUG} />
+  return <CoreServicePage service={service} />
 }
