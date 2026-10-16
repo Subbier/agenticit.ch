@@ -10,6 +10,7 @@
     "ios_saf >= 16"
   ],
   "scripts": {
+    "test:sitemap": "node --import tsx --test lib/sitemap.test.ts",
     "test:assets": "node --import tsx --test lib/asset-budget.test.ts",
     "test:social": "node --import tsx --test lib/social-previews.test.ts",
     "test:services": "node --import tsx --test lib/core-services.test.ts",
