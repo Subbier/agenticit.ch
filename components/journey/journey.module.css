@@ -191,94 +191,127 @@
 .heroFine {
   margin-top: 14px !important;
 }
-.journeyIllustration {
+.serviceIllustration {
   background: #222a25;
   color: #f4f8f0;
   border-radius: 12px;
-  padding: 30px 30px 26px;
+  padding: 28px;
   overflow: hidden;
 }
-.illustrationTop {
+.serviceEyebrow {
+  display: block;
+  color: #b2c1b0;
+  font-size: 10px;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  text-align: center;
+}
+.serviceHub {
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  border-bottom: 1px solid #445044;
-  padding-bottom: 19px;
+  justify-content: center;
+  gap: 14px;
+  width: fit-content;
+  margin: 22px auto 36px;
+  padding: 16px 22px;
+  border: 1px solid #729b5e;
+  border-radius: 10px;
+  background: #2c392d;
 }
-.illustrationTop span {
-  font-size: 10px;
-  letter-spacing: 1.8px;
-  text-transform: uppercase;
-  color: #b2c1b0;
+.serviceHub:after {
+  position: absolute;
+  content: "";
+  bottom: -18px;
+  left: 50%;
+  height: 18px;
+  width: 1px;
+  background: #729b5e;
 }
-.illustrationTop strong {
-  font-size: 12px;
-  font-weight: 500;
+.serviceHub svg {
+  flex: none;
   color: var(--green);
 }
-.illustrationPath {
+.serviceHub strong {
+  display: block;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+.serviceHub span {
+  display: block;
+  margin-top: 3px;
+  color: #c2d0bb;
+  font-size: 10px;
+}
+.serviceBranches {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.serviceBranches:before {
+  position: absolute;
+  content: "";
+  top: -18px;
+  left: 16.666%;
+  right: 16.666%;
+  height: 1px;
+  background: #729b5e;
+}
+.serviceNode {
   position: relative;
   display: flex;
   flex-direction: column;
-  padding-block: 12px;
+  align-items: center;
+  gap: 10px;
+  padding: 19px 10px 17px;
+  border: 1px solid #455442;
+  border-radius: 9px;
+  background: #29332b;
+  text-align: center;
 }
-.illustrationPath:before {
+.serviceNode:before {
   position: absolute;
   content: "";
-  left: 20px;
-  top: 30px;
-  bottom: 35px;
+  top: -18px;
+  left: 50%;
   width: 1px;
-  background: #52624e;
+  height: 18px;
+  background: #729b5e;
 }
-.pathRow {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  padding: 12px 0;
-}
-.pathNumber {
-  display: grid;
-  place-items: center;
-  flex: none;
-  width: 41px;
-  height: 41px;
-  border: 1px solid #5c6a54;
-  border-radius: 50%;
-  background: #222a25;
-  font-size: 12px;
-  color: #d3dfcc;
-  font-family: var(--font-jetbrains-mono), monospace;
-}
-.pathRow:last-child .pathNumber {
-  background: var(--green);
-  color: #18320d;
-  border-color: var(--green);
-}
-.pathRow strong {
-  font-size: 15px;
-  font-weight: 500;
-  display: block;
-}
-.pathRow small {
-  display: block;
-  color: #b0bdab;
-  font-size: 11px;
-  margin-top: 2px;
-}
-.illustrationBottom {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-top: 1px solid #445044;
-  padding-top: 17px;
-  font-size: 12px;
-  color: #b8c8b2;
-}
-.illustrationBottom svg {
+.serviceNode svg {
   color: var(--green);
+}
+.serviceNode strong {
+  font-size: 13px;
+  font-weight: 550;
+  line-height: 1.35;
+}
+.serviceNode span {
+  color: #b8c8b2;
+  font-size: 11px;
+  line-height: 1.6;
+}
+.serviceExamples {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 23px;
+}
+.serviceExamples span {
+  padding: 5px 9px;
+  border: 1px solid #455442;
+  border-radius: 5px;
+  color: #d1dfca;
+  font-size: 10px;
+}
+.serviceSupport {
+  margin-top: 17px !important;
+  color: #aebfaa;
+  font-size: 10px !important;
+  text-align: center;
 }
 .section {
   padding-block: 80px;
@@ -1348,7 +1381,7 @@
   .nav .button {
     padding-inline: 13px;
   }
-  .journeyIllustration {
+  .serviceIllustration {
     padding: 23px;
   }
   .challengeCard {
@@ -1447,36 +1480,26 @@
     margin-top: 22px;
     gap: 12px;
   }
-  .journeyIllustration {
-    padding: 22px;
+  .serviceIllustration {
+    padding: 22px 18px;
   }
-  .illustrationPath {
-    padding-block: 10px;
+  .serviceNode {
+    padding: 16px 7px;
+    gap: 9px;
   }
-  .pathRow {
-    padding-block: 8px;
+  .serviceNode strong {
+    font-size: 12px;
   }
-  .pathNumber {
-    height: 34px;
-    width: 34px;
+  .serviceNode span {
     font-size: 10px;
   }
-  .illustrationPath:before {
-    left: 16px;
-    top: 27px;
-    bottom: 30px;
+  .serviceExamples {
+    gap: 6px;
+    margin-top: 19px;
   }
-  .pathRow strong {
-    font-size: 14px;
-  }
-  .pathRow small {
-    font-size: 11px;
-  }
-  .illustrationTop {
-    padding-bottom: 14px;
-  }
-  .illustrationBottom {
-    padding-top: 13px;
+  .serviceExamples span {
+    font-size: 9px;
+    padding: 4px 7px;
   }
   .section {
     padding-block: 46px;

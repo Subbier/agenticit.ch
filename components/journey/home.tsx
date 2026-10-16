@@ -1,5 +1,12 @@
 import Link from "next/link"
-import { ArrowRight, ArrowUpRight, MoveUpRight } from "lucide-react"
+import {
+  ArrowUpRight,
+  Network,
+  Play,
+  Target,
+  TrendingUp,
+  Workflow,
+} from "lucide-react"
 import { JourneyShell } from "./shell"
 import {
   ChallengeCards,
@@ -12,12 +19,22 @@ import { JourneyMap } from "./journey-map"
 import { CompanyVideo } from "./company-video"
 import styles from "./journey.module.css"
 
-const path = [
-  ["Sichtbar werden", "Dort, wo Ihre Zielgruppe sucht"],
-  ["Interesse wecken", "Mit einer Hilfe, die weiterbringt"],
-  ["Gespräche führen", "Gut vorbereitet und persönlich"],
-  ["Kunden starten", "Mit klaren nächsten Schritten"],
-  ["Beziehungen stärken", "Über den Abschluss hinaus"],
+const services = [
+  {
+    icon: Target,
+    title: "Marktstrategie",
+    detail: "Zielgruppen, Angebote & Positionierung",
+  },
+  {
+    icon: TrendingUp,
+    title: "Umsatzmotor",
+    detail: "Website, Marketing & Vertrieb",
+  },
+  {
+    icon: Workflow,
+    title: "Digital & KI",
+    detail: "CRM, Telefonie & Automatisierung",
+  },
 ]
 
 export function JourneyHome() {
@@ -27,30 +44,27 @@ export function JourneyHome() {
         <div className={styles.container}>
           <section className={styles.hero}>
             <div>
-              <span className={styles.eyebrow}>
-                Schweizer Lösungen für Ihre digitale Zukunft
-              </span>
+              <span className={styles.eyebrow}>Schweizer Lösungen für KMU</span>
               <h1>
-                Digital verbunden.
+                Neue Kunden.
                 <br />
-                Mit KI entlastet.
+                Digitale Abläufe.
                 <br />
-                <em>Bereit für morgen.</em>
+                <em>Ein Partner.</em>
               </h1>
               <p className={styles.heroCopy}>
-                Website, Marketing, Vertrieb und interne Abläufe: Wir bringen
-                Ihr digitales Umfeld zusammen. Mit Schweizer Lösungen und KI,
-                die Ihr Team Schritt für Schritt entlastet. Weniger Handarbeit
-                und Abstimmung – mehr Freiraum für Kunden, Team und Wachstum.
+                Wir verbinden Marketing und Vertrieb mit digitalen Abläufen. Von
+                der Website über CRM und Telefonie bis zu KI-Automatisierungen:
+                Wir wählen passende Tools, richten sie ein und halten Ihrem Team
+                den Rücken frei.
               </p>
               <div className={styles.actions}>
                 <Link href="/kundenreise-check" className={styles.button}>
-                  Meinen Ansatzpunkt finden{" "}
+                  Kostenlosen Check starten{" "}
                   <ArrowUpRight size={18} aria-hidden="true" />
                 </Link>
-                <a className={styles.textLink} href="#kundenreise">
-                  So hängt es zusammen{" "}
-                  <ArrowRight size={15} aria-hidden="true" />
+                <a className={styles.textLink} href="#firmenvideo">
+                  <Play size={15} aria-hidden="true" /> Video ansehen
                 </a>
               </div>
               <p className={`${styles.fine} ${styles.heroFine}`}>
@@ -58,28 +72,36 @@ export function JourneyHome() {
               </p>
             </div>
             <div
-              className={styles.journeyIllustration}
-              aria-label="Ihre Kundenreise vom ersten Interesse bis zur Betreuung"
+              className={styles.serviceIllustration}
+              aria-label="AgenticIT verbindet Marktstrategie, Kundengewinnung und Digitalisierung für Ihr Unternehmen"
             >
-              <div className={styles.illustrationTop}>
-                <span>Ihre Kundenreise</span>
-                <strong>Ein Weg. Viele Chancen.</strong>
+              <span className={styles.serviceEyebrow}>
+                Das verbinden wir für Sie
+              </span>
+              <div className={styles.serviceHub}>
+                <Network size={30} aria-hidden="true" />
+                <div>
+                  <strong>AgenticIT</strong>
+                  <span>Ein Partner für Ihr Unternehmen</span>
+                </div>
               </div>
-              <div className={styles.illustrationPath}>
-                {path.map(([title, detail], index) => (
-                  <div className={styles.pathRow} key={title}>
-                    <span className={styles.pathNumber}>0{index + 1}</span>
-                    <div>
-                      <strong>{title}</strong>
-                      <small>{detail}</small>
-                    </div>
+              <div className={styles.serviceBranches}>
+                {services.map(({ icon: Icon, title, detail }) => (
+                  <div className={styles.serviceNode} key={title}>
+                    <Icon size={24} aria-hidden="true" />
+                    <strong>{title}</strong>
+                    <span>{detail}</span>
                   </div>
                 ))}
               </div>
-              <div className={styles.illustrationBottom}>
-                <span>Gute Übergaben machen den Unterschied.</span>
-                <MoveUpRight size={21} aria-hidden="true" />
+              <div className={styles.serviceExamples}>
+                <span>KI-Telefonie</span>
+                <span>Digitales Fahrtenbuch</span>
+                <span>Meetings → Aufgaben</span>
               </div>
+              <p className={styles.serviceSupport}>
+                Beratung · Einrichtung · Begleitung im Betrieb
+              </p>
             </div>
           </section>
           <CompanyVideo />

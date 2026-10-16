@@ -6,9 +6,9 @@ import { journeyFaqs } from "@/lib/journey"
 
 export const metadata: Metadata = {
   ...createPageMetadata({
-    title: "Schweizer Lösungen: digital verbunden, mit KI entlastet",
+    title: "Neue Kunden. Digitale Abläufe. Ein Partner.",
     description:
-      "AgenticIT verbindet Website, Marketing, Vertrieb und interne Abläufe. Schweizer Lösungen und passende KI für weniger Handarbeit und mehr Freiraum. Entdecken Sie Ihren Ansatzpunkt.",
+      "AgenticIT verbindet Marktstrategie, Marketing und Vertrieb mit CRM, Telefonie und KI-Automatisierung. Schweizer Lösungen für KMU – von der Einrichtung bis zum Betrieb.",
     path: "/",
   }),
 }
