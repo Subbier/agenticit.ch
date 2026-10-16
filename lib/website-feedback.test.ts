@@ -110,3 +110,21 @@ test("mail failure never returns success and repeated requests are limited", asy
   assert.equal((await limited(request())).status, 429)
   assert.equal(calls, 5)
 })
+
+test("mail diagnostics expose only a safe error code, never credentials or message contents", async (context) => {
+  const records: unknown[][] = []
+  context.mock.method(console, "error", (...args: unknown[]) =>
+    records.push(args),
+  )
+  const handler = createFeedbackHandler(async () => {
+    throw Object.assign(
+      new Error("private transport details must stay private"),
+      { code: "EAUTH", responseCode: 535 },
+    )
+  })
+  assert.equal((await handler(request())).status, 502)
+  const details = records[0][1] as Record<string, unknown>
+  assert.equal(details.code, "EAUTH")
+  assert.equal(details.responseCode, 535)
+  assert.ok(!JSON.stringify(records).includes("private transport details"))
+})

@@ -7,7 +7,9 @@ export const runtime = "nodejs"
 export const POST = createFeedbackHandler(async (answers, receiptId) => {
   const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, MAIL_FROM } = process.env
   if (!SMTP_HOST || !SMTP_USER || !SMTP_PASS)
-    throw new Error("Mail transport unavailable")
+    throw Object.assign(new Error("Mail transport unavailable"), {
+      code: "NOT_CONFIGURED",
+    })
   const port = Number(SMTP_PORT ?? 587)
   const transport = nodemailer.createTransport({
     host: SMTP_HOST,
@@ -37,5 +39,7 @@ export const POST = createFeedbackHandler(async (answers, receiptId) => {
         ).toLowerCase() === recipient,
     )
   )
-    throw new Error("Recipient not accepted")
+    throw Object.assign(new Error("Recipient not accepted"), {
+      code: "RECIPIENT_NOT_ACCEPTED",
+    })
 })

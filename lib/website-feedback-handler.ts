@@ -68,8 +68,21 @@ export function createFeedbackHandler(deliver: DeliverFeedback) {
       await deliver(parsed.data.answers, receiptId)
       console.info("Website feedback accepted by mail transport", { receiptId })
       return respond({ ok: true })
-    } catch {
-      console.error("Website feedback mail transport failed", { receiptId })
+    } catch (error) {
+      const details = error as { code?: unknown; responseCode?: unknown } | null
+      const code =
+        typeof details?.code === "string" && /^[A-Z_]{1,40}$/.test(details.code)
+          ? details.code
+          : "TRANSPORT_FAILED"
+      const responseCode =
+        typeof details?.responseCode === "number"
+          ? details.responseCode
+          : undefined
+      console.error("Website feedback mail transport failed", {
+        receiptId,
+        code,
+        responseCode,
+      })
       return respond(
         {
           ok: false,
