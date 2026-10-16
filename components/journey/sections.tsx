@@ -12,6 +12,7 @@ import {
   Network,
 } from "lucide-react"
 import { challenges, journeyFaqs, packages } from "@/lib/journey"
+import { serviceDetailLinks } from "@/lib/core-services"
 import styles from "./journey.module.css"
 
 const icons = {
@@ -88,6 +89,16 @@ export function PackageCards({ expanded = false }: { expanded?: boolean }) {
                   <br />
                   {item.requirement}
                 </p>
+                <nav
+                  className={styles.serviceDetails}
+                  aria-label={`Leistungen ${item.title}`}
+                >
+                  {serviceDetailLinks[item.id].map((link) => (
+                    <Link key={link.href} href={link.href}>
+                      {link.label} <ArrowUpRight size={15} aria-hidden="true" />
+                    </Link>
+                  ))}
+                </nav>
               </>
             ) : null}
             <Link

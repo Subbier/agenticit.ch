@@ -1006,6 +1006,20 @@
   margin-top: 24px;
   background: transparent;
 }
+.serviceDetails {
+  display: grid;
+  gap: 3px;
+  margin-bottom: 20px;
+}
+.serviceDetails a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  font-size: 14px;
+  color: inherit;
+  text-underline-offset: 4px;
+}
 .packageNote {
   margin-top: 22px !important;
   text-align: center;

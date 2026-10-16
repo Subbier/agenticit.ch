@@ -131,7 +131,6 @@ const nextConfig = {
       { source: "/ueber-uns", destination: "/", permanent: true },
       // GTM/RevOps-Split (26.07.2026): alte Lösungen-Unterseiten → neue Hub-Seiten
       { source: "/loesungen/kundendienst-ki", destination: "/loesungen/revops-umsatzgenerierung", permanent: true },
-      { source: "/loesungen/prozessautomatisierung", destination: "/loesungen/revops-umsatzgenerierung", permanent: true },
       { source: "/loesungen/revops-growth", destination: "/loesungen/gtm-markteintritt", permanent: true },
       // Angebot-Umbenennung (26.07.2026): Acquire/Convert/Retain/Operate → Begeistern/Umsetzen/Erschaffen/Erweitern
       { source: "/angebot/acquire", destination: "/angebot/begeistern", permanent: true },

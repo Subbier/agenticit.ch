@@ -1,17 +1,14 @@
-import type { Metadata } from "next"
-import { SubPage } from "@/components/site/subpage"
-import { SUBPAGES } from "@/lib/subpage-content"
+import { CoreServicePage } from "@/components/journey/core-service-page"
+import { coreServices } from "@/lib/core-services"
 import { createPageMetadata } from "@/lib/seo"
 
-// Alt-Slug "prozessautomatisierung" -> "revops-umsatzgenerierung" (siehe permanenter Redirect in next.config.mjs).
-const SLUG = "loesungen/revops-umsatzgenerierung"
-
-export const metadata: Metadata = createPageMetadata({
-  title: SUBPAGES[SLUG].meta.title,
-  description: SUBPAGES[SLUG].meta.description,
-  path: `/${SLUG}`,
+const service = coreServices[2]
+export const metadata = createPageMetadata({
+  title: service.title,
+  description: service.description,
+  path: `/loesungen/${service.slug}`,
 })
 
 export default function Page() {
-  return <SubPage slug={SLUG} />
+  return <CoreServicePage service={service} />
 }
