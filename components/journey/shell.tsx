@@ -77,6 +77,15 @@ export function JourneyShell({ children }: { children: React.ReactNode }) {
                 <br />
                 Mehr Freiraum für Ihr Unternehmen.
               </p>
+              <div className={styles.swissBadge}>
+                <img
+                  src="/logos/swiss-flag-flat.svg"
+                  width="20"
+                  height="20"
+                  alt=""
+                />
+                <span>100% Schweizer Software &amp; Hosting</span>
+              </div>
             </div>
             <nav aria-label="Fussnavigation" className={styles.footerLinks}>
               <div>
@@ -176,6 +185,25 @@ export function JourneyShell({ children }: { children: React.ReactNode }) {
               <WebsiteFeedbackLink />
               <a href="https://admin.agenticit.ch">Login</a>
             </div>
+          </div>
+          <div className={styles.footerCredit}>
+            <span>Coded in Bärn mit</span>
+            <span
+              className={styles.energyCans}
+              role="img"
+              aria-label="5 Red Bull Sugarfree"
+            >
+              {Array.from({ length: 5 }, (_, index) => (
+                <img
+                  key={index}
+                  src="/logos/energy-can.png"
+                  width="9"
+                  height="24"
+                  alt=""
+                  loading="lazy"
+                />
+              ))}
+            </span>
           </div>
         </div>
       </footer>
