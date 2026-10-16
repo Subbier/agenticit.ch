@@ -171,6 +171,7 @@ export function KarrierePage() {
               return (
                 <div
                   key={job.slug}
+                  id={job.slug}
                   className="relative rounded-[20px] border border-[#E1E4E8] bg-white shadow-[0_10px_30px_rgba(10,12,16,0.06)]"
                 >
                   {job.badge === "ausbildung" ? (

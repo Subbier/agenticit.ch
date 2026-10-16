@@ -30,6 +30,7 @@ export function JourneyShell({ children }: { children: React.ReactNode }) {
             <Link href="/werkzeuge">Ihr Ansatzpunkt</Link>
             <Link href="/pakete">Testpakete</Link>
             <Link href="/zusammenarbeit">Zusammenarbeit</Link>
+            <Link href="/karriere">Jobs</Link>
             <Link
               className={`${styles.button} ${styles.smallButton}`}
               href="/kundenreise-check"
@@ -45,6 +46,7 @@ export function JourneyShell({ children }: { children: React.ReactNode }) {
               <Link href="/werkzeuge">Ihr Ansatzpunkt</Link>
               <Link href="/pakete">Testpakete</Link>
               <Link href="/zusammenarbeit">Zusammenarbeit</Link>
+              <Link href="/karriere">Jobs</Link>
               <Link href="/kundenreise-check">
                 Kostenlosen Check starten ↗
               </Link>
@@ -75,6 +77,7 @@ export function JourneyShell({ children }: { children: React.ReactNode }) {
                 <strong>Wissen</strong>
                 <Link href="/blog">Blog</Link>
                 <Link href="/branchen">Branchen</Link>
+                <Link href="/karriere">Jobs</Link>
               </div>
               <div>
                 <strong>Kontakt</strong>

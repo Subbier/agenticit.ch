@@ -391,6 +391,46 @@
 .companyVideoError a {
   text-decoration: underline;
 }
+.careerList {
+  border-top: 1px solid var(--line);
+}
+.careerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  padding: 25px 12px;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+  text-decoration: none;
+  transition: background 0.18s;
+}
+.careerRow:hover {
+  background: var(--paper);
+}
+.careerTag {
+  display: block;
+  margin-bottom: 8px;
+  color: #4c6546;
+  font-size: 10px;
+  font-weight: 650;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+}
+.careerRow h3 {
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.careerRow p {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.careerRow > svg {
+  flex: none;
+  color: #4d7c36;
+}
 .challengeGrid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1533,6 +1573,16 @@
   }
   .companyVideoFooter .button {
     width: 100%;
+  }
+  .careerRow {
+    padding: 22px 4px;
+    gap: 18px;
+  }
+  .careerRow h3 {
+    font-size: 18px;
+  }
+  .careerRow p {
+    font-size: 12px;
   }
   .challengeGrid {
     grid-template-columns: 1fr 1fr;
