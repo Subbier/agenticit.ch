@@ -93,6 +93,9 @@ test("every sitemap entry responds directly with its own indexable canonical pag
           failures.push(`${path}: HTTP ${response.status}`)
           return
         }
+        if (/noindex/i.test(response.headers.get("x-robots-tag") ?? "")) {
+          failures.push(`${path}: X-Robots-Tag noindex`)
+        }
         const html = await response.text()
         const links = [...html.matchAll(/<link\b[^>]+>/g)].map(([tag]) => tag)
         const canonical = links
