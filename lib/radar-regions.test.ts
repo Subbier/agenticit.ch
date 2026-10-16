@@ -4,17 +4,29 @@ import {
   REGIONS,
   estimateRegionalVolume,
   getSelectedRegions,
-  toggleRegionSelection,
+  toggleRadarSelection,
   type RegionId,
 } from "./radar-regions"
 
 test("selects several regions and removes only the toggled region", () => {
   const initial: RegionId[] = ["mittelland"]
-  const combined = toggleRegionSelection(initial, "zuerich")
+  const combined = toggleRadarSelection(initial, "zuerich")
   assert.deepEqual(combined, ["mittelland", "zuerich"])
   assert.deepEqual(initial, ["mittelland"])
-  assert.deepEqual(toggleRegionSelection(combined, "mittelland"), ["zuerich"])
-  assert.deepEqual(toggleRegionSelection(["zuerich"], "zuerich"), [])
+  assert.deepEqual(toggleRadarSelection(combined, "mittelland"), ["zuerich"])
+  assert.deepEqual(toggleRadarSelection(["zuerich"], "zuerich"), [])
+})
+
+test("insurance, finance and pension selections can coexist and be removed individually", () => {
+  let selected: string[] = []
+  for (const id of ["versicherung", "finanz", "vorsorge"]) {
+    selected = toggleRadarSelection(selected, id)
+  }
+  assert.deepEqual(selected, ["versicherung", "finanz", "vorsorge"])
+  assert.deepEqual(toggleRadarSelection(selected, "finanz"), [
+    "versicherung",
+    "vorsorge",
+  ])
 })
 
 test("combines regional shares without counting a region twice", () => {

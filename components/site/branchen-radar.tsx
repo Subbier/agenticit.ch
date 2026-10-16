@@ -15,7 +15,7 @@ import {
   REGIONS,
   estimateRegionalVolume,
   getSelectedRegions,
-  toggleRegionSelection,
+  toggleRadarSelection,
   type RegionId,
 } from "@/lib/radar-regions"
 
@@ -449,18 +449,14 @@ function StepHead({ n, title }: { n: string; title: string }) {
 }
 
 export function BranchenRadar() {
-  const [brancheId, setBrancheId] = useState<string | null>(null)
+  const [brancheIds, setBrancheIds] = useState<string[]>([])
   const [regionIds, setRegionIds] = useState<RegionId[]>([])
 
-  const branche = BRANCHEN.find((b) => b.id === brancheId) ?? null
+  const branches = BRANCHEN.filter((b) => brancheIds.includes(b.id))
   const regions = getSelectedRegions(regionIds)
-  const sonstige = brancheId === "sonstige"
+  const sonstige = brancheIds.includes("sonstige")
   const regionLabel =
     regions.length === 1 ? regions[0].label : `${regions.length} Regionen`
-
-  const regionVol = branche ? estimateRegionalVolume(branche.vol, regionIds) : 0
-  /** Mögliche Leads = 20 % der regionalen Suchanfragen. */
-  const leads = regionVol * 0.2
 
   return (
     <section
@@ -480,44 +476,65 @@ export function BranchenRadar() {
             <span className="text-[#57C7FF]">Wen finden sie?</span>
           </h2>
           <p className="mx-auto mt-4 max-w-[640px] text-[16.5px] font-medium leading-relaxed text-[#33404F]">
-            Wählen Sie Ihre Branche und Regionen: Wie gross ist die
+            Wählen Sie Ihre Branchen und Regionen: Wie gross ist die
             Online-Nachfrage — und welche Anbieter werden dort gefunden?
           </p>
         </div>
 
         <div className="rounded-[22px] border border-[#E1E4E8] bg-white p-5 shadow-[0_6px_20px_rgba(10,12,16,0.07)] sm:p-8">
           {/* Schritt 1 · Branche */}
-          <StepHead n="1" title="Ihre Branche" />
+          <StepHead n="1" title="Ihre Branchen" />
+          <p
+            id="radar-industry-hint"
+            className="mt-2 text-center text-[13px] font-medium text-[#4A5665]"
+          >
+            Mehrfachauswahl möglich. Erneut klicken, um eine Branche abzuwählen.
+          </p>
           <div className="mx-auto mt-3 flex max-w-[820px] flex-wrap justify-center gap-2.5">
             {BRANCHEN.map((b) => (
               <button
                 key={b.id}
                 type="button"
-                onClick={() => setBrancheId(b.id)}
+                onClick={() =>
+                  setBrancheIds((selected) =>
+                    toggleRadarSelection(selected, b.id),
+                  )
+                }
+                aria-pressed={brancheIds.includes(b.id)}
+                aria-describedby="radar-industry-hint"
                 className={`rounded-full border px-5 py-2.5 text-[13.5px] font-bold tracking-[0.1px] transition ${
-                  brancheId === b.id
+                  brancheIds.includes(b.id)
                     ? "border-[#0A0C10] bg-[#0A0C10] text-white shadow-[0_6px_18px_rgba(10,12,16,0.22)]"
                     : "border-[#B9C0C8] bg-white text-[#1E2833] hover:-translate-y-[1px] hover:border-[#0A0C10] hover:text-[#0A0C10]"
                 }`}
               >
+                {brancheIds.includes(b.id) && (
+                  <span aria-hidden="true">✓ </span>
+                )}
                 {b.label}
               </button>
             ))}
             <button
               type="button"
-              onClick={() => setBrancheId("sonstige")}
+              onClick={() =>
+                setBrancheIds((selected) =>
+                  toggleRadarSelection(selected, "sonstige"),
+                )
+              }
+              aria-pressed={sonstige}
+              aria-describedby="radar-industry-hint"
               className={`rounded-full border px-5 py-2.5 text-[13.5px] font-bold tracking-[0.1px] transition ${
                 sonstige
                   ? "border-[#0A0C10] bg-[#0A0C10] text-white shadow-[0_6px_18px_rgba(10,12,16,0.22)]"
                   : "border-dashed border-[#9BA3AD] bg-white text-[#4A5665] hover:-translate-y-[1px] hover:border-[#0A0C10] hover:text-[#0A0C10]"
               }`}
             >
-              Sonstige
+              {sonstige && <span aria-hidden="true">✓ </span>}Sonstige
             </button>
           </div>
 
           {/* Schritt 2 · Regionen */}
-          {brancheId && !sonstige && (
+          {branches.length > 0 && (
             <div className="mt-[72px]">
               <div
                 className="mx-auto mb-12 h-px w-1/2 max-w-[380px] bg-[#E9EBEE]"
@@ -538,7 +555,7 @@ export function BranchenRadar() {
                     type="button"
                     onClick={() =>
                       setRegionIds((selected) =>
-                        toggleRegionSelection(selected, r.id),
+                        toggleRadarSelection(selected, r.id),
                       )
                     }
                     aria-pressed={regionIds.includes(r.id)}
@@ -591,7 +608,7 @@ export function BranchenRadar() {
           )}
 
           {/* Schritt 3 · Ergebnis */}
-          {branche && regions.length > 0 && (
+          {branches.length > 0 && regions.length > 0 && (
             <div className="mt-12">
               <div
                 className="mx-auto mb-12 h-px w-1/2 max-w-[380px] bg-[#E9EBEE]"
@@ -599,112 +616,140 @@ export function BranchenRadar() {
               />
               <StepHead
                 n="3"
-                title={`Ihr Markt: ${branche.label} · ${regionLabel}`}
+                title={`Ihr Markt: ${branches.length === 1 ? branches[0].label : `${branches.length} Branchen`} · ${regionLabel}`}
               />
-
-              <div className="mt-8 grid grid-cols-1 gap-4 lg:grid-cols-[5fr_6fr]">
-                {/* Links: Das entgeht Ihnen */}
-                <div className="rounded-[16px] bg-[#0A0C10] p-6 text-white">
-                  <span className="text-[11px] font-extrabold uppercase tracking-[0.6px] text-[#8FE05A]">
-                    Das wird bei Ihnen gesucht
-                  </span>
-                  <div className="mt-3 text-[clamp(38px,5vw,52px)] font-extrabold leading-none">
-                    ≈ {fmt(regionVol)}
-                  </div>
-                  <p className="mt-2 text-[13.5px] text-white/70">
-                    Suchanfragen pro Monat{" "}
-                    {regions.length === 1
-                      ? `in der Region ${regionLabel}`
-                      : `in Ihren ${regionLabel}`}
-                    {" — "}aus {fmt(branche.vol)} monatlichen Suchen in der
-                    Deutschschweiz.
-                  </p>
-                  <div className="mt-5 border-t border-white/10 pt-4">
-                    <span className="text-[11px] font-extrabold uppercase tracking-[0.6px] text-[#57C7FF]">
-                      Mögliche Leads dieser Nachfrage
-                    </span>
-                    <div className="mt-1 text-[26px] font-extrabold text-[#57C7FF]">
-                      {fmt(leads)}/Monat
-                    </div>
-                    <p className="mt-1 text-[12.5px] text-white/60">
-                      Basis: 20 % der Suchanfragen in{" "}
-                      {regions.length === 1 ? "Ihrer Region" : "Ihren Regionen"}
-                      .
-                    </p>
-                  </div>
-                  <div className="mt-5 border-t border-white/10 pt-4">
-                    <span className="text-[11px] font-extrabold uppercase tracking-[0.6px] text-white/50">
-                      Womit gesucht wird (Auszug aus {branche.kws} Keywords)
-                    </span>
-                    <div className="mt-2 flex flex-wrap gap-1.5">
-                      {branche.top.map((k) => (
-                        <span
-                          key={k.kw}
-                          className="rounded-full bg-white/10 px-2.5 py-1 text-[11.5px] font-semibold text-white/80"
-                        >
-                          {k.kw} · {fmt(k.vol)}
+              {branches.length > 1 && (
+                <p className="mx-auto mt-3 max-w-[640px] text-center text-[13px] text-[#4A5665]">
+                  Die Branchen werden einzeln ausgewertet. Suchbegriffe können
+                  sich überschneiden; die Werte werden deshalb nicht zu einer
+                  Gesamtnachfrage addiert.
+                </p>
+              )}
+              {branches.map((branche, branchIndex) => {
+                const regionVol = estimateRegionalVolume(branche.vol, regionIds)
+                const leads = regionVol * 0.2
+                return (
+                  <details
+                    key={branche.id}
+                    open={branchIndex === 0}
+                    className="mt-5 rounded-[16px] border border-[#E1E4E8] p-4 sm:p-5"
+                  >
+                    <summary className="cursor-pointer text-[16px] font-extrabold text-[#0A0C10]">
+                      {branche.label}
+                      <span className="mt-1 block text-[13px] font-medium text-[#4A5665]">
+                        ≈ {fmt(regionVol)} Suchanfragen/Monat · {regionLabel}
+                      </span>
+                    </summary>
+                    <div className="mt-5 grid grid-cols-1 gap-4 lg:grid-cols-[5fr_6fr]">
+                      {/* Links: Das entgeht Ihnen */}
+                      <div className="rounded-[16px] bg-[#0A0C10] p-6 text-white">
+                        <span className="text-[11px] font-extrabold uppercase tracking-[0.6px] text-[#8FE05A]">
+                          Das wird bei Ihnen gesucht
                         </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Rechts: Wer zuschlägt */}
-                <div className="rounded-[16px] border border-[#E1E4E8] bg-white p-6">
-                  <span className="text-[11px] font-extrabold uppercase tracking-[0.6px] text-[#C026D3]">
-                    Anbieter in{" "}
-                    {regions.length === 1 ? "Ihrer Region" : "Ihren Regionen"}
-                  </span>
-                  <p className="mt-1 text-[13.5px] font-medium text-[#3C4855]">
-                    Regionale Google-Ranglisten für den Keyword-Mix. Öffnen Sie
-                    eine Region für die Anbieter.
-                  </p>
-                  <div className="mt-4 space-y-3">
-                    {regions.map((region, index) => (
-                      <details
-                        key={region.id}
-                        open={index === 0}
-                        className="rounded-[12px] border border-[#E1E4E8] p-3"
-                      >
-                        <summary className="cursor-pointer text-[13.5px] font-bold text-[#0A0C10]">
-                          {region.label}
-                        </summary>
-                        <p className="mt-2 text-[12px] text-[#4A5665]">
-                          {region.cities}
+                        <div className="mt-3 text-[clamp(38px,5vw,52px)] font-extrabold leading-none">
+                          ≈ {fmt(regionVol)}
+                        </div>
+                        <p className="mt-2 text-[13.5px] text-white/70">
+                          Suchanfragen pro Monat{" "}
+                          {regions.length === 1
+                            ? `in der Region ${regionLabel}`
+                            : `in Ihren ${regionLabel}`}
+                          {" — "}aus {fmt(branche.vol)} monatlichen Suchen in
+                          der Deutschschweiz.
                         </p>
-                        <ol
-                          aria-label={`Anbieter ${region.label}`}
-                          className="mt-3 space-y-1.5"
-                        >
-                          {branche.regions[region.id].map((t, i) => (
-                            <li
-                              key={t.d}
-                              className="flex items-center gap-3 rounded-[10px] bg-[#FAFAF7] px-3 py-[7px]"
-                            >
-                              <span className="w-[22px] text-right text-[13px] font-extrabold text-[#5A6673]">
-                                {i + 1}.
+                        <div className="mt-5 border-t border-white/10 pt-4">
+                          <span className="text-[11px] font-extrabold uppercase tracking-[0.6px] text-[#57C7FF]">
+                            Mögliche Leads dieser Nachfrage
+                          </span>
+                          <div className="mt-1 text-[26px] font-extrabold text-[#57C7FF]">
+                            {fmt(leads)}/Monat
+                          </div>
+                          <p className="mt-1 text-[12.5px] text-white/60">
+                            Basis: 20 % der Suchanfragen in{" "}
+                            {regions.length === 1
+                              ? "Ihrer Region"
+                              : "Ihren Regionen"}
+                            .
+                          </p>
+                        </div>
+                        <div className="mt-5 border-t border-white/10 pt-4">
+                          <span className="text-[11px] font-extrabold uppercase tracking-[0.6px] text-white/50">
+                            Womit gesucht wird (Auszug aus {branche.kws}{" "}
+                            Keywords)
+                          </span>
+                          <div className="mt-2 flex flex-wrap gap-1.5">
+                            {branche.top.map((k) => (
+                              <span
+                                key={k.kw}
+                                className="rounded-full bg-white/10 px-2.5 py-1 text-[11.5px] font-semibold text-white/80"
+                              >
+                                {k.kw} · {fmt(k.vol)}
                               </span>
-                              <span className="flex-1 truncate text-[13.5px] font-bold text-[#0A0C10]">
-                                {t.d}
-                              </span>
-                              {t.p && (
-                                <span className="rounded-full border border-[#E1E4E8] px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.4px] text-[#8B94A1]">
-                                  Portal
-                                </span>
-                              )}
-                            </li>
-                          ))}
-                        </ol>
-                      </details>
-                    ))}
-                  </div>
-                  <p className="mt-3 text-[13px] font-semibold text-[#0A0C10]">
-                    Ihr Name fehlt? Dann klicken Ihre Kunden gerade bei der
-                    Konkurrenz.
-                  </p>
-                </div>
-              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
 
+                      {/* Rechts: Wer zuschlägt */}
+                      <div className="rounded-[16px] border border-[#E1E4E8] bg-white p-6">
+                        <span className="text-[11px] font-extrabold uppercase tracking-[0.6px] text-[#C026D3]">
+                          Anbieter in{" "}
+                          {regions.length === 1
+                            ? "Ihrer Region"
+                            : "Ihren Regionen"}
+                        </span>
+                        <p className="mt-1 text-[13.5px] font-medium text-[#3C4855]">
+                          Regionale Google-Ranglisten für den Keyword-Mix.
+                          Öffnen Sie eine Region für die Anbieter.
+                        </p>
+                        <div className="mt-4 space-y-3">
+                          {regions.map((region, index) => (
+                            <details
+                              key={region.id}
+                              open={index === 0}
+                              className="rounded-[12px] border border-[#E1E4E8] p-3"
+                            >
+                              <summary className="cursor-pointer text-[13.5px] font-bold text-[#0A0C10]">
+                                {region.label}
+                              </summary>
+                              <p className="mt-2 text-[12px] text-[#4A5665]">
+                                {region.cities}
+                              </p>
+                              <ol
+                                aria-label={`Anbieter ${branche.label} · ${region.label}`}
+                                className="mt-3 space-y-1.5"
+                              >
+                                {branche.regions[region.id].map((t, i) => (
+                                  <li
+                                    key={t.d}
+                                    className="flex items-center gap-3 rounded-[10px] bg-[#FAFAF7] px-3 py-[7px]"
+                                  >
+                                    <span className="w-[22px] text-right text-[13px] font-extrabold text-[#5A6673]">
+                                      {i + 1}.
+                                    </span>
+                                    <span className="flex-1 truncate text-[13.5px] font-bold text-[#0A0C10]">
+                                      {t.d}
+                                    </span>
+                                    {t.p && (
+                                      <span className="rounded-full border border-[#E1E4E8] px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.4px] text-[#8B94A1]">
+                                        Portal
+                                      </span>
+                                    )}
+                                  </li>
+                                ))}
+                              </ol>
+                            </details>
+                          ))}
+                        </div>
+                        <p className="mt-3 text-[13px] font-semibold text-[#0A0C10]">
+                          Ihr Name fehlt? Dann klicken Ihre Kunden gerade bei
+                          der Konkurrenz.
+                        </p>
+                      </div>
+                    </div>
+                  </details>
+                )
+              })}
               {/* CTA */}
               <div className="mt-10 flex flex-col items-center text-center">
                 <p className="max-w-[560px] text-[15px] font-semibold leading-relaxed text-[#26313D]">

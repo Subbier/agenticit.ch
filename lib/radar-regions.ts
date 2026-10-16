@@ -44,13 +44,13 @@ export const REGIONS: {
   },
 ]
 
-export function toggleRegionSelection(
-  selected: RegionId[],
-  regionId: RegionId,
-): RegionId[] {
-  return selected.includes(regionId)
-    ? selected.filter((id) => id !== regionId)
-    : [...selected, regionId]
+export function toggleRadarSelection<T extends string>(
+  selected: T[],
+  itemId: T,
+): T[] {
+  return selected.includes(itemId)
+    ? selected.filter((id) => id !== itemId)
+    : [...selected, itemId]
 }
 
 export function getSelectedRegions(selected: RegionId[]) {
