@@ -4,6 +4,7 @@ import { useRef, useState } from "react"
 import Link from "next/link"
 import { CheckCircle2, Send } from "lucide-react"
 import { SiteHeader } from "@/components/site/site-header"
+import { ConsentSettingsLink } from "@/components/site/consent-settings-link"
 import { KARRIERE_JOBS } from "@/lib/karriere-content"
 import { SITE_TRUST_LINE } from "@/lib/site-trust-line"
 
@@ -448,6 +449,7 @@ export function KarrierePage() {
             <Link href="/sicherheit" className="block py-[3px] text-[#98A2AD] hover:text-white">Sicherheit</Link>
             <Link href="/datenschutz" className="block py-[3px] text-[#98A2AD] hover:text-white">Datenschutz</Link>
             <Link href="/impressum" className="block py-[3px] text-[#98A2AD] hover:text-white">Impressum</Link>
+            <ConsentSettingsLink className="block py-[3px] text-[#98A2AD] hover:text-white" />
           </div>
         </div>
         <div className="mx-auto mt-5 max-w-[1120px] px-4 text-[12px] text-[#6B7683] sm:px-6">
