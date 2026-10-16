@@ -1,6 +1,6 @@
 # AgenticIT Schlachtplan für Sichtbarkeit und Kundengewinnung
 
-Stand: 16. Oktober 2026. Laufender Umsetzungsplan zum aktiven Ziel in diesem Chat.
+Stand: 17. Oktober 2026. Laufender Umsetzungsplan zum aktiven Ziel in diesem Chat.
 
 ## Auftrag und Zielbild
 
@@ -37,17 +37,17 @@ Status: offen, in Arbeit, umgesetzt, geprüft oder wartet auf Nachweis. Nur gepr
 | ID | Priorität | Aufgabe | Abnahme | Status |
 | --- | --- | --- | --- | --- |
 | A01 | P0 | Arbeitsstand und Deployment abgleichen | Sauberer Branch, Remote und Produktionsstand bestätigt | geprüft: 42e4333 |
-| A02 | P0 | Dauerhaften Schlachtplan führen | Abhängigkeiten, Grenzen und Ergebnisse dokumentiert | in Arbeit |
-| A03 | P0 | Aktuelle Sichtbarkeits-Baseline sichern | CH-Daten aus SEMrush/Ubersuggest und neue Website getrennt beurteilt | geprüft im Konzept; GSC offen |
-| A04 | P0 | GSC-Property, Indexierung und Such-KI-Steuerung prüfen | Tatsächlicher Zustand der eigenen Property dokumentiert | offen |
+| A02 | P0 | Dauerhaften Schlachtplan führen | Abhängigkeiten, Grenzen und Ergebnisse dokumentiert | geprüft; fortlaufend gepflegt |
+| A03 | P0 | Aktuelle Sichtbarkeits-Baseline sichern | CH-Daten aus SEMrush/Ubersuggest und neue Website getrennt beurteilt | geprüft: Konzept und direkte GSC-Baseline vom 16.10.2026 |
+| A04 | P0 | GSC-Property, Indexierung und Such-KI-Steuerung prüfen | Tatsächlicher Zustand der eigenen Property dokumentiert | geprüft: bestätigte Property, KI-Einschluss aktiv, Sitemap eingereicht |
 | A05 | P0 | Firmenangaben und Hostingzusagen abgleichen | Öffentliche und strukturierte Fakten stimmen mit Belegen überein | offen |
 | A06 | P0 | Bestehende Resultate und Kundenstimmen prüfen | Originalbeleg und Freigabe oder klare Kennzeichnung vorhanden | offen |
-| B01 | P1 | KI-Entwicklung als eigene Leistung erklären | Eigene hilfreiche Seite mit Beispielen, Grenzen und passendem Check | in Arbeit |
-| B02 | P1 | Webdesign als eigene Leistung erklären | Mobile Zielseite mit verständlichem Nutzen und Anfrageweg | in Arbeit |
-| B03 | P1 | Prozessautomatisierung passend ausbauen | Eigene Zielseite ersetzt die fachlich abweichende Weiterleitung | in Arbeit |
+| B01 | P1 | KI-Entwicklung als eigene Leistung erklären | Eigene hilfreiche Seite mit Beispielen, Grenzen und passendem Check | geprüft und live: eb6a646 |
+| B02 | P1 | Webdesign als eigene Leistung erklären | Mobile Zielseite mit verständlichem Nutzen und Anfrageweg | geprüft und live: eb6a646 |
+| B03 | P1 | Prozessautomatisierung passend ausbauen | Eigene Zielseite ersetzt die fachlich abweichende Weiterleitung | geprüft und live: eb6a646 |
 | B04 | P1 | Marketing-Seite schärfen | Setup, Präsenz, Kampagnen und Übergabe klar verbunden | offen |
 | B05 | P1 | Sales- und CRM-Seite schärfen | Anfrage, Bearbeitung, Team und Kundenergebnis klar erklärt | offen |
-| B06 | P1 | Kernleistungen sichtbar verknüpfen | Besucher finden die richtigen Details ohne zusätzliche Menülast | offen |
+| B06 | P1 | Kernleistungen sichtbar verknüpfen | Besucher finden die richtigen Details ohne zusätzliche Menülast | geprüft: Detailverweise in der Serviceübersicht /pakete; Startseite führt zur Übersicht |
 | B07 | P1 | Branchenfokus Beratung und Vertrieb | Broker, Vorsorgeberatung, Telesales und Aussendienst passend angesprochen | offen |
 | B08 | P2 | Experten und Unternehmen belegen | Echte Rollen, Erfahrung, Kontakt und verifizierte Profile | offen |
 | C01 | P1 | Automatisierungs-Check fachlich verbessern | Eigene Eingaben, Kontrollaufwand, Szenarien und transparente Rechnung | offen |
@@ -60,12 +60,12 @@ Status: offen, in Arbeit, umgesetzt, geprüft oder wartet auf Nachweis. Nur gepr
 | D03 | P1 | CRM-Ziel und Zuständigkeit prüfen | Eingang im richtigen AgenticIT-System genau einmal nachgewiesen | offen |
 | D04 | P1 | Fehler- und Freigabefälle testen | Kein Doppelversand, keine erfundene Buchung, klare Teamübernahme | offen |
 | D05 | P2 | Kunden-Onboarding strukturieren | Auftrag, Zugänge, Verantwortliche, Abnahme und Betreuung nachvollziehbar | offen |
-| E01 | P1 | Crawlbare Seiten und Canonicals prüfen | Zielseite und Suchabsicht stimmen; Weiterleitungsketten vermeiden | offen |
+| E01 | P1 | Crawlbare Seiten und Canonicals prüfen | Zielseite und Suchabsicht stimmen; Weiterleitungsketten vermeiden | neue drei Leistungsseiten geprüft; Gesamtbestand offen |
 | E02 | P1 | Sitemap verlässlich pflegen | Nur kanonische Seiten, sinnvolle Änderungsdaten | offen |
-| E03 | P1 | Social-Vorschauen verbessern | Lesbare PNG-Vorschauen statt Icon als Beitragsmotiv | offen |
-| E04 | P1 | Strukturierte Daten auf Fakten ausrichten | Sichtbare Inhalte und Markup stimmen; passende Typen validiert | offen |
-| E05 | P0 | Mobile Performance gezielt verbessern | Ursache aktueller Labor-LCP gemessen und Änderung nachgetestet | offen |
-| E06 | P1 | Bedienbarkeit und Barrierefreiheit | Tastatur, Kontrast, Touch, Fokus, Formulare und Bewegung geprüft | offen |
+| E03 | P1 | Social-Vorschauen verbessern | Lesbare PNG-Vorschauen statt Icon als Beitragsmotiv | geprüft und live: Standardkarte plus drei Leistungskarten, 4932787 |
+| E04 | P1 | Strukturierte Daten auf Fakten ausrichten | Sichtbare Inhalte und Markup stimmen; passende Typen validiert | neue drei Seiten: Service und Breadcrumb geprüft; globale Fakten offen |
+| E05 | P0 | Mobile Performance gezielt verbessern | Ursache aktueller Labor-LCP gemessen und Änderung nachgetestet | in Arbeit: 117176 Bytes weniger vorgeladene Schriften live; neuer mobiler Labor-LCP 5,1 s, weitere Diagnose offen |
+| E06 | P1 | Bedienbarkeit und Barrierefreiheit | Tastatur, Kontrast, Touch, Fokus, Formulare und Bewegung geprüft | drei neue Seiten bei 320/390/768/1280 geprüft; übriger Umfang offen |
 | E07 | P2 | Video zugänglich und auffindbar machen | Untertitel, Transkript, Mobilbedienung und passende Videodaten | offen |
 | F01 | P1 | Bestehende Fachinhalte auf eigene Substanz prüfen | Belege, Autor, Aktualität und Leistungsanschluss je priorisiertem Artikel | offen |
 | F02 | P1 | Erste konkreten Kundenfragen beantworten | Priorisierte Inhalte mit nachvollziehbarem Nutzen veröffentlicht | offen |
@@ -81,8 +81,19 @@ Status: offen, in Arbeit, umgesetzt, geprüft oder wartet auf Nachweis. Nur gepr
 
 ## Reihenfolge und Parallelität innerhalb der Arbeit
 
-Sofort: A01/A02, dann B01-B03 und B06 als erste zusammenhängende Veröffentlichung. Währenddessen Zugang und Quellen nur lesen, keine fremden Arbeitsstände überschreiben. Danach E03/E05 und D01-D04 mit einem hilfreichen Magneten verbinden. Content und Autorität auf belegte Leistungen aufbauen. Aufgaben mit externen Nachweisen bleiben offen, während andere umsetzbare Arbeit weitergeht.
+Erledigte erste Etappe: A01-A04, B01-B03, B06 und E03. Als Nächstes E05 mit einer sauberen Nachmessung fortsetzen; E02 von Build-Zeitstempeln auf belegte Inhaltsänderungen bereinigen. Danach C01 sowie D01-D04 zusammen verbessern: transparente Berechnung, nützlicher Ergebnisplan, Kontextübergabe und getrennte Erfolgssignale. Anschliessend B04/B05 und erste konkrete Kundenfragen schärfen. Aufgaben mit externen Nachweisen bleiben offen, während andere umsetzbare Arbeit weitergeht.
 
 ## Fortschrittsprotokoll
 
 - 16.10.2026: Dauerziel aktiv; Branch und Remote auf 42e4333 abgeglichen, Produktionsdeployment READY. Vorhandenes 23-seitiges Konzept und Kundenfokus übernommen. Schwerpunkt KI-Entwicklung und Webdesign ergänzt. Umsetzung der ersten drei fachlich abgegrenzten Leistungsseiten begonnen.
+- 16.10.2026: Drei eigenständige Leistungsseiten unter /loesungen/ki-entwicklung, /loesungen/webdesign und /loesungen/prozessautomatisierung veröffentlicht. Bestehende Weiterleitung der Prozessautomatisierung entfernt. Jeweils verständliche Beispiele, Teamkontrolle, nächster Check, Ablauf und fünf FAQs. Detailverweise in /pakete. Servergerendert, keine zusätzliche Client-Bibliothek. 130 passende Prüfungen, TypeScript und Build erfolgreich; zwölf Ansichten über vier Bildschirmbreiten ohne Überlauf, FAQ und Check-Einstieg bedient. Fünf Servicetests auch auf Produktion bestanden. Commit eb6a646, Deployment dpl_9WTruXH9vu5he1jJkMwJEAJmdyvU READY.
+- 16.10.2026: Direkte Search-Console-Prüfung der bestätigten Property agenticit.ch. Indexbericht Stand 12.10.: 27 indexiert, 55 nicht indexiert. Das ist kein aktuelles Urteil über die heute ergänzten Seiten. Generative KI ist bereits eingeschlossen, Einstellung unverändert. KI-Bericht Beta: 87 Impressionen vom 15.07. bis 14.10.2026; keine Aussage über heutige Wirkung oder Leads. Öffentliche Sitemap am 16.10. erneut eingereicht, Erfolgsmeldung dokumentiert. Zuletzt gelesen laut Google weiterhin 04.10., 62 erkannte Seiten; neue Verarbeitung ausstehend.
+- 16.10.2026: PNG-Linkvorschauen mit 1200 × 630 Pixeln für Startseite und drei Kernleistungen veröffentlicht; weitere Seiten erhalten die Standardkarte. Alle vier Bilddateien samt tatsächlichem Bildformat, Abmessungen sowie Open-Graph-/Twitter-Verweisen lokal und live geprüft. 90 vorhandene Designprüfungen und TypeScript erfolgreich. Formatter geprüft. Commit 4932787, Deployment dpl_EZvBmMWPnPG5DFy69K5sKEDdeREe READY.
+- 16./17.10.2026: Zwei nachweislich unbenutzte Schriftfamilien aus dem globalen Vorladen entfernt. Vergleich derselben lokalen Produktionsbuilds: sechs Dateien / 290272 Bytes vorher, vier Dateien / 173096 Bytes nachher; 117176 Bytes weniger. Neuer Ressourcen-Budgettest zeigte vorher den Fehler und besteht nachher. Zusammen mit Social-, Service- und Designprüfungen 101 Tests erfolgreich; TypeScript, Build und mobile Sichtprüfung erfolgreich. Commit 0062384, Deployment dpl_BDAGJCXBUPSUfMdxmcNBguyFC4gF READY und agenticit.ch zugeordnet. Elf Service-/Social-/Ressourcenprüfungen auch live bestanden. Der Test berücksichtigt die tatsächlich beobachtete zusätzliche Vercel-Pfadkomponente immutable; diese Testkorrektur ändert kein Produktverhalten.
+- 17.10.2026: Ubersuggest-Mobile-Audit frisch angestossen: LCP 5,1 s, FCP 1,7 s, TBT 90 ms, CLS 0; vorheriger mobiler Bericht LCP 5,7 s. Einzelne Laborläufe, keine Felddaten oder kausale Bestätigung der Schriftänderung. Verbleibende mobile Ladezeit ist zu hoch; exakte LCP-Ressource in diesem gekürzten Anbieterbericht nicht enthalten. Der angebotene Browser-Diagnosekanal unterstützt PerformanceTimeline nicht; kein Browserzustand dadurch geändert. Weiterführende Messung bleibt offen.
+
+## Nachweisablage und Grenzen
+
+Zentrale Ablage: OneDrive/Documents/ChatGPT/AgenticIT Webseite/Umsetzung-2026-10-16/Nachweise. Darin liegen Bildschirmnachweise der Live-Seite und der Search Console, zwölf Viewport-Prüfungen, die erfasste GSC-Baseline, Vorschaubilder und der Vorher-/Nachher-Vergleich der Schriften. Der aktuelle Plan wird zusätzlich als lesbare Textkopie im OneDrive-Projektordner gesichert.
+
+Offen bleiben insbesondere tatsächliche qualifizierte Lead-/CRM-Ergebnisse, belegte Referenzen, die genaue Datenhaltung und Hostingzusage sowie die breitere Performance-Diagnose. Die sichtbare Hostingregion des Website-Deployments ist iad1; das ist noch kein vollständiger Nachweis aller Datenwege. Das aktive Gesamtziel bleibt offen. Eine erfolgreiche Etappe ist keine vollständige Abnahme.

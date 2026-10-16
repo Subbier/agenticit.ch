@@ -16,7 +16,7 @@ test("the homepage keeps early font downloads within its four-family budget", as
   for (const font of fonts)
     assert.match(
       font,
-      /href="\/_next\/static\/media\//,
+      /href="\/_next\/static\/(?:immutable\/)?media\//,
       "Fonts stay self-hosted",
     )
 })
