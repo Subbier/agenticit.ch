@@ -15,6 +15,7 @@
     "test:automation": "node --import tsx --test lib/automation.test.ts",
     "test:careers": "node --import tsx --test lib/karriere-pages.test.ts",
     "test:design": "node --import tsx --test lib/site-design.test.ts",
+    "test:feedback": "node --import tsx --test lib/website-feedback.test.ts",
     "build": "next build",
     "dev": "next dev",
     "dev:clean": "rm -rf .next && next dev",

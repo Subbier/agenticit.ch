@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { ArrowUpRight, Menu } from "lucide-react"
 import { ConsentSettingsLink } from "@/components/site/consent-settings-link"
+import { WebsiteFeedbackLink } from "@/components/site/website-feedback"
 import styles from "./journey.module.css"
 
 function Brand() {
@@ -159,6 +160,7 @@ export function JourneyShell({ children }: { children: React.ReactNode }) {
               <Link href="/datenschutz">Datenschutz</Link>
               <Link href="/impressum">Impressum</Link>
               <ConsentSettingsLink />
+              <WebsiteFeedbackLink />
               <a href="https://admin.agenticit.ch">Login</a>
             </div>
           </div>

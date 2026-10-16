@@ -22,6 +22,7 @@ const inter = Inter({
 import { JsonLd } from "@/components/site/json-ld"
 import { ChatbotWidget } from "@/components/chatbot-widget"
 import { ConsentBanner } from "@/components/site/consent-banner"
+import { WebsiteFeedback } from "@/components/site/website-feedback"
 import { CONSENT_DEFAULT_SCRIPT } from "@/lib/consent"
 import {
   localBusinessJsonLd,
@@ -123,6 +124,7 @@ export default function RootLayout({
         <Suspense fallback={null}>{children}</Suspense>
         <ChatbotWidget />
         <ConsentBanner />
+        <WebsiteFeedback />
         <Analytics />
         <SpeedInsights />
       </body>

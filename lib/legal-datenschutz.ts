@@ -65,6 +65,13 @@ export const datenschutzSections: readonly LegalSectionContent[] = [
     ],
   },
   {
+    title: "Freiwillige Website-Umfrage",
+    paragraphs: [
+      "Sie können unsere Webseite mit fünf kurzen Antworten bewerten. Die Umfrage fragt weder Namen noch Kontaktdaten oder Freitext ab. Erst beim Absenden werden die Antworten über unseren Website-Server und den eingerichteten E-Mail-Dienst an AgenticIT übermittelt. Wir verwenden sie ausschliesslich zur Verbesserung der Webseite. Einzelne Rückmeldungen werden gelöscht, sobald sie für diesen Zweck nicht mehr benötigt werden; zusammengefasste Ergebnisse können länger aufbewahrt werden.",
+      "Damit die Einladung während desselben Besuchs nicht wiederholt erscheint, wird eine Markierung im Sitzungsspeicher Ihres Browsers hinterlegt. Ihre Antworten werden dort nicht gespeichert. Die Markierung endet mit der Browsersitzung. Die technisch nötigen Zugriffsdaten des Website-Betriebs sind nicht Teil der Umfrage-E-Mail.",
+    ],
+  },
+  {
     title: "Ihre Rechte",
     paragraphs: [
       "Sie haben im Rahmen des anwendbaren Datenschutzrechts insbesondere das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Bearbeitung, Datenherausgabe sowie Widerspruch gegen bestimmte Bearbeitungen. Zudem können Sie eine erteilte Einwilligung jederzeit widerrufen.",
