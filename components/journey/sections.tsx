@@ -116,18 +116,18 @@ export function CollaborationSteps() {
     ],
     [
       "02",
-      "Abgrenzen",
-      "Ein Prozess, klare Zuständigkeiten und ein vereinbartes Ergebnis für den Test.",
+      "Planen",
+      "Wir stellen die passenden Services zusammen und vereinbaren Umfang, Zuständigkeiten und Ergebnis.",
     ],
     [
       "03",
-      "Erproben",
-      "Wir richten den Ablauf ein, binden Ihr Team ein und prüfen reale Vorgänge.",
+      "Umsetzen",
+      "Wir richten die Lösung ein, binden Ihr Team ein und prüfen reale Vorgänge.",
     ],
     [
       "04",
-      "Entscheiden",
-      "Wir besprechen Nutzen und Aufwand. Sie entscheiden über Abschluss oder Ausbau.",
+      "Begleiten",
+      "Wir werten den Nutzen aus und vereinbaren die passende Übergabe, Betreuung oder Weiterentwicklung.",
     ],
   ]
   return (

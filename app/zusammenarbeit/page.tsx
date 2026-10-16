@@ -6,7 +6,7 @@ import styles from "@/components/journey/journey.module.css"
 export const metadata = createPageMetadata({
   title: "So starten wir Ihre digitale Kundenreise",
   description:
-    "Vom Diagnosegespräch über den begrenzten Pilot bis zur Übergabe oder Betreuung. Klare Verantwortlichkeiten, menschliche Freigaben und nachvollziehbare Ergebnisse.",
+    "Von der Beratung über die passenden Services bis zur Umsetzung und Betreuung. Klare Verantwortlichkeiten, menschliche Freigaben und nachvollziehbare Ergebnisse.",
   path: "/zusammenarbeit",
 })
 
@@ -19,8 +19,8 @@ const steps = [
   ],
   [
     "02",
-    "Den Test eingrenzen",
-    "Wir vereinbaren genau einen Ablauf, die nötigen Übergaben, Umfang, Preis und Fremdkosten. Ausgangslage und Kriterien für die Abnahme stehen vor dem Start fest.",
+    "Die passenden Services planen",
+    "Wir stellen die Leistungen für Ihre Ziele zusammen und vereinbaren Abläufe, Übergaben, Umfang, Preis und Fremdkosten. Ausgangslage und Kriterien für die Abnahme stehen vor dem Start fest.",
     "Ergebnis: ein konkreter Auftrag mit verständlichen Grenzen.",
   ],
   [
@@ -31,7 +31,7 @@ const steps = [
   ],
   [
     "04",
-    "Mit Ihrem Team erproben",
+    "Mit Ihrem Team umsetzen",
     "Wir richten den vereinbarten Prozess ein und prüfen Normalfall, Fehlerfall und menschliche Übernahme. Schlüsselanwender erhalten eine Einweisung. Bei kundenorientierter KI ist erkennbar, mit wem man spricht.",
     "Ergebnis: ein geprüfter Ablauf und eine nachvollziehbare Messung.",
   ],

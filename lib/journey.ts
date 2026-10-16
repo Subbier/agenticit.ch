@@ -195,9 +195,9 @@ export const journeyFaqs = [
       "Wir prüfen zuerst Ihren vorhandenen Ablauf und Ihre Systeme. Eine Erweiterung oder Verbindung kann genügen. Ein Wechsel wird nur dann Teil des Auftrags, wenn er gemeinsam vereinbart ist.",
   },
   {
-    question: "Wie funktioniert ein Testpaket?",
+    question: "Wie wählen wir die passenden Services aus?",
     answer:
-      "Wir grenzen gemeinsam einen Prozess ab und vereinbaren Umfang, Preis, Voraussetzungen und Abnahme. Nach dem Pilot entscheiden Sie über Abschluss, gezielte Anpassung oder Ausbau. Eine Weiterführung wird separat vereinbart.",
+      "Wir klären Ihre Ziele, prüfen bestehende Abläufe und stellen die passenden Leistungen aus Marketing, Sales und Verwaltung zusammen. Umfang, Preis, Voraussetzungen und Abnahme vereinbaren wir vor dem Start. Betrieb und Betreuung richten sich nach Ihrem Bedarf und dem vereinbarten Auftrag.",
   },
   {
     question: "Was kostet die Zusammenarbeit?",
@@ -207,7 +207,7 @@ export const journeyFaqs = [
   {
     question: "Wie bleibt unser Team eingebunden?",
     answer:
-      "Eine verantwortliche Person begleitet den Test. Wir klären Zuständigkeiten, zeigen die Bedienung und prüfen Fehlerfälle sowie die menschliche Übernahme. Ausgehende Sales-Nachrichten brauchen eine menschliche Freigabe.",
+      "Eine verantwortliche Person begleitet die Umsetzung. Wir klären Zuständigkeiten, zeigen die Bedienung und prüfen Fehlerfälle sowie die menschliche Übernahme. Ausgehende Sales-Nachrichten brauchen eine menschliche Freigabe.",
   },
   {
     question: "Wo werden unsere Daten verarbeitet?",
@@ -336,7 +336,7 @@ export function buildJourneyPlan(answers: JourneyAnswers) {
     playbook.template,
     "",
     "Selbsteinschätzung auf Basis Ihrer Antworten. Kein Systemaudit und keine Ergebnisgarantie.",
-    "Ein individuelles Pilotangebot prüfen wir gemeinsam. https://agenticit.ch/kundenreise-check",
+    "Die passenden Services für Ihr Unternehmen besprechen wir gemeinsam. https://agenticit.ch/kundenreise-check",
   ].join("\n")
   return {
     title: challenge.magnet,

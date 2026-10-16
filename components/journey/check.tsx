@@ -108,7 +108,7 @@ function TimeCalculator() {
                 `Heutige Minuten je Vorgang: ${before}`,
                 `Geschätzte künftige Minuten je Vorgang: ${after}`,
                 `Rechnerisch freie Kapazität pro Woche: ${number(result.freedHours)} Stunden`,
-                "Die künftige Zeit ist eine Annahme und muss im Pilot geprüft werden. Keine Zusage einer Kostenersparnis.",
+                "Die künftige Zeit ist eine Annahme und muss im tatsächlichen Ablauf geprüft werden. Keine Zusage einer Kostenersparnis.",
                 "https://agenticit.ch/kundenreise-check?thema=admin",
               ].join("\n"),
               "AgenticIT-Zeitpotenzial.txt",
@@ -187,8 +187,8 @@ export function JourneyContact({
     <form className={styles.contact} onSubmit={submit}>
       <h3>Den nächsten Schritt gemeinsam prüfen?</h3>
       <p>
-        Wir sehen uns Ihren Ablauf an und klären, ob ein begrenzter Pilot zu
-        Ihrem Anliegen passt. Ihre Auswahl aus dem Check wird mitgesendet.
+        Wir sehen uns Ihren Ablauf an und besprechen, welche Services zu Ihrem
+        Anliegen passen. Ihre Auswahl aus dem Check wird mitgesendet.
       </p>
       <div className={styles.formGrid}>
         <label className={styles.field}>
@@ -280,7 +280,7 @@ export function JourneyContact({
         </button>
       </div>
       <p className={styles.fine}>
-        Damit beauftragen Sie noch kein Paket. Es erfolgt keine
+        Damit erteilen Sie noch keinen Auftrag. Es erfolgt keine
         Newsletter-Anmeldung.
       </p>
       {error ? (
@@ -319,7 +319,7 @@ export function JourneyCheck({
   if (step === 3 && challenge && channel && system) {
     const answers = { challenge, channel, system }
     const plan = buildJourneyPlan(answers)
-    const pilot = packages.find((item) => item.id === plan.packageId)!
+    const service = packages.find((item) => item.id === plan.packageId)!
     return (
       <div className={styles.checkPanel}>
         <div className={styles.resultTop}>
@@ -383,10 +383,10 @@ export function JourneyCheck({
           Ihrer Systeme hat noch nicht stattgefunden.
         </p>
         <div className={styles.measurement}>
-          <strong>Ein möglicher Einstieg: {pilot.title}</strong>
-          {pilot.scope} Umfang und Preis klären wir gemeinsam.{" "}
+          <strong>Passende Services: {service.title}</strong>
+          {service.scope} Umfang und Preis klären wir gemeinsam.{" "}
           <Link href="/pakete" className={styles.textLink}>
-            Testpakete ansehen →
+            Services ansehen →
           </Link>
         </div>
         <div id="personal-follow-up">

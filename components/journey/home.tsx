@@ -117,7 +117,7 @@ export function JourneyHome() {
                 </p>
               </div>
               <Link className={styles.textLink} href="/pakete">
-                Pakete im Detail <ArrowUpRight size={16} aria-hidden="true" />
+                Services im Detail <ArrowUpRight size={16} aria-hidden="true" />
               </Link>
             </div>
             <PackageCards />

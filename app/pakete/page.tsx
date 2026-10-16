@@ -8,9 +8,9 @@ import { createPageMetadata } from "@/lib/seo"
 import styles from "@/components/journey/journey.module.css"
 
 export const metadata = createPageMetadata({
-  title: "Marketing, Sales und Verwaltung: Ihr passender Einstieg",
+  title: "Unsere Services: Marketing, Sales und Verwaltung",
   description:
-    "Digitaler Auftritt, aktive Kundengewinnung und einfachere Abläufe mit KI. Entdecken Sie Ihren Einstieg in Marketing, Sales oder Verwaltung – mit klar vereinbartem Umfang.",
+    "Unsere Services für Marketing, Sales und Verwaltung: digitaler Auftritt, aktive Kundengewinnung und einfachere Abläufe mit KI. Ein Partner für Ihre Umsetzung.",
   path: "/pakete",
 })
 
@@ -21,24 +21,25 @@ export default function Page() {
         <div className={styles.pageHero}>
           <span className={styles.eyebrow}>Drei Bereiche. Ein Partner.</span>
           <h1>
-            Ihr Einstieg.
+            Unsere Services.
             <br />
             Passend zu Ihrem Unternehmen.
           </h1>
           <p>
             Vom digitalen Auftritt über die Kundengewinnung bis zur Betreuung:
-            Wir verbinden Ihre Systeme und begleiten Ihr Team. Gemeinsam wählen
-            wir einen überschaubaren Einstieg, der Ihren Alltag verbessert.
+            Wir verbinden Ihre Systeme und begleiten Ihr Team. Sie erhalten die
+            Unterstützung, die Ihr Unternehmen weiterbringt – in einem Bereich
+            oder über alle drei hinweg.
           </p>
         </div>
-        <section className={styles.checkArea} aria-label="Unsere Testpakete">
+        <section className={styles.checkArea} aria-label="Unsere Services">
           <PackageCards expanded />
           <div className={styles.measurement}>
-            <strong>Ein klarer Einstieg. Gemeinsam vereinbart.</strong>Die
+            <strong>Ihre Ziele. Unsere Services. Klar vereinbart.</strong>Die
             Punkte zeigen, wobei wir Sie im jeweiligen Bereich unterstützen.
-            Welche Leistungen Ihr erster Schritt umfasst, halten wir vor dem
-            Start fest – mit Ergebnis, Zuständigkeiten, Kosten und Abnahme.
-            Danach entscheiden Sie, wie es weitergeht.
+            Welche Leistungen wir für Sie übernehmen, halten wir vor dem Start
+            fest – mit Ergebnis, Zuständigkeiten, Kosten und Abnahme. Auch
+            Betrieb und Betreuung stimmen wir auf Ihren Bedarf ab.
           </div>
           <JourneyCta />
         </section>
