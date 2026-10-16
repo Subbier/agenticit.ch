@@ -1,0 +1,573 @@
+.hero {
+  display: grid;
+  grid-template-columns: 1.12fr 1fr;
+  align-items: center;
+  gap: 64px;
+  padding-block: 64px 72px;
+}
+.heroContent h1 {
+  margin-top: 22px;
+  font-size: clamp(38px, 4.4vw, 58px);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -2px;
+}
+.heroContent h1 em {
+  color: #4d7c36;
+  font-style: normal;
+}
+.heroContent > p {
+  max-width: 600px;
+  margin-top: 24px;
+  color: var(--muted);
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 24px;
+  margin-top: 30px;
+}
+.stage {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #3d513b;
+  border-radius: 14px;
+  padding: 32px;
+  background:
+    radial-gradient(ellipse at 90% 0%, #435e355c, transparent 65%),
+    linear-gradient(140deg, #25352b, #142119);
+  color: #f3f7ef;
+}
+.stage::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  background-image:
+    linear-gradient(#b4d7a508 1px, transparent 1px),
+    linear-gradient(90deg, #b4d7a508 1px, transparent 1px);
+  background-size: 34px 34px;
+}
+.stage > * {
+  position: relative;
+}
+.stageTop {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+  color: #c2d0bb;
+  font-size: 11px;
+}
+.stageTop > span:last-child {
+  color: #b8ec93;
+}
+.stage .stageTitle {
+  margin-block: 31px 27px;
+  font-size: clamp(28px, 3vw, 36px);
+  font-weight: 450;
+  line-height: 1.2;
+  letter-spacing: -1.2px;
+}
+.stageTitle > span {
+  color: #a4df7f;
+}
+.workAreas {
+  display: grid;
+  gap: 10px;
+}
+.workArea {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px;
+  border: 1px solid #5d77564f;
+  border-radius: 8px;
+  background: #efffe607;
+}
+.areaIcon {
+  display: grid;
+  place-items: center;
+  width: 39px;
+  height: 39px;
+  flex: none;
+  border: 1px solid #6c915756;
+  border-radius: 7px;
+  color: #a4df7f;
+}
+.workArea > div {
+  display: grid;
+  gap: 2px;
+}
+.workArea strong {
+  font-size: 15px;
+  font-weight: 500;
+}
+.workArea > div > span {
+  color: #b5c5ad;
+  font-size: 11px;
+}
+.areaNumber {
+  margin-left: auto;
+  color: #8ca67d;
+  font-size: 11px;
+}
+.openings {
+  border-top: 1px solid var(--line);
+}
+.openCount {
+  flex: none;
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  color: var(--muted);
+  font-size: 12px;
+}
+.jobList {
+  display: grid;
+  gap: 14px;
+}
+.jobCard {
+  display: grid;
+  grid-template-columns: 42px 1fr 46px;
+  align-items: center;
+  gap: 22px;
+  scroll-margin-top: 25px;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: var(--ink);
+  background: #fff;
+  text-decoration: none;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
+}
+.jobCard:hover {
+  background: #f5f9f1;
+  border-color: #91b678;
+}
+.jobNumber {
+  align-self: start;
+  padding-top: 4px;
+  color: #6e8b60;
+  font-size: 12px;
+}
+.jobCard h3 {
+  max-width: 790px;
+  margin-top: 7px;
+  font-size: clamp(20px, 2vw, 25px);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.5px;
+}
+.jobCard p {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.jobArrow {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--paper);
+  color: #466d33;
+}
+.benefits {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  padding-block: 0 80px;
+}
+.benefits > div {
+  border-top: 1px solid var(--line);
+  padding-top: 24px;
+}
+.benefits > div > span {
+  color: #4c6546;
+  font-size: 11px;
+}
+.benefits h2 {
+  margin-top: 16px;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.6px;
+}
+.benefits p {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 14px;
+}
+.backLink {
+  padding-top: 24px;
+}
+.detailHero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(290px, 0.9fr);
+  align-items: start;
+  gap: 64px;
+  padding-block: 32px 64px;
+}
+.detailHero .heroContent h1 {
+  font-size: clamp(32px, 3.7vw, 48px);
+  letter-spacing: -1.6px;
+}
+.jobFacts {
+  padding: 28px;
+}
+.factsHeading {
+  font-size: 11px;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: #b8ec93;
+}
+.jobFacts dl {
+  display: grid;
+  gap: 22px;
+  margin: 24px 0 28px;
+}
+.jobFacts dl > div {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 2px 12px;
+}
+.jobFacts dl svg {
+  grid-row: span 2;
+  margin-top: 3px;
+  color: #a4df7f;
+}
+.jobFacts dt {
+  font-size: 11px;
+  color: #b5c5ad;
+}
+.jobFacts dd {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.jobFacts > a {
+  width: 100%;
+}
+.detailContent {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 64px;
+  border-top: 1px solid var(--line);
+  padding-block: 56px 64px;
+}
+.detailSection h2,
+.offer h2,
+.applicationIntro h2 {
+  margin-top: 14px;
+  font-size: clamp(28px, 3vw, 36px);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -1px;
+}
+.detailList {
+  display: grid;
+  gap: 20px;
+  margin-top: 28px !important;
+  padding: 0;
+  list-style: none;
+}
+.detailList li {
+  position: relative;
+  padding-left: 22px;
+  color: #526055;
+  font-size: 15px;
+}
+.detailList li::before {
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #719c50;
+  content: "";
+}
+.offer {
+  display: grid;
+  grid-template-columns: 0.9fr 1.4fr;
+  align-items: start;
+  gap: 48px;
+  margin-bottom: 72px;
+  padding: 40px;
+  border: 1px solid #40533f;
+  border-radius: 12px;
+  color: #f3f7ef;
+  background: linear-gradient(125deg, #25352b, #16231a);
+}
+.offer .offerEyebrow {
+  color: #b8ec93;
+}
+.offer .offerEyebrow::before {
+  background: #a4df7f;
+}
+.offer > p {
+  color: #c4d2be;
+  font-size: 15px;
+}
+.trainingBadge {
+  display: inline-block;
+  margin-top: 24px;
+  padding: 7px 12px;
+  border: 1px solid #6f985457;
+  border-radius: 5px;
+  color: #b8ec93;
+  font-size: 12px;
+}
+.application {
+  padding-block: 72px;
+  background: var(--paper);
+  border-top: 1px solid var(--line);
+  scroll-margin-top: 25px;
+}
+.applicationLayout {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 64px;
+  align-items: start;
+}
+.applicationIntro {
+  padding-top: 14px;
+}
+.applicationIntro > p {
+  max-width: 410px;
+  margin-top: 20px;
+  color: var(--muted);
+}
+.applicationNote {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-block: 26px 12px;
+  color: #4c6546;
+  font-size: 13px;
+}
+.applicationNote svg {
+  flex: none;
+}
+.applicationIntro > a {
+  font-size: 13px;
+}
+.applicationPanel {
+  min-width: 0;
+  padding: 32px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: #fff;
+}
+.applicationForm fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.applicationForm .formHint {
+  margin-bottom: 20px;
+  color: var(--muted);
+  font-size: 12px;
+}
+.applicationForm > fieldset > div:first-of-type {
+  margin-top: 0;
+}
+.applicationForm input,
+.applicationForm select {
+  min-height: 48px;
+}
+.applicationForm input[type="checkbox"] {
+  min-height: 0;
+}
+.applicationForm textarea {
+  width: 100%;
+  resize: vertical;
+  border: 1px solid #bfcbb8;
+  border-radius: 5px;
+  padding: 10px 12px;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+.applicationForm textarea:focus-visible {
+  outline: 3px solid #407e29;
+  outline-offset: 4px;
+}
+.applicationForm .submit {
+  width: 100%;
+  margin-top: 24px;
+}
+.applicationForm button:disabled {
+  cursor: not-allowed;
+}
+.applicationSuccess > svg {
+  margin-bottom: 16px;
+  color: #4d7c36;
+}
+.applicationSuccess h3 {
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+.applicationSuccess p {
+  margin-block: 16px 24px;
+  color: var(--muted);
+}
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+@media (max-width: 960px) {
+  .hero,
+  .detailHero,
+  .applicationLayout {
+    gap: 32px;
+  }
+  .hero {
+    grid-template-columns: 1fr 1fr;
+  }
+  .detailHero {
+    grid-template-columns: 1.2fr 1fr;
+  }
+  .heroContent h1 {
+    font-size: 42px;
+    letter-spacing: -1.6px;
+  }
+  .stage,
+  .applicationPanel {
+    padding: 24px;
+  }
+  .detailContent {
+    gap: 32px;
+  }
+  .offer {
+    gap: 32px;
+    padding: 32px;
+  }
+}
+@media (max-width: 720px) {
+  .hero,
+  .detailHero,
+  .detailContent,
+  .applicationLayout,
+  .offer,
+  .benefits {
+    grid-template-columns: 1fr;
+  }
+  .hero {
+    padding-block: 38px 48px;
+    gap: 32px;
+  }
+  .heroContent h1 {
+    margin-top: 18px;
+    font-size: 39px;
+    letter-spacing: -1.6px;
+  }
+  .heroContent > p {
+    margin-top: 20px;
+    font-size: 15px;
+  }
+  .actions {
+    gap: 8px 20px;
+    margin-top: 24px;
+  }
+  .stage {
+    padding: 24px;
+  }
+  .stage .stageTitle {
+    font-size: 30px;
+    margin-block: 24px;
+  }
+  .workArea {
+    padding: 12px;
+  }
+  .openings {
+    padding-block: 44px;
+  }
+  .openings > div:first-child {
+    gap: 18px;
+    align-items: start;
+  }
+  .jobCard {
+    grid-template-columns: 1fr 34px;
+    gap: 14px;
+    padding: 22px;
+  }
+  .jobNumber {
+    display: none;
+  }
+  .jobCard h3 {
+    font-size: 21px;
+  }
+  .jobCard p {
+    font-size: 12px;
+  }
+  .jobArrow {
+    width: 34px;
+    height: 34px;
+  }
+  .benefits {
+    gap: 28px;
+    padding-bottom: 44px;
+  }
+  .benefits > div {
+    padding-top: 20px;
+  }
+  .benefits h2 {
+    margin-top: 10px;
+  }
+  .backLink {
+    padding-top: 16px;
+  }
+  .detailHero {
+    padding-block: 22px 40px;
+    gap: 28px;
+  }
+  .detailHero .heroContent h1 {
+    font-size: clamp(29px, 8vw, 32px);
+    letter-spacing: -1.2px;
+    hyphens: auto;
+    overflow-wrap: anywhere;
+  }
+  .detailContent {
+    padding-block: 36px 40px;
+    gap: 40px;
+  }
+  .detailList {
+    margin-top: 22px !important;
+    gap: 16px;
+  }
+  .offer {
+    margin-bottom: 40px;
+    padding: 26px;
+    gap: 22px;
+  }
+  .application {
+    padding-block: 40px;
+  }
+  .applicationLayout {
+    gap: 26px;
+  }
+  .applicationIntro {
+    padding-top: 0;
+  }
+  .applicationPanel {
+    padding: 22px;
+  }
+  .applicationForm input,
+  .applicationForm select,
+  .applicationForm textarea {
+    font-size: 16px;
+  }
+}

@@ -28,7 +28,7 @@ export function Careers() {
         {KARRIERE_JOBS.map((job) => (
           <Link
             key={job.slug}
-            href={`/karriere#${job.slug}`}
+            href={`/karriere/${job.slug}`}
             className={styles.careerRow}
           >
             <div>

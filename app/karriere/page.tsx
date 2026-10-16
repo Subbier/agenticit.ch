@@ -4,9 +4,9 @@ import { createPageMetadata, breadcrumbJsonLd } from "@/lib/seo"
 import { JsonLd } from "@/components/site/json-ld"
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Karriere: Dirigent:innen für KI-Agenten gesucht",
+  title: "Karriere in Bern: Marketing, Sales & KI mitgestalten",
   description:
-    "Wir suchen AI GTM Spezialist:innen, AI RevOps Architect:innen und Lernende (Informatik EFZ) in Bern – Menschen, die Teams aus KI-Agenten dirigieren.",
+    "Offene Stellen und Lehrstelle 2027 bei AgenticIT in Bern. Gestalten Sie Marketing, Sales, KI-Automatisierung und Software mit uns. Jetzt Stelle entdecken und bewerben.",
   path: "/karriere",
 })
 

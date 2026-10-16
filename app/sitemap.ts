@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next"
 import { INDEXABLE_ROUTES, SITE_URL } from "@/lib/seo"
 import { getAllPosts } from "@/lib/blog"
 import { BRANCHEN_LPS } from "@/lib/branchen-content"
+import { KARRIERE_JOBS } from "@/lib/karriere-content"
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
@@ -10,12 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${SITE_URL}${route === "/" ? "" : route}`,
     lastModified: now,
     changeFrequency: route === "/" || route === "/blog" ? "weekly" : "monthly",
-    priority:
-      route === "/"
-        ? 1
-        : route === "/excellence"
-          ? 0.9
-          : 0.7,
+    priority: route === "/" ? 1 : route === "/excellence" ? 0.9 : 0.7,
   }))
 
   const blog: MetadataRoute.Sitemap = getAllPosts().map((post) => ({
@@ -32,5 +28,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
-  return [...core, ...blog, ...branchen]
+  const jobs: MetadataRoute.Sitemap = KARRIERE_JOBS.map((job) => ({
+    url: `${SITE_URL}/karriere/${job.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.6,
+  }))
+
+  return [...core, ...blog, ...branchen, ...jobs]
 }
