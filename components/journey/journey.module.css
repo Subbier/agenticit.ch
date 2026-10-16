@@ -943,6 +943,73 @@
   color: var(--muted);
   font-size: 12px !important;
 }
+.pilotSection {
+  --muted: #b8c9b0;
+  --line: #40533f;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 90% 0%, rgb(89 135 58 / 28%), transparent 55%),
+    linear-gradient(140deg, #14201a, #202f24);
+  color: #f4f8ef;
+}
+.pilotSection:before {
+  position: absolute;
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.12;
+  background-image:
+    linear-gradient(#9ccd7b 1px, transparent 1px),
+    linear-gradient(90deg, #9ccd7b 1px, transparent 1px);
+  background-size: 52px 52px;
+  mask-image: radial-gradient(ellipse at 100% 0%, black, transparent 65%);
+}
+.pilotSection > .container {
+  position: relative;
+}
+.pilotSection .eyebrow {
+  color: #b5dc9e;
+}
+.pilotSection .eyebrow:before {
+  background: var(--green);
+}
+.pilotSection .textLink {
+  color: #eff8e9;
+}
+.pilotSection .textLink svg {
+  color: var(--green);
+}
+.pilotSection .package {
+  border-radius: 14px;
+  background: rgb(255 255 255 / 3%);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 4%);
+}
+.pilotSection .featuredPackage {
+  border-color: #6e9557;
+  background: linear-gradient(165deg, #31452d, #26372a);
+}
+.pilotSection .packageNumber,
+.pilotSection .package li svg {
+  color: var(--green);
+}
+.pilotSection .scope {
+  color: #c6d8ba !important;
+}
+.pilotSection .secondary {
+  border-color: #637e56;
+  background: rgb(255 255 255 / 3%);
+  color: #edf7e7;
+}
+.pilotSection .secondary:hover {
+  border-color: var(--green);
+  background: var(--green);
+  color: #18320d;
+}
+.pilotSection :where(a, button):focus-visible {
+  outline-color: var(--green);
+}
 .scope {
   font-size: 12px !important;
   color: #4c6546 !important;

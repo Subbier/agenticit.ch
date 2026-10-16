@@ -95,8 +95,11 @@ export function JourneyHome() {
             <JourneyMap />
           </div>
         </section>
-        <div className={styles.container}>
-          <section className={styles.section} id="pakete">
+        <section
+          className={`${styles.section} ${styles.pilotSection}`}
+          id="pakete"
+        >
+          <div className={styles.container}>
             <div className={styles.sectionHead}>
               <div>
                 <span className={styles.eyebrow}>
@@ -117,8 +120,8 @@ export function JourneyHome() {
               </Link>
             </div>
             <PackageCards />
-          </section>
-        </div>
+          </div>
+        </section>
         <section className={`${styles.section} ${styles.tint}`}>
           <div className={styles.container}>
             <span className={styles.eyebrow}>Gemeinsam in die Umsetzung</span>
