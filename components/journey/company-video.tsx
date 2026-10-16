@@ -5,7 +5,7 @@ import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import styles from "./journey.module.css"
 
-const VIDEO_SRC = "/videos/agenticit-firmenvideo.mp4?v=2"
+const VIDEO_SRC = "/videos/agenticit-firmenvideo.mp4?v=3"
 
 export function CompanyVideo() {
   const video = useRef<HTMLVideoElement>(null)
