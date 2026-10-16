@@ -5,13 +5,7 @@ import Script from "next/script"
 import "./globals.css"
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
-import {
-  Dancing_Script,
-  Caveat,
-  Inter,
-  Space_Grotesk,
-  JetBrains_Mono,
-} from "next/font/google"
+import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google"
 import { GeistMono } from "geist/font/mono"
 
 const inter = Inter({
@@ -31,18 +25,6 @@ import {
   SITE_URL,
   websiteJsonLd,
 } from "@/lib/seo"
-
-const dancingScript = Dancing_Script({
-  subsets: ["latin"],
-  variable: "--font-dancing-script",
-  display: "swap",
-})
-
-const caveat = Caveat({
-  subsets: ["latin"],
-  variable: "--font-caveat",
-  display: "swap",
-})
 
 // Carbon & Signal – Display-/Mono-Fonts, nur von den neuen Bereichsseiten genutzt.
 const spaceGrotesk = Space_Grotesk({
@@ -83,7 +65,7 @@ export default function RootLayout({
   return (
     <html lang="de-CH">
       <body
-        className={`font-sans antialiased ${inter.variable} ${GeistMono.variable} ${dancingScript.variable} ${caveat.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
+        className={`font-sans antialiased ${inter.variable} ${GeistMono.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
       >
         {/*
           Google Consent Mode v2 – MUSS vor dem GTM-Loader ausgeführt werden.

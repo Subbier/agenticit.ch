@@ -82,8 +82,6 @@
 @theme inline {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --font-script: "Dancing Script", cursive;
-  --font-handwriting: "Caveat", cursive;
 
   /* Design-System "Carbon & Signal" – Zusatz-Fonts für Lösungen/Angebot/Technologie/Branchen.
      Additiv: --font-sans/--font-mono oben bleiben unverändert. */
