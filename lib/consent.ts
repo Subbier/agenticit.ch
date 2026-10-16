@@ -13,6 +13,7 @@ export const CONSENT_STORAGE_KEY = "agenticit-consent-v1"
 
 /** Ereignis, mit dem der Footer-Link „Cookie-Einstellungen" den Dialog erneut öffnet. */
 export const CONSENT_REOPEN_EVENT = "agenticit:open-consent"
+export const CONSENT_CHANGED_EVENT = "agenticit:consent-changed"
 
 export type ConsentChoice = {
   /** Reichweitenmessung (Google Analytics 4). */
@@ -49,11 +50,18 @@ export function readConsent(): ConsentChoice | null {
     const raw = window.localStorage.getItem(CONSENT_STORAGE_KEY)
     if (!raw) return null
     const parsed = JSON.parse(raw) as Partial<ConsentChoice>
-    if (parsed?.version !== 1) return null
+    if (
+      parsed?.version !== 1 ||
+      typeof parsed.statistics !== "boolean" ||
+      typeof parsed.marketing !== "boolean" ||
+      typeof parsed.decidedAt !== "string" ||
+      !Number.isFinite(Date.parse(parsed.decidedAt))
+    )
+      return null
     return {
-      statistics: Boolean(parsed.statistics),
-      marketing: Boolean(parsed.marketing),
-      decidedAt: typeof parsed.decidedAt === "string" ? parsed.decidedAt : new Date().toISOString(),
+      statistics: parsed.statistics,
+      marketing: parsed.marketing,
+      decidedAt: parsed.decidedAt,
       version: 1,
     }
   } catch {
@@ -62,8 +70,14 @@ export function readConsent(): ConsentChoice | null {
   }
 }
 
-export function writeConsent(choice: Pick<ConsentChoice, "statistics" | "marketing">): ConsentChoice {
-  const full: ConsentChoice = { ...choice, decidedAt: new Date().toISOString(), version: 1 }
+export function writeConsent(
+  choice: Pick<ConsentChoice, "statistics" | "marketing">,
+): ConsentChoice {
+  const full: ConsentChoice = {
+    ...choice,
+    decidedAt: new Date().toISOString(),
+    version: 1,
+  }
   try {
     window.localStorage.setItem(CONSENT_STORAGE_KEY, JSON.stringify(full))
   } catch {
@@ -82,9 +96,12 @@ export function clearConsent() {
 
 /**
  * Meldet die Entscheidung an Google Consent Mode und löst die dataLayer-Ereignisse
- * aus, an denen die GTM-Tags hängen. Wirkt sofort — kein Neuladen nötig.
+ * aus, an denen die GTM-Tags hängen. Beim Widerruf entfernt ein Neuladen bereits
+ * ausgeführte optionale Tags aus der aktuellen Seite.
  */
-export function applyConsent(choice: Pick<ConsentChoice, "statistics" | "marketing">) {
+export function applyConsent(
+  choice: Pick<ConsentChoice, "statistics" | "marketing">,
+) {
   if (typeof window === "undefined") return
 
   gtag("consent", "update", {
@@ -105,6 +122,9 @@ export function applyConsent(choice: Pick<ConsentChoice, "statistics" | "marketi
     consent_statistics: choice.statistics ? "granted" : "denied",
     consent_marketing: choice.marketing ? "granted" : "denied",
   })
+  window.dispatchEvent(
+    new CustomEvent(CONSENT_CHANGED_EVENT, { detail: choice }),
+  )
 }
 
 /**
@@ -130,7 +150,9 @@ export const CONSENT_DEFAULT_SCRIPT = `
     var raw = window.localStorage.getItem('${CONSENT_STORAGE_KEY}');
     if (raw) {
       var c = JSON.parse(raw);
-      if (c && c.version === 1) {
+      if (c && c.version === 1 &&
+          typeof c.statistics === 'boolean' && typeof c.marketing === 'boolean' &&
+          typeof c.decidedAt === 'string' && Number.isFinite(Date.parse(c.decidedAt))) {
         gtag('consent','update',{
           analytics_storage: c.statistics ? 'granted' : 'denied',
           ad_storage: c.marketing ? 'granted' : 'denied',

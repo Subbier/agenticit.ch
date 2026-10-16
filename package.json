@@ -10,6 +10,8 @@
     "ios_saf >= 16"
   ],
   "scripts": {
+    "test:consent": "node --import tsx --test lib/consent.test.ts",
+    "test:home-assets": "node --import tsx --test lib/home-assets.test.ts",
     "test:sitemap": "node --import tsx --test lib/sitemap.test.ts",
     "test:assets": "node --import tsx --test lib/asset-budget.test.ts",
     "test:social": "node --import tsx --test lib/social-previews.test.ts",

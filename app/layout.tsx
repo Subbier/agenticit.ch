@@ -16,6 +16,7 @@ const inter = Inter({
 import { JsonLd } from "@/components/site/json-ld"
 import { ChatbotWidget } from "@/components/chatbot-widget"
 import { ConsentBanner } from "@/components/site/consent-banner"
+import { ConsentTags } from "@/components/site/consent-tags"
 import { WebsiteFeedback } from "@/components/site/website-feedback"
 import { CONSENT_DEFAULT_SCRIPT } from "@/lib/consent"
 import {
@@ -81,24 +82,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: CONSENT_DEFAULT_SCRIPT }}
         />
 
-        {/* Google Tag Manager (noscript) – muss direkt nach dem öffnenden <body> stehen */}
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-K4TN9PVZ"
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-          />
-        </noscript>
-
-        {/* Google Tag Manager – lazyOnload, damit GTM den Hauptthread beim Seitenaufbau nicht blockiert */}
-        <Script id="google-tag-manager" strategy="lazyOnload">
-          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-          })(window,document,'script','dataLayer','GTM-K4TN9PVZ');`}
-        </Script>
+        <ConsentTags />
 
         <JsonLd
           data={[organizationJsonLd(), localBusinessJsonLd(), websiteJsonLd()]}
