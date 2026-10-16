@@ -166,6 +166,53 @@ test("lead endpoint validates before forwarding and handles delivery failure hon
       },
     )
     await suite.test(
+      "marketing setup forwards only a complete derived plan for personal review",
+      async () => {
+        const lead = {
+          ...valid,
+          source: "marketing-setup-check",
+          journey: undefined,
+          marketingSetup: {
+            version: 1,
+            answers: {
+              offer: "open",
+              website: "ready",
+              accounts: "not-planned",
+              measurement: "unknown",
+              handoff: "partial",
+            },
+          },
+          message: "forged plan",
+        }
+        const before = calls
+        const response = await POST(request(lead, "192.0.2.10"))
+        assert.equal(response.status, 200)
+        assert.equal(calls, before + 1)
+        assert.ok(
+          String(forwarded.message).includes(
+            "Zielgruppe & Angebot: Noch offen",
+          ),
+        )
+        assert.ok(!String(forwarded.message).includes("forged plan"))
+        assert.equal(forwarded.marketingConsent, false)
+        assert.equal(
+          forwarded.followUpTask,
+          "Marketing-Setup-Check persönlich prüfen",
+        )
+        assert.ok((forwarded.tags as string[]).includes("service:marketing"))
+        for (const changed of [
+          { marketingSetup: undefined },
+          { consent: false },
+        ]) {
+          assert.equal(
+            (await POST(request({ ...lead, ...changed }, "192.0.2.11"))).status,
+            400,
+          )
+          assert.equal(calls, before + 1)
+        }
+      },
+    )
+    await suite.test(
       "failed forwarding is not reported as success",
       async () => {
         globalThis.fetch = async () => new Response("", { status: 503 })

@@ -33,9 +33,10 @@ test("unknown modification dates are omitted instead of inferred from a publicat
 test("verified service and calculator updates retain their real content dates", () => {
   for (const [path, date] of [
     ["/loesungen/ki-entwicklung", "2026-10-16"],
-    ["/loesungen/webdesign", "2026-10-16"],
+    ["/loesungen/webdesign", "2026-10-17"],
     ["/loesungen/prozessautomatisierung", "2026-10-16"],
     ["/automatisierungs-check", "2026-10-17"],
+    ["/marketing-setup-check", "2026-10-17"],
   ])
     assert.equal(
       sitemap().find((entry) => entry.url === `${SITE_URL}${path}`)

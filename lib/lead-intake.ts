@@ -1,6 +1,10 @@
 import { z } from "zod"
 import { buildJourneyPlan } from "./journey"
 import { buildAutomationPlan, calculateAutomationPotential } from "./automation"
+import {
+  buildMarketingSetupPlan,
+  marketingSetupSchema,
+} from "./marketing-setup"
 
 const optionalText = (max = 500) =>
   z.preprocess(
@@ -57,6 +61,7 @@ export const leadSchema = z
       "gtm-checkliste",
       "journey-check",
       "automation-check",
+      "marketing-setup-check",
     ]),
     name: z.string().trim().min(2).max(120),
     email: z.string().trim().email().max(180),
@@ -91,8 +96,25 @@ export const leadSchema = z
       })
       .optional(),
     automation: automationSchema.optional(),
+    marketingSetup: marketingSetupSchema.optional(),
   })
   .superRefine((data, ctx) => {
+    if (data.marketingSetup && data.source !== "marketing-setup-check")
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["marketingSetup"],
+        message: "Diese Antworten gehören zum Marketing-Setup-Check.",
+      })
+    if (
+      data.source === "marketing-setup-check" &&
+      (!data.marketingSetup || data.journey || data.automation)
+    )
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["marketingSetup"],
+        message:
+          "Bitte nur die vollständigen Antworten des Marketing-Setup-Checks übermitteln.",
+      })
     if (data.automation && data.source !== "automation-check") {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
@@ -100,7 +122,11 @@ export const leadSchema = z
         message: "Die Berechnung gehört zum Automatisierungs-Check.",
       })
     }
-    if (data.source !== "journey-check" && data.source !== "automation-check")
+    if (
+      data.source !== "journey-check" &&
+      data.source !== "automation-check" &&
+      data.source !== "marketing-setup-check"
+    )
       return
     if (data.source === "journey-check" && !data.journey)
       ctx.addIssue({
@@ -145,6 +171,10 @@ export function prepareLeadPayload(
     lead.source === "automation-check" && lead.automation
       ? buildAutomationPlan(lead.automation)
       : null
+  const marketingPlan =
+    lead.source === "marketing-setup-check" && lead.marketingSetup
+      ? buildMarketingSetupPlan(lead.marketingSetup)
+      : null
   return {
     ...lead,
     ...(plan
@@ -163,7 +193,15 @@ export function prepareLeadPayload(
             contactMethod: lead.contactMethod ?? "email",
             marketingConsent: false,
           }
-        : {}),
+        : marketingPlan
+          ? {
+              message: marketingPlan,
+              challenge: "acquisition",
+              goal: "Marketing-Grundlagen und Anfrageweg prüfen",
+              contactMethod: lead.contactMethod ?? "email",
+              marketingConsent: false,
+            }
+          : {}),
     crm: "zoho",
     tags: [
       lead.industry ? `branche:${lead.industry}` : null,
@@ -182,13 +220,21 @@ export function prepareLeadPayload(
               "herausforderung:admin",
               "pilot:workflow",
             ]
-          : []),
+          : marketingPlan
+            ? [
+                "quelle:marketing-setup-check",
+                "service:marketing",
+                "herausforderung:acquisition",
+              ]
+            : []),
     ].filter((tag): tag is string => Boolean(tag)),
     followUpTask: plan
       ? "Kundenreise-Check persönlich prüfen"
       : automationPlan
         ? "Automatisierungs-Check persönlich prüfen"
-        : "Rückruf",
+        : marketingPlan
+          ? "Marketing-Setup-Check persönlich prüfen"
+          : "Rückruf",
     submittedAt,
     userAgent,
   }

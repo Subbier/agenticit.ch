@@ -4,7 +4,7 @@ export const challenges = [
     label: "Mehr passende Anfragen",
     description:
       "Gefunden werden und aus Interesse eine konkrete Anfrage machen.",
-    magnet: "Ihr Anfrage-Check",
+    magnet: "Ihr Marketing-Setup-Check",
     result: "Ein klarer Weg von der Zielgruppe zur Anfrage.",
     packageId: "acquisition",
     icon: "search",

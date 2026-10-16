@@ -35,7 +35,9 @@ export function ChallengeCards() {
             href={
               challenge.id === "admin"
                 ? "/automatisierungs-check"
-                : `/kundenreise-check?thema=${challenge.id}`
+                : challenge.id === "acquisition"
+                  ? "/marketing-setup-check"
+                  : `/kundenreise-check?thema=${challenge.id}`
             }
             key={challenge.id}
             className={`${styles.challengeCard} ${challenge.id === "partnership" ? styles.challengeWide : ""}`}
@@ -102,7 +104,11 @@ export function PackageCards({ expanded = false }: { expanded?: boolean }) {
               </>
             ) : null}
             <Link
-              href={`/kundenreise-check?thema=${item.challenge}`}
+              href={
+                item.id === "acquisition"
+                  ? "/marketing-setup-check"
+                  : `/kundenreise-check?thema=${item.challenge}`
+              }
               className={styles.secondary}
             >
               Einstieg finden <ArrowUpRight size={16} aria-hidden="true" />

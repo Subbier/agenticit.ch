@@ -26,7 +26,10 @@ for (const [slug, intent] of services) {
     assert.ok(html.includes('data-site-design="journey"'))
     assert.ok(html.includes('"@type":"Service"'))
     assert.ok(html.includes('href="/datenschutz"'))
-    assert.match(html, /href="\/(automatisierungs-check|kundenreise-check)/)
+    assert.match(
+      html,
+      /href="\/(automatisierungs-check|kundenreise-check|marketing-setup-check)/,
+    )
     assert.ok((html.match(/<details\b/g) ?? []).length >= 4)
   })
 }

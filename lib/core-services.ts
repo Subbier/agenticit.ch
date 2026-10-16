@@ -114,7 +114,7 @@ export const coreServices = [
     headline: "Webdesign, das Ihre Leistung sichtbar macht.",
     intro:
       "Ihre Website soll zeigen, wem Sie helfen und warum sich ein Gespräch lohnt. Wir verbinden Design, Inhalte und Technik mit einem Anfrageweg, der auch nach dem Absenden funktioniert.",
-    checkHref: "/kundenreise-check?thema=acquisition",
+    checkHref: "/marketing-setup-check",
     checkLabel: "Ihren Auftritt einordnen",
     visualLabel: "Ein Auftritt mit Richtung",
     visualTitle: "Verstehen. Vertrauen. Anfragen.",
