@@ -1,7 +1,7 @@
 export const FEEDBACK_VERSION = 1
 export const FEEDBACK_SESSION_KEY = "agenticit-website-feedback-v1"
 export const FEEDBACK_OPEN_EVENT = "agenticit:open-website-feedback"
-export const FEEDBACK_DELAY_MS = 10_000
+export const FEEDBACK_DELAY_MS = 45_000
 
 export const feedbackQuestions = [
   {

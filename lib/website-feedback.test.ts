@@ -26,9 +26,9 @@ function request(
   })
 }
 
-test("the invitation waits ten seconds and does not interrupt forms, videos or other pages", () => {
+test("the invitation waits 45 seconds and does not interrupt forms, videos or other pages", () => {
   const ready = {
-    elapsedMs: 10_000,
+    elapsedMs: 45_000,
     alreadyOffered: false,
     visible: true,
     blocked: false,
@@ -36,7 +36,8 @@ test("the invitation waits ten seconds and does not interrupt forms, videos or o
   }
   assert.equal(canOfferFeedback(ready), true)
   for (const change of [
-    { elapsedMs: 9999 },
+    { elapsedMs: 10_000 },
+    { elapsedMs: 44_999 },
     { alreadyOffered: true },
     { visible: false },
     { blocked: true },
