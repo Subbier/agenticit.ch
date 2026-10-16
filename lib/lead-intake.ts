@@ -8,6 +8,39 @@ const optionalText = (max = 500) =>
     z.string().trim().max(max).optional(),
   )
 
+const automationTaskSchema = z.object({
+  id: z.string().max(50),
+  weeklyCount: z.number().int().min(1).max(100000),
+  minutes: z.number().positive().max(10080),
+  automationPercent: z.number().min(0).max(100),
+})
+const automationBaseSchema = z.object({
+  industryIds: z.array(z.string().max(50)).min(1).max(10),
+  hourlyRate: z.number().min(0).max(10000).optional(),
+})
+const automationSchema = z
+  .discriminatedUnion("version", [
+    automationBaseSchema.extend({
+      version: z.literal(1),
+      tasks: z.array(automationTaskSchema).min(1).max(30),
+    }),
+    automationBaseSchema.extend({
+      version: z.literal(2),
+      tasks: z
+        .array(
+          automationTaskSchema.extend({
+            controlMinutes: z.number().min(0).max(10080),
+          }),
+        )
+        .min(1)
+        .max(30),
+    }),
+  ])
+  .refine(
+    (value) => calculateAutomationPotential(value) !== null,
+    "Bitte prüfen Sie Branchen, Aufgaben und Berechnung.",
+  )
+
 export const leadSchema = z
   .object({
     source: z.enum([
@@ -57,28 +90,7 @@ export const leadSchema = z
         system: z.enum(["manual", "crm", "connected"]),
       })
       .optional(),
-    automation: z
-      .object({
-        version: z.literal(1),
-        industryIds: z.array(z.string().max(50)).min(1).max(10),
-        tasks: z
-          .array(
-            z.object({
-              id: z.string().max(50),
-              weeklyCount: z.number().int().min(1).max(100000),
-              minutes: z.number().positive().max(10080),
-              automationPercent: z.number().min(0).max(100),
-            }),
-          )
-          .min(1)
-          .max(30),
-        hourlyRate: z.number().min(0).max(10000).optional(),
-      })
-      .refine(
-        (value) => calculateAutomationPotential(value) !== null,
-        "Bitte prüfen Sie Branchen, Aufgaben und Berechnung.",
-      )
-      .optional(),
+    automation: automationSchema.optional(),
   })
   .superRefine((data, ctx) => {
     if (data.automation && data.source !== "automation-check") {

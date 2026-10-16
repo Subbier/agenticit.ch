@@ -105,6 +105,67 @@ test("lead endpoint validates before forwarding and handles delivery failure hon
       },
     )
     await suite.test(
+      "version 2 forwards the control-adjusted plan once and rejects missing controls",
+      async () => {
+        const lead = {
+          source: "automation-check",
+          name: "Internal Test",
+          email: "control-route@example.invalid",
+          company: "Test organisation",
+          consent: true,
+          automation: {
+            version: 2,
+            industryIds: ["versicherung"],
+            tasks: [
+              {
+                id: "intake",
+                weeklyCount: 20,
+                minutes: 15,
+                automationPercent: 80,
+                controlMinutes: 2,
+              },
+              {
+                id: "meeting",
+                weeklyCount: 10,
+                minutes: 30,
+                automationPercent: 40,
+                controlMinutes: 5,
+              },
+            ],
+            hourlyRate: 100,
+          },
+          monthlyTimeValue: 999999,
+        }
+        const response = await POST(request(lead, "192.0.2.8"))
+        assert.equal(response.status, 200)
+        assert.equal(calls, 3)
+        assert.ok(String(forwarded.message).includes("CHF 1'950"))
+        assert.ok(
+          String(forwarded.message).includes(
+            "Zusätzliche Kontrolle: 1.5 Std./Woche",
+          ),
+        )
+        assert.equal(forwarded.marketingConsent, false)
+        const invalid = {
+          ...lead,
+          automation: {
+            ...lead.automation,
+            tasks: [
+              {
+                id: "intake",
+                weeklyCount: 20,
+                minutes: 15,
+                automationPercent: 80,
+              },
+            ],
+          },
+        }
+        const rejected = await POST(request(invalid, "192.0.2.9"))
+        assert.equal(rejected.status, 400)
+        assert.equal(calls, 3)
+      },
+    )
+    await suite.test(
       "failed forwarding is not reported as success",
       async () => {
         globalThis.fetch = async () => new Response("", { status: 503 })

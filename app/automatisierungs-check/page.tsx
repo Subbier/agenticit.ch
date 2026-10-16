@@ -6,7 +6,7 @@ import styles from "@/components/journey/journey.module.css"
 export const metadata = createPageMetadata({
   title: "Automatisierungs-Check: Ihr Zeitpotenzial in Minuten und CHF",
   description:
-    "Branche wählen, manuelle Aufgaben markieren und Ihr Automatisierungspotenzial berechnen. Direktes Ergebnis mit Ihren Angaben, ohne E-Mail-Pflicht.",
+    "Manuelle Aufgaben wählen und Zeitpotenzial mit Ihren Angaben berechnen – inklusive zusätzlicher Kontrolle, vorsichtigerem Szenario und einem Plan für Ihren nächsten Schritt.",
   path: "/automatisierungs-check",
 })
 
@@ -26,7 +26,8 @@ export default function Page() {
           <p>
             Wählen Sie Ihre Branche und die Aufgaben, die Ihr Team noch von Hand
             erledigt. Mit Ihren Zahlen wird sichtbar, wo Automatisierung Zeit
-            freigeben könnte.
+            freigeben könnte – mit zusätzlicher Kontrollzeit und einem Plan zum
+            Speichern.
           </p>
         </div>
         <AutomationCheck />

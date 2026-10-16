@@ -249,12 +249,16 @@ export type AutomationTaskInput = {
   minutes: number
   automationPercent: number
 }
-export type AutomationInput = {
-  version: 1
-  industryIds: string[]
-  tasks: AutomationTaskInput[]
-  hourlyRate?: number
+export type AutomationTaskInputV2 = AutomationTaskInput & {
+  controlMinutes: number
 }
+export type AutomationInput = {
+  industryIds: string[]
+  hourlyRate?: number
+} & (
+  | { version: 1; tasks: AutomationTaskInput[] }
+  | { version: 2; tasks: AutomationTaskInputV2[] }
+)
 
 export function getAutomationTasks(industryIds: string[]) {
   const ids = new Set(
@@ -270,7 +274,7 @@ export function calculateAutomationPotential(input: AutomationInput) {
     getAutomationTasks(input.industryIds).map((task) => task.id as string),
   )
   if (
-    input.version !== 1 ||
+    (input.version !== 1 && input.version !== 2) ||
     input.industryIds.length === 0 ||
     new Set(input.industryIds).size !== input.industryIds.length ||
     input.industryIds.some(
@@ -294,31 +298,86 @@ export function calculateAutomationPotential(input: AutomationInput) {
         task.minutes <= 0 ||
         task.minutes > 10080 ||
         task.automationPercent < 0 ||
-        task.automationPercent > 100,
+        task.automationPercent > 100 ||
+        (input.version === 2 &&
+          (!Number.isFinite((task as AutomationTaskInputV2).controlMinutes) ||
+            (task as AutomationTaskInputV2).controlMinutes < 0 ||
+            (task as AutomationTaskInputV2).controlMinutes > 10080)),
     )
   )
     return null
-  const rows = input.tasks.map((task) => ({
-    ...task,
-    label: automationTasks.find((item) => item.id === task.id)!.label,
-    currentMinutes: task.weeklyCount * task.minutes,
-    freedMinutes:
-      (task.weeklyCount * task.minutes * task.automationPercent) / 100,
-  }))
+  const rows = input.tasks.map((task) => {
+    const currentMinutes = task.weeklyCount * task.minutes
+    const automatedMinutes = (currentMinutes * task.automationPercent) / 100
+    const controlMinutesPerCase =
+      input.version === 2 ? (task as AutomationTaskInputV2).controlMinutes : 0
+    // With a zero target the workflow is not automated, so no new control step runs.
+    const weeklyControlMinutes =
+      task.automationPercent === 0
+        ? 0
+        : task.weeklyCount * controlMinutesPerCase
+    return {
+      ...task,
+      label: automationTasks.find((item) => item.id === task.id)!.label,
+      currentMinutes,
+      automatedMinutes,
+      controlMinutesPerCase,
+      weeklyControlMinutes,
+      freedMinutes: automatedMinutes - weeklyControlMinutes,
+    }
+  })
   const currentHours =
     rows.reduce((sum, row) => sum + row.currentMinutes, 0) / 60
   const freedHours = rows.reduce((sum, row) => sum + row.freedMinutes, 0) / 60
+  const automatedHours =
+    rows.reduce((sum, row) => sum + row.automatedMinutes, 0) / 60
+  const controlHours =
+    rows.reduce((sum, row) => sum + row.weeklyControlMinutes, 0) / 60
   const monthlyHours = (freedHours * 52) / 12
   return {
     rows,
     currentHours,
+    automatedHours,
+    controlHours,
     freedHours,
     remainingHours: currentHours - freedHours,
-    automationPercent: (freedHours / currentHours) * 100,
+    automationPercent: (automatedHours / currentHours) * 100,
     monthlyHours,
     monthlyTimeValue:
       input.hourlyRate === undefined ? null : monthlyHours * input.hourlyRate,
   }
+}
+
+export function calculateAutomationScenarios(input: AutomationInput) {
+  const planned = calculateAutomationPotential(input)
+  if (!planned) return null
+  const cautiousInput: AutomationInput =
+    input.version === 2
+      ? {
+          ...input,
+          tasks: input.tasks.map((task) => ({
+            ...task,
+            automationPercent: task.automationPercent * 0.75,
+          })),
+        }
+      : {
+          ...input,
+          tasks: input.tasks.map((task) => ({
+            ...task,
+            automationPercent: task.automationPercent * 0.75,
+          })),
+        }
+  const cautious = calculateAutomationPotential(cautiousInput)!
+  return { planned, cautious }
+}
+
+export function formatAutomationDuration(hours: number) {
+  const inMinutes = Math.abs(hours) > 0 && Math.abs(hours) < 1
+  const value = inMinutes ? hours * 60 : hours
+  const formatted = new Intl.NumberFormat("de-CH", {
+    maximumFractionDigits: 2,
+  }).format(value)
+  return `${formatted} ${inMinutes ? "Min." : "Std."}`
 }
 
 export function buildAutomationPlan(input: AutomationInput) {
@@ -326,9 +385,15 @@ export function buildAutomationPlan(input: AutomationInput) {
   if (!result) return null
   const fmt = (value: number) =>
     new Intl.NumberFormat("de-CH", { maximumFractionDigits: 1 }).format(value)
+  const duration =
+    input.version === 2
+      ? formatAutomationDuration
+      : (hours: number) => `${fmt(hours)} Stunden`
   const first = [...result.rows].sort(
     (a, b) => b.freedMinutes - a.freedMinutes,
   )[0]
+  const scenarios =
+    input.version === 2 ? calculateAutomationScenarios(input) : null
   return [
     "AGENTICIT · IHR AUTOMATISIERUNGS-CHECK",
     `Branchen: ${automationIndustries
@@ -339,22 +404,49 @@ export function buildAutomationPlan(input: AutomationInput) {
     "IHRE AUSGEWÄHLTEN MANUELLEN AUFGABEN",
     ...result.rows.map(
       (row) =>
-        `${row.label}: ${row.weeklyCount} Vorgänge/Woche × ${row.minutes} Minuten; Zielanteil ${row.automationPercent} %; rechnerisch ${fmt(row.freedMinutes / 60)} freie Stunden/Woche.`,
+        `${row.label}: ${row.weeklyCount} Vorgänge/Woche × ${row.minutes} Minuten; Zielanteil ${row.automationPercent} %; ${input.version === 2 ? `zusätzliche Kontrolle ${row.controlMinutesPerCase} Minuten/Vorgang; ` : ""}rechnerischer Zeitgewinn ${duration(row.freedMinutes / 60)}/Woche.`,
     ),
     "",
-    `Erfasster heutiger Aufwand: ${fmt(result.currentHours)} Stunden/Woche`,
+    `Erfasster heutiger Aufwand: ${duration(result.currentHours)}/Woche`,
     `Geplanter Automatisierungsgrad des erfassten Zeitaufwands: ${fmt(result.automationPercent)} %`,
-    `Rechnerisch freie Kapazität: ${fmt(result.freedHours)} Stunden/Woche, ${fmt(result.monthlyHours)} Stunden/Monat`,
+    ...(input.version === 2
+      ? [
+          `Automatisierte Bearbeitungszeit: ${duration(result.automatedHours)}/Woche`,
+          `Zusätzliche Kontrolle: ${duration(result.controlHours)}/Woche`,
+        ]
+      : []),
+    `${input.version === 2 ? "Rechnerischer Zeitgewinn nach Kontrolle" : "Rechnerisch freie Kapazität"}: ${duration(result.freedHours)}/Woche, ${duration(result.monthlyHours)}/Monat`,
+    ...(input.version === 2
+      ? [
+          `Verbleibender Gesamtaufwand: ${duration(result.remainingHours)}/Woche`,
+        ]
+      : []),
     input.hourlyRate === undefined
       ? "Kein Stundensatz angegeben; kein Zeitwert in CHF berechnet."
       : `Interner Stundensatz: CHF ${fmt(input.hourlyRate)}; rechnerischer Zeitwert: CHF ${fmt(result.monthlyTimeValue!)} pro Monat.`,
+    ...(scenarios
+      ? [
+          "",
+          "VORSICHTIGER RECHNEN",
+          `Vergleich mit 75 % Ihres Zielanteils und unveränderter Kontrollzeit: ${duration(scenarios.cautious.freedHours)}/Woche. Dies ist eine andere Annahme, keine Prognose oder Erfolgswahrscheinlichkeit.`,
+        ]
+      : []),
     "",
     result.freedHours > 0
       ? `Zuerst prüfen: ${first.label}. Grenzen Sie einen Schritt ab, bestätigen Sie Datenzugang und Zuständigkeit und messen Sie die tatsächliche Zeit vor und nach einem Test.`
-      : "Bei einem Zielanteil von 0 % entsteht rechnerisch keine freie Kapazität. Prüfen Sie einen geeigneten Teilprozess.",
+      : result.freedHours < 0
+        ? `Rechnerischer Mehraufwand: ${duration(-result.freedHours)}/Woche. Die zusätzliche Kontrolle kostet mehr Zeit, als die Automatisierung freigibt. Prüfen Sie einen einfacheren Ablauf.`
+        : "Unter diesen Annahmen entsteht rechnerisch keine freie Kapazität. Prüfen Sie einen geeigneten Teilprozess.",
+    ...(input.version === 2
+      ? [
+          "1. Heute messen: Zeit und Häufigkeit des ausgewählten Ablaufs an realen Vorgängen festhalten.",
+          "2. Grenzen festlegen: Datenzugang, Ausnahmen, Zuständigkeit und menschliche Freigaben vereinbaren.",
+          "3. Gemeinsam vergleichen: Bearbeitung plus Kontrolle nach einem begrenzten Test erneut messen und die laufenden Kosten einbeziehen.",
+        ]
+      : []),
     "Fachliche Entscheidungen, Ausnahmen und Freigaben bleiben beim zuständigen Menschen. Geschäftliche Nachrichten vor Versand freigeben.",
     "",
-    "Planung mit Ihren Angaben. Beispielwerte und Zielanteile sind keine Branchenbenchmarks und keine geprüfte technische Machbarkeit. Monatswert = Wochenwert × 52 / 12. Freie Zeit ist keine automatisch eingesparte Ausgabe. Umsetzung, Software, Betrieb und Kontrollen sind nicht als Kosten abgezogen.",
+    `Planung mit Ihren Angaben. Beispielwerte und Zielanteile sind keine Branchenbenchmarks und keine geprüfte technische Machbarkeit. Monatswert = Wochenwert × 52 / 12. Freie Zeit ist keine automatisch eingesparte Ausgabe. Umsetzung, Software und Betrieb sind nicht als Kosten abgezogen. ${input.version === 2 ? "Die eingegebene zusätzliche Kontrollzeit ist als Zeitaufwand abgezogen. Sie gilt je Vorgang, sobald der Zielanteil grösser als 0 % ist." : "Kontrollen müssen bereits im eingegebenen Netto-Zielanteil berücksichtigt sein."}`,
     "https://agenticit.ch/automatisierungs-check",
   ].join("\n")
 }
