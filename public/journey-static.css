@@ -35,15 +35,15 @@ body {
 .site-brand strong {
   font-weight: 400;
 }
-.site-header .site-brand {
+:is(.site-header, .site-footer) .site-brand {
   font-size: 45px;
   line-height: 1;
   font-weight: 800;
 }
-.site-header .site-brand strong {
+:is(.site-header, .site-footer) .site-brand strong {
   font-weight: 800;
 }
-.site-header .site-brand img {
+:is(.site-header, .site-footer) .site-brand img {
   width: 35.2px;
   height: 35.2px;
 }
@@ -111,13 +111,13 @@ summary:focus-visible {
   color: #647068;
 }
 .site-footer-top {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 28px;
+  display: grid;
+  grid-template-columns: 255px max-content minmax(0, 1fr);
+  gap: 24px;
   align-items: start;
 }
 .site-footer-copy {
+  max-width: 255px;
   margin: 16px 0 0;
   line-height: 1.7;
 }
@@ -135,8 +135,8 @@ summary:focus-visible {
 }
 .site-footer-trust {
   display: flex;
-  gap: 20px;
-  align-items: center;
+  gap: 16px;
+  align-items: flex-start;
 }
 .site-footer-trust a {
   display: grid;
@@ -146,16 +146,33 @@ summary:focus-visible {
   color: #647068;
   text-decoration: none;
 }
+.site-trust-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 35.2px;
+  overflow: hidden;
+}
 .site-footer-trust img {
-  width: 58px;
-  height: 28px;
+  display: block;
+  width: 65px;
+  height: auto;
   object-fit: contain;
   filter: grayscale(1);
   opacity: 0.65;
 }
+.site-trust-image.swico-image {
+  width: 136px;
+}
+.site-trust-image.swico-image img {
+  width: 190px;
+  max-width: none;
+  flex: none;
+}
 .site-footer-trust .training {
-  width: 30px;
-  height: 30px;
+  width: 35.2px;
+  height: 35.2px;
+  filter: brightness(0);
 }
 .site-footer-bottom {
   display: flex;
@@ -171,6 +188,15 @@ summary:focus-visible {
   color: #647068;
   text-decoration: none;
   margin-left: 20px;
+}
+@media (max-width: 1100px) {
+  .site-footer-top {
+    grid-template-columns: 1fr auto;
+  }
+  .site-footer-links {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
 }
 @media (max-width: 900px) {
   .site-header > div {
@@ -229,16 +255,42 @@ summary:focus-visible {
     min-height: 76px;
     padding-block: 17px;
   }
-  .site-header .site-brand {
+  :is(.site-header, .site-footer) .site-brand {
     font-size: 41px;
     gap: 9px;
   }
-  .site-header .site-brand img {
+  :is(.site-header, .site-footer) .site-brand img {
     width: 32px;
     height: 32px;
   }
   .site-mobile summary {
     top: 15px;
+  }
+  .site-footer-top {
+    grid-template-columns: 1fr;
+  }
+  .site-footer-links {
+    grid-row: 3;
+  }
+  .site-footer-trust {
+    grid-row: 2;
+    gap: 8px;
+  }
+  .site-trust-image {
+    height: 32px;
+  }
+  .site-footer-trust img {
+    width: 59px;
+  }
+  .site-trust-image.swico-image {
+    width: 124px;
+  }
+  .site-trust-image.swico-image img {
+    width: 173px;
+  }
+  .site-footer-trust .training {
+    width: 32px;
+    height: 32px;
   }
 }
 @media (max-width: 540px) {
@@ -265,7 +317,7 @@ summary:focus-visible {
   }
 }
 @media (max-width: 360px) {
-  .site-header .site-brand {
+  :is(.site-header, .site-footer) .site-brand {
     gap: 7px;
     letter-spacing: -2px;
   }

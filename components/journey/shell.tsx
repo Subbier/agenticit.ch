@@ -131,7 +131,9 @@ export function JourneyShell({ children }: { children: React.ReactNode }) {
                 aria-label="Mitglied bei Swico"
                 title="Mitglied bei Swico"
               >
-                <span className={styles.footerTrustImage}>
+                <span
+                  className={`${styles.footerTrustImage} ${styles.swicoImage}`}
+                >
                   <img
                     src="/logos/swico-rgb.jpg"
                     alt="Swico"

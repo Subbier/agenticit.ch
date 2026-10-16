@@ -66,15 +66,15 @@
 .brand strong {
   font-weight: 400;
 }
-.header .brand {
+:is(.header, .footer) .brand {
   font-size: 45px;
   line-height: 1;
 }
-.header .brandIcon {
+:is(.header, .footer) .brandIcon {
   width: 35.2px;
   height: 35.2px;
 }
-.header .brand :is(span, strong) {
+:is(.header, .footer) .brand :is(span, strong) {
   font-weight: 800;
 }
 .nav {
@@ -460,12 +460,6 @@
   }
   to {
     transform: scaleX(1);
-  }
-}
-@media (max-width: 360px) {
-  .header .brand {
-    gap: 7px;
-    letter-spacing: -2px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -1182,12 +1176,12 @@
 }
 .footerTop {
   display: grid;
-  grid-template-columns: minmax(150px, 1fr) auto auto;
+  grid-template-columns: 255px max-content minmax(0, 1fr);
   align-items: start;
-  gap: 32px;
+  gap: 24px;
 }
 .footerBrand {
-  max-width: 240px;
+  max-width: 255px;
 }
 .footerCopy {
   margin-top: 14px !important;
@@ -1223,7 +1217,7 @@
 .footerTrust {
   display: flex;
   align-items: flex-start;
-  gap: 12px;
+  gap: 16px;
 }
 .footerTrustLink {
   display: flex;
@@ -1245,10 +1239,11 @@
   text-underline-offset: 4px;
 }
 .footerTrustImage {
-  height: 38px;
+  height: 35.2px;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 .footerTrustImage img {
   display: block;
@@ -1258,16 +1253,21 @@
   opacity: 0.65;
 }
 .swissictLogo {
-  width: 64px;
+  width: 65px;
   height: auto;
 }
-.swicoLogo {
-  width: 82px;
+.swicoImage {
+  width: 136px;
+}
+.footerTrustImage .swicoLogo {
+  width: 190px;
+  max-width: none;
+  flex: none;
   height: auto;
 }
 .footerTrustImage .trainingLogo {
-  width: 34px;
-  height: 34px;
+  width: 35.2px;
+  height: 35.2px;
   filter: brightness(0);
 }
 .footerBottom {
@@ -1671,22 +1671,29 @@
     gap: 80px;
   }
 }
+@media (max-width: 1100px) {
+  .footerTop {
+    grid-template-columns: 1fr auto;
+  }
+  .footerLinks {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+}
 @media (max-width: 980px) {
   .footerTop {
+    grid-template-columns: 1fr auto;
     gap: 20px;
   }
   .footerLinks {
+    grid-column: 1 / -1;
+    grid-row: 2;
     gap: 18px;
     font-size: 12px;
   }
   .footerTrust {
+    justify-self: end;
     gap: 8px;
-  }
-  .swissictLogo {
-    width: 58px;
-  }
-  .swicoLogo {
-    width: 74px;
   }
   .container {
     width: calc(100% - 48px);
@@ -1736,11 +1743,11 @@
     min-height: 76px;
     padding-block: 17px;
   }
-  .header .brand {
+  :is(.header, .footer) .brand {
     font-size: 41px;
     gap: 9px;
   }
-  .header .brandIcon {
+  :is(.header, .footer) .brandIcon {
     width: 32px;
     height: 32px;
   }
@@ -1932,47 +1939,44 @@
     font-size: 27px;
   }
   .footerTop {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 24px 18px;
   }
   .footerLinks {
     grid-column: 1 / -1;
-    grid-row: 2;
+    grid-row: 3;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 25px 18px;
     font-size: 12px;
   }
   .footerTrust {
-    grid-column: 2;
-    grid-row: 1;
-    justify-self: end;
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: start;
     gap: 8px;
-  }
-  .footerBrand .brand {
-    gap: 8px;
-    font-size: 21px;
   }
   .footerCopy {
-    font-size: 11px !important;
+    font-size: 12px !important;
   }
   .footerTrustLink {
-    font-size: 9px;
+    font-size: 10px;
+  }
+  .footerTrustImage {
+    height: 32px;
   }
   .swissictLogo {
-    width: 44px;
+    width: 59px;
   }
-  .swicoLogo {
-    width: 54px;
+  .swicoImage {
+    width: 124px;
   }
-  .footerTrustTraining {
-    max-width: 40px;
-    white-space: normal;
-    line-height: 1.4;
+  .footerTrustImage .swicoLogo {
+    width: 173px;
   }
-  .trainingLogo {
-    width: 28px;
-    height: 28px;
+  .footerTrustImage .trainingLogo {
+    width: 32px;
+    height: 32px;
   }
   .footerBottom {
     margin-top: 25px;
@@ -2093,5 +2097,11 @@
   .shell * {
     scroll-behavior: auto;
     transition: none !important;
+  }
+}
+@media (max-width: 360px) {
+  :is(.header, .footer) .brand {
+    gap: 7px;
+    letter-spacing: -2px;
   }
 }
