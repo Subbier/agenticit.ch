@@ -53,28 +53,105 @@ export function JourneyShell({ children }: { children: React.ReactNode }) {
         </header>
       </div>
       {children}
-      <footer className={styles.footer}>
+      <footer id="footer" className={styles.footer}>
         <div className={styles.container}>
           <div className={styles.footerTop}>
             <div>
               <Brand />
               <p className={styles.footerCopy}>
-                Marketing, Vertrieb und Kundenbetreuung.
+                Schweizer Lösungen. Digital verbunden.
                 <br />
-                Ein klarer Weg, der Menschen verbindet.
+                Mehr Freiraum für Ihr Unternehmen.
               </p>
             </div>
             <nav aria-label="Fussnavigation" className={styles.footerLinks}>
-              <Link href="/werkzeuge">Checks & Vorlagen</Link>
-              <Link href="/pakete">Testpakete</Link>
-              <Link href="/zusammenarbeit">So arbeiten wir</Link>
-              <a href="mailto:info@agenticit.ch">Kontakt aufnehmen ↗</a>
+              <div>
+                <strong>Entdecken</strong>
+                <Link href="/werkzeuge">Checks & Vorlagen</Link>
+                <Link href="/pakete">Testpakete</Link>
+                <Link href="/zusammenarbeit">So arbeiten wir</Link>
+              </div>
+              <div>
+                <strong>Wissen</strong>
+                <Link href="/blog">Blog</Link>
+                <Link href="/branchen">Branchen</Link>
+              </div>
+              <div>
+                <strong>Kontakt</strong>
+                <a href="tel:+41315394444">031 539 44 44</a>
+                <a href="mailto:info@agenticit.ch">info@agenticit.ch</a>
+                <Link href="/kontakt">Kontaktformular ↗</Link>
+                <span>Bern, Schweiz</span>
+              </div>
             </nav>
+          </div>
+          <div
+            className={styles.footerTrust}
+            aria-label="Mitgliedschaften und Ausbildung"
+          >
+            <a
+              href="https://www.swissict.ch/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.footerTrustLink}
+            >
+              <span className={styles.footerTrustImage}>
+                <img
+                  src="/logos/swissict-src.png"
+                  alt="swissICT"
+                  width="166"
+                  height="74"
+                  loading="lazy"
+                  className={styles.swissictLogo}
+                />
+              </span>
+              <span>
+                Mitglied bei <strong>swissICT</strong>
+              </span>
+            </a>
+            <a
+              href="https://www.swico.ch/de/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.footerTrustLink}
+            >
+              <span className={styles.footerTrustImage}>
+                <img
+                  src="/logos/swico-rgb.jpg"
+                  alt="Swico"
+                  width="2000"
+                  height="852"
+                  loading="lazy"
+                  className={styles.swicoLogo}
+                />
+              </span>
+              <span>
+                Mitglied bei <strong>Swico</strong>
+              </span>
+            </a>
+            <Link
+              href="/karriere"
+              className={`${styles.footerTrustLink} ${styles.footerTrustTraining}`}
+            >
+              <span className={styles.footerTrustImage}>
+                <img
+                  src="/logos/wir-bilden-aus.png"
+                  alt=""
+                  width="600"
+                  height="600"
+                  loading="lazy"
+                  className={styles.trainingLogo}
+                />
+              </span>
+              <span>
+                <strong>Wir bilden aus</strong>
+                <small>Ausbildung & Karriere ↗</small>
+              </span>
+            </Link>
           </div>
           <div className={styles.footerBottom}>
             <span>
-              © {new Date().getFullYear()} AgenticIT GmbH · Ostermundigen,
-              Schweiz
+              © {new Date().getFullYear()} AgenticIT GmbH · Bern, Schweiz
             </span>
             <div>
               <Link href="/datenschutz">Datenschutz</Link>

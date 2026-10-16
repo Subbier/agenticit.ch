@@ -6,9 +6,9 @@ import { journeyFaqs } from "@/lib/journey"
 
 export const metadata: Metadata = {
   ...createPageMetadata({
-    title: "Kunden gewinnen und Beziehungen stärken",
+    title: "Schweizer Lösungen: digital verbunden, mit KI entlastet",
     description:
-      "AgenticIT verbindet Marketing, Vertrieb und Kundenbetreuung für Schweizer Beratungs- und Vertriebsfirmen. Finden Sie mit dem kostenlosen Kundenreise-Check Ihren Ansatzpunkt.",
+      "AgenticIT verbindet Website, Marketing, Vertrieb und interne Abläufe. Schweizer Lösungen und passende KI für weniger Handarbeit und mehr Freiraum. Entdecken Sie Ihren Ansatzpunkt.",
     path: "/",
   }),
 }

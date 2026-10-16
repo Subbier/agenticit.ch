@@ -27,19 +27,20 @@ export function JourneyHome() {
           <section className={styles.hero}>
             <div>
               <span className={styles.eyebrow}>
-                Für Unternehmen, die beraten und verkaufen
+                Schweizer Lösungen für Ihre digitale Zukunft
               </span>
               <h1>
-                Kunden gewinnen.
+                Digital verbunden.
                 <br />
-                Beziehungen stärken.
+                Mit KI entlastet.
                 <br />
-                <em>Weiter wachsen.</em>
+                <em>Bereit für morgen.</em>
               </h1>
               <p className={styles.heroCopy}>
-                Wir verbinden Marketing, Vertrieb und Kundenbetreuung. Mit
-                passenden digitalen Abläufen und KI, die Ihrem Team Arbeit
-                abnimmt und Menschen zusammenbringt.
+                Website, Marketing, Vertrieb und interne Abläufe: Wir bringen
+                Ihr digitales Umfeld zusammen. Mit Schweizer Lösungen und KI,
+                die Ihr Team Schritt für Schritt entlastet. Weniger Handarbeit
+                und Abstimmung – mehr Freiraum für Kunden, Team und Wachstum.
               </p>
               <div className={styles.actions}>
                 <Link href="/kundenreise-check" className={styles.button}>
@@ -112,14 +113,14 @@ export function JourneyHome() {
           <div className={styles.container}>
             <span className={styles.eyebrow}>Das Ganze im Blick</span>
             <h2>
-              Jeder Kontakt ist Teil
+              Aus einzelnen Kontakten
               <br />
-              einer grösseren Beziehung.
+              wird ein gemeinsamer Weg.
             </h2>
             <p className={styles.sectionIntro}>
-              Eine gute Anzeige allein genügt selten. Entscheidend ist, wie
-              Menschen von einem Schritt zum nächsten kommen. Entdecken Sie, was
-              wir verbinden.
+              Wenn Website, Marketing, Vertrieb und Betreuung zusammenspielen,
+              entstehen klare Übergaben. Daten bleiben nutzbar, Aufgaben haben
+              einen Verantwortlichen und Ihr Team behält den Überblick.
             </p>
             <JourneyMap />
           </div>
@@ -151,10 +152,12 @@ export function JourneyHome() {
         <section className={`${styles.section} ${styles.tint}`}>
           <div className={styles.container}>
             <span className={styles.eyebrow}>Gemeinsam in die Umsetzung</span>
-            <h2>Ihr Team bleibt im Mittelpunkt.</h2>
+            <h2>Die Technik entwickelt sich. Ihr Team kommt mit.</h2>
             <p className={styles.sectionIntro}>
-              Von der ersten Frage bis zum Betrieb: Wir verbinden die technische
-              Umsetzung mit Ihrem Arbeitsalltag.
+              Als Schweizer Partner begleiten wir Sie von der ersten Idee bis
+              zum Betrieb. Wir verbinden Strategie, Systeme und Menschen, bauen
+              auf Ihren vorhandenen Ressourcen auf und prüfen den Nutzen bei
+              jedem Schritt.
             </p>
             <CollaborationSteps />
             <div className={styles.actions}>

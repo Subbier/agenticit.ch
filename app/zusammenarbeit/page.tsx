@@ -50,14 +50,15 @@ export default function Page() {
         <div className={styles.pageHero}>
           <span className={styles.eyebrow}>Von der Idee in Ihren Alltag</span>
           <h1>
-            Ein gemeinsames Ziel.
+            Ein Partner fürs Ganze.
             <br />
-            Klare nächste Schritte.
+            Schritt für Schritt weiter.
           </h1>
           <p>
-            Technik entfaltet ihren Nutzen, wenn Abläufe und Menschen
-            zusammenspielen. Deshalb gehören Beratung, Umsetzung, Einweisung und
-            Übergabe von Anfang an zusammen.
+            Wir begleiten Ihr Unternehmen aus der Schweiz in die digitale
+            Zukunft. Website, Systeme, Kommunikation und interne Abläufe denken
+            wir zusammen. KI kommt dort zum Einsatz, wo sie Ihr Team entlastet –
+            mit einem klaren Fahrplan und einem Ansprechpartner.
           </p>
         </div>
         <section
@@ -79,22 +80,23 @@ export default function Page() {
         </section>
         <section className={styles.section}>
           <span className={styles.eyebrow}>Business und Technologie</span>
-          <h2>Wir verbinden beide Seiten.</h2>
+          <h2>Ein Gesamtplan. Gemeinsam umgesetzt.</h2>
           <div className={styles.team}>
             <article>
-              <h3>Meliksah Doldur</h3>
-              <small>Business und Zusammenarbeit</small>
+              <h3>Business und Zusammenarbeit</h3>
               <p>
-                Ziele, Angebot und wirtschaftlicher Rahmen werden gemeinsam
-                geklärt.
+                Wir klären Ziele, Prioritäten und wirtschaftlichen Nutzen.
+                Bestehende Ressourcen werden einbezogen; Aufwand und Budget
+                bleiben im Blick.
               </p>
             </article>
             <article>
-              <h3>Sabir Rastoder</h3>
-              <small>Technologie und Umsetzung</small>
+              <h3>Technologie und Umsetzung</h3>
               <p>
-                Vom Prozessentwurf über Entwicklung und Test bis zur Einweisung
-                und Übergabe.
+                Wir verbinden Systeme und vereinfachen Abläufe. Datenwege,
+                Zugriffe und menschliche Verantwortung klären wir bei jedem
+                Schritt – von Entwicklung und Test bis zur Einweisung und
+                Betreuung.
               </p>
             </article>
           </div>
