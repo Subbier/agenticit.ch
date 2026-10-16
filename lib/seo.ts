@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 export const SITE_URL = "https://agenticit.ch"
 export const SITE_NAME = "AgenticIT"
 export const SITE_LOCALE = "de_CH"
-export const DEFAULT_OG_IMAGE = `${SITE_URL}/icon.svg`
+export const DEFAULT_OG_IMAGE = `${SITE_URL}/opengraph-image`
 
 // Verifizierte Social-/Autoritätsprofile für sameAs (E-E-A-T-Signal).
 // Sobald die offiziellen Profile bekannt sind (LinkedIn, Zefix, etc.) hier eintragen.
@@ -47,6 +47,8 @@ type PageMetaInput = {
   type?: "website" | "article"
   publishedTime?: string
   modifiedTime?: string
+  image?: string
+  imageAlt?: string
 }
 
 export function absoluteUrl(path: string) {
@@ -72,9 +74,12 @@ export function createPageMetadata({
   type = "website",
   publishedTime,
   modifiedTime,
+  image = DEFAULT_OG_IMAGE,
+  imageAlt = SITE_NAME,
 }: PageMetaInput): Metadata {
   const url = absoluteUrl(path)
   const title = stripBrandSuffix(rawTitle)
+  const imageUrl = absoluteUrl(image)
 
   return {
     title,
@@ -88,7 +93,15 @@ export function createPageMetadata({
       siteName: SITE_NAME,
       title,
       description,
-      images: [{ url: DEFAULT_OG_IMAGE, alt: SITE_NAME }],
+      images: [
+        {
+          url: imageUrl,
+          alt: imageAlt,
+          width: 1200,
+          height: 630,
+          type: "image/png",
+        },
+      ],
       ...(publishedTime ? { publishedTime } : {}),
       ...(modifiedTime ? { modifiedTime } : {}),
     },
@@ -96,7 +109,7 @@ export function createPageMetadata({
       card: "summary_large_image",
       title,
       description,
-      images: [DEFAULT_OG_IMAGE],
+      images: [{ url: imageUrl, alt: imageAlt }],
     },
     robots: {
       index: true,

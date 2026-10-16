@@ -10,6 +10,7 @@
     "ios_saf >= 16"
   ],
   "scripts": {
+    "test:social": "node --import tsx --test lib/social-previews.test.ts",
     "test:services": "node --import tsx --test lib/core-services.test.ts",
     "test:testleads": "node --import tsx --test lib/test-leads.test.ts lib/test-leads-handler.test.ts lib/test-leads-service.test.ts",
     "test:journey": "node --import tsx --test lib/journey.test.ts lib/lead-route.test.ts",

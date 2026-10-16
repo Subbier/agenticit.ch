@@ -7,6 +7,8 @@ export const metadata = createPageMetadata({
   title: service.title,
   description: service.description,
   path: `/loesungen/${service.slug}`,
+  image: `/loesungen/${service.slug}/opengraph-image`,
+  imageAlt: `${service.title} – AgenticIT`,
 })
 
 export default function Page() {
