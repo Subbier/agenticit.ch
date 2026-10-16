@@ -318,7 +318,12 @@ summary:focus-visible {
 }
 @media (max-width: 360px) {
   :is(.site-header, .site-footer) .site-brand {
+    font-size: 37.5px;
     gap: 7px;
     letter-spacing: -2px;
+  }
+  :is(.site-header, .site-footer) .site-brand img {
+    width: 29.2px;
+    height: 29.2px;
   }
 }
