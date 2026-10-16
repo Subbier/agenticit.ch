@@ -9,6 +9,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react"
 import Link from "next/link"
+import styles from "./consent-banner.module.css"
 import {
   CONSENT_REOPEN_EVENT,
   applyConsent,
@@ -120,7 +121,7 @@ export function ConsentBanner() {
 
   return (
     <div
-      className="fixed inset-x-0 bottom-0 z-[80] px-3 pb-3 sm:px-5 sm:pb-5"
+      className="pointer-events-none fixed inset-x-0 bottom-0 z-[80] px-3 pb-3 sm:px-5 sm:pb-5"
       role="dialog"
       aria-modal="false"
       aria-labelledby="consent-title"
@@ -129,27 +130,20 @@ export function ConsentBanner() {
       <div
         ref={panelRef}
         tabIndex={-1}
-        className="mx-auto max-w-[720px] rounded-[16px] border border-white/[0.10] bg-[#1b2a20] p-5 shadow-[0_24px_64px_rgba(0,0,0,0.55)] outline-none sm:p-6"
+        className="pointer-events-auto mx-auto max-h-[calc(100dvh-24px)] max-w-[600px] overflow-y-auto rounded-xl border border-white/[0.10] bg-[#1b2a20] p-4 shadow-[0_12px_40px_rgba(0,0,0,0.3)] outline-none"
       >
-        <div className="flex items-start gap-3">
+        <div className="flex items-start gap-2.5">
           <span
             aria-hidden="true"
             className="mt-[3px] h-2.5 w-2.5 shrink-0 rounded-full bg-[#a4df7f]"
           />
           <div className="min-w-0">
-            <h2
-              id="consent-title"
-              className="font-[family-name:var(--font-display)] text-[17px] font-bold tracking-[-0.01em] text-white"
-            >
-              Sie entscheiden, was gemessen wird
+            <h2 id="consent-title" className={styles.title}>
+              Cookies. Ihre Wahl.
             </h2>
-            <p
-              id="consent-desc"
-              className="mt-1.5 font-[family-name:var(--font-carbon-text)] text-[14px] leading-[1.6] text-[#b8c9b0]"
-            >
-              Notwendige Cookies halten die Seite am Laufen. Alles Weitere —
-              Reichweitenmessung, Werbung und unser Live-Chat — läuft nur, wenn
-              Sie zustimmen. Sie können Ihre Wahl jederzeit im Footer ändern.{" "}
+            <p id="consent-desc" className={styles.description}>
+              Notwendige Cookies für den Betrieb. Statistik, Werbung und Chat
+              nur mit Ihrer Zustimmung.{" "}
               <Link
                 href="/datenschutz"
                 className="font-semibold text-[#a4df7f] underline-offset-2 hover:underline"
@@ -179,12 +173,8 @@ export function ConsentBanner() {
                           </span>
                         )}
                       </div>
-                      <p className="mt-1 font-[family-name:var(--font-carbon-text)] text-[13px] leading-[1.55] text-[#b8c9b0]">
-                        {cat.description}
-                      </p>
-                      <p className="mt-1.5 font-[family-name:var(--font-jetbrains-mono)] text-[11.5px] text-[#6B7684]">
-                        {cat.tools}
-                      </p>
+                      <p className={styles.categoryText}>{cat.description}</p>
+                      <p className={styles.tools}>{cat.tools}</p>
                     </div>
 
                     <button
@@ -215,11 +205,11 @@ export function ConsentBanner() {
           </ul>
         )}
 
-        <div className="mt-5 flex flex-col gap-2.5 sm:flex-row sm:items-center">
+        <div className="mt-3 grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:items-center">
           <button
             type="button"
             onClick={() => decide({ statistics: true, marketing: true })}
-            className="order-1 rounded-[9px] bg-[#8FE05A] px-5 py-[11px] font-[family-name:var(--font-carbon-text)] text-[14px] font-semibold text-[#122400] transition hover:bg-[#A2E874] sm:order-3"
+            className="order-2 min-h-10 rounded-lg bg-[#8FE05A] px-3 py-2 font-[family-name:var(--font-carbon-text)] text-[12px] font-semibold text-[#122400] transition hover:bg-[#A2E874] sm:order-3"
           >
             Alle akzeptieren
           </button>
@@ -228,7 +218,7 @@ export function ConsentBanner() {
             <button
               type="button"
               onClick={() => decide({ statistics, marketing })}
-              className="order-2 rounded-[9px] border border-white/[0.16] px-5 py-[11px] font-[family-name:var(--font-carbon-text)] text-[14px] font-semibold text-white transition hover:border-white/30 sm:order-2"
+              className="order-3 col-span-2 min-h-10 rounded-lg border border-white/[0.16] px-3 py-2 font-[family-name:var(--font-carbon-text)] text-[12px] font-semibold text-white transition hover:border-white/30 sm:order-2"
             >
               Auswahl speichern
             </button>
@@ -236,7 +226,7 @@ export function ConsentBanner() {
             <button
               type="button"
               onClick={() => setShowDetails(true)}
-              className="order-2 rounded-[9px] border border-white/[0.16] px-5 py-[11px] font-[family-name:var(--font-carbon-text)] text-[14px] font-semibold text-white transition hover:border-white/30 sm:order-2"
+              className="order-3 col-span-2 min-h-10 rounded-lg px-3 py-2 font-[family-name:var(--font-carbon-text)] text-[12px] font-medium text-[#b8c9b0] transition hover:text-white sm:order-2"
             >
               Einstellungen
             </button>
@@ -245,7 +235,7 @@ export function ConsentBanner() {
           <button
             type="button"
             onClick={() => decide({ statistics: false, marketing: false })}
-            className="order-3 rounded-[9px] px-5 py-[11px] font-[family-name:var(--font-carbon-text)] text-[14px] font-medium text-[#b8c9b0] transition hover:text-white sm:order-1 sm:mr-auto"
+            className="order-1 min-h-10 rounded-lg border border-white/[0.16] px-3 py-2 font-[family-name:var(--font-carbon-text)] text-[12px] font-semibold text-white transition hover:border-white/30 sm:mr-auto"
           >
             Nur notwendige
           </button>
