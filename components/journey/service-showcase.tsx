@@ -14,9 +14,9 @@ const areas = [
   },
   {
     id: "revenue",
-    title: "Umsatzmotor",
+    title: "Sales",
     benefit: "Kontakte weiterbringen.\nKunden gewinnen.",
-    examples: "CRM · Vertrieb · Kundenbindung",
+    examples: "CRM · Termine · Kundenbindung",
     icon: TrendingUp,
   },
   {
@@ -65,7 +65,7 @@ export function ServiceShowcase() {
       className={styles.showcase}
       role="region"
       aria-roledescription="Karussell"
-      aria-label="Marketing, Umsatzmotor und Digitalisierung mit KI"
+      aria-label="Marketing, Sales und Digitalisierung mit KI"
       data-running={isAdvancing}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
