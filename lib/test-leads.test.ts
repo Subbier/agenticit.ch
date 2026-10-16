@@ -70,5 +70,7 @@ test("CRM and Mia receive the same submitted context, with an immutable consent 
   assert.equal(context.record_id, "123456789012345678")
   assert.equal(context.familienmitglieder, "2")
   assert.equal(context.rueckruf_erlaubt, "ja")
+  assert.equal(context.thema, "Krankenkassenvergleich")
+  assert.ok(!("testmodus" in context))
   assert.ok(!("companyWebsite" in lead))
 })
