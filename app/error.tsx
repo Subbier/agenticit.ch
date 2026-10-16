@@ -1,7 +1,8 @@
 "use client"
 
 import { useEffect } from "react"
-import { Button } from "@/components/ui/button"
+import { JourneyShell } from "@/components/journey/shell"
+import styles from "@/components/journey/journey.module.css"
 
 export default function Error({
   error,
@@ -15,18 +16,27 @@ export default function Error({
   }, [error])
 
   return (
-    <div className="flex min-h-[50vh] flex-col items-center justify-center gap-6 px-6 text-center">
-      <div className="space-y-2">
-        <h1 className="text-2xl font-semibold tracking-tight">
-          Etwas ist schiefgelaufen
-        </h1>
-        <p className="max-w-md text-muted-foreground text-sm">
-          Die Seite konnte nicht geladen werden. Bitte versuchen Sie es erneut.
-        </p>
-      </div>
-      <Button type="button" onClick={() => reset()}>
-        Erneut laden
-      </Button>
-    </div>
+    <JourneyShell>
+      <main className={styles.container}>
+        <div className={styles.pageHero}>
+          <div className="space-y-2">
+            <h1 className="text-2xl font-semibold tracking-tight">
+              Etwas ist schiefgelaufen
+            </h1>
+            <p className="max-w-md text-muted-foreground text-sm">
+              Die Seite konnte nicht geladen werden. Bitte versuchen Sie es
+              erneut.
+            </p>
+          </div>
+          <button
+            className={styles.button}
+            type="button"
+            onClick={() => reset()}
+          >
+            Erneut laden
+          </button>
+        </div>
+      </main>
+    </JourneyShell>
   )
 }

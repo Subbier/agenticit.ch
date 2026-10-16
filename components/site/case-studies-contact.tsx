@@ -1,4 +1,4 @@
-﻿"use client"
+"use client"
 
 import { CalendarCheck, DatabaseZap, Mail } from "lucide-react"
 import type { LucideIcon } from "lucide-react"
@@ -8,20 +8,32 @@ import { advokCaseStudy as cs } from "@/lib/case-study-advok"
 export function CaseStudiesContact() {
   return (
     <section id="contact" className="scroll-mt-28 px-4 py-12 sm:px-6 sm:py-16">
-      <div className="mx-auto max-w-6xl rounded-2xl border border-white/15 bg-white/[0.04] p-6 sm:p-10">
+      <div className="mx-auto max-w-6xl rounded-2xl border border-[#dce3db] bg-white p-6 sm:p-10">
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <div>
-            <p className="overline text-sm font-semibold uppercase tracking-[0.22em] text-[#57C7FF]">Nächster Schritt</p>
-            <h2 className="mt-4 text-balance text-3xl font-light text-white sm:text-4xl">{cs.cta.title}</h2>
-            <p className="mt-4 text-base leading-7 text-white/70">{cs.cta.description}</p>
-            <div className="mt-6 grid gap-3 text-sm text-white/70">
-              <Benefit icon={CalendarCheck} text="45-Minuten Strategiegespräch mit Lead-Potenzial-Analyse" />
-              <Benefit icon={DatabaseZap} text="ROI-Projektion für Ihre Partnerstruktur" />
+            <p className="overline text-sm font-semibold uppercase tracking-[0.22em] text-[#4d7c36]">
+              Nächster Schritt
+            </p>
+            <h2 className="mt-4 text-balance text-3xl font-light text-[#202522] sm:text-4xl">
+              {cs.cta.title}
+            </h2>
+            <p className="mt-4 text-base leading-7 text-[#202522]">
+              {cs.cta.description}
+            </p>
+            <div className="mt-6 grid gap-3 text-sm text-[#202522]">
+              <Benefit
+                icon={CalendarCheck}
+                text="45-Minuten Strategiegespräch mit Lead-Potenzial-Analyse"
+              />
+              <Benefit
+                icon={DatabaseZap}
+                text="ROI-Projektion für Ihre Partnerstruktur"
+              />
               <Benefit icon={Mail} text={cs.cta.email} />
             </div>
             <a
               href={`mailto:${cs.cta.email}`}
-              className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-[#57C7FF] transition-colors hover:text-white"
+              className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-[#4d7c36] transition-colors hover:text-[#202522]"
             >
               <Mail className="size-4" />
               {cs.cta.email}
@@ -37,12 +49,23 @@ export function CaseStudiesContact() {
               {
                 name: "industry",
                 label: "Branche",
-                options: ["Rechtsschutz", "Anwaltskanzlei", "Versicherung", "HR/Payroll", "Sonstiges"],
+                options: [
+                  "Rechtsschutz",
+                  "Anwaltskanzlei",
+                  "Versicherung",
+                  "HR/Payroll",
+                  "Sonstiges",
+                ],
               },
               {
                 name: "goal",
                 label: "Primäres Ziel",
-                options: ["Lead Generation", "Digital Giveaway", "Mandatsvermittlung", "Police-Abschluss"],
+                options: [
+                  "Lead Generation",
+                  "Digital Giveaway",
+                  "Mandatsvermittlung",
+                  "Police-Abschluss",
+                ],
               },
             ]}
           />
@@ -54,8 +77,8 @@ export function CaseStudiesContact() {
 
 function Benefit({ icon: Icon, text }: { icon: LucideIcon; text: string }) {
   return (
-    <div className="flex items-center gap-3 rounded-lg border border-white/10 bg-white/[0.04] p-3">
-      <Icon className="size-4 shrink-0 text-[#57C7FF]" />
+    <div className="flex items-center gap-3 rounded-lg border border-[#dce3db] bg-white p-3">
+      <Icon className="size-4 shrink-0 text-[#4d7c36]" />
       <span>{text}</span>
     </div>
   )

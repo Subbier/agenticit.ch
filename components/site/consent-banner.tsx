@@ -82,14 +82,17 @@ export function ConsentBanner() {
     return () => window.removeEventListener(CONSENT_REOPEN_EVENT, reopen)
   }, [])
 
-  const decide = useCallback((choice: Pick<ConsentChoice, "statistics" | "marketing">) => {
-    writeConsent(choice)
-    applyConsent(choice)
-    setStatistics(choice.statistics)
-    setMarketing(choice.marketing)
-    setOpen(false)
-    setShowDetails(false)
-  }, [])
+  const decide = useCallback(
+    (choice: Pick<ConsentChoice, "statistics" | "marketing">) => {
+      writeConsent(choice)
+      applyConsent(choice)
+      setStatistics(choice.statistics)
+      setMarketing(choice.marketing)
+      setOpen(false)
+      setShowDetails(false)
+    },
+    [],
+  )
 
   // Escape schliesst nur die Detailansicht. Ein Wegdrücken des Dialogs wäre
   // keine Entscheidung — und stille Zustimmung gibt es nicht.
@@ -126,10 +129,13 @@ export function ConsentBanner() {
       <div
         ref={panelRef}
         tabIndex={-1}
-        className="mx-auto max-w-[720px] rounded-[16px] border border-white/[0.10] bg-[#0F131A] p-5 shadow-[0_24px_64px_rgba(0,0,0,0.55)] outline-none sm:p-6"
+        className="mx-auto max-w-[720px] rounded-[16px] border border-white/[0.10] bg-[#1b2a20] p-5 shadow-[0_24px_64px_rgba(0,0,0,0.55)] outline-none sm:p-6"
       >
         <div className="flex items-start gap-3">
-          <span aria-hidden="true" className="mt-[3px] h-2.5 w-2.5 shrink-0 rounded-full bg-[#57C7FF]" />
+          <span
+            aria-hidden="true"
+            className="mt-[3px] h-2.5 w-2.5 shrink-0 rounded-full bg-[#a4df7f]"
+          />
           <div className="min-w-0">
             <h2
               id="consent-title"
@@ -139,12 +145,15 @@ export function ConsentBanner() {
             </h2>
             <p
               id="consent-desc"
-              className="mt-1.5 font-[family-name:var(--font-carbon-text)] text-[14px] leading-[1.6] text-[#9AA6B2]"
+              className="mt-1.5 font-[family-name:var(--font-carbon-text)] text-[14px] leading-[1.6] text-[#b8c9b0]"
             >
-              Notwendige Cookies halten die Seite am Laufen. Alles Weitere — Reichweitenmessung,
-              Werbung und unser Live-Chat — läuft nur, wenn Sie zustimmen. Sie können Ihre Wahl
-              jederzeit im Footer ändern.{" "}
-              <Link href="/datenschutz" className="font-semibold text-[#57C7FF] underline-offset-2 hover:underline">
+              Notwendige Cookies halten die Seite am Laufen. Alles Weitere —
+              Reichweitenmessung, Werbung und unser Live-Chat — läuft nur, wenn
+              Sie zustimmen. Sie können Ihre Wahl jederzeit im Footer ändern.{" "}
+              <Link
+                href="/datenschutz"
+                className="font-semibold text-[#a4df7f] underline-offset-2 hover:underline"
+              >
                 Datenschutz
               </Link>
             </p>
@@ -156,18 +165,21 @@ export function ConsentBanner() {
             {CATEGORIES.map((cat) => {
               const on = isOn(cat.id)
               return (
-                <li key={cat.id} className="rounded-[10px] bg-white/[0.03] p-3.5">
+                <li
+                  key={cat.id}
+                  className="rounded-[10px] bg-white/[0.03] p-3.5"
+                >
                   <div className="flex items-start justify-between gap-4">
                     <div className="min-w-0">
                       <div className="font-[family-name:var(--font-carbon-text)] text-[14px] font-semibold text-white">
                         {cat.label}
                         {cat.locked && (
-                          <span className="ml-2 rounded-[5px] bg-white/[0.08] px-1.5 py-0.5 text-[11px] font-medium text-[#9AA6B2]">
+                          <span className="ml-2 rounded-[5px] bg-white/[0.08] px-1.5 py-0.5 text-[11px] font-medium text-[#b8c9b0]">
                             immer aktiv
                           </span>
                         )}
                       </div>
-                      <p className="mt-1 font-[family-name:var(--font-carbon-text)] text-[13px] leading-[1.55] text-[#9AA6B2]">
+                      <p className="mt-1 font-[family-name:var(--font-carbon-text)] text-[13px] leading-[1.55] text-[#b8c9b0]">
                         {cat.description}
                       </p>
                       <p className="mt-1.5 font-[family-name:var(--font-jetbrains-mono)] text-[11.5px] text-[#6B7684]">
@@ -183,12 +195,16 @@ export function ConsentBanner() {
                       disabled={cat.locked}
                       onClick={() => toggle(cat.id)}
                       className={`relative mt-0.5 h-6 w-11 shrink-0 rounded-full border transition ${
-                        on ? "border-[#8FE05A]/60 bg-[#8FE05A]" : "border-white/[0.16] bg-white/[0.08]"
+                        on
+                          ? "border-[#8FE05A]/60 bg-[#8FE05A]"
+                          : "border-white/[0.16] bg-white/[0.08]"
                       } ${cat.locked ? "cursor-not-allowed opacity-55" : "cursor-pointer"}`}
                     >
                       <span
                         className={`absolute top-[2px] h-[18px] w-[18px] rounded-full transition-all ${
-                          on ? "left-[22px] bg-[#122400]" : "left-[2px] bg-white/70"
+                          on
+                            ? "left-[22px] bg-[#122400]"
+                            : "left-[2px] bg-white/70"
                         }`}
                       />
                     </button>
@@ -229,7 +245,7 @@ export function ConsentBanner() {
           <button
             type="button"
             onClick={() => decide({ statistics: false, marketing: false })}
-            className="order-3 rounded-[9px] px-5 py-[11px] font-[family-name:var(--font-carbon-text)] text-[14px] font-medium text-[#9AA6B2] transition hover:text-white sm:order-1 sm:mr-auto"
+            className="order-3 rounded-[9px] px-5 py-[11px] font-[family-name:var(--font-carbon-text)] text-[14px] font-medium text-[#b8c9b0] transition hover:text-white sm:order-1 sm:mr-auto"
           >
             Nur notwendige
           </button>

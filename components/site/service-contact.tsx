@@ -1,4 +1,4 @@
-﻿"use client"
+"use client"
 
 import { useEffect, useRef } from "react"
 import { CalendarCheck, DatabaseZap, Mail } from "lucide-react"
@@ -34,25 +34,37 @@ export function ServiceContact({ page }: { page: ServicePageContent }) {
   }, [])
 
   return (
-    <section id="contact" ref={sectionRef} className="relative py-16 px-4 sm:px-6 lg:px-8 mb-32">
+    <section
+      id="contact"
+      ref={sectionRef}
+      className="relative py-16 px-4 sm:px-6 lg:px-8 mb-32"
+    >
       <div className="relative max-w-7xl mx-auto">
         <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
           <div className="fade-in-element opacity-0 translate-y-8 transition-all duration-1000 ease-out">
-            <p className="overline text-sm font-semibold uppercase tracking-[0.22em] text-[#57C7FF]">Potenzial-Audit</p>
-            <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-light text-white leading-tight text-balance">
+            <p className="overline text-sm font-semibold uppercase tracking-[0.22em] text-[#4d7c36]">
+              Potenzial-Audit
+            </p>
+            <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-light text-[#202522] leading-tight text-balance">
               Lassen Sie uns Ihr nächstes{" "}
-              <span className="font-medium italic bg-gradient-to-r from-white to-emerald-200 bg-clip-text text-transparent">
+              <span className="font-medium italic bg-gradient-to-r from-white to-emerald-200 bg-clip-text text-[#4d7c36]">
                 {page.navLabel}
               </span>
               -System konkret machen.
             </h2>
-            <p className="mt-6 text-base md:text-lg text-white/70 leading-relaxed">
-              Wir analysieren Speed-to-Lead, Lead-Burnout und CRM-Setup – und skizzieren KI Agenten und Automation, die
-              in Ihre Prozesse passen.
+            <p className="mt-6 text-base md:text-lg text-[#202522] leading-relaxed">
+              Wir analysieren Speed-to-Lead, Lead-Burnout und CRM-Setup – und
+              skizzieren KI Agenten und Automation, die in Ihre Prozesse passen.
             </p>
-            <div className="mt-7 grid gap-3 text-sm text-white/70">
-              <Benefit icon={CalendarCheck} text="Konkrete Hebel mit klarem Zeitplan" />
-              <Benefit icon={DatabaseZap} text="Architektur-Skizze für Ihre Systeme" />
+            <div className="mt-7 grid gap-3 text-sm text-[#202522]">
+              <Benefit
+                icon={CalendarCheck}
+                text="Konkrete Hebel mit klarem Zeitplan"
+              />
+              <Benefit
+                icon={DatabaseZap}
+                text="Architektur-Skizze für Ihre Systeme"
+              />
               <Benefit icon={Mail} text="Roadmap mit messbarem Quick Win" />
             </div>
           </div>
@@ -74,8 +86,8 @@ export function ServiceContact({ page }: { page: ServicePageContent }) {
 
 function Benefit({ icon: Icon, text }: { icon: LucideIcon; text: string }) {
   return (
-    <div className="flex items-center gap-3 rounded-lg border border-white/10 bg-white/[0.04] p-3">
-      <Icon className="size-4 text-[#57C7FF] shrink-0" />
+    <div className="flex items-center gap-3 rounded-lg border border-[#dce3db] bg-white p-3">
+      <Icon className="size-4 text-[#4d7c36] shrink-0" />
       <span>{text}</span>
     </div>
   )

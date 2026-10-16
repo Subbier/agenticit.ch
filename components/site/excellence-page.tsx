@@ -1,9 +1,10 @@
-﻿"use client"
+"use client"
+
+import { JourneyContent } from "@/components/journey/content"
+
+import design from "@/components/journey/content.module.css"
 
 import { ArrowRight, CheckCircle2, Search, Megaphone, Plug } from "lucide-react"
-import { GlassmorphismNav } from "@/components/glassmorphism-nav"
-import { CarbonFooter } from "@/components/site/carbon-footer"
-import Aurora from "@/components/site/aurora-bg"
 import { ExcellenceMap } from "@/components/site/excellence-map"
 import { OmnichannelWheel } from "@/components/site/omnichannel-wheel"
 import { BrandsInteractive } from "@/components/site/pillar-visuals"
@@ -16,50 +17,55 @@ import { industryLabels } from "@/lib/lead-pricing"
 
 export function ExcellencePage() {
   return (
-    <div className="min-h-screen bg-black overflow-hidden">
+    <div className="min-h-screen bg-[#f5f7f2] overflow-hidden">
       <JsonLd
         data={[
           breadcrumbJsonLd([
             { name: "Startseite", path: "/" },
             { name: "Excellence", path: "/excellence" },
           ]),
-          serviceJsonLd({ name: "Excellence – Online-Marketing", description: pageSeo.excellence.description, path: "/excellence" }),
+          serviceJsonLd({
+            name: "Excellence – Online-Marketing",
+            description: pageSeo.excellence.description,
+            path: "/excellence",
+          }),
           faqPageJsonLd(excellenceFaqs),
         ]}
       />
-      <main className="min-h-screen relative overflow-hidden">
-        <div className="fixed inset-0 w-full h-full">
-          <Aurora colorStops={["#475569", "#64748b", "#475569"]} amplitude={1.2} blend={0.6} speed={0.8} />
-        </div>
-
+      <JourneyContent>
         <div className="relative z-10">
-          <GlassmorphismNav />
-
           {/* HERO */}
-          <section className="px-4 pt-32 pb-16 sm:pb-20">
+          <section className={design.pageHero}>
             <div className="max-w-4xl mx-auto text-center">
-              <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm font-medium mb-8">
+              <div className="inline-flex items-center px-4 py-2 rounded-full bg-white backdrop-blur-md border border-[#dce3db] text-[#202522] text-sm font-medium mb-8">
                 <span className="w-2 h-2 bg-emerald-300 rounded-full mr-2 animate-pulse shrink-0" />
                 Excellence – alles für Ihre Sichtbarkeit
               </div>
-              <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-white text-balance mb-6 leading-tight">
+              <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-[#202522] text-balance mb-6 leading-tight">
                 Alles, was Sie sichtbar macht.
                 <br />
-                <span className="bg-gradient-to-r from-white to-emerald-200 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-white to-emerald-200 bg-clip-text text-[#4d7c36]">
                   Aus einer Meisterhand.
                 </span>
               </h1>
-              <p className="text-base sm:text-xl text-white/75 max-w-2xl mx-auto leading-relaxed font-light mb-8">
-                Social Media, SEO, Performance-Marketing, Content und ein Auftritt, der überzeugt – wir verbinden alle
-                Disziplinen zu einem System, das in der Deutschschweiz gefunden wird und Anfragen bringt. Sie behalten
-                Ihre Tools, wir den Überblick.
+              <p className="text-base sm:text-xl text-[#202522] max-w-2xl mx-auto leading-relaxed font-light mb-8">
+                Social Media, SEO, Performance-Marketing, Content und ein
+                Auftritt, der überzeugt – wir verbinden alle Disziplinen zu
+                einem System, das in der Deutschschweiz gefunden wird und
+                Anfragen bringt. Sie behalten Ihre Tools, wir den Überblick.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#contact" className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-lg font-medium text-black transition hover:scale-105 hover:bg-gray-50">
+                <a
+                  href="#contact"
+                  className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-lg font-medium text-black transition hover:scale-105 hover:bg-gray-50"
+                >
                   Unverbindlich kennenlernen
                   <ArrowRight className="h-5 w-5" />
                 </a>
-                <a href="#disziplinen" className="inline-flex items-center gap-2 rounded-full border border-white/20 px-8 py-4 text-lg font-medium text-white transition hover:scale-105 hover:bg-white/10">
+                <a
+                  href="#disziplinen"
+                  className="inline-flex items-center gap-2 rounded-full border border-[#dce3db] px-8 py-4 text-lg font-medium text-[#202522] transition hover:scale-105 hover:bg-white"
+                >
                   Disziplinen ansehen
                 </a>
               </div>
@@ -69,30 +75,39 @@ export function ExcellencePage() {
           {/* INSIGHT */}
           <section className="px-4 py-12 sm:py-16">
             <div className="max-w-3xl mx-auto text-center">
-              <p className="overline text-sm font-semibold uppercase tracking-[0.2em] text-[#57C7FF]">Der Gedanke dahinter</p>
-              <h2 className="mt-3 text-2xl sm:text-3xl md:text-4xl font-bold text-white text-balance">
+              <p className="overline text-sm font-semibold uppercase tracking-[0.2em] text-[#4d7c36]">
+                Der Gedanke dahinter
+              </p>
+              <h2 className="mt-3 text-2xl sm:text-3xl md:text-4xl font-bold text-[#202522] text-balance">
                 Einzelne Tools bringen wenig. Das Zusammenspiel bringt Kunden.
               </h2>
-              <p className="mt-5 text-base sm:text-lg text-white/75 leading-relaxed font-light">
-                Anzeigen ohne gute Seite verpuffen. SEO ohne Inhalte bleibt unsichtbar. Erst wenn alle Disziplinen
-                ineinandergreifen, entsteht ein verlässlicher Strom an Anfragen. Genau das bauen wir für Sie – als
-                ein System.
+              <p className="mt-5 text-base sm:text-lg text-[#202522] leading-relaxed font-light">
+                Anzeigen ohne gute Seite verpuffen. SEO ohne Inhalte bleibt
+                unsichtbar. Erst wenn alle Disziplinen ineinandergreifen,
+                entsteht ein verlässlicher Strom an Anfragen. Genau das bauen
+                wir für Sie – als ein System.
               </p>
             </div>
           </section>
 
           {/* INTERAKTIVE DISZIPLINEN-MAP */}
-          <section id="disziplinen" className="scroll-mt-24 px-4 py-12 sm:py-16">
+          <section
+            id="disziplinen"
+            className="scroll-mt-24 px-4 py-12 sm:py-16"
+          >
             <div className="max-w-5xl mx-auto grid gap-10 lg:grid-cols-2 lg:items-center">
               <div>
-                <p className="overline text-sm font-semibold uppercase tracking-[0.2em] text-[#57C7FF]">Unsere Meisterschaft</p>
-                <h2 className="mt-3 text-2xl sm:text-3xl md:text-4xl font-bold text-white text-balance">
+                <p className="overline text-sm font-semibold uppercase tracking-[0.2em] text-[#4d7c36]">
+                  Unsere Meisterschaft
+                </p>
+                <h2 className="mt-3 text-2xl sm:text-3xl md:text-4xl font-bold text-[#202522] text-balance">
                   Sechs Disziplinen. Ein Ergebnis.
                 </h2>
-                <p className="mt-5 text-base sm:text-lg text-white/75 leading-relaxed font-light">
-                  Tippen Sie auf eine Disziplin – sie zeigt Ihnen, was wir übernehmen. In der Mitte hält AgenticIT
-                  alles zusammen, damit aus Performance-Marketing, SEO, Social Media, Content, Omnichannel und CRM
-                  ein reibungsloser Ablauf wird.
+                <p className="mt-5 text-base sm:text-lg text-[#202522] leading-relaxed font-light">
+                  Tippen Sie auf eine Disziplin – sie zeigt Ihnen, was wir
+                  übernehmen. In der Mitte hält AgenticIT alles zusammen, damit
+                  aus Performance-Marketing, SEO, Social Media, Content,
+                  Omnichannel und CRM ein reibungsloser Ablauf wird.
                 </p>
                 <ul className="mt-6 space-y-3">
                   {[
@@ -100,8 +115,11 @@ export function ExcellencePage() {
                     "Überzeugen – mit Inhalten und einem Auftritt, der wirkt.",
                     "Übergeben – jede Anfrage sauber in Ihrem CRM.",
                   ].map((t) => (
-                    <li key={t} className="flex items-start gap-3 text-sm sm:text-base text-white/80">
-                      <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-[#57C7FF]" />
+                    <li
+                      key={t}
+                      className="flex items-start gap-3 text-sm sm:text-base text-[#202522]"
+                    >
+                      <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-[#4d7c36]" />
                       <span>{t}</span>
                     </li>
                   ))}
@@ -112,17 +130,24 @@ export function ExcellencePage() {
           </section>
 
           {/* OMNICHANNEL */}
-          <section id="omnichannel" className="scroll-mt-24 px-4 py-12 sm:py-16">
+          <section
+            id="omnichannel"
+            className="scroll-mt-24 px-4 py-12 sm:py-16"
+          >
             <div className="max-w-6xl mx-auto grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
               <div>
-                <p className="overline text-sm font-semibold uppercase tracking-[0.2em] text-[#57C7FF]">Omnichannel</p>
-                <h2 className="mt-3 text-2xl sm:text-3xl md:text-4xl font-bold text-white text-balance">
+                <p className="overline text-sm font-semibold uppercase tracking-[0.2em] text-[#4d7c36]">
+                  Omnichannel
+                </p>
+                <h2 className="mt-3 text-2xl sm:text-3xl md:text-4xl font-bold text-[#202522] text-balance">
                   Ein Kanal-Erlebnis. Über alle Kanäle hinweg.
                 </h2>
-                <p className="mt-5 text-base sm:text-lg text-white/75 leading-relaxed font-light">
-                  Ihre Kunden wechseln zwischen Website, WhatsApp, Social Media und Telefon – und erwarten überall
-                  dieselbe, nahtlose Erfahrung. Wir verbinden alle Berührungspunkte zu einem einzigen Gespräch: Der
-                  Kontext reist mit, nichts geht verloren.
+                <p className="mt-5 text-base sm:text-lg text-[#202522] leading-relaxed font-light">
+                  Ihre Kunden wechseln zwischen Website, WhatsApp, Social Media
+                  und Telefon – und erwarten überall dieselbe, nahtlose
+                  Erfahrung. Wir verbinden alle Berührungspunkte zu einem
+                  einzigen Gespräch: Der Kontext reist mit, nichts geht
+                  verloren.
                 </p>
                 <ul className="mt-6 space-y-3">
                   {[
@@ -130,8 +155,11 @@ export function ExcellencePage() {
                     "Sofort-Reaktion auf jedem Kanal, automatisiert rund um die Uhr.",
                     "Tippen Sie einen Kanal an und sehen Sie, was wir dort für Sie übernehmen.",
                   ].map((t) => (
-                    <li key={t} className="flex items-start gap-3 text-sm sm:text-base text-white/80">
-                      <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-[#57C7FF]" />
+                    <li
+                      key={t}
+                      className="flex items-start gap-3 text-sm sm:text-base text-[#202522]"
+                    >
+                      <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-[#4d7c36]" />
                       <span>{t}</span>
                     </li>
                   ))}
@@ -148,16 +176,18 @@ export function ExcellencePage() {
                 <BrandsInteractive />
               </div>
               <div className="order-1 lg:order-2">
-                <div className="mb-5 inline-flex size-12 items-center justify-center rounded-2xl bg-emerald-300/15 text-[#57C7FF]">
+                <div className="mb-5 inline-flex size-12 items-center justify-center rounded-2xl bg-emerald-300/15 text-[#4d7c36]">
                   <Plug className="size-6" />
                 </div>
-                <h2 className="text-2xl sm:text-3xl font-bold text-white text-balance">
+                <h2 className="text-2xl sm:text-3xl font-bold text-[#202522] text-balance">
                   Akkreditiert in Ihren Tools – ohne Lernkurve.
                 </h2>
-                <p className="mt-4 text-base text-white/72 leading-relaxed">
-                  Wir sind in allen führenden Plattformen zertifiziert und arbeiten mit dem, was Sie schon kennen.
-                  Für Sie ändert sich faktisch nichts – wir kümmern uns um den Rest im Hintergrund. Tippen Sie eine
-                  Plattform an und sehen Sie, wofür wir sie nutzen.
+                <p className="mt-4 text-base text-[#202522] leading-relaxed">
+                  Wir sind in allen führenden Plattformen zertifiziert und
+                  arbeiten mit dem, was Sie schon kennen. Für Sie ändert sich
+                  faktisch nichts – wir kümmern uns um den Rest im Hintergrund.
+                  Tippen Sie eine Plattform an und sehen Sie, wofür wir sie
+                  nutzen.
                 </p>
               </div>
             </div>
@@ -167,23 +197,44 @@ export function ExcellencePage() {
           <section className="px-4 py-12 sm:py-16">
             <div className="max-w-5xl mx-auto">
               <div className="text-center mb-10">
-                <p className="overline text-sm font-semibold uppercase tracking-[0.2em] text-[#57C7FF]">Was das für Sie heisst</p>
-                <h2 className="mt-3 text-2xl sm:text-3xl md:text-4xl font-bold text-white text-balance">
+                <p className="overline text-sm font-semibold uppercase tracking-[0.2em] text-[#4d7c36]">
+                  Was das für Sie heisst
+                </p>
+                <h2 className="mt-3 text-2xl sm:text-3xl md:text-4xl font-bold text-[#202522] text-balance">
                   Mehr Sichtbarkeit. Mehr Anfragen. Kein Aufwand.
                 </h2>
               </div>
               <div className="grid gap-5 sm:grid-cols-3">
                 {[
-                  { icon: Search, title: "Gefunden werden", text: "SEO, Anzeigen und Social Media bringen Sie genau dorthin, wo Ihre Kunden suchen." },
-                  { icon: Megaphone, title: "Überzeugen", text: "Ein Auftritt, Inhalte und Kampagnen, die aus Aufmerksamkeit echte Anfragen machen." },
-                  { icon: Plug, title: "Keine Lernkurve", text: "Wir fügen uns in Ihre bestehende Tool-Welt ein. Sie arbeiten weiter wie bisher." },
+                  {
+                    icon: Search,
+                    title: "Gefunden werden",
+                    text: "SEO, Anzeigen und Social Media bringen Sie genau dorthin, wo Ihre Kunden suchen.",
+                  },
+                  {
+                    icon: Megaphone,
+                    title: "Überzeugen",
+                    text: "Ein Auftritt, Inhalte und Kampagnen, die aus Aufmerksamkeit echte Anfragen machen.",
+                  },
+                  {
+                    icon: Plug,
+                    title: "Keine Lernkurve",
+                    text: "Wir fügen uns in Ihre bestehende Tool-Welt ein. Sie arbeiten weiter wie bisher.",
+                  },
                 ].map((c) => (
-                  <div key={c.title} className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-sm">
-                    <div className="mb-4 inline-flex size-10 items-center justify-center rounded-xl bg-emerald-300/15 text-[#57C7FF]">
+                  <div
+                    key={c.title}
+                    className="rounded-2xl border border-[#dce3db] bg-white p-6 backdrop-blur-sm"
+                  >
+                    <div className="mb-4 inline-flex size-10 items-center justify-center rounded-xl bg-emerald-300/15 text-[#4d7c36]">
                       <c.icon className="size-5" />
                     </div>
-                    <h3 className="text-lg font-semibold text-white">{c.title}</h3>
-                    <p className="mt-2 text-sm leading-7 text-white/65">{c.text}</p>
+                    <h3 className="text-lg font-semibold text-[#202522]">
+                      {c.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-7 text-[#202522]">
+                      {c.text}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -201,22 +252,28 @@ export function ExcellencePage() {
           <section id="contact" className="scroll-mt-24 px-4 py-16 sm:py-20">
             <div className="max-w-5xl mx-auto grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
               <div>
-                <p className="overline text-sm font-semibold uppercase tracking-[0.2em] text-[#57C7FF]">Kennenlernen</p>
-                <h2 className="mt-4 text-3xl md:text-4xl font-light text-white leading-tight text-balance">
+                <p className="overline text-sm font-semibold uppercase tracking-[0.2em] text-[#4d7c36]">
+                  Kennenlernen
+                </p>
+                <h2 className="mt-4 text-3xl md:text-4xl font-light text-[#202522] leading-tight text-balance">
                   Neugierig, wie sichtbar Sie in Ihrer Branche werden können?
                 </h2>
-                <p className="mt-6 text-base md:text-lg text-white/70 leading-relaxed">
-                  In einem kurzen, unverbindlichen Gespräch zeigen wir Ihnen genau die Disziplinen, die für Sie den
-                  Unterschied machen – und wie schnell die ersten Anfragen bei Ihnen ankommen.
+                <p className="mt-6 text-base md:text-lg text-[#202522] leading-relaxed">
+                  In einem kurzen, unverbindlichen Gespräch zeigen wir Ihnen
+                  genau die Disziplinen, die für Sie den Unterschied machen –
+                  und wie schnell die ersten Anfragen bei Ihnen ankommen.
                 </p>
-                <div className="mt-7 grid gap-3 text-sm text-white/70">
+                <div className="mt-7 grid gap-3 text-sm text-[#202522]">
                   {[
                     "Kurzer, unverbindlicher Rückruf",
                     "Konkrete Möglichkeiten für Ihre Branche",
                     "Keine Umstellung, keine Lernkurve",
                   ].map((b) => (
-                    <div key={b} className="flex items-center gap-3 rounded-lg border border-white/10 bg-white/[0.04] p-3">
-                      <CheckCircle2 className="size-4 shrink-0 text-[#57C7FF]" />
+                    <div
+                      key={b}
+                      className="flex items-center gap-3 rounded-lg border border-[#dce3db] bg-white p-3"
+                    >
+                      <CheckCircle2 className="size-4 shrink-0 text-[#4d7c36]" />
                       <span>{b}</span>
                     </div>
                   ))}
@@ -228,14 +285,18 @@ export function ExcellencePage() {
                 title="Lassen Sie uns starten."
                 description="Hinterlassen Sie Ihre Daten für einen schnellen, unverbindlichen Strategie-Rückruf."
                 submitLabel="Rückruf anfragen"
-                selectFields={[{ name: "industry", label: "Branche", options: industryLabels }]}
+                selectFields={[
+                  {
+                    name: "industry",
+                    label: "Branche",
+                    options: industryLabels,
+                  },
+                ]}
               />
             </div>
           </section>
-
-          <CarbonFooter />
         </div>
-      </main>
+      </JourneyContent>
     </div>
   )
 }

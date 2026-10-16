@@ -5,7 +5,13 @@ import Script from "next/script"
 import "./globals.css"
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
-import { Dancing_Script, Caveat, Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google"
+import {
+  Dancing_Script,
+  Caveat,
+  Inter,
+  Space_Grotesk,
+  JetBrains_Mono,
+} from "next/font/google"
 import { GeistMono } from "geist/font/mono"
 
 const inter = Inter({
@@ -17,7 +23,13 @@ import { JsonLd } from "@/components/site/json-ld"
 import { ChatbotWidget } from "@/components/chatbot-widget"
 import { ConsentBanner } from "@/components/site/consent-banner"
 import { CONSENT_DEFAULT_SCRIPT } from "@/lib/consent"
-import { localBusinessJsonLd, organizationJsonLd, SITE_NAME, SITE_URL, websiteJsonLd } from "@/lib/seo"
+import {
+  localBusinessJsonLd,
+  organizationJsonLd,
+  SITE_NAME,
+  SITE_URL,
+  websiteJsonLd,
+} from "@/lib/seo"
 
 const dancingScript = Dancing_Script({
   subsets: ["latin"],
@@ -68,7 +80,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="de-CH" className="dark">
+    <html lang="de-CH">
       <body
         className={`font-sans antialiased ${inter.variable} ${GeistMono.variable} ${dancingScript.variable} ${caveat.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
       >
@@ -105,7 +117,9 @@ export default function RootLayout({
           })(window,document,'script','dataLayer','GTM-K4TN9PVZ');`}
         </Script>
 
-        <JsonLd data={[organizationJsonLd(), localBusinessJsonLd(), websiteJsonLd()]} />
+        <JsonLd
+          data={[organizationJsonLd(), localBusinessJsonLd(), websiteJsonLd()]}
+        />
         <Suspense fallback={null}>{children}</Suspense>
         <ChatbotWidget />
         <ConsentBanner />

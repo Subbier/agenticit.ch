@@ -11,38 +11,48 @@ const ALLE = "Alle Themen"
 function formatDate(iso: string) {
   const d = new Date(`${iso}T00:00:00`)
   if (Number.isNaN(d.getTime())) return iso
-  return d.toLocaleDateString("de-CH", { day: "numeric", month: "short", year: "numeric" })
+  return d.toLocaleDateString("de-CH", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  })
 }
 
-function PostCard({ post, featured }: { post: BlogPostMeta; featured?: boolean }) {
+function PostCard({
+  post,
+  featured,
+}: {
+  post: BlogPostMeta
+  featured?: boolean
+}) {
   return (
     <Link
       href={`/blog/${post.slug}`}
       className={`flex h-full flex-col rounded-[14px] border bg-white p-6 transition hover:-translate-y-[2px] hover:border-[#8FE05A] ${
-        featured ? "border-[#101418] sm:p-7" : "border-[#E1E4E8]"
+        featured ? "border-[#202522] sm:p-7" : "border-[#dce3db]"
       }`}
     >
       <div className="flex items-center gap-2">
-        <span className="font-[family-name:var(--font-mono-signal)] text-[10.5px] font-semibold uppercase tracking-[0.2em] text-[#0E7490]">
+        <span className="font-[family-name:var(--font-mono-signal)] text-[10.5px] font-semibold uppercase tracking-[0.2em] text-[#4d7c36]">
           {post.category}
         </span>
         {post.pillar ? (
-          <span className="rounded-full bg-[#101418] px-2.5 py-[3px] font-[family-name:var(--font-mono-signal)] text-[9.5px] font-semibold uppercase tracking-[0.14em] text-[#8FE05A]">
+          <span className="rounded-full bg-[#202522] px-2.5 py-[3px] font-[family-name:var(--font-mono-signal)] text-[9.5px] font-semibold uppercase tracking-[0.14em] text-[#8FE05A]">
             Guide
           </span>
         ) : null}
       </div>
       <h3
-        className={`mt-3 font-[family-name:var(--font-display)] font-bold leading-snug tracking-[-0.01em] text-[#101418] ${
+        className={`mt-3 font-[family-name:var(--font-display)] font-bold leading-snug tracking-[-0.01em] text-[#202522] ${
           featured ? "text-[clamp(18px,3.6vw,22px)]" : "text-[17px]"
         }`}
       >
         {post.title}
       </h3>
-      <p className="mt-3 flex-1 font-[family-name:var(--font-carbon-text)] text-[13.5px] leading-relaxed text-[#4A545F]">
+      <p className="mt-3 flex-1 font-[family-name:var(--font-carbon-text)] text-[13.5px] leading-relaxed text-[#647068]">
         {post.description}
       </p>
-      <div className="mt-5 flex items-center justify-between border-t border-[#E1E4E8] pt-4">
+      <div className="mt-5 flex items-center justify-between border-t border-[#dce3db] pt-4">
         <span className="font-[family-name:var(--font-carbon-text)] text-[12px] font-medium text-[#6B7480]">
           {formatDate(post.date)} · {post.readingTime} Min.
         </span>
@@ -54,16 +64,27 @@ function PostCard({ post, featured }: { post: BlogPostMeta; featured?: boolean }
   )
 }
 
-export function BlogIndexGrid({ posts, categories }: { posts: BlogPostMeta[]; categories: string[] }) {
+export function BlogIndexGrid({
+  posts,
+  categories,
+}: {
+  posts: BlogPostMeta[]
+  categories: string[]
+}) {
   const [active, setActive] = useState<string>(ALLE)
 
-  const visible = active === ALLE ? posts : posts.filter((p) => p.category === active)
+  const visible =
+    active === ALLE ? posts : posts.filter((p) => p.category === active)
   const featured = visible.filter((p) => p.pillar)
   const regular = visible.filter((p) => !p.pillar)
 
   return (
     <div>
-      <div className="mb-10 flex flex-wrap justify-center gap-2" role="tablist" aria-label="Themen filtern">
+      <div
+        className="mb-10 flex flex-wrap justify-center gap-2"
+        role="tablist"
+        aria-label="Themen filtern"
+      >
         {[ALLE, ...categories].map((c) => {
           const isActive = c === active
           return (
@@ -75,8 +96,8 @@ export function BlogIndexGrid({ posts, categories }: { posts: BlogPostMeta[]; ca
               onClick={() => setActive(c)}
               className={`rounded-full border px-4 py-2 font-[family-name:var(--font-carbon-text)] text-[13px] font-semibold transition ${
                 isActive
-                  ? "border-[#101418] bg-[#101418] text-white"
-                  : "border-[#E1E4E8] bg-white text-[#4A545F] hover:border-[#101418] hover:text-[#101418]"
+                  ? "border-[#8fe05a] bg-[#8fe05a] text-[#18320d]"
+                  : "border-[#dce3db] bg-white text-[#647068] hover:border-[#202522] hover:text-[#202522]"
               }`}
             >
               {c}

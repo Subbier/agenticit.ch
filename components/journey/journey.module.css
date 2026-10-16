@@ -11,14 +11,14 @@
   line-height: 1.65;
   isolation: isolate;
 }
-.shell :where(h1, h2, h3, p, ul, ol) {
+.shell :where(h1, h2, h3, p, ul, ol):not(:where([data-page-content] *)) {
   margin: 0;
 }
-.shell :where(h1, h2, h3) {
+.shell :where(h1, h2, h3):not(:where([data-page-content] *)) {
   color: inherit;
   text-wrap: balance;
 }
-.shell :where(p, li) {
+.shell :where(p, li):not(:where([data-page-content] *)) {
   font-size: 16px;
   line-height: 1.7;
 }

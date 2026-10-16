@@ -1,18 +1,32 @@
-﻿"use client"
+"use client"
 
 import { useState } from "react"
 import { CheckCircle2, Send } from "lucide-react"
 
 const INPUT_CLASS =
-  "w-full rounded-[11px] border border-[#AEB8C2] bg-white px-4 py-3 text-[15px] font-medium text-[#0A0C10] outline-none transition placeholder:text-[#5A6B82] hover:border-[#7E8A96] focus:border-[#1F9A5E] focus:shadow-[0_0_0_3px_rgba(31,154,94,0.18)]"
+  "w-full rounded-[11px] border border-[#AEB8C2] bg-white px-4 py-3 text-[15px] font-medium text-[#202522] outline-none transition placeholder:text-[#647068] hover:border-[#7E8A96] focus:border-[#1F9A5E] focus:shadow-[0_0_0_3px_rgba(31,154,94,0.18)]"
 
 // «Ihr Ziel» steuert Bedarf & Reife im Gespräch (Master: Conversion-Funnel §4).
-const ZIELE = ["Mehr Anfragen", "Planbarer Umsatz", "Zeit gewinnen", "Weiss noch nicht"]
+const ZIELE = [
+  "Mehr Anfragen",
+  "Planbarer Umsatz",
+  "Zeit gewinnen",
+  "Weiss noch nicht",
+]
 
 export function CtaContactForm() {
-  const [form, setForm] = useState({ firstName: "", lastName: "", company: "", phone: "", email: "", goal: "" })
+  const [form, setForm] = useState({
+    firstName: "",
+    lastName: "",
+    company: "",
+    phone: "",
+    email: "",
+    goal: "",
+  })
   const [consent, setConsent] = useState(false)
-  const [status, setStatus] = useState<"idle" | "loading" | "done" | "error">("idle")
+  const [status, setStatus] = useState<"idle" | "loading" | "done" | "error">(
+    "idle",
+  )
   const [honey, setHoney] = useState("")
 
   const valid =
@@ -50,14 +64,14 @@ export function CtaContactForm() {
 
   if (status === "done") {
     return (
-      <div className="mx-auto mt-7 flex w-full max-w-[560px] flex-col items-center rounded-[18px] border border-[#E1E4E8] bg-white p-8 text-center shadow-[0_10px_30px_rgba(10,12,16,0.08)]">
-        <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#1F9A5E]/15 text-[#57C7FF]">
+      <div className="mx-auto mt-7 flex w-full max-w-[560px] flex-col items-center rounded-[18px] border border-[#dce3db] bg-white p-8 text-center shadow-[0_10px_30px_rgba(10,12,16,0.08)]">
+        <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#8fe05a]/15 text-[#4d7c36]">
           <CheckCircle2 className="h-8 w-8" />
         </div>
-        <h3 className="mt-4 text-[20px] font-extrabold text-[#0A0C10]">
+        <h3 className="mt-4 text-[20px] font-extrabold text-[#202522]">
           Danke{form.firstName ? `, ${form.firstName.trim()}` : ""}!
         </h3>
-        <p className="mt-2 max-w-[400px] text-[14px] leading-relaxed text-[#5A6B82]">
+        <p className="mt-2 max-w-[400px] text-[14px] leading-relaxed text-[#647068]">
           Ihre Anfrage ist bei uns. Wir rufen Sie zeitnah persönlich an.
         </p>
       </div>
@@ -115,7 +129,7 @@ export function CtaContactForm() {
       <select
         value={form.goal}
         onChange={(e) => setForm({ ...form, goal: e.target.value })}
-        className={`${INPUT_CLASS} mt-3 ${form.goal ? "text-[#0A0C10]" : "text-[#5A6B82]"}`}
+        className={`${INPUT_CLASS} mt-3 ${form.goal ? "text-[#202522]" : "text-[#647068]"}`}
       >
         <option value="">Ihr Ziel (optional)</option>
         {ZIELE.map((z) => (
@@ -140,10 +154,13 @@ export function CtaContactForm() {
           onChange={(e) => setConsent(e.target.checked)}
           className="mt-0.5 h-4 w-4 flex-none accent-[#1F9A5E]"
         />
-        Ich bin einverstanden, dass AgenticIT meine Angaben zur Bearbeitung meiner Anfrage verwendet (DSG-konform).
+        Ich bin einverstanden, dass AgenticIT meine Angaben zur Bearbeitung
+        meiner Anfrage verwendet (DSG-konform).
       </label>
       {status === "error" ? (
-        <p className="mt-3 text-[13px] font-bold text-red-600">Senden fehlgeschlagen. Bitte erneut versuchen.</p>
+        <p className="mt-3 text-[13px] font-bold text-red-600">
+          Senden fehlgeschlagen. Bitte erneut versuchen.
+        </p>
       ) : null}
       <button
         type="submit"
@@ -151,10 +168,13 @@ export function CtaContactForm() {
         className="mt-4 flex w-full items-center justify-center gap-2 rounded-[13px] bg-[#8FE05A] py-[15px] text-[16px] font-extrabold text-[#122400] shadow-[0_6px_16px_rgba(10,12,16,0.18)] transition hover:-translate-y-[1px] disabled:opacity-50 disabled:hover:translate-y-0"
       >
         <Send className="h-[18px] w-[18px]" />
-        {status === "loading" ? "Wird gesendet …" : "Rückruf anfordern – kostenlos"}
+        {status === "loading"
+          ? "Wird gesendet …"
+          : "Rückruf anfordern – kostenlos"}
       </button>
       <p className="mt-3 text-center text-[12.5px] font-medium text-[#33404F]">
-        Ein kurzer Rückruf, ein konkreter Plan für Ihre Branche – Sie entscheiden danach in Ruhe.
+        Ein kurzer Rückruf, ein konkreter Plan für Ihre Branche – Sie
+        entscheiden danach in Ruhe.
       </p>
     </form>
   )

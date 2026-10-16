@@ -1,4 +1,6 @@
-﻿import type { ReactNode } from "react"
+import { JourneyContent } from "@/components/journey/content"
+import design from "@/components/journey/content.module.css"
+import type { ReactNode } from "react"
 import Link from "next/link"
 import {
   ArrowRight,
@@ -10,9 +12,6 @@ import {
   Shield,
   Users,
 } from "lucide-react"
-import Aurora from "@/components/site/aurora-bg"
-import { CarbonFooter } from "@/components/site/carbon-footer"
-import { GlassmorphismNav } from "@/components/glassmorphism-nav"
 import { CaseStudiesSectionNav } from "@/components/site/case-studies-section-nav"
 import { CollapsibleBlock } from "@/components/site/collapsible-block"
 import { CaseStudiesContact } from "@/components/site/case-studies-contact"
@@ -27,39 +26,40 @@ const roleIcons = [Users, Shield, Scale]
 
 export function CaseStudiesPage() {
   return (
-    <div className="min-h-screen bg-black">
-      <main className="relative min-h-screen">
-        <div className="pointer-events-none fixed inset-0">
-          <Aurora colorStops={["#475569", "#64748b", "#475569"]} amplitude={1.2} blend={0.6} speed={0.8} />
-        </div>
-
+    <div className="min-h-screen bg-[#f5f7f2]">
+      <JourneyContent>
         <div className="relative z-10">
-          <GlassmorphismNav />
-
-          <section className="px-4 pb-10 pt-36 sm:px-6 sm:pb-14 sm:pt-40">
+          <section className={design.pageHero}>
             <div className="mx-auto max-w-6xl">
-              <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm text-white backdrop-blur-md">
+              <div className="inline-flex items-center gap-2 rounded-full border border-[#dce3db] bg-white px-4 py-2 text-sm text-[#202522] backdrop-blur-md">
                 <span className="size-2 animate-pulse rounded-full bg-emerald-300" />
                 {cs.hero.eyebrow}
               </div>
 
-              <h1 className="mt-6 text-balance text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">
-                <span className="bg-gradient-to-r from-white via-emerald-100 to-emerald-200 bg-clip-text text-transparent">
+              <h1 className="mt-6 text-balance text-4xl font-bold tracking-tight text-[#202522] sm:text-5xl md:text-6xl">
+                <span className="bg-gradient-to-r from-white via-emerald-100 to-emerald-200 bg-clip-text text-[#4d7c36]">
                   {cs.hero.title}
                 </span>
                 <br />
-                <span className="text-white/95">{cs.hero.titleAccent}</span>
+                <span className="text-[#202522]">{cs.hero.titleAccent}</span>
               </h1>
 
-              <p className="mt-6 max-w-3xl text-base leading-8 text-white/72 sm:text-lg">
+              <p className="mt-6 max-w-3xl text-base leading-8 text-[#202522] sm:text-lg">
                 {cs.hero.subtitle}
               </p>
 
-              <div className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-white/15 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
+              <div className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-[#dce3db] bg-white sm:grid-cols-2 lg:grid-cols-4">
                 {cs.hero.meta.map((item) => (
-                  <div key={item.label} className="bg-black/40 px-5 py-4 backdrop-blur-sm">
-                    <p className="text-[0.65rem] font-bold uppercase tracking-[0.12em] text-white/45">{item.label}</p>
-                    <p className="mt-1 text-sm font-semibold text-white">{item.value}</p>
+                  <div
+                    key={item.label}
+                    className="bg-[#f5f7f2] px-5 py-4 backdrop-blur-sm"
+                  >
+                    <p className="text-[0.65rem] font-bold uppercase tracking-[0.12em] text-[#202522]">
+                      {item.label}
+                    </p>
+                    <p className="mt-1 text-sm font-semibold text-[#202522]">
+                      {item.value}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -68,12 +68,14 @@ export function CaseStudiesPage() {
                 {cs.hero.kpis.map((kpi) => (
                   <div
                     key={kpi.label}
-                    className="group bg-black/50 px-4 py-6 text-center backdrop-blur-sm transition-colors hover:bg-white/5"
+                    className="group bg-[#f5f7f2] px-4 py-6 text-center backdrop-blur-sm transition-colors hover:bg-white"
                   >
-                    <p className="text-3xl font-bold tracking-tight text-white transition-colors group-hover:text-[#57C7FF] sm:text-4xl">
+                    <p className="text-3xl font-bold tracking-tight text-[#202522] transition-colors group-hover:text-[#4d7c36] sm:text-4xl">
                       {kpi.value}
                     </p>
-                    <p className="mt-2 text-xs leading-5 text-white/60 sm:text-sm">{kpi.label}</p>
+                    <p className="mt-2 text-xs leading-5 text-[#202522] sm:text-sm">
+                      {kpi.label}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -92,7 +94,7 @@ export function CaseStudiesPage() {
                   <Button
                     variant="outline"
                     size="lg"
-                    className="rounded-full border-white/20 bg-transparent hover:bg-white/10"
+                    className="rounded-full border-[#dce3db] bg-transparent hover:bg-white"
                   >
                     Zur Startseite
                   </Button>
@@ -103,9 +105,15 @@ export function CaseStudiesPage() {
 
           <CaseStudiesSectionNav />
 
-          <CaseStudySection id="summary" eyebrow={cs.summary.eyebrow} title={cs.summary.title}>
+          <CaseStudySection
+            id="summary"
+            eyebrow={cs.summary.eyebrow}
+            title={cs.summary.title}
+          >
             <div className="grid gap-4">
-              <p className="text-base leading-8 text-white/72">{cs.summary.paragraphs[0]}</p>
+              <p className="text-base leading-8 text-[#202522]">
+                {cs.summary.paragraphs[0]}
+              </p>
               <CollapsibleBlock summary="Partnermodell & Resultate im Detail">
                 <div className="grid gap-4">
                   <p>{cs.summary.paragraphs[1]}</p>
@@ -115,22 +123,38 @@ export function CaseStudiesPage() {
             </div>
           </CaseStudySection>
 
-          <CaseStudySection id="situation" eyebrow={cs.situation.eyebrow} title={cs.situation.title}>
+          <CaseStudySection
+            id="situation"
+            eyebrow={cs.situation.eyebrow}
+            title={cs.situation.title}
+          >
             <div className="mb-8 grid gap-4">
-              <p className="text-base leading-8 text-white/72">{cs.situation.paragraphs[0]}</p>
+              <p className="text-base leading-8 text-[#202522]">
+                {cs.situation.paragraphs[0]}
+              </p>
               <CollapsibleBlock summary="Auswirkungen für Kanzleien & Versicherer">
-                <p className="text-base leading-8 text-white/72">{cs.situation.paragraphs[1]}</p>
+                <p className="text-base leading-8 text-[#202522]">
+                  {cs.situation.paragraphs[1]}
+                </p>
               </CollapsibleBlock>
             </div>
             <div className="grid gap-4 md:grid-cols-3">
               {cs.situation.problems.map((problem) => (
                 <article
                   key={problem.title}
-                  className="rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm transition-all hover:-translate-y-0.5 hover:border-white/25 hover:bg-white/[0.07]"
+                  className="rounded-2xl border border-[#dce3db] bg-white p-6 backdrop-blur-sm transition-all hover:-translate-y-0.5 hover:border-[#dce3db] hover:bg-white"
                 >
-                  <p className={`text-xs font-bold uppercase tracking-wider ${problem.accent}`}>⚠ {problem.tag}</p>
-                  <h3 className="mt-3 text-lg font-semibold text-white">{problem.title}</h3>
-                  <p className="mt-2 text-sm leading-7 text-white/65">{problem.text}</p>
+                  <p
+                    className={`text-xs font-bold uppercase tracking-wider ${problem.accent}`}
+                  >
+                    ⚠ {problem.tag}
+                  </p>
+                  <h3 className="mt-3 text-lg font-semibold text-[#202522]">
+                    {problem.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-7 text-[#202522]">
+                    {problem.text}
+                  </p>
                 </article>
               ))}
             </div>
@@ -148,19 +172,23 @@ export function CaseStudiesPage() {
                 return (
                   <article
                     key={role.num}
-                    className="group grid overflow-hidden rounded-2xl border border-white/15 bg-white/5 transition-all hover:border-emerald-300/30 hover:bg-white/[0.07] md:grid-cols-[72px_1fr]"
+                    className="group grid overflow-hidden rounded-2xl border border-[#dce3db] bg-white transition-all hover:border-emerald-300/30 hover:bg-white md:grid-cols-[72px_1fr]"
                   >
-                    <div className="flex items-center justify-center bg-emerald-300/15 text-lg font-black text-[#57C7FF] md:min-h-full">
+                    <div className="flex items-center justify-center bg-emerald-300/15 text-lg font-black text-[#4d7c36] md:min-h-full">
                       {role.num}
                     </div>
                     <div className="p-6">
                       <div className="flex items-center gap-3">
-                        <span className="flex size-9 items-center justify-center rounded-lg bg-emerald-300/15 text-[#57C7FF]">
+                        <span className="flex size-9 items-center justify-center rounded-lg bg-emerald-300/15 text-[#4d7c36]">
                           <Icon className="size-4" />
                         </span>
-                        <h3 className="text-lg font-semibold text-white">{role.title}</h3>
+                        <h3 className="text-lg font-semibold text-[#202522]">
+                          {role.title}
+                        </h3>
                       </div>
-                      <p className="mt-3 text-sm leading-7 text-white/68">{role.text}</p>
+                      <p className="mt-3 text-sm leading-7 text-[#202522]">
+                        {role.text}
+                      </p>
                     </div>
                   </article>
                 )
@@ -178,14 +206,16 @@ export function CaseStudiesPage() {
               {cs.technical.steps.map((step) => (
                 <div
                   key={step.num}
-                  className="group grid overflow-hidden rounded-xl border border-white/10 bg-white/[0.04] transition-all hover:border-emerald-300/25 md:grid-cols-[48px_1fr]"
+                  className="group grid overflow-hidden rounded-xl border border-[#dce3db] bg-white transition-all hover:border-emerald-300/25 md:grid-cols-[48px_1fr]"
                 >
-                  <div className="flex items-center justify-center bg-emerald-300/20 text-sm font-bold text-[#57C7FF]">
+                  <div className="flex items-center justify-center bg-emerald-300/20 text-sm font-bold text-[#4d7c36]">
                     {step.num}
                   </div>
                   <div className="p-4 sm:p-5">
-                    <p className="font-semibold text-white">{step.title}</p>
-                    <p className="mt-1 text-sm leading-6 text-white/65">{step.text}</p>
+                    <p className="font-semibold text-[#202522]">{step.title}</p>
+                    <p className="mt-1 text-sm leading-6 text-[#202522]">
+                      {step.text}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -198,29 +228,45 @@ export function CaseStudiesPage() {
             title={cs.results.title}
             intro={cs.results.intro}
           >
-            <div className="overflow-hidden rounded-2xl border border-white/15">
+            <div className="overflow-hidden rounded-2xl border border-[#dce3db]">
               <div className="overflow-x-auto">
                 <table className="w-full min-w-[640px] text-left text-sm">
                   <thead>
-                    <tr className="border-b border-emerald-300/30 bg-black/50">
-                      <th className="px-4 py-3 font-semibold text-[#57C7FF]">Kennzahl</th>
-                      <th className="px-4 py-3 font-semibold text-white/45">Vorher</th>
-                      <th className="px-4 py-3 font-semibold text-white">Nachher</th>
-                      <th className="px-4 py-3 font-semibold text-[#57C7FF]">Veränderung</th>
+                    <tr className="border-b border-emerald-300/30 bg-[#f5f7f2]">
+                      <th className="px-4 py-3 font-semibold text-[#4d7c36]">
+                        Kennzahl
+                      </th>
+                      <th className="px-4 py-3 font-semibold text-[#202522]">
+                        Vorher
+                      </th>
+                      <th className="px-4 py-3 font-semibold text-[#202522]">
+                        Nachher
+                      </th>
+                      <th className="px-4 py-3 font-semibold text-[#4d7c36]">
+                        Veränderung
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
                     {cs.results.rows.map((row, index) => (
                       <tr
                         key={row.metric}
-                        className={`border-b border-white/8 transition-colors hover:bg-white/[0.06] ${
-                          index % 2 === 0 ? "bg-white/[0.03]" : "bg-transparent"
+                        className={`border-b border-[#dce3db] transition-colors hover:bg-white ${
+                          index % 2 === 0 ? "bg-white" : "bg-transparent"
                         }`}
                       >
-                        <td className="px-4 py-3 text-white/75">{row.metric}</td>
-                        <td className="px-4 py-3 text-center text-white/45">{row.before}</td>
-                        <td className="px-4 py-3 text-center font-semibold text-white">{row.after}</td>
-                        <td className="px-4 py-3 text-center font-semibold text-[#57C7FF]">{row.change}</td>
+                        <td className="px-4 py-3 text-[#202522]">
+                          {row.metric}
+                        </td>
+                        <td className="px-4 py-3 text-center text-[#202522]">
+                          {row.before}
+                        </td>
+                        <td className="px-4 py-3 text-center font-semibold text-[#202522]">
+                          {row.after}
+                        </td>
+                        <td className="px-4 py-3 text-center font-semibold text-[#4d7c36]">
+                          {row.change}
+                        </td>
                       </tr>
                     ))}
                   </tbody>
@@ -228,18 +274,22 @@ export function CaseStudiesPage() {
               </div>
             </div>
 
-            <blockquote className="mt-8 rounded-2xl border border-white/15 bg-white/5 p-8 text-center backdrop-blur-sm sm:p-10">
-              <p className="text-lg font-medium italic leading-relaxed text-white/90 sm:text-xl">
+            <blockquote className="mt-8 rounded-2xl border border-[#dce3db] bg-white p-8 text-center backdrop-blur-sm sm:p-10">
+              <p className="text-lg font-medium italic leading-relaxed text-[#202522] sm:text-xl">
                 «{cs.results.quote.text}»
               </p>
-              <footer className="mt-5 text-sm font-semibold uppercase tracking-wider text-[#57C7FF]">
+              <footer className="mt-5 text-sm font-semibold uppercase tracking-wider text-[#4d7c36]">
                 — {cs.results.quote.author}
               </footer>
             </blockquote>
 
             <div className="mt-6 rounded-2xl border border-l-4 border-emerald-300/25 border-l-emerald-300 bg-emerald-300/5 p-6">
-              <p className="text-xs font-bold uppercase tracking-wider text-[#57C7FF]">✓ Fazit</p>
-              <p className="mt-2 text-sm leading-7 text-white/80 sm:text-base">{cs.results.conclusion}</p>
+              <p className="text-xs font-bold uppercase tracking-wider text-[#4d7c36]">
+                ✓ Fazit
+              </p>
+              <p className="mt-2 text-sm leading-7 text-[#202522] sm:text-base">
+                {cs.results.conclusion}
+              </p>
             </div>
           </CaseStudySection>
 
@@ -253,14 +303,18 @@ export function CaseStudiesPage() {
               {cs.implementation.phases.map((phase) => (
                 <div
                   key={phase.period}
-                  className="grid overflow-hidden rounded-xl border border-white/10 bg-white/[0.04] transition-all hover:border-white/20 md:grid-cols-[120px_1fr]"
+                  className="grid overflow-hidden rounded-xl border border-[#dce3db] bg-white transition-all hover:border-[#dce3db] md:grid-cols-[120px_1fr]"
                 >
-                  <div className="flex items-center justify-center bg-black/30 px-3 py-4 text-center text-xs font-bold uppercase tracking-wide text-[#57C7FF]">
+                  <div className="flex items-center justify-center bg-[#f5f7f2] px-3 py-4 text-center text-xs font-bold uppercase tracking-wide text-[#4d7c36]">
                     {phase.period}
                   </div>
                   <div className="p-4 sm:p-5">
-                    <p className="font-semibold text-white">{phase.title}</p>
-                    <p className="mt-1 text-sm leading-6 text-white/65">{phase.text}</p>
+                    <p className="font-semibold text-[#202522]">
+                      {phase.title}
+                    </p>
+                    <p className="mt-1 text-sm leading-6 text-[#202522]">
+                      {phase.text}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -273,17 +327,19 @@ export function CaseStudiesPage() {
             title={cs.audience.title}
             intro={cs.audience.intro}
           >
-            <div className="grid gap-px overflow-hidden rounded-2xl border border-white/15 bg-white/10 sm:grid-cols-2">
+            <div className="grid gap-px overflow-hidden rounded-2xl border border-[#dce3db] bg-white sm:grid-cols-2">
               {cs.audience.fits.map((fit) => (
                 <article
                   key={fit.title}
-                  className="bg-black/40 p-6 backdrop-blur-sm transition-colors hover:bg-white/[0.04]"
+                  className="bg-[#f5f7f2] p-6 backdrop-blur-sm transition-colors hover:bg-white"
                 >
-                  <h3 className="flex items-center gap-2 text-base font-semibold text-white">
-                    <CheckCircle2 className="size-4 shrink-0 text-[#57C7FF]" />
+                  <h3 className="flex items-center gap-2 text-base font-semibold text-[#202522]">
+                    <CheckCircle2 className="size-4 shrink-0 text-[#4d7c36]" />
                     {fit.title}
                   </h3>
-                  <p className="mt-2 text-sm leading-7 text-white/65">{fit.text}</p>
+                  <p className="mt-2 text-sm leading-7 text-[#202522]">
+                    {fit.text}
+                  </p>
                 </article>
               ))}
             </div>
@@ -294,7 +350,7 @@ export function CaseStudiesPage() {
               {cs.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-md border border-white/10 bg-white/[0.04] px-2.5 py-1 text-[0.68rem] font-semibold uppercase tracking-wide text-white/45"
+                  className="rounded-md border border-[#dce3db] bg-white px-2.5 py-1 text-[0.68rem] font-semibold uppercase tracking-wide text-[#202522]"
                 >
                   {tag}
                 </span>
@@ -308,21 +364,33 @@ export function CaseStudiesPage() {
             title="Speed-to-Lead: das Wissen hinter den Resultaten"
             intro={blog.hero.subtitle}
           >
-            <div className="grid gap-px overflow-hidden rounded-2xl border border-white/15 bg-white/10 sm:grid-cols-3">
+            <div className="grid gap-px overflow-hidden rounded-2xl border border-[#dce3db] bg-white sm:grid-cols-3">
               {blog.stats.map((stat) => (
-                <div key={stat.label} className="bg-black/40 p-6 text-center backdrop-blur-sm">
-                  <div className="text-3xl font-bold text-[#57C7FF]">{stat.value}</div>
-                  <p className="mt-2 text-sm leading-6 text-white/65">{stat.label}</p>
+                <div
+                  key={stat.label}
+                  className="bg-[#f5f7f2] p-6 text-center backdrop-blur-sm"
+                >
+                  <div className="text-3xl font-bold text-[#4d7c36]">
+                    {stat.value}
+                  </div>
+                  <p className="mt-2 text-sm leading-6 text-[#202522]">
+                    {stat.label}
+                  </p>
                 </div>
               ))}
             </div>
-            <h3 className="mt-8 text-xl font-semibold text-white">{blog.speedToLead.title}</h3>
+            <h3 className="mt-8 text-xl font-semibold text-[#202522]">
+              {blog.speedToLead.title}
+            </h3>
             {blog.speedToLead.paragraphs.map((p, i) => (
-              <p key={i} className="mt-3 text-sm leading-7 text-white/70 sm:text-base">
+              <p
+                key={i}
+                className="mt-3 text-sm leading-7 text-[#202522] sm:text-base"
+              >
                 {p}
               </p>
             ))}
-            <blockquote className="mt-6 rounded-xl border-l-4 border-emerald-300 bg-white/[0.04] p-5 text-sm italic leading-7 text-white/80 sm:text-base">
+            <blockquote className="mt-6 rounded-xl border-l-4 border-emerald-300 bg-white p-5 text-sm italic leading-7 text-[#202522] sm:text-base">
               {blog.speedToLead.quote}
             </blockquote>
           </CaseStudySection>
@@ -341,24 +409,25 @@ export function CaseStudiesPage() {
               {
                 label: "Smart Apps",
                 href: "/smart-apps",
-                description: "advok.app ist ein Beispiel für branchenspezifische Smart Apps von AgenticIT.",
+                description:
+                  "advok.app ist ein Beispiel für branchenspezifische Smart Apps von AgenticIT.",
               },
               {
                 label: "RevOps",
                 href: "/revops",
-                description: "Ihre Kundengewinnung als ein eingespieltes System – von der Anfrage bis zum Abschluss.",
+                description:
+                  "Ihre Kundengewinnung als ein eingespieltes System – von der Anfrage bis zum Abschluss.",
               },
               {
                 label: "KI Agenten",
                 href: "/ai-agents",
-                description: "Die Technologie hinter autonomen KI-Rechtsassistenten und Lead-Automation.",
+                description:
+                  "Die Technologie hinter autonomen KI-Rechtsassistenten und Lead-Automation.",
               },
             ]}
           />
-
-          <CarbonFooter />
         </div>
-      </main>
+      </JourneyContent>
     </div>
   )
 }
@@ -379,9 +448,17 @@ function CaseStudySection({
   return (
     <section id={id} className="scroll-mt-28 px-4 py-10 sm:px-6 sm:py-14">
       <div className="mx-auto max-w-6xl">
-        <p className="overline text-sm font-semibold uppercase tracking-[0.2em] text-[#57C7FF]">{eyebrow}</p>
-        <h2 className="mt-3 text-balance text-2xl font-semibold text-white sm:text-3xl md:text-4xl">{title}</h2>
-        {intro ? <p className="mt-4 max-w-4xl text-base leading-8 text-white/72 sm:text-lg">{intro}</p> : null}
+        <p className="overline text-sm font-semibold uppercase tracking-[0.2em] text-[#4d7c36]">
+          {eyebrow}
+        </p>
+        <h2 className="mt-3 text-balance text-2xl font-semibold text-[#202522] sm:text-3xl md:text-4xl">
+          {title}
+        </h2>
+        {intro ? (
+          <p className="mt-4 max-w-4xl text-base leading-8 text-[#202522] sm:text-lg">
+            {intro}
+          </p>
+        ) : null}
         <div className="mt-8">{children}</div>
       </div>
     </section>

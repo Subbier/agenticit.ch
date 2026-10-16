@@ -1,5 +1,9 @@
 "use client"
 
+import { JourneyContent } from "@/components/journey/content"
+
+import design from "@/components/journey/content.module.css"
+
 // Design-System "Carbon & Signal" (26.07.2026) — Bait-Stufe der Value Ladder.
 // Eigene Landingpage für den Potenzialrechner; die Startseite bleibt bewusst
 // unangetastet (Hero und Farbe in Ruhe lassen).
@@ -10,8 +14,6 @@ import { useEffect, useMemo, useRef, useState } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { AlertCircle, Loader2, Phone } from "lucide-react"
-import { CarbonHeader } from "@/components/site/carbon-header"
-import { CarbonFooter } from "@/components/site/carbon-footer"
 import { Reveal } from "@/components/site/reveal"
 import { demandByIndustry, getDemand } from "@/lib/demand-data"
 import { industries, getIndustryByValue } from "@/lib/lead-pricing"
@@ -25,15 +27,23 @@ import {
 
 // Nur Branchen anzeigen, für die eine Nachfrage-Zahl hinterlegt ist – plus
 // "Sonstige" als Auffangoption (dort ermitteln wir die Zahl im Gespräch).
-const CALC_INDUSTRIES = industries.filter((i) => Boolean(demandByIndustry[i.value]))
+const CALC_INDUSTRIES = industries.filter((i) =>
+  Boolean(demandByIndustry[i.value]),
+)
 
-const GTM_CYAN = "#57C7FF"
+const GTM_CYAN = "#4d7c36"
 
-function Eyebrow({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) {
+function Eyebrow({
+  children,
+  dark = false,
+}: {
+  children: React.ReactNode
+  dark?: boolean
+}) {
   return (
     <span
       className={`font-[family-name:var(--font-mono-signal)] text-[11px] font-semibold uppercase tracking-[0.22em] ${
-        dark ? "text-[#57C7FF]" : "text-[#57C7FF]"
+        dark ? "text-[#4d7c36]" : "text-[#4d7c36]"
       }`}
     >
       {children}
@@ -79,7 +89,10 @@ export function PotenzialPage() {
   const [errorMsg, setErrorMsg] = useState("")
 
   const selected = industry ? getIndustryByValue(industry) : null
-  const demand = useMemo(() => (industry ? getDemand(industry) : null), [industry])
+  const demand = useMemo(
+    () => (industry ? getDemand(industry) : null),
+    [industry],
+  )
   const hasNumber = Boolean(demand && demand.monthlySearches > 0)
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -114,45 +127,55 @@ export function PotenzialPage() {
       router.push("/danke")
     } catch (err) {
       setState("error")
-      setErrorMsg(err instanceof Error ? err.message : POTENZIAL_FORM.errorLabel)
+      setErrorMsg(
+        err instanceof Error ? err.message : POTENZIAL_FORM.errorLabel,
+      )
     }
   }
 
   return (
-    <main className="min-h-screen bg-[#FAFAF7] text-[#101418]">
-      <CarbonHeader />
-
+    <JourneyContent>
       {/* HERO — Hook A, flach Carbon, keine Verläufe/Glow (R4) */}
-      <section className="bg-[#0A0C10] px-5 pb-14 pt-16 sm:px-6 sm:pb-16 sm:pt-20">
+      <section className={design.pageHero}>
         <div className="mx-auto flex w-full max-w-[860px] flex-col items-center text-center">
-          <nav aria-label="Brotkrumen" className="mb-5 font-[family-name:var(--font-carbon-text)] text-[12px] font-medium text-[#6B7480]">
-            <Link href="/" className="hover:text-white">Start</Link>
-            <span className="mx-2 text-white/20">/</span>
-            <span className="text-[#B9C2CE]">Potenzialrechner</span>
+          <nav
+            aria-label="Brotkrumen"
+            className="mb-5 font-[family-name:var(--font-carbon-text)] text-[12px] font-medium text-[#6B7480]"
+          >
+            <Link href="/" className="hover:text-[#202522]">
+              Start
+            </Link>
+            <span className="mx-2 text-[#202522]">/</span>
+            <span className="text-[#647068]">Potenzialrechner</span>
           </nav>
           <Eyebrow dark>{POTENZIAL_HERO.eyebrow}</Eyebrow>
-          <h1 className="mt-4 max-w-[720px] font-[family-name:var(--font-display)] text-[clamp(30px,5.6vw,46px)] font-bold leading-[1.05] tracking-[-0.02em] text-white">
+          <h1 className="mt-4 max-w-[720px] font-[family-name:var(--font-display)] text-[clamp(30px,5.6vw,46px)] font-bold leading-[1.05] tracking-[-0.02em] text-[#202522]">
             {POTENZIAL_HERO.h1}{" "}
-            <em className="not-italic text-[#57C7FF]">{POTENZIAL_HERO.h1Accent}</em>
+            <em className="not-italic text-[#4d7c36]">
+              {POTENZIAL_HERO.h1Accent}
+            </em>
           </h1>
-          <p className="mt-5 max-w-[620px] font-[family-name:var(--font-carbon-text)] text-[clamp(15px,3.5vw,18px)] leading-relaxed text-[#B9C2CE]">
+          <p className="mt-5 max-w-[620px] font-[family-name:var(--font-carbon-text)] text-[clamp(15px,3.5vw,18px)] leading-relaxed text-[#647068]">
             {POTENZIAL_HERO.lead}
           </p>
-          <p className="mt-3 max-w-[620px] font-[family-name:var(--font-carbon-text)] text-[clamp(15px,3.5vw,17px)] font-semibold leading-relaxed text-white">
+          <p className="mt-3 max-w-[620px] font-[family-name:var(--font-carbon-text)] text-[clamp(15px,3.5vw,17px)] font-semibold leading-relaxed text-[#202522]">
             {POTENZIAL_HERO.offer}
           </p>
         </div>
       </section>
 
       {/* RECHNER — Graph/Rechner in eigenem Panel auf Carbon (R2) */}
-      <section id="rechner" className="scroll-mt-20 bg-[#0A0C10] px-5 pb-20 sm:px-6 sm:pb-24">
+      <section
+        id="rechner"
+        className="scroll-mt-20 bg-[#f5f7f2] px-5 pb-20 sm:px-6 sm:pb-24"
+      >
         <div className="mx-auto w-full max-w-[860px]">
-          <div className="rounded-[20px] border border-white/[0.08] bg-[#141A24] p-6 sm:p-9">
+          <div className="rounded-[20px] border border-[#dce3db] bg-white p-6 sm:p-9">
             <Eyebrow dark>{POTENZIAL_CALC.eyebrow}</Eyebrow>
-            <h2 className="mt-3 font-[family-name:var(--font-display)] text-[clamp(21px,4.2vw,30px)] font-bold leading-[1.12] tracking-[-0.015em] text-white">
+            <h2 className="mt-3 font-[family-name:var(--font-display)] text-[clamp(21px,4.2vw,30px)] font-bold leading-[1.12] tracking-[-0.015em] text-[#202522]">
               {POTENZIAL_CALC.title}
             </h2>
-            <p className="mt-3 max-w-[640px] font-[family-name:var(--font-carbon-text)] text-[14.5px] leading-relaxed text-[#B9C2CE]">
+            <p className="mt-3 max-w-[640px] font-[family-name:var(--font-carbon-text)] text-[14.5px] leading-relaxed text-[#647068]">
               {POTENZIAL_CALC.subline}
             </p>
 
@@ -164,13 +187,17 @@ export function PotenzialPage() {
                 value={industry}
                 onChange={(e) => setIndustry(e.target.value)}
                 aria-label={POTENZIAL_CALC.selectLabel}
-                className="h-[52px] w-full rounded-[11px] border border-white/[0.14] bg-[#1E2631] px-4 font-[family-name:var(--font-carbon-text)] text-[15px] text-white outline-none transition focus:border-[#8FE05A]"
+                className="h-[52px] w-full rounded-[11px] border border-[#dce3db] bg-[#f5f7f2] px-4 font-[family-name:var(--font-carbon-text)] text-[15px] text-[#202522] outline-none transition focus:border-[#8FE05A]"
               >
-                <option value="" className="bg-[#1E2631]">
+                <option value="" className="bg-[#f5f7f2]">
                   {POTENZIAL_CALC.selectPlaceholder}
                 </option>
                 {CALC_INDUSTRIES.map((i) => (
-                  <option key={i.value} value={i.value} className="bg-[#1E2631]">
+                  <option
+                    key={i.value}
+                    value={i.value}
+                    className="bg-[#f5f7f2]"
+                  >
                     {i.label}
                   </option>
                 ))}
@@ -179,7 +206,7 @@ export function PotenzialPage() {
 
             {/* Ergebnis-Karte auf dem Panel — Hierarchie Carbon → Panel → Karte (R2) */}
             {demand && selected ? (
-              <div className="mt-6 rounded-[16px] border border-white/[0.08] bg-[#1E2631] p-6 sm:p-7">
+              <div className="mt-6 rounded-[16px] border border-[#dce3db] bg-[#f5f7f2] p-6 sm:p-7">
                 {hasNumber ? (
                   <>
                     <div
@@ -192,12 +219,12 @@ export function PotenzialPage() {
                     <div className="mt-2 font-[family-name:var(--font-mono-signal)] text-[11px] font-semibold uppercase tracking-[0.18em] text-[#8B94A1]">
                       {POTENZIAL_CALC.searchesLabel}
                     </div>
-                    <div className="mt-6 grid gap-5 border-t border-white/[0.08] pt-5 sm:grid-cols-2">
+                    <div className="mt-6 grid gap-5 border-t border-[#dce3db] pt-5 sm:grid-cols-2">
                       <div>
                         <div className="font-[family-name:var(--font-mono-signal)] text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8B94A1]">
                           {POTENZIAL_CALC.priceLabel}
                         </div>
-                        <div className="mt-1 font-[family-name:var(--font-display)] text-[24px] font-bold text-white">
+                        <div className="mt-1 font-[family-name:var(--font-display)] text-[24px] font-bold text-[#202522]">
                           CHF {selected.leadPrice.toLocaleString("de-CH")}
                         </div>
                       </div>
@@ -205,14 +232,14 @@ export function PotenzialPage() {
                         <div className="font-[family-name:var(--font-mono-signal)] text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8B94A1]">
                           {POTENZIAL_CALC.keywordsLabel}
                         </div>
-                        <div className="mt-1 font-[family-name:var(--font-carbon-text)] text-[13.5px] leading-relaxed text-[#B9C2CE]">
+                        <div className="mt-1 font-[family-name:var(--font-carbon-text)] text-[13.5px] leading-relaxed text-[#647068]">
                           {demand.exampleKeywords.join(" · ")}
                         </div>
                       </div>
                     </div>
                   </>
                 ) : (
-                  <p className="font-[family-name:var(--font-carbon-text)] text-[15px] leading-relaxed text-[#B9C2CE]">
+                  <p className="font-[family-name:var(--font-carbon-text)] text-[15px] leading-relaxed text-[#647068]">
                     {POTENZIAL_CALC.sonstigeNote}
                   </p>
                 )}
@@ -240,7 +267,7 @@ export function PotenzialPage() {
             <h2 className="mt-3 font-[family-name:var(--font-display)] text-[clamp(24px,4.8vw,34px)] font-bold leading-[1.1] tracking-[-0.015em]">
               {POTENZIAL_BRIDGE.headline}
             </h2>
-            <p className="mt-4 max-w-[640px] font-[family-name:var(--font-carbon-text)] text-[clamp(15px,3.5vw,17px)] leading-relaxed text-[#4A545F]">
+            <p className="mt-4 max-w-[640px] font-[family-name:var(--font-carbon-text)] text-[clamp(15px,3.5vw,17px)] leading-relaxed text-[#647068]">
               {POTENZIAL_BRIDGE.body}
             </p>
           </Reveal>
@@ -248,9 +275,12 @@ export function PotenzialPage() {
           <div className="mt-10 grid gap-4 sm:grid-cols-2">
             {POTENZIAL_BRIDGE.bullets.map((b, i) => (
               <Reveal key={b} delay={i * 80} className="h-full">
-                <div className="flex h-full items-start gap-3 rounded-[16px] border border-[#E1E4E8] bg-[#F1F3F5] p-5">
-                  <span className="mt-[7px] h-1.5 w-1.5 flex-none rounded-full bg-[#1F9A5E]" aria-hidden="true" />
-                  <span className="font-[family-name:var(--font-carbon-text)] text-[14.5px] font-medium leading-relaxed text-[#101418]">
+                <div className="flex h-full items-start gap-3 rounded-[16px] border border-[#dce3db] bg-[#f5f7f2] p-5">
+                  <span
+                    className="mt-[7px] h-1.5 w-1.5 flex-none rounded-full bg-[#8fe05a]"
+                    aria-hidden="true"
+                  />
+                  <span className="font-[family-name:var(--font-carbon-text)] text-[14.5px] font-medium leading-relaxed text-[#202522]">
                     {b}
                   </span>
                 </div>
@@ -261,25 +291,36 @@ export function PotenzialPage() {
       </section>
 
       {/* QUALIFIZIERUNG — Stufe 3, so wenig Reibung wie möglich */}
-      <section id="rueckruf" className="scroll-mt-20 bg-[#F1F3F5] px-5 py-16 sm:px-6 sm:py-20">
+      <section
+        id="rueckruf"
+        className="scroll-mt-20 bg-[#f5f7f2] px-5 py-16 sm:px-6 sm:py-20"
+      >
         <Reveal className="mx-auto flex max-w-[620px] flex-col items-center text-center">
           <Eyebrow>{POTENZIAL_FORM.eyebrow}</Eyebrow>
           <h2 className="mt-3 font-[family-name:var(--font-display)] text-[clamp(24px,4.6vw,32px)] font-bold leading-[1.1] tracking-[-0.015em]">
             {POTENZIAL_FORM.title}
           </h2>
-          <p className="mt-4 max-w-[520px] font-[family-name:var(--font-carbon-text)] text-[15px] leading-relaxed text-[#4A545F]">
+          <p className="mt-4 max-w-[520px] font-[family-name:var(--font-carbon-text)] text-[15px] leading-relaxed text-[#647068]">
             {POTENZIAL_FORM.microcopy}
           </p>
 
           <form
             onSubmit={handleSubmit}
-            className="mt-7 w-full rounded-[18px] border border-[#E1E4E8] bg-white p-5 text-left sm:p-7"
+            className="mt-7 w-full rounded-[18px] border border-[#dce3db] bg-white p-5 text-left sm:p-7"
           >
             {/* Honeypot: für Menschen unsichtbar, fängt Bots ab */}
-            <div aria-hidden="true" className="absolute left-[-9999px] top-0 h-0 w-0 overflow-hidden">
+            <div
+              aria-hidden="true"
+              className="absolute left-[-9999px] top-0 h-0 w-0 overflow-hidden"
+            >
               <label>
                 Bitte dieses Feld leer lassen
-                <input type="text" name="company_website" tabIndex={-1} autoComplete="off" />
+                <input
+                  type="text"
+                  name="company_website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
               </label>
             </div>
 
@@ -290,7 +331,10 @@ export function PotenzialPage() {
                 value={industry}
                 onChange={setIndustry}
                 placeholder={POTENZIAL_CALC.selectPlaceholder}
-                options={CALC_INDUSTRIES.map((i) => ({ value: i.value, label: i.label }))}
+                options={CALC_INDUSTRIES.map((i) => ({
+                  value: i.value,
+                  label: i.label,
+                }))}
                 required
               />
               <Select
@@ -300,13 +344,35 @@ export function PotenzialPage() {
                 options={GOAL_OPTIONS.map((g) => ({ value: g, label: g }))}
                 required
               />
-              <Field name="firstName" label="Vorname *" autoComplete="given-name" required />
-              <Field name="lastName" label="Nachname *" autoComplete="family-name" required />
-              <Field name="phone" label="Telefon *" type="tel" autoComplete="tel" required />
-              <Field name="email" label="Geschäftliche E-Mail *" type="email" autoComplete="email" required />
+              <Field
+                name="firstName"
+                label="Vorname *"
+                autoComplete="given-name"
+                required
+              />
+              <Field
+                name="lastName"
+                label="Nachname *"
+                autoComplete="family-name"
+                required
+              />
+              <Field
+                name="phone"
+                label="Telefon *"
+                type="tel"
+                autoComplete="tel"
+                required
+              />
+              <Field
+                name="email"
+                label="Geschäftliche E-Mail *"
+                type="email"
+                autoComplete="email"
+                required
+              />
             </div>
 
-            <label className="mt-4 flex items-start gap-2.5 font-[family-name:var(--font-carbon-text)] text-[12.5px] leading-snug text-[#4A545F]">
+            <label className="mt-4 flex items-start gap-2.5 font-[family-name:var(--font-carbon-text)] text-[12.5px] leading-snug text-[#647068]">
               <input
                 type="checkbox"
                 name="consent"
@@ -336,27 +402,27 @@ export function PotenzialPage() {
               ) : (
                 <Phone className="size-[18px]" />
               )}
-              {state === "loading" ? POTENZIAL_FORM.submitLoadingLabel : POTENZIAL_FORM.submitLabel}
+              {state === "loading"
+                ? POTENZIAL_FORM.submitLoadingLabel
+                : POTENZIAL_FORM.submitLabel}
             </button>
 
             {/* Angst-Killer direkt unter dem Button */}
-            <p className="mt-3 text-center font-[family-name:var(--font-carbon-text)] text-[12.5px] leading-relaxed text-[#4A545F]">
+            <p className="mt-3 text-center font-[family-name:var(--font-carbon-text)] text-[12.5px] leading-relaxed text-[#647068]">
               {POTENZIAL_FORM.fearKiller}
             </p>
           </form>
         </Reveal>
       </section>
-
-      <CarbonFooter />
-    </main>
+    </JourneyContent>
   )
 }
 
 const CONTROL_CLASS =
-  "h-[48px] w-full rounded-[11px] border border-[#E1E4E8] bg-white px-4 font-[family-name:var(--font-carbon-text)] text-[15px] text-[#101418] outline-none transition focus:border-[#1F9A5E]"
+  "h-[48px] w-full rounded-[11px] border border-[#dce3db] bg-white px-4 font-[family-name:var(--font-carbon-text)] text-[15px] text-[#202522] outline-none transition focus:border-[#1F9A5E]"
 
 const LABEL_CLASS =
-  "mb-2 block font-[family-name:var(--font-mono-signal)] text-[10.5px] font-semibold uppercase tracking-[0.16em] text-[#4A545F]"
+  "mb-2 block font-[family-name:var(--font-mono-signal)] text-[10.5px] font-semibold uppercase tracking-[0.16em] text-[#647068]"
 
 function Field({
   name,
@@ -374,7 +440,13 @@ function Field({
   return (
     <label className="block">
       <span className={LABEL_CLASS}>{label}</span>
-      <input name={name} type={type} required={required} autoComplete={autoComplete} className={CONTROL_CLASS} />
+      <input
+        name={name}
+        type={type}
+        required={required}
+        autoComplete={autoComplete}
+        className={CONTROL_CLASS}
+      />
     </label>
   )
 }
@@ -406,7 +478,11 @@ function Select({
         required={required}
         className={CONTROL_CLASS}
         {...(controlled
-          ? { value, onChange: (e: React.ChangeEvent<HTMLSelectElement>) => onChange?.(e.target.value) }
+          ? {
+              value,
+              onChange: (e: React.ChangeEvent<HTMLSelectElement>) =>
+                onChange?.(e.target.value),
+            }
           : { defaultValue: "" })}
       >
         <option value="">{placeholder}</option>

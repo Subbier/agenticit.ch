@@ -9,74 +9,74 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #0A0C10;
-  --foreground: #F2F5F8;
-  --card: #141A24;
-  --card-foreground: oklch(0.98 0 0);
-  --popover: #141A24;
-  --popover-foreground: oklch(0.98 0 0);
-  --primary: #8FE05A;
+  --background: #ffffff;
+  --foreground: #202522;
+  --card: #ffffff;
+  --card-foreground: #202522;
+  --popover: #ffffff;
+  --popover-foreground: #202522;
+  --primary: #8fe05a;
   --primary-foreground: #122400;
-  --secondary: #1E2631;
-  --secondary-foreground: oklch(0.98 0 0);
-  --muted: #1E2631;
-  --muted-foreground: #9AA6B2;
-  --accent: #1E2631;
-  --accent-foreground: oklch(0.98 0 0);
+  --secondary: #f5f7f2;
+  --secondary-foreground: #202522;
+  --muted: #f5f7f2;
+  --muted-foreground: #647068;
+  --accent: #edf5e7;
+  --accent-foreground: #202522;
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.98 0 0);
-  --border: #2A3340;
-  --input: #1E2631;
-  --ring: #8FE05A;
-  --chart-1: #8FE05A;
+  --border: #dce3db;
+  --input: #dce3db;
+  --ring: #8fe05a;
+  --chart-1: #8fe05a;
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.5 0.07 227.392);
   --chart-4: oklch(0.8 0.189 84.429);
   --chart-5: oklch(0.75 0.188 70.08);
   --radius: 0.75rem;
-  --sidebar: #141A24;
+  --sidebar: #141a24;
   --sidebar-foreground: oklch(0.98 0 0);
-  --sidebar-primary: #8FE05A;
+  --sidebar-primary: #8fe05a;
   --sidebar-primary-foreground: oklch(0.05 0 0);
   --sidebar-accent: oklch(0.15 0 0);
   --sidebar-accent-foreground: oklch(0.98 0 0);
   --sidebar-border: oklch(0.2 0 0);
-  --sidebar-ring: #8FE05A;
+  --sidebar-ring: #8fe05a;
 }
 
 .dark {
-  --background: #0A0C10;
-  --foreground: #F2F5F8;
-  --card: #141A24;
+  --background: #0a0c10;
+  --foreground: #f2f5f8;
+  --card: #141a24;
   --card-foreground: oklch(0.98 0 0);
-  --popover: #141A24;
+  --popover: #141a24;
   --popover-foreground: oklch(0.98 0 0);
-  --primary: #8FE05A;
+  --primary: #8fe05a;
   --primary-foreground: #122400;
-  --secondary: #1E2631;
+  --secondary: #1e2631;
   --secondary-foreground: oklch(0.98 0 0);
-  --muted: #1E2631;
-  --muted-foreground: #9AA6B2;
-  --accent: #1E2631;
+  --muted: #1e2631;
+  --muted-foreground: #9aa6b2;
+  --accent: #1e2631;
   --accent-foreground: oklch(0.98 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.98 0 0);
-  --border: #2A3340;
-  --input: #1E2631;
-  --ring: #8FE05A;
-  --chart-1: #8FE05A;
+  --border: #2a3340;
+  --input: #1e2631;
+  --ring: #8fe05a;
+  --chart-1: #8fe05a;
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.5 0.07 227.392);
   --chart-4: oklch(0.8 0.189 84.429);
   --chart-5: oklch(0.75 0.188 70.08);
-  --sidebar: #141A24;
+  --sidebar: #141a24;
   --sidebar-foreground: oklch(0.98 0 0);
-  --sidebar-primary: #8FE05A;
+  --sidebar-primary: #8fe05a;
   --sidebar-primary-foreground: oklch(0.05 0 0);
   --sidebar-accent: oklch(0.15 0 0);
   --sidebar-accent-foreground: oklch(0.98 0 0);
   --sidebar-border: oklch(0.2 0 0);
-  --sidebar-ring: #8FE05A;
+  --sidebar-ring: #8fe05a;
 }
 
 @theme inline {
@@ -146,7 +146,9 @@
   h2,
   h3,
   h4 {
-    font-family: var(--font-space-grotesk), var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+    font-family:
+      var(--font-space-grotesk), var(--font-geist-sans), ui-sans-serif,
+      system-ui, sans-serif;
     letter-spacing: -0.015em;
   }
 }
@@ -1035,17 +1037,40 @@ li {
 
 /* Hero-Aurora – dezent driftende Verlaufsflächen (CSS-only, leichtgewichtig) */
 @keyframes aurora-drift-1 {
-  0%, 100% { transform: translate(-50%, 0) scale(1); opacity: 0.9; }
-  50% { transform: translate(-44%, 5%) scale(1.12); opacity: 1; }
+  0%,
+  100% {
+    transform: translate(-50%, 0) scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translate(-44%, 5%) scale(1.12);
+    opacity: 1;
+  }
 }
 @keyframes aurora-drift-2 {
-  0%, 100% { transform: translate(-50%, 0) scale(1.05); opacity: 0.8; }
-  50% { transform: translate(-58%, -7%) scale(0.92); opacity: 1; }
+  0%,
+  100% {
+    transform: translate(-50%, 0) scale(1.05);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(-58%, -7%) scale(0.92);
+    opacity: 1;
+  }
 }
 @keyframes aurora-drift-3 {
-  0%, 100% { transform: translate(-50%, 0) scale(1); opacity: 0.75; }
-  50% { transform: translate(-42%, 8%) scale(1.1); opacity: 0.95; }
+  0%,
+  100% {
+    transform: translate(-50%, 0) scale(1);
+    opacity: 0.75;
+  }
+  50% {
+    transform: translate(-42%, 8%) scale(1.1);
+    opacity: 0.95;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
-  .aurora-blob { animation: none !important; }
+  .aurora-blob {
+    animation: none !important;
+  }
 }

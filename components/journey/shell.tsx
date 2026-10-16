@@ -22,7 +22,7 @@ function Brand() {
 
 export function JourneyShell({ children }: { children: React.ReactNode }) {
   return (
-    <div className={styles.shell}>
+    <div className={styles.shell} data-site-design="journey">
       <div className={styles.container}>
         <header className={styles.header}>
           <Brand />
