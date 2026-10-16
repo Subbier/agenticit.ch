@@ -50,12 +50,12 @@ export const KARRIERE_JOBS: KarriereJob[] = [
     teaser:
       "Revenue Operations ist unser Wachstumsmotor – Sie sind die Chef-Architektin, der Chef-Architekt, der ihn baut. Halb beim Kunden die Ärmel hochkrempeln, halb in Ruhe die Architektur feilen.",
     start: "1. Oktober 2026",
-    setup: "50% vor Ort beim Kunden, 50% Home Office in Bern",
+    setup: "Hybrid: 50 % beim Kunden vor Ort, 50 % im Homeoffice",
     pensum: "80–100%",
     spielfeldTitle: "Ihr Spielfeld",
     spielfeld: [
       "Hands-on beim Kunden (50%): Sie sind die Hälfte Ihrer Zeit direkt vor Ort. Prozesse analysieren, Workshops leiten, Architekturen direkt in die Systeme der Kunden einbauen.",
-      "Deep Work (50%): Die andere Hälfte arbeiten Sie fokussiert aus Ihrem Home Office in Bern. Hier entwerfen, bauen und skalieren Sie komplexe CRM- und RevOps-Infrastrukturen.",
+      "Konzentriert im Homeoffice (50 %): Sie entwickeln CRM- und RevOps-Lösungen, verbinden Systeme und setzen die gemeinsam erarbeiteten Prozesse um.",
       "Intelligente Automatisierung: Sie integrieren KI-gestützte Lösungen (Predictive Analytics, Scoring-Modelle, Conversational Intelligence), damit die Vertriebsprozesse unserer Kunden spürbar schneller werden.",
       "Daten-Fluss: Sie orchestrieren saubere Daten-Pipelines und API-Integrationen, damit Teams in Echtzeit die richtigen Entscheidungen treffen können.",
     ],
@@ -67,7 +67,7 @@ export const KARRIERE_JOBS: KarriereJob[] = [
       "Fliessendes, technisches Englisch und verhandlungssicheres Deutsch.",
     ],
     bieten:
-      "Genau wie unser Tech-Stack sind auch unsere Konditionen erstklassig: überdurchschnittliche Anstellungsbedingungen, spürbarer Freiraum. Neueste Hard- und Software für Kundeneinsätze und Home-Office in Bern – inklusive einer wirklich guten ergonomischen Arbeitsumgebung.",
+      "Überdurchschnittliche Anstellungsbedingungen und Freiraum, Ihre Lösungen mitzugestalten. Sie erhalten aktuelle Hard- und Software für Kundeneinsätze und ein ergonomisch ausgestattetes Homeoffice.",
   },
   {
     slug: "lehrstelle-informatik-efz",
