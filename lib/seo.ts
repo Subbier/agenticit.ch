@@ -336,6 +336,7 @@ export const INDEXABLE_ROUTES = [
   "/kundenreise-check",
   "/automatisierungs-check",
   "/marketing-setup-check",
+  "/anfragen-check",
   "/werkzeuge",
   "/pakete",
   "/zusammenarbeit",

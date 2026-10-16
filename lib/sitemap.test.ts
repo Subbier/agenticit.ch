@@ -37,6 +37,7 @@ test("verified service and calculator updates retain their real content dates", 
     ["/loesungen/prozessautomatisierung", "2026-10-17"],
     ["/automatisierungs-check", "2026-10-17"],
     ["/marketing-setup-check", "2026-10-17"],
+    ["/anfragen-check", "2026-10-17"],
     ["/loesungen/gtm-markteintritt", "2026-10-17"],
     ["/loesungen/revops-umsatzgenerierung", "2026-10-17"],
   ])

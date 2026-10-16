@@ -30,7 +30,7 @@ for (const [slug, intent] of services) {
     assert.ok(html.includes('href="/datenschutz"'))
     assert.match(
       html,
-      /href="\/(automatisierungs-check|kundenreise-check|marketing-setup-check)/,
+      /href="\/(automatisierungs-check|kundenreise-check|marketing-setup-check|anfragen-check)/,
     )
     assert.ok((html.match(/<details\b/g) ?? []).length >= 4)
   })
@@ -38,7 +38,7 @@ for (const [slug, intent] of services) {
 
 for (const [slug, checkHref] of [
   ["gtm-markteintritt", "/marketing-setup-check"],
-  ["revops-umsatzgenerierung", "/kundenreise-check?thema=conversion"],
+  ["revops-umsatzgenerierung", "/anfragen-check"],
 ]) {
   test(`${slug} explains the service without invented results and offers a relevant check`, async () => {
     const response = await fetch(new URL(`/loesungen/${slug}`, baseUrl))

@@ -213,6 +213,60 @@ test("lead endpoint validates before forwarding and handles delivery failure hon
       },
     )
     await suite.test(
+      "inquiry check forwards one derived plan and rejects mixed or incomplete context",
+      async () => {
+        const lead = {
+          ...valid,
+          source: "anfragen-check",
+          journey: undefined,
+          inquiryCheck: {
+            version: 1,
+            answers: {
+              intake: "unknown",
+              owner: "open",
+              response: "partial",
+              followup: "ready",
+              outcome: "unknown",
+            },
+          },
+          message: "forged plan",
+          goal: "forged goal",
+        }
+        const before = calls
+        const response = await POST(request(lead, "192.0.2.20"))
+        assert.equal(response.status, 200)
+        assert.equal(calls, before + 1)
+        assert.ok(
+          String(forwarded.message).includes(
+            "AGENTICIT · IHR PLAN FÜR DIE ANFRAGEBEARBEITUNG",
+          ),
+        )
+        assert.ok(!String(forwarded.message).includes("forged plan"))
+        assert.notEqual(forwarded.goal, "forged goal")
+        assert.equal(forwarded.marketingConsent, false)
+        assert.equal(forwarded.followUpTask, "Anfragen-Check persönlich prüfen")
+        assert.ok((forwarded.tags as string[]).includes("service:sales"))
+        for (const [index, change] of [
+          { inquiryCheck: undefined },
+          { inquiryCheck: { version: 1, answers: {} } },
+          { consent: false },
+          { company: "" },
+          { source: "journey-check" },
+          { journey: valid.journey },
+        ].entries()) {
+          assert.equal(
+            (
+              await POST(
+                request({ ...lead, ...change }, `192.0.2.${21 + index}`),
+              )
+            ).status,
+            400,
+          )
+          assert.equal(calls, before + 1)
+        }
+      },
+    )
+    await suite.test(
       "failed forwarding is not reported as success",
       async () => {
         globalThis.fetch = async () => new Response("", { status: 503 })

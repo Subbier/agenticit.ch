@@ -101,6 +101,7 @@ test("event payloads contain only a fixed event, check kind and clean page URL",
       "customer_journey",
       "automation",
       "marketing_setup",
+      "inquiry_flow",
     ] as const) {
       assert.equal(trackCheckEvent("check_result_ready", kind), true)
     }
@@ -125,6 +126,12 @@ test("event payloads contain only a fixed event, check kind and clean page URL",
           page_location: "https://agenticit.ch/marketing-setup-check",
           page_referrer: "",
         },
+        {
+          send_to: "G-3NGDK2RM3B",
+          check_kind: "inquiry_flow",
+          page_location: "https://agenticit.ch/anfragen-check",
+          page_referrer: "",
+        },
       ],
     )
     assert.ok(
@@ -139,7 +146,7 @@ test("event payloads contain only a fixed event, check kind and clean page URL",
       trackCheckEvent("check_started", "arbitrary_personal_value" as never),
       false,
     )
-    assert.equal(fixture.commands().length, 3)
+    assert.equal(fixture.commands().length, 4)
   } finally {
     fixture.restore()
   }

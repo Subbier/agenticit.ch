@@ -37,7 +37,9 @@ export function ChallengeCards() {
                 ? "/automatisierungs-check"
                 : challenge.id === "acquisition"
                   ? "/marketing-setup-check"
-                  : `/kundenreise-check?thema=${challenge.id}`
+                  : challenge.id === "conversion"
+                    ? "/anfragen-check"
+                    : `/kundenreise-check?thema=${challenge.id}`
             }
             key={challenge.id}
             className={`${styles.challengeCard} ${challenge.id === "partnership" ? styles.challengeWide : ""}`}
@@ -48,7 +50,9 @@ export function ChallengeCards() {
             <h3>{challenge.label}</h3>
             <p>{challenge.description}</p>
             <span className={styles.cardBottom}>
-              {challenge.magnet}
+              {challenge.id === "conversion"
+                ? "Ihr Anfragen-Check"
+                : challenge.magnet}
               <ArrowUpRight size={17} aria-hidden="true" />
             </span>
           </Link>

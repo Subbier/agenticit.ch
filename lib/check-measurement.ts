@@ -4,6 +4,7 @@ const checkPages = {
   customer_journey: "/kundenreise-check",
   automation: "/automatisierungs-check",
   marketing_setup: "/marketing-setup-check",
+  inquiry_flow: "/anfragen-check",
 } as const
 
 export type CheckKind = keyof typeof checkPages

@@ -5,6 +5,7 @@ import {
   buildMarketingSetupPlan,
   marketingSetupSchema,
 } from "./marketing-setup"
+import { buildInquiryPlan, inquirySchema } from "./inquiry-check"
 
 const optionalText = (max = 500) =>
   z.preprocess(
@@ -62,6 +63,7 @@ export const leadSchema = z
       "journey-check",
       "automation-check",
       "marketing-setup-check",
+      "anfragen-check",
     ]),
     name: z.string().trim().min(2).max(120),
     email: z.string().trim().email().max(180),
@@ -97,6 +99,7 @@ export const leadSchema = z
       .optional(),
     automation: automationSchema.optional(),
     marketingSetup: marketingSetupSchema.optional(),
+    inquiryCheck: inquirySchema.optional(),
   })
   .superRefine((data, ctx) => {
     if (data.marketingSetup && data.source !== "marketing-setup-check")
@@ -107,13 +110,35 @@ export const leadSchema = z
       })
     if (
       data.source === "marketing-setup-check" &&
-      (!data.marketingSetup || data.journey || data.automation)
+      (!data.marketingSetup ||
+        data.journey ||
+        data.automation ||
+        data.inquiryCheck)
     )
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
         path: ["marketingSetup"],
         message:
           "Bitte nur die vollständigen Antworten des Marketing-Setup-Checks übermitteln.",
+      })
+    if (data.inquiryCheck && data.source !== "anfragen-check")
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["inquiryCheck"],
+        message: "Diese Antworten gehören zum Anfragen-Check.",
+      })
+    if (
+      data.source === "anfragen-check" &&
+      (!data.inquiryCheck ||
+        data.journey ||
+        data.automation ||
+        data.marketingSetup)
+    )
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["inquiryCheck"],
+        message:
+          "Bitte nur die vollständigen Antworten des Anfragen-Checks übermitteln.",
       })
     if (data.automation && data.source !== "automation-check") {
       ctx.addIssue({
@@ -125,7 +150,8 @@ export const leadSchema = z
     if (
       data.source !== "journey-check" &&
       data.source !== "automation-check" &&
-      data.source !== "marketing-setup-check"
+      data.source !== "marketing-setup-check" &&
+      data.source !== "anfragen-check"
     )
       return
     if (data.source === "journey-check" && !data.journey)
@@ -175,6 +201,10 @@ export function prepareLeadPayload(
     lead.source === "marketing-setup-check" && lead.marketingSetup
       ? buildMarketingSetupPlan(lead.marketingSetup)
       : null
+  const inquiryPlan =
+    lead.source === "anfragen-check" && lead.inquiryCheck
+      ? buildInquiryPlan(lead.inquiryCheck)
+      : null
   return {
     ...lead,
     ...(plan
@@ -201,7 +231,15 @@ export function prepareLeadPayload(
               contactMethod: lead.contactMethod ?? "email",
               marketingConsent: false,
             }
-          : {}),
+          : inquiryPlan
+            ? {
+                message: inquiryPlan,
+                challenge: "conversion",
+                goal: "Anfragebearbeitung und nächsten Schritt prüfen",
+                contactMethod: lead.contactMethod ?? "email",
+                marketingConsent: false,
+              }
+            : {}),
     crm: "zoho",
     tags: [
       lead.industry ? `branche:${lead.industry}` : null,
@@ -226,7 +264,13 @@ export function prepareLeadPayload(
                 "service:marketing",
                 "herausforderung:acquisition",
               ]
-            : []),
+            : inquiryPlan
+              ? [
+                  "quelle:anfragen-check",
+                  "service:sales",
+                  "herausforderung:conversion",
+                ]
+              : []),
     ].filter((tag): tag is string => Boolean(tag)),
     followUpTask: plan
       ? "Kundenreise-Check persönlich prüfen"
@@ -234,7 +278,9 @@ export function prepareLeadPayload(
         ? "Automatisierungs-Check persönlich prüfen"
         : marketingPlan
           ? "Marketing-Setup-Check persönlich prüfen"
-          : "Rückruf",
+          : inquiryPlan
+            ? "Anfragen-Check persönlich prüfen"
+            : "Rückruf",
     submittedAt,
     userAgent,
   }

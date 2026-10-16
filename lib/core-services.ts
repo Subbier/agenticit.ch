@@ -450,8 +450,8 @@ export const coreServices = [
     headline: "Sales und CRM. Damit Anfragen weiterkommen.",
     intro:
       "Wir setzen abgestimmte Kampagnen um und geben Ihrem Vertrieb einen klaren Ablauf: Anfragen bearbeiten, Gespräche vorbereiten und den nächsten Schritt im CRM festhalten. Ihr Team bleibt nah am Kunden.",
-    checkHref: "/kundenreise-check?thema=conversion",
-    checkLabel: "Ihren Follow-up-Plan erstellen",
+    checkHref: "/anfragen-check",
+    checkLabel: "Ihren Anfrageweg prüfen",
     visualLabel: "Ein gemeinsamer Vertriebsablauf",
     visualTitle: "Kontakt. Gespräch. Kundenbeziehung.",
     visualSteps: [
@@ -525,7 +525,7 @@ export const coreServices = [
     ],
     magnetTitle: "Was braucht Ihre nächste Anfrage?",
     magnetCopy:
-      "Ordnen Sie Ihren heutigen Anfrageweg ein. Der Kundenreise-Check liefert einen Follow-up-Plan und anpassbare Vorlagen für den nächsten Kontakt.",
+      "Fünf kurze Angaben zu Eingang, Zuständigkeit, Reaktion, Nachfassen und Ergebnis. Sie erhalten priorisierte Schritte und einen vollständigen Plan für Ihr Team.",
     faqs: [
       {
         question: "Was bringt eine CRM-Beratung unserem Vertrieb?",

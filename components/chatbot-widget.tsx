@@ -13,8 +13,16 @@ import { Send, X } from "lucide-react"
 import styles from "./chatbot-widget.module.css"
 
 // Auf diesen Seiten wird der AgenticIT-Chat ausgeblendet
-// (z. B. Kampagnenseiten mit eigenem Fremd-Branding).
-const HIDDEN_PATHS = ["/kktermin", "/beste-variante"]
+// Kampagnenseiten behalten ihr Branding; interaktive Checks bleiben frei von
+// einer schwebenden Schaltfläche über Auswahl- und Kontaktfeldern.
+const HIDDEN_PATHS = [
+  "/kktermin",
+  "/beste-variante",
+  "/anfragen-check",
+  "/marketing-setup-check",
+  "/automatisierungs-check",
+  "/kundenreise-check",
+]
 
 type Phase =
   | "menu"
