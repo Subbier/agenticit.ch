@@ -8,8 +8,8 @@ function Brand() {
     <Link className={styles.brand} href="/" aria-label="AgenticIT Startseite">
       <img
         src="/journey-brand.svg"
-        width="28"
-        height="28"
+        width="44"
+        height="44"
         alt=""
         className={styles.brandIcon}
       />

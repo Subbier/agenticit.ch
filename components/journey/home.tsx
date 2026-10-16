@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { ArrowRight, ArrowUpRight, Check, MoveUpRight } from "lucide-react"
+import { ArrowRight, ArrowUpRight, MoveUpRight } from "lucide-react"
 import { JourneyShell } from "./shell"
 import {
   ChallengeCards,
@@ -80,17 +80,6 @@ export function JourneyHome() {
               </div>
             </div>
           </section>
-          <div className={styles.audience}>
-            <strong>Für Teams mit persönlichem Kundenkontakt</strong>
-            {["Beratung", "Telesales", "Aussendienst", "Kundenbetreuung"].map(
-              (item) => (
-                <span key={item}>
-                  <Check size={13} aria-hidden="true" />
-                  {item}
-                </span>
-              ),
-            )}
-          </div>
           <section className={styles.section} id="ansatzpunkt">
             <div className={styles.sectionHead}>
               <div>

@@ -56,8 +56,9 @@
   text-decoration: none;
 }
 .brandIcon {
-  width: 28px;
-  height: 28px;
+  width: 44px;
+  height: 44px;
+  flex: none;
 }
 .brand span {
   font-weight: 750;
@@ -278,26 +279,6 @@
 }
 .illustrationBottom svg {
   color: var(--green);
-}
-.audience {
-  display: flex;
-  align-items: center;
-  gap: 27px;
-  flex-wrap: wrap;
-  border-block: 1px solid var(--line);
-  padding-block: 21px;
-  color: #6a756b;
-  font-size: 12px;
-}
-.audience strong {
-  font-weight: 500;
-  color: var(--ink);
-  margin-right: auto;
-}
-.audience span {
-  display: flex;
-  align-items: center;
-  gap: 8px;
 }
 .section {
   padding-block: 80px;
@@ -1088,6 +1069,10 @@
   .brand {
     font-size: 23px;
   }
+  .brandIcon {
+    width: 40px;
+    height: 40px;
+  }
   .nav {
     display: none;
   }
@@ -1180,14 +1165,6 @@
   }
   .illustrationBottom {
     padding-top: 13px;
-  }
-  .audience {
-    gap: 15px 22px;
-    padding-block: 17px;
-    font-size: 11px;
-  }
-  .audience strong {
-    flex-basis: 100%;
   }
   .section {
     padding-block: 46px;
