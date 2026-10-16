@@ -5,6 +5,8 @@ import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import styles from "./journey.module.css"
 
+const VIDEO_SRC = "/videos/agenticit-firmenvideo.mp4?v=2"
+
 export function CompanyVideo() {
   const video = useRef<HTMLVideoElement>(null)
   const [hasStarted, setHasStarted] = useState(false)
@@ -42,16 +44,16 @@ export function CompanyVideo() {
           controls
           playsInline
           preload="none"
-          poster="/videos/agenticit-thumbnail.png"
+          poster="/videos/agenticit-thumbnail.jpg?v=4"
           width={1920}
           height={1080}
           tabIndex={0}
           aria-label="AgenticIT: Neue Kunden, digitale Abläufe, ein Partner"
           onPlay={() => setHasStarted(true)}
         >
-          <source src="/videos/agenticit-firmenvideo.mp4" type="video/mp4" />
+          <source src={VIDEO_SRC} type="video/mp4" />
           Ihr Browser unterstützt keine Videowiedergabe. Sie können das{" "}
-          <a href="/videos/agenticit-firmenvideo.mp4">Video direkt öffnen</a>.
+          <a href={VIDEO_SRC}>Video direkt öffnen</a>.
         </video>
         {!hasStarted ? (
           <button
@@ -65,7 +67,7 @@ export function CompanyVideo() {
       {playbackError ? (
         <p className={styles.companyVideoError} role="status">
           Bitte starten Sie das Video über die Wiedergabetaste oder{" "}
-          <a href="/videos/agenticit-firmenvideo.mp4">öffnen Sie es direkt</a>.
+          <a href={VIDEO_SRC}>öffnen Sie es direkt</a>.
         </p>
       ) : null}
       <div className={styles.companyVideoFooter}>
