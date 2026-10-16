@@ -9,6 +9,7 @@
 import { useEffect, useRef, useState } from "react"
 import { usePathname } from "next/navigation"
 import { Send, X } from "lucide-react"
+import styles from "./chatbot-widget.module.css"
 
 // Auf diesen Seiten wird der AgenticIT-Chat ausgeblendet
 // (z. B. Kampagnenseiten mit eigenem Fremd-Branding).
@@ -335,32 +336,29 @@ export function ChatbotWidget() {
   if (pathname && HIDDEN_PATHS.some((p) => pathname.startsWith(p))) return null
 
   return (
-    <div className="fixed bottom-5 right-5 z-[80] flex flex-col items-end gap-3">
+    <div className={styles.widget}>
       {/* Chat-Fenster */}
       <div
         role="dialog"
         aria-label="Chat mit Mia, der KI-Assistentin von AgenticIT"
         aria-hidden={!open}
-        className={`flex w-[min(370px,calc(100vw-2.5rem))] flex-col overflow-hidden rounded-2xl border border-[#E1E4E8] bg-white shadow-[0_24px_60px_rgba(10,12,16,0.28)] transition-all duration-300 ${
-          open ? "pointer-events-auto translate-y-0 scale-100 opacity-100" : "pointer-events-none translate-y-3 scale-95 opacity-0"
-        }`}
+        className={`${styles.window} ${open ? styles.open : styles.closed}`}
       >
         {/* Header */}
-        <div className="border-b border-white/10 bg-gradient-to-r from-[#0A0C10] to-[#1E2631] px-4 py-3.5">
-          <div className="flex items-center gap-3">
-            <span className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full bg-[#8FE05A] ring-2 ring-white/15">
+        <div className={styles.header}>
+          <div className={styles.headerRow}>
+            <span className={styles.avatar}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/mia.png" alt="Mia" className="h-full w-full object-cover object-center" />
-              <span className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-[#0A0C10] bg-[#34C98A]" />
+              <img src="/mia.png" alt="Mia" />
             </span>
             <div className="min-w-0">
-              <p className="text-[15px] font-bold leading-tight text-white">Mia</p>
-              <p className="text-[12px] leading-tight text-[#34C98A]">KI-Assistentin · online</p>
+              <p className={styles.name}>Mia</p>
+              <p className={styles.status}>KI-Assistentin · online</p>
             </div>
             <button
               onClick={() => setOpen(false)}
               aria-label="Chat schliessen"
-              className="ml-auto grid h-8 w-8 place-items-center rounded-full text-white/60 transition-colors hover:bg-white/10 hover:text-white"
+              className={styles.close}
             >
               <X className="h-5 w-5" />
             </button>
@@ -368,38 +366,38 @@ export function ChatbotWidget() {
         </div>
 
         {/* Verlauf */}
-        <div ref={scrollRef} className="flex h-[52vh] max-h-[460px] flex-col gap-2.5 overflow-y-auto bg-white px-4 py-4">
+        <div ref={scrollRef} className={styles.history}>
           {messages.map((m) =>
             m.from === "bot" ? (
               <p
                 key={m.id}
-                className="max-w-[88%] self-start whitespace-pre-line rounded-2xl rounded-tl-md bg-[#FAFAF7] px-3.5 py-2.5 text-[13.5px] leading-relaxed text-[#0A0C10] ring-1 ring-[#E1E4E8]"
+                className={`${styles.message} ${styles.botMessage}`}
               >
                 {m.text}
               </p>
             ) : (
               <p
                 key={m.id}
-                className="max-w-[88%] self-end whitespace-pre-line rounded-2xl rounded-tr-md bg-[#8FE05A] px-3.5 py-2.5 text-[13.5px] font-medium leading-relaxed text-[#122400]"
+                className={`${styles.message} ${styles.userMessage}`}
               >
                 {m.text}
               </p>
             ),
           )}
           {typing && (
-            <div className="flex items-center gap-1 self-start rounded-2xl rounded-tl-md bg-[#FAFAF7] px-3.5 py-3 ring-1 ring-[#E1E4E8]">
-              <span className="h-2 w-2 animate-bounce rounded-full bg-[#5A6B82] [animation-delay:-0.3s]" />
-              <span className="h-2 w-2 animate-bounce rounded-full bg-[#5A6B82] [animation-delay:-0.15s]" />
-              <span className="h-2 w-2 animate-bounce rounded-full bg-[#5A6B82]" />
+            <div className={styles.typing} aria-label="Mia schreibt">
+              <span />
+              <span />
+              <span />
             </div>
           )}
           {quickReplies.length > 0 && !typing && (
-            <div className="mt-1 flex flex-wrap gap-2 self-start">
+            <div className={styles.replies}>
               {quickReplies.map((qr) => (
                 <button
                   key={qr.value}
                   onClick={() => handleQuick(qr)}
-                  className="rounded-full border border-[#8FE05A] bg-[#8FE05A] px-3.5 py-1.5 text-left text-[13px] font-semibold text-[#122400] transition-colors hover:bg-[#A2E874]"
+                  className={styles.reply}
                 >
                   {qr.label}
                 </button>
@@ -410,7 +408,7 @@ export function ChatbotWidget() {
 
         {/* Eingabe */}
         {showInput ? (
-          <form onSubmit={handleSubmit} className="flex items-center gap-2 border-t border-[#E1E4E8] bg-white px-3 py-3">
+          <form onSubmit={handleSubmit} className={styles.form}>
             <input
               ref={inputRef}
               value={text}
@@ -418,19 +416,19 @@ export function ChatbotWidget() {
               disabled={inputDisabled}
               placeholder="Ihre Nachricht …"
               aria-label="Ihre Nachricht"
-              className="min-w-0 flex-1 rounded-full bg-[#FAFAF7] px-4 py-2.5 text-[14px] text-[#0A0C10] outline-none ring-1 ring-[#E1E4E8] placeholder:text-[#5A6B82] focus:ring-[#8FE05A] disabled:opacity-50"
+              className={styles.input}
             />
             <button
               type="submit"
               disabled={inputDisabled}
               aria-label="Senden"
-              className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[#8FE05A] text-[#122400] shadow-md transition-transform hover:scale-105 active:scale-95 disabled:opacity-50"
+              className={styles.send}
             >
               <Send className="h-5 w-5" />
             </button>
           </form>
         ) : (
-          <div className="border-t border-[#E1E4E8] bg-white px-4 py-2.5 text-center text-[11px] text-[#5A6B82]">
+          <div className={styles.notice}>
             Automatisierter Assistent · DSG-konform · Daten in der Schweiz
           </div>
         )}
@@ -441,16 +439,16 @@ export function ChatbotWidget() {
         onClick={() => setOpen((v) => !v)}
         aria-label={open ? "Chat schliessen" : "Chat mit Mia öffnen"}
         aria-expanded={open}
-        className="relative grid h-16 w-16 place-items-center overflow-hidden rounded-full bg-[#8FE05A] shadow-[0_10px_30px_rgba(10,12,16,0.35)] ring-2 ring-white/80 transition-transform hover:-translate-y-0.5 active:scale-95"
+        className={styles.launcher}
       >
         {open ? (
-          <X className="h-7 w-7 text-[#122400]" />
+          <X size={26} />
         ) : (
           /* eslint-disable-next-line @next/next/no-img-element */
-          <img src="/mia.png" alt="Mia, KI-Assistentin von AgenticIT" className="h-full w-full object-cover object-center" />
+          <img src="/mia.png" alt="Mia, KI-Assistentin von AgenticIT" />
         )}
         {!open && (
-          <span className="absolute bottom-1 right-1 h-3.5 w-3.5 rounded-full border-2 border-white bg-[#34C98A]" />
+          <span className={styles.launcherStatus} />
         )}
       </button>
     </div>
