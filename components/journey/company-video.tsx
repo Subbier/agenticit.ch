@@ -2,6 +2,8 @@
 
 import { useRef, useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
+import thumbnail from "@/public/videos/agenticit-thumbnail.jpg"
 import { ArrowUpRight } from "lucide-react"
 import styles from "./journey.module.css"
 
@@ -16,7 +18,6 @@ export function CompanyVideo() {
     const player = video.current
     if (!player) return
 
-    setHasStarted(true)
     setPlaybackError(false)
     player.focus()
     void player.play().catch(() => setPlaybackError(true))
@@ -44,7 +45,6 @@ export function CompanyVideo() {
           controls
           playsInline
           preload="none"
-          poster="/videos/agenticit-thumbnail.jpg?v=4"
           width={1920}
           height={1080}
           tabIndex={0}
@@ -55,6 +55,15 @@ export function CompanyVideo() {
           Ihr Browser unterstützt keine Videowiedergabe. Sie können das{" "}
           <a href={VIDEO_SRC}>Video direkt öffnen</a>.
         </video>
+        {!hasStarted ? (
+          <Image
+            src={thumbnail}
+            alt=""
+            fill
+            sizes="(max-width: 700px) calc(100vw - 32px), (max-width: 1244px) calc(100vw - 64px), 1180px"
+            className={styles.companyVideoPoster}
+          />
+        ) : null}
         {!hasStarted ? (
           <button
             type="button"

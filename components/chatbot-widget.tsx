@@ -8,6 +8,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import { usePathname } from "next/navigation"
+import Image from "next/image"
 import { Send, X } from "lucide-react"
 import styles from "./chatbot-widget.module.css"
 
@@ -29,8 +30,24 @@ type Phase =
 type QuickReply = { label: string; value: string }
 type Msg = { id: number; from: "bot" | "user"; text: string }
 
-const WEEKDAYS = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"]
-const TIME_SLOTS = ["09:00", "10:00", "11:00", "14:00", "15:00", "16:00", "17:00"]
+const WEEKDAYS = [
+  "Sonntag",
+  "Montag",
+  "Dienstag",
+  "Mittwoch",
+  "Donnerstag",
+  "Freitag",
+  "Samstag",
+]
+const TIME_SLOTS = [
+  "09:00",
+  "10:00",
+  "11:00",
+  "14:00",
+  "15:00",
+  "16:00",
+  "17:00",
+]
 
 const CONTACT_MAIL = "info@agenticit.ch"
 const CONTACT_PHONE = "031 539 44 44"
@@ -81,7 +98,10 @@ function bernHolidays(year: number): Set<string> {
 }
 
 /** Nächster Arbeitstag: kein Samstag, kein Sonntag, kein Berner Feiertag. */
-function nextBusinessDay(from: Date = new Date()): { iso: string; label: string } {
+function nextBusinessDay(from: Date = new Date()): {
+  iso: string
+  label: string
+} {
   let d = plusDays(from, 1)
   for (let guard = 0; guard < 30; guard++) {
     const weekday = d.getDay()
@@ -119,8 +139,22 @@ const ANSWERS: Record<string, string> = {
   faq_jobs: `Schön, dass Sie sich für AgenticIT interessieren. Senden Sie uns einfach den Link zu Ihrem Online-Profil auf LinkedIn oder einer vergleichbaren Plattform – Lebenslauf und Anschreiben brauchen wir vorerst nicht.\n\n• E-Mail: ${CONTACT_MAIL}\n• Telefon: ${CONTACT_PHONE}\n\nMehr über uns als Arbeitgeber: agenticit.ch/karriere`,
 }
 
-type Booking = { name: string; phone: string; email: string; date: string; dateLabel: string; time: string }
-const EMPTY: Booking = { name: "", phone: "", email: "", date: "", dateLabel: "", time: "" }
+type Booking = {
+  name: string
+  phone: string
+  email: string
+  date: string
+  dateLabel: string
+  time: string
+}
+const EMPTY: Booking = {
+  name: "",
+  phone: "",
+  email: "",
+  date: "",
+  dateLabel: "",
+  time: "",
+}
 
 export function ChatbotWidget() {
   const pathname = usePathname()
@@ -157,8 +191,7 @@ export function ChatbotWidget() {
         {
           id: ++idRef.current,
           from: "bot",
-          text:
-            "Hallo, ich bin Mia – die KI-Assistentin von AgenticIT. Ich beantworte Ihre Fragen und vereinbare auf Wunsch einen kostenlosen Rückruf. Womit darf ich helfen?",
+          text: "Hallo, ich bin Mia – die KI-Assistentin von AgenticIT. Ich beantworte Ihre Fragen und vereinbare auf Wunsch einen kostenlosen Rückruf. Womit darf ich helfen?",
         },
       ])
       setQuickReplies(MENU)
@@ -167,7 +200,10 @@ export function ChatbotWidget() {
 
   // Autoscroll + Fokus
   useEffect(() => {
-    scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" })
+    scrollRef.current?.scrollTo({
+      top: scrollRef.current.scrollHeight,
+      behavior: "smooth",
+    })
   }, [messages, typing, quickReplies])
   useEffect(() => {
     if (!open) return
@@ -225,7 +261,9 @@ export function ChatbotWidget() {
     if (ANSWERS[value]) {
       pushBot(ANSWERS[value], [
         { label: "Rückruf anfordern", value: "intent_callback" },
-        ...MENU.filter((m) => m.value !== value && m.value !== "intent_callback"),
+        ...MENU.filter(
+          (m) => m.value !== value && m.value !== "intent_callback",
+        ),
       ])
       setPhase("menu")
       return
@@ -251,34 +289,45 @@ export function ChatbotWidget() {
         }
         setBooking((b) => ({ ...b, name }))
         setPhase("ask_phone")
-        pushBot(`Danke, ${name.split(" ")[0]}. Unter welcher Telefonnummer erreichen wir Sie?`)
+        pushBot(
+          `Danke, ${name.split(" ")[0]}. Unter welcher Telefonnummer erreichen wir Sie?`,
+        )
         return
       }
       case "ask_phone": {
         if (!isPhone(value)) {
-          pushBot("Das sieht nicht nach einer gültigen Nummer aus. Bitte noch einmal – zum Beispiel 079 123 45 67.")
+          pushBot(
+            "Das sieht nicht nach einer gültigen Nummer aus. Bitte noch einmal – zum Beispiel 079 123 45 67.",
+          )
           return
         }
         setBooking((b) => ({ ...b, phone: value.trim() }))
         setPhase("ask_email")
-        pushBot("Möchten Sie eine Bestätigung per E-Mail? Dann geben Sie bitte Ihre Adresse an – sonst überspringen Sie den Schritt.", [
-          { label: "Überspringen", value: "skip_email" },
-        ])
+        pushBot(
+          "Möchten Sie eine Bestätigung per E-Mail? Dann geben Sie bitte Ihre Adresse an – sonst überspringen Sie den Schritt.",
+          [{ label: "Überspringen", value: "skip_email" }],
+        )
         return
       }
       case "ask_email": {
         let email = ""
         if (value !== "skip_email") {
           if (!isEmail(value)) {
-            pushBot("Diese E-Mail-Adresse scheint nicht zu stimmen. Bitte erneut eingeben – oder überspringen.", [
-              { label: "Überspringen", value: "skip_email" },
-            ])
+            pushBot(
+              "Diese E-Mail-Adresse scheint nicht zu stimmen. Bitte erneut eingeben – oder überspringen.",
+              [{ label: "Überspringen", value: "skip_email" }],
+            )
             return
           }
           email = value.trim()
         }
         const day = nextBusinessDay()
-        setBooking((b) => ({ ...b, email, date: day.iso, dateLabel: day.label }))
+        setBooking((b) => ({
+          ...b,
+          email,
+          date: day.iso,
+          dateLabel: day.label,
+        }))
         setPhase("ask_time")
         pushBot(
           `Wir rufen Sie am nächsten Arbeitstag zurück: ${day.label}. Welche Uhrzeit passt Ihnen am besten?`,
@@ -288,7 +337,10 @@ export function ChatbotWidget() {
       }
       case "ask_time": {
         if (!/^\d{2}:\d{2}$/.test(value)) {
-          pushBot("Bitte wählen Sie eine der vorgeschlagenen Uhrzeiten.", TIME_SLOTS.map((t) => ({ label: `${t} Uhr`, value: t })))
+          pushBot(
+            "Bitte wählen Sie eine der vorgeschlagenen Uhrzeiten.",
+            TIME_SLOTS.map((t) => ({ label: `${t} Uhr`, value: t })),
+          )
           return
         }
         const next = { ...booking, time: value }
@@ -330,7 +382,9 @@ export function ChatbotWidget() {
   }
 
   const inputDisabled = typing || phase === "submitting" || phase === "done"
-  const showInput = !["ask_time", "confirm", "done", "submitting"].includes(phase)
+  const showInput = !["ask_time", "confirm", "done", "submitting"].includes(
+    phase,
+  )
 
   // Kein AgenticIT-Chat auf Fremd-Branding-Seiten (z. B. /kktermin).
   if (pathname && HIDDEN_PATHS.some((p) => pathname.startsWith(p))) return null
@@ -348,8 +402,13 @@ export function ChatbotWidget() {
         <div className={styles.header}>
           <div className={styles.headerRow}>
             <span className={styles.avatar}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/mia.png" alt="Mia" />
+              <Image
+                src="/mia.png"
+                alt="Mia"
+                width={44}
+                height={44}
+                sizes="44px"
+              />
             </span>
             <div className="min-w-0">
               <p className={styles.name}>Mia</p>
@@ -444,12 +503,15 @@ export function ChatbotWidget() {
         {open ? (
           <X size={26} />
         ) : (
-          /* eslint-disable-next-line @next/next/no-img-element */
-          <img src="/mia.png" alt="Mia, KI-Assistentin von AgenticIT" />
+          <Image
+            src="/mia.png"
+            alt="Mia, KI-Assistentin von AgenticIT"
+            width={60}
+            height={60}
+            sizes="60px"
+          />
         )}
-        {!open && (
-          <span className={styles.launcherStatus} />
-        )}
+        {!open && <span className={styles.launcherStatus} />}
       </button>
     </div>
   )

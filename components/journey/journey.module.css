@@ -520,6 +520,10 @@
   height: 100%;
   object-fit: contain;
 }
+.companyVideoPoster {
+  object-fit: cover;
+  pointer-events: none;
+}
 .companyVideoPlay {
   position: absolute;
   inset: 0;
@@ -1172,7 +1176,7 @@
 .step span {
   display: block;
   font-size: 12px;
-  color: #73846a;
+  color: #4c6546;
   border-top: 1px solid #aab9a2;
   padding-top: 20px;
   margin-bottom: 18px;
