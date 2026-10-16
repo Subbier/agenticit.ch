@@ -82,7 +82,7 @@ test("honeypot submissions never trigger delivery", async () => {
   )
   assert.equal(deliveries, 0)
 })
-test("user-requested demo calls are due after four minutes, including evenings and weekends", () => {
+test("user-requested demo calls are due immediately, including evenings and weekends", () => {
   for (const value of [
     "2026-10-16T20:00:00Z",
     "2026-10-17T10:00:00Z",
@@ -91,7 +91,7 @@ test("user-requested demo calls are due after four minutes, including evenings a
     const submitted = new Date(value)
     assert.equal(
       nextTestLeadCallback(submitted).getTime() - submitted.getTime(),
-      240000,
+      0,
     )
   }
 })

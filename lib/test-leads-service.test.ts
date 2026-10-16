@@ -206,3 +206,12 @@ test("an ambiguous provider result is not dialled again by a later worker", asyn
       "uncertain",
     )
   }))
+
+test("a saved lead can be called immediately and the fallback worker cannot call it twice", async () =>
+  scenario(async (state) => {
+    await submitTestLead(lead, "test-ip")
+    await dispatchTestLeadCalls(new Date(lead.submittedAt))
+    assert.equal(state.calls, 1)
+    await dispatchTestLeadCalls(new Date("2026-10-16T18:01:00Z"))
+    assert.equal(state.calls, 1)
+  }))

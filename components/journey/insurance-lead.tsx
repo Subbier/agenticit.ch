@@ -102,8 +102,9 @@ export function InsuranceLeadPage() {
           </h1>
           <p className={styles.lead}>
             Trage deine Angaben und die Telefonnummer ein, unter der wir dich
-            erreichen können. Innerhalb von fünf Minuten ruft dich Mia an: eine
-            KI-Assistentin, die mit dir einen Termin vereinbaren möchte.
+            erreichen können. Sobald deine Angaben gespeichert sind, startet Mia
+            den Anruf: eine KI-Assistentin, die mit dir einen Termin vereinbaren
+            möchte.
           </p>
           <a href="#testformular" className={styles.mobileStart}>
             Testlead ausfüllen <ArrowRight size={17} aria-hidden="true" />
