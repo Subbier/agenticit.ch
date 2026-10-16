@@ -2026,6 +2026,13 @@
   .footerBottom {
     margin-top: 25px;
   }
+  .footerCredit {
+    gap: 6px;
+    font-size: 11px;
+  }
+  .energyCans {
+    gap: 2px;
+  }
   .pageHero {
     padding-block: 37px 26px;
   }

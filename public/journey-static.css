@@ -334,6 +334,13 @@ summary:focus-visible {
     width: 47.8px;
     height: 47.8px;
   }
+  .site-footer-credit {
+    gap: 6px;
+    font-size: 11px;
+  }
+  .site-energy-cans {
+    gap: 2px;
+  }
 }
 @media (max-width: 540px) {
   .site-header > div {
