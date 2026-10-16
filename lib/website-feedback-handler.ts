@@ -69,7 +69,11 @@ export function createFeedbackHandler(deliver: DeliverFeedback) {
       console.info("Website feedback accepted by mail transport", { receiptId })
       return respond({ ok: true })
     } catch (error) {
-      const details = error as { code?: unknown; responseCode?: unknown } | null
+      const details = error as {
+        code?: unknown
+        responseCode?: unknown
+        response?: unknown
+      } | null
       const code =
         typeof details?.code === "string" && /^[A-Z_]{1,40}$/.test(details.code)
           ? details.code
@@ -78,10 +82,22 @@ export function createFeedbackHandler(deliver: DeliverFeedback) {
         typeof details?.responseCode === "number"
           ? details.responseCode
           : undefined
+      const response =
+        typeof details?.response === "string" ? details.response : ""
+      const reason = /quota|daily.*limit|limit.*exceeded/i.test(response)
+        ? "mail_limit"
+        : /sender|from address|send.as|domain/i.test(response)
+          ? "sender_policy"
+          : /spam|unsolicited|content/i.test(response)
+            ? "content_policy"
+            : /recipient|mailbox|user unknown/i.test(response)
+              ? "recipient_policy"
+              : "unspecified"
       console.error("Website feedback mail transport failed", {
         receiptId,
         code,
         responseCode,
+        reason,
       })
       return respond(
         {

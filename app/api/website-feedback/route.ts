@@ -5,7 +5,7 @@ import { feedbackMailText } from "@/lib/website-feedback"
 export const runtime = "nodejs"
 
 export const POST = createFeedbackHandler(async (answers, receiptId) => {
-  const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, MAIL_FROM } = process.env
+  const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS } = process.env
   if (!SMTP_HOST || !SMTP_USER || !SMTP_PASS)
     throw Object.assign(new Error("Mail transport unavailable"), {
       code: "NOT_CONFIGURED",
@@ -25,7 +25,7 @@ export const POST = createFeedbackHandler(async (answers, receiptId) => {
   const recipient = "sr@agenticit.ch"
   const isProduction = process.env.VERCEL_ENV === "production"
   const result = await transport.sendMail({
-    from: MAIL_FROM || `AgenticIT <${SMTP_USER}>`,
+    from: { name: "AgenticIT", address: SMTP_USER },
     to: recipient,
     subject: `${isProduction ? "" : "[Test/Vorschau] "}Website-Bewertung · ${answers.overall}/5`,
     text: feedbackMailText(answers, receiptId),

@@ -119,12 +119,18 @@ test("mail diagnostics expose only a safe error code, never credentials or messa
   const handler = createFeedbackHandler(async () => {
     throw Object.assign(
       new Error("private transport details must stay private"),
-      { code: "EAUTH", responseCode: 535 },
+      {
+        code: "EAUTH",
+        responseCode: 535,
+        response: "550 sender address not allowed: private@example.invalid",
+      },
     )
   })
   assert.equal((await handler(request())).status, 502)
   const details = records[0][1] as Record<string, unknown>
   assert.equal(details.code, "EAUTH")
   assert.equal(details.responseCode, 535)
+  assert.equal(details.reason, "sender_policy")
+  assert.ok(!JSON.stringify(records).includes("private@example.invalid"))
   assert.ok(!JSON.stringify(records).includes("private transport details"))
 })
