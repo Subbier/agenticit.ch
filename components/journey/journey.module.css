@@ -75,7 +75,7 @@
   height: 35.2px;
 }
 :is(.header, .footer) .brand :is(span, strong) {
-  font-weight: 800;
+  font-weight: 650;
 }
 .nav {
   display: flex;
@@ -1239,7 +1239,7 @@
   text-underline-offset: 4px;
 }
 .footerTrustImage {
-  height: 35.2px;
+  height: 52.6px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1253,21 +1253,21 @@
   opacity: 0.65;
 }
 .swissictLogo {
-  width: 65px;
+  width: 95.2px;
   height: auto;
 }
 .swicoImage {
-  width: 136px;
+  width: 95.2px;
 }
 .footerTrustImage .swicoLogo {
-  width: 190px;
+  width: 133px;
   max-width: none;
   flex: none;
   height: auto;
 }
 .footerTrustImage .trainingLogo {
-  width: 35.2px;
-  height: 35.2px;
+  width: 52.6px;
+  height: 52.6px;
   filter: brightness(0);
 }
 .footerBottom {
@@ -1963,20 +1963,20 @@
     font-size: 10px;
   }
   .footerTrustImage {
-    height: 32px;
+    height: 47.8px;
   }
   .swissictLogo {
-    width: 59px;
+    width: 86.8px;
   }
   .swicoImage {
-    width: 124px;
+    width: 86.8px;
   }
   .footerTrustImage .swicoLogo {
-    width: 173px;
+    width: 121.1px;
   }
   .footerTrustImage .trainingLogo {
-    width: 32px;
-    height: 32px;
+    width: 47.8px;
+    height: 47.8px;
   }
   .footerBottom {
     margin-top: 25px;

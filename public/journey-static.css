@@ -38,10 +38,10 @@ body {
 :is(.site-header, .site-footer) .site-brand {
   font-size: 45px;
   line-height: 1;
-  font-weight: 800;
+  font-weight: 650;
 }
 :is(.site-header, .site-footer) .site-brand strong {
-  font-weight: 800;
+  font-weight: 650;
 }
 :is(.site-header, .site-footer) .site-brand img {
   width: 35.2px;
@@ -150,28 +150,28 @@ summary:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 35.2px;
+  height: 52.6px;
   overflow: hidden;
 }
 .site-footer-trust img {
   display: block;
-  width: 65px;
+  width: 95.2px;
   height: auto;
   object-fit: contain;
   filter: grayscale(1);
   opacity: 0.65;
 }
 .site-trust-image.swico-image {
-  width: 136px;
+  width: 95.2px;
 }
 .site-trust-image.swico-image img {
-  width: 190px;
+  width: 133px;
   max-width: none;
   flex: none;
 }
 .site-footer-trust .training {
-  width: 35.2px;
-  height: 35.2px;
+  width: 52.6px;
+  height: 52.6px;
   filter: brightness(0);
 }
 .site-footer-bottom {
@@ -277,20 +277,20 @@ summary:focus-visible {
     gap: 8px;
   }
   .site-trust-image {
-    height: 32px;
+    height: 47.8px;
   }
   .site-footer-trust img {
-    width: 59px;
+    width: 86.8px;
   }
   .site-trust-image.swico-image {
-    width: 124px;
+    width: 86.8px;
   }
   .site-trust-image.swico-image img {
-    width: 173px;
+    width: 121.1px;
   }
   .site-footer-trust .training {
-    width: 32px;
-    height: 32px;
+    width: 47.8px;
+    height: 47.8px;
   }
 }
 @media (max-width: 540px) {
