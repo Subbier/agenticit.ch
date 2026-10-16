@@ -36,6 +36,7 @@ test("the current Zoho standalone function receives a JSON request body", async 
 const input = {
   requestId: "cf8b9130-4f9e-4891-90c2-30a9a7f655a1",
   fullName: "Internal Test",
+  gender: "male" as const,
   birthDate: "1990-01-01",
   postcode: "3000",
   city: "Bern",
@@ -86,6 +87,7 @@ function backend() {
     consent: true,
     creates: 0,
     calls: 0,
+    callContext: {} as Record<string, string>,
     ambiguousCall: false,
     submittedLead: lead,
     fetch: async (
@@ -164,6 +166,7 @@ function backend() {
       }
       if (String(url).startsWith("https://api.aircall.io/")) {
         state.calls++
+        state.callContext = JSON.parse(String(init?.body)).context
         if (state.ambiguousCall)
           throw new Error("Simulated timeout after provider received request")
         return Response.json({ id: "test-call-id" }, { status: 202 })
@@ -215,3 +218,17 @@ test("a saved lead can be called immediately and the fallback worker cannot call
     await dispatchTestLeadCalls(new Date("2026-10-16T18:01:00Z"))
     assert.equal(state.calls, 1)
   }))
+
+test("the worker passes the gender read back from CRM to Mia", async () => {
+  for (const [gender, salutation] of [
+    ["female", "Frau"],
+    ["male", "Herr"],
+  ] as const)
+    await scenario(async (state) => {
+      await submitTestLead({ ...lead, gender }, "test-ip")
+      assert.equal(state.submittedLead.gender, gender)
+      await dispatchTestLeadCalls(new Date(lead.submittedAt))
+      assert.equal(state.calls, 1)
+      assert.equal(state.callContext.anrede, salutation)
+    })
+})

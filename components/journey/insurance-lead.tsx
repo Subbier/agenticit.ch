@@ -206,7 +206,7 @@ export function InsuranceLeadPage() {
               </p>
               <form onSubmit={submit} className={styles.form}>
                 <div className={styles.grid}>
-                  <label className={styles.full}>
+                  <label>
                     Vollständiger Name
                     <input
                       name="fullName"
@@ -216,6 +216,16 @@ export function InsuranceLeadPage() {
                       minLength={2}
                       maxLength={120}
                     />
+                  </label>
+                  <label>
+                    Geschlecht
+                    <select name="gender" defaultValue="" required>
+                      <option value="" disabled>
+                        Bitte auswählen
+                      </option>
+                      <option value="female">weiblich</option>
+                      <option value="male">männlich</option>
+                    </select>
                   </label>
                   <label>
                     Geburtsdatum

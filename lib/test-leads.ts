@@ -73,6 +73,9 @@ export const testLeadDetailsSchema = z.object({
     .trim()
     .min(2, "Bitte deinen vollständigen Namen eingeben.")
     .max(120),
+  gender: z.enum(["female", "male"], {
+    errorMap: () => ({ message: "Bitte dein Geschlecht auswählen." }),
+  }),
   birthDate: z
     .string()
     .refine(validBirthDate, "Bitte ein gültiges Geburtsdatum eingeben."),
@@ -116,6 +119,7 @@ export function prepareTestLead(data: TestLeadInput, submittedAt: string) {
   return {
     requestId: data.requestId,
     fullName: data.fullName,
+    gender: data.gender,
     firstName: parts[0],
     lastName: parts.slice(1).join(" "),
     birthDate: data.birthDate,
@@ -144,6 +148,14 @@ export function miaContext(lead: PreparedTestLead, crmId: string) {
   return {
     vorname: lead.firstName,
     nachname: lead.lastName,
+    geschlecht:
+      lead.gender === "female"
+        ? "weiblich"
+        : lead.gender === "male"
+          ? "männlich"
+          : "nicht angegeben",
+    anrede:
+      lead.gender === "female" ? "Frau" : lead.gender === "male" ? "Herr" : "",
     geburtsdatum: lead.birthDate,
     plz: lead.postcode,
     ort: lead.city,

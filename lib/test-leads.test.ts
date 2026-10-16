@@ -11,6 +11,7 @@ import {
 const input = {
   requestId: "8dd44b31-35e1-41eb-885c-320cd6e00322",
   fullName: "Internal Test Person",
+  gender: "male",
   birthDate: "1990-04-30",
   postcode: "3000",
   city: "Bern",
@@ -34,6 +35,29 @@ test("Swiss telephone validation cannot send malformed or foreign numbers to Mia
     "foo",
   ])
     assert.equal(normalizeSwissPhone(value), null)
+})
+
+test("gender must be explicitly selected as female or male", () => {
+  for (const gender of ["female", "male"])
+    assert.equal(testLeadSchema.safeParse({ ...input, gender }).success, true)
+  for (const gender of [undefined, "", "other"])
+    assert.equal(testLeadSchema.safeParse({ ...input, gender }).success, false)
+})
+
+test("Mia receives the submitted gender and the matching form of address", () => {
+  for (const [gender, label, salutation] of [
+    ["female", "weiblich", "Frau"],
+    ["male", "männlich", "Herr"],
+  ]) {
+    const lead = prepareTestLead(
+      testLeadSchema.parse({ ...input, gender }),
+      "2026-10-16T15:00:00.000Z",
+    )
+    assert.equal(lead.gender, gender)
+    const context = miaContext(lead, "123456789012345678")
+    assert.equal(context.geschlecht, label)
+    assert.equal(context.anrede, salutation)
+  }
 })
 test("real dates, postcode, insurer, email and explicit versioned consent are required", () => {
   assert.equal(testLeadSchema.safeParse(input).success, true)

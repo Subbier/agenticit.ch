@@ -34,7 +34,7 @@ string standalone.testleads_gateway(string crmAPIRequest)
                 return result.toString();
             }
             meta = Map();
-            for each key in {"requestId","firstName","lastName","source","submittedAt","consent","marketingConsent"}
+            for each key in {"requestId","firstName","lastName","gender","source","submittedAt","consent","marketingConsent"}
             {
                 meta.put(key,lead.get(key));
             }

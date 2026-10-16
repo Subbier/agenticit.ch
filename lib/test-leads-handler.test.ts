@@ -7,6 +7,7 @@ import { nextTestLeadCallback } from "./test-leads-schedule"
 const input = {
   requestId: "cf8b9130-4f9e-4891-90c2-30a9a7f655a1",
   fullName: "Internal Test",
+  gender: "male",
   birthDate: "1990-01-01",
   postcode: "3000",
   city: "Bern",
