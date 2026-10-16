@@ -9,6 +9,12 @@ test("the marketing setup check has an indexable canonical page, native choices 
   })
   assert.equal(response.status, 200)
   const html = await response.text()
+  const main = html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/)?.[1] ?? ""
+  assert.ok(main.length > 0)
+  assert.ok(
+    !/<form\b/.test(main),
+    "Question navigation must not emit contact-form submissions",
+  )
   assert.ok(
     html.includes(
       'rel="canonical" href="https://agenticit.ch/marketing-setup-check"',

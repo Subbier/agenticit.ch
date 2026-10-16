@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState, type FormEvent } from "react"
+import { useEffect, useRef, useState } from "react"
 import { ArrowLeft, ArrowRight, Check, Download } from "lucide-react"
 import {
   buildMarketingSetupPlan,
@@ -35,8 +35,7 @@ export function MarketingSetupCheck() {
     if (showContact) contact.current?.focus()
   }, [showContact])
 
-  function next(event: FormEvent) {
-    event.preventDefault()
+  function next() {
     if (!answers[question.id]) return
     moveFocus.current = true
     if (step === marketingSetupQuestions.length - 1 && result)
@@ -165,7 +164,7 @@ export function MarketingSetupCheck() {
           ) : null}
         </div>
       ) : (
-        <form className={`${styles.checkPanel} ${ui.panel}`} onSubmit={next}>
+        <div className={`${styles.checkPanel} ${ui.panel}`}>
           <div className={ui.progress}>
             <span>
               Frage {step + 1} von {marketingSetupQuestions.length}
@@ -229,7 +228,8 @@ export function MarketingSetupCheck() {
               <span />
             )}
             <button
-              type="submit"
+              type="button"
+              onClick={next}
               className={styles.button}
               disabled={!answers[question.id]}
             >
@@ -255,7 +255,7 @@ export function MarketingSetupCheck() {
             Kein Zugang zu Ihren Konten nötig. Ihre Antworten werden erst mit
             einer optionalen Kontaktanfrage übermittelt.
           </p>
-        </form>
+        </div>
       )}
     </section>
   )
