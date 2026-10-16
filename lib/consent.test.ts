@@ -118,6 +118,35 @@ test("stored boolean choices restore their exact categories after denied default
   }
 })
 
+test("saved and fresh choices emit only the tag-category grants they actually allow", () => {
+  for (const statistics of [false, true]) {
+    for (const marketing of [false, true]) {
+      const fixture = browserFixture(choice(statistics, marketing))
+      try {
+        const grants = () =>
+          fixture.window.dataLayer
+            .filter(
+              (item) =>
+                typeof item === "object" && item !== null && "event" in item,
+            )
+            .map((item) => (item as { event: string }).event)
+            .filter((event) => event.endsWith("_granted"))
+        const expected = [
+          ...(statistics ? ["consent_statistics_granted"] : []),
+          ...(marketing ? ["consent_marketing_granted"] : []),
+        ]
+        runInNewContext(CONSENT_DEFAULT_SCRIPT, { window: fixture.window })
+        assert.deepEqual(grants(), expected)
+        fixture.window.dataLayer.length = 0
+        applyConsent({ statistics, marketing })
+        assert.deepEqual(grants(), expected)
+      } finally {
+        fixture.restore()
+      }
+    }
+  }
+})
+
 test("Google tags remain absent until consent and load once after a permitted category", () => {
   const fixture = browserFixture()
   const cleanup = mountConsentTagManager()

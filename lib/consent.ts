@@ -1,7 +1,9 @@
 // Einwilligungsverwaltung für agenticit.ch (revDSG / DSGVO)
 //
 // Zusammenspiel mit dem GTM-Container GTM-K4TN9PVZ:
-//   • GA4 ("GA4 - Config") reagiert auf Google Consent Mode v2 → `analytics_storage`.
+//   • GA4 ("GA4 - Config") startet seit GTM-Version 6 nur beim Ereignis
+//     `consent_statistics_granted`, einmal pro Seite. Google Consent Mode v2
+//     berücksichtigt zusätzlich `analytics_storage`.
 //   • Meta Pixel, TikTok Pixel und Zoho SalesIQ hängen im Container am Trigger
 //     "Trigger - Consent Marketing erteilt", also am dataLayer-Ereignis
 //     `consent_marketing_granted`. Ohne dieses Ereignis feuern sie nie.
