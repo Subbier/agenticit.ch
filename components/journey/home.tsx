@@ -9,6 +9,7 @@ import {
   PackageCards,
 } from "./sections"
 import { JourneyMap } from "./journey-map"
+import { CompanyVideo } from "./company-video"
 import styles from "./journey.module.css"
 
 const path = [
@@ -81,6 +82,7 @@ export function JourneyHome() {
               </div>
             </div>
           </section>
+          <CompanyVideo />
           <section className={styles.section} id="ansatzpunkt">
             <div className={styles.sectionHead}>
               <div>

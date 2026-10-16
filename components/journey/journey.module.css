@@ -307,6 +307,57 @@
   max-width: 640px;
   color: var(--muted);
 }
+.section.companyVideo {
+  padding-block: 16px 0;
+}
+.companyVideoHeading {
+  max-width: 740px;
+}
+.companyVideoFrame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  margin-top: 28px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--ink);
+}
+.companyVideoFrame video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.companyVideoPlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: transparent;
+}
+.companyVideoPlay:hover {
+  background: rgb(255 255 255 / 4%);
+}
+.companyVideoPlay:focus-visible {
+  outline: 3px solid var(--green) !important;
+  outline-offset: -7px !important;
+}
+.companyVideoFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 24px;
+}
+.companyVideoError {
+  margin-top: 14px !important;
+  font-size: 14px !important;
+  color: var(--muted);
+}
+.companyVideoError a {
+  text-decoration: underline;
+}
 .challengeGrid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1443,6 +1494,22 @@
   .sectionIntro {
     font-size: 14px !important;
     margin-top: 13px !important;
+  }
+  .section.companyVideo {
+    padding-top: 12px;
+  }
+  .companyVideoFrame {
+    margin-top: 22px;
+    border-radius: 8px;
+  }
+  .companyVideoFooter {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 20px;
+  }
+  .companyVideoFooter .button {
+    width: 100%;
   }
   .challengeGrid {
     grid-template-columns: 1fr 1fr;
