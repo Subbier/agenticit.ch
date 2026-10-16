@@ -45,7 +45,7 @@ export function JourneyHome() {
                 </a>
               </div>
               <p className={`${styles.fine} ${styles.heroFine}`}>
-                Unverbindlicher Check · Ergebnis sofort · Ohne E-Mail-Pflicht
+                Unverbindlicher Check · Ergebnis sofort
               </p>
             </div>
             <ServiceShowcase />

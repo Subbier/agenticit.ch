@@ -74,7 +74,7 @@ export function CompanyVideo() {
         <p className={styles.fine}>
           Wo steckt Ihr Zeitpotenzial?
           <br />
-          Unverbindlicher Check · Ergebnis sofort · Ohne E-Mail-Pflicht
+          Unverbindlicher Check · Ergebnis sofort
         </p>
         <Link href="/automatisierungs-check" className={styles.button}>
           Unverbindlichen Check starten
