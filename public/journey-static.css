@@ -35,6 +35,18 @@ body {
 .site-brand strong {
   font-weight: 400;
 }
+.site-header .site-brand {
+  font-size: 45px;
+  line-height: 1;
+  font-weight: 800;
+}
+.site-header .site-brand strong {
+  font-weight: 800;
+}
+.site-header .site-brand img {
+  width: 35.2px;
+  height: 35.2px;
+}
 .site-header nav {
   display: flex;
   align-items: center;
@@ -160,42 +172,79 @@ summary:focus-visible {
   text-decoration: none;
   margin-left: 20px;
 }
-@media (max-width: 850px) {
+@media (max-width: 900px) {
+  .site-header > div {
+    position: relative;
+    display: block;
+    min-height: 82px;
+    padding-block: 18px;
+  }
   .site-header nav {
     display: none;
   }
   .site-mobile {
     display: block;
-    position: relative;
   }
   .site-mobile summary {
-    min-height: 44px;
-    padding: 10px 14px;
+    position: absolute;
+    right: 0;
+    top: 18px;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    min-height: 46px;
+    padding: 0;
+    list-style: none;
     border: 1px solid #dce3db;
     border-radius: 5px;
     cursor: pointer;
   }
   .site-mobile > div {
-    position: absolute;
-    z-index: 5;
-    right: 0;
-    min-width: 220px;
-    padding: 16px;
+    width: 100%;
+    margin-top: 18px;
+    padding: 10px 0 0;
     background: #fff;
-    border: 1px solid #dce3db;
-    border-radius: 7px;
+    border-top: 1px solid #dce3db;
+  }
+  .site-mobile summary::-webkit-details-marker,
+  .site-mobile .menu-close-icon,
+  .site-mobile[open] .menu-open-icon {
+    display: none;
+  }
+  .site-mobile[open] .menu-close-icon {
+    display: block;
   }
   .site-mobile a {
     display: block;
-    padding: 10px;
+    padding: 13px 0;
     color: #202522;
+    font-size: 18px;
+    font-weight: 750;
+    line-height: 1.4;
     text-decoration: none;
+  }
+}
+@media (max-width: 760px) {
+  .site-header > div {
+    min-height: 76px;
+    padding-block: 17px;
+  }
+  .site-header .site-brand {
+    font-size: 41px;
+    gap: 9px;
+  }
+  .site-header .site-brand img {
+    width: 32px;
+    height: 32px;
+  }
+  .site-mobile summary {
+    top: 15px;
   }
 }
 @media (max-width: 540px) {
   .site-header > div {
     width: calc(100% - 32px);
-    min-height: 74px;
+    min-height: 76px;
     align-items: center;
   }
   .site-brand {
@@ -213,5 +262,11 @@ summary:focus-visible {
   }
   .site-footer-bottom a {
     margin: 0 20px 0 0;
+  }
+}
+@media (max-width: 360px) {
+  .site-header .site-brand {
+    gap: 7px;
+    letter-spacing: -2px;
   }
 }

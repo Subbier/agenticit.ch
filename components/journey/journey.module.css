@@ -66,6 +66,17 @@
 .brand strong {
   font-weight: 400;
 }
+.header .brand {
+  font-size: 45px;
+  line-height: 1;
+}
+.header .brandIcon {
+  width: 35.2px;
+  height: 35.2px;
+}
+.header .brand :is(span, strong) {
+  font-weight: 800;
+}
 .nav {
   display: flex;
   align-items: center;
@@ -451,6 +462,12 @@
     transform: scaleX(1);
   }
 }
+@media (max-width: 360px) {
+  .header .brand {
+    gap: 7px;
+    letter-spacing: -2px;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   .showcaseStage,
   .showcaseArt,
@@ -756,6 +773,62 @@
 }
 .automationActions button {
   width: 100%;
+}
+@media (max-width: 900px) {
+  .header {
+    position: relative;
+    display: block;
+    height: auto;
+    min-height: 82px;
+    padding-block: 18px;
+  }
+  .nav {
+    display: none;
+  }
+  .mobileNav {
+    display: block;
+  }
+  .mobileNav > summary {
+    position: absolute;
+    right: 0;
+    top: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    min-height: 46px;
+    list-style: none;
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .mobileNav > summary::-webkit-details-marker {
+    display: none;
+  }
+  .closeMenuIcon,
+  .mobileNav[open] .menuIcon {
+    display: none;
+  }
+  .mobileNav[open] .closeMenuIcon {
+    display: block;
+  }
+  .mobileNav > div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 18px;
+    padding-top: 10px;
+    border-top: 1px solid var(--line);
+  }
+  .mobileNav a {
+    display: block;
+    padding: 13px 0;
+    color: var(--ink);
+    font-size: 18px;
+    font-weight: 750;
+    line-height: 1.4;
+    text-decoration: none;
+  }
 }
 @media (max-width: 760px) {
   .automationLayout {
@@ -1660,7 +1733,19 @@
     width: calc(100% - 32px);
   }
   .header {
-    height: 76px;
+    min-height: 76px;
+    padding-block: 17px;
+  }
+  .header .brand {
+    font-size: 41px;
+    gap: 9px;
+  }
+  .header .brandIcon {
+    width: 32px;
+    height: 32px;
+  }
+  .mobileNav > summary {
+    top: 15px;
   }
   .brand {
     font-size: 23px;
@@ -1668,45 +1753,6 @@
   .brandIcon {
     width: 40px;
     height: 40px;
-  }
-  .nav {
-    display: none;
-  }
-  .mobileNav {
-    display: block;
-    position: relative;
-  }
-  .mobileNav > summary {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 48px;
-    min-height: 46px;
-    list-style: none;
-    border: 1px solid var(--line);
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  .mobileNav > summary::-webkit-details-marker {
-    display: none;
-  }
-  .mobileNav > div {
-    position: absolute;
-    right: 0;
-    top: 55px;
-    z-index: 30;
-    background: white;
-    border: 1px solid var(--line);
-    border-radius: 7px;
-    padding: 12px;
-    width: 230px;
-    display: flex;
-    flex-direction: column;
-  }
-  .mobileNav a {
-    padding: 13px 11px;
-    font-size: 14px;
-    text-decoration: none;
   }
   .hero {
     grid-template-columns: 1fr;

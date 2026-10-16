@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { ArrowUpRight, Menu } from "lucide-react"
+import { ArrowUpRight, Menu, X } from "lucide-react"
 import { ConsentSettingsLink } from "@/components/site/consent-settings-link"
 import { WebsiteFeedbackLink } from "@/components/site/website-feedback"
 import styles from "./journey.module.css"
@@ -40,8 +40,19 @@ export function JourneyShell({ children }: { children: React.ReactNode }) {
             </Link>
           </nav>
           <details className={styles.mobileNav}>
-            <summary aria-label="Menü öffnen">
-              <Menu size={21} />
+            <summary aria-label="Menü">
+              <Menu
+                size={24}
+                strokeWidth={2.6}
+                className={styles.menuIcon}
+                aria-hidden="true"
+              />
+              <X
+                size={24}
+                strokeWidth={2.6}
+                className={styles.closeMenuIcon}
+                aria-hidden="true"
+              />
             </summary>
             <div>
               <Link href="/werkzeuge">Ihr Ansatzpunkt</Link>
