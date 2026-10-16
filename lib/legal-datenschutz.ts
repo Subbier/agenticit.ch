@@ -72,6 +72,14 @@ export const datenschutzSections: readonly LegalSectionContent[] = [
     ],
   },
   {
+    title: "Demo der KI-gestützten Lead-Terminierung",
+    paragraphs: [
+      "Auf der Seite /beste-variante können Sie einen Testanruf der KI-Assistentin Mia anfordern. Die Krankenkassenangaben dienen ausschliesslich als Gesprächskontext und dürfen Beispieldaten sein. Es wird keine Versicherungsanfrage an eine Krankenkasse übermittelt. Bitte geben Sie nur eine eigene oder ausdrücklich freigegebene Telefonnummer ein.",
+      "Mit Ihrer ausdrücklichen Einwilligung bearbeiten AgenticIT GmbH und FAIR Beratung GmbH Ihre angegebenen Kontakt- und Testdaten, die dokumentierte Einwilligung sowie den Bearbeitungsstatus. Die Daten werden im separaten Zoho-CRM-Modul TestLeads gespeichert. Aircall führt den KI-Testanruf aus und zeichnet ihn zur Qualitätsprüfung auf. Bei einem von Ihnen bestätigten Termin werden die dafür erforderlichen Kontaktdaten und Termininformationen mit Calendly und Google Kalender verarbeitet. Ein Google-Meet-Link wird nur für einen vereinbarten Videotermin erstellt. Es erfolgt keine Newsletter-Anmeldung.",
+      "Testdaten und Gesprächsaufzeichnungen verwenden wir nur für die Durchführung und Auswertung der Demo sowie eines ausdrücklich vereinbarten Folgegesprächs. Wir löschen oder anonymisieren sie, sobald sie dafür nicht mehr benötigt werden und keine Aufbewahrungspflicht entgegensteht. Sie können Ihre Einwilligung widerrufen oder Auskunft, Berichtigung, Löschung und einen Kontaktstopp unter sr@agenticit.ch verlangen.",
+    ],
+  },
+  {
     title: "Ihre Rechte",
     paragraphs: [
       "Sie haben im Rahmen des anwendbaren Datenschutzrechts insbesondere das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Bearbeitung, Datenherausgabe sowie Widerspruch gegen bestimmte Bearbeitungen. Zudem können Sie eine erteilte Einwilligung jederzeit widerrufen.",
@@ -88,7 +96,7 @@ export const datenschutzSections: readonly LegalSectionContent[] = [
     title: "Änderungen",
     paragraphs: [
       "Wir können diese Datenschutzerklärung bei Bedarf anpassen. Es gilt jeweils die auf dieser Seite veröffentlichte aktuelle Fassung.",
-      "Stand: Mai 2026",
+      "Stand: 16. Oktober 2026",
     ],
   },
 ]

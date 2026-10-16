@@ -3,6 +3,10 @@
     {
       "path": "/api/whatsapp/fallback",
       "schedule": "*/10 * * * *"
+    },
+    {
+      "path": "/api/testleads/dispatch",
+      "schedule": "* * * * *"
     }
   ]
 }

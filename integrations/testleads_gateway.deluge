@@ -1,0 +1,117 @@
+string standalone.testleads_gateway(string crmAPIRequest)
+{
+    result = {"ok":false,"module":"TestLeads","org":"20114585987"};
+    try
+    {
+        result.put("stage","parse");
+        request = crmAPIRequest.toMap().get("body").toMap();
+        action = request.get("action");
+        if(action == "create")
+        {
+            lead = request.get("lead");
+            result.put("stage","validate");
+            requestId = lead.get("requestId").toString();
+            if(!requestId.matches("[a-fA-F0-9-]{36}") || lead.get("consent").get("accepted") != true || lead.get("consent").get("version") != "testleads-2026-10-16-v2" || lead.get("source") != "https://agenticit.ch/beste-variante")
+            {
+                return result.toString();
+            }
+            result.put("stage","lookup");
+            existing = zoho.crm.searchRecords("TestLeads","(Anfrage_ID:equals:" + requestId + ")",1,2);
+            if(existing.toString().startsWith("{"))
+            {
+                result.put("errorCode",existing.get("code"));
+                return result.toString();
+            }
+            if(existing.size() > 1)
+            {
+                return result.toString();
+            }
+            if(existing.size() == 1)
+            {
+                result.put("crmId",existing.get(0).get("id"));
+                result.put("submittedAt",existing.get(0).get("Prozessdaten").toMap().get("meta").get("submittedAt"));
+                result.put("ok",true);
+                return result.toString();
+            }
+            meta = Map();
+            for each key in {"requestId","firstName","lastName","source","submittedAt","consent","marketingConsent"}
+            {
+                meta.put(key,lead.get(key));
+            }
+            record = Map();
+            record.put("Name",lead.get("fullName"));
+            record.put("Email",lead.get("email"));
+            record.put("Telefon",lead.get("phone"));
+            record.put("Geburtsdatum",lead.get("birthDate"));
+            record.put("Postleitzahl",lead.get("postcode"));
+            record.put("Ort",lead.get("city"));
+            record.put("Anzahl_Familienmitglieder",lead.get("familyMembers"));
+            record.put("Aktuelle_Krankenkasse",lead.get("insurer"));
+            record.put("Anfrage_ID",requestId);
+            record.put("Rueckrufeinwilligung",true);
+            record.put("Anfragezeit",lead.get("submittedAt").subString(0,19) + "+00:00");
+            process = {"meta":meta,"callState":"queued"};
+            record.put("Prozessdaten",process.toString());
+            result.put("stage","create");
+            created = zoho.crm.createRecord("TestLeads",record);
+            result.put("errorCode",ifnull(created.get("code"),""));
+            if(created.get("id") != null)
+            {
+                result.put("crmId",created.get("id"));
+                result.put("submittedAt",lead.get("submittedAt"));
+                result.put("ok",true);
+            }
+            return result.toString();
+        }
+        if(action == "get" || action == "status")
+        {
+            crmId = request.get("crmId").toString();
+            requestId = request.get("requestId").toString();
+            if(!crmId.matches("[0-9]{10,30}") || !requestId.matches("[a-fA-F0-9-]{36}"))
+            {
+                return result.toString();
+            }
+            record = zoho.crm.getRecordById("TestLeads",crmId.toLong());
+            if(record.get("Anfrage_ID") != requestId)
+            {
+                return result.toString();
+            }
+            process = record.get("Prozessdaten").toMap();
+            meta = process.get("meta");
+            if(action == "get")
+            {
+                lead = Map();
+                lead.putAll(meta);
+                lead.put("fullName",record.get("Name"));
+                lead.put("phone",record.get("Telefon"));
+                lead.put("email",record.get("Email"));
+                lead.put("birthDate",record.get("Geburtsdatum"));
+                lead.put("postcode",record.get("Postleitzahl"));
+                lead.put("city",record.get("Ort"));
+                lead.put("familyMembers",record.get("Anzahl_Familienmitglieder"));
+                lead.put("insurer",record.get("Aktuelle_Krankenkasse"));
+                result.put("lead",lead);
+                result.put("consentActive",record.get("Rueckrufeinwilligung") == true && meta.get("consent").get("accepted") == true);
+                result.put("ok",true);
+                return result.toString();
+            }
+            state = request.get("state");
+            allowedStates = {"queued","dispatching","accepted","blocked","uncertain"};
+            if(!allowedStates.contains(state))
+            {
+                return result.toString();
+            }
+            process.put("callState",state);
+            process.put("callId",ifnull(request.get("callId"),""));
+            process.put("updatedAt",request.get("timestamp"));
+            updated = zoho.crm.updateRecord("TestLeads",crmId.toLong(),{"Prozessdaten":process.toString()});
+            result.put("ok",updated.get("id") != null);
+            return result.toString();
+        }
+    }
+    catch(e)
+    {
+        result.put("ok",false);
+    }
+    return result.toString();
+}

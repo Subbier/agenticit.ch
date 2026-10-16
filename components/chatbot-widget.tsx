@@ -13,7 +13,7 @@ import styles from "./chatbot-widget.module.css"
 
 // Auf diesen Seiten wird der AgenticIT-Chat ausgeblendet
 // (z. B. Kampagnenseiten mit eigenem Fremd-Branding).
-const HIDDEN_PATHS = ["/kktermin"]
+const HIDDEN_PATHS = ["/kktermin", "/beste-variante"]
 
 type Phase =
   | "menu"
