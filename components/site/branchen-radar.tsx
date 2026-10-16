@@ -1,7 +1,7 @@
 "use client"
 
 // Branchen-Radar (29.07.2026) — ersetzt Potenzialrechner + ROI-Rechner auf der
-// Startseite. Zwei Klicks (Branche → Region), dann: wie viel wird gesucht,
+// Startseite. Branche und Regionen wählen, dann: wie viel wird gesucht,
 // was ist die Nachfrage wert, und welche 10 Anbieter holen sie sich gerade.
 //
 // Datenbasis: Ubersuggest (locId 2756 Schweiz, de), Keyword-Mix mit ~50
@@ -11,8 +11,13 @@
 // Bevölkerungsanteil der Deutschschweiz — so gekennzeichnet.
 
 import { useState } from "react"
-
-type RegionId = "mittelland" | "nordwestschweiz" | "zuerich" | "nordostschweiz" | "innerschweiz"
+import {
+  REGIONS,
+  estimateRegionalVolume,
+  getSelectedRegions,
+  toggleRegionSelection,
+  type RegionId,
+} from "@/lib/radar-regions"
 
 type Dom = { d: string; p?: boolean } // p = Portal/Verzeichnis
 
@@ -25,14 +30,6 @@ type Branche = {
   top: { kw: string; vol: number }[]
   regions: Record<RegionId, Dom[]>
 }
-
-const REGIONS: { id: RegionId; label: string; share: number; cities: string }[] = [
-  { id: "mittelland", label: "Mittelland", share: 0.23, cities: "Bern · Biel · Solothurn · Thun" },
-  { id: "nordwestschweiz", label: "Nordwestschweiz", share: 0.2, cities: "Basel · Aarau · Baden" },
-  { id: "zuerich", label: "Zürich-Region", share: 0.26, cities: "Zürich · Winterthur" },
-  { id: "nordostschweiz", label: "Nordostschweiz", share: 0.17, cities: "St. Gallen · Chur · Frauenfeld" },
-  { id: "innerschweiz", label: "Innerschweiz", share: 0.14, cities: "Luzern · Zug · Schwyz" },
-]
 
 const BRANCHEN: Branche[] = [
   {
@@ -435,7 +432,8 @@ const BRANCHEN: Branche[] = [
   },
 ]
 
-const fmt = (n: number) => Math.round(n).toLocaleString("de-CH").replace(/,/g, "'")
+const fmt = (n: number) =>
+  Math.round(n).toLocaleString("de-CH").replace(/,/g, "'")
 
 function StepHead({ n, title }: { n: string; title: string }) {
   return (
@@ -443,26 +441,32 @@ function StepHead({ n, title }: { n: string; title: string }) {
       <span className="text-[11.5px] font-extrabold uppercase tracking-[2.5px] text-[#0B6E96]">
         Schritt {n}
       </span>
-      <h3 className="mt-2 text-[20px] font-extrabold tracking-[-0.2px] text-[#0A0C10]">{title}</h3>
+      <h3 className="mt-2 text-[20px] font-extrabold tracking-[-0.2px] text-[#0A0C10]">
+        {title}
+      </h3>
     </div>
   )
 }
 
 export function BranchenRadar() {
   const [brancheId, setBrancheId] = useState<string | null>(null)
-  const [regionId, setRegionId] = useState<RegionId | null>(null)
+  const [regionIds, setRegionIds] = useState<RegionId[]>([])
 
   const branche = BRANCHEN.find((b) => b.id === brancheId) ?? null
-  const region = REGIONS.find((r) => r.id === regionId) ?? null
+  const regions = getSelectedRegions(regionIds)
   const sonstige = brancheId === "sonstige"
+  const regionLabel =
+    regions.length === 1 ? regions[0].label : `${regions.length} Regionen`
 
-  const regionVol = branche && region ? branche.vol * region.share : 0
+  const regionVol = branche ? estimateRegionalVolume(branche.vol, regionIds) : 0
   /** Mögliche Leads = 20 % der regionalen Suchanfragen. */
   const leads = regionVol * 0.2
-  const top10 = branche && region ? branche.regions[region.id] : null
 
   return (
-    <section id="rechner" className="scroll-mt-20 bg-[#FAFAF7] px-4 py-16 sm:px-6">
+    <section
+      id="rechner"
+      className="scroll-mt-20 bg-[#FAFAF7] px-4 py-16 sm:px-6"
+    >
       <div className="mx-auto max-w-[1120px]">
         {/* Kopf */}
         <div className="mx-auto mb-10 max-w-[760px] text-center">
@@ -472,11 +476,12 @@ export function BranchenRadar() {
           <h2 className="mt-5 text-[clamp(27px,3.8vw,38px)] font-extrabold leading-tight tracking-[-0.5px] text-[#0A0C10]">
             Ihre Kunden suchen bereits.
             <br />
-            Die Frage ist: <span className="text-[#57C7FF]">Wen finden sie?</span>
+            Die Frage ist:{" "}
+            <span className="text-[#57C7FF]">Wen finden sie?</span>
           </h2>
           <p className="mx-auto mt-4 max-w-[640px] text-[16.5px] font-medium leading-relaxed text-[#33404F]">
-            Zwei Klicks, und Sie sehen es schwarz auf weiss: wie gross die Online-Nachfrage in Ihrer
-            Branche ist — und welche 10 Anbieter sie sich in Ihrer Region gerade holen.
+            Wählen Sie Ihre Branche und Regionen: Wie gross ist die
+            Online-Nachfrage — und welche Anbieter werden dort gefunden?
           </p>
         </div>
 
@@ -511,30 +516,56 @@ export function BranchenRadar() {
             </button>
           </div>
 
-          {/* Schritt 2 · Region — kompakte Pills, halbe Trennlinie, viel Luft */}
+          {/* Schritt 2 · Regionen */}
           {brancheId && !sonstige && (
             <div className="mt-[72px]">
-              <div className="mx-auto mb-12 h-px w-1/2 max-w-[380px] bg-[#E9EBEE]" aria-hidden="true" />
-              <StepHead n="2" title="Ihre Region" />
+              <div
+                className="mx-auto mb-12 h-px w-1/2 max-w-[380px] bg-[#E9EBEE]"
+                aria-hidden="true"
+              />
+              <StepHead n="2" title="Ihre Regionen" />
+              <p
+                id="radar-region-hint"
+                className="mt-2 text-center text-[13px] font-medium text-[#4A5665]"
+              >
+                Mehrfachauswahl möglich. Erneut klicken, um eine Region
+                abzuwählen.
+              </p>
               <div className="mx-auto mt-6 flex max-w-[640px] flex-wrap justify-center gap-2.5">
                 {REGIONS.map((r) => (
                   <button
                     key={r.id}
                     type="button"
-                    onClick={() => setRegionId(r.id)}
+                    onClick={() =>
+                      setRegionIds((selected) =>
+                        toggleRegionSelection(selected, r.id),
+                      )
+                    }
+                    aria-pressed={regionIds.includes(r.id)}
+                    aria-describedby="radar-region-hint"
                     title={r.cities}
                     className={`rounded-full border px-5 py-2.5 text-[13.5px] font-bold tracking-[0.1px] transition ${
-                      regionId === r.id
+                      regionIds.includes(r.id)
                         ? "border-[#0A0C10] bg-[#0A0C10] text-white shadow-[0_6px_18px_rgba(10,12,16,0.22)]"
                         : "border-[#B9C0C8] bg-white text-[#1E2833] hover:-translate-y-[1px] hover:border-[#0A0C10] hover:text-[#0A0C10]"
                     }`}
                   >
+                    {regionIds.includes(r.id) && (
+                      <span aria-hidden="true">✓ </span>
+                    )}
                     {r.label}
                   </button>
                 ))}
               </div>
-              {region && (
-                <p className="mt-4 text-center text-[12.5px] font-semibold text-[#4A5665]">{region.cities}</p>
+              {regions.length > 0 && (
+                <p className="mt-4 text-center text-[12.5px] font-semibold text-[#4A5665]">
+                  {regions.length}{" "}
+                  {regions.length === 1
+                    ? "Region ausgewählt"
+                    : "Regionen ausgewählt"}
+                  {" · "}
+                  {regions.map((region) => region.cities).join(" · ")}
+                </p>
               )}
             </div>
           )}
@@ -546,8 +577,9 @@ export function BranchenRadar() {
                 Ihre Branche fehlt hier? Dann bauen wir Ihren Radar individuell.
               </p>
               <p className="mx-auto mt-2 max-w-[520px] text-[14.5px] font-medium text-[#33404F]">
-                Wir messen die Online-Nachfrage und die Rangliste für genau Ihr Angebot und Ihre
-                Region — als Erstes im kostenlosen Online-Meeting.
+                Wir messen die Online-Nachfrage und die Rangliste für genau Ihr
+                Angebot und Ihre Region — als Erstes im kostenlosen
+                Online-Meeting.
               </p>
               <a
                 href="#kontakt"
@@ -559,10 +591,16 @@ export function BranchenRadar() {
           )}
 
           {/* Schritt 3 · Ergebnis */}
-          {branche && region && top10 && (
+          {branche && regions.length > 0 && (
             <div className="mt-12">
-              <div className="mx-auto mb-12 h-px w-1/2 max-w-[380px] bg-[#E9EBEE]" aria-hidden="true" />
-              <StepHead n="3" title={`Ihr Markt: ${branche.label} · ${region.label}`} />
+              <div
+                className="mx-auto mb-12 h-px w-1/2 max-w-[380px] bg-[#E9EBEE]"
+                aria-hidden="true"
+              />
+              <StepHead
+                n="3"
+                title={`Ihr Markt: ${branche.label} · ${regionLabel}`}
+              />
 
               <div className="mt-8 grid grid-cols-1 gap-4 lg:grid-cols-[5fr_6fr]">
                 {/* Links: Das entgeht Ihnen */}
@@ -574,8 +612,12 @@ export function BranchenRadar() {
                     ≈ {fmt(regionVol)}
                   </div>
                   <p className="mt-2 text-[13.5px] text-white/70">
-                    Suchanfragen pro Monat in der Region {region.label} — aus {fmt(branche.vol)}{" "}
-                    monatlichen Suchen in der Deutschschweiz.
+                    Suchanfragen pro Monat{" "}
+                    {regions.length === 1
+                      ? `in der Region ${regionLabel}`
+                      : `in Ihren ${regionLabel}`}
+                    {" — "}aus {fmt(branche.vol)} monatlichen Suchen in der
+                    Deutschschweiz.
                   </p>
                   <div className="mt-5 border-t border-white/10 pt-4">
                     <span className="text-[11px] font-extrabold uppercase tracking-[0.6px] text-[#57C7FF]">
@@ -585,7 +627,9 @@ export function BranchenRadar() {
                       {fmt(leads)}/Monat
                     </div>
                     <p className="mt-1 text-[12.5px] text-white/60">
-                      Basis: 20 % der Suchanfragen in Ihrer Region.
+                      Basis: 20 % der Suchanfragen in{" "}
+                      {regions.length === 1 ? "Ihrer Region" : "Ihren Regionen"}
+                      .
                     </p>
                   </div>
                   <div className="mt-5 border-t border-white/10 pt-4">
@@ -608,33 +652,55 @@ export function BranchenRadar() {
                 {/* Rechts: Wer zuschlägt */}
                 <div className="rounded-[16px] border border-[#E1E4E8] bg-white p-6">
                   <span className="text-[11px] font-extrabold uppercase tracking-[0.6px] text-[#C026D3]">
-                    Diese 10 holen sich die Anfragen
+                    Anbieter in{" "}
+                    {regions.length === 1 ? "Ihrer Region" : "Ihren Regionen"}
                   </span>
                   <p className="mt-1 text-[13.5px] font-medium text-[#3C4855]">
-                    Google-Rangliste für den Keyword-Mix in {region.label} ({region.cities}).
+                    Regionale Google-Ranglisten für den Keyword-Mix. Öffnen Sie
+                    eine Region für die Anbieter.
                   </p>
-                  <ol className="mt-4 space-y-1.5">
-                    {top10.map((t, i) => (
-                      <li
-                        key={t.d}
-                        className="flex items-center gap-3 rounded-[10px] bg-[#FAFAF7] px-3 py-[7px]"
+                  <div className="mt-4 space-y-3">
+                    {regions.map((region, index) => (
+                      <details
+                        key={region.id}
+                        open={index === 0}
+                        className="rounded-[12px] border border-[#E1E4E8] p-3"
                       >
-                        <span className="w-[22px] text-right text-[13px] font-extrabold text-[#5A6673]">
-                          {i + 1}.
-                        </span>
-                        <span className="flex-1 truncate text-[13.5px] font-bold text-[#0A0C10]">
-                          {t.d}
-                        </span>
-                        {t.p && (
-                          <span className="rounded-full border border-[#E1E4E8] px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.4px] text-[#8B94A1]">
-                            Portal
-                          </span>
-                        )}
-                      </li>
+                        <summary className="cursor-pointer text-[13.5px] font-bold text-[#0A0C10]">
+                          {region.label}
+                        </summary>
+                        <p className="mt-2 text-[12px] text-[#4A5665]">
+                          {region.cities}
+                        </p>
+                        <ol
+                          aria-label={`Anbieter ${region.label}`}
+                          className="mt-3 space-y-1.5"
+                        >
+                          {branche.regions[region.id].map((t, i) => (
+                            <li
+                              key={t.d}
+                              className="flex items-center gap-3 rounded-[10px] bg-[#FAFAF7] px-3 py-[7px]"
+                            >
+                              <span className="w-[22px] text-right text-[13px] font-extrabold text-[#5A6673]">
+                                {i + 1}.
+                              </span>
+                              <span className="flex-1 truncate text-[13.5px] font-bold text-[#0A0C10]">
+                                {t.d}
+                              </span>
+                              {t.p && (
+                                <span className="rounded-full border border-[#E1E4E8] px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.4px] text-[#8B94A1]">
+                                  Portal
+                                </span>
+                              )}
+                            </li>
+                          ))}
+                        </ol>
+                      </details>
                     ))}
-                  </ol>
+                  </div>
                   <p className="mt-3 text-[13px] font-semibold text-[#0A0C10]">
-                    Ihr Name fehlt? Dann klicken Ihre Kunden gerade bei der Konkurrenz.
+                    Ihr Name fehlt? Dann klicken Ihre Kunden gerade bei der
+                    Konkurrenz.
                   </p>
                 </div>
               </div>
@@ -642,8 +708,8 @@ export function BranchenRadar() {
               {/* CTA */}
               <div className="mt-10 flex flex-col items-center text-center">
                 <p className="max-w-[560px] text-[15px] font-semibold leading-relaxed text-[#26313D]">
-                  Wir bringen Sie in diese Rangliste — mit Website, Inhalten und KI-Agenten, die
-                  Anfragen sofort beantworten.
+                  Wir bringen Sie in diese Rangliste — mit Website, Inhalten und
+                  KI-Agenten, die Anfragen sofort beantworten.
                 </p>
                 <a
                   href="#kontakt"
@@ -663,8 +729,9 @@ export function BranchenRadar() {
             überschreiben. */}
         <div className="mt-4">
           <p className="mx-auto max-w-[680px] text-center text-[12px] font-medium leading-relaxed text-[#55626F]">
-            Datenbasis: Ubersuggest/Google, Schweiz, Juli 2026 · rund 50 Keywords je Branche ·
-            regionale Volumen geschätzt · Momentaufnahme ohne Gewähr.
+            Datenbasis: Ubersuggest/Google, Schweiz, Juli 2026 · rund 50
+            Keywords je Branche · regionale Volumen geschätzt · Momentaufnahme
+            ohne Gewähr.
           </p>
         </div>
       </div>
