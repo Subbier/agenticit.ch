@@ -10,6 +10,7 @@
     "ios_saf >= 16"
   ],
   "scripts": {
+    "test:measurement": "node --import tsx --test lib/check-measurement.test.ts",
     "test:marketing": "node --import tsx --test lib/marketing-setup.test.ts lib/marketing-setup-page.test.ts",
     "test:consent": "node --import tsx --test lib/consent.test.ts",
     "test:home-assets": "node --import tsx --test lib/home-assets.test.ts",

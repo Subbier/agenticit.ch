@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { ArrowRight, Download } from "lucide-react"
 import {
   automationIndustries,
@@ -14,6 +14,7 @@ import {
 } from "@/lib/automation"
 import { toggleRadarSelection } from "@/lib/radar-regions"
 import { downloadText, JourneyContact } from "./check"
+import { createCheckMeasurement } from "@/lib/check-measurement"
 import styles from "./journey.module.css"
 
 const fmt = (value: number) =>
@@ -25,6 +26,7 @@ export function AutomationCheck() {
   const [hourlyRate, setHourlyRate] = useState("")
   const [showContact, setShowContact] = useState(false)
   const contact = useRef<HTMLDivElement>(null)
+  const measurement = useRef(createCheckMeasurement("automation"))
   const availableTasks = getAutomationTasks(industryIds)
   const input: AutomationInput = {
     version: 2,
@@ -38,8 +40,14 @@ export function AutomationCheck() {
   const firstTask =
     result &&
     [...result.rows].sort((a, b) => b.freedMinutes - a.freedMinutes)[0]
+  const hasResult = result !== null
+
+  useEffect(() => {
+    if (hasResult) measurement.current.record("check_result_ready")
+  }, [hasResult])
 
   function toggleIndustry(id: string) {
+    measurement.current.record("check_started")
     const next = toggleRadarSelection(industryIds, id)
     const allowed = new Set(
       getAutomationTasks(next).map((task) => task.id as string),
@@ -405,9 +413,10 @@ export function AutomationCheck() {
                 <button
                   className={styles.secondary}
                   type="button"
-                  onClick={() =>
+                  onClick={() => {
                     downloadText(plan, "AgenticIT-Automatisierungs-Check.txt")
-                  }
+                    measurement.current.record("plan_download_clicked")
+                  }}
                 >
                   <Download size={16} aria-hidden="true" />
                   Ihren Plan speichern

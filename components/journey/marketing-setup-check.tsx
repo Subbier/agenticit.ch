@@ -11,6 +11,7 @@ import {
   type MarketingSetupStatus,
 } from "@/lib/marketing-setup"
 import { downloadText, JourneyContact } from "./check"
+import { createCheckMeasurement } from "@/lib/check-measurement"
 import styles from "./journey.module.css"
 import ui from "./marketing-setup-check.module.css"
 
@@ -24,6 +25,7 @@ export function MarketingSetupCheck() {
   const heading = useRef<HTMLHeadingElement>(null)
   const moveFocus = useRef(false)
   const contact = useRef<HTMLDivElement>(null)
+  const measurement = useRef(createCheckMeasurement("marketing_setup"))
   const question = marketingSetupQuestions[step]
   const result = buildMarketingSetupResult({ version: 1, answers })
   const plan = buildMarketingSetupPlan({ version: 1, answers })
@@ -38,9 +40,10 @@ export function MarketingSetupCheck() {
   function next() {
     if (!answers[question.id]) return
     moveFocus.current = true
-    if (step === marketingSetupQuestions.length - 1 && result)
+    if (step === marketingSetupQuestions.length - 1 && result) {
+      measurement.current.record("check_result_ready")
       setScreen("result")
-    else
+    } else
       setStep((value) =>
         Math.min(value + 1, marketingSetupQuestions.length - 1),
       )
@@ -115,9 +118,10 @@ export function MarketingSetupCheck() {
             <button
               type="button"
               className={styles.button}
-              onClick={() =>
+              onClick={() => {
                 downloadText(plan, "AgenticIT-Marketing-Setup-Plan.txt")
-              }
+                measurement.current.record("plan_download_clicked")
+              }}
             >
               Meinen Plan speichern <Download size={17} aria-hidden="true" />
             </button>
@@ -198,12 +202,13 @@ export function MarketingSetupCheck() {
                   value={option.value}
                   checked={answers[question.id] === option.value}
                   required
-                  onChange={() =>
+                  onChange={() => {
+                    measurement.current.record("check_started")
                     setAnswers((value) => ({
                       ...value,
                       [question.id]: option.value,
                     }))
-                  }
+                  }}
                 />
                 <span>{option.label}</span>
                 {answers[question.id] === option.value ? (
@@ -245,6 +250,7 @@ export function MarketingSetupCheck() {
               className={styles.textLink}
               onClick={() => {
                 moveFocus.current = true
+                measurement.current.record("check_result_ready")
                 setScreen("result")
               }}
             >

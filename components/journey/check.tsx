@@ -16,6 +16,10 @@ import {
 import styles from "./journey.module.css"
 import type { AutomationInput } from "@/lib/automation"
 import type { MarketingSetupInput } from "@/lib/marketing-setup"
+import {
+  createCheckMeasurement,
+  trackInquiryAcknowledgement,
+} from "@/lib/check-measurement"
 
 export function downloadText(text: string, filename: string) {
   const url = URL.createObjectURL(
@@ -174,6 +178,16 @@ export function JourneyContact({
           data?.message ||
             "Die Anfrage konnte nicht übermittelt werden. Bitte versuchen Sie es erneut.",
         )
+      trackInquiryAcknowledgement(
+        marketingSetup
+          ? "marketing_setup"
+          : automation
+            ? "automation"
+            : "customer_journey",
+        response.ok,
+        data,
+        form.get("company_website"),
+      )
       setStatus("success")
     } catch (reason) {
       setStatus("error")
@@ -320,13 +334,17 @@ export function JourneyCheck({
   const [step, setStep] = useState(initialChallenge ? 1 : 0)
   const [showContact, setShowContact] = useState(false)
   const heading = useRef<HTMLHeadingElement>(null)
+  const measurement = useRef(createCheckMeasurement("customer_journey"))
   function go(next: number) {
+    if (next > step) measurement.current.record("check_started")
+    if (next === 3) measurement.current.record("check_result_ready")
     setStep(next)
     setShowContact(false)
     requestAnimationFrame(() => heading.current?.focus())
   }
   function savePlan(text: string) {
     downloadText(text, `AgenticIT-${challenge}-Plan.txt`)
+    measurement.current.record("plan_download_clicked")
   }
   if (step === 3 && challenge && channel && system) {
     const answers = { challenge, channel, system }
