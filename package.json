@@ -10,6 +10,7 @@
     "ios_saf >= 16"
   ],
   "scripts": {
+    "test:journey": "node --import tsx --test lib/journey.test.ts lib/lead-route.test.ts",
     "build": "next build",
     "dev": "next dev",
     "dev:clean": "rm -rf .next && next dev",

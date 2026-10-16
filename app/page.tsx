@@ -1,30 +1,23 @@
 import type { Metadata } from "next"
-import { HomePage } from "@/components/site/home-page"
-import { createPageMetadata, faqPageJsonLd, webApplicationJsonLd } from "@/lib/seo"
-import { pageSeo, homeAllFaqs } from "@/lib/seo-faqs"
+import { JourneyHome } from "@/components/journey/home"
+import { JsonLd } from "@/components/site/json-ld"
+import { createPageMetadata, faqPageJsonLd } from "@/lib/seo"
+import { journeyFaqs } from "@/lib/journey"
 
 export const metadata: Metadata = {
   ...createPageMetadata({
-    ...pageSeo.home,
+    title: "Kunden gewinnen und Beziehungen stärken",
+    description:
+      "AgenticIT verbindet Marketing, Vertrieb und Kundenbetreuung für Schweizer Beratungs- und Vertriebsfirmen. Finden Sie mit dem kostenlosen Kundenreise-Check Ihren Ansatzpunkt.",
     path: "/",
   }),
-  title: { absolute: pageSeo.home.title },
 }
 
 export default function Page() {
   return (
     <>
-      <HomePage
-        jsonLd={[
-          webApplicationJsonLd({
-            name: "AgenticIT Branchen-Radar",
-            description:
-              "Interaktives Nachfrage-Tool: Branche und Region wählen und sofort sehen, wie viele Suchanfragen pro Monat auf Ihren Markt entfallen und welche 10 Anbieter die Google-Rangliste anführen. Datenbasis Ubersuggest/Google, Schweiz.",
-            path: "/",
-          }),
-          faqPageJsonLd(homeAllFaqs),
-        ]}
-      />
+      <JsonLd data={[faqPageJsonLd(journeyFaqs)]} />
+      <JourneyHome />
     </>
   )
 }

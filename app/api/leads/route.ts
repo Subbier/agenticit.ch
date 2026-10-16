@@ -1,29 +1,5 @@
 import { NextResponse } from "next/server"
-import { z } from "zod"
-
-const optionalText = (max = 500) =>
-  z.preprocess((value) => (value === "" ? undefined : value), z.string().trim().max(max).optional())
-
-const leadSchema = z.object({
-  source: z.enum(["home", "ai-agents", "revops", "excellence", "omnichannel", "intelligence", "smart-apps", "case-studies", "blog", "potenzialrechner", "gtm-checkliste"]),
-  name: z.string().trim().min(2).max(120),
-  email: z.string().trim().email().max(180),
-  consent: z.literal(true),
-  company: optionalText(160),
-  phone: optionalText(80),
-  message: optionalText(1200),
-  leadVolume: optionalText(80),
-  challenge: optionalText(160),
-  industry: optionalText(120),
-  // Preis pro Kundenanfrage (CHF) aus dem Rechner/Branchen-Mapping; optional.
-  leadPrice: z.preprocess(
-    (value) => (value === "" || value === null ? undefined : value),
-    z.coerce.number().int().min(0).max(100000).optional(),
-  ),
-  goal: optionalText(160),
-  // Honeypot: legitime Nutzer lassen dieses Feld leer.
-  company_website: optionalText(200),
-})
+import { leadSchema, prepareLeadPayload } from "@/lib/lead-intake"
 
 // Einfaches In-Memory-Rate-Limiting pro IP (Best-Effort, pro Server-Instanz).
 const RATE_LIMIT_MAX = 5
@@ -52,7 +28,11 @@ function isRateLimited(ip: string): boolean {
 export async function POST(request: Request) {
   if (isRateLimited(getClientIp(request))) {
     return NextResponse.json(
-      { ok: false, message: "Zu viele Anfragen. Bitte versuchen Sie es in einer Minute erneut." },
+      {
+        ok: false,
+        message:
+          "Zu viele Anfragen. Bitte versuchen Sie es in einer Minute erneut.",
+      },
       { status: 429 },
     )
   }
@@ -62,7 +42,10 @@ export async function POST(request: Request) {
   try {
     json = await request.json()
   } catch {
-    return NextResponse.json({ ok: false, message: "Ungültiges JSON." }, { status: 400 })
+    return NextResponse.json(
+      { ok: false, message: "Ungültiges JSON." },
+      { status: 400 },
+    )
   }
 
   const parsed = leadSchema.safeParse(json)
@@ -87,46 +70,46 @@ export async function POST(request: Request) {
 
   if (!webhookUrl) {
     return NextResponse.json(
-      { ok: false, message: "Lead-Webhook ist noch nicht konfiguriert." },
+      {
+        ok: false,
+        message:
+          "Die Anfrage kann gerade nicht übermittelt werden. Bitte kontaktieren Sie info@agenticit.ch.",
+      },
       { status: 500 },
     )
   }
 
-  const { company_website: _honeypot, ...leadData } = parsed.data
-
-  // Zoho-CRM-Aufbereitung: Tags (Branche + Lead-Preis) und automatische
-  // Rückruf-Aufgabe. Die eigentliche Lead-Anlage übernimmt die Automation
-  // hinter dem Webhook (z. B. Zoho Flow / Deluge), siehe zoho-one-implementierung.md.
-  const tags = [
-    leadData.industry ? `branche:${leadData.industry}` : null,
-    typeof leadData.leadPrice === "number" ? `lead_preis:${leadData.leadPrice}` : null,
-  ].filter((tag): tag is string => Boolean(tag))
-
-  const payload = {
-    ...leadData,
-    crm: "zoho",
-    tags,
-    followUpTask: "Rückruf",
-    submittedAt: new Date().toISOString(),
-    userAgent: request.headers.get("user-agent") || undefined,
-  }
+  const payload = prepareLeadPayload(
+    parsed.data,
+    new Date().toISOString(),
+    request.headers.get("user-agent") || undefined,
+  )
 
   try {
     const response = await fetch(webhookUrl, {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(payload),
+      signal: AbortSignal.timeout(10_000),
     })
 
     if (!response.ok) {
       return NextResponse.json(
-        { ok: false, message: "Der Lead-Webhook hat die Anfrage abgelehnt." },
+        {
+          ok: false,
+          message:
+            "Die Anfrage konnte gerade nicht übermittelt werden. Bitte versuchen Sie es später erneut.",
+        },
         { status: 502 },
       )
     }
   } catch {
     return NextResponse.json(
-      { ok: false, message: "Der Lead-Webhook ist aktuell nicht erreichbar." },
+      {
+        ok: false,
+        message:
+          "Die Anfrage konnte gerade nicht übermittelt werden. Bitte versuchen Sie es später erneut.",
+      },
       { status: 502 },
     )
   }
