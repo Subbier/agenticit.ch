@@ -103,16 +103,17 @@ export function JourneyHome() {
             <div className={styles.sectionHead}>
               <div>
                 <span className={styles.eyebrow}>
-                  Klein starten. Konkret lernen.
+                  Drei Bereiche. Ein Partner.
                 </span>
                 <h2>
-                  Ein klarer Test.
+                  Neue Kunden gewinnen.
                   <br />
-                  Eine fundierte Entscheidung.
+                  Den Alltag vereinfachen.
                 </h2>
                 <p className={styles.sectionIntro}>
-                  Wir beginnen mit einem abgegrenzten Prozess. So sehen Sie, was
-                  die Lösung in Ihrem Alltag leistet, bevor Sie weiter ausbauen.
+                  Wir verbinden Marketing, Sales und Verwaltung zu einem
+                  stimmigen Ablauf. Damit Ihr Team weniger organisieren muss und
+                  mehr Zeit für Ihre Kunden hat.
                 </p>
               </div>
               <Link className={styles.textLink} href="/pakete">

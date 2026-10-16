@@ -64,7 +64,7 @@ export function PackageCards({ expanded = false }: { expanded?: boolean }) {
             key={item.id}
             className={`${styles.package} ${index === 1 ? styles.featuredPackage : ""}`}
           >
-            <span className={styles.packageNumber}>PILOT {item.number}</span>
+            <span className={styles.packageNumber}>BEREICH {item.number}</span>
             {expanded ? <h2>{item.title}</h2> : <h3>{item.title}</h3>}
             <p>{item.short}</p>
             <p className={styles.scope}>{item.scope}</p>
@@ -79,7 +79,7 @@ export function PackageCards({ expanded = false }: { expanded?: boolean }) {
             {expanded ? (
               <>
                 <p>
-                  <strong>Daran messen wir den Test</strong>
+                  <strong>So prüfen wir den Nutzen</strong>
                   <br />
                   {item.outcome}
                 </p>
@@ -94,14 +94,14 @@ export function PackageCards({ expanded = false }: { expanded?: boolean }) {
               href={`/kundenreise-check?thema=${item.challenge}`}
               className={styles.secondary}
             >
-              Passung prüfen <ArrowUpRight size={16} aria-hidden="true" />
+              Einstieg finden <ArrowUpRight size={16} aria-hidden="true" />
             </Link>
           </article>
         ))}
       </div>
       <p className={styles.packageNote}>
-        Umfang, Preis, Dauer und Fremdkosten vereinbaren wir vor dem Start. Über
-        eine Weiterführung entscheiden Sie separat.
+        Sie wählen Ihren Einstieg. Umfang, Preis, Dauer und Fremdkosten
+        vereinbaren wir vor dem Start. Über den Ausbau entscheiden Sie.
       </p>
     </>
   )

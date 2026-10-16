@@ -902,7 +902,6 @@
   font-weight: 500;
   line-height: 1.15;
   letter-spacing: -0.8px;
-  min-height: 60px;
 }
 .package p {
   color: var(--muted);

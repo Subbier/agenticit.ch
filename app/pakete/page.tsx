@@ -8,9 +8,9 @@ import { createPageMetadata } from "@/lib/seo"
 import styles from "@/components/journey/journey.module.css"
 
 export const metadata = createPageMetadata({
-  title: "Testpakete für Vertrieb und digitale Abläufe",
+  title: "Marketing, Sales und Verwaltung: Ihr passender Einstieg",
   description:
-    "Ein abgegrenzter Pilot für Anfragen, Terminierung oder einen wiederkehrenden Ablauf. Klare Voraussetzungen, vereinbarte Abnahme und separate Entscheidung über den Ausbau.",
+    "Digitaler Auftritt, aktive Kundengewinnung und einfachere Abläufe mit KI. Entdecken Sie Ihren Einstieg in Marketing, Sales oder Verwaltung – mit klar vereinbartem Umfang.",
   path: "/pakete",
 })
 
@@ -19,25 +19,26 @@ export default function Page() {
     <JourneyShell>
       <main className={styles.container}>
         <div className={styles.pageHero}>
-          <span className={styles.eyebrow}>Gezielt ausprobieren</span>
+          <span className={styles.eyebrow}>Drei Bereiche. Ein Partner.</span>
           <h1>
-            Erst ein Prozess.
+            Ihr Einstieg.
             <br />
-            Dann eine gute Entscheidung.
+            Passend zu Ihrem Unternehmen.
           </h1>
           <p>
-            Eine ganze Kundenreise lässt sich Schritt für Schritt verbessern.
-            Wir beginnen dort, wo ein begrenzter Test für Ihr Team sinnvoll ist.
+            Vom digitalen Auftritt über die Kundengewinnung bis zur Betreuung:
+            Wir verbinden Ihre Systeme und begleiten Ihr Team. Gemeinsam wählen
+            wir einen überschaubaren Einstieg, der Ihren Alltag verbessert.
           </p>
         </div>
         <section className={styles.checkArea} aria-label="Unsere Testpakete">
           <PackageCards expanded />
           <div className={styles.measurement}>
-            <strong>So bleibt der Pilot überschaubar</strong>Wir halten
-            Ergebnis, Zuständigkeiten, Startvoraussetzungen, Kundeneinsatz,
-            Nutzungslimits und Abnahme schriftlich fest. Bei zu wenig Vorgängen
-            besprechen wir die Datenlage. Einen grösseren Ausbau oder eine
-            Verlängerung vereinbaren wir separat.
+            <strong>Ein klarer Einstieg. Gemeinsam vereinbart.</strong>Die
+            Punkte zeigen, wobei wir Sie im jeweiligen Bereich unterstützen.
+            Welche Leistungen Ihr erster Schritt umfasst, halten wir vor dem
+            Start fest – mit Ergebnis, Zuständigkeiten, Kosten und Abnahme.
+            Danach entscheiden Sie, wie es weitergeht.
           </div>
           <JourneyCta />
         </section>
