@@ -42,7 +42,7 @@ export function CompanyVideo() {
           controls
           playsInline
           preload="none"
-          poster="/videos/agenticit-thumbnail.jpg"
+          poster="/videos/agenticit-thumbnail.png"
           width={1920}
           height={1080}
           tabIndex={0}
