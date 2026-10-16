@@ -30,10 +30,10 @@ export function JourneyHome() {
                 <em>Ein Partner.</em>
               </h1>
               <p className={styles.heroCopy}>
-                Wir verbinden Marketing und Vertrieb mit digitalen Abläufen. Von
-                der Website über CRM und Telefonie bis zu KI-Automatisierungen:
-                Wir wählen passende Tools, richten sie ein und halten Ihrem Team
-                den Rücken frei.
+                Was wäre, wenn Ihre Website verkauft, Ihr CRM Termine bucht und
+                Belege sich von selbst einordnen? Das bauen wir: Kundenakquise,
+                Digitalisierung und KI für Ihren Betrieb – damit Ihr Unternehmen
+                schon heute bereit ist für morgen.
               </p>
               <div className={styles.actions}>
                 <Link href="/kundenreise-check" className={styles.button}>
