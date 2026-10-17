@@ -1,71 +1,88 @@
 ---
-title: "KI-Datenanalyse für KMU: Aus vorhandenen Daten bessere Entscheidungen"
+title: "KI-Datenanalyse für KMU"
 slug: "ki-datenanalyse-kmu"
-description: "KI-Datenanalyse für KMU: Wie Sie aus CRM, Buchhaltung und Website ohne Data-Science-Team verwertbare Entscheidungen gewinnen – Schritt für Schritt."
+description: "Vorhandene Daten für konkrete Geschäftsfragen nutzen: Quellen prüfen, Berechnungen nachvollziehen und KI-Aussagen einordnen. Mit einem Kennzahlen-Arbeitsblatt."
 date: "2026-07-24"
+updated: "2026-10-17"
 category: "RevOps"
-tags: ["datenanalyse", "revops", "analytics", "kmu"]
-keywords: ["ki datenanalyse", "datenanalyse kmu", "ki automatisierung", "revops", "ki agentur schweiz"]
-readingTime: 10
+tags: ["KI-Datenanalyse", "Datenqualität", "RevOps", "KMU"]
+keywords:
+  ["ki datenanalyse", "datenanalyse kmu", "ki automatisierung", "revops"]
+readingTime: 5
+resource:
+  title: "Von der Frage zur nachvollziehbaren Kennzahl."
+  copy: "Halten Sie Zählregeln, Quellen und offene Datenfragen im Arbeitsblatt fest. Eine gemeinsame Grundlage für Ihr Team."
+  href: "/vorlagen/AgenticIT-Kennzahlen-Arbeitsblatt.txt"
+  label: "Arbeitsblatt speichern (.txt)"
+nextStep:
+  title: "Wie gut kommen Ihre Daten zusammen?"
+  copy: "Der CRM-Ablauf-Check ordnet Übergaben, Rollen, Dubletten und Datenpflege ein. Sie erhalten einen priorisierten Plan."
+  href: "/crm-ablauf-check"
+  label: "CRM-Ablauf prüfen"
+sources:
+  - label: "UK Government: Datenqualität für den jeweiligen Zweck prüfen"
+    url: "https://www.gov.uk/government/publications/the-government-data-quality-framework/the-government-data-quality-framework"
+  - label: "NIST: Generative KI kann falsche Inhalte überzeugend ausgeben"
+    url: "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf"
+  - label: "EDÖB: KI und Datenschutz"
+    url: "https://www.edoeb.admin.ch/de/ki-und-datenschutz"
 faq:
-  - q: "Brauchen wir dafür saubere, perfekte Daten?"
-    a: "Nein, aber grundlegend strukturierte. Oft ist der erste Nutzen von KI gerade, Datenlücken und Qualitätsprobleme sichtbar zu machen."
-  - q: "Müssen wir teure BI-Software kaufen?"
-    a: "Nicht zwingend. Vieles lässt sich mit KI auf vorhandenen Quellen realisieren – der Fokus liegt auf Antworten, nicht auf Dashboards."
-  - q: "Kann KI in die Zukunft sehen?"
-    a: "Sie liefert datenbasierte Wahrscheinlichkeiten, keine Garantien. Als Frühwarnsystem und Entscheidungshilfe ist das enorm wertvoll."
-sources: []
+  - q: "Wobei hilft KI bei der Datenanalyse?"
+    a: "Ein KI-Assistent kann Fragen strukturieren, Auswertungen erläutern und mögliche Auffälligkeiten zur Prüfung vorschlagen. Berechnungen, Quellen und Schlussfolgerungen müssen überprüfbar bleiben. Benötigte Systemzugriffe werden gesondert eingerichtet."
+  - q: "Kann KI fehlende oder falsche Daten ausgleichen?"
+    a: "Datenlücken müssen erkannt und geklärt werden. Eine plausibel formulierte Ergänzung ist kein Beleg für den fehlenden Wert. Halten Sie unbekannte Angaben offen und prüfen Sie die Qualität der verwendeten Quellen."
+  - q: "Können wir damit sichere Prognosen erstellen?"
+    a: "Eine Prognose benötigt geeignete Daten, ein passendes Verfahren und eine Prüfung ausserhalb der Daten, mit denen sie entwickelt wurde. Ein gut formulierter Text über zukünftige Umsätze ersetzt diesen Nachweis nicht."
+  - q: "Brauchen wir zuerst ein neues Dashboard?"
+    a: "Beginnen Sie mit der Geschäftsfrage, der benötigten Entscheidung und der verfügbaren Datengrundlage. Daraus ergibt sich, ob ein vorhandener Bericht, eine einfache Auswertung oder eine zusätzliche Anwendung sinnvoll ist."
 ---
 
-Die meisten KMU sitzen auf einem Datenschatz, den sie nie heben: Verkaufszahlen, CRM, Support-Tickets, Website. KI macht daraus verständliche Antworten – ohne Data-Science-Abteilung.
+> **KI-Datenanalyse beginnt mit einer konkreten Geschäftsfrage und überprüfbaren Quellen.** Ein Assistent kann Ergebnisse verständlich aufbereiten und Fragen zur Prüfung vorschlagen. Für Entscheidungen zählen die zugrunde liegenden Daten, nachvollziehbare Berechnungen und das Urteil der zuständigen Personen.
 
-«Wir müssten mal in unsere Zahlen schauen» – dieser Vorsatz scheitert im KMU-Alltag fast immer an Zeit und Werkzeug. Daten liegen verstreut in Excel, CRM, Buchhaltung und Shopsystem, und niemand hat die Musse, sie zusammenzuführen. Genau hier setzt KI-gestützte Datenanalyse an: Sie verbindet vorhandene Quellen, erkennt Muster und liefert Antworten in normaler Sprache – nicht in kryptischen Dashboards.
+## Mit welcher Frage können wir starten?
 
-## Warum KMU ihre Daten nicht nutzen
+**Eigenes Planungsbeispiel:** Ein Beratungsteam möchte wissen, aus welchen Anfragewegen passende Gespräche entstehen. Dafür braucht es vereinbarte Begriffe: Was ist eine eindeutige Anfrage, wann passt sie fachlich und wann hat ein Gespräch tatsächlich stattgefunden?
 
-Drei Hürden: Die Daten sind **verstreut**, die Werkzeuge sind **zu komplex** (BI-Tools brauchen Spezialisten), und niemand hat **Zeit**, Berichte zu bauen. KI adressiert alle drei: Sie liest verschiedene Quellen, braucht keine Query-Sprache und arbeitet auf Abruf.
+Halten Sie zuerst die gewünschte Entscheidung fest. Etwa: Welche Übergabe prüfen wir als Nächstes? Das Arbeitsblatt oben verbindet die Frage mit Datenquelle, Zählregel und Zuständigkeit.
 
-## Was KI-Datenanalyse konkret liefert
+## Was muss vor der Auswertung geklärt sein?
 
-| Analyseart | Beispiel-Nutzen |
-| --- | --- |
-| Deskriptiv | «Was ist letzten Monat passiert?» – Umsatz, Kanäle, Kunden |
-| Diagnostisch | «Warum ist der Umsatz gesunken?» – Muster & Zusammenhänge |
-| Prädiktiv | «Welche Kunden drohen abzuwandern?» – Prognosen |
-| Präskriptiv | «Wo lohnt sich der nächste Franken Werbung?» – Empfehlungen |
+Prüfen Sie die benötigten Quellen mit Ihrem Team:
 
-## Typische Fragen, die KI beantwortet
+- **Gruppe und Zeitraum:** Welche Vorgänge gehören zur Frage, bis zu welchem Stand sind sie bearbeitet?
+- **Eindeutige Zuordnung:** Welche Einträge gehören zusammen, wo liegen Dubletten vor?
+- **Bedeutung der Felder:** Werden Status, Kanal und Ergebnis überall gleich verstanden?
+- **Offene Angaben:** Welche Werte fehlen oder sind noch ungeprüft?
 
-- Welche Kundensegmente bringen den meisten Deckungsbeitrag?
-- Welche Anfragen im Support wiederholen sich – und blockieren Umsatz?
-- Welche Angebote werden angefragt, aber nicht abgeschlossen?
-- Zu welcher Zeit / über welchen Kanal entstehen die besten Leads?
-- Wo verlieren wir Kunden im Funnel?
+Das [Government Data Quality Framework unterscheidet unter anderem Vollständigkeit, Eindeutigkeit, Aktualität und Richtigkeit](https://www.gov.uk/government/publications/the-government-data-quality-framework/the-government-data-quality-framework). Wählen Sie die Prüfungen passend zu Ihrer Frage.
 
-## So gehen Sie vor
+## Welche Aufgabe übernimmt die KI?
 
-### 1 · Fragen priorisieren
+Ein Textassistent kann eine vorhandene Tabelle erläutern, einen Bericht gliedern oder Rückfragen zu auffälligen Ergebnissen vorbereiten. Eine eingerichtete Anwendung kann freigegebene Quellen einbeziehen. Welche Daten sie erreicht, hängt von Anbindungen und Berechtigungen ab.
 
-Starten Sie mit 3–5 Geschäftsfragen, die eine Entscheidung auslösen würden. Analyse ohne Entscheidung ist Zeitverschwendung.
+Zählungen und Quoten sollten mit nachvollziehbaren Regeln berechnet und an den Ausgangsdaten geprüft werden. Quellenverweise, Auswertungsstand und offene Punkte gehören in den Bericht.
 
-### 2 · Datenquellen erschliessen
+[NIST beschreibt das Risiko, dass generative KI falsche Inhalte überzeugend darstellt](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf). Prüfen Sie deshalb auch plausible Aussagen. Die folgenden Fragen sind eigene Vorschläge für die gemeinsame Kontrolle:
 
-CRM, Buchhaltung, Shop, Support – verbinden, was vorhanden ist. Perfektion ist nicht nötig, Struktur schon.
+1. Stimmen die ausgewählten Vorgänge mit der ursprünglichen Frage überein?
+2. Lassen sich Anzahl, Quote und Bezugsgrösse nachrechnen?
+3. Sind fehlende Werte und noch offene Vorgänge sichtbar?
+4. Welche Aussage ist belegt, welche bleibt eine mögliche Erklärung?
 
-### 3 · KI-gestützt auswerten
+## Wie wird aus einem Muster eine Entscheidung?
 
-Muster, Ausreisser und Prognosen in klarer Sprache – auf Abruf, nicht als monatlicher Kraftakt.
+Ein Kanal mit höherer Gesprächsquote kann eine andere Zielgruppe, ein anderes Angebot oder einen anderen Bearbeitungsstand enthalten. Der Vergleich braucht diese Einordnung. Eine beobachtete Verbindung allein belegt noch keine Ursache.
 
-### 4 · Entscheiden & messen
+Vereinbaren Sie eine konkrete Prüfung oder Änderung, eine verantwortliche Person und einen späteren Vergleich. Für Vorhersagen braucht es zusätzlich ein geeignetes Verfahren und eine gesonderte Prüfung. Allgemeine KI-Textqualität belegt keine Vorhersagegüte.
 
-Handeln, Wirkung gegen die Baseline messen, nachschärfen. Analyse wird so zum Kreislauf.
+Der Beitrag [RevOps-Kennzahlen](/blog/revops-metriken-kennzahlen) zeigt ein nachvollziehbares Rechenbeispiel und die Trennung von Anfrage, Passung, Gespräch und Auftrag.
 
-> **RevOps-Sicht:** Datenanalyse entfaltet ihren Wert erst, wenn sie Marketing, Sales und Service verbindet. Genau dort setzt der [RevOps-Ansatz von AgenticIT](/loesungen/revops-umsatzgenerierung) an: eine Datensicht über den ganzen Umsatzprozess.
+## Wie gehen wir mit Kundendaten um?
 
-## Datenqualität & Grenzen
+Wenn Personendaten betroffen sind, müssen Zweck, benötigte Angaben, Zugriffe und Anbieter zum Vorhaben passen. Der [EDÖB erläutert die Anwendung des Schweizer Datenschutzgesetzes beim KI-Einsatz und die nötige Transparenz](https://www.edoeb.admin.ch/de/ki-und-datenschutz).
 
-KI ist kein Zauberstab: Fehlende oder falsche Daten führen zu falschen Schlüssen. Deshalb gehört ein ehrlicher Blick auf die Datenqualität dazu – und die Einordnung, dass Prognosen Wahrscheinlichkeiten sind, keine Gewissheiten. Wichtige Entscheide werden mit menschlichem Urteil getroffen, nicht blind aus dem Modell übernommen.
+Für eine erste Planung genügen erfundene Angaben und aggregierte Beispieldaten. Echte Dossiers und Zugangsdaten gehören nicht ins Arbeitsblatt. Eine konkrete Verarbeitung wird vor der Einrichtung geklärt.
 
-## Datenschutz & Compliance
+## Wie unterstützt AgenticIT?
 
-Kundendaten sind Personendaten. Analyse erfolgt daher zweckgebunden, mit definiertem Speicherort und im Rahmen von nDSG/DSGVO. Wo möglich wird mit aggregierten oder pseudonymisierten Daten gearbeitet. AgenticIT dokumentiert die Verarbeitung transparent und hält den Menschen bei der Interpretation im Loop.
+Wir betrachten Frage, Quellen, vorhandene Tools und die Personen, die mit dem Ergebnis arbeiten. Daraus entsteht eine passende Auswertung oder Anwendung mit vereinbarten Prüfkriterien. Mehr zu [Sales und CRM](/loesungen/revops-umsatzgenerierung), [KI-Entwicklung](/loesungen/ki-entwicklung) und [RevOps im Team](/blog/revops-as-a-service).

@@ -1,0 +1,91 @@
+AGENTICIT – KENNZAHLEN-ARBEITSBLATT
+Anfrage, Passung, Gespräch und Auftrag gemeinsam definieren.
+Stand: 17.10.2026
+
+Kurze Antworten genügen. Unbekannte Angaben als «offen» markieren.
+Die Vorlage ist unabhängig von einem Auftrag bei AgenticIT nutzbar.
+Ihre Einträge werden nicht automatisch an uns gesendet.
+Keine Kundennamen, echten Dossiers, Passwörter oder Zugangsschlüssel eintragen.
+Für die Planung genügen erfundene oder zusammengefasste Beispieldaten.
+
+1. FRAGE UND ENTSCHEIDUNG
+Welche konkrete Geschäftsfrage möchten wir klären?
+Antwort:
+Welche Entscheidung oder nächste Prüfung soll die Auswertung unterstützen?
+Antwort:
+Verantwortliche Rolle und Vertretung:
+Antwort:
+
+2. VERGLEICHBARE GRUPPE
+Angebot, Zielgruppe und einbezogene Anfragewege:
+Antwort:
+Zeitraum des Anfrageeingangs:
+Auswertungsstand und erwartete Nachlaufzeit:
+Welche Vorgänge sind noch offen?
+Antwort:
+Wie erkennen und entfernen wir Tests und Dubletten?
+Antwort:
+Welche Daten fehlen oder sind noch ungeprüft?
+Antwort:
+
+3. VIER ZÄHLREGELN
+Die Zähleinheit ist der Anfragevorgang. Pro Vorgang und Stufe wird höchstens
+einmal gezählt. Mehrere Gespräche zum selben Vorgang erhöhen die Zahl nicht.
+Regeln für mehrere Anfragen desselben Kontakts ausdrücklich definieren.
+Das Modell betrachtet den Weg über ein Gespräch. Direktaufträge und andere
+Wege getrennt erfassen. Eindeutige neue Kunden gesondert zählen.
+
+A – Eindeutige Anfragen
+Wann zählt ein tatsächlicher Eingang, welcher Beleg ist nötig?
+Antwort:
+Datenquelle, zuständige Rolle und Prüfdatum:
+Anzahl / offen:
+
+B – Fachlich passende Anfragen
+Welche Kriterien prüft das Team, und wo steht das Ergebnis?
+Antwort:
+Datenquelle, zuständige Rolle und Prüfdatum:
+Anzahl innerhalb von Gruppe A / offen:
+Passungsquote = B / A × 100:
+
+C – Anfragevorgänge mit geführtem Gespräch
+Was gilt als tatsächlich geführtes Gespräch?
+Antwort:
+Datenquelle, zuständige Rolle und Prüfdatum:
+Anzahl innerhalb von Gruppe B / offen:
+Gesprächsquote = C / B × 100:
+
+D – Anfragevorgänge mit Auftrag
+Welcher Beleg bestätigt den Auftrag? Zahlungseingang separat erfassen.
+Antwort:
+Datenquelle, zuständige Rolle und Prüfdatum:
+Anzahl innerhalb von Gruppe C / offen:
+Auftragsquote aus Anfragevorgängen mit Gespräch = D / C × 100:
+
+Bei einem Nenner von null keine Quote ausweisen.
+Fehlende Daten bleiben offen. Tests und technische Website-Ereignisse
+sind kein Beleg für qualifizierte Kontakte oder Aufträge.
+
+4. GEMEINSAM PRÜFEN
+[ ] Alle Zahlen betreffen dieselbe definierte Gruppe.
+[ ] Terminvereinbarung und geführtes Gespräch sind getrennt.
+[ ] Auftrag und Zahlungseingang sind getrennt.
+[ ] Quellen, Zählregeln, Auswertungsstand und Nachlauf sind nachvollziehbar.
+[ ] Zähler und Nenner wurden an den Ausgangsdaten geprüft.
+[ ] Offene Werte und Vorgänge sind sichtbar.
+[ ] Kleine oder unterschiedlich lange bearbeitete Gruppen sind eingeordnet.
+[ ] Belegte Ergebnisse und mögliche Erklärungen sind getrennt.
+
+5. NÄCHSTER SCHRITT
+Beobachtung:
+Was ist belegt, was bleibt unklar?
+Nächste Prüfung oder vereinbarte Änderung:
+Verantwortliche Rolle und Termin für die gemeinsame Auswertung:
+Erwartetes Ergebnis:
+Ist-Ergebnis:
+Nachweis:
+
+Rechenbeispiel und Einordnung:
+https://agenticit.ch/blog/revops-metriken-kennzahlen
+Vorhandenen Anfrageweg prüfen:
+https://agenticit.ch/anfragen-check

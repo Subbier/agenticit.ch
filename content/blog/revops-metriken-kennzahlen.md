@@ -1,105 +1,90 @@
 ---
-title: "RevOps-Metriken: Die 9 Kennzahlen, die Ihr Wachstum wirklich steuern"
+title: "RevOps-Kennzahlen"
 slug: "revops-metriken-kennzahlen"
-description: "Welche RevOps-Metriken zählen? Von Pipeline-Velocity über CAC bis Net Revenue Retention – der Kennzahlen-Leitfaden für datengetriebenes Wachstum."
+description: "Vier Kennzahlen vom Anfrageeingang bis zum Auftrag: Zählregeln, Bezugsgrössen und fehlende Werte verständlich festhalten. Mit bearbeitbarem Arbeitsblatt."
 date: "2026-07-24"
+updated: "2026-10-17"
 category: "RevOps"
-tags: ["revops", "revops metriken", "kpi", "pipeline", "wachstum"]
-keywords: ["revops metriken", "revops", "revops as a service", "revenue operations kennzahlen"]
-readingTime: 12
+tags: ["RevOps", "Kennzahlen", "CRM", "Marketing", "Sales"]
+keywords:
+  [
+    "revops metriken",
+    "revops kennzahlen",
+    "revenue operations kennzahlen",
+    "vertrieb kennzahlen",
+  ]
+readingTime: 5
+resource:
+  title: "Ihre Kennzahlen verständlich festhalten."
+  copy: "Definieren Sie Eingang, Passung, Gespräch und Auftrag mit Quelle, Bezugsgrösse und verantwortlicher Rolle. Das Arbeitsblatt ist direkt nutzbar."
+  href: "/vorlagen/AgenticIT-Kennzahlen-Arbeitsblatt.txt"
+  label: "Arbeitsblatt speichern (.txt)"
+nextStep:
+  title: "Kommt Ihre Anfrage bis zur richtigen Person?"
+  copy: "Der Anfragen-Check ordnet Eingang, Zuständigkeit, Reaktion, Nachfassen und Ergebnis ein. Sie erhalten konkrete nächste Schritte."
+  href: "/anfragen-check"
+  label: "Anfrageweg prüfen"
+sources:
+  - label: "Google Analytics: Anfrage, Qualifizierung und Abschluss getrennt erfassen"
+    url: "https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events"
+  - label: "UK Government: Vollständigkeit und Richtigkeit unterscheiden"
+    url: "https://www.gov.uk/government/publications/the-government-data-quality-framework/the-government-data-quality-framework"
 faq:
-  - q: "Womit sollte ich anfangen?"
-    a: "Mit Speed-to-Lead und Conversion je Funnel-Stufe. Beide sind schnell messbar und zeigen sofort, wo Sie Umsatz verlieren."
-  - q: "Wie viele Kennzahlen soll ich gleichzeitig verfolgen?"
-    a: "Weniger ist mehr. 3–5 Kernkennzahlen, konsequent gesteuert, schlagen 20 Kennzahlen, die niemand nutzt."
-  - q: "Brauche ich dafür teure Tools?"
-    a: "Nicht zwingend. Entscheidend ist saubere Datenerfassung – und genau die liefern KI-Agenten auch in bestehenden Systemen."
+  - q: "Mit welchen RevOps-Kennzahlen können wir beginnen?"
+    a: "Ein möglicher Einstieg sind eindeutige Anfragen, deren fachliche Passung, tatsächlich geführte Gespräche und Aufträge. Definieren Sie für jede Stufe Datenquelle, Zeitpunkt, Zählregel und verantwortliche Rolle."
+  - q: "Sind Website-Ereignisse schon echte Leads?"
+    a: "Ein Ereignis zeigt zunächst die gemeldete Website-Aktion. Für den Eingang im CRM und die fachliche Qualifizierung braucht es eigene Nachweise. Wiederholte Ereignisse können ausserdem vom selben Kontakt stammen."
+  - q: "Wie berechnen wir eine Übergangsquote?"
+    a: "Teilen Sie die Zahl der weitergekommenen Vorgänge durch die passende Ausgangsgruppe und multiplizieren Sie mit 100. Beide Zahlen müssen dieselbe definierte Gruppe betreffen. Bei einem Nenner von null wird keine Quote ausgewiesen."
+  - q: "Welche Zielquote ist für unser Unternehmen richtig?"
+    a: "Das hängt von Angebot, Zielgruppe, Kanal, Bearbeitung und gewählter Definition ab. Beginnen Sie mit einer nachvollziehbaren eigenen Ausgangsmessung. Kleine, offene oder unterschiedlich lange bearbeitete Gruppen erlauben noch keinen belastbaren Vergleich."
 ---
 
-> **Kurzfassung:** **RevOps** (Revenue Operations) vereint Marketing, Vertrieb und Kundenservice unter gemeinsamen Kennzahlen. Wer nur Umsatz misst, steuert im Blindflug. Diese 9 Metriken zeigen, *wo* Wachstum entsteht – und *wo* es verloren geht. KI-Agenten liefern die Daten dafür in Echtzeit.
+> **Hilfreiche RevOps-Kennzahlen zeigen, wie Anfragen weiterbearbeitet werden.** Für jede Zahl braucht Ihr Team eine Zählregel, eine Datenquelle und eine zuständige Rolle. Beginnen Sie mit wenigen Stufen, die im eigenen Betrieb tatsächlich nachweisbar sind.
 
-## Was ist RevOps – und warum Metriken der Kern sind
+## Welche vier Kennzahlen sind ein verständlicher Einstieg?
 
-**Revenue Operations (RevOps)** ist die Disziplin, die die drei umsatzrelevanten Funktionen – Marketing, Sales und Customer Success – auf ein gemeinsames Ziel, gemeinsame Daten und gemeinsame Prozesse ausrichtet. Statt drei Silos mit drei Wahrheiten gibt es eine durchgängige Sicht auf den gesamten Umsatzprozess.
+Das folgende Modell ist ein eigener Vorschlag für Beratungs- und Vertriebsteams. Passen Sie die Definitionen an Ihren Betrieb an.
 
-Das Herzstück von RevOps sind **Metriken**. Sie sind die gemeinsame Sprache, in der Marketing, Vertrieb und Service über Erfolg reden. Ohne sie bleibt "Wachstum" ein Bauchgefühl.
+| Kennzahl           | Was gezählt wird                                                                       |
+| ------------------ | -------------------------------------------------------------------------------------- |
+| Anfrageeingang     | Eindeutige, tatsächlich eingegangene Vorgänge nach Bereinigung von Tests und Dubletten |
+| Fachliche Passung  | Vorgänge, die das Team nach vereinbarten Kriterien als passend geprüft hat             |
+| Geführtes Gespräch | Anfragevorgänge aus der passenden Gruppe mit tatsächlich geführtem Gespräch            |
+| Auftrag            | Anfragevorgänge aus der Gesprächsgruppe mit nachgewiesenem Auftrag                     |
 
-Der häufigste Fehler in Schweizer KMU: Man misst nur nachlaufende Ergebnisse (Umsatz, Abschlüsse) statt der *vorlaufenden* Treiber, die man tatsächlich steuern kann.
+Ein gebuchter Termin und ein geführtes Gespräch sind verschiedene Stände. Ein Auftrag braucht einen eigenen Beleg und bedeutet noch keinen Zahlungseingang. Auch [Google Analytics führt unterschiedliche Ereignisse für Anfrage, Qualifizierung und Abschluss](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events).
 
-## Die 9 RevOps-Metriken, die zählen
+## Wie lassen sich Übergänge berechnen?
 
-### 1. Speed-to-Lead (Reaktionszeit)
+**Frei gewähltes Rechenbeispiel, kein Kundenergebnis:** Eine abgeschlossene Gruppe enthält 100 bereinigte Anfragen. Davon wurden 40 als passend geprüft. Bei 20 dieser Anfragen fand ein Gespräch statt; vier davon führten zu einem Auftrag. Die Zähleinheit ist der Anfragevorgang. Pro Vorgang und Stufe wird höchstens einmal gezählt.
 
-Die Zeit zwischen Anfrage und erster Reaktion. Der günstigste Wachstumshebel überhaupt – und einer der wenigen, den Sie *sofort* verbessern können. (Details in unserem **Speed-to-Lead**-Beitrag.)
+- **Passung:** 40 von 100 Anfragen = 40 Prozent.
+- **Gespräch:** 20 von 40 passenden Anfragen = 50 Prozent.
+- **Auftrag:** 4 von 20 Anfragevorgängen mit Gespräch = 20 Prozent.
 
-### 2. Pipeline-Velocity (Pipeline-Geschwindigkeit)
+Benennen Sie die Ausgangsgruppe bei jeder Quote. Eine Quote aus Gesprächen beantwortet eine andere Frage als eine Quote aus sämtlichen Anfragen. Bei einem Nenner von null wird die Quote als nicht berechenbar markiert.
 
-Wie schnell bewegen sich Deals durch Ihren Funnel? Berechnung:
+Das Modell beschreibt den Weg über ein Gespräch. Direktaufträge und andere Wege werden separat gezählt. Für gewonnene Neukunden braucht es zusätzlich eine Zählregel für eindeutige neue Kunden.
 
-**Pipeline-Velocity = (Anzahl Opportunities × Gewinnrate × Ø-Dealwert) / Ø-Verkaufszyklus (Tage)**
+## Wie vergleichen wir Zeiträume sinnvoll?
 
-Diese Kennzahl bündelt vier Hebel in einer Zahl. Wenn sie steigt, wächst Ihr Umsatz – unabhängig davon, an welchem der vier Hebel Sie gedreht haben.
+Legen Sie eine Gruppe fest, etwa anhand ihres Anfrageeingangs und Angebots. Notieren Sie den Auswertungsstand und noch offene Vorgänge. Eine frisch eingegangene Gruppe hat meist weniger Zeit für Gespräche und Aufträge als eine länger bearbeitete Gruppe.
 
-### 3. Conversion-Rate je Funnel-Stufe
+Fehlende Angaben bleiben als offen erkennbar. Das [Government Data Quality Framework trennt vollständige von tatsächlich richtigen Daten](https://www.gov.uk/government/publications/the-government-data-quality-framework/the-government-data-quality-framework). Prüfen Sie deshalb die verwendeten Status und Belege stichprobenartig.
 
-Nicht die Gesamt-Conversion, sondern die Rate *pro Übergang*: Lead → MQL → SQL → Opportunity → Abschluss. So sehen Sie, *wo* genau Deals verloren gehen, statt nur *dass* sie verloren gehen.
+Das Arbeitsblatt oben hält Definition, Datenquelle, Zähler, Nenner und offene Punkte zusammen.
 
-### 4. Customer Acquisition Cost (CAC)
+## Was können wir aus einer Veränderung ableiten?
 
-Was kostet es, einen neuen Kunden zu gewinnen? Alle Marketing- und Vertriebskosten geteilt durch die Anzahl neuer Kunden. Nur im Verhältnis zum Kundenwert aussagekräftig (siehe LTV).
+Besprechen Sie den nächsten prüfbaren Schritt. Bei fehlender Passung könnten Zielgruppe oder Angebot überprüft werden. Bei offenen Gesprächsvorgängen helfen klare Zuständigkeit und Bearbeitungsstand. Das sind mögliche Fragen an den Ablauf; eine einzelne Quote beweist noch keine Ursache.
 
-### 5. Customer Lifetime Value (LTV / CLV)
+Beobachten Sie ergänzend die Zeit bis zur persönlichen Bearbeitung. Der Leitfaden [Anfragen rechtzeitig bearbeiten](/blog/speed-to-lead-5-minuten-regel) hilft, ein passendes Rückmeldeziel festzulegen.
 
-Der gesamte Deckungsbeitrag, den ein Kunde über die Dauer der Beziehung generiert. Die entscheidende Relation ist das **LTV:CAC-Verhältnis** – als gesunder Richtwert gilt häufig 3:1 oder besser. Liegt es darunter, kaufen Sie Wachstum zu teuer ein.
+Wenn Sie Kosten ergänzen, benennen Sie, welche Ausgaben und welcher Zeitraum enthalten sind. Werbekosten pro Anfrage und die gesamten Kosten der Kundengewinnung brauchen unterschiedliche Grundlagen.
 
-### 6. Net Revenue Retention (NRR)
+## Wie unterstützt AgenticIT die Messung?
 
-Wie viel Umsatz behalten und erweitern Sie bei Bestandskunden – nach Abzug von Abwanderung? Ein NRR über 100 % bedeutet: Sie wachsen allein aus dem Bestand, selbst ohne Neukunden. Eine der aussagekräftigsten Kennzahlen für nachhaltiges Wachstum.
+Wir verbinden die fachlichen Definitionen mit vorhandenen Datenfeldern, Übergaben und verantwortlichen Personen. Messung, tatsächlicher CRM-Eingang, Qualifizierung und Auftrag werden dabei getrennt geprüft.
 
-### 7. Sales Cycle Length (Verkaufszyklus-Dauer)
-
-Wie lange dauert es von der ersten Chance bis zum Abschluss? Kürzere Zyklen bedeuten schnelleren Cashflow und höhere Kapitaleffizienz. KI-gestützte Qualifizierung und Nurturing verkürzen diese Zeit spürbar.
-
-### 8. Win Rate (Gewinnrate)
-
-Der Anteil der Opportunities, die Sie gewinnen. Eine sinkende Win Rate bei steigenden Leads ist ein Warnsignal für nachlassende Lead-Qualität – nicht für schlechteren Vertrieb.
-
-### 9. Churn Rate (Abwanderungsrate)
-
-Der Anteil der Kunden (oder des Umsatzes), den Sie in einem Zeitraum verlieren. Kundenbindung ist fast immer günstiger als Neukundengewinnung – Churn ist deshalb ein direkter Gewinnhebel.
-
-## Die Metriken zusammen lesen: Das RevOps-Cockpit
-
-Einzelne Kennzahlen sind Momentaufnahmen. Ihre Kraft entfalten sie im Zusammenspiel:
-
-| Frage | Relevante Metriken |
-|---|---|
-| Gewinnen wir Kunden effizient? | CAC, LTV:CAC, Win Rate |
-| Ist unser Funnel gesund? | Conversion je Stufe, Pipeline-Velocity |
-| Reagieren wir schnell genug? | Speed-to-Lead, Sales Cycle Length |
-| Wachsen wir nachhaltig? | NRR, Churn Rate, LTV |
-
-Ein RevOps-Cockpit macht diese Kennzahlen in Echtzeit sichtbar – nicht als Monatsrückblick, sondern als laufendes Steuerungsinstrument.
-
-## Wo KI-Agenten den Unterschied machen
-
-Das grösste Problem bei RevOps-Metriken in KMU ist nicht die Berechnung, sondern die **Datenerfassung**: unvollständige CRM-Einträge, Medienbrüche, manuelle Nachpflege. Ergebnis: Kennzahlen, denen niemand traut.
-
-KI-Agenten lösen genau das:
-
-- **Automatische, saubere Datenerfassung** bei jedem Lead-Kontakt,
-- **konsistente Statuspflege** im CRM ohne manuelle Nachträge,
-- **Echtzeit-Aktualisierung** der Kennzahlen,
-- **Anomalie-Erkennung** – die KI meldet, wenn eine Kennzahl unerwartet abweicht.
-
-So werden aus "gefühlten" Zahlen belastbare Steuerungsgrössen.
-
-> **Compliance-Hinweis:** Alle erfassten Daten werden nDSG- und DSGVO-konform verarbeitet. Automatisierte Kundenkontakte sind als KI gekennzeichnet.
-
-## RevOps as a Service: Der pragmatische Einstieg
-
-Nicht jedes KMU kann ein eigenes RevOps-Team aufbauen. **RevOps as a Service** bringt Ihnen die Kombination aus Prozess-Know-how, KI-Agenten und einem gepflegten Kennzahlen-Cockpit – ohne dass Sie intern eine ganze Abteilung aufbauen müssen. Sie starten mit den Metriken, die den grössten Hebel haben, und bauen von dort aus.
-
-## Fazit
-
-RevOps-Metriken verwandeln Wachstum von einem Bauchgefühl in eine steuerbare Grösse. Der Schlüssel ist, die *vorlaufenden* Treiber zu messen – Speed-to-Lead, Conversion, Pipeline-Velocity – statt nur den nachlaufenden Umsatz. KI-Agenten liefern die dafür nötigen Daten sauber und in Echtzeit.
+[RevOps für Ihr Team](/blog/revops-as-a-service) erklärt die Zusammenarbeit. [KI-Datenanalyse](/blog/ki-datenanalyse-kmu) zeigt, wie vorhandene Daten und verständliche Auswertungen dazu beitragen können. Der Check unten betrachtet Ihren Anfrageweg.

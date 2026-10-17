@@ -104,6 +104,7 @@ const nextConfig = {
         "AgenticIT-Akquise-Plan.txt",
         "AgenticIT-Anfrage-CRM-Pruefplan.txt",
         "AgenticIT-KI-Einsatzkarte.txt",
+        "AgenticIT-Kennzahlen-Arbeitsblatt.txt",
         "AgenticIT-Projektstart-Plan.txt",
         "AgenticIT-Telefonassistent-Pruefplan.txt",
         "AgenticIT-Website-Briefing.txt",

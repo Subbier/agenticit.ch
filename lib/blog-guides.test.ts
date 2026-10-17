@@ -15,6 +15,9 @@ const guides = [
   "ki-agenten-sicherheit-compliance",
   "ki-agenten-praxisbeispiele-schweiz",
   "ki-im-kundenservice-leitfaden",
+  "revops-as-a-service",
+  "revops-metriken-kennzahlen",
+  "ki-datenanalyse-kmu",
   "ki-agenten",
   "neukundengewinnung-kmu-schweiz",
 ] as const
