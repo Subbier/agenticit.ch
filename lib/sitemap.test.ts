@@ -53,6 +53,11 @@ test("verified service and calculator updates retain their real content dates", 
     ["/zusammenarbeit", "2026-10-17"],
     ["/loesungen/gtm-markteintritt", "2026-10-17"],
     ["/loesungen/revops-umsatzgenerierung", "2026-10-17"],
+    ["/loesungen", "2026-10-17"],
+    ["/technologie", "2026-10-17"],
+    ["/technologie/autonome-ki-agenten", "2026-10-17"],
+    ["/technologie/multi-agenten-systeme", "2026-10-17"],
+    ["/technologie/enterprise-integration", "2026-10-17"],
   ])
     assert.equal(
       sitemap().find((entry) => entry.url === `${SITE_URL}${path}`)
