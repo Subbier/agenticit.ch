@@ -7,6 +7,8 @@ const guides = [
   "eigene-ki-agenten-vs-chatgpt",
   "prozessautomatisierung-kmu-leitfaden",
   "website-briefing-vorlage",
+  "ki-agenten",
+  "neukundengewinnung-kmu-schweiz",
 ] as const
 const baseUrl = process.env.SITE_TEST_BASE_URL ?? "http://127.0.0.1:3105"
 
@@ -48,7 +50,7 @@ test("reviewed guides preserve publication dates and expose their actual update 
     assert.ok(post.faq.length >= 3)
   }
   assert.equal(
-    getPost("ki-agenten")?.updated,
+    getPost("ki-email-management")?.updated,
     undefined,
     "Untouched articles must not acquire an update date",
   )
@@ -153,5 +155,40 @@ test("the AI and automation services lead to their matching decision guides", as
     const response = await fetch(new URL(`/loesungen/${service}`, baseUrl))
     assert.equal(response.status, 200)
     assert.ok((await response.text()).includes(`href="/blog/${slug}"`))
+  }
+})
+
+for (const [slug, filename] of [
+  ["ki-agenten", "AgenticIT-KI-Einsatzkarte.txt"],
+  ["neukundengewinnung-kmu-schweiz", "AgenticIT-Akquise-Plan.txt"],
+] as const) {
+  test(`${slug} serves its complete editable worksheet without a contact gate`, async () => {
+    const post = getPost(slug)!
+    assert.equal(post.resource?.href, `/vorlagen/${filename}`)
+    const response = await fetch(new URL(post.resource!.href, baseUrl))
+    assert.equal(response.status, 200)
+    assert.match(response.headers.get("content-type") ?? "", /text\/plain/)
+    const body = await response.text()
+    assert.equal(body, readFileSync(`public/vorlagen/${filename}`, "utf8"))
+    assert.ok(body.split("\n").length >= 40)
+    assert.ok(body.includes("Keine Passwörter"))
+    assert.ok(body.includes("nicht automatisch an uns gesendet"))
+    assert.ok(body.includes("Ist-Ergebnis:"))
+    assert.ok(body.includes("Nachweis:"))
+    const html = await (await fetch(new URL(`/blog/${slug}`, baseUrl))).text()
+    assert.ok(html.includes(`download="${filename}"`))
+    assert.match(
+      html,
+      new RegExp(
+        `class="blog-resource-view" href="/vorlagen/${filename.replaceAll(".", "\\.")}"`,
+      ),
+    )
+  })
+}
+
+test("marketing visitors can reach the acquisition plan from the service and blog index", async () => {
+  for (const path of ["/loesungen/gtm-markteintritt", "/blog"]) {
+    const html = await (await fetch(new URL(path, baseUrl))).text()
+    assert.ok(html.includes('href="/blog/neukundengewinnung-kmu-schweiz"'))
   }
 })

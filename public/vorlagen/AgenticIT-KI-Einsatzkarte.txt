@@ -1,0 +1,62 @@
+AGENTICIT – KI-EINSATZKARTE
+Eine Aufgabe konkret beschreiben und eine passende Lösung prüfen.
+Stand: 17.10.2026
+
+Speichern Sie die Datei und ergänzen Sie sie mit Ihrem Team. Offene Punkte
+dürfen offenbleiben. Ihre Einträge werden nicht automatisch an uns gesendet.
+Keine Passwörter, Zugangsschlüssel oder echten Kundendossiers eintragen.
+Nutzen Sie anonymisierte oder erfundene Beispiele ohne Personendaten.
+
+1. EINE AUFGABE
+Aufgabe in einem Satz:
+Auslöser und benötigte Eingaben:
+Heutige Bearbeitung:
+Gewünschtes, überprüfbares Ergebnis:
+Verantwortliche Rolle im Team:
+
+2. EINFACHSTE PASSENDE LÖSUNG
+Können feste Regeln und ein Workflow die Aufgabe bereits lösen?
+Reicht ein vorhandenes Tool mit menschlicher Prüfung?
+Welche wechselnden Entscheidungen müsste ein Agent treffen?
+Was darf bewusst nicht automatisiert werden?
+
+3. WISSEN, SYSTEME UND BEFUGNISSE
+Freigegebene Quellen und zuständige Rolle für deren Aktualität:
+Benötigte Systeme und konkrete Datenfelder:
+Nur lesen:
+Nur einen Entwurf vorbereiten:
+Erst nach menschlicher Freigabe ausführen:
+Wer übernimmt bei Unklarheit oder Ausfall?
+Vor Umsetzung klären: Anbieter, Hosting, Zugriffe und Aufbewahrung.
+
+4. PRÜFFÄLLE VOR DEM START
+Je Fall Erwartung, Ist-Ergebnis, Nachweis und offene Korrektur notieren.
+
+Normaler Vorgang mit vollständigen Angaben:
+Fehlende oder widersprüchliche Information:
+Zweimal derselbe Eingang; keine unbeabsichtigte doppelte Aktion:
+Nicht erlaubter Auftrag in einer fremden Nachricht oder Unterlage:
+Zielsystem nicht erreichbar; erkennbare Übergabe an das Team:
+Erwartetes Ergebnis:
+Ist-Ergebnis:
+Nachweis:
+Offene Korrektur:
+
+5. AUFWAND UND ENTSCHEIDUNG
+Vorgänge pro Monat:
+Heutige Minuten pro Vorgang:
+Künftige verbleibende Bearbeitung in Minuten pro Vorgang:
+Zusätzliche Kontrolle in Minuten pro Vorgang:
+Zusätzliche Pflege in Stunden pro Monat:
+Zeitgewinn = Vorgänge × (heute − verbleibende Arbeit − Kontrolle) / 60
+             − zusätzliche Pflege in Stunden.
+Ein negatives Ergebnis bedeutet Mehraufwand.
+Einrichtung, Lizenzen und Betrieb zusätzlich in CHF vergleichen.
+Freie Zeit ist keine automatische Senkung der tatsächlichen Ausgaben.
+
+Entscheidung: weiter prüfen / mit festen Regeln lösen / vorerst lassen
+Begründung, nächste Aufgabe und zuständige Rolle:
+Termin für die gemeinsame Auswertung:
+
+Eigene Zeitangaben ausprobieren: https://agenticit.ch/automatisierungs-check
+Aufgaben und Grenzen: https://agenticit.ch/blog/ki-agenten

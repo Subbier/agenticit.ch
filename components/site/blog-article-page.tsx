@@ -97,7 +97,7 @@ export function BlogArticlePage({ slug }: { slug: string }) {
           </nav>
           <span className="font-[family-name:var(--font-mono-signal)] text-[11px] font-semibold uppercase tracking-[0.22em] text-[#4d7c36]">
             {post.category}
-            {post.pillar ? " · Pillar-Guide" : ""}
+            {post.pillar ? " · Leitfaden" : ""}
           </span>
           <h1 className="mt-4 font-[family-name:var(--font-display)] text-[clamp(28px,5.4vw,42px)] font-bold leading-[1.06] tracking-[-0.02em] text-[#202522]">
             {post.title}

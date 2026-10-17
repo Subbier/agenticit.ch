@@ -18,7 +18,7 @@ test("unchanged content does not acquire a new modification date on a later buil
 
 test("unknown modification dates are omitted instead of inferred from a publication date", () => {
   for (const path of [
-    "/blog/ki-agenten",
+    "/blog/ki-email-management",
     "/branchen/treuhand",
     "/karriere/lehrstelle-informatik-efz",
   ]) {
@@ -40,6 +40,8 @@ test("verified service and calculator updates retain their real content dates", 
     ["/marketing-setup-check", "2026-10-17"],
     ["/anfragen-check", "2026-10-17"],
     ["/blog", "2026-10-17"],
+    ["/blog/ki-agenten", "2026-10-17"],
+    ["/blog/neukundengewinnung-kmu-schweiz", "2026-10-17"],
     ["/blog/eigene-ki-agenten-vs-chatgpt", "2026-10-17"],
     ["/blog/prozessautomatisierung-kmu-leitfaden", "2026-10-17"],
     ["/blog/website-briefing-vorlage", "2026-10-17"],

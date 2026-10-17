@@ -10,6 +10,8 @@ export const SITEMAP_CONTENT_DATES: Readonly<Partial<Record<string, string>>> =
     "/marketing-setup-check": "2026-10-17",
     "/anfragen-check": "2026-10-17",
     "/blog": "2026-10-17",
+    "/blog/ki-agenten": "2026-10-17",
+    "/blog/neukundengewinnung-kmu-schweiz": "2026-10-17",
     "/blog/eigene-ki-agenten-vs-chatgpt": "2026-10-17",
     "/blog/prozessautomatisierung-kmu-leitfaden": "2026-10-17",
     "/blog/website-briefing-vorlage": "2026-10-17",

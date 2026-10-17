@@ -28,6 +28,10 @@ const serviceGuides: Partial<
     href: "/blog/prozessautomatisierung-kmu-leitfaden",
     label: "Welche Aufgabe zuerst? Leitfaden lesen",
   },
+  "gtm-markteintritt": {
+    href: "/blog/neukundengewinnung-kmu-schweiz",
+    label: "Neukundengewinnung planen: Leitfaden und Vorlage",
+  },
   "revops-umsatzgenerierung": {
     href: "/blog/ki-automatisierung-vertrieb",
     label: "Von der Anfrage ins CRM: Leitfaden und Prüfplan",
