@@ -76,12 +76,14 @@ export function canOfferFeedback(context: {
   visible: boolean
   blocked: boolean
   pathname: string
+  navigationOpen?: boolean
 }) {
   return (
     context.elapsedMs >= FEEDBACK_DELAY_MS &&
     !context.alreadyOffered &&
     context.visible &&
     !context.blocked &&
+    !context.navigationOpen &&
     context.pathname === "/"
   )
 }

@@ -41,6 +41,7 @@ export function WebsiteFeedback() {
   const alreadyOffered = useRef(false)
   const manual = useRef(false)
   const previousFocus = useRef<HTMLElement | null>(null)
+  const restoreFocusOnClose = useRef(true)
   const questionHeading = useRef<HTMLLegendElement>(null)
   const question = feedbackQuestions[step]
 
@@ -57,6 +58,7 @@ export function WebsiteFeedback() {
     const show = () => {
       rememberOffer()
       previousFocus.current = document.activeElement as HTMLElement | null
+      restoreFocusOnClose.current = true
       manual.current = true
       setOpen(true)
     }
@@ -68,6 +70,11 @@ export function WebsiteFeedback() {
       window.removeEventListener(CONSENT_REOPEN_EVENT, hideForConsent)
     }
   }, [])
+
+  useEffect(() => {
+    restoreFocusOnClose.current = false
+    setOpen(false)
+  }, [pathname])
 
   useEffect(() => {
     if (pathname !== "/") return
@@ -111,11 +118,15 @@ export function WebsiteFeedback() {
               document.getElementById("consent-title"),
           ),
           pathname,
+          navigationOpen: Boolean(
+            document.querySelector("header details[open]"),
+          ),
         })
       ) {
         rememberOffer()
         manual.current = false
         previousFocus.current = document.activeElement as HTMLElement | null
+        restoreFocusOnClose.current = true
         setOpen(true)
       } else if (!alreadyOffered.current && !stored)
         timer = setTimeout(offer, 1000)
@@ -169,9 +180,11 @@ export function WebsiteFeedback() {
           }}
           onCloseAutoFocus={(event) => {
             event.preventDefault()
-            previousFocus.current?.focus()
+            if (restoreFocusOnClose.current) previousFocus.current?.focus()
           }}
-          onInteractOutside={(event) => event.preventDefault()}
+          onInteractOutside={() => {
+            restoreFocusOnClose.current = false
+          }}
         >
           <Dialog.Close
             className={styles.close}

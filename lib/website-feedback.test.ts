@@ -46,6 +46,22 @@ test("the invitation waits 45 seconds and does not interrupt forms, videos or ot
     assert.equal(canOfferFeedback({ ...ready, ...change }), false)
 })
 
+test("an open navigation defers the invitation until it closes, after the same minimum delay", () => {
+  const context = {
+    elapsedMs: 45_000,
+    alreadyOffered: false,
+    visible: true,
+    blocked: false,
+    pathname: "/",
+  }
+  assert.equal(canOfferFeedback({ ...context, navigationOpen: true }), false)
+  assert.equal(canOfferFeedback({ ...context, navigationOpen: false }), true)
+  assert.equal(
+    canOfferFeedback({ ...context, elapsedMs: 44_999, navigationOpen: false }),
+    false,
+  )
+})
+
 test("the mail maps all five answers to readable labels without browser or contact data", () => {
   const text = feedbackMailText(answers, "test-reference")
   assert.equal(feedbackQuestions.length, 5)
