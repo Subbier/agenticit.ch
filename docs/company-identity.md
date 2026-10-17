@@ -43,3 +43,7 @@ Register- und Schema-Belege sind kein Nachweis von Rankings, KI-Empfehlungen ode
 - [Googles Live-Test](https://search.google.com/test/rich-results/result/r%2Forganization-info?id=f_iDXC3I9mSgJn9b7LkUiQ) erkannte ein gültiges Unternehmen. Aufgeklappte Felder enthalten die neue UID, Adresse, den Zefix-Link und den neuen Logo-Pfad. Dies bestätigt die Verarbeitung der aktuellen Daten, keine Indexierung oder Suchposition.
 - Öffentliches Schema-Logo: HTTP 200, image/svg+xml, 3'823 Bytes, bytegleich zur geprüften Datei. SHA-256 `d4c5a74fed8482bf17fddb59d2aee7ac6cdf506739d0e6d6cb8c9c169c6a621d`.
 - Screenshots, Testberichte und Übergabe liegen in OneDrive/Documents/ChatGPT/AgenticIT Webseite/Umsetzung-2026-10-17. Lokal gespeichert; Cloud-Synchronisierung nicht gesondert nachgewiesen. Eigener Prüfserver auf Port 3105 beendet.
+
+## Ergänzte Unternehmenseinstiege, 17.10.2026
+
+Die genauen Altpfade `/unternehmen` und `/ueber-uns` führen jetzt mit HTTP 308 auf `/zusammenarbeit`, wo die oben belegten Firmenangaben bereits stehen. Dort verweist der Technologie-Abschnitt auf `/sicherheit`. Beide Wege, der Sicherheitsverweis und Zurück wurden lokal und öffentlich bedient. Keine neuen Personenprofile oder Firmennachweise hinzugefügt. Produkt `6dd45be21789b9d44fd053e617c1cc8701aa9e59`, Deployment `dpl_FbnKbfwW7FGhk8k15LyRUfpH14af`, READY. Die redaktionelle Sicherheitsseite ersetzt keine technische oder rechtliche Gesamtabnahme; Footer-Formulierung bleibt offen. Nachweise in OneDrive unter `Umsetzung-2026-10-17/Nachweise/trust-*`.
