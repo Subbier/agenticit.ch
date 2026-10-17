@@ -1,27 +1,6 @@
-// AgenticIT · Inhalte der Angebot-Seiten (Begeistern · Umsetzen · Erschaffen · Erweitern)
-// GTM: Begeistern + Umsetzen · RevOps: Erschaffen + Erweitern
-// Quelle: Leistungs-Flyer (v3) + «KI & Agentic Services – Alle Leistungen auf einen Blick».
-// ⚠️ Human-in-the-Loop: ROI-/Studien-Richtwerte vor Live-Schaltung menschlich prüfen.
+// Existing offer addresses describe tasks within Marketing, Sales and Administration.
+// Chart types remain available to historical components; no modelled outcome chart is published here.
 
-export type AngebotStat = {
-  value: string
-  label: string
-  source?: string
-}
-
-// short = Einzeiler für das «Alle Leistungen»-Raster · long = 2–3 Sätze fürs Accordion
-export type AngebotService = {
-  lead: string
-  short: string
-  long: string
-}
-
-export type AngebotFaq = {
-  q: string
-  a: string
-}
-
-// --- Chart-Datenmodelle (werden von angebot-charts.tsx gerendert) ---
 export type ChartRadar = {
   type: "radar"
   title: string
@@ -48,552 +27,444 @@ export type ChartDonut = {
 }
 export type AngebotChartData = ChartRadar | ChartFunnel | ChartLine | ChartDonut
 
+export type AngebotFaq = { q: string; a: string }
+
 export type AngebotArea = {
-  slug: string // z. B. "angebot/begeistern"
+  slug: string
   key: "begeistern" | "umsetzen" | "erschaffen" | "erweitern"
-  /** Übergeordnete Journey-Phase: begeistern/umsetzen = GTM, erschaffen/erweitern = RevOps. */
-  journey: "gtm" | "revops"
-  navLabel: string // "Begeistern"
-  name: string // "Agentic Begeistern"
-  german: string // "Gewinnen"
+  navLabel: string
+  name: string
+  german: string
   icon: string
-  eyebrow: string // "Neukunden gewinnen"
+  eyebrow: string
   tagline: string
   nutzen: string
-  accent: string // Hex
-  accentSoft: string // sehr helles Hintergrund-Hex
-  stats: AngebotStat[]
-  chart: AngebotChartData
-  services: AngebotService[]
+  accent: string
+  accentSoft: string
+  services: { lead: string; short: string; long: string }[]
+  check: { href: string; label: string }
+  flow: { title: string; text: string }[]
+  evaluation: string[]
+  related: { href: string; label: string }[]
+  faqs: { question: string; answer: string }[]
   meta: { title: string; description: string }
 }
 
-const COMPLIANCE_LINE =
-  "KI transparent gekennzeichnet · revDSG-konform · menschliche Freigabe · Studien-Richtwerte, keine Garantie."
+const palette = { accent: "#4d7c36", accentSoft: "#edf5e7" }
 
-export const ANGEBOT_COMPLIANCE = COMPLIANCE_LINE
+export const offerOverview = {
+  title: "Marketing, Sales und Verwaltung verbinden",
+  description:
+    "Vom ersten Interesse bis zur Kundenbetreuung: AgenticIT verbindet Marketing, Sales und Verwaltung. Aufgaben einordnen und den passenden Check nutzen.",
+  h1: "Ein Angebot. Verbundene Abläufe.",
+  lead: "Ihre Website weckt Interesse. Ihr Team führt Anfragen weiter. Im Hintergrund bleiben Kundendaten, Aufgaben und Termine verbunden. Wir richten Marketing, Sales und Verwaltung so ein, dass die Übergaben im Alltag funktionieren.",
+  faqs: [
+    {
+      question: "Müssen wir dafür alle Systeme ersetzen?",
+      answer:
+        "Wir nehmen zuerst auf, was bereits funktioniert. Geeignete Websites, Werbekonten, CRM- und Fachsysteme beziehen wir ein. Neue Tools wählen wir, wenn sie für den vereinbarten Ablauf einen konkreten Nutzen haben und sich passend verbinden lassen.",
+    },
+    {
+      question: "Können wir mit einem Bereich beginnen?",
+      answer:
+        "Ja. Wir vereinbaren den ersten Service mit einem klaren Umfang und einer verantwortlichen Person. Dabei berücksichtigen wir die Übergaben zu den anderen Bereichen. Welche Leistungen später folgen, entscheiden Sie anhand Ihres Bedarfs.",
+    },
+    {
+      question: "Was klären wir vor dem Start?",
+      answer:
+        "Ziel, bestehender Ablauf, beteiligte Menschen und Systeme, Datenwege, Befugnisse und Abnahme. Ihr Team bestimmt mit uns, welche Schritte automatisiert werden und wer bei Ausnahmen übernimmt. Preise und laufende Kosten vereinbaren wir vor der Umsetzung.",
+    },
+    {
+      question: "Wie finden wir den passenden Einstieg?",
+      answer:
+        "Der Kundenreise-Check ordnet Ihr Anliegen ein und liefert einen direkt nutzbaren Plan. Bei einer konkreten Aufgabe wählen Sie unten den passenden Fach-Check. Wenn Sie Ihren Bedarf bereits kennen, können Sie direkt Kontakt aufnehmen.",
+    },
+  ],
+}
+
+export const offerServiceLinks: Record<
+  string,
+  { href: string; label: string }
+> = {
+  acquisition: {
+    href: "/loesungen/gtm-markteintritt",
+    label: "Marketing im Detail",
+  },
+  appointments: {
+    href: "/loesungen/revops-umsatzgenerierung",
+    label: "Sales im Detail",
+  },
+  workflow: {
+    href: "/loesungen/prozessautomatisierung",
+    label: "Verwaltung im Detail",
+  },
+}
 
 export const ANGEBOT_AREAS: AngebotArea[] = [
   {
+    ...palette,
     slug: "angebot/begeistern",
     key: "begeistern",
-    journey: "gtm",
-    navLabel: "Begeistern",
-    name: "Agentic Begeistern",
-    german: "Aufmerksamkeit wecken",
-    icon: "🎯",
-    eyebrow: "Neukunden gewinnen",
-    tagline: "Mehr qualifizierte Termine — ohne dass Ihr Team mehr arbeitet.",
+    navLabel: "Anfragen gewinnen",
+    name: "Die richtigen Menschen erreichen.",
+    german: "Marketing",
+    icon: "01",
+    eyebrow: "Marketing",
+    tagline:
+      "Eine verständliche Website, hilfreiche Inhalte und vorbereitete Kampagnen machen aus Ihrem Angebot einen klaren Einstieg für Interessenten.",
     nutzen:
-      "Ein digitales Team füllt planbar die Kalender Ihrer Berater — Sie zahlen für Resultate, nicht für Aufwand.",
-    accent: "#57C7FF",
-    accentSoft: "#E7F6FF",
-    stats: [
-      { value: "+200%", label: "mehr Conversions (Websites)", source: "Branchenstudie" },
-      { value: "−70%", label: "Kosten pro Lead", source: "Branchenstudie" },
-      { value: "+80%", label: "mehr Leads (Automation)", source: "Branchenstudie" },
-    ],
-    chart: {
-      type: "radar",
-      title: "Wirkungsprofil",
-      axes: ["Mehr Leads", "Kosten/Lead", "Conversion", "Speed-to-Lead", "Reaktivierung"],
-      agentic: [0.92, 0.8, 0.85, 0.96, 0.72],
-      now: [0.45, 0.5, 0.4, 0.28, 0.35],
-    },
+      "Sie wissen, wen Sie erreichen wollen, was Sie anbieten und wie eine Anfrage zu Ihrem Team gelangt.",
     services: [
       {
-        lead: "Leads-Aktivierung aus dem Archiv",
-        short: "inaktive Kontakte neu ansprechen",
-        long: "In Ihrem Archiv liegen Kontakte, die Sie längst bezahlt haben, aber nie ausgeschöpft wurden. Wir sprechen diese inaktiven Adressen automatisiert und zum richtigen Zeitpunkt wieder an. Das ist der günstigste Umsatz überhaupt – ganz ohne neue Werbekosten.",
+        lead: "Angebot und Zielgruppe schärfen",
+        short: "Eine klare Richtung",
+        long: "Wir klären Anlass, Zielgruppe und nächsten Schritt. Daraus entstehen eine verständliche Botschaft und ein Anfrageweg, der zu Ihrem Beratungs- oder Vertriebsalltag passt.",
       },
       {
-        lead: "Leadgenerierung Google, Meta, TikTok",
-        short: "Kampagnen auf allen Plattformen",
-        long: "Wir bespielen die Kanäle, auf denen Ihre Kunden wirklich unterwegs sind – von Google über Meta bis TikTok. Kampagnen, Zielgruppen und Budgets steuern wir datenbasiert und laufend optimiert. So kommen planbar neue Anfragen herein, statt Budget zu verstreuen.",
+        lead: "Digitale Präsenz aufbauen",
+        short: "Sichtbar und verständlich",
+        long: "Website, Landingpages und Inhalte beantworten die Fragen Ihrer Interessenten. Suchabsicht, mobile Bedienung und ein erkennbarer nächster Schritt gehören zusammen.",
       },
       {
-        lead: "E-Mail-Leadkampagnen",
-        short: "gezielte Mailings für neue Leads",
-        long: "Mit durchdachten E-Mail-Strecken sprechen wir potenzielle Kunden gezielt und persönlich an. Inhalte und Timing sind auf das jeweilige Segment zugeschnitten. So werden aus kalten Adressen interessierte Kontakte.",
+        lead: "Tools und Kampagnen vorbereiten",
+        short: "Bereit für den Start",
+        long: "Wir richten die vereinbarten Werbekonten, Zielseiten und Messwege ein. Zielgruppe, Budget und Inhalte werden vor dem Kampagnenstart abgestimmt und freigegeben.",
       },
       {
-        lead: "Follow-Up-Kampagnen",
-        short: "dranbleiben bis zur Antwort",
-        long: "Die meisten Abschlüsse gehen verloren, weil niemand konsequent nachfasst. Unsere automatisierten Follow-Ups bleiben freundlich und beharrlich dran, bis eine Antwort kommt. So bleibt kein warmer Kontakt einfach liegen.",
+        lead: "Einen nützlichen Einstieg schaffen",
+        short: "Nutzen vor Kontakt",
+        long: "Ein Check, Rechner oder eine Vorlage hilft bei einer konkreten Entscheidung. Interessenten sehen ihr Ergebnis und entscheiden selbst, ob sie eine persönliche Unterstützung anfragen.",
+      },
+    ],
+    check: { href: "/marketing-setup-check", label: "Marketing-Setup prüfen" },
+    flow: [
+      {
+        title: "Interesse wecken",
+        text: "Eine passende Suche, Empfehlung oder Kampagne führt auf die richtige Seite.",
       },
       {
-        lead: "Datenanreicherung & Segmentierung",
-        short: "Profile ergänzen & gruppieren",
-        long: "Aus blossen Adressen machen wir verkaufsreife Profile, angereichert mit relevanten Zusatzinformationen. Anschliessend gruppieren wir die Kontakte in sinnvolle Segmente. So sprechen Sie jede Zielgruppe mit genau der passenden Botschaft an.",
+        title: "Orientierung geben",
+        text: "Angebot und Hilfsmittel beantworten die erste Frage und zeigen den nächsten Schritt.",
       },
       {
-        lead: "Webauftritte & Online-Rechner",
-        short: "Seiten, die Leads bringen",
-        long: "Wir bauen Webseiten und interaktive Online-Rechner, die Besucher gezielt in Anfragen verwandeln. Jedes Element ist auf Conversion ausgelegt, nicht nur auf schönes Design. So wird Ihr Webauftritt vom Schaufenster zur Lead-Maschine.",
+        title: "Sauber übergeben",
+        text: "Eine freiwillige Anfrage gelangt mit Anliegen und erlaubtem Kontaktweg an Ihr Team.",
+      },
+    ],
+    evaluation: [
+      "Passt die Botschaft zur tatsächlichen Zielgruppe?",
+      "Sind Auftritt, Konten und Messung für den vereinbarten Start bereit?",
+      "Erreicht eine erlaubte Testanfrage die zuständige Person mit ihrem Kontext?",
+    ],
+    related: [
+      { href: "/loesungen/webdesign", label: "Webdesign" },
+      { href: "/loesungen/gtm-markteintritt", label: "Marketing-Setup" },
+    ],
+    faqs: [
+      {
+        question: "Ist das nur Webdesign?",
+        answer:
+          "Der Auftritt ist ein Teil davon. Wir verbinden Angebot, Inhalte, passende Kanäle und den Anfrageweg. So ist vor dem Start geklärt, was ein Interessent tun kann und wie Ihr Team die Anfrage weiterbearbeitet.",
       },
       {
-        lead: "Diverse Lead-Magnete",
-        short: "Anreize, die Kontakte liefern",
-        long: "Checklisten, Rechner, Guides oder Aktionen geben Besuchern einen echten Grund, ihre Kontaktdaten zu hinterlassen. Wir entwickeln Lead-Magnete, die zu Ihrer Zielgruppe passen. So gewinnen Sie laufend neue Kontakte statt anonymer Besucher.",
+        question: "Brauchen wir sofort Werbebudget?",
+        answer:
+          "Zuerst prüfen wir Ziel, Auftritt und Anfrageweg. Ob eine bezahlte Kampagne sinnvoll ist, klären wir danach. Werbe- und Toolkosten werden vor dem Start vereinbart; sie sind keine hier zugesagte Pauschale.",
       },
       {
-        lead: "SEO, GEO & AIO",
-        short: "gefunden in Suche & KI",
-        long: "Wir sorgen dafür, dass Sie dort auftauchen, wo gesucht wird – in der klassischen Suche, lokal und zunehmend in KI-Antworten. SEO, lokale Sichtbarkeit (GEO) und KI-Optimierung (AIO) greifen dabei ineinander. So werden Sie gefunden, bevor es die Konkurrenz wird.",
+        question: "Was passiert mit alten Kontakten?",
+        answer:
+          "Eine frühere Anfrage ist keine automatische Erlaubnis für neue Werbung. Vor einer erneuten Ansprache prüfen wir Anlass, Kontaktberechtigung und Widersprüche. Nachrichten und geschäftliche Empfehlungen benötigen eine menschliche Freigabe.",
       },
       {
-        lead: "Sales-Funnels & Flywheel",
-        short: "Pipeline, die sich selbst füllt",
-        long: "Wir bauen durchdachte Funnels, die Interessenten Schritt für Schritt zum Abschluss führen. Im Zusammenspiel entsteht ein Flywheel, das sich mit jedem zufriedenen Kunden weiter beschleunigt. So füllt sich Ihre Pipeline planbar statt zufällig.",
-      },
-      {
-        lead: "Sales-Support",
-        short: "Unterstützung im Verkauf",
-        long: "Ihr Verkaufsteam wird im Tagesgeschäft aktiv entlastet – von der Vorbereitung bis zur Nachverfolgung. Wir liefern Vorlagen, Daten und Automationen genau dann, wenn sie gebraucht werden. So bleibt mehr Zeit fürs eigentliche Verkaufen.",
-      },
-      {
-        lead: "Wunschkunden-Radar",
-        short: "kaufbereite Kontakte finden",
-        long: "Statt mit der Giesskanne zu werben, spüren wir gezielt Kontakte mit echtem, aktuellem Bedarf auf. Aus Signalen und Daten entsteht eine Liste kaufbereiter Profile. So investieren Sie Ihr Budget nur dort, wo Abschluss-Potenzial steckt.",
-      },
-      {
-        lead: "Bestands-Reaktivierung",
-        short: "alte Verträge wieder ansprechen",
-        long: "Auslaufende oder vergessene Verträge sind ideale Verkaufsanlässe. Wir erkennen den richtigen Moment und sprechen die Kunden automatisiert wieder an. So holen Sie Umsatz aus Beziehungen, die längst bestehen.",
-      },
-      {
-        lead: "Zwillings-Zielgruppen",
-        short: "mehr wie Ihre besten Kunden",
-        long: "Wir analysieren, was Ihre profitabelsten Kunden gemeinsam haben, und suchen gezielt nach ähnlichen Profilen. So gewinnen Sie planbar mehr von der Sorte Kunden, die wirklich zu Ihnen passt. Das bedeutet weniger Streuverlust und höhere Abschlussquoten.",
-      },
-      {
-        lead: "Sekunden-Reaktion",
-        short: "sofort auf Anfragen reagieren",
-        long: "Wer zuerst antwortet, gewinnt in den meisten Fällen den Auftrag. Unser System reagiert in Sekunden, während das Interesse noch frisch ist. So verlieren Sie keine Leads mehr an schnellere Mitbewerber.",
-      },
-      {
-        lead: "24/7-Erreichbarkeit",
-        short: "keine Anfrage geht verloren",
-        long: "Anfragen kommen abends, am Wochenende und in der Mittagspause. Ein KI-Agent nimmt rund um die Uhr an und hält den Kontakt warm. So geht keine Anfrage mehr verloren, nur weil gerade niemand da ist.",
-      },
-      {
-        lead: "Mehrkanal-Ansprache",
-        short: "Mail, SMS, WhatsApp, Telefon",
-        long: "Jeder Kunde hat seinen bevorzugten Kanal – wir bedienen sie alle aus einer Hand. Ob Mail, SMS, WhatsApp oder Telefon, die Ansprache bleibt konsistent und persönlich. So erreichen Sie Menschen dort, wo sie wirklich reagieren.",
-      },
-      {
-        lead: "Auto-Terminvereinbarung",
-        short: "fixe Rückruftermine",
-        long: "Statt Telefon-Pingpong bucht das System passende Termine direkt in den Kalender Ihrer Berater. Bestätigungen und Erinnerungen laufen automatisch, No-Shows sinken. So bekommen Ihre Verkäufer volle, verlässliche Kalender.",
-      },
-      {
-        lead: "Werbe-Effizienz",
-        short: "Budget, das Kunden bringt",
-        long: "Wir messen jeden Franken Werbebudget an echten Resultaten, nicht an Klicks. Kampagnen werden laufend auf die profitabelsten Kanäle und Botschaften ausgerichtet. So fliesst Ihr Budget dorthin, wo es tatsächlich Kunden bringt.",
-      },
-      {
-        lead: "Dynamische Landingpages",
-        short: "individuelle Ansprache je Besucher",
-        long: "Landingpages passen sich automatisch an Herkunft, Kampagne und Interesse des Besuchers an. Jeder sieht die für ihn relevanteste Botschaft. Das hebt die Conversion deutlich gegenüber statischen Standardseiten.",
+        question: "Was zeigt uns der Marketing-Setup-Check?",
+        answer:
+          "Er ordnet Angebot, Zielgruppe, Auftritt, Anfrageweg und Messung ein. Sie erhalten bis zu drei priorisierte Ansatzpunkte und einen vollständigen Plan. Kontakt können Sie anschliessend freiwillig aufnehmen.",
       },
     ],
     meta: {
-      title: "Agentic Begeistern – Neukunden gewinnen mit KI | AgenticIT",
+      title: "Anfragen gewinnen mit einem klaren Marketing-Setup",
       description:
-        "Mehr qualifizierte Termine ohne Mehraufwand: Leadgenerierung, Reaktivierung, Sekunden-Reaktion. Schweizer KI, revDSG-konform.",
+        "Angebot, Website, Inhalte, Werbekonten und Lead-Magnete verbinden. Einen verständlichen Anfrageweg aufbauen und Ihr Marketing-Setup prüfen.",
     },
   },
   {
+    ...palette,
     slug: "angebot/umsetzen",
     key: "umsetzen",
-    journey: "gtm",
-    navLabel: "Umsetzen",
-    name: "Agentic Umsetzen",
-    german: "Zum Abschluss führen",
-    icon: "⚡",
-    eyebrow: "Schneller abschliessen",
-    tagline: "Aus Interessenten werden Kunden — schneller und mit höherer Quote.",
+    navLabel: "Anfragen weiterführen",
+    name: "Aus Interesse wird ein nächster Schritt.",
+    german: "Sales",
+    icon: "02",
+    eyebrow: "Sales",
+    tagline:
+      "Kampagnen bringen Kontakte. Ein klarer Vertriebsablauf hilft Ihrem Team, passende Anfragen zu erkennen und verlässlich weiterzuführen.",
     nutzen:
-      "Weniger liegengebliebene Chancen, kürzere Verkaufszyklen und mehr Abschlüsse aus denselben Leads.",
-    accent: "#57C7FF",
-    accentSoft: "#E7F6FF",
-    stats: [
-      { value: "bis +20%", label: "Abschlussquote (Ø)", source: "Branchenstudie" },
-      { value: "−40%", label: "Zeit bis zur Offerte", source: "Branchenstudie" },
-      { value: "+15–30%", label: "Verkaufs-Boost (KI)", source: "Branchenstudie" },
-    ],
-    chart: {
-      type: "funnel",
-      title: "Verkaufstrichter (illustrativ)",
-      steps: [
-        { label: "Interessenten", pct: 100 },
-        { label: "Gespräche", pct: 64 },
-        { label: "Offerten", pct: 40 },
-        { label: "Abschlüsse", pct: 24 },
-      ],
-    },
+      "Ihr Team sieht, wer zuständig ist, welche Informationen vorliegen und was als Nächstes zu tun ist.",
     services: [
       {
-        lead: "Beratungs-Briefing",
-        short: "Kundeninfos auf einen Blick",
-        long: "Vor jedem Gespräch stellt der Agent alle wichtigen Informationen zum Kunden übersichtlich zusammen. Ihr Berater sieht Historie, Bedarf und offene Punkte auf einen Blick. So startet er bestens vorbereitet und wirkt sofort kompetent.",
+        lead: "Kampagnen in den Vertrieb überführen",
+        short: "Ein Eingang mit Kontext",
+        long: "Wir verbinden die vereinbarten Anfragequellen mit dem CRM. Herkunft, Anliegen und erlaubter Kontaktweg sollen beim zuständigen Team ankommen.",
       },
       {
-        lead: "Blitz-Offerte",
-        short: "Vergleiche & Angebote in Minuten",
-        long: "Aus den Eckdaten erstellt das System verständliche Vergleiche und fertige Offerten in Ihrem Namen. Der Kunde erhält sein Angebot in Minuten statt Tagen – solange das Interesse hoch ist. Diese Schnelligkeit entscheidet oft über Abschluss oder Absage.",
+        lead: "Anfragen einordnen und verteilen",
+        short: "Klare Verantwortung",
+        long: "Gemeinsam definieren wir, wann eine Anfrage passt, welche Angaben fehlen und wer übernimmt. Ausnahmen landen zur Prüfung bei einem Menschen.",
       },
       {
-        lead: "Foto-Erfassung",
-        short: "fotografieren statt abtippen",
-        long: "Ausweis, Police oder Vertrag werden einfach abfotografiert statt mühsam abgetippt. Das System liest die Angaben aus und übernimmt sie automatisch. Das spart Zeit, vermeidet Tippfehler und macht den Abschluss angenehmer.",
+        lead: "Gespräche und Angebote vorbereiten",
+        short: "Das Team unterstützen",
+        long: "Vorlagen, Gesprächsnotizen und relevante Kundendaten helfen bei der Vorbereitung. KI kann Entwürfe liefern; geschäftliche Empfehlungen und Angebote werden vor dem Versand geprüft.",
       },
       {
-        lead: "Abschluss-Pilot",
-        short: "automatisch nachfassen",
-        long: "Der Abschluss-Pilot bleibt nach dem Erstkontakt automatisch dran – mit der richtigen Nachricht zum richtigen Zeitpunkt. Kein warmer Lead wird vergessen. So steigt die Abschlussquote ganz ohne zusätzlichen Aufwand.",
+        lead: "Den nächsten Schritt nachhalten",
+        short: "Nachfassen mit Augenmass",
+        long: "Aufgaben und Erinnerungen machen offene Zusagen sichtbar. Kontaktwünsche, Absagen und Widersprüche werden berücksichtigt. Vereinbarte Kennzahlen zeigen, wo der Ablauf verbessert werden muss.",
+      },
+    ],
+    check: { href: "/anfragen-check", label: "Anfrageweg prüfen" },
+    flow: [
+      {
+        title: "Anfrage einordnen",
+        text: "Anliegen, Kontaktdaten und Herkunft stehen im vereinbarten CRM-Vorgang.",
       },
       {
-        lead: "Einwand-Assistent",
-        short: "passende Antworten parat",
-        long: "Auf «zu teuer», «keine Zeit» oder «muss überlegen» gibt es immer die passende Antwort. Der Assistent liefert sie in Echtzeit und coacht Ihr Team dabei. So führen auch weniger erfahrene Verkäufer Gespräche souverän zum Ziel.",
+        title: "Team übernimmt",
+        text: "Die zuständige Person prüft den Bedarf und vereinbart den nächsten Schritt.",
       },
       {
-        lead: "Digital-Signatur",
-        short: "Unterschrift in Minuten",
-        long: "Sobald der Kunde Ja sagt, wird der Vertrag digital und rechtsgültig unterschrieben. Kein Drucken, Scannen oder Postweg bremst den Abschluss. So kühlt kein Deal mehr im Papierkram ab.",
+        title: "Ergebnis festhalten",
+        text: "Gespräch, Angebot, Absage oder offene Aufgabe werden nachvollziehbar weitergeführt.",
+      },
+    ],
+    evaluation: [
+      "Kommt jede geprüfte Anfrage mit dem nötigen Kontext an?",
+      "Sind Zuständigkeit, Aufgabe und nächster Schritt sichtbar?",
+      "Werden Absagen, Fehlerfälle und menschliche Freigaben berücksichtigt?",
+    ],
+    related: [
+      { href: "/loesungen/revops-umsatzgenerierung", label: "Sales und CRM" },
+      {
+        href: "/blog/ki-im-verkaufsgespraech",
+        label: "KI im Verkaufsgespräch",
+      },
+    ],
+    faqs: [
+      {
+        question: "Ersetzt die Lösung unser Verkaufsteam?",
+        answer:
+          "Sie unterstützt das Team bei Vorbereitung, Erfassung und Nachverfolgung. Bedarf einordnen, beraten und geschäftliche Entscheidungen treffen bleiben menschliche Aufgaben. Was ein Agent selbst ausführen darf, wird ausdrücklich begrenzt.",
       },
       {
-        lead: "Zusatz-Verkauf",
-        short: "passende Ergänzungen anbieten",
-        long: "Zum richtigen Zeitpunkt schlägt das System passende Zusatz- und Ergänzungsangebote vor. So steigt der Wert jedes Abschlusses, ohne aufdringlich zu wirken. Cross- und Up-Selling werden zum planbaren Teil jedes Verkaufs.",
+        question: "Können wir unser CRM behalten?",
+        answer:
+          "Wir prüfen zuerst, ob Ihr CRM die vereinbarten Daten, Aufgaben und Übergaben unterstützt. Schnittstellen, Berechtigungen und mögliche Grenzen werden vor der Umsetzung geklärt. Ein Wechsel ist keine Voraussetzung dieser Seite.",
       },
       {
-        lead: "Deal-Retter",
-        short: "festgefahrene Fälle lösen",
-        long: "Manche Deals bleiben stecken – der Kunde meldet sich nicht mehr, die Offerte verstaubt. Der Deal-Retter erkennt solche Fälle und bringt sie mit gezielten Impulsen wieder in Bewegung. So wird aus «vielleicht später» doch noch ein Abschluss.",
+        question: "Wird automatisch ein Termin bestätigt?",
+        answer:
+          "Eine Bestätigung setzt eine tatsächlich gespeicherte Buchung im vorgesehenen Kalender voraus. Verfügbarkeit, Zeitzone, Berechtigung und Fehlerfälle müssen geprüft sein. Bei einem Fehler übernimmt die zuständige Person.",
       },
       {
-        lead: "Kaufreue-Behandlung",
-        short: "Zweifel nach dem Kauf auflösen",
-        long: "Direkt nach dem Kauf kommen oft Zweifel. Wir bestätigen den Kunden aktiv in seiner Entscheidung und nehmen ihm die Unsicherheit. Das senkt Stornos und Widerrufe spürbar.",
-      },
-      {
-        lead: "Kontakt-Warmhalten",
-        short: "Interessenten warm halten",
-        long: "Nicht jeder Interessent entscheidet sofort – viele brauchen Zeit. Wir halten den Kontakt mit relevanten Impulsen warm, ohne aufdringlich zu sein. So sind Sie präsent, wenn die Entscheidung reift.",
-      },
-      {
-        lead: "Heiss-Lead-Weiche",
-        short: "sofort zum richtigen Berater",
-        long: "Kaufbereite Anfragen erkennt das System sofort und leitet sie unverzüglich an den passenden Berater weiter. Kein heisser Lead wartet in der Warteschleife. So landet das grösste Potenzial dort, wo es am schnellsten zum Abschluss kommt.",
-      },
-      {
-        lead: "Chancen-Wecker",
-        short: "verlorene Anfragen neu prüfen",
-        long: "Abgesagte oder liegengebliebene Chancen sind selten endgültig verloren. Wir prüfen sie systematisch erneut und reaktivieren sie, wenn sich die Situation ändert. So holen Sie Umsatz zurück, den die meisten abgeschrieben hätten.",
-      },
-      {
-        lead: "KI-Call-Assistent mit Coaching",
-        short: "Live-Hilfe & Tipps im Gespräch",
-        long: "Während des Telefonats gibt der KI-Assistent live Hinweise, Argumente und nächste Schritte. Ihr Team wird im Gespräch gecoacht, statt erst danach. So steigen Gesprächsqualität und Abschlussquote spürbar.",
-      },
-      {
-        lead: "Omnichannel-Call-Software",
-        short: "alle Kanäle in einer Oberfläche",
-        long: "Telefon, Chat und Messaging laufen in einer einzigen Oberfläche zusammen. Ihr Team verliert keinen Kontext mehr zwischen den Kanälen. So wird jede Konversation nahtlos weitergeführt.",
-      },
-      {
-        lead: "Auto-Nummernwahl & Transkript",
-        short: "Wählen, Notizen & Gesprächsmitschrift",
-        long: "Das System wählt automatisch, protokolliert das Gespräch und erstellt Notizen. Ihr Team muss nicht mehr nebenbei mitschreiben. So ist alles dokumentiert und nichts geht verloren.",
+        question: "Was erhalten wir im Anfragen-Check?",
+        answer:
+          "Sie prüfen Eingang, Reaktion, Verantwortung und Nachfassen. Das Ergebnis benennt priorisierte Lücken und enthält einen direkt nutzbaren Plan. Eine Kontaktanfrage ist freiwillig.",
       },
     ],
     meta: {
-      title: "Agentic Umsetzen – schneller abschliessen mit KI | AgenticIT",
+      title: "Anfragen im CRM verlässlich weiterführen",
       description:
-        "Aus Interessenten werden Kunden: Blitz-Offerten, Abschluss-Pilot, Einwand-Assistent und digitale Unterschrift. Höhere Quote, kürzere Verkaufszyklen.",
+        "Kampagnen, Anfragebearbeitung und Vertrieb verbinden. Zuständigkeiten klären, Ihr Team unterstützen und den nächsten Schritt im CRM sichtbar machen.",
     },
   },
   {
+    ...palette,
     slug: "angebot/erschaffen",
     key: "erschaffen",
-    journey: "revops",
-    navLabel: "Erschaffen",
-    name: "Agentic Erschaffen",
-    german: "Beziehung erschaffen",
-    icon: "🔄",
-    eyebrow: "Kunden halten & ausbauen",
-    tagline: "Mehr Umsatz pro Kunde — und Kunden, die bleiben und weiterempfehlen.",
+    navLabel: "Kunden begleiten",
+    name: "Kunden gut begleiten. Im Alltag verbunden.",
+    german: "Sales und Verwaltung",
+    icon: "03",
+    eyebrow: "Kundenbetreuung",
+    tagline:
+      "Nach dem Auftrag beginnt die Zusammenarbeit. Wir verbinden Kundenstart, Unterlagen, Aufgaben und Betreuungsanlässe in einem nachvollziehbaren Ablauf.",
     nutzen:
-      "Höhere Verlängerungsquoten, weniger Abwanderung und planbare Empfehlungen statt teurer Neuakquise.",
-    accent: "#1F9A5E",
-    accentSoft: "#E6F5EC",
-    stats: [
-      { value: "−20%", label: "Abwanderung (Frühwarnung)", source: "Branchenstudie" },
-      { value: "+70%", label: "Umsatz via Empfehlungen", source: "Branchenstudie" },
-      { value: "+25%", label: "Kundenwert (CLV)", source: "Branchenstudie" },
-    ],
-    chart: {
-      type: "line",
-      title: "Kundenwert über Zeit (Index)",
-      xLabels: ["Start", "+3 Mt.", "+6 Mt.", "+12 Mt."],
-      agentic: [100, 120, 142, 170],
-      now: [100, 104, 107, 108],
-    },
+      "Ihr Team kann auf bestehendes Wissen aufbauen und sieht, was mit dem Kunden vereinbart wurde.",
     services: [
       {
-        lead: "Willkommens-Strecke",
-        short: "starker Start ab Tag eins",
-        long: "Der erste Eindruck nach dem Abschluss prägt die ganze Beziehung. Eine durchdachte Willkommens-Strecke begrüsst neue Kunden professionell und nimmt ihnen jede Unsicherheit. So fühlen sie sich ab Tag eins gut aufgehoben.",
+        lead: "Den Kundenstart organisieren",
+        short: "Ein klarer erster Schritt",
+        long: "Zuständigkeiten, Unterlagen und vereinbarte Leistungen werden für den Start zusammengestellt. Offene Voraussetzungen bleiben sichtbar, bevor der nächste Schritt beginnt.",
       },
       {
-        lead: "Reue-Schutz",
-        short: "weniger Stornos",
-        long: "Nach dem Kauf kommen oft Zweifel, die zu Stornos führen. Wir bestätigen den Kunden aktiv in seiner Wahl und begleiten ihn durch die erste Phase. Das senkt Widerrufe und festigt die Beziehung.",
+        lead: "Kundendaten verbunden halten",
+        short: "Wissen weitergeben",
+        long: "Wir legen fest, welches System welche Information führt. Übergaben, Dubletten und Änderungen werden anhand konkreter Fälle geprüft, damit Ihr Team nicht immer wieder dieselben Angaben erfragen muss.",
       },
       {
-        lead: "Lebensphasen-Radar",
-        short: "Umzug, Familie, Pension",
-        long: "Lebensereignisse wie Umzug, Familienzuwachs oder Pensionierung sind ideale Anlässe für passende Angebote. Wir erkennen diese Momente und melden uns, wenn der Bedarf real ist. Das wirkt aufmerksam statt verkäuferisch.",
+        lead: "Betreuungsanlässe sichtbar machen",
+        short: "Zum passenden Zeitpunkt",
+        long: "Vereinbarte Fristen, offene Anliegen und Kundenwünsche können Aufgaben auslösen. Zusatzangebote werden fachlich geprüft und nur über erlaubte Wege angesprochen.",
       },
       {
-        lead: "Verlängerungs-Pilot",
-        short: "kein Vertrag läuft unbemerkt aus",
-        long: "Verträge laufen oft unbemerkt aus – und mit ihnen der Umsatz. Der Verlängerungs-Pilot meldet sich automatisch rechtzeitig, etwa 90, 60 und 30 Tage vorher. So sichern Sie Verlängerungen, bevor der Kunde über einen Wechsel nachdenkt.",
+        lead: "Rückmeldungen in Verbesserungen übersetzen",
+        short: "Aus dem Alltag lernen",
+        long: "Feedback wird der zuständigen Person zugeordnet. Wiederkehrende Fragen und Stolperstellen helfen, Service und Ablauf zu verbessern. Bewertungen bleiben freiwillig und werden nicht vorgegeben.",
+      },
+    ],
+    check: { href: "/crm-ablauf-check", label: "CRM-Ablauf prüfen" },
+    flow: [
+      {
+        title: "Auftrag klären",
+        text: "Leistung, Ansprechpartner und benötigte Unterlagen sind vereinbart.",
       },
       {
-        lead: "Kündigungs-Frühwarnung",
-        short: "Abwanderung früh erkennen",
-        long: "Kunden kündigen selten aus heiterem Himmel – es gibt Frühwarnsignale. Wir erkennen sinkende Aktivität oder Unzufriedenheit rechtzeitig und schlagen Gegenmassnahmen vor. So stoppen Sie Abwanderung, solange sich der Kunde noch halten lässt.",
+        title: "Start begleiten",
+        text: "Aufgaben haben Verantwortliche; fehlende Angaben werden gezielt geklärt.",
       },
       {
-        lead: "Zufriedenheits-Check",
-        short: "Feedback nutzen",
-        long: "Wir holen systematisch Feedback ein und machen die Stimmung Ihrer Kunden sichtbar. Daraus leiten wir konkrete Verbesserungen ab. So steigt die Zufriedenheit kontinuierlich – und mit ihr die Treue.",
+        title: "Betreuung fortführen",
+        text: "Offene Anliegen, Fristen und freigegebene nächste Schritte bleiben sichtbar.",
+      },
+    ],
+    evaluation: [
+      "Kann das Team vereinbarte Leistungen und offene Punkte finden?",
+      "Sind Kundenstart und Datenübergaben mit realistischen Fällen geprüft?",
+      "Wer übernimmt Rückfragen und Ausnahmen im laufenden Betrieb?",
+    ],
+    related: [
+      { href: "/zusammenarbeit", label: "Projektstart und Übergabe" },
+      {
+        href: "/loesungen/revops-umsatzgenerierung",
+        label: "Sales und Kundenbetreuung",
+      },
+    ],
+    faqs: [
+      {
+        question: "Ist Kundenbetreuung ein zusätzlicher Angebotsbereich?",
+        answer:
+          "Sie verbindet Sales und Verwaltung. Der Vertrieb hält Vereinbarungen fest; die Verwaltung führt Unterlagen, Aufgaben und Termine weiter. Wir planen die Übergaben innerhalb der drei Bereiche Marketing, Sales und Verwaltung.",
       },
       {
-        lead: "Bewertungs-Booster",
-        short: "mehr gute Bewertungen",
-        long: "Online-Bewertungen entscheiden heute mit über neue Kunden. Wir bitten zufriedene Kunden im richtigen Moment um eine Bewertung und machen es ihnen leicht. So entsteht ein starker Ruf, der von selbst neue Anfragen bringt.",
+        question: "Werden Kunden automatisch angeschrieben?",
+        answer:
+          "Wir legen zuerst Anlass, erlaubten Kontaktweg und Verantwortung fest. Automatisierte Sales-Nachrichten und geschäftliche Empfehlungen brauchen eine menschliche Freigabe vor dem Versand. Ein Download oder alter Datensatz löst hier keine Ansprache aus.",
       },
       {
-        lead: "Empfehlungs-Programm",
-        short: "Kunden werben Kunden",
-        long: "Empfehlungen sind die wertvollsten Leads, aber kaum jemand fragt aktiv danach. Wir machen «Kunden werben Kunden» zu einem planbaren Programm mit echtem Anreiz. So wird Mundpropaganda zu einem verlässlichen Wachstumskanal.",
+        question: "Was brauchen wir für einen guten Kundenstart?",
+        answer:
+          "Einen bestätigten Auftrag, die zuständigen Personen, benötigte Zugänge und Unterlagen sowie klare Abnahmekriterien. Die Projektstart-Vorlage auf unserer Seite zur Zusammenarbeit hilft, diese Punkte gemeinsam festzuhalten.",
       },
       {
-        lead: "Aufmerksamkeits-Service",
-        short: "Geburtstag, Jubiläum",
-        long: "Geburtstag, Jubiläum oder ein kleiner Dank zur richtigen Zeit bleiben in Erinnerung. Wir steuern diese Gesten automatisiert, ohne dass sie aufgesetzt wirken. So fühlt sich der Kunde gesehen und bleibt aus Überzeugung.",
-      },
-      {
-        lead: "Bestands-Ausbau",
-        short: "Zusatzlösungen anbieten",
-        long: "In Ihrem Bestand steckt mehr Potenzial, als die meisten nutzen. Wir bieten passenden Kunden zum richtigen Zeitpunkt sinnvolle Zusatzlösungen an. Das bringt zusätzlichen Umsatz – deutlich günstiger als Neuakquise.",
-      },
-      {
-        lead: "Win-back",
-        short: "inaktive Kunden zurückholen",
-        long: "Inaktive Kunden sind selten für immer verloren. Wir sprechen sie gezielt und mit dem richtigen Anlass wieder an. So holen Sie schlummernde Umsätze zurück ins Boot.",
-      },
-      {
-        lead: "Reputations-Monitor",
-        short: "Stimmen im Netz beobachten",
-        long: "Was online über Sie gesagt wird, beeinflusst Ihren Ruf rund um die Uhr. Wir beobachten Bewertungen und Erwähnungen und melden Wichtiges sofort. So reagieren Sie schnell auf Kritik und verstärken positive Stimmen.",
-      },
-      {
-        lead: "Kunden-Lebenszeit-Management",
-        short: "Wert über die ganze Beziehung steigern",
-        long: "Wir betrachten nicht den einzelnen Abschluss, sondern die gesamte Kundenbeziehung. Über alle Phasen hinweg steuern wir Massnahmen, die den Kundenwert erhöhen. So steigt der Ertrag pro Kunde über die ganze Lebenszeit.",
+        question: "Wie hilft der CRM-Ablauf-Check?",
+        answer:
+          "Er ordnet Datenquellen, Übergaben, Zuständigkeiten und mögliche Dubletten ein. Sie erhalten priorisierte Ansatzpunkte und einen ausfüllbaren Sollablauf. Eine vollständige technische CRM-Prüfung wird damit nicht vorweggenommen.",
       },
     ],
     meta: {
-      title: "Agentic Erschaffen – Kunden binden mit KI",
+      title: "Kundenstart und Betreuung im CRM verbinden",
       description:
-        "Höhere Verlängerungsquoten, weniger Abwanderung, mehr Empfehlungen: Willkommens-Strecke, Kündigungs-Frühwarnung, Win-back und Empfehlungs-Programm.",
+        "Kunden nach dem Auftrag verlässlich begleiten: Unterlagen, Aufgaben, Fristen und Zuständigkeiten verbinden. Den passenden CRM-Ablauf prüfen.",
     },
   },
   {
+    ...palette,
     slug: "angebot/erweitern",
     key: "erweitern",
-    journey: "revops",
-    navLabel: "Erweitern",
-    name: "Agentic Erweitern",
-    german: "Kapazität erweitern",
-    icon: "⚙️",
-    eyebrow: "Betrieb automatisieren",
-    tagline: "Stunden zurückgewinnen — Ihr Team konzentriert sich aufs Wesentliche.",
+    navLabel: "Routine vereinfachen",
+    name: "Routine abgeben. Freiraum gewinnen.",
+    german: "Verwaltung",
+    icon: "04",
+    eyebrow: "Verwaltung",
+    tagline:
+      "Belege zuordnen, Termine koordinieren und Daten übertragen: Wir prüfen, welche wiederkehrenden Aufgaben sich mit passenden Tools und KI vereinfachen lassen.",
     nutzen:
-      "Spürbar weniger Administration, tiefere Kosten und ein Betrieb, der auch dann läuft, wenn niemand Zeit hat.",
-    accent: "#1F9A5E",
-    accentSoft: "#E6F5EC",
-    stats: [
-      { value: "70%", label: "weniger Admin-Zeit", source: "Branchenstudie" },
-      { value: "50%", label: "schnellere Bearbeitung", source: "Branchenstudie" },
-      { value: "60%", label: "tiefere Prozesskosten", source: "Branchenstudie" },
-    ],
-    chart: {
-      type: "donut",
-      title: "Zeit gewonnen nach Bereich",
-      segments: [
-        { label: "Büro & Verwaltung", value: 32, color: "#F59E0B" },
-        { label: "Buchhaltung", value: 24, color: "#2DA8FF" },
-        { label: "Daten & CRM", value: 18, color: "#16C7C0" },
-        { label: "Telefon", value: 14, color: "#22C55E" },
-        { label: "HR", value: 12, color: "#94A3B8" },
-      ],
-    },
+      "Sie sehen, welcher Ablauf Zeit bindet, wo Automatisierung hilft und welche Kontrolle Ihr Team weiterhin braucht.",
     services: [
       {
-        lead: "CRM-Management",
-        short: "Kundendaten zentral gepflegt",
-        long: "Ihre Kundendaten werden zentral, aktuell und dublettenfrei gehalten. Jede Information ist dort, wo Ihr Team sie braucht. So ist auf jede Auskunft Verlass – im Vertrieb wie in der Verwaltung.",
+        lead: "Dokumente und Belege vorbereiten",
+        short: "Weniger abtippen",
+        long: "Geeignete Angaben können aus Dokumenten übernommen und einem Vorgang zugeordnet werden. Unklare Werte und fachliche Entscheidungen gehen zur Prüfung an die zuständige Person.",
       },
       {
-        lead: "Buchhaltung-Automatisierung",
-        short: "Rechnungen, Belege, Mahnwesen",
-        long: "Rechnungen stellen, Belege erfassen und Mahnungen versenden läuft automatisch im Hintergrund. Offene Posten werden pünktlich nachgefasst, ohne dass jemand daran denken muss. Das verbessert Ihre Liquidität und spart Bürozeit.",
+        lead: "Termine und Aufgaben verbinden",
+        short: "Zusagen weiterführen",
+        long: "Aus vereinbarten Abläufen entstehen Aufgaben und Erinnerungen. Bei freigegebener Gesprächserfassung können Notizentwürfe unterstützen. Die Übernahme in Aufgaben wird vorab mit Ihrem Team abgestimmt.",
       },
       {
-        lead: "KI-Assistent Mail-Beantwortung",
-        short: "E-Mails automatisch beantwortet",
-        long: "Wiederkehrende Anfragen beantwortet der KI-Assistent selbstständig und in Ihrem Ton. Standardfälle sind erledigt, bevor sie liegenbleiben. So bleibt Ihr Posteingang im Griff, statt zur täglichen Last zu werden.",
+        lead: "Fahrten und wiederkehrende Erfassungen vereinfachen",
+        short: "Informationen einmal aufnehmen",
+        long: "Wir prüfen passende Fahrtenbuch-, Spesen- und Erfassungslösungen. Zuordnung, Korrektur und Export müssen zu Ihrem Betrieb passen; eine pauschale steuerliche oder rechtliche Anerkennung wird nicht zugesagt.",
       },
       {
-        lead: "Termin-Koordination & Korrespondenz",
-        short: "Termine & Schriftverkehr",
-        long: "Terminfindung und Schriftverkehr laufen automatisiert und ohne ständiges Hin und Her. Slots werden vorgeschlagen, gebucht und bestätigt. So sind Termine vereinbart und Korrespondenz erledigt, bevor sie zur Aufgabe wird.",
+        lead: "Assistenten und eigene Anwendungen einrichten",
+        short: "Passend zum Alltag",
+        long: "Ein klar begrenzter Assistent oder eine eigene App kann bestehende Systeme verbinden. Befugnisse, Übergabe an Menschen und Einweisung des Teams gehören zur Planung und Prüfung.",
+      },
+    ],
+    check: { href: "/automatisierungs-check", label: "Routineaufwand prüfen" },
+    flow: [
+      {
+        title: "Aufwand aufnehmen",
+        text: "Häufigkeit, Bearbeitungszeit und nötige Kontrolle werden für einen Ablauf erfasst.",
       },
       {
-        lead: "VBV Learn App",
-        short: "Schulungs-App fürs Team",
-        long: "Mit einer eigenen Lern-App nehmen Sie Ihr Team beim Thema KI und neuen Abläufen aktiv mit. Inhalte sind kurz, praxisnah und jederzeit verfügbar. So bauen Sie Berührungsängste ab und steigern die Kompetenz im Team.",
+        title: "Verbindung umsetzen",
+        text: "Passende Tools übernehmen die vereinbarten Schritte mit begrenzten Befugnissen.",
       },
       {
-        lead: "Digital Give-Aways",
-        short: "digitale Aufmerksamkeiten",
-        long: "Digitale Aufmerksamkeiten schaffen positive Momente bei Kunden und Mitarbeitenden. Wir gestalten und versenden sie automatisiert zum richtigen Anlass. So bleibt Ihre Marke sympathisch in Erinnerung.",
+        title: "Im Alltag prüfen",
+        text: "Ihr Team vergleicht Aufwand, Nacharbeit und Qualität und übernimmt Ausnahmen.",
+      },
+    ],
+    evaluation: [
+      "Wie viel Zeit kostet der Ablauf einschliesslich Kontrolle?",
+      "Was passiert bei fehlenden oder unklaren Daten?",
+      "Kann Ihr Team Ergebnisse korrigieren und den Ablauf selbst weiterführen?",
+    ],
+    related: [
+      {
+        href: "/loesungen/prozessautomatisierung",
+        label: "Prozessautomatisierung",
+      },
+      { href: "/loesungen/ki-entwicklung", label: "KI-Entwicklung" },
+    ],
+    faqs: [
+      {
+        question: "Welche Aufgabe eignet sich für den Anfang?",
+        answer:
+          "Eine regelmässige Aufgabe mit klarem Eingang, nachvollziehbaren Schritten und überprüfbarem Ergebnis. Wir berücksichtigen Häufigkeit, Kontrollaufwand und Folgen eines Fehlers. Nicht jede Aufgabe braucht KI.",
       },
       {
-        lead: "KI-Talent-Scouting",
-        short: "passende Kandidaten finden",
-        long: "Gute Leute zu finden ist aufwändig und langsam. Wir spüren passende Kandidaten gezielt auf und sprechen sie an. So besetzen Sie offene Stellen schneller und mit den richtigen Personen.",
+        question: "Sind damit alle Abläufe vollautomatisch?",
+        answer:
+          "Wir vereinbaren, welche Schritte automatisch laufen dürfen und wo ein Mensch prüft. Fehlende Daten, unklare Ergebnisse oder fehlende Befugnisse benötigen eine geregelte Übernahme. Die Grenzen werden mit dem Team getestet.",
       },
       {
-        lead: "Daten-Anreicherung & Segmentierung",
-        short: "Profile ergänzen & gruppieren",
-        long: "Aus blossen Adressen machen wir vollständige, angereicherte Profile und gruppieren sie sinnvoll. Saubere, segmentierte Daten sind die Grundlage für jede gezielte Ansprache. So arbeitet Ihr ganzer Betrieb auf verlässlicher Datenbasis.",
+        question: "Muss unser Team zuerst einen KI-Kurs machen?",
+        answer:
+          "Die Lösung wird an den Arbeitsablauf angepasst. Ihr Team erhält eine praktische Einweisung für Bedienung, Kontrolle und Ausnahmen. Welche weitere Schulung sinnvoll ist, richtet sich nach Rollen und Vorhaben.",
       },
       {
-        lead: "Kommunikations-Automatisierung",
-        short: "Nachrichten im richtigen Moment",
-        long: "Wir automatisieren Nachrichten so, dass sie genau im richtigen Moment ankommen. Erinnerungen, Bestätigungen und Hinweise laufen von selbst. So bleibt die Kommunikation konsistent, ohne manuellen Aufwand.",
-      },
-      {
-        lead: "Customer-Journey-Management",
-        short: "Kundenreise steuern",
-        long: "Wir modellieren die Reise Ihrer Kunden und steuern jeden Kontaktpunkt bewusst. Übergänge zwischen den Phasen laufen reibungslos und nichts fällt durchs Raster. So wird aus einzelnen Kontakten ein durchgängiges Erlebnis.",
-      },
-      {
-        lead: "KI-Telefonempfang",
-        short: "immer erreichbar",
-        long: "Der KI-Telefonempfang nimmt jeden Anruf entgegen, beantwortet Standardfragen und leitet bei Bedarf weiter. Auch nach Feierabend geht niemand mehr ins Leere. So ist Ihr Betrieb immer erreichbar, ohne Dauerbesetzung.",
-      },
-      {
-        lead: "KI-Website-Concierge",
-        short: "Besucher beraten & führen",
-        long: "Auf Ihrer Website beantwortet ein KI-Concierge Fragen und führt Besucher zum passenden Angebot. Aus anonymen Besuchern werden geführte Interessenten. So steigt die Conversion, ohne dass jemand permanent bereitstehen muss.",
-      },
-      {
-        lead: "Fahrtenbuch & Belegscanner",
-        short: "Spesen & Belege automatisch",
-        long: "Fahrten und Belege werden automatisch erfasst und korrekt zugeordnet. Statt Zettelwirtschaft entsteht eine saubere, prüffeste Ablage. So sparen Sie Zeit und bleiben jederzeit auskunftsfähig.",
-      },
-      {
-        lead: "Webrechner & Sales-Software",
-        short: "Online-Rechner & Verkaufstools",
-        long: "Wir entwickeln Online-Rechner und Verkaufstools, die Beratung und Abschluss erleichtern. Kunden erhalten sofort konkrete Ergebnisse, Ihr Team die passenden Hilfsmittel. So wird aus Interesse schneller ein Abschluss.",
-      },
-      {
-        lead: "Onboarding Kunden & Talente",
-        short: "neue Kunden & Mitarbeitende startklar",
-        long: "Strukturierte Onboarding-Abläufe machen neue Kunden und Mitarbeitende schnell startklar. Alles Wichtige passiert automatisch zur richtigen Zeit. So sind alle früher produktiv und fühlen sich gut begleitet.",
-      },
-      {
-        lead: "Termin-/Login-App & Sales",
-        short: "Termine, Zugang & Verkauf gebündelt",
-        long: "Eine App bündelt Terminbuchung, Kundenzugang und Verkauf an einem Ort. Kunden erledigen alles bequem selbst, Ihr Team behält den Überblick. So vereinfachen Sie Abläufe und schaffen zusätzliche Verkaufsmomente.",
-      },
-      {
-        lead: "Gamification",
-        short: "spielerische Anreize & Motivation",
-        long: "Mit spielerischen Anreizen motivieren Sie Team und Kunden nachhaltig. Fortschritt wird sichtbar, gewünschtes Verhalten belohnt. So steigern Sie Engagement und Mitmachen ganz ohne Druck.",
+        question: "Wie berechnet der Check den möglichen Zeitgewinn?",
+        answer:
+          "Mit Ihren Angaben zu Häufigkeit, Zeit pro Aufgabe, angenommener Automatisierung und zusätzlicher Kontrolle. Die Rechnung zeigt ein Planungsszenario. Erst der Vergleich im tatsächlichen Betrieb belegt eine erreichte Entlastung.",
       },
     ],
     meta: {
-      title: "Agentic Erweitern – Betrieb automatisieren",
+      title: "Routineaufgaben mit Tools und KI vereinfachen",
       description:
-        "Stunden zurückgewinnen: CRM-Hygiene, Buchhaltung, Mail-Assistent, Termin-Koordination und KI-Telefonempfang. Weniger Admin, tiefere Prozesskosten.",
+        "Belege, Aufgaben, Termine und Erfassungen passend automatisieren. Aufwand, Kontrolle und menschliche Übernahme klären. Ihren Routineaufwand prüfen.",
     },
   },
 ]
 
-export const ANGEBOT_BY_KEY: Record<string, AngebotArea> = ANGEBOT_AREAS.reduce(
-  (acc, a) => {
-    acc[a.key] = a
-    return acc
-  },
-  {} as Record<string, AngebotArea>,
+export const ANGEBOT_BY_KEY: Record<string, AngebotArea> = Object.fromEntries(
+  ANGEBOT_AREAS.map((area) => [area.key, area]),
 )
 
-// Für die Navigation (Dropdown unter „Angebot")
-export const ANGEBOT_NAV_SUBS = ANGEBOT_AREAS.map((a) => ({
-  navLabel: a.navLabel,
-  slug: a.slug,
+export const ANGEBOT_NAV_SUBS = ANGEBOT_AREAS.map((area) => ({
+  navLabel: area.navLabel,
+  slug: area.slug,
 }))
-
-// Kuratierte „Auswahl" wie auf dem Leistungs-Flyer (8 Highlights pro Bereich).
-// Bewusst kürzer als die vollständige Liste (= Accordion „Alle Leistungen im Detail").
-export const ANGEBOT_AUSWAHL: Record<string, { lead: string; text: string }[]> = {
-  begeistern: [
-    { lead: "Leadgenerierung auf allen Kanälen", text: "Suche, Social & E-Mail — planbar neue Anfragen." },
-    { lead: "Wunschkunden-Radar", text: "Genau die Kontakte, die jetzt kaufbereit sind." },
-    { lead: "Archiv- & Bestands-Reaktivierung", text: "Umsatz aus Kontakten, die Sie längst haben." },
-    { lead: "Daten anreichern & segmentieren", text: "Aus Adressen werden verkaufsreife Profile." },
-    { lead: "Webauftritte, Rechner & Lead-Magnete", text: "Seiten, die Besucher in Anfragen verwandeln." },
-    { lead: "Sekunden-Reaktion & 24/7-Erreichbarkeit", text: "Wer zuerst antwortet, gewinnt." },
-    { lead: "Sichtbarkeit in Suche & KI", text: "Gefunden werden, wo Kunden suchen." },
-    { lead: "Automatische Terminvereinbarung", text: "Volle Berater-Kalender, ganz automatisch." },
-  ],
-  umsetzen: [
-    { lead: "Beratungs-Briefing & Blitz-Offerte", text: "Alles parat — Angebote in Minuten." },
-    { lead: "Foto-Erfassung statt Abtippen", text: "Dokumente fotografieren, fertig." },
-    { lead: "Abschluss-Pilot & Follow-up", text: "Kein Abschluss bleibt liegen." },
-    { lead: "Einwand-Assistent mit Coaching", text: "Souveräne Antwort auf jeden Einwand." },
-    { lead: "Digitale Unterschrift", text: "Vom Ja zur Unterschrift in Minuten." },
-    { lead: "Zusatz- & Cross-Selling", text: "Mehr Wert aus jedem Abschluss." },
-    { lead: "Deal-Retter & Kaufreue-Schutz", text: "Festgefahrene Fälle lösen, Stornos vermeiden." },
-    { lead: "Omnichannel-Telefonie & Transkript", text: "Wählen, Notizen & Mitschrift automatisch." },
-  ],
-  erschaffen: [
-    { lead: "Willkommens-Strecke", text: "Starker Start ab Tag eins." },
-    { lead: "Verlängerungs-Pilot (90/60/30 T.)", text: "Höhere Verlängerungsquote, automatisch." },
-    { lead: "Kündigungs-Frühwarnung", text: "Abwanderung stoppen, bevor sie passiert." },
-    { lead: "Bestands-Ausbau & Lebensphasen", text: "Umzug, Familie, Pension als Verkaufsanlass." },
-    { lead: "Win-back inaktiver Kunden", text: "Schlummernde Umsätze reaktivieren." },
-    { lead: "Empfehlungs-Programm", text: "Kunden werben Kunden — planbar." },
-    { lead: "Bewertungs-Booster", text: "Mehr und bessere Bewertungen." },
-    { lead: "Kunden-Lebenszeit-Management", text: "Mehr Wert über die ganze Beziehung." },
-  ],
-  erweitern: [
-    { lead: "CRM-Management & Datenhygiene", text: "Saubere Daten, auf die Verlass ist." },
-    { lead: "Buchhaltung & Belege automatisch", text: "Rechnungen, Mahnwesen, Spesen ohne Aufwand." },
-    { lead: "KI-Mail- & Korrespondenz-Assistent", text: "Posteingang & Schriftverkehr im Griff." },
-    { lead: "Termin-Koordination", text: "Planung ohne Hin und Her." },
-    { lead: "KI-Telefonempfang & Website-Concierge", text: "Immer erreichbar, auch nach Feierabend." },
-    { lead: "Talent-Scouting & Onboarding", text: "Passende Leute finden & startklar machen." },
-    { lead: "Webrechner & Sales-Software", text: "Online-Rechner & Verkaufstools." },
-    { lead: "Team-Schulung & Gamification", text: "Mitarbeitende mitnehmen, spielerisch motiviert." },
-  ],
-}

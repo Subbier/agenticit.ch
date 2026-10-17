@@ -9,6 +9,7 @@ export const metadata: Metadata = createPageMetadata({
   title: area.meta.title,
   description: area.meta.description,
   path: `/${area.slug}`,
+  modifiedTime: "2026-10-17",
 })
 
 export default function Page() {

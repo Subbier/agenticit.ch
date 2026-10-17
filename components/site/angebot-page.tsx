@@ -1,229 +1,160 @@
-import { JourneyContent } from "@/components/journey/content"
-import design from "@/components/journey/content.module.css"
-// Design-System "Carbon & Signal" (26.07.2026) — Angebot ist im Scope des Redesigns.
-import Link from "next/link"
-import { Reveal } from "@/components/site/reveal"
-import { CtaContactForm } from "@/components/site/cta-contact-form"
-import { AngebotFlywheel } from "@/components/site/angebot-flywheel"
-import { ANGEBOT_AREAS, ANGEBOT_COMPLIANCE } from "@/lib/angebot-content"
+import { ArrowDown, ArrowUpRight, Check } from "lucide-react"
+import { JourneyShell } from "@/components/journey/shell"
+import { JsonLd } from "./json-ld"
+import { SupportingFaq } from "./supporting-page-parts"
+import { OfferClosing, OfferFlow } from "./offer-page-parts"
+import {
+  ANGEBOT_AREAS,
+  offerOverview,
+  offerServiceLinks,
+} from "@/lib/angebot-content"
+import { packages } from "@/lib/journey"
+import { absoluteUrl, breadcrumbJsonLd, faqPageJsonLd } from "@/lib/seo"
+import shared from "@/components/journey/journey.module.css"
+import ui from "@/components/journey/supporting-pages.module.css"
+import styles from "@/components/journey/offer-pages.module.css"
 
-// Headline-Kennzahlen über die ganze Reise (für den Desire-Block).
-const JOURNEY_STATS = [
-  { value: "+200%", label: "mehr Conversions", area: "Begeistern" },
-  { value: "bis +20%", label: "Abschlussquote", area: "Umsetzen" },
-  { value: "+25%", label: "Kundenwert (CLV)", area: "Erschaffen" },
-  { value: "70%", label: "weniger Admin-Zeit", area: "Erweitern" },
+const check = { href: "/kundenreise-check", label: "Passenden Einstieg finden" }
+const steps = [
+  {
+    title: "Marketing",
+    text: "Ihr Angebot wird verständlich. Website, Inhalte und Kampagnen führen zur passenden Anfrage.",
+  },
+  {
+    title: "Sales",
+    text: "Anliegen und Herkunft kommen mit. Das zuständige Team führt die Anfrage zum vereinbarten nächsten Schritt.",
+  },
+  {
+    title: "Verwaltung",
+    text: "Unterlagen, Aufgaben und Termine werden weitergeführt. Ihr Team begleitet den Kunden mit dem vorhandenen Wissen.",
+  },
 ]
 
 export function AngebotPage() {
   return (
-    <JourneyContent>
-      {/* A · ATTENTION — Hero, flach Carbon (R4/R7) */}
-      <section className={design.pageHero}>
-        <div className="mx-auto flex max-w-[900px] flex-col items-center">
-          <span className="font-[family-name:var(--font-mono-signal)] text-[11px] font-semibold uppercase tracking-[0.22em] text-[#4d7c36]">
-            Unser Angebot
-          </span>
-          <h1 className="mx-auto mt-5 max-w-[780px] font-[family-name:var(--font-display)] text-[clamp(31px,5vw,52px)] font-bold leading-[1.06] tracking-[-0.02em] text-[#202522]">
-            Ein Wachstumsmotor, der{" "}
-            <i className="not-italic text-[#4d7c36]">die ganze Kundenreise</i>{" "}
-            abdeckt.
-          </h1>
-          <p className="mx-auto mt-5 max-w-[640px] font-[family-name:var(--font-carbon-text)] text-[clamp(15px,2vw,18px)] font-medium leading-relaxed text-[#647068]">
-            Gewinnen, abschliessen, binden — und ein Betrieb, der im Hintergrund
-            über alles läuft. Vier Bereiche, die ineinandergreifen statt
-            nebeneinander zu existieren.
-          </p>
-          <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-            <a
-              href="#bereiche"
-              className="rounded-[8px] bg-[#8FE05A] px-[26px] py-[15px] font-[family-name:var(--font-carbon-text)] text-[15px] font-semibold text-[#122400] transition hover:bg-[#A2E874]"
-            >
-              Bereiche entdecken ↓
+    <JourneyShell>
+      <JsonLd
+        data={[
+          {
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            name: offerOverview.title,
+            description: offerOverview.description,
+            url: absoluteUrl("/angebot"),
+            dateModified: "2026-10-17",
+            inLanguage: "de-CH",
+            hasPart: ANGEBOT_AREAS.map((area) => ({
+              "@type": "WebPage",
+              name: area.navLabel,
+              url: absoluteUrl("/" + area.slug),
+            })),
+          },
+          breadcrumbJsonLd([
+            { name: "Startseite", path: "/" },
+            { name: "Angebot", path: "/angebot" },
+          ]),
+          faqPageJsonLd(offerOverview.faqs),
+        ]}
+      />
+      <main className={[shared.container, ui.main, styles.page].join(" ")}>
+        <nav className={ui.breadcrumb} aria-label="Seitenpfad">
+          <a href="/">Startseite</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">Angebot</span>
+        </nav>
+        <section className={ui.hero} aria-labelledby="offer-title">
+          <span className={shared.eyebrow}>Marketing · Sales · Verwaltung</span>
+          <h1 id="offer-title">{offerOverview.h1}</h1>
+          <p className={ui.lead}>{offerOverview.lead}</p>
+          <div className={[ui.actions, styles.actions].join(" ")}>
+            <a href={check.href} className={shared.button}>
+              {check.label}
+              <ArrowUpRight size={17} aria-hidden="true" />
             </a>
-            <a
-              href="#kontakt"
-              className="rounded-[8px] border border-[#dce3db] px-[24px] py-[15px] font-[family-name:var(--font-carbon-text)] text-[15px] font-medium text-[#202522] transition hover:border-[#8FE05A]/50 hover:text-[#202522]"
-            >
-              Erstgespräch sichern →
+            <a href="#bereiche" className={ui.textLink}>
+              Services ansehen
+              <ArrowDown size={16} aria-hidden="true" />
             </a>
           </div>
-        </div>
-      </section>
-
-      {/* I · INTEREST — Interaktiver Wachstumsmotor */}
-      <section className="bg-white px-5 py-14 sm:px-6 sm:py-20">
-        <div className="mx-auto max-w-[1120px]">
-          <div className="mx-auto mb-10 max-w-[680px] text-center">
-            <span className="font-[family-name:var(--font-mono-signal)] text-[11px] font-semibold uppercase tracking-[0.22em] text-[#4d7c36]">
-              So greift alles ineinander
+        </section>
+        <section
+          id="bereiche"
+          className={ui.section}
+          aria-labelledby="areas-title"
+        >
+          <div className={ui.heading}>
+            <span className={shared.eyebrow}>
+              Drei Bereiche. Ein Ansprechpartner.
             </span>
-            <h2 className="mt-3 font-[family-name:var(--font-display)] text-[clamp(24px,3.4vw,34px)] font-bold tracking-[-0.015em] text-[#202522]">
-              Die Reise Ihres Kunden — als ein System.
-            </h2>
-            <p className="mt-3 font-[family-name:var(--font-carbon-text)] text-[16px] leading-relaxed text-[#647068]">
-              Tippen oder fahren Sie über eine Station, um den Bereich
-              kennenzulernen.
+            <h2 id="areas-title">Was soll bei Ihnen einfacher werden?</h2>
+            <p>
+              Wir planen den passenden Service und berücksichtigen, was davor
+              und danach passiert. Bestehende Tools und Ihr Team beziehen wir
+              ein.
             </p>
           </div>
-          <AngebotFlywheel />
-        </div>
-      </section>
-
-      {/* D · DESIRE — Wirkung über die ganze Reise, flach Carbon */}
-      <section className="bg-[#f5f7f2] px-5 py-14 sm:px-6 sm:py-16">
-        <div className="mx-auto max-w-[1040px]">
-          <div className="mx-auto mb-9 max-w-[680px] text-center">
-            <span className="font-[family-name:var(--font-mono-signal)] text-[11px] font-semibold uppercase tracking-[0.22em] text-[#4d7c36]">
-              Belegte Wirkung
-            </span>
-            <h2 className="mt-3 font-[family-name:var(--font-display)] text-[clamp(24px,3.6vw,34px)] font-bold tracking-[-0.015em] text-[#202522]">
-              Zahlen, die für sich sprechen.
-            </h2>
-          </div>
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
-            {JOURNEY_STATS.map((s, i) => (
-              <Reveal
-                key={s.label}
-                delay={i * 70}
-                className="rounded-[14px] border border-[#dce3db] bg-white p-5 text-center"
-              >
-                <div className="font-[family-name:var(--font-display)] text-[clamp(24px,4vw,34px)] font-bold leading-none tracking-[-0.015em] text-[#202522]">
-                  {s.value}
-                </div>
-                <div className="mt-2 font-[family-name:var(--font-carbon-text)] text-[13px] font-medium text-[#647068]">
-                  {s.label}
-                </div>
-                <div className="mt-1 font-[family-name:var(--font-mono-signal)] text-[10.5px] font-semibold uppercase tracking-[0.14em] text-[#4d7c36]">
-                  {s.area}
-                </div>
-              </Reveal>
-            ))}
-          </div>
-          <p className="mx-auto mt-6 max-w-[760px] text-center font-[family-name:var(--font-carbon-text)] text-[12px] leading-relaxed text-[#6B7480]">
-            {ANGEBOT_COMPLIANCE}
-          </p>
-        </div>
-      </section>
-
-      {/* D · DESIRE — Vier Bereiche */}
-      <section
-        id="bereiche"
-        className="scroll-mt-20 bg-[#f5f7f2] px-5 py-14 sm:px-6 sm:py-16"
-      >
-        <div className="mx-auto max-w-[1120px]">
-          <div className="mx-auto mb-10 max-w-[680px] text-center">
-            <span className="font-[family-name:var(--font-mono-signal)] text-[11px] font-semibold uppercase tracking-[0.22em] text-[#4d7c36]">
-              Vier Bereiche, ein Wachstumsmotor
-            </span>
-            <h2 className="mt-3 font-[family-name:var(--font-display)] text-[clamp(24px,3.4vw,34px)] font-bold tracking-[-0.015em] text-[#202522]">
-              Wählen Sie Ihren Bereich.
-            </h2>
-            <p className="mt-3 font-[family-name:var(--font-carbon-text)] text-[16px] leading-relaxed text-[#647068]">
-              Jeder Bereich ist einzeln buchbar – oder als Komplett-Paket, das
-              nahtlos zusammenspielt.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            {ANGEBOT_AREAS.map((area, i) => (
-              <Reveal key={area.key} delay={(i % 2) * 90}>
-                <Link
-                  href={`/${area.slug}`}
-                  className="group flex h-full flex-col rounded-[16px] border border-[#dce3db] bg-white p-7 transition duration-200 hover:-translate-y-[3px]"
-                  style={{ borderTop: `3px solid ${area.accent}` }}
-                >
-                  <div className="flex items-center gap-4">
-                    <span
-                      className="grid h-[52px] w-[52px] flex-none place-items-center rounded-[12px] text-[25px]"
-                      style={{ background: area.accentSoft }}
-                      aria-hidden="true"
-                    >
-                      {area.icon}
-                    </span>
-                    <div>
-                      <div
-                        className="font-[family-name:var(--font-mono-signal)] text-[10.5px] font-semibold uppercase tracking-[0.14em]"
-                        style={{ color: area.accent }}
-                      >
-                        {area.eyebrow}
-                      </div>
-                      <h3 className="font-[family-name:var(--font-display)] text-[20px] font-bold leading-tight text-[#202522]">
-                        {area.name}{" "}
-                        <span className="text-[#8B94A1]">({area.german})</span>
-                      </h3>
-                    </div>
-                  </div>
-
-                  <p className="mt-4 font-[family-name:var(--font-carbon-text)] text-[15px] font-medium leading-relaxed text-[#647068]">
-                    {area.tagline}
-                  </p>
-
-                  <ul className="mt-4 grid grid-cols-1 gap-x-4 gap-y-2 sm:grid-cols-2">
-                    {area.services.slice(0, 4).map((s) => (
-                      <li
-                        key={s.lead}
-                        className="flex items-start gap-2 font-[family-name:var(--font-carbon-text)] text-[13.5px] font-medium text-[#202522]"
-                      >
-                        <span
-                          className="mt-[7px] h-1.5 w-1.5 flex-none rounded-full"
-                          style={{ background: area.accent }}
-                          aria-hidden="true"
-                        />
-                        <span>{s.lead}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    {area.stats.map((st) => (
-                      <span
-                        key={st.label}
-                        className="rounded-[6px] px-2.5 py-1 font-[family-name:var(--font-carbon-text)] text-[11.5px] font-semibold"
-                        style={{
-                          background: area.accentSoft,
-                          color: area.accent,
-                        }}
-                      >
-                        {st.value} {st.label}
-                      </span>
-                    ))}
-                  </div>
-
-                  <span
-                    className="mt-5 inline-flex items-center gap-1 font-[family-name:var(--font-carbon-text)] text-[14px] font-semibold transition group-hover:gap-2"
-                    style={{ color: area.accent }}
+          <div className={ui.grid}>
+            {packages.map((service) => (
+              <article className={ui.card} key={service.id}>
+                <span className={ui.number}>{service.number}</span>
+                <h3>{service.title}</h3>
+                <strong className={ui.subtitle}>{service.short}</strong>
+                <p>{service.scope}</p>
+                <ul>
+                  {service.items.map((item) => (
+                    <li key={item}>
+                      <Check size={16} aria-hidden="true" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className={ui.cardActions}>
+                  <a
+                    href={offerServiceLinks[service.id].href}
+                    className={[ui.cardAction, styles.checkLink].join(" ")}
                   >
-                    {area.navLabel} entdecken →
-                  </span>
-                </Link>
-              </Reveal>
+                    {offerServiceLinks[service.id].label}
+                    <ArrowUpRight size={16} aria-hidden="true" />
+                  </a>
+                </div>
+              </article>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* A · ACTION — CTA */}
-      <section
-        id="kontakt"
-        className="scroll-mt-20 bg-[#f5f7f2] px-5 py-14 sm:px-6 sm:py-16"
-      >
-        <div className="mx-auto max-w-[1120px]">
-          <div className="flex flex-col items-center rounded-[16px] border border-[#dce3db] bg-white p-8 text-center sm:p-10">
-            <span className="font-[family-name:var(--font-mono-signal)] text-[11px] font-semibold uppercase tracking-[0.22em] text-[#4d7c36]">
-              Unverbindlich · Persönlich
-            </span>
-            <h2 className="mt-3 font-[family-name:var(--font-display)] text-[clamp(26px,3.6vw,36px)] font-bold tracking-[-0.015em] text-[#202522]">
-              Welcher Bereich bringt Ihnen am meisten?
-            </h2>
-            <p className="mt-3 max-w-[520px] font-[family-name:var(--font-carbon-text)] text-[16px] leading-relaxed text-[#647068]">
-              Sagen Sie uns kurz, wo der Schuh drückt – wir zeigen Ihnen den
-              grössten Hebel für Ihr Unternehmen.
+        </section>
+        <OfferFlow steps={steps} />
+        <section
+          id="aufgaben"
+          className={ui.section}
+          aria-labelledby="tasks-title"
+        >
+          <div className={ui.heading}>
+            <span className={shared.eyebrow}>Ihr Anliegen vertiefen</span>
+            <h2 id="tasks-title">Mit der Aufgabe zum passenden Check.</h2>
+            <p>
+              Ob vor der ersten Anfrage oder in der laufenden Betreuung: Wählen
+              Sie, wo Sie ansetzen möchten.
             </p>
-            <CtaContactForm />
           </div>
-        </div>
-      </section>
-    </JourneyContent>
+          <div className={styles.tasks}>
+            {ANGEBOT_AREAS.map((area) => (
+              <article className={ui.card} key={area.key}>
+                <span className={shared.eyebrow}>{area.eyebrow}</span>
+                <h3>{area.navLabel}</h3>
+                <p>{area.nutzen}</p>
+                <a
+                  href={"/" + area.slug}
+                  className={[ui.textLink, styles.checkLink].join(" ")}
+                >
+                  Aufgabe ansehen
+                  <ArrowUpRight size={16} aria-hidden="true" />
+                </a>
+              </article>
+            ))}
+          </div>
+        </section>
+        <SupportingFaq faqs={offerOverview.faqs} />
+        <OfferClosing check={check} />
+      </main>
+    </JourneyShell>
   )
 }

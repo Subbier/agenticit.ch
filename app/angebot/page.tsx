@@ -1,12 +1,13 @@
 import type { Metadata } from "next"
 import { AngebotPage } from "@/components/site/angebot-page"
 import { createPageMetadata } from "@/lib/seo"
+import { offerOverview } from "@/lib/angebot-content"
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Unser Angebot: vier Wege zu mehr Umsatz",
-  description:
-    "Die ganze Kundenreise mit KI: Begeistern, Umsetzen, Erschaffen, Erweitern – vier Bereiche für mehr Umsatz und weniger Handarbeit.",
+  title: offerOverview.title,
+  description: offerOverview.description,
   path: "/angebot",
+  modifiedTime: "2026-10-17",
 })
 
 export default function Page() {

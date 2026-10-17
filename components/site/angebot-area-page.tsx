@@ -1,355 +1,125 @@
-import { JourneyContent } from "@/components/journey/content"
-import design from "@/components/journey/content.module.css"
-// Design-System "Carbon & Signal" (26.07.2026) — Angebot ist im Scope des Redesigns.
-import Link from "next/link"
-import { Reveal } from "@/components/site/reveal"
-import { CtaContactForm } from "@/components/site/cta-contact-form"
-import { AngebotAccordion } from "@/components/site/angebot-accordion"
-import { AngebotChart } from "@/components/site/angebot-charts"
-import {
-  ANGEBOT_AREAS,
-  ANGEBOT_AUSWAHL,
-  ANGEBOT_COMPLIANCE,
-  type AngebotArea,
-} from "@/lib/angebot-content"
-import { breadcrumbJsonLd, serviceJsonLd } from "@/lib/seo"
-
-type CssVars = React.CSSProperties &
-  Record<"--accent" | "--accent-soft", string>
+import { ArrowDown, ArrowUpRight } from "lucide-react"
+import { JourneyShell } from "@/components/journey/shell"
+import { JsonLd } from "./json-ld"
+import { SupportingFaq } from "./supporting-page-parts"
+import { OfferClosing, OfferFlow } from "./offer-page-parts"
+import { ANGEBOT_AREAS, type AngebotArea } from "@/lib/angebot-content"
+import { breadcrumbJsonLd, faqPageJsonLd, serviceJsonLd } from "@/lib/seo"
+import shared from "@/components/journey/journey.module.css"
+import ui from "@/components/journey/supporting-pages.module.css"
+import styles from "@/components/journey/offer-pages.module.css"
 
 export function AngebotAreaPage({ area }: { area: AngebotArea }) {
-  const siblings = ANGEBOT_AREAS.filter((a) => a.key !== area.key)
-
-  const accentStyle: CssVars = {
-    "--accent": "#4d7c36",
-    "--accent-soft": "#edf5e7",
-  }
-
-  // Flyer-Logik: Wachstum Smaragd, Reduktion Cyan, neutral = Akzent.
-  const statColor = (v: string) =>
-    v.includes("−") ? "#4d7c36" : v.includes("+") ? "#1F9A5E" : area.accent
-
-  const jsonLd = [
-    serviceJsonLd({
-      name: `${area.name} (${area.german})`,
-      description: area.meta.description,
-      path: `/${area.slug}`,
-    }),
-    breadcrumbJsonLd([
-      { name: "Start", path: "/" },
-      { name: "Angebot", path: "/angebot" },
-      { name: area.navLabel, path: `/${area.slug}` },
-    ]),
-  ]
-
   return (
-    <JourneyContent style={accentStyle}>
-      {jsonLd.map((obj, i) => (
-        <script
-          key={i}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(obj) }}
-        />
-      ))}
-
-      {/* HERO (hell, flach) */}
-      <section className={design.pageHero}>
-        <div className="mx-auto max-w-[1040px]">
+    <JourneyShell>
+      <JsonLd
+        data={[
+          serviceJsonLd({
+            name: area.meta.title,
+            description: area.meta.description,
+            path: "/" + area.slug,
+          }),
+          breadcrumbJsonLd([
+            { name: "Startseite", path: "/" },
+            { name: "Angebot", path: "/angebot" },
+            { name: area.navLabel, path: "/" + area.slug },
+          ]),
+          faqPageJsonLd(area.faqs),
+        ]}
+      />
+      <main className={[shared.container, ui.main, styles.page].join(" ")}>
+        <nav className={ui.breadcrumb} aria-label="Seitenpfad">
+          <a href="/">Startseite</a>
+          <span aria-hidden="true">/</span>
+          <a href="/angebot">Angebot</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">{area.navLabel}</span>
+        </nav>
+        <section className={ui.hero} aria-labelledby="offer-title">
+          <span className={shared.eyebrow}>{area.eyebrow}</span>
+          <h1 id="offer-title">{area.name}</h1>
+          <p className={ui.lead}>{area.tagline}</p>
+          <div className={[ui.actions, styles.actions].join(" ")}>
+            <a href={area.check.href} className={shared.button}>
+              {area.check.label}
+              <ArrowUpRight size={17} aria-hidden="true" />
+            </a>
+            <a href="#details" className={ui.textLink}>
+              Aufgaben ansehen
+              <ArrowDown size={16} aria-hidden="true" />
+            </a>
+          </div>
+        </section>
+        <section
+          id="details"
+          className={ui.section}
+          aria-labelledby="tasks-title"
+        >
+          <div className={ui.heading}>
+            <span className={shared.eyebrow}>Passend zu Ihrem Alltag</span>
+            <h2 id="tasks-title">Wobei wir Sie unterstützen.</h2>
+            <p>{area.nutzen}</p>
+          </div>
+          <ul className={styles.tasks} data-offer-tasks="true">
+            {area.services.map((service, index) => (
+              <li className={ui.card} key={service.lead}>
+                <span className={ui.number}>0{index + 1}</span>
+                <h3>{service.lead}</h3>
+                <strong className={ui.subtitle}>{service.short}</strong>
+                <p>{service.long}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
+        <OfferFlow steps={area.flow} />
+        <section className={ui.section} aria-labelledby="evaluation-title">
+          <div className={ui.heading}>
+            <span className={shared.eyebrow}>Klarer Massstab</span>
+            <h2 id="evaluation-title">Was wir gemeinsam prüfen.</h2>
+            <p>
+              Ausgangslage und Abnahme gehören zum vereinbarten Umfang. Die
+              Wirkung beurteilen wir anhand Ihres Ablaufs und der tatsächlichen
+              Ergebnisse.
+            </p>
+          </div>
+          <ul className={styles.evaluation}>
+            {area.evaluation.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
           <nav
-            aria-label="Brotkrumen"
-            className="font-[family-name:var(--font-carbon-text)] text-[12px] font-medium text-[#6B7480]"
+            className={styles.detailsLinks}
+            aria-label="Passende Leistungen und Hilfen"
           >
-            <Link href="/" className="hover:text-[#202522]">
-              Start
-            </Link>
-            <span className="px-2 text-[#C7CDD4]">/</span>
-            <Link href="/angebot" className="hover:text-[#202522]">
-              Angebot
-            </Link>
-            <span className="px-2 text-[#C7CDD4]">/</span>
-            <span className="text-[#202522]">{area.navLabel}</span>
-          </nav>
-
-          <div className="mt-5 flex items-center gap-4 border-t border-[#dce3db] pt-6">
-            <span
-              className="grid h-[58px] w-[58px] flex-none place-items-center rounded-[14px] text-[27px]"
-              style={{ background: area.accentSoft }}
-              aria-hidden="true"
-            >
-              {area.icon}
-            </span>
-            <div>
-              <span
-                className="font-[family-name:var(--font-mono-signal)] text-[11px] font-semibold uppercase tracking-[0.18em]"
-                style={{ color: area.accent }}
-              >
-                {area.eyebrow}
-              </span>
-              <h1 className="mt-1 font-[family-name:var(--font-display)] text-[clamp(28px,4.6vw,42px)] font-bold leading-[1.05] tracking-[-0.02em] text-[#202522]">
-                {area.name}{" "}
-                <span style={{ color: area.accent }}>({area.german})</span>
-              </h1>
-            </div>
-          </div>
-
-          <p className="mt-5 max-w-[700px] font-[family-name:var(--font-carbon-text)] text-[clamp(16px,2.2vw,19px)] leading-snug text-[#647068]">
-            {area.tagline}
-          </p>
-
-          <div
-            className="mt-6 max-w-[760px] rounded-[12px] border border-[#dce3db] px-5 py-4"
-            style={{ background: area.accentSoft }}
-          >
-            <span className="font-[family-name:var(--font-carbon-text)] text-[14px] font-semibold text-[#202522]">
-              Ihr Nutzen:{" "}
-            </span>
-            <span className="font-[family-name:var(--font-carbon-text)] text-[15px] leading-relaxed text-[#647068]">
-              {area.nutzen}
-            </span>
-          </div>
-
-          <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-            <a
-              href="#kontakt"
-              className="rounded-[8px] bg-[#8FE05A] px-[24px] py-[13px] text-center font-[family-name:var(--font-carbon-text)] text-[15px] font-semibold text-[#122400] transition hover:bg-[#A2E874]"
-            >
-              Erstgespräch sichern
-            </a>
-            <a
-              href="#details"
-              className="rounded-[8px] border border-[#dce3db] px-[22px] py-[13px] text-center font-[family-name:var(--font-carbon-text)] text-[15px] font-medium text-[#202522] transition hover:border-[color:var(--accent)] hover:text-[color:var(--accent)]"
-            >
-              Alle Leistungen ansehen →
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* BELEGTE WIRKUNG · ROI */}
-      <section className="bg-[#f5f7f2] px-5 py-14 sm:px-6 sm:py-16">
-        <div className="mx-auto max-w-[1040px]">
-          <div className="mb-7">
-            <span className="font-[family-name:var(--font-mono-signal)] text-[11px] font-semibold uppercase tracking-[0.18em] text-[#8B94A1]">
-              Belegte Wirkung · Ihr Return on Invest
-            </span>
-            <h2 className="mt-1.5 font-[family-name:var(--font-display)] text-[clamp(22px,3.2vw,30px)] font-bold tracking-[-0.015em] text-[#202522]">
-              Was es bringt.
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 gap-4 lg:grid-cols-[1.05fr_0.95fr]">
-            <Reveal className="rounded-[14px] border border-[#dce3db] bg-white p-6 sm:p-7">
-              <div className="mb-4 flex items-center gap-2">
-                <span
-                  className="h-2.5 w-2.5 rounded-full"
-                  style={{ background: area.accent }}
-                  aria-hidden="true"
-                />
-                <span className="font-[family-name:var(--font-carbon-text)] text-[13px] font-semibold text-[#202522]">
-                  {area.chart.title}
-                </span>
-              </div>
-              <AngebotChart chart={area.chart} accent={area.accent} />
-            </Reveal>
-
-            <Reveal
-              delay={120}
-              className="rounded-[14px] border border-[#dce3db] bg-white px-6 py-3 sm:px-7"
-            >
-              <div className="border-b border-[#dce3db] pb-3 pt-2 font-[family-name:var(--font-carbon-text)] text-[13px] font-semibold text-[#202522]">
-                Was es bringt{" "}
-                <span className="font-normal text-[#8B94A1]">
-                  (Studien-Richtwerte)
-                </span>
-              </div>
-              <div className="divide-y divide-[#dce3db]">
-                {area.stats.map((s) => (
-                  <div key={s.label} className="py-[18px]">
-                    <div
-                      className="font-[family-name:var(--font-display)] text-[clamp(28px,4.4vw,38px)] font-bold leading-none tracking-[-0.02em]"
-                      style={{ color: statColor(s.value) }}
-                    >
-                      {s.value}
-                    </div>
-                    <div className="mt-2 font-[family-name:var(--font-carbon-text)] text-[14.5px] font-semibold text-[#202522]">
-                      {s.label}
-                      {s.source ? (
-                        <span className="ml-2 font-[family-name:var(--font-carbon-text)] text-[12px] font-normal italic text-[#8B94A1]">
-                          Quelle: {s.source}
-                        </span>
-                      ) : null}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </Reveal>
-          </div>
-
-          <p className="mt-6 max-w-[820px] font-[family-name:var(--font-carbon-text)] text-[12px] leading-relaxed text-[#8B94A1]">
-            {ANGEBOT_COMPLIANCE}
-          </p>
-        </div>
-      </section>
-
-      {/* IHRE SERVICES (AUSWAHL) */}
-      <section className="bg-[#f5f7f2] px-5 pb-2 sm:px-6">
-        <div className="mx-auto max-w-[1040px]">
-          <div className="mb-6 border-t border-[#dce3db] pt-8">
-            <span className="font-[family-name:var(--font-mono-signal)] text-[11px] font-semibold uppercase tracking-[0.18em] text-[#8B94A1]">
-              Ihre Services (Auswahl) — alle im Detail unten
-            </span>
-          </div>
-          <div className="grid grid-cols-1 gap-x-10 gap-y-[18px] sm:grid-cols-2">
-            {ANGEBOT_AUSWAHL[area.key].map((s) => (
-              <div key={s.lead} className="flex items-start gap-3">
-                <span
-                  className="mt-[6px] h-2.5 w-2.5 flex-none rounded-[3px]"
-                  style={{ background: area.accent }}
-                  aria-hidden="true"
-                />
-                <div>
-                  <div className="font-[family-name:var(--font-carbon-text)] text-[15px] font-semibold text-[#202522]">
-                    {s.lead}
-                  </div>
-                  <div className="mt-0.5 font-[family-name:var(--font-carbon-text)] text-[13.5px] leading-snug text-[#647068]">
-                    {s.text}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA-BAR */}
-      <section className="bg-[#f5f7f2] px-5 py-10 sm:px-6">
-        <div className="mx-auto max-w-[1040px]">
-          <div
-            className="rounded-[14px] border border-[#dce3db] px-6 py-7 text-center sm:px-8"
-            style={{ background: area.accentSoft }}
-          >
-            <p className="font-[family-name:var(--font-display)] text-[clamp(18px,2.6vw,24px)] font-bold text-[#202522]">
-              Welcher Hebel bringt Ihnen am meisten?{" "}
-              <a
-                href="#kontakt"
-                className="underline-offset-2 hover:underline"
-                style={{ color: area.accent }}
-              >
-                Sprechen wir darüber.
+            {area.related.map((link) => (
+              <a href={link.href} className={ui.textLink} key={link.href}>
+                {link.label}
+                <ArrowUpRight size={15} aria-hidden="true" />
               </a>
-            </p>
-            <p className="mt-2 font-[family-name:var(--font-carbon-text)] text-[13px] text-[#647068]">
-              <span className="font-semibold text-[#202522]">AgenticIT</span> ·{" "}
-              <a
-                href="mailto:info@agenticit.ch"
-                className="hover:text-[#202522]"
-              >
-                info@agenticit.ch
-              </a>{" "}
-              · alle 60+ Services in der Leistungsübersicht «KI &amp; Agentic
-              Services»
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ALLE LEISTUNGEN */}
-      <section
-        id="details"
-        className="scroll-mt-20 bg-white px-5 py-14 sm:px-6 sm:py-16"
-      >
-        <div className="mx-auto max-w-[1000px]">
-          <div className="mx-auto mb-9 max-w-[680px] text-center">
-            <span className="font-[family-name:var(--font-mono-signal)] text-[11px] font-semibold uppercase tracking-[0.18em] text-[#4d7c36]">
-              KI &amp; Agentic Services
-            </span>
-            <h2 className="mt-2 font-[family-name:var(--font-display)] text-[clamp(22px,3.2vw,30px)] font-bold tracking-[-0.015em] text-[#202522]">
-              Alle Leistungen im Detail.
-            </h2>
-            <p className="mt-3 font-[family-name:var(--font-carbon-text)] text-[15px] text-[#647068]">
-              {area.services.length} Leistungen – tippen Sie auf eine, um die
-              Erklärung aufzuklappen.
-            </p>
-          </div>
-          <AngebotAccordion
-            items={area.services.map((s) => ({ q: s.lead, a: s.long }))}
-            accent={area.accent}
-          />
-        </div>
-      </section>
-
-      {/* WEITER IM ANGEBOT */}
-      <section className="bg-white px-5 py-14 sm:px-6 sm:py-16">
-        <div className="mx-auto max-w-[1000px]">
-          <div className="mx-auto mb-8 max-w-[680px] text-center">
-            <span className="font-[family-name:var(--font-mono-signal)] text-[11px] font-semibold uppercase tracking-[0.18em] text-[#4d7c36]">
-              Die ganze Reise
-            </span>
-            <h2 className="mt-2 font-[family-name:var(--font-display)] text-[clamp(22px,3.2vw,30px)] font-bold tracking-[-0.015em] text-[#202522]">
-              Weiter im Angebot.
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 gap-[14px] sm:grid-cols-3">
-            {siblings.map((s) => (
-              <Link
-                key={s.key}
-                href={`/${s.slug}`}
-                className="group flex h-full flex-col rounded-[14px] border border-[#dce3db] bg-[#f5f7f2] p-5 transition duration-200 hover:-translate-y-[2px]"
-              >
-                <div
-                  className="grid h-[42px] w-[42px] place-items-center rounded-[10px] text-[20px]"
-                  style={{ background: s.accentSoft }}
-                  aria-hidden="true"
-                >
-                  {s.icon}
-                </div>
-                <div className="mt-3 font-[family-name:var(--font-carbon-text)] text-[16px] font-semibold text-[#202522]">
-                  {s.name} <span className="text-[#8B94A1]">({s.german})</span>
-                </div>
-                <div className="mt-1 flex-1 font-[family-name:var(--font-carbon-text)] text-[13.5px] text-[#647068]">
-                  {s.eyebrow}
-                </div>
-                <span
-                  className="mt-3 font-[family-name:var(--font-carbon-text)] text-[13px] font-semibold"
-                  style={{ color: s.accent }}
-                >
-                  Ansehen →
-                </span>
-              </Link>
             ))}
-          </div>
-          <div className="mt-7 text-center">
-            <Link
-              href="/angebot"
-              className="font-[family-name:var(--font-carbon-text)] text-[14px] font-semibold text-[#4d7c36] hover:underline"
-            >
-              ← Zur Angebot-Übersicht
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* FINAL CTA */}
-      <section
-        id="kontakt"
-        className="scroll-mt-20 bg-[#f5f7f2] px-5 py-14 sm:px-6 sm:py-16"
-      >
-        <div className="mx-auto max-w-[1000px]">
-          <div className="flex flex-col items-center rounded-[16px] border border-[#dce3db] bg-white p-8 text-center sm:p-10">
-            <span className="font-[family-name:var(--font-mono-signal)] text-[11px] font-semibold uppercase tracking-[0.18em] text-[#4d7c36]">
-              Unverbindlich · Persönlich
-            </span>
-            <h2 className="mt-3 font-[family-name:var(--font-display)] text-[clamp(24px,3.6vw,34px)] font-bold tracking-[-0.015em] text-[#202522]">
-              Welcher Hebel bringt Ihnen am meisten?
-            </h2>
-            <p className="mt-3 max-w-[520px] font-[family-name:var(--font-carbon-text)] text-[16px] leading-relaxed text-[#647068]">
-              Sprechen wir darüber. Hinterlassen Sie kurz Ihre Angaben – wir
-              melden uns persönlich.
-            </p>
-            <CtaContactForm />
-          </div>
-        </div>
-      </section>
-    </JourneyContent>
+          </nav>
+        </section>
+        <SupportingFaq faqs={area.faqs} />
+        <OfferClosing check={area.check} />
+        <nav className={styles.detailsLinks} aria-label="Weitere Aufgaben">
+          <a href="/angebot" className={ui.textLink}>
+            Angebot im Überblick
+            <ArrowUpRight size={15} aria-hidden="true" />
+          </a>
+          {ANGEBOT_AREAS.filter((other) => other.key !== area.key).map(
+            (other) => (
+              <a
+                href={"/" + other.slug}
+                className={ui.textLink}
+                key={other.key}
+              >
+                {other.navLabel}
+                <ArrowUpRight size={15} aria-hidden="true" />
+              </a>
+            ),
+          )}
+        </nav>
+      </main>
+    </JourneyShell>
   )
 }
