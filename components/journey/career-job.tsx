@@ -50,10 +50,10 @@ export function CareerJob({ job }: { job: KarriereJob }) {
                   <dd>{job.start}</dd>
                 </div>
               </dl>
-              <a href="#bewerbung" className={styles.button}>
+              <Link href="#bewerbung" className={styles.button}>
                 Für diese Stelle bewerben{" "}
                 <ArrowUpRight size={17} aria-hidden="true" />
-              </a>
+              </Link>
             </aside>
           </section>
           <div className={career.detailContent}>

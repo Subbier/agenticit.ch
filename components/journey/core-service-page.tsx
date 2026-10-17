@@ -67,9 +67,9 @@ export function CoreServicePage({ service }: { service: CoreService }) {
                 {service.checkLabel}{" "}
                 <ArrowUpRight size={17} aria-hidden="true" />
               </Link>
-              <a href="#beispiele" className={styles.quietLink}>
+              <Link href="#beispiele" className={styles.quietLink}>
                 Beispiele ansehen <ArrowDown size={16} aria-hidden="true" />
-              </a>
+              </Link>
             </div>
             <p className={styles.note}>
               Unverbindlicher Check · Ergebnis direkt ansehen

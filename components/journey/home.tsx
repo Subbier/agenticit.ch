@@ -40,9 +40,9 @@ export function JourneyHome() {
                   Unverbindlichen Check starten{" "}
                   <ArrowUpRight size={18} aria-hidden="true" />
                 </Link>
-                <a className={styles.textLink} href="#firmenvideo">
+                <Link className={styles.textLink} href="#firmenvideo">
                   <Play size={15} aria-hidden="true" /> Video ansehen
-                </a>
+                </Link>
               </div>
               <p className={`${styles.fine} ${styles.heroFine}`}>
                 Unverbindlicher Check · Ergebnis sofort

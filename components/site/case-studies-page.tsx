@@ -24,13 +24,13 @@ export function CaseStudiesPage() {
             <h1 id="case-title">{websiteCase.title}</h1>
             <p className={ui.lede}>{websiteCase.intro}</p>
             <div className={ui.actions}>
-              <a href="#results" className={shared.button}>
+              <Link href="#results" className={shared.button}>
                 Checks selbst ausprobieren
                 <ArrowDown size={17} aria-hidden="true" />
-              </a>
-              <a href="#implementation" className={ui.quietLink}>
+              </Link>
+              <Link href="#implementation" className={ui.quietLink}>
                 Einblick in die Prüfung
-              </a>
+              </Link>
             </div>
             <p className={ui.note}>
               Prüfstand: <time dateTime="2026-10-17">17. Oktober 2026</time>

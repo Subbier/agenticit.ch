@@ -80,9 +80,9 @@ export default function Page() {
               Ihren Einstieg finden
               <ArrowUpRight size={17} aria-hidden="true" />
             </Link>
-            <a href="#branchen" className={ui.quietLink}>
+            <Link href="#branchen" className={ui.quietLink}>
               Passende Beispiele ansehen
-            </a>
+            </Link>
           </div>
         </div>
         <section

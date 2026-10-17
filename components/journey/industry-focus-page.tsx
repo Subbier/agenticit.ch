@@ -47,10 +47,10 @@ export function IndustryFocusPage({ focus }: { focus: IndustryFocus }) {
                 {focus.checkLabel}
                 <ArrowUpRight size={17} aria-hidden="true" />
               </Link>
-              <a href="#bereiche" className={ui.quietLink}>
+              <Link href="#bereiche" className={ui.quietLink}>
                 Möglichkeiten ansehen
                 <ArrowDown size={16} aria-hidden="true" />
-              </a>
+              </Link>
             </div>
             <p className={ui.note}>{focus.audience}</p>
           </div>
