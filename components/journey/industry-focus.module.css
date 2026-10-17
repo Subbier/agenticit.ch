@@ -1,0 +1,182 @@
+.areaCards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 32px;
+}
+.areaCards article {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 26px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.areaCards h3 {
+  font-size: 23px;
+  font-weight: 550;
+  line-height: 1.25;
+}
+.areaCards article > p {
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: 12px;
+}
+.areaCards ul {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0;
+  display: grid;
+  gap: 14px;
+}
+.areaCards li {
+  display: flex;
+  gap: 9px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.areaCards li svg {
+  flex: none;
+  margin-top: 3px;
+  color: #4d7c36;
+}
+.areaCards a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  margin-top: auto;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 550;
+  text-underline-offset: 4px;
+}
+.focusCards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 28px;
+}
+.focusCards > a {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 28px;
+  color: var(--ink);
+  text-decoration: none;
+}
+.focusCards > a:hover {
+  border-color: #638e4b;
+  background: #f6f9f2;
+}
+.focusCards h3 {
+  font-size: 25px;
+  font-weight: 550;
+  line-height: 1.25;
+}
+.focusCards p {
+  color: var(--muted);
+  margin: 14px 0 24px;
+  font-size: 15px;
+}
+.focusCards span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  margin-top: auto;
+  font-size: 14px;
+  font-weight: 550;
+}
+.roleCards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  margin-top: 32px;
+}
+.roleCards article {
+  min-width: 0;
+  border-top: 1px solid #52674b;
+  padding-top: 18px;
+}
+.roleCards h3 {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+.roleCards p {
+  font-size: 14px;
+  color: #c7d4c0;
+}
+.otherIndustries {
+  padding: 40px 0;
+  border-bottom: 1px solid var(--line);
+}
+.otherIndustries summary {
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  min-height: 44px;
+  padding-block: 8px;
+}
+.otherLinks {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px 24px;
+  padding-top: 20px;
+}
+.otherLinks a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 14px;
+  color: var(--ink);
+  text-underline-offset: 4px;
+}
+@media (max-width: 1000px) {
+  .areaCards {
+    gap: 16px;
+  }
+  .areaCards article {
+    padding: 22px;
+  }
+}
+@media (max-width: 700px) {
+  .areaCards,
+  .focusCards,
+  .roleCards {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .areaCards,
+  .focusCards {
+    margin-top: 24px;
+  }
+  .areaCards article,
+  .focusCards > a {
+    padding: 22px;
+  }
+  .areaCards ul {
+    margin: 20px 0 12px;
+    gap: 12px;
+  }
+  .focusCards h3 {
+    font-size: 23px;
+  }
+  .focusCards p {
+    margin-bottom: 16px;
+  }
+  .roleCards {
+    margin-top: 24px;
+  }
+  .otherLinks {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px 20px;
+  }
+  .otherIndustries {
+    padding: 28px 0;
+  }
+}
