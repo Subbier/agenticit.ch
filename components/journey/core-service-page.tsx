@@ -1,4 +1,5 @@
 import Link from "next/link"
+import type { ReactNode } from "react"
 import {
   ArrowDown,
   ArrowUpRight,
@@ -38,7 +39,13 @@ const serviceGuides: Partial<
   },
 }
 
-export function CoreServicePage({ service }: { service: CoreService }) {
+export function CoreServicePage({
+  service,
+  example,
+}: {
+  service: CoreService
+  example?: { title: string; intro: string; content: ReactNode }
+}) {
   const path = `/loesungen/${service.slug}`
   const guide = serviceGuides[service.slug]
   return (
@@ -75,9 +82,9 @@ export function CoreServicePage({ service }: { service: CoreService }) {
                 {service.checkLabel}{" "}
                 <ArrowUpRight size={17} aria-hidden="true" />
               </Link>
-              <Link href="#beispiele" className={styles.quietLink}>
+              <a href="#beispiele" className={styles.quietLink}>
                 Beispiele ansehen <ArrowDown size={16} aria-hidden="true" />
-              </Link>
+              </a>
             </div>
             <p className={styles.note}>
               Unverbindlicher Check · Ergebnis direkt ansehen
@@ -139,21 +146,27 @@ export function CoreServicePage({ service }: { service: CoreService }) {
         >
           <div className={styles.sectionHeading}>
             <span className={shared.eyebrow}>Von der Idee in den Alltag</span>
-            <h2 id="examples-title">So kann es bei Ihnen aussehen.</h2>
+            <h2 id="examples-title">
+              {example?.title ?? "So kann es bei Ihnen aussehen."}
+            </h2>
             <p>
-              Diese Beispiele zeigen mögliche Einsätze. Was wir für Ihren
-              Betrieb umsetzen, klären wir gemeinsam.
+              {example?.intro ??
+                "Diese Beispiele zeigen mögliche Einsätze. Was wir für Ihren Betrieb umsetzen, klären wir gemeinsam."}
             </p>
           </div>
-          <div className={styles.examples}>
-            {service.examples.map(([title, copy], index) => (
-              <article key={title}>
-                <span className={styles.exampleNumber}>0{index + 1}</span>
-                <h3>{title}</h3>
-                <p>{copy}</p>
-              </article>
-            ))}
-          </div>
+          {example ? (
+            example.content
+          ) : (
+            <div className={styles.examples}>
+              {service.examples.map(([title, copy], index) => (
+                <article key={title}>
+                  <span className={styles.exampleNumber}>0{index + 1}</span>
+                  <h3>{title}</h3>
+                  <p>{copy}</p>
+                </article>
+              ))}
+            </div>
+          )}
         </section>
 
         <section className={styles.process} aria-labelledby="process-title">
