@@ -58,3 +58,15 @@ Nach Verarbeitung sind **Checktyp**, **Ereignisname**, **Datum** und **Ereignisa
 `inquiry_forwarded` bleibt die Bestätigung des Website-Webhooks. CRM-Eingang, Qualifizierung, Termin und Auftrag benötigen getrennte Nachweise aus dem richtigen Zielsystem. D03 und das vollständige Reporting bleiben offen.
 
 Grundlage: [Google: Ereignisse einrichten](https://developers.google.com/analytics/devguides/collection/ga4/events), [Google-Tag-Referenz](https://developers.google.com/tag-platform/gtagjs/reference#event) und [ereignisbezogene benutzerdefinierte Dimensionen erstellen](https://support.google.com/analytics/answer/14239696?hl=de), gelesen am 17.10.2026.
+
+## Früher Regelbericht vom 17.10.2026
+
+Die bestehende AgenticIT-Property wurde am Vormittag erneut lesend geprüft. Die Dimension **Checktyp** war weiterhin genau einmal mit Ereignisparameter `check_kind` und Anwendungsbereich Ereignis vorhanden. Windsor bot keine passende Analytics- oder Search-Console-Verbindung für AgenticIT; deshalb erfolgte der Abgleich in den bereits angemeldeten eigenen Google-Ansichten. Keine neue Verbindung oder zusätzliche Berechtigung eingerichtet.
+
+Der voreingestellte Ereignisbericht enthielt den Zeitraum **19.09. bis 16.10.2026**. Er zeigte 148 Ereignisse bei 16 Nutzern: 54 `page_view`, 35 `user_engagement`, 29 `session_start`, 15 `first_visit`, 13 `scroll` und zwei `form_start`. Diese historischen Domainwerte beschreiben weder die Wirkung der heutigen Veröffentlichungen noch zwei empfangene Leads. Die angezeigte Umsatzspalte ist kein Nachweis des tatsächlichen Firmenumsatzes.
+
+Danach wurde ausdrücklich **Heute, 17.10. bis 17.10.2026**, gewählt und das Ende des Ladevorgangs abgewartet. Der reguläre Bericht meldete **Keine Daten verfügbar**. Die vorübergehend noch sichtbaren Zahlen des alten Zeitraums während des Ladens wurden nicht als heutige Daten übernommen. Fehlende Berichtszeilen sind kein Beweis für null Nutzung, null Anfragen oder eine defekte Zustellung. Der separat dokumentierte eigene Echtzeittest bleibt ein technischer Nachweis und kein Kundenergebnis.
+
+Google nennt für die Datenverarbeitung bis zu 24–48 Stunden; Berichte können sich in diesem Fenster ändern. Das ist eine mögliche Einschränkung der frühen Auswertung, keine hier isoliert bewiesene Fehlerursache und keine garantierte Fertigstellungsfrist. Eine Auswertung der vier eigenen Ereignisse nach Checktyp sowie bestätigte qualifizierte Ergebnisse bleiben offen. Keine neue QA-Nutzung erzeugt, um den Bericht zu füllen; kein Kontaktformular abgeschickt.
+
+Quelle: [Google Analytics: Datenaktualität](https://support.google.com/analytics/answer/11198161?hl=de), am 17.10.2026 gelesen. Screenshot und bereinigter Messnachweis liegen in der zentralen OneDrive-Ablage unter `Umsetzung-2026-10-17/Nachweise/metrics-*`.
