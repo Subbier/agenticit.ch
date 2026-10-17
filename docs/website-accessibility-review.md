@@ -1,6 +1,6 @@
 # Bedienbarkeit der AgenticIT-Website
 
-Prüfstand: 17. Oktober 2026. Produktfassung d1c7feb94695dd599dfc8bb7da2ab14d237a3fef. Diese Arbeitsabnahme führt konkrete Nachweise zusammen. Sie ist keine vollständige WCAG-Konformitätserklärung und keine Prüfung mit allen assistiven Technologien.
+Prüfstand: 17. Oktober 2026. Produktfassung 91a3856cc59c7d061afba5c62801f5eb54e9043f; Tastatureinstieg aus d1c7feb unverändert. Diese Arbeitsabnahme führt konkrete Nachweise zusammen. Sie ist keine vollständige WCAG-Konformitätserklärung und keine Prüfung mit allen assistiven Technologien.
 
 ## Prüfbereich
 
@@ -20,7 +20,7 @@ Prüfungen erzeugen keine echten Kontakte, Bewertungen, CRM-Einträge, Buchungen
 | Mobiles Menü | Bei 390 Pixeln öffnet und schliesst Enter das Menü; Hauptinhalt rückt von y=76 auf y=360, also um 284 Pixel. Bestehende Etappen belegen Ausseninteraktion und Seitenwechsel. | Menü bleibt ein nicht-modaler, den Inhalt verschiebender Bereich. Keine zusätzliche Fokusfalle eingeführt. |
 | Bewegte Darstellung | Karussell pausiert bedient; «Sales anzeigen» per Enter wählt Sales, data-running bleibt false. Bestehender Code berücksichtigt prefers-reduced-motion und die Seitensichtbarkeit. | Medienpräferenz in dieser Etappe nicht in allen Browsern emuliert; Quelltextnachweis nicht mit Laufzeitnachweis gleichsetzen. |
 | Video | Wiedergabeknopf per Enter bedient; Video spielte mit readyState 4, Fokus auf VIDEO. Leertaste pausiert; native Steuerung vorhanden. Deutscher Untertitel und Textfassung bestehen weiterhin und werden von den vorhandenen Tests erfasst. | Keine Prüfung aller nativen Medienoberflächen oder vollständige audiovisuelle Barrierefreiheitsabnahme. Originale Ergebnisbehauptung wartet auf den separat angefragten Beleg. |
-| Formulare | Dauerhafte Labels, Einwilligungen, Fokus- und Fehlerzustände in vorhandenen Tests und Etappen belegt. Neue Sprungstrecke erreicht das erste Feld direkt; kein Formular abgesendet. | Echter Empfang und CRM-Kontext bleiben D03. Helle Feldumrandung ist ein neuer konkreter Nachbesserungskandidat, siehe unten. |
+| Formulare | Dauerhafte Labels, Einwilligungen, Fokus- und Fehlerzustände in vorhandenen Tests und Etappen belegt. Neue Sprungstrecke erreicht das erste Feld direkt; kein Formular abgesendet. | Echter Empfang und CRM-Kontext bleiben D03. Feldgrenzen inzwischen in fünf Varianten verbessert, siehe unten. Sende-Button und Empfangsprüfung des eigenen Kontaktformulars benötigen den nächsten gezielten Schritt. |
 | Textkontrast | Stichprobe auf acht Kernseiten: 530 direkt gerenderte Textstellen mit auswertbaren RGB-Farben; kein gemessener Wert unter der jeweils angesetzten Grenze. | 41 Stellen wegen Verlauf, Deckkraft oder nicht ausgewerteter Farbsyntax offen. Platzhalter, Bildtexte, alle Zustände und sämtliche Seiten sind damit nicht vollständig geprüft. |
 | Reflow und Touch | Kernstrecken bei vier Breiten per Tastatur bedient; Sprunglink mindestens 44 Pixel hoch. Bestehende Etappen enthalten grössere Layout- und Formularprüfungen. | Keine pauschale Mindestgrösse für jedes Textelement oder formale Gesamtprüfung bei Zoom abgeleitet. |
 
@@ -28,7 +28,19 @@ Prüfungen erzeugen keine echten Kontakte, Bewertungen, CRM-Einträge, Buchungen
 
 Die Stichprobe liest sichtbare direkte Textknoten und die berechneten Browserfarben. RGB-Hintergründe werden durch die Vorfahren zusammengesetzt; bewertet werden 4,5:1 für normalen Text und 3:1 für entsprechend grosse Schrift. Verläufe, Deckkraft und nicht unterstützte Farbsyntax bleiben ausdrücklich offen. Der im unterstützten Browser nicht gezeichnete Video-Fallback wird nicht als sichtbarer Textfehler gezählt. Ein anfänglicher Durchlauf vor fertiger Darstellung lieferte für die Startseite keine Werte; erst die erneut gelesene sichtbare Seite ging in die konsolidierte Auswertung ein.
 
-Kontaktfelder haben einen weissen Innenbereich und eine Umrandung rgb(191,203,184), entsprechend #bfcbb8. Diese Grenze erreicht gegen Weiss nur 1,6868:1. Die vorhandenen Labels bleiben erkennbar; daraus wird hier kein vollständiges WCAG-Urteil abgeleitet. Die nächste gezielte Verbesserung ist eine besser erkennbare Feldgrenze, geprüft gegen Innen- und Aussenfläche sowie im Fokuszustand. Keine pauschale Farbänderung aller Karten oder Buttons auf Verdacht.
+Kontaktfelder haben einen weissen Innenbereich und eine Umrandung rgb(191,203,184), entsprechend #bfcbb8. Diese Grenze erreicht gegen Weiss nur 1,6868:1. Die vorhandenen Labels bleiben erkennbar; daraus wird hier kein vollständiges WCAG-Urteil abgeleitet. Diese Feldgrenze ist mit 91a3856 gezielt verbessert. Der neue gemeinsame Wert #7b8a74 erreicht 3,6651:1 gegen Weiss und 3,3979:1 gegen #f5f7f2. Andere Karten- und Button-Grenzen wurden nicht pauschal geändert.
+
+## Feldgrenzen – gezielt nachgebessert
+
+Vorherige Messung: 20 sichtbare Felder in Kontakt, Rückrufformular, Anfragenplanung und Bewerbung verfehlten den gewählten 3:1-Vergleich gegen die Nachbarfläche. Technische versteckte Felder wurden ausgeschlossen; transparente Feldinnenflächen werden gegen ihren sichtbaren Hintergrund ausgewertet.
+
+Ein gemeinsamer Farbwert in JourneyShell wird für Text-, Zahlen-, Auswahl- und mehrzeilige Felder genutzt. Die erste Änderung wurde im Anfragenplaner von einer eigenen Regel überschrieben; die gerenderte Nachmessung zeigte dies, die spezifische Feldregel wurde ebenfalls umgestellt. Dekorative Linien, Auswahlkarten, Funktionen und Einwilligungen bleiben unverändert.
+
+Abnahme: fünf Varianten einschliesslich der Eingaben eines ausgewählten Tasks im Automatisierungs-Check. Je 20 Ansichten und 100 Feldmessungen lokal und öffentlich bei 320/390/768/1440 Pixeln bestehen den Vergleich gegen Innen- und Aussenfläche; kein horizontaler Überlauf. Dunkler Tastaturfokus auf Textarea, Select und Zahleneingabe bleibt sichtbar. Die Kontakt-Textarea hat eine vorhandene 150-ms-Farbtransition; erst der stabile Endzustand wurde als Fokusfarbe protokolliert. Alle 390 bestehenden Prüfungen, TypeScript, Formatter und Produktionsbuild bestanden. Kein Formular abgesendet.
+
+Der visuelle Abschluss zeigte einen neuen konkreten Befund: Auf /kontakt überdeckt der Mia-Öffner bei 390 Pixeln den Sende-Button um etwa 35,2 × 50,3 Pixel; dessen unmittelbarer Container hat keinen rechten Freiraum. Das eigene Kontaktformular in components/site/contact-page.tsx nutzt zudem source home und behandelt HTTP-Erfolg bereits als Erfolg. Diese Punkte sind D07 und noch nicht korrigiert. Die verbesserte Feldgrenze ist keine Gesamtabnahme des Kontaktwegs oder der Zustellung.
+
+Nachweise: Umsetzung-2026-10-17/Nachweise/form-boundaries-*. Veröffentlichtes Produkt 91a3856, Deployment dpl_5qLaFwBxzyVdnyw4EppyxCAZ8MpL (v1-main-qcfapo56e-gntc.vercel.app), READY für denselben SHA mit agenticit.ch und www.agenticit.ch. CSS-Budget der Startseite: 255939 Bytes, gleich berechnetes gzip 41354 Bytes, drei Stylesheets. Keine neue PSI-/Felddatenmessung; Sitemap weiterhin 79 Ziele und 76 belegte Inhaltsdaten.
 
 ## Referenzen
 
