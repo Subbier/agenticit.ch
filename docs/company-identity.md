@@ -34,3 +34,12 @@ Der bestehende Footer-Hinweis «100% Schweizer Software & Hosting» bleibt bis z
 Fünf gezielte Regressionstests zeigten vor der Korrektur Fehler bei Firmenname, Schema-Zusagen, Anbieterreferenzen, nicht vorhandener Suche und fehlenden sichtbaren Fakten. Ein zusätzlicher Assettest prüft Grösse und unveränderte Zeichnung des neuen Schema-Logos. Danach sechs Unit-Prüfungen erfolgreich. Zwei zusätzliche öffentliche GET-Prüfungen kontrollieren die eindeutige Unternehmensdefinition auf acht Routen und sichtbare Firmenangaben auf vier Routen. Weitere Test-, Browser- und Live-Nachweise werden mit der Veröffentlichung im Schlachtplan und in der OneDrive-Übergabe erfasst.
 
 Register- und Schema-Belege sind kein Nachweis von Rankings, KI-Empfehlungen oder gewonnenen Kunden. Die neue Seite benötigt eine eigene, datierte Ausgangsmessung; alte Suchindex-Auszüge bleiben von ihrer heutigen Auslieferung getrennt.
+
+## Verifizierter Release
+
+- Produktcommit `d50b0f119b85e93c0b4756045e3f84f778a5374f`, Produktion `dpl_CQhz4ZAtyZvaDg4Tzp7pEz86SWwm`, READY und mit agenticit.ch verbunden.
+- 219 lokale Prüfungen und 14 abschliessende Prüfungen gegen die öffentliche Website bestanden. Darin die 77 direkt erreichbaren Sitemap-Seiten mit passenden Canonicals.
+- Firmenkarte ohne seitliches Überlaufen auf 320/390/768/1280 Pixeln. Quellenlinks 44 Pixel hoch, Tastaturfokus sichtbar. Kontakt und Datenschutzhinweis im Browser bedient; kein Formular ausgefüllt oder gesendet. Finaler Abstand unter der Firmenkarte 16 Pixel.
+- [Googles Live-Test](https://search.google.com/test/rich-results/result/r%2Forganization-info?id=f_iDXC3I9mSgJn9b7LkUiQ) erkannte ein gültiges Unternehmen. Aufgeklappte Felder enthalten die neue UID, Adresse, den Zefix-Link und den neuen Logo-Pfad. Dies bestätigt die Verarbeitung der aktuellen Daten, keine Indexierung oder Suchposition.
+- Öffentliches Schema-Logo: HTTP 200, image/svg+xml, 3'823 Bytes, bytegleich zur geprüften Datei. SHA-256 `d4c5a74fed8482bf17fddb59d2aee7ac6cdf506739d0e6d6cb8c9c169c6a621d`.
+- Screenshots, Testberichte und Übergabe liegen in OneDrive/Documents/ChatGPT/AgenticIT Webseite/Umsetzung-2026-10-17. Lokal gespeichert; Cloud-Synchronisierung nicht gesondert nachgewiesen. Eigener Prüfserver auf Port 3105 beendet.
