@@ -21,6 +21,9 @@ const guides = [
   "kundenakquise-methoden",
   "ki-social-media-automatisierung",
   "ki-email-management",
+  "ki-einfuehrung-schritt-fuer-schritt",
+  "change-management-mit-ki",
+  "haeufige-ki-fehler-vermeiden",
   "ki-agenten",
   "neukundengewinnung-kmu-schweiz",
 ] as const

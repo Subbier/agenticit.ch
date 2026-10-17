@@ -1,60 +1,113 @@
 ---
-title: "Die 9 häufigsten KI-Fehler in Unternehmen – und wie Sie sie vermeiden"
+title: "KI-Fehler früh erkennen"
 slug: "haeufige-ki-fehler-vermeiden"
-description: "Die 10 häufigsten Fehler bei der KI-Einführung im KMU – und wie Sie sie vermeiden: von fehlenden Zielen bis zum vergessenen Team. Mit Praxis-Checkliste."
+description: "Neun Prüffragen für Ihr KI-Vorhaben: Aufgabe, Quellen, Freigabe, Datenwege, Team und Betrieb. Mit konkreten nächsten Schritten und KI-Einsatzkarte."
 date: "2026-07-24"
+updated: "2026-10-17"
 category: "KI-Grundlagen"
-tags: ["ki fehler", "ki strategie", "fehlerprävention", "kmu"]
-keywords: ["ki fehler", "ki projekte scheitern", "ki automatisierung", "ki agentur", "ki agenten"]
-readingTime: 10
+tags: ["KI-Einführung", "Qualität", "KI-Agenten", "KMU"]
+keywords:
+  [
+    "ki fehler",
+    "fehler ki einführung",
+    "ki projekte prüfen",
+    "ki automatisierung",
+  ]
+readingTime: 5
+resource:
+  title: "Einen Ablauf vor dem Einsatz prüfen."
+  copy: "Die KI-Einsatzkarte verbindet Aufgabe, Quellen, Befugnisse und Prüffälle. Halten Sie tatsächliche Ergebnisse und offene Korrekturen fest."
+  href: "/vorlagen/AgenticIT-KI-Einsatzkarte.txt"
+  label: "KI-Einsatzkarte speichern (.txt)"
+nextStep:
+  title: "Ist das Zeitpotenzial nachvollziehbar?"
+  copy: "Prüfen Sie im Automatisierungs-Check ein Szenario mit eigenen Angaben. Verbleibende Arbeit, Kontrolle und Pflege gehören in den Vergleich."
+  href: "/automatisierungs-check"
+  label: "Zeitpotenzial prüfen"
+sources:
+  - label: "NIST: Qualität, Grenzen und Prüfung im Einsatz messen"
+    url: "https://airc.nist.gov/airmf-resources/playbook/measure/"
+  - label: "OWASP: Funktionen, Rechte und Autonomie von KI-Agenten begrenzen"
+    url: "https://genai.owasp.org/llmrisk/llm062025-excessive-agency/"
+  - label: "EDÖB: KI und Datenschutz"
+    url: "https://www.edoeb.admin.ch/de/ki-und-datenschutz"
 faq:
-  - q: "Woran erkenne ich, dass ein KI-Projekt zu scheitern droht?"
-    a: "Warnzeichen sind: kein messbares Ziel, kein benannter Verantwortlicher, Widerstand im Team und ungeklärter Datenschutz. Treffen zwei oder mehr davon zu, sollten die Grundlagen neu aufgesetzt werden."
-  - q: "Ist ein gescheiterter Pilot Geldverschwendung?"
-    a: "Nicht zwingend – wenn er günstig und klar begrenzt war und Sie daraus lernen. Teuer wird es nur bei grossen, offenen Investitionen ohne Messung."
-  - q: "Wie klein sollte der erste Use-Case sein?"
-    a: "So klein, dass Sie ihn in 6–8 Wochen produktiv sehen können – etwa die zehn häufigsten Standardanfragen."
-sources: []
+  - q: "Wie erkennen wir eine Lücke im KI-Vorhaben?"
+    a: "Prüfen Sie einen vollständigen Vorgang: Sind Aufgabe, Quelle, erlaubte Aktion, zuständige Person und Ergebnis klar? Fehlende Angaben werden als offene Voraussetzungen festgehalten. Eine einzelne Lücke ist ein Anlass zur Klärung, kein pauschaler Beweis für das Scheitern des gesamten Projekts."
+  - q: "Beweist eine überzeugende Demo die Einsatzreife?"
+    a: "Eine Vorführung zeigt einen ausgewählten Ablauf. Für die Abnahme brauchen Sie passende Prüffälle, tatsächliche Ergebnisse und Nachweise einschliesslich fehlender Angaben, Ausfällen und persönlicher Übernahme. Neue Aufgaben oder Anbindungen werden gesondert geprüft."
+  - q: "Wie viel Autonomie sollte ein Agent haben?"
+    a: "Nur die für die vereinbarte Aufgabe benötigten Funktionen und Rechte. Lesen, Entwurf und Ausführung werden getrennt beurteilt. Bei AgenticIT benötigen ausgehende Sales-Nachrichten und geschäftliche Empfehlungen eine menschliche Freigabe vor dem Versand."
+  - q: "Wann lohnt es sich, eine Aufgabe vorerst nicht zu automatisieren?"
+    a: "Wenn Voraussetzungen fehlen oder der Aufwand einschliesslich Kontrolle und Pflege den erwarteten Nutzen nicht trägt, kann eine einfachere Lösung oder ein Aufschub sinnvoll sein. Halten Sie den Grund und den nächsten Klärungsschritt fest."
 ---
 
-Rund zwei von drei KI-Initiativen liefern nie den erhofften Nutzen. Fast immer sind es dieselben vermeidbaren Fehler. Hier sind die neun grössten – und was stattdessen funktioniert.
+> **KI-Fehler lassen sich besser einordnen, wenn die erwartete Aufgabe und das tatsächliche Ergebnis klar sind.** Die folgenden neun Prüffragen helfen, offene Punkte vor dem Einsatz und im Betrieb sichtbar zu machen. Sie sind eine eigene Arbeitshilfe, keine statistische Rangliste von Scheitergründen.
 
-Wer 2026 mit Führungskräften spricht, hört zwei Dinge: grosse Erwartungen an KI – und viele enttäuschte erste Versuche. Die gute Nachricht: Die Ursachen sind erstaunlich berechenbar. Bei AgenticIT sehen wir dieselben Muster immer wieder. Dieser Artikel macht sie sichtbar, damit Sie sie überspringen können.
+## Welche neun Punkte sollten wir prüfen?
 
-### Fehler 1 · Mit dem Werkzeug statt mit dem Problem starten
+### 1. Ist die Aufgabe konkret genug?
 
-«Wir brauchen einen Chatbot» ist kein Ziel, sondern eine Lösung ohne Problem. **Gegenmassnahme:** Beginnen Sie mit dem konkreten Engpass in Zahlen und lassen Sie die Technologie folgen.
+«Wir brauchen KI» beschreibt noch kein Ergebnis. Formulieren Sie einen Vorgang, die benötigten Eingaben und die Person, die das Ergebnis beurteilt.
 
-### Fehler 2 · Kaputte Prozesse automatisieren
+**Nächster Schritt:** Ein Beispiel vom Eingang bis zur Übernahme beschreiben. Der [Leitfaden zur KI-Einführung](/blog/ki-einfuehrung-schritt-fuer-schritt) hilft beim Start.
 
-Automatisierung macht schlechte Abläufe nur schneller schlecht. **Gegenmassnahme:** Vereinfachen und standardisieren Sie den Prozess, bevor KI ihn übernimmt.
+### 2. Braucht dieser Schritt überhaupt KI?
 
-### Fehler 3 · Keine Baseline, keine Messung
+Ein klarer Eingang oder eine feste Zuordnung lässt sich möglicherweise mit vorhandenen Regeln lösen. Prüfen Sie, wo tatsächlich unterschiedliche Inhalte verstanden oder Entscheidungen vorbereitet werden müssen.
 
-Ohne Ausgangswert lässt sich Erfolg weder belegen noch verbessern. **Gegenmassnahme:** Erfassen Sie Bearbeitungszeit, Volumen und Qualität *vor* dem Piloten.
+**Nächster Schritt:** Vorhandene Funktionen, festen Workflow und KI-Unterstützung anhand derselben Aufgabe vergleichen.
 
-### Fehler 4 · Datenschutz erst am Ende bedenken
+### 3. Sind Quellen und offene Angaben erkennbar?
 
-Wer nDSG/DSGVO nachträglich prüft, baut den Piloten oft neu. **Gegenmassnahme:** Klären Sie Rechtsgrundlage, Speicherort und Löschkonzept vor der ersten Zeile.
+Eine flüssig formulierte Antwort belegt weder ihre Richtigkeit noch den Eingang im Zielsystem. Halten Sie fest, welche Quelle genutzt wurde und welche Angaben ungeklärt bleiben.
 
-### Fehler 5 · Das Team übergehen
+**Nächster Schritt:** Ein vollständiges und ein unvollständiges Beispiel prüfen. Fehlendes Wissen darf nicht durch eine erfundene Angabe ersetzt werden.
 
-KI, die «über die Köpfe hinweg» eingeführt wird, erzeugt Widerstand. **Gegenmassnahme:** Betroffene früh einbeziehen und KI als Entlastung von Routine positionieren.
+### 4. Sind die Befugnisse passend begrenzt?
 
-### Fehler 6 · KI ohne Human-in-the-Loop laufen lassen
+Ein Assistent, der Informationen zusammenfasst, benötigt dafür nicht automatisch Versand- oder Löschrechte. [OWASP beschreibt Risiken übermässiger Funktionen, Rechte und Autonomie und empfiehlt deren Begrenzung sowie Freigaben für weitreichende Aktionen](https://genai.owasp.org/llmrisk/llm062025-excessive-agency/).
 
-Vollautonome Systeme im Kundenkontakt erzeugen Fehler, die teuer werden. **Gegenmassnahme:** Halten Sie einen Menschen im Freigabe-Loop für kritische Entscheide und Grenzfälle.
+**Nächster Schritt:** Lesen, Entwurf und Ausführung getrennt festlegen und technisch begrenzen. Ausgehende Sales-Nachrichten und geschäftliche Empfehlungen werden bei AgenticIT vor dem Versand menschlich freigegeben.
 
-### Fehler 7 · KI nicht kennzeichnen
+### 5. Sind Datenwege und Transparenz geklärt?
 
-Verdeckte Bots beschädigen Vertrauen und kollidieren mit Transparenzpflichten. **Gegenmassnahme:** Kennzeichnen Sie KI-Agenten klar und sichtbar – das schafft sogar Sympathie.
+Der [EDÖB erläutert, dass das Schweizer Datenschutzgesetz auch beim KI-Einsatz gilt](https://www.edoeb.admin.ch/de/ki-und-datenschutz). Zweck, Anbieter, benötigte Angaben, Zugriffe und Aufbewahrung gehören vor der Verarbeitung auf den Tisch.
 
-### Fehler 8 · Alles auf einmal wollen
+**Nächster Schritt:** Die Datenwege beschreiben und offene Fragen klären. Kundenorientierte Assistenten stellen sich bei AgenticIT zu Beginn als KI vor.
 
-Fünf parallele Use-Cases überfordern jede Organisation. **Gegenmassnahme:** Ein Use-Case, der funktioniert, schlägt zehn geplante. Fokussieren Sie.
+### 6. Kann das Team prüfen und übernehmen?
 
-### Fehler 9 · Nach dem Go-Live aufhören
+Eine Zuständigkeit im Konzept hilft erst, wenn die Person den Vorgang tatsächlich erhält und bearbeiten kann. Auch Abwesenheit und der ausdrückliche Wunsch nach persönlicher Hilfe gehören dazu.
 
-KI ist kein Projekt mit Enddatum, sondern ein System, das gepflegt werden muss. **Gegenmassnahme:** Etablieren Sie Monitoring, regelmässiges Nachschärfen und klare Verantwortlichkeiten.
+**Nächster Schritt:** Prüfung und Übernahme mit den betroffenen Personen üben. Mehr dazu unter [KI im Team einführen](/blog/change-management-mit-ki).
 
-> **Kernaussage:** Die meisten KI-Fehler sind keine Technik-, sondern Reihenfolge- und Führungsfehler. Wer Problem, Prozess, Compliance und Team in dieser Reihenfolge angeht, umgeht acht von neun Fallen automatisch.
+### 7. Decken die Prüffälle den Einsatz ab?
+
+Ein gelungener Normalfall reicht nicht. Spielen Sie auch fehlende Informationen, doppelte Eingänge und ausgefallene Anbindungen durch. Notieren Sie Erwartung, tatsächliches Ergebnis und offenen nächsten Schritt.
+
+Das [NIST-Playbook behandelt Messung, Grenzen und passende Prüfverfahren über den Einsatz hinweg](https://airc.nist.gov/airmf-resources/playbook/measure/). Daraus folgt keine allgemeine Bestehensquote für Ihr Vorhaben.
+
+**Nächster Schritt:** Vor dem Start vereinbaren, welche Fehler behoben werden müssen und wer die Abnahme entscheidet.
+
+### 8. Ist die Nutzenrechnung vollständig?
+
+Erfassen Sie neben möglicher Entlastung auch verbleibende Arbeit, Prüfung, Fehlerkorrektur, Einrichtung, Nutzung und Betreuung. Freie Zeit bedeutet nicht automatisch sinkende Ausgaben.
+
+**Nächster Schritt:** Annahmen offenlegen und später mit tatsächlichen Vorgängen vergleichen. Der Beitrag [KI-ROI berechnen](/blog/ki-roi-berechnen) trennt Zeitwert und Geldfluss.
+
+### 9. Ist der Betrieb organisiert?
+
+Wissensquellen, Zuständigkeiten und Anbindungen können sich ändern. Klären Sie, wer Fehler bemerkt, Aktualisierungen prüft und bei einer Störung übernimmt.
+
+**Nächster Schritt:** Betriebsverantwortung, Supportweg und erneute Prüfung nach Änderungen festhalten.
+
+## Was machen wir mit offenen Punkten?
+
+Ordnen Sie jeder Beobachtung eine verantwortliche Rolle und einen nächsten Klärungsschritt zu. Halten Sie fest, welche Voraussetzung vor dem Einsatz erfüllt sein muss. Ein einfacher Status «offen» ist hilfreicher als eine unbelegte Zusage, das System werde den Fall schon lösen.
+
+Die Einsatzkarte oben bietet Platz für Prüffälle, Ist-Ergebnis und Nachweis. Verwenden Sie für die erste Planung erfundene Beispiele ohne Kundendossiers oder Zugangsdaten.
+
+## Wie unterstützt AgenticIT?
+
+Wir prüfen die Aufgabe gemeinsam mit Ihrem Team und verbinden [KI-Entwicklung](/loesungen/ki-entwicklung) mit passenden Abläufen und begrenzten Befugnissen. Unsere [Zusammenarbeit](/zusammenarbeit) beschreibt Vorbereitung, Abnahme und Betreuung. Eine konkrete Umsetzung beginnt mit einem vereinbarten Leistungsumfang.

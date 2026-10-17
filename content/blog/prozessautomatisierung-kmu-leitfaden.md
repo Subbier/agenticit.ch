@@ -91,4 +91,6 @@ Spielen Sie freigegebene Beispiele durch: einen normalen Vorgang, fehlende Angab
 
 Lassen Sie die Personen mitarbeiten, die den Ablauf später nutzen. Sie müssen die Prüfung und die Übernahme an ihren täglichen Aufgaben üben können. Für einen kundenorientierten KI-Assistenten gehört eine klare KI-Kennzeichnung zum Einstieg.
 
+Der Leitfaden [KI im Team einführen](/blog/change-management-mit-ki) hilft, Rollen, Einweisung und persönliche Übernahme gemeinsam vorzubereiten.
+
 Bei [Prozessautomatisierung mit AgenticIT](/loesungen/prozessautomatisierung) vereinbaren wir Aufgabe, Umfang, Kosten und Abnahme vor dem Start. Wenn vor allem Anfragen zwischen Telefon, Formular und Team verloren gehen, beginnen Sie alternativ mit dem [Anfragen-Check](/anfragen-check).

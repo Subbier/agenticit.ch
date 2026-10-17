@@ -80,4 +80,6 @@ Prüfen Sie einen vollständigen Vorgang mit freigegebenen Beispielen:
 
 Vergleichen Sie Einrichtung, Lizenzen, Nutzung und laufende Betreuung mit dem tatsächlichen Nutzen. Mehr Autonomie ist für sich genommen kein Qualitätsmerkmal.
 
+Wenn der Lösungsweg feststeht, zeigt [KI einführen](/blog/ki-einfuehrung-schritt-fuer-schritt) die nächsten Schritte von der Aufgabenbeschreibung bis zur Übergabe.
+
 Sie haben bereits einen Ablauf im Kopf? Bei unserer [KI-Entwicklung für KMU](/loesungen/ki-entwicklung) sehen Sie mögliche Bausteine und den Weg von der Idee bis zum Betrieb. Für feste Übergaben lohnt sich auch der Blick auf [Prozessautomatisierung](/loesungen/prozessautomatisierung).

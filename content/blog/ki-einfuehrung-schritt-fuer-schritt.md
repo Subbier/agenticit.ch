@@ -1,82 +1,97 @@
 ---
-title: "KI-Einführung Schritt für Schritt: Der 7-Phasen-Fahrplan für Schweizer KMU"
+title: "KI einführen: Ein klarer Start"
 slug: "ki-einfuehrung-schritt-fuer-schritt"
-description: "KI im Unternehmen einführen ohne Fehlstart: Der 7-Phasen-Fahrplan für Schweizer KMU – von Use-Case bis Skalierung, inkl. Checkliste und nDSG-Compliance."
+description: "KI im KMU einführen: Aufgabe auswählen, Team und Datenwege klären, Ergebnis prüfen und den Betrieb übergeben. Mit einem ausfüllbaren Projektstart-Plan."
 date: "2026-07-24"
+updated: "2026-10-17"
 category: "KI-Grundlagen"
-tags: ["ki einführung", "praxisleitfaden", "kmu", "ndsg"]
-keywords: ["ki einführung", "ki im unternehmen einführen", "ki automatisierung", "ki agenten", "ki agentur schweiz"]
-readingTime: 11
+tags: ["KI-Einführung", "KMU", "Projektstart", "Automatisierung"]
+keywords:
+  [
+    "ki einführung",
+    "ki im unternehmen einführen",
+    "ki einführung kmu",
+    "ki entwicklung",
+  ]
+readingTime: 5
+resource:
+  title: "Ihren ersten KI-Auftrag gemeinsam vorbereiten."
+  copy: "Halten Sie Ziel, Umfang, Zuständigkeiten und Abnahme im Projektstart-Plan fest. Offene Voraussetzungen bleiben sichtbar."
+  href: "/vorlagen/AgenticIT-Projektstart-Plan.txt"
+  label: "Projektstart-Plan speichern (.txt)"
+nextStep:
+  title: "Wo möchten Sie beginnen?"
+  copy: "Drei Fragen im Kundenreise-Check führen zu einem Ansatzpunkt und einem nutzbaren Plan. Eine Kontaktaufnahme bleibt Ihre Entscheidung."
+  href: "/kundenreise-check"
+  label: "Nächsten Schritt finden"
+sources:
+  - label: "NIST: Einsatzkontext und Anforderungen vor der Umsetzung klären"
+    url: "https://airc.nist.gov/airmf-resources/playbook/map/"
+  - label: "EDÖB: KI und Datenschutz"
+    url: "https://www.edoeb.admin.ch/de/ki-und-datenschutz"
 faq:
-  - q: "Wie lange dauert eine KI-Einführung im KMU?"
-    a: "Ein erster produktiver Use-Case ist typischerweise in 6–12 Wochen erreichbar. Die Skalierung auf mehrere Prozesse ist ein fortlaufender Weg, kein einmaliges Projekt."
-  - q: "Brauchen wir eigene Data Scientists?"
-    a: "Nein. Die meisten KMU-Use-Cases lassen sich mit bestehenden Plattformen und einer erfahrenen Umsetzungspartnerin realisieren. Wichtiger als ein eigenes ML-Team ist Prozessklarheit."
-  - q: "Was kostet der Einstieg?"
-    a: "Das hängt vom Use-Case ab. Sinnvoll ist ein klar umrissener Pilot mit fixem Rahmen statt einer offenen Grossinvestition. So bleibt das Risiko kalkulierbar."
-  - q: "Ist KI im Kundenkontakt in der Schweiz erlaubt?"
-    a: "Ja, unter Auflagen: KI-Agenten müssen als solche erkennbar sein (Kennzeichnung), und die Datenverarbeitung muss nDSG-konform erfolgen. Ein Mensch sollte bei kritischen Entscheiden eingebunden bleiben."
-sources: []
+  - q: "Womit beginnt eine KI-Einführung im KMU?"
+    a: "Mit einer konkreten Aufgabe aus dem Alltag und einem überprüfbaren Ergebnis. Beschreiben Sie den heutigen Ablauf, die beteiligten Personen und den gewünschten nächsten Schritt. Danach lässt sich beurteilen, ob vorhandene Funktionen, feste Regeln oder eine KI-Anwendung passen."
+  - q: "Wie lange dauert die Einführung?"
+    a: "Das hängt von Aufgabe, benötigten Anbindungen, Daten, Mitwirkung und Prüfkriterien ab. Eine belastbare Planung entsteht nach der Klärung dieser Voraussetzungen. Eine allgemeine Wochenzahl sagt noch nicht, wann Ihre Lösung einsatzbereit ist."
+  - q: "Müssen wir zuerst ein neues System kaufen?"
+    a: "Prüfen Sie zunächst, welche Aufgabe Ihre vorhandenen Tools bereits abdecken. Eine zusätzliche Anwendung ist sinnvoll, wenn sie einen geklärten Bedarf erfüllt und zum bestehenden Ablauf passt. Anbindungen und laufende Kosten gehören in die Entscheidung."
+  - q: "Wie behalten wir die Kontrolle?"
+    a: "Vereinbaren Sie erlaubte Aktionen, menschliche Freigaben, Prüffälle und eine zuständige Person für Ausnahmen. Bei AgenticIT stellen sich kundenorientierte Assistenten zu Beginn als KI vor. Ausgehende Sales-Nachrichten und geschäftliche Empfehlungen werden vor dem Versand menschlich freigegeben."
 ---
 
-Die meisten KI-Projekte scheitern nicht an der Technologie, sondern an der Reihenfolge. Dieser Fahrplan zeigt, wie Sie KI im Unternehmen strukturiert, messbar und nDSG-konform einführen – ohne teure Fehlstarts.
+> **KI im Unternehmen einzuführen bedeutet, eine konkrete Aufgabe mit geeigneten Tools, Daten und Verantwortlichen zu verbinden.** Beginnen Sie mit einem überprüfbaren Ergebnis. Ihr Team arbeitet von der Auswahl bis zur Übergabe mit.
 
-«Wir sollten jetzt auch etwas mit KI machen» – dieser Satz fällt 2026 in fast jeder Geschäftsleitungssitzung. Das Problem: Wer ohne Fahrplan startet, kauft Tools, bevor der Anwendungsfall klar ist, automatisiert Prozesse, die vorher hätten vereinfacht werden müssen, und verliert das Team unterwegs. Bei AgenticIT begleiten wir Schweizer KMU durch genau diese Einführung. Der folgende 7-Phasen-Fahrplan ist die verdichtete Essenz daraus.
+## Welche Aufgabe ist ein guter Anfang?
 
-## Warum die Reihenfolge über Erfolg entscheidet
+Beschreiben Sie eine wiederkehrende Situation: Eine Anfrage wird mehrfach weitergeleitet, ein Status muss in verschiedenen Systemen gesucht werden oder Gesprächsnotizen werden von Hand übertragen. Halten Sie fest, welche Arbeit heute anfällt und was sich daran ändern soll.
 
-KI ist kein Produkt, das man installiert, sondern eine Fähigkeit, die eine Organisation aufbaut. Unternehmen, die mit dem Werkzeug beginnen («Wir brauchen einen Chatbot»), lösen selten ein echtes Geschäftsproblem. Unternehmen, die mit dem Engpass beginnen («Unser Kundendienst schafft die Anfragen nicht mehr»), finden den passenden KI-Hebel fast von selbst. Der Fahrplan folgt deshalb dem Prinzip: **erst Problem, dann Prozess, dann Technologie**.
+Für eine erste Entscheidung helfen vier Fragen: Was löst den Vorgang aus? Welche Information wird benötigt? Wer prüft das Ergebnis? Woran erkennt diese Person, dass die Aufgabe richtig erledigt ist?
 
-## Der 7-Phasen-Fahrplan
+Das [NIST-Playbook empfiehlt, Einsatzkontext, Zweck und Anforderungen eines KI-Systems zu klären](https://airc.nist.gov/airmf-resources/playbook/map/). Die folgenden fünf Schritte sind unser eigenes Planungsmodell für ein erstes Vorhaben.
 
-### Phase 1 · Standortbestimmung & Ziele
+## Wie kommen wir von der Idee zum nutzbaren Ablauf?
 
-Bevor eine einzige Zeile Automatisierung entsteht, klären Sie: Wo verlieren wir heute Zeit, Umsatz oder Qualität? Sammeln Sie messbare Engpässe (z. B. «40 % der Support-Mails sind Standardfragen», «Angebotserstellung dauert 3 Tage»). Definieren Sie 2–3 konkrete, zahlenbasierte Ziele. Ohne Baseline lässt sich kein Erfolg belegen.
+### 1. Aufgabe und Ergebnis festhalten
 
-### Phase 2 · Use-Case-Priorisierung
+Wählen Sie mit den beteiligten Personen eine Aufgabe. Beschreiben Sie den heutigen Ablauf und einen beobachtbaren Zielzustand. Etwa: «Das Team erhält zu einer neuen Anfrage einen geprüften Themenvorschlag und sieht, wer übernimmt.»
 
-Bewerten Sie jeden Kandidaten nach zwei Achsen: **Wirkung** (Zeit-/Kostenersparnis, Umsatzpotenzial) und **Machbarkeit** (Datenverfügbarkeit, Prozessreife, Risiko). Starten Sie mit einem Use-Case oben rechts – hohe Wirkung, hohe Machbarkeit. Klassiker: Beantwortung wiederkehrender Kundenanfragen, Terminierung, E-Mail-Triage, Angebots-Vorbefüllung.
+**Ergebnis dieses Schritts:** eine verständliche Aufgabenbeschreibung mit zuständiger Rolle und Messpunkt.
 
-### Phase 3 · Daten & Compliance-Check
+### 2. Den passenden Lösungsweg wählen
 
-KI ist nur so gut wie ihre Datengrundlage. Prüfen Sie: Welche Daten liegen wo, in welcher Qualität, wer darf sie nutzen? Klären Sie **vor** dem Pilot die nDSG-/DSGVO-Grundlagen: Rechtsgrundlage der Verarbeitung, Datenverträge mit Anbietern, Speicherort (Schweiz/EU), Löschkonzept. Diese Phase verhindert die teuersten späteren Überraschungen.
+Prüfen Sie vorhandene Funktionen und feste Regeln. Wo Texte verstanden oder unterschiedliche Angaben eingeordnet werden müssen, kann KI eine Aufgabe vorbereiten. Welche Schritte sie übernimmt, hängt von Funktionen, Wissensquellen und Anbindungen ab.
 
-### Phase 4 · Pilot mit engem Rahmen
+**Ergebnis:** ein Sollablauf mit klar getrennten Schritten für Tool, Assistent und Team. Der Vergleich [eigener KI-Agent oder vorhandener Assistent](/blog/eigene-ki-agenten-vs-chatgpt) hilft bei dieser Auswahl.
 
-Bauen Sie eine kleine, klar abgegrenzte Lösung für **einen** Use-Case – etwa einen KI-Agenten, der die zehn häufigsten Support-Anfragen beantwortet. Wichtig: KI-Kennzeichnung von Anfang an sichtbar, und ein Mensch bleibt im Freigabe-Loop (Human-in-the-Loop). Der Pilot läuft 4–8 Wochen mit definierten Messgrössen.
+### 3. Rahmen, Daten und Zugriffe klären
 
-### Phase 5 · Messen & Lernen
+Vereinbaren Sie Leistungen, Mitwirkung, Kostenbestandteile und Abnahme. Halten Sie benötigte Systeme und konkrete Rechte fest. Für die Planung genügen erfundene Beispiele ohne Kundendossiers.
 
-Vergleichen Sie die Pilot-Ergebnisse mit der Baseline aus Phase 1. Bearbeitungszeit gesunken? Antwortqualität stabil? Wo greift der Mensch am häufigsten korrigierend ein? Diese Korrekturen sind Gold wert – sie zeigen genau, wo die KI nachgeschärft werden muss.
+Sind Personendaten betroffen, müssen Zweck, Anbieter, Datenwege, Aufbewahrung und Transparenz zum Einsatz passen. Der [EDÖB erläutert die Anwendung des Schweizer Datenschutzgesetzes beim KI-Einsatz](https://www.edoeb.admin.ch/de/ki-und-datenschutz). Eine Tool-Auswahl ersetzt diese Prüfung nicht.
 
-### Phase 6 · Team & Change Management
+**Ergebnis:** ein abgestimmter Auftrag und benannte offene Voraussetzungen. Passwörter gehören nicht in den Projektstart-Plan.
 
-Technik ist selten der Grund für Scheitern – fehlende Akzeptanz schon. Beziehen Sie die betroffenen Mitarbeitenden früh ein, positionieren Sie KI als Entlastung von Routinearbeit (nicht als Ersatz), und schaffen Sie klare Verantwortlichkeiten: Wer betreut den Agenten, wer prüft Grenzfälle, wer misst?
+### 4. Den vollständigen Vorgang prüfen
 
-### Phase 7 · Skalierung & nächster Use-Case
+Testen Sie mit freigegebenen Beispielen den normalen Ablauf, fehlende Angaben, wiederholte Eingänge und den Ausfall einer Verbindung. Prüfen Sie, ob die richtige Person übernehmen kann. Eine sichtbare Erfolgsmeldung allein belegt keinen Eingang im Zielsystem.
 
-Erst wenn Phase 1–6 belastbar sind, weiten Sie aus: mehr Anfragetypen, weitere Kanäle, angrenzende Prozesse. Jeder neue Use-Case durchläuft denselben Zyklus – nur schneller, weil Ihre Organisation die Fähigkeit nun besitzt.
+Für ausgehende Sales-Nachrichten und geschäftliche Empfehlungen muss die menschliche Freigabe vor der Aktion technisch berücksichtigt sein. Kundenorientierte Assistenten stellen sich bei AgenticIT zu Beginn als KI vor.
 
-> **AgenticIT-Prinzip:** Ein funktionierender, kleiner Use-Case schlägt zehn geplante. Wir bauen mit unseren Kundinnen und Kunden bewusst erst *eine* Sache, die messbar funktioniert – und skalieren dann.
+**Ergebnis:** tatsächliche Prüfergebnisse mit Nachweisen und offenen Korrekturen. Die [Prüffragen zu KI-Fehlern](/blog/haeufige-ki-fehler-vermeiden) helfen beim Durchgehen.
 
-## Vergleich: Werkzeug-getrieben vs. Problem-getrieben
+### 5. Übergabe und Betrieb vereinbaren
 
-| Aspekt | Werkzeug-getrieben (riskant) | Problem-getrieben (empfohlen) |
-| --- | --- | --- |
-| Startpunkt | «Wir kaufen Tool X» | «Wir lösen Engpass Y» |
-| Erfolgsmessung | unklar | klare Baseline & KPI |
-| Team-Akzeptanz | oft gering | hoch, weil Nutzen sichtbar |
-| Compliance | nachträglich | eingebaut ab Phase 3 |
+Die Personen, die den Ablauf nutzen, üben Bearbeitung, Prüfung und Übernahme. Klären Sie, wer Inhalte pflegt, Fehler bemerkt und bei Abwesenheit einspringt. Veränderungen an Funktionen oder Datenwegen müssen erneut beurteilt werden.
 
-## Checkliste: Ist Ihr KMU bereit für die KI-Einführung?
+**Ergebnis:** eine nutzbare Anleitung, zuständige Rollen und ein vereinbarter Betreuungsrahmen. Mehr zur [Einführung im Team](/blog/change-management-mit-ki).
 
-- Wir kennen unsere drei grössten operativen Engpässe in Zahlen.
-- Es gibt eine benannte verantwortliche Person für das KI-Projekt.
-- Wir wissen, welche Daten vorliegen und dürfen sie nutzen.
-- Die nDSG-Grundlagen (Speicherort, Verträge, Löschung) sind geklärt.
-- Wir haben einen Use-Case mit hoher Wirkung und hoher Machbarkeit.
-- KI-Kennzeichnung und Human-in-the-Loop sind für uns selbstverständlich.
+## Wie beurteilen wir, ob sich das Vorhaben lohnt?
 
-## Typische Stolpersteine
+Vergleichen Sie tatsächliche Bearbeitung und Qualität mit Ihrer Ausgangslage. Erfassen Sie auch Kontrolle, Korrekturen und laufende Pflege. Ein gelungener Einzelfall oder eine kurze Vorführung reicht für eine allgemeine Nutzenaussage nicht.
 
-**Zu breit starten.** Fünf Use-Cases parallel überfordern jede Organisation. **Prozess-Chaos automatisieren.** Ein schlechter Prozess wird durch KI nur schneller schlecht – erst vereinfachen. **Compliance nachziehen.** Wer den Datenschutz erst am Ende bedenkt, muss den Piloten oft neu bauen. **Team übergehen.** Ohne Einbindung entsteht Widerstand, der jedes Tool ausbremst.
+Der [Automatisierungs-Check](/automatisierungs-check) zeigt ein Szenario mit eigenen Zeitangaben. Für eine spätere Entscheidung ergänzen Sie echte Messungen sowie Einrichtung, Lizenzen und Betrieb.
+
+## Wie begleitet AgenticIT den Start?
+
+Wir verbinden Beratung, vorhandene Tools, [KI-Entwicklung](/loesungen/ki-entwicklung) und [Prozessautomatisierung](/loesungen/prozessautomatisierung) mit der Arbeit Ihres Teams. Umfang, Ergebnisse und Kosten werden für den Auftrag vereinbart. Unsere [Zusammenarbeit](/zusammenarbeit) zeigt den Weg bis zur Übergabe und Betreuung. Der Projektstart-Plan oben macht die Vorbereitung direkt nutzbar.
