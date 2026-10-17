@@ -6,7 +6,27 @@ import "./globals.css"
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google"
-import { GeistMono } from "geist/font/mono"
+import localFont from "next/font/local"
+
+// Keep the existing code font available, but load it only where it is used.
+const GeistMono = localFont({
+  src: "../node_modules/geist/dist/fonts/geist-mono/GeistMono-Variable.woff2",
+  variable: "--font-geist-mono",
+  adjustFontFallback: false,
+  fallback: [
+    "ui-monospace",
+    "SFMono-Regular",
+    "Roboto Mono",
+    "Menlo",
+    "Monaco",
+    "Liberation Mono",
+    "DejaVu Sans Mono",
+    "Courier New",
+    "monospace",
+  ],
+  weight: "100 900",
+  preload: false,
+})
 
 const inter = Inter({
   subsets: ["latin"],
