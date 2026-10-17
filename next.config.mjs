@@ -77,6 +77,8 @@ const securityHeaders = [
 ]
 
 const nextConfig = {
+  // Split shared route styles by their actual usage instead of merging unrelated pages.
+  experimental: { cssChunking: "graph" },
   // ESM-only Pakete (ElevenLabs Voice-SDK) müssen von Next transpiliert werden.
   transpilePackages: ["@elevenlabs/react", "@elevenlabs/client"],
   // Diese Node-Bibliotheken NICHT bundlen – sonst gehen interne Dateien verloren

@@ -1,8 +1,69 @@
 import assert from "node:assert/strict"
 import test from "node:test"
 import { readFileSync } from "node:fs"
+import { gzipSync } from "node:zlib"
+import sitemap from "../app/sitemap"
 
 const baseUrl = process.env.SITE_TEST_BASE_URL ?? "http://127.0.0.1:3105"
+
+test("the homepage keeps its initial styles within the first-load budget", async () => {
+  const html = await (await fetch(baseUrl)).text()
+  const styles = [...html.matchAll(/<link\b[^>]+>/g)]
+    .map(([tag]) => tag)
+    .filter((tag) => tag.includes('rel="stylesheet"'))
+  assert.ok(styles.length > 0, "The homepage still provides its styles")
+  const files = await Promise.all(
+    styles.map(async (tag) => {
+      const path = tag.match(/href="([^"]+)"/)?.[1]
+      assert.ok(path)
+      const response = await fetch(new URL(path, baseUrl))
+      assert.equal(response.status, 200)
+      const css = Buffer.from(await response.arrayBuffer())
+      return { raw: css.length, gzip: gzipSync(css).length }
+    }),
+  )
+  const raw = files.reduce((total, file) => total + file.raw, 0)
+  const gzip = files.reduce((total, file) => total + file.gzip, 0)
+  assert.ok(
+    raw < 330000,
+    `${raw} initial CSS bytes exceeds the 330000-byte budget`,
+  )
+  assert.ok(
+    gzip < 50000,
+    `${gzip} gzip CSS bytes exceeds the 50000-byte budget`,
+  )
+})
+
+test("every canonical page delivers its referenced stylesheets", async () => {
+  const styles = new Set<string>()
+  const paths = sitemap().map((entry) => new URL(entry.url).pathname)
+  for (let start = 0; start < paths.length; start += 8) {
+    await Promise.all(
+      paths.slice(start, start + 8).map(async (path) => {
+        const response = await fetch(new URL(path, baseUrl))
+        assert.equal(response.status, 200, path)
+        const html = await response.text()
+        const tags = [...html.matchAll(/<link\b[^>]+>/g)]
+          .map(([tag]) => tag)
+          .filter((tag) => tag.includes('rel="stylesheet"'))
+        assert.ok(tags.length > 0, `${path} has no stylesheet`)
+        for (const tag of tags) {
+          const href = tag.match(/href="([^"]+)"/)?.[1]
+          assert.ok(href)
+          const url = new URL(href, baseUrl)
+          assert.equal(url.origin, new URL(baseUrl).origin)
+          styles.add(url.href)
+        }
+      }),
+    )
+  }
+  for (const url of styles) {
+    const response = await fetch(url)
+    assert.equal(response.status, 200, url)
+    assert.match(response.headers.get("content-type") ?? "", /^text\/css/)
+    assert.ok((await response.text()).length > 0, url)
+  }
+})
 
 test("the homepage only preloads its three actively used font families", async () => {
   const html = await (await fetch(baseUrl)).text()
