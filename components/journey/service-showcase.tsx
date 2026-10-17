@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Megaphone, Pause, Play, TrendingUp, Workflow } from "lucide-react"
 import styles from "./journey.module.css"
 
@@ -34,13 +34,23 @@ export function ServiceShowcase() {
   const [isHovered, setIsHovered] = useState(false)
   const [reducedMotion, setReducedMotion] = useState(false)
   const [isVisible, setIsVisible] = useState(true)
+  const playbackRef = useRef<HTMLButtonElement>(null)
+  const activeAreaRef = useRef<HTMLButtonElement>(null)
+  const restoreAreaFocus = useRef(false)
   const area = areas[active]
   const Icon = area.icon
   const isAdvancing = isPlaying && !isHovered && !reducedMotion && isVisible
 
   useEffect(() => {
     const motion = window.matchMedia("(prefers-reduced-motion: reduce)")
-    const updateMotion = () => setReducedMotion(motion.matches)
+    const updateMotion = () => {
+      restoreAreaFocus.current = Boolean(
+        motion.matches &&
+          playbackRef.current &&
+          document.activeElement === playbackRef.current,
+      )
+      setReducedMotion(motion.matches)
+    }
     const updateVisibility = () => setIsVisible(!document.hidden)
     updateMotion()
     updateVisibility()
@@ -51,6 +61,12 @@ export function ServiceShowcase() {
       document.removeEventListener("visibilitychange", updateVisibility)
     }
   }, [])
+
+  useEffect(() => {
+    if (!reducedMotion || !restoreAreaFocus.current) return
+    restoreAreaFocus.current = false
+    activeAreaRef.current?.focus({ preventScroll: true })
+  }, [reducedMotion])
 
   useEffect(() => {
     if (!isAdvancing) return
@@ -67,6 +83,9 @@ export function ServiceShowcase() {
       aria-roledescription="Karussell"
       aria-label="Marketing, Sales und Digitalisierung mit KI"
       data-running={isAdvancing}
+      onFocusCapture={(event) => {
+        if (event.target.matches(":focus-visible")) setIsPlaying(false)
+      }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -76,6 +95,7 @@ export function ServiceShowcase() {
         </span>
         {!reducedMotion ? (
           <button
+            ref={playbackRef}
             type="button"
             className={styles.showcasePlayback}
             aria-label={
@@ -114,10 +134,10 @@ export function ServiceShowcase() {
         className={styles.showcaseNav}
         role="group"
         aria-label="Bereich auswählen"
-        onFocusCapture={() => setIsPlaying(false)}
       >
         {areas.map((item, index) => (
           <button
+            ref={active === index ? activeAreaRef : undefined}
             type="button"
             key={item.id}
             aria-label={`${item.title} anzeigen`}
