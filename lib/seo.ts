@@ -292,6 +292,7 @@ export const INDEXABLE_ROUTES = [
   "/automatisierungs-check",
   "/marketing-setup-check",
   "/anfragen-check",
+  "/crm-ablauf-check",
   "/werkzeuge",
   "/pakete",
   "/zusammenarbeit",

@@ -17,6 +17,7 @@ import styles from "./journey.module.css"
 import type { AutomationInput } from "@/lib/automation"
 import type { MarketingSetupInput } from "@/lib/marketing-setup"
 import type { InquiryInput } from "@/lib/inquiry-check"
+import type { CrmInput } from "@/lib/crm-check"
 import {
   createCheckMeasurement,
   trackInquiryAcknowledgement,
@@ -133,30 +134,42 @@ export function JourneyContact({
   automation,
   marketingSetup,
   inquiryCheck,
+  crmCheck,
 }:
   | {
       answers: JourneyAnswers
       automation?: never
       marketingSetup?: never
       inquiryCheck?: never
+      crmCheck?: never
     }
   | {
       automation: AutomationInput
       answers?: never
       marketingSetup?: never
       inquiryCheck?: never
+      crmCheck?: never
     }
   | {
       marketingSetup: MarketingSetupInput
       answers?: never
       automation?: never
       inquiryCheck?: never
+      crmCheck?: never
     }
   | {
       inquiryCheck: InquiryInput
+      crmCheck?: never
       answers?: never
       automation?: never
       marketingSetup?: never
+    }
+  | {
+      crmCheck: CrmInput
+      answers?: never
+      automation?: never
+      marketingSetup?: never
+      inquiryCheck?: never
     }) {
   const [contactMethod, setContactMethod] = useState("email")
   const [status, setStatus] = useState<
@@ -174,13 +187,15 @@ export function JourneyContact({
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
-          source: inquiryCheck
-            ? "anfragen-check"
-            : marketingSetup
-              ? "marketing-setup-check"
-              : automation
-                ? "automation-check"
-                : "journey-check",
+          source: crmCheck
+            ? "crm-ablauf-check"
+            : inquiryCheck
+              ? "anfragen-check"
+              : marketingSetup
+                ? "marketing-setup-check"
+                : automation
+                  ? "automation-check"
+                  : "journey-check",
           name: form.get("name"),
           email: form.get("email"),
           company: form.get("company"),
@@ -190,6 +205,7 @@ export function JourneyContact({
           automation,
           marketingSetup,
           inquiryCheck,
+          crmCheck,
           consent: form.get("consent") === "on",
           company_website: form.get("company_website") || "",
         }),
@@ -201,13 +217,15 @@ export function JourneyContact({
             "Die Anfrage konnte nicht übermittelt werden. Bitte versuchen Sie es erneut.",
         )
       trackInquiryAcknowledgement(
-        inquiryCheck
-          ? "inquiry_flow"
-          : marketingSetup
-            ? "marketing_setup"
-            : automation
-              ? "automation"
-              : "customer_journey",
+        crmCheck
+          ? "crm_flow"
+          : inquiryCheck
+            ? "inquiry_flow"
+            : marketingSetup
+              ? "marketing_setup"
+              : automation
+                ? "automation"
+                : "customer_journey",
         response.ok,
         data,
         form.get("company_website"),

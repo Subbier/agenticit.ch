@@ -1,6 +1,6 @@
-# Messung der vier Checks
+# Messung der Checks
 
-Stand: 17.10.2026. Gilt für Kundenreise-, Automatisierungs-, Marketing-Setup- und Anfragen-Check.
+Stand: 17.10.2026. Gilt für Kundenreise-, Automatisierungs-, Marketing-Setup-, Anfragen- und CRM-Ablauf-Check.
 
 ## Was die Signale bedeuten
 
@@ -20,7 +20,7 @@ Start, Ergebnis und Download werden pro geöffnetem Check höchstens einmal vers
 - Nur mit gültiger Statistik-Zustimmung zum Zeitpunkt des jeweiligen Ereignisses. Zuvor abgelehnte Ereignisse werden nicht nachgesendet.
 - Nur HTTPS auf `agenticit.ch` oder `www.agenticit.ch`. Keine eigenen Check-Signale von localhost oder Vercel-Vorschauen.
 - Festes Google-Ziel: vorhandenes `G-3NGDK2RM3B`. Der Google-Tag startet im GTM seit Version 6 erst mit Statistik-Zustimmung.
-- Zusätzlicher Parameter `check_kind`: nur `customer_journey`, `automation`, `marketing_setup` oder `inquiry_flow`.
+- Zusätzlicher Parameter `check_kind`: nur `customer_journey`, `automation`, `marketing_setup`, `inquiry_flow` oder `crm_flow`.
 - Eigene Ereignisse übergeben eine feste saubere Seitenadresse ohne Query und einen leeren Referrer. Keine Antworten, Branchen, Rechenwerte, Namen, E-Mails, Telefonnummern oder CRM-Kennungen.
 - Google kann bei erteilter Zustimmung weiterhin seine üblichen pseudonymen Messdaten erheben. Diese Änderung ersetzt keinen vollständigen Audit der automatisch erfassten Google-, Marketing- oder Vercel-Ereignisse.
 - Blockierte Messung darf Check, Download und Kontaktanfrage nicht unterbrechen. Adblocker und fehlende Zustimmung machen diese Zahlen unvollständig.

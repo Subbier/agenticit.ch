@@ -267,6 +267,76 @@ test("lead endpoint validates before forwarding and handles delivery failure hon
       },
     )
     await suite.test(
+      "CRM check forwards a server-derived worksheet once and rejects invalid or mixed context",
+      async () => {
+        const lead = {
+          ...valid,
+          source: "crm-ablauf-check",
+          journey: undefined,
+          crmCheck: {
+            version: 1,
+            answers: {
+              fields: "ready",
+              transfer: "open",
+              duplicates: "unknown",
+              ownership: "partial",
+              recovery: "open",
+            },
+          },
+          message: "forged plan",
+          goal: "forged goal",
+        }
+        const before = calls
+        const response = await POST(request(lead, "192.0.2.40"))
+        assert.equal(response.status, 200)
+        assert.equal(calls, before + 1)
+        assert.ok(
+          String(forwarded.message).includes("AGENTICIT · IHR CRM-ABLAUFPLAN"),
+        )
+        assert.ok(String(forwarded.message).includes("FELDZUORDNUNG"))
+        assert.ok(!String(forwarded.message).includes("forged plan"))
+        assert.notEqual(forwarded.goal, "forged goal")
+        assert.equal(forwarded.marketingConsent, false)
+        assert.equal(
+          forwarded.followUpTask,
+          "CRM-Ablauf-Check persönlich prüfen",
+        )
+        assert.ok(
+          (forwarded.tags as string[]).includes("quelle:crm-ablauf-check"),
+        )
+        for (const [index, change] of [
+          { crmCheck: undefined },
+          { crmCheck: { version: 1, answers: {} } },
+          { consent: false },
+          { company: "" },
+          { source: "journey-check" },
+          { journey: valid.journey },
+          {
+            marketingSetup: {
+              version: 1,
+              answers: {
+                offer: "ready",
+                website: "ready",
+                accounts: "ready",
+                measurement: "ready",
+                handoff: "ready",
+              },
+            },
+          },
+        ].entries()) {
+          assert.equal(
+            (
+              await POST(
+                request({ ...lead, ...change }, `192.0.2.${41 + index}`),
+              )
+            ).status,
+            400,
+          )
+          assert.equal(calls, before + 1)
+        }
+      },
+    )
+    await suite.test(
       "failed forwarding is not reported as success",
       async () => {
         globalThis.fetch = async () => new Response("", { status: 503 })

@@ -1880,6 +1880,38 @@
 .toolArchive {
   padding-top: 20px;
 }
+.crmEntry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 20px;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: #f4f8ef;
+}
+.crmEntry h2 {
+  font-size: 24px;
+  margin: 0 0 10px;
+}
+.crmEntry p {
+  max-width: 600px;
+  margin: 0;
+  font-size: 15px;
+  color: var(--muted);
+}
+.crmEntry a {
+  flex-shrink: 0;
+}
+@media (max-width: 767px) {
+  .crmEntry {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 18px;
+    padding: 20px;
+  }
+}
 .toolArchive p {
   font-size: 14px;
   color: var(--muted);

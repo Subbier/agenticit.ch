@@ -2,6 +2,25 @@
   max-width: 880px;
   padding-bottom: 64px;
 }
+.planPreview {
+  margin-top: 24px;
+  border-top: 1px solid #c4cfc0;
+  padding-top: 12px;
+}
+.planPreview summary {
+  cursor: pointer;
+  padding-block: 12px;
+  font-size: 15px;
+  font-weight: 650;
+}
+.planPreview pre {
+  margin: 16px 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.7;
+}
 .panel {
   overflow-wrap: anywhere;
 }

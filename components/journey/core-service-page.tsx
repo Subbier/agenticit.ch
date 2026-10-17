@@ -188,6 +188,11 @@ export function CoreServicePage({ service }: { service: CoreService }) {
                 {guide.label}
               </Link>
             ) : null}
+            {service.slug === "revops-umsatzgenerierung" ? (
+              <Link className={styles.guideLink} href="/crm-ablauf-check">
+                Daten und Übergaben prüfen: Ihr CRM-Ablauf-Check
+              </Link>
+            ) : null}
           </div>
           <Link className={shared.button} href={service.checkHref}>
             {service.checkLabel} <ArrowUpRight size={18} aria-hidden="true" />

@@ -48,6 +48,7 @@ export function ChoiceCheck<Input>({
   resultNote,
   introNote,
   renderContact,
+  planPreviewLabel,
 }: {
   label: string
   kind: CheckKind
@@ -59,6 +60,7 @@ export function ChoiceCheck<Input>({
   resultNote: string
   introNote: string
   renderContact: (input: Input) => ReactNode
+  planPreviewLabel?: string
 }) {
   const [answers, setAnswers] = useState<Partial<Record<string, ChoiceStatus>>>(
     {},
@@ -171,6 +173,12 @@ export function ChoiceCheck<Input>({
               Antworten ändern
             </button>
           </div>
+          {planPreviewLabel ? (
+            <details className={ui.planPreview}>
+              <summary>{planPreviewLabel}</summary>
+              <pre>{plan}</pre>
+            </details>
+          ) : null}
           <div className={ui.consultation}>
             <div>
               <h3>Die nächsten Schritte gemeinsam angehen?</h3>

@@ -1,13 +1,15 @@
 import { JourneyShell } from "@/components/journey/shell"
 import { ChallengeCards, JourneyCta } from "@/components/journey/sections"
 import { BranchenRadar } from "@/components/site/branchen-radar"
+import Link from "next/link"
+import { ArrowUpRight } from "lucide-react"
 import { createPageMetadata } from "@/lib/seo"
 import styles from "@/components/journey/journey.module.css"
 
 export const metadata = createPageMetadata({
   title: "Kostenlose Checks und Vorlagen für Ihre Kundenreise",
   description:
-    "Marketing-Setup-Check, Anfragen-Check, Automatisierungs-Check und Vorlagen für Ihre Kundenreise. Finden Sie eine direkt nutzbare Hilfe für Ihre Herausforderung.",
+    "Checks für Marketing, Anfragen, CRM und Automatisierung. Finden Sie konkrete nächste Schritte und direkt nutzbare Vorlagen für Ihr Team.",
   path: "/werkzeuge",
 })
 
@@ -36,6 +38,19 @@ export default function Page() {
             aria-label="Checks und Vorlagen"
           >
             <ChallengeCards />
+            <div className={styles.crmEntry}>
+              <div>
+                <h2>Ihre Daten. Ein klarer Ablauf.</h2>
+                <p>
+                  Weniger doppelt erfassen, sauber übergeben. Fünf Fragen zu
+                  Ihrem CRM-Ablauf – mit einer ausfüllbaren Vorlage für Ihr
+                  Team.
+                </p>
+              </div>
+              <Link className={styles.secondary} href="/crm-ablauf-check">
+                CRM-Ablauf prüfen <ArrowUpRight size={17} aria-hidden="true" />
+              </Link>
+            </div>
             <JourneyCta />
           </section>
           <div className={styles.toolArchive}>

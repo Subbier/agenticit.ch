@@ -6,6 +6,7 @@ import {
   marketingSetupSchema,
 } from "./marketing-setup"
 import { buildInquiryPlan, inquirySchema } from "./inquiry-check"
+import { buildCrmPlan, crmSchema } from "./crm-check"
 
 const optionalText = (max = 500) =>
   z.preprocess(
@@ -64,6 +65,7 @@ export const leadSchema = z
       "automation-check",
       "marketing-setup-check",
       "anfragen-check",
+      "crm-ablauf-check",
     ]),
     name: z.string().trim().min(2).max(120),
     email: z.string().trim().email().max(180),
@@ -100,8 +102,29 @@ export const leadSchema = z
     automation: automationSchema.optional(),
     marketingSetup: marketingSetupSchema.optional(),
     inquiryCheck: inquirySchema.optional(),
+    crmCheck: crmSchema.optional(),
   })
   .superRefine((data, ctx) => {
+    if (data.crmCheck && data.source !== "crm-ablauf-check")
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["crmCheck"],
+        message: "Diese Antworten gehören zum CRM-Ablauf-Check.",
+      })
+    if (
+      data.source === "crm-ablauf-check" &&
+      (!data.crmCheck ||
+        data.journey ||
+        data.automation ||
+        data.marketingSetup ||
+        data.inquiryCheck)
+    )
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["crmCheck"],
+        message:
+          "Bitte nur die vollständigen Antworten des CRM-Ablauf-Checks übermitteln.",
+      })
     if (data.marketingSetup && data.source !== "marketing-setup-check")
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
@@ -151,7 +174,8 @@ export const leadSchema = z
       data.source !== "journey-check" &&
       data.source !== "automation-check" &&
       data.source !== "marketing-setup-check" &&
-      data.source !== "anfragen-check"
+      data.source !== "anfragen-check" &&
+      data.source !== "crm-ablauf-check"
     )
       return
     if (data.source === "journey-check" && !data.journey)
@@ -205,6 +229,10 @@ export function prepareLeadPayload(
     lead.source === "anfragen-check" && lead.inquiryCheck
       ? buildInquiryPlan(lead.inquiryCheck)
       : null
+  const crmPlan =
+    lead.source === "crm-ablauf-check" && lead.crmCheck
+      ? buildCrmPlan(lead.crmCheck)
+      : null
   return {
     ...lead,
     ...(plan
@@ -239,7 +267,15 @@ export function prepareLeadPayload(
                 contactMethod: lead.contactMethod ?? "email",
                 marketingConsent: false,
               }
-            : {}),
+            : crmPlan
+              ? {
+                  message: crmPlan,
+                  challenge: "admin",
+                  goal: "CRM-Daten und Übergaben prüfen",
+                  contactMethod: lead.contactMethod ?? "email",
+                  marketingConsent: false,
+                }
+              : {}),
     crm: "zoho",
     tags: [
       lead.industry ? `branche:${lead.industry}` : null,
@@ -270,7 +306,13 @@ export function prepareLeadPayload(
                   "service:sales",
                   "herausforderung:conversion",
                 ]
-              : []),
+              : crmPlan
+                ? [
+                    "quelle:crm-ablauf-check",
+                    "service:sales",
+                    "herausforderung:admin",
+                  ]
+                : []),
     ].filter((tag): tag is string => Boolean(tag)),
     followUpTask: plan
       ? "Kundenreise-Check persönlich prüfen"
@@ -280,7 +322,9 @@ export function prepareLeadPayload(
           ? "Marketing-Setup-Check persönlich prüfen"
           : inquiryPlan
             ? "Anfragen-Check persönlich prüfen"
-            : "Rückruf",
+            : crmPlan
+              ? "CRM-Ablauf-Check persönlich prüfen"
+              : "Rückruf",
     submittedAt,
     userAgent,
   }

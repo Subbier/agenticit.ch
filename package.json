@@ -17,6 +17,7 @@
     "test:guides": "node --import tsx --test lib/blog-guides.test.ts",
     "test:industry": "node --import tsx --test lib/industry-focus.test.ts",
     "test:inquiry": "node --import tsx --test lib/inquiry-check.test.ts lib/inquiry-check-page.test.ts",
+    "test:crm": "node --import tsx --test lib/crm-check.test.ts lib/crm-check-page.test.ts",
     "test:measurement": "node --import tsx --test lib/check-measurement.test.ts",
     "test:marketing": "node --import tsx --test lib/marketing-setup.test.ts lib/marketing-setup-page.test.ts",
     "test:consent": "node --import tsx --test lib/consent.test.ts",

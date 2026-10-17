@@ -19,6 +19,7 @@ const HIDDEN_PATHS = [
   "/kktermin",
   "/beste-variante",
   "/anfragen-check",
+  "/crm-ablauf-check",
   "/marketing-setup-check",
   "/automatisierungs-check",
   "/kundenreise-check",
