@@ -19,7 +19,11 @@ export function CompanyVideo({ standalone = false }: { standalone?: boolean }) {
 
     setPlaybackError(false)
     player.focus()
-    void player.play().catch(() => setPlaybackError(true))
+    void player.play().catch((error: unknown) => {
+      // A pause while the file is loading cancels play; it is not a media failure.
+      if (error instanceof DOMException && error.name === "AbortError") return
+      setPlaybackError(true)
+    })
   }
 
   return (
@@ -54,7 +58,10 @@ export function CompanyVideo({ standalone = false }: { standalone?: boolean }) {
           height={1080}
           tabIndex={0}
           aria-label="AgenticIT: Neue Kunden, digitale Abläufe, ein Partner"
-          onPlay={() => setHasStarted(true)}
+          onPlay={() => {
+            setHasStarted(true)
+            setPlaybackError(false)
+          }}
         >
           <source src={companyVideo.src} type="video/mp4" />
           <track
