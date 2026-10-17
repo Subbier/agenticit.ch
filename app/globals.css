@@ -6,6 +6,39 @@
 @source "../lib/**/*.{js,ts,jsx,tsx}";
 @source "../hooks/**/*.{js,ts,jsx,tsx}";
 
+@source not "../lib/**/*.test.ts";
+
+/* Unused legacy components stay in Git. The build guard prevents silently
+   reactivating any of them without restoring their Tailwind source. */
+@source not "../components/agenticit-wordmark.tsx";
+@source not "../components/ai-team-dealership-section.tsx";
+@source not "../components/ai-team-section.tsx";
+@source not "../components/Aurora.tsx";
+@source not "../components/chat-message.tsx";
+@source not "../components/cta-section.tsx";
+@source not "../components/dealership-hero-header.tsx";
+@source not "../components/features-section.tsx";
+@source not "../components/footer.tsx";
+@source not "../components/glassmorphism-nav.tsx";
+@source not "../components/GradualBlur.tsx";
+@source not "../components/hero-section.tsx";
+@source not "../components/instagram-service-section.tsx";
+@source not "../components/navigation-transition.tsx";
+@source not "../components/omnichannel-section.tsx";
+@source not "../components/page-transition.tsx";
+@source not "../components/phone-mockup.tsx";
+@source not "../components/problem-solution-comparison.tsx";
+@source not "../components/problem-solution-section.tsx";
+@source not "../components/roi-calculator-section.tsx";
+@source not "../components/RotatingText.tsx";
+@source not "../components/split-screen-before-after.tsx";
+@source not "../components/stats-column.tsx";
+@source not "../components/testimonials-section.tsx";
+@source not "../components/theme-provider.tsx";
+@source not "../components/tyre-kickers-section.tsx";
+@source not "../components/whatsapp-button.tsx";
+@source not "../components/whatsapp-demo-section.tsx";
+
 @custom-variant dark (&:is(.dark *));
 
 :root {
