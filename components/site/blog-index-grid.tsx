@@ -54,9 +54,10 @@ function PostCard({
       </p>
       <div className="mt-5 flex items-center justify-between border-t border-[#dce3db] pt-4">
         <span className="font-[family-name:var(--font-carbon-text)] text-[12px] font-medium text-[#6B7480]">
-          {formatDate(post.date)} · {post.readingTime} Min.
+          {post.updated && post.updated !== post.date ? "Aktualisiert " : ""}
+          {formatDate(post.updated ?? post.date)} · {post.readingTime} Min.
         </span>
-        <span className="font-[family-name:var(--font-carbon-text)] text-[13px] font-semibold text-[#1F9A5E]">
+        <span className="font-[family-name:var(--font-carbon-text)] text-[13px] font-semibold text-[#4d7c36]">
           Lesen →
         </span>
       </div>
@@ -94,7 +95,7 @@ export function BlogIndexGrid({
               role="tab"
               aria-selected={isActive}
               onClick={() => setActive(c)}
-              className={`rounded-full border px-4 py-2 font-[family-name:var(--font-carbon-text)] text-[13px] font-semibold transition ${
+              className={`min-h-11 rounded-full border px-4 py-2 font-[family-name:var(--font-carbon-text)] text-[13px] font-semibold transition ${
                 isActive
                   ? "border-[#8fe05a] bg-[#8fe05a] text-[#18320d]"
                   : "border-[#dce3db] bg-white text-[#647068] hover:border-[#202522] hover:text-[#202522]"

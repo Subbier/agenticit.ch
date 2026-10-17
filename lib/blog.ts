@@ -12,12 +12,19 @@ import { marked } from "marked"
 
 export type BlogFaq = { q: string; a: string }
 export type BlogSource = { label: string; url: string }
+export type BlogAction = {
+  title: string
+  copy: string
+  href: string
+  label: string
+}
 
 export type BlogPostMeta = {
   slug: string
   title: string
   description: string
   date: string
+  updated?: string
   category: string
   tags: string[]
   keywords: string[]
@@ -28,6 +35,8 @@ export type BlogPostMeta = {
 export type BlogPost = BlogPostMeta & {
   faq: BlogFaq[]
   sources: BlogSource[]
+  resource?: BlogAction
+  nextStep?: BlogAction
   /** Gerenderter Artikel-Body (vertrauenswürdiger, eigener Content). */
   html: string
 }
@@ -36,6 +45,30 @@ const BLOG_DIR = path.join(process.cwd(), "content", "blog")
 
 marked.setOptions({ gfm: true, breaks: false })
 
+export function parseBlogAction(value: unknown): BlogAction | undefined {
+  if (!value || typeof value !== "object") return undefined
+  const data = value as Record<string, unknown>
+  if (
+    !["title", "copy", "href", "label"].every(
+      (key) => typeof data[key] === "string" && String(data[key]).trim(),
+    )
+  )
+    return undefined
+  const action = data as BlogAction
+  if (
+    !action.href.startsWith("/") ||
+    action.href.startsWith("//") ||
+    /[\u0000-\u0020\u007f\\]/.test(action.href)
+  )
+    return undefined
+  return {
+    title: action.title,
+    copy: action.copy,
+    href: action.href,
+    label: action.label,
+  }
+}
+
 function toPost(file: string): BlogPost | null {
   const raw = fs.readFileSync(path.join(BLOG_DIR, file), "utf8")
   const { data, content } = matter(raw)
@@ -43,13 +76,19 @@ function toPost(file: string): BlogPost | null {
 
   const faq: BlogFaq[] = Array.isArray(data.faq)
     ? data.faq
-        .map((f: { q?: string; a?: string }) => ({ q: String(f.q ?? ""), a: String(f.a ?? "") }))
+        .map((f: { q?: string; a?: string }) => ({
+          q: String(f.q ?? ""),
+          a: String(f.a ?? ""),
+        }))
         .filter((f: BlogFaq) => f.q && f.a)
     : []
 
   const sources: BlogSource[] = Array.isArray(data.sources)
     ? data.sources
-        .map((s: { label?: string; url?: string }) => ({ label: String(s.label ?? ""), url: String(s.url ?? "") }))
+        .map((s: { label?: string; url?: string }) => ({
+          label: String(s.label ?? ""),
+          url: String(s.url ?? ""),
+        }))
         .filter((s: BlogSource) => s.label && s.url)
     : []
 
@@ -58,6 +97,7 @@ function toPost(file: string): BlogPost | null {
     title: String(data.title),
     description: String(data.description ?? ""),
     date: String(data.date ?? "2026-07-24"),
+    updated: typeof data.updated === "string" ? data.updated : undefined,
     category: String(data.category ?? "KI-Grundlagen"),
     tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
     keywords: Array.isArray(data.keywords) ? data.keywords.map(String) : [],
@@ -65,6 +105,8 @@ function toPost(file: string): BlogPost | null {
     pillar: data.pillar === true,
     faq,
     sources,
+    resource: parseBlogAction(data.resource),
+    nextStep: parseBlogAction(data.nextStep),
     html: marked.parse(content, { async: false }) as string,
   }
 }
@@ -107,4 +149,5 @@ export const BLOG_CATEGORIES = [
   "Vertrieb & Leads",
   "Recht & Sicherheit",
   "KI-Grundlagen",
+  "Webdesign & Marketing",
 ] as const

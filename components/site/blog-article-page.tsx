@@ -4,6 +4,7 @@ import design from "@/components/journey/content.module.css"
 // heller Artikel-Body (Typografie in blog-article.css), FAQ-Sektion,
 // KI-Transparenzhinweis, verwandte Artikel und der site-weite CTA-Baustein.
 import Link from "next/link"
+import { ArrowUpRight, Download } from "lucide-react"
 import { notFound } from "next/navigation"
 import { getPost, getRelatedPosts, type BlogPost } from "@/lib/blog"
 import { Reveal } from "@/components/site/reveal"
@@ -52,7 +53,8 @@ export function BlogArticlePage({ slug }: { slug: string }) {
       description: post.description,
       path: `/blog/${post.slug}`,
       datePublished: post.date,
-      author: "AgenticIT Redaktion",
+      dateModified: post.updated,
+      author: "AgenticIT GmbH",
     }),
     breadcrumbJsonLd([
       { name: "Start", path: "/" },
@@ -104,11 +106,39 @@ export function BlogArticlePage({ slug }: { slug: string }) {
             {post.description}
           </p>
           <p className="mt-6 font-[family-name:var(--font-carbon-text)] text-[13px] font-medium text-[#6B7480]">
-            {formatDate(post.date)} · {post.readingTime} Min. Lesezeit ·
-            AgenticIT Redaktion
+            <time dateTime={post.date}>{formatDate(post.date)}</time>
+            {post.updated && post.updated !== post.date ? (
+              <>
+                {" "}
+                · Aktualisiert{" "}
+                <time dateTime={post.updated}>{formatDate(post.updated)}</time>
+              </>
+            ) : null}
+            {" · "}
+            {post.readingTime} Min. Lesezeit · AgenticIT GmbH
           </p>
         </div>
       </section>
+
+      {post.resource ? (
+        <aside
+          className="blog-resource"
+          aria-labelledby="article-resource-title"
+        >
+          <div>
+            <span>Direkt zum Mitnehmen</span>
+            <h2 id="article-resource-title">{post.resource.title}</h2>
+            <p>{post.resource.copy}</p>
+          </div>
+          <a
+            href={post.resource.href}
+            download={post.resource.href.split("/").pop()}
+          >
+            {post.resource.label}
+            <Download size={17} aria-hidden="true" />
+          </a>
+        </aside>
+      ) : null}
 
       {/* ARTIKEL */}
       <section className="bg-white px-5 py-12 sm:px-6 sm:py-16">
@@ -144,8 +174,8 @@ export function BlogArticlePage({ slug }: { slug: string }) {
           ) : null}
 
           <p className="mt-10 border-t border-[#dce3db] pt-5 font-[family-name:var(--font-carbon-text)] text-[12.5px] leading-relaxed text-[#6B7480]">
-            Transparenz: Dieser Beitrag wurde KI-gestützt erstellt und von der
-            AgenticIT-Redaktion geprüft (Human-in-the-Loop). Fragen dazu?{" "}
+            Herausgeber: AgenticIT GmbH. Fragen zum Beitrag oder zu Ihrem
+            konkreten Ablauf?{" "}
             <Link
               href="/kontakt"
               className="font-semibold text-[#4d7c36] underline underline-offset-2"
@@ -209,29 +239,43 @@ export function BlogArticlePage({ slug }: { slug: string }) {
         </section>
       ) : null}
 
-      {/* CTA mit Lead-Formular */}
-      <section
-        id="kontakt"
-        className="scroll-mt-20 bg-[#f5f7f2] px-5 py-16 sm:px-6 sm:py-20"
-      >
-        <Reveal className="mx-auto flex max-w-[640px] flex-col items-center text-center">
-          <span className="font-[family-name:var(--font-mono-signal)] text-[11px] font-semibold uppercase tracking-[0.22em] text-[#4d7c36]">
-            Unverbindlich · Persönlich
-          </span>
-          <h2 className="mt-4 font-[family-name:var(--font-display)] text-[clamp(24px,5vw,32px)] font-bold leading-[1.1] tracking-[-0.015em] text-[#202522]">
-            Was davon liegt bei Ihnen drin?
-          </h2>
-          <p className="mt-4 max-w-[520px] font-[family-name:var(--font-carbon-text)] text-[clamp(15px,3.5vw,17px)] leading-relaxed text-[#647068]">
-            In einem kurzen Gespräch zeigen wir Ihnen, welche Abläufe aus diesem
-            Artikel sich in Ihrem Unternehmen automatisieren lassen — konkret,
-            messbar und ohne Verpflichtung.
-          </p>
-          <CtaContactForm />
-          <p className="mt-4 font-[family-name:var(--font-carbon-text)] text-[12px] text-[#8B94A1]">
-            DSG-konform · Antwort innert 24 Stunden · Keine Verpflichtung
-          </p>
-        </Reveal>
-      </section>
+      {post.nextStep ? (
+        <section
+          className="blog-next-step"
+          aria-labelledby="article-next-step-title"
+        >
+          <span>Ihr nächster Schritt</span>
+          <h2 id="article-next-step-title">{post.nextStep.title}</h2>
+          <p>{post.nextStep.copy}</p>
+          <Link href={post.nextStep.href}>
+            {post.nextStep.label}
+            <ArrowUpRight size={17} aria-hidden="true" />
+          </Link>
+        </section>
+      ) : (
+        <section
+          id="kontakt"
+          className="scroll-mt-20 bg-[#f5f7f2] px-5 py-16 sm:px-6 sm:py-20"
+        >
+          <Reveal className="mx-auto flex max-w-[640px] flex-col items-center text-center">
+            <span className="font-[family-name:var(--font-mono-signal)] text-[11px] font-semibold uppercase tracking-[0.22em] text-[#4d7c36]">
+              Unverbindlich · Persönlich
+            </span>
+            <h2 className="mt-4 font-[family-name:var(--font-display)] text-[clamp(24px,5vw,32px)] font-bold leading-[1.1] tracking-[-0.015em] text-[#202522]">
+              Was davon liegt bei Ihnen drin?
+            </h2>
+            <p className="mt-4 max-w-[520px] font-[family-name:var(--font-carbon-text)] text-[clamp(15px,3.5vw,17px)] leading-relaxed text-[#647068]">
+              In einem kurzen Gespräch zeigen wir Ihnen, welche Abläufe aus
+              diesem Artikel sich in Ihrem Unternehmen automatisieren lassen —
+              konkret, messbar und ohne Verpflichtung.
+            </p>
+            <CtaContactForm />
+            <p className="mt-4 font-[family-name:var(--font-carbon-text)] text-[12px] text-[#8B94A1]">
+              Persönliche Rückmeldung · Keine Verpflichtung
+            </p>
+          </Reveal>
+        </section>
+      )}
     </JourneyContent>
   )
 }

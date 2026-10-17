@@ -17,6 +17,7 @@ export function BlogIndexPage() {
       title,
       description,
       date,
+      updated,
       category,
       tags,
       keywords,
@@ -27,6 +28,7 @@ export function BlogIndexPage() {
       title,
       description,
       date,
+      updated,
       category,
       tags,
       keywords,
@@ -72,12 +74,12 @@ export function BlogIndexPage() {
             AgenticIT Wissen
           </span>
           <h1 className="mt-5 max-w-[620px] font-[family-name:var(--font-display)] text-[clamp(29px,5.6vw,45px)] font-bold leading-[1.04] tracking-[-0.02em] text-[#202522]">
-            Praxiswissen zu KI-Agenten, RevOps und Automatisierung
+            Praxiswissen zu KI, Marketing und Webdesign.
           </h1>
           <p className="mt-6 max-w-[600px] font-[family-name:var(--font-carbon-text)] text-[clamp(15px,3.2vw,17px)] leading-relaxed text-[#647068]">
-            Leitfäden, Kennzahlen und Praxisbeispiele für Schweizer KMU — von
-            der ersten KI-Einführung bis zum automatisierten Wachstumsmotor.
-            Ohne Buzzwords, mit umsetzbaren Schritten.
+            Antworten, Entscheidungshilfen und Vorlagen für Schweizer KMU. Für
+            einen klaren Auftritt, passende Anfragen und digitale Abläufe, die
+            Ihr Team unterstützen.
           </p>
         </div>
       </section>
@@ -104,12 +106,12 @@ export function BlogIndexPage() {
             Lieber direkt über Ihren Fall sprechen?
           </h2>
           <p className="mt-4 max-w-[520px] font-[family-name:var(--font-carbon-text)] text-[clamp(15px,3.5vw,17px)] leading-relaxed text-[#647068]">
-            Wir zeigen Ihnen in 20 Minuten, welche Abläufe in Ihrem Unternehmen
-            automatisierbar sind — und was das messbar bringt.
+            Wir besprechen Ihr Anliegen, die vorhandenen Systeme und einen
+            passenden nächsten Schritt.
           </p>
           <CtaContactForm />
           <p className="mt-4 font-[family-name:var(--font-carbon-text)] text-[12px] text-[#8B94A1]">
-            DSG-konform · Antwort innert 24 Stunden · Keine Verpflichtung
+            Persönliche Rückmeldung · Keine Verpflichtung
           </p>
         </Reveal>
       </section>

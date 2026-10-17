@@ -1,0 +1,76 @@
+WEBSITE-BRIEFING FÜR IHR TEAM
+AgenticIT GmbH | Stand: 17. Oktober 2026
+Anleitung: Kurze Antworten genügen. Unbekanntes als «offen» markieren.
+Die Vorlage ist unabhängig von einem Auftrag bei AgenticIT verwendbar.
+Ihre lokal ausgefüllte Datei wird nicht automatisch an uns übertragen.
+
+1. ZIELKUNDEN UND ANGEBOT
+Welche Kundengruppe möchten wir zuerst erreichen?
+Antwort:
+Welches konkrete Anliegen lösen wir für diese Menschen?
+Antwort:
+Welche Leistung soll die Website verständlich machen?
+Antwort:
+
+2. NÄCHSTER SCHRITT
+Was soll der Besucher als Nächstes tun?
+Antwort:
+Was bekommt er dafür, und was passiert danach?
+Antwort:
+3. INHALTE UND BELEGE
+Welche Seiten, Bilder, Antworten und Leistungsinformationen brauchen wir?
+Antwort:
+Welche Referenzen oder Ergebnisse sind belegt und zur Verwendung freigegeben?
+Antwort:
+Was ist nur geplant oder ein mögliches Beispiel und muss so erkennbar sein?
+Antwort:
+Wer liefert und bestätigt die Inhalte?
+Antwort:
+
+4. ANFRAGEWEG UND VERANTWORTUNG
+Welche Angaben braucht unser Team tatsächlich?
+Antwort:
+Wo muss die Anfrage ankommen (z. B. CRM), wer übernimmt und wer vertritt?
+Antwort:
+Wie bemerken und bearbeiten wir eine fehlgeschlagene Übertragung?
+Antwort:
+
+5. SYSTEME UND ZUGÄNGE
+Welche Domain, Website-Plattform, CRM, Kalender und Dienste sind vorhanden?
+Antwort:
+Welche Anbindungen brauchen wir, wer ist dafür zuständig?
+Antwort:
+Welche Fragen zu Anbietern, Speicherorten, Zugriffsrechten und Aufbewahrung sind offen?
+Antwort:
+Keine Passwörter, API-Schlüssel oder echten Kundendaten in diese Vorlage schreiben.
+
+6. UMFANG UND ZUSAMMENARBEIT
+Was muss zum Start funktionieren? Was kann später folgen?
+Antwort:
+Welcher Budgetrahmen und welche Terminwünsche müssen besprochen werden?
+Antwort:
+Welche laufenden Lizenzen, Betreuung und Änderungswünsche sind einzuplanen?
+Antwort:
+
+7. ABNAHME UND BETRIEB
+Wer bestätigt Texte, Design und den funktionierenden Ablauf?
+Antwort:
+[ ] Mobil verständlich, ohne abgeschnittene oder verdeckte Bedienelemente
+[ ] Hauptaktion und Menü auch per Tastatur bedienbar
+[ ] Formular verständlich beschriftet, hilfreiche Fehlermeldungen
+[ ] Freigegebene Anfrage genau einmal im richtigen Zielsystem angekommen
+[ ] Zuständige Person und Vertretung können übernehmen
+[ ] Quellen, Referenzen, Rechte und öffentliche Aussagen geklärt
+[ ] Datenschutz, Einwilligung, Anbieter und Datenwege konkret geprüft
+[ ] Ladeverhalten geprüft; echte Nutzungsdaten nach dem Start berücksichtigen
+
+Offene Entscheidungen:
+Offener Punkt | Verantwortliche Person | Nächster Schritt
+
+Wer betreut Inhalte, Anbindungen und Fehler nach dem Start?
+Antwort:
+Woran beurteilen wir später, ob passende Anfragen und Kunden entstehen?
+Antwort:
+
+Weiterlesen: https://agenticit.ch/blog/website-briefing-vorlage
+Marketing-Setup prüfen: https://agenticit.ch/marketing-setup-check

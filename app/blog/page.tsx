@@ -3,9 +3,9 @@ import { BlogIndexPage } from "@/components/site/blog-index-page"
 import { createPageMetadata } from "@/lib/seo"
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Blog: Praxiswissen zu KI-Agenten, RevOps & Automatisierung",
+  title: "Blog: Praxiswissen zu KI, Marketing und Webdesign",
   description:
-    "Leitfäden, Kennzahlen und Praxisbeispiele für Schweizer KMU: KI-Agenten, RevOps, Leadgenerierung und Prozessautomatisierung — umsetzbar erklärt.",
+    "Antworten, Entscheidungshilfen und Vorlagen für Schweizer KMU: KI-Entwicklung, Marketing, Webdesign und digitale Abläufe verständlich planen.",
   path: "/blog",
 })
 

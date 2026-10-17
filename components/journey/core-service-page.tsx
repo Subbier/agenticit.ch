@@ -13,8 +13,26 @@ import { JourneyShell } from "./shell"
 import shared from "./journey.module.css"
 import styles from "./core-service-page.module.css"
 
+const serviceGuides: Partial<
+  Record<CoreService["slug"], { href: string; label: string }>
+> = {
+  "ki-entwicklung": {
+    href: "/blog/eigene-ki-agenten-vs-chatgpt",
+    label: "ChatGPT oder eigener Agent? Entscheidungshilfe lesen",
+  },
+  webdesign: {
+    href: "/blog/website-briefing-vorlage",
+    label: "Website planen: Briefing und Vorlage ansehen",
+  },
+  prozessautomatisierung: {
+    href: "/blog/prozessautomatisierung-kmu-leitfaden",
+    label: "Welche Aufgabe zuerst? Leitfaden lesen",
+  },
+}
+
 export function CoreServicePage({ service }: { service: CoreService }) {
   const path = `/loesungen/${service.slug}`
+  const guide = serviceGuides[service.slug]
   return (
     <JourneyShell>
       <JsonLd
@@ -157,6 +175,11 @@ export function CoreServicePage({ service }: { service: CoreService }) {
             </span>
             <h2 id="next-step-title">{service.magnetTitle}</h2>
             <p>{service.magnetCopy}</p>
+            {guide ? (
+              <Link className={styles.guideLink} href={guide.href}>
+                {guide.label}
+              </Link>
+            ) : null}
           </div>
           <Link className={shared.button} href={service.checkHref}>
             {service.checkLabel} <ArrowUpRight size={18} aria-hidden="true" />
