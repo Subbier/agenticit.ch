@@ -1,0 +1,31 @@
+.page :global(.overline) {
+  color: #4d7c36;
+}
+.page :is(a, button, input, select, textarea, summary):focus-visible {
+  outline: 3px solid #407e29;
+  outline-offset: 4px;
+}
+.page [data-example-panel] :is(button, select):focus-visible {
+  outline-color: #b4f17b;
+}
+.page [data-example-panel] button {
+  min-height: 48px;
+}
+.page [data-example-panel] {
+  min-width: 0;
+}
+.page a[href^="https://developers.google.com"]
+{
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  max-width: 100%;
+}
+@media (prefers-reduced-motion: reduce) {
+  .page [style*="animation"] {
+    animation: none !important;
+  }
+  .page :is(a, button) {
+    transition: none !important;
+  }
+}

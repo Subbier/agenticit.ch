@@ -3,6 +3,7 @@
 import { JourneyContent } from "@/components/journey/content"
 
 import design from "@/components/journey/content.module.css"
+import styles from "./excellence.module.css"
 
 import { ArrowRight, CheckCircle2, Search, Megaphone, Plug } from "lucide-react"
 import { ExcellenceMap } from "@/components/site/excellence-map"
@@ -22,10 +23,10 @@ export function ExcellencePage() {
         data={[
           breadcrumbJsonLd([
             { name: "Startseite", path: "/" },
-            { name: "Excellence", path: "/excellence" },
+            { name: "Marketing-Kanäle", path: "/excellence" },
           ]),
           serviceJsonLd({
-            name: "Excellence – Online-Marketing",
+            name: "Marketing-Kanäle und Anfragewege",
             description: pageSeo.excellence.description,
             path: "/excellence",
           }),
@@ -33,40 +34,39 @@ export function ExcellencePage() {
         ]}
       />
       <JourneyContent>
-        <div className="relative z-10">
+        <div className={`relative z-10 ${styles.page}`}>
           {/* HERO */}
           <section className={design.pageHero}>
             <div className="max-w-4xl mx-auto text-center">
               <div className="inline-flex items-center px-4 py-2 rounded-full bg-white backdrop-blur-md border border-[#dce3db] text-[#202522] text-sm font-medium mb-8">
                 <span className="w-2 h-2 bg-emerald-300 rounded-full mr-2 animate-pulse shrink-0" />
-                Excellence – alles für Ihre Sichtbarkeit
+                Marketing-Kanäle & Anfragewege
               </div>
               <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-[#202522] text-balance mb-6 leading-tight">
-                Alles, was Sie sichtbar macht.
+                Ihre Kanäle.
                 <br />
                 <span className="bg-gradient-to-r from-white to-emerald-200 bg-clip-text text-[#4d7c36]">
-                  Aus einer Meisterhand.
+                  Ein klarer Anfrageweg.
                 </span>
               </h1>
               <p className="text-base sm:text-xl text-[#202522] max-w-2xl mx-auto leading-relaxed font-light mb-8">
-                Social Media, SEO, Performance-Marketing, Content und ein
-                Auftritt, der überzeugt – wir verbinden alle Disziplinen zu
-                einem System, das in der Deutschschweiz gefunden wird und
-                Anfragen bringt. Sie behalten Ihre Tools, wir den Überblick.
+                Wir verbinden Website, Suche, Werbung und Anfragebearbeitung zu
+                einem geplanten Ablauf. Gemeinsam klären wir Zielgruppe,
+                passende Kanäle und die Übernahme durch Ihr Team.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a
-                  href="#contact"
-                  className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-lg font-medium text-black transition hover:scale-105 hover:bg-gray-50"
+                  href="/marketing-setup-check"
+                  className="inline-flex items-center gap-2 rounded-full bg-[#8fe05a] px-8 py-4 text-lg font-medium text-[#18320d] transition hover:bg-[#a3ea76]"
                 >
-                  Unverbindlich kennenlernen
+                  Marketing-Setup prüfen
                   <ArrowRight className="h-5 w-5" />
                 </a>
                 <a
                   href="#disziplinen"
                   className="inline-flex items-center gap-2 rounded-full border border-[#dce3db] px-8 py-4 text-lg font-medium text-[#202522] transition hover:scale-105 hover:bg-white"
                 >
-                  Disziplinen ansehen
+                  Bausteine entdecken
                 </a>
               </div>
             </div>
@@ -79,13 +79,12 @@ export function ExcellencePage() {
                 Der Gedanke dahinter
               </p>
               <h2 className="mt-3 text-2xl sm:text-3xl md:text-4xl font-bold text-[#202522] text-balance">
-                Einzelne Tools bringen wenig. Das Zusammenspiel bringt Kunden.
+                Am Übergang entscheidet sich der Ablauf.
               </h2>
               <p className="mt-5 text-base sm:text-lg text-[#202522] leading-relaxed font-light">
-                Anzeigen ohne gute Seite verpuffen. SEO ohne Inhalte bleibt
-                unsichtbar. Erst wenn alle Disziplinen ineinandergreifen,
-                entsteht ein verlässlicher Strom an Anfragen. Genau das bauen
-                wir für Sie – als ein System.
+                Vom ersten Klick bis zur zuständigen Person: Wir klären, welche
+                Inhalte gebraucht werden, wie Interessenten anfragen und wie Ihr
+                Team den nächsten Schritt übernimmt.
               </p>
             </div>
           </section>
@@ -98,22 +97,21 @@ export function ExcellencePage() {
             <div className="max-w-5xl mx-auto grid gap-10 lg:grid-cols-2 lg:items-center">
               <div>
                 <p className="overline text-sm font-semibold uppercase tracking-[0.2em] text-[#4d7c36]">
-                  Unsere Meisterschaft
+                  Bausteine zur Auswahl
                 </p>
                 <h2 className="mt-3 text-2xl sm:text-3xl md:text-4xl font-bold text-[#202522] text-balance">
-                  Sechs Disziplinen. Ein Ergebnis.
+                  Welche Aufgabe steht bei Ihnen an?
                 </h2>
                 <p className="mt-5 text-base sm:text-lg text-[#202522] leading-relaxed font-light">
-                  Tippen Sie auf eine Disziplin – sie zeigt Ihnen, was wir
-                  übernehmen. In der Mitte hält AgenticIT alles zusammen, damit
-                  aus Performance-Marketing, SEO, Social Media, Content,
-                  Omnichannel und CRM ein reibungsloser Ablauf wird.
+                  Tippen Sie auf einen Baustein und entdecken Sie mögliche
+                  Aufgaben. Wir beginnen mit einem abgegrenzten Anliegen und
+                  prüfen, welche Verbindung Ihrem Team hilft.
                 </p>
                 <ul className="mt-6 space-y-3">
                   {[
-                    "Gefunden werden – auf Google und in den sozialen Medien.",
-                    "Überzeugen – mit Inhalten und einem Auftritt, der wirkt.",
-                    "Übergeben – jede Anfrage sauber in Ihrem CRM.",
+                    "Sichtbarkeit: passende Themen und Anfragewege planen.",
+                    "Inhalte: Angebot und nächsten Schritt verständlich machen.",
+                    "Übergabe: Eingang, Zuständigkeit und Bearbeitung prüfen.",
                   ].map((t) => (
                     <li
                       key={t}
@@ -140,20 +138,18 @@ export function ExcellencePage() {
                   Omnichannel
                 </p>
                 <h2 className="mt-3 text-2xl sm:text-3xl md:text-4xl font-bold text-[#202522] text-balance">
-                  Ein Kanal-Erlebnis. Über alle Kanäle hinweg.
+                  Ein nächster Schritt. Über Kanalgrenzen hinweg.
                 </h2>
                 <p className="mt-5 text-base sm:text-lg text-[#202522] leading-relaxed font-light">
-                  Ihre Kunden wechseln zwischen Website, WhatsApp, Social Media
-                  und Telefon – und erwarten überall dieselbe, nahtlose
-                  Erfahrung. Wir verbinden alle Berührungspunkte zu einem
-                  einzigen Gespräch: Der Kontext reist mit, nichts geht
-                  verloren.
+                  Welche Angaben braucht die nächste Person, wenn jemand den
+                  Kanal wechselt? Wir planen ausgewählte Übergaben und prüfen
+                  Quelle, Berechtigung und Zuständigkeit im Zielsystem.
                 </p>
                 <ul className="mt-6 space-y-3">
                   {[
-                    "Digital & persönlich in einem Verlauf – kein Bruch, kein Doppelt-Erzählen.",
-                    "Sofort-Reaktion auf jedem Kanal, automatisiert rund um die Uhr.",
-                    "Tippen Sie einen Kanal an und sehen Sie, was wir dort für Sie übernehmen.",
+                    "Benötigte Angaben gemeinsam festlegen.",
+                    "Automatische Reaktion und persönliche Übernahme abstimmen.",
+                    "Kanal auswählen und ein mögliches Einsatzgebiet ansehen.",
                   ].map((t) => (
                     <li
                       key={t}
@@ -180,14 +176,13 @@ export function ExcellencePage() {
                   <Plug className="size-6" />
                 </div>
                 <h2 className="text-2xl sm:text-3xl font-bold text-[#202522] text-balance">
-                  Akkreditiert in Ihren Tools – ohne Lernkurve.
+                  Werkzeuge passend zum Ablauf wählen.
                 </h2>
                 <p className="mt-4 text-base text-[#202522] leading-relaxed">
-                  Wir sind in allen führenden Plattformen zertifiziert und
-                  arbeiten mit dem, was Sie schon kennen. Für Sie ändert sich
-                  faktisch nichts – wir kümmern uns um den Rest im Hintergrund.
-                  Tippen Sie eine Plattform an und sehen Sie, wofür wir sie
-                  nutzen.
+                  Die Plattformen zeigen mögliche Einsatzgebiete. Gemeinsam
+                  prüfen wir, welche vorhandenen Tools, Lizenzen und Zugänge zu
+                  Ihrem Vorhaben passen. Auswahl und Verbindung werden
+                  projektspezifisch vereinbart.
                 </p>
               </div>
             </div>
@@ -201,7 +196,7 @@ export function ExcellencePage() {
                   Was das für Sie heisst
                 </p>
                 <h2 className="mt-3 text-2xl sm:text-3xl md:text-4xl font-bold text-[#202522] text-balance">
-                  Mehr Sichtbarkeit. Mehr Anfragen. Kein Aufwand.
+                  Ein klares Ziel. Ein gemeinsamer Ablauf.
                 </h2>
               </div>
               <div className="grid gap-5 sm:grid-cols-3">
@@ -209,17 +204,17 @@ export function ExcellencePage() {
                   {
                     icon: Search,
                     title: "Gefunden werden",
-                    text: "SEO, Anzeigen und Social Media bringen Sie genau dorthin, wo Ihre Kunden suchen.",
+                    text: "Zielgruppe, relevante Fragen und einen passenden Einstieg bestimmen.",
                   },
                   {
                     icon: Megaphone,
                     title: "Überzeugen",
-                    text: "Ein Auftritt, Inhalte und Kampagnen, die aus Aufmerksamkeit echte Anfragen machen.",
+                    text: "Angebot und nächsten Schritt auf Seite, Inhalt und Kampagne abstimmen.",
                   },
                   {
                     icon: Plug,
-                    title: "Keine Lernkurve",
-                    text: "Wir fügen uns in Ihre bestehende Tool-Welt ein. Sie arbeiten weiter wie bisher.",
+                    title: "Team mitnehmen",
+                    text: "Zuständigkeit, Einweisung und Freigaben mit den beteiligten Personen klären.",
                   },
                 ].map((c) => (
                   <div
@@ -243,10 +238,30 @@ export function ExcellencePage() {
 
           {/* FAQ */}
           <FaqSection
-            title="Häufige Fragen zu Excellence"
-            intro="Was hinter unserer Kundengewinnung steckt – kurz und ohne Fachjargon."
+            title="Fragen zu Kanälen und Übergaben"
+            intro="Was wir gemeinsam klären, bevor wir Kanäle verbinden."
             faqs={excellenceFaqs}
           />
+          <section className="px-4 pb-6">
+            <div className="mx-auto max-w-5xl text-sm leading-7 text-[#647068]">
+              <p>
+                Grundlage zur Suche:{" "}
+                <a
+                  href="https://developers.google.com/search/docs/appearance/ai-features?hl=de"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline underline-offset-4"
+                >
+                  Google Search Central zu KI-Funktionen und SEO
+                </a>
+                .
+              </p>
+              <p>
+                Inhaltlich aktualisiert: 17. Oktober 2026. Die Darstellungen
+                sind Einsatzbeispiele und keine gemessenen Kundenresultate.
+              </p>
+            </div>
+          </section>
 
           {/* CONTACT */}
           <section id="contact" className="scroll-mt-24 px-4 py-16 sm:py-20">
@@ -256,18 +271,18 @@ export function ExcellencePage() {
                   Kennenlernen
                 </p>
                 <h2 className="mt-4 text-3xl md:text-4xl font-light text-[#202522] leading-tight text-balance">
-                  Neugierig, wie sichtbar Sie in Ihrer Branche werden können?
+                  Welcher Übergang kostet Sie heute Zeit?
                 </h2>
                 <p className="mt-6 text-base md:text-lg text-[#202522] leading-relaxed">
-                  In einem kurzen, unverbindlichen Gespräch zeigen wir Ihnen
-                  genau die Disziplinen, die für Sie den Unterschied machen –
-                  und wie schnell die ersten Anfragen bei Ihnen ankommen.
+                  Beschreiben Sie uns Ihr Anliegen. Wir prüfen gemeinsam Kanal,
+                  Anfrageweg und Bearbeitung – und klären einen passenden
+                  nächsten Schritt.
                 </p>
                 <div className="mt-7 grid gap-3 text-sm text-[#202522]">
                   {[
                     "Kurzer, unverbindlicher Rückruf",
                     "Konkrete Möglichkeiten für Ihre Branche",
-                    "Keine Umstellung, keine Lernkurve",
+                    "Vorgehen und Umfang vor dem Start klären",
                   ].map((b) => (
                     <div
                       key={b}
@@ -282,8 +297,9 @@ export function ExcellencePage() {
 
               <LeadForm
                 source="excellence"
+                requirePhone
                 title="Lassen Sie uns starten."
-                description="Hinterlassen Sie Ihre Daten für einen schnellen, unverbindlichen Strategie-Rückruf."
+                description="Ihre Angaben helfen uns, einen unverbindlichen Rückruf zu Ihrem Anliegen vorzubereiten."
                 submitLabel="Rückruf anfragen"
                 selectFields={[
                   {

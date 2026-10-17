@@ -112,6 +112,15 @@ export const leadSchema = z
   })
   .superRefine((data, ctx) => {
     if (
+      data.contactMethod === "phone" &&
+      (!data.phone || (data.phone.match(/\d/g)?.length ?? 0) < 7)
+    )
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["phone"],
+        message: "Für einen Rückruf benötigen wir Ihre Telefonnummer.",
+      })
+    if (
       data.acquisitionPlan &&
       (data.source !== "potenzialrechner" ||
         data.journey ||
@@ -216,15 +225,6 @@ export const leadSchema = z
         code: z.ZodIssueCode.custom,
         path: ["company"],
         message: "Bitte geben Sie Ihr Unternehmen an.",
-      })
-    if (
-      data.contactMethod === "phone" &&
-      (!data.phone || data.phone.trim().length < 7)
-    )
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        path: ["phone"],
-        message: "Für einen Rückruf benötigen wir Ihre Telefonnummer.",
       })
   })
 

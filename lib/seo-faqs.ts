@@ -203,24 +203,24 @@ export const revopsFaqs: FaqItem[] = [
 
 export const excellenceFaqs: FaqItem[] = [
   {
-    question: "Was bedeutet Omnichannel ohne Kontextverlust?",
+    question: "Welche Kanäle brauchen wir wirklich?",
     answer:
-      "WhatsApp, Web, E-Mail und Telefon werden zu einem durchgehenden Gespräch verbunden. Egal, wo Ihr Kunde schreibt – der Kontext bleibt erhalten und die Anfrage geht nicht verloren.",
+      "Wir beginnen mit Ihrer Zielgruppe, dem Anliegen und dem verfügbaren Team. Daraus wählen wir einen sinnvollen Einstieg und die nötige Weiterbearbeitung. Zusätzliche Kanäle werden erst ergänzt, wenn Zweck, Verantwortung und Aufwand geklärt sind.",
   },
   {
-    question: "Was ist Predicting Lead Scoring?",
+    question: "Sind Platzierungen in Google oder KI-Antworten garantiert?",
     answer:
-      "Lead Scoring bewertet jede Anfrage in Echtzeit nach Kaufwahrscheinlichkeit, Bedarf und Timing. So sieht Ihr Team sofort die heissesten Kontakte und kann gezielt nachfassen.",
+      "Nein. Wir arbeiten an verständlichen Inhalten, technischer Zugänglichkeit und passenden Anfragewegen. Google beschreibt dafür die üblichen SEO-Grundlagen; eine Aufnahme oder bestimmte Darstellung ist nicht garantiert. Auch andere Such- und KI-Systeme entscheiden selbst über ihre Ergebnisse.",
   },
   {
-    question: "Welche Daten nutzt AgenticIT dafür?",
+    question: "Wie kommt eine Anfrage ins CRM?",
     answer:
-      "Gesprächsinhalte, Verhalten auf Ihren Kanälen und CRM-Signale. Daraus entstehen Scores, klare Prioritäten und ein Cockpit mit den wichtigsten Kennzahlen auf einen Blick.",
+      "Wir klären Quelle, benötigte Felder, Ziel und Zuständigkeit. Danach prüfen wir die Übergabe bis zum richtigen CRM-Datensatz und die Weiterbearbeitung im Team. Eine Versandmeldung allein ist noch kein Nachweis des CRM-Eingangs.",
   },
   {
-    question: "Ersetzt das mein bestehendes CRM?",
+    question: "Müssen wir unsere Tools wechseln?",
     answer:
-      "Nein. Wir verbinden uns mit Ihren bestehenden Tools und reichern sie an, statt sie zu ersetzen – Übergaben laufen nahtlos und ohne Medienbruch.",
+      "Zuerst prüfen wir vorhandene Werkzeuge, Lizenzen, Zugänge und Schnittstellen. Ob eine Verbindung genügt oder ein Wechsel sinnvoll ist, wird für Ihren Ablauf geklärt. Einweisung und Freigaben gehören zur gemeinsamen Planung.",
   },
 ]
 
@@ -264,41 +264,131 @@ export const caseStudyFaqs: FaqItem[] = [...websiteCase.faqs]
 
 export const serviceRelatedLinks = {
   revops: [
-    { label: "AI Agents", href: "/ai-agents", description: "Autonome KI-Agenten für 24/7 Lead-Qualifizierung." },
-    { label: "Excellence", href: "/excellence", description: "Omnichannel-Dialog und Lead Scoring in einem." },
-    { label: "Lead-Rechner", href: "/#roi-calculator", description: "Sehen Sie den Richtwert pro Anfrage für Ihre Branche." },
+    {
+      label: "AI Agents",
+      href: "/ai-agents",
+      description: "Autonome KI-Agenten für 24/7 Lead-Qualifizierung.",
+    },
+    {
+      label: "Excellence",
+      href: "/excellence",
+      description: "Omnichannel-Dialog und Lead Scoring in einem.",
+    },
+    {
+      label: "Lead-Rechner",
+      href: "/#roi-calculator",
+      description: "Sehen Sie den Richtwert pro Anfrage für Ihre Branche.",
+    },
   ],
   excellence: [
-    { label: "AI Agents", href: "/ai-agents", description: "Autonome KI-Agenten für 24/7 Lead-Qualifizierung." },
-    { label: "RevOps", href: "/revops", description: "Ihre Kundengewinnung als ein eingespieltes System." },
-    { label: "Praxisbeispiel: AgenticIT Website", href: "/case-studies", description: "Vier Checks, eigene Pläne und ein nachvollziehbarer Nutzerweg." },
+    {
+      label: "AI Agents",
+      href: "/ai-agents",
+      description: "Autonome KI-Agenten für 24/7 Lead-Qualifizierung.",
+    },
+    {
+      label: "RevOps",
+      href: "/revops",
+      description: "Ihre Kundengewinnung als ein eingespieltes System.",
+    },
+    {
+      label: "Praxisbeispiel: AgenticIT Website",
+      href: "/case-studies",
+      description:
+        "Vier Checks, eigene Pläne und ein nachvollziehbarer Nutzerweg.",
+    },
   ],
   "ai-agents": [
-    { label: "Excellence", href: "/excellence", description: "WhatsApp, Web und Mail als eine Journey – mit Lead Scoring." },
-    { label: "RevOps", href: "/revops", description: "Der ganze Ablauf von der Anfrage bis zum Abschluss." },
-    { label: "Praxisbeispiel: AgenticIT Website", href: "/case-studies", description: "Vier Checks, eigene Pläne und ein nachvollziehbarer Nutzerweg." },
+    {
+      label: "Excellence",
+      href: "/excellence",
+      description:
+        "WhatsApp, Web und Mail als eine Journey – mit Lead Scoring.",
+    },
+    {
+      label: "RevOps",
+      href: "/revops",
+      description: "Der ganze Ablauf von der Anfrage bis zum Abschluss.",
+    },
+    {
+      label: "Praxisbeispiel: AgenticIT Website",
+      href: "/case-studies",
+      description:
+        "Vier Checks, eigene Pläne und ein nachvollziehbarer Nutzerweg.",
+    },
   ],
   "smart-apps": [
-    { label: "Praxisbeispiel: AgenticIT Website", href: "/case-studies", description: "Vier Checks, eigene Pläne und ein nachvollziehbarer Nutzerweg." },
-    { label: "AI Agents", href: "/ai-agents", description: "Die Technologie hinter Smart Apps und Conversational AI." },
-    { label: "Excellence", href: "/excellence", description: "Apps nahtlos in WhatsApp, Web und CRM einbinden." },
+    {
+      label: "Praxisbeispiel: AgenticIT Website",
+      href: "/case-studies",
+      description:
+        "Vier Checks, eigene Pläne und ein nachvollziehbarer Nutzerweg.",
+    },
+    {
+      label: "AI Agents",
+      href: "/ai-agents",
+      description: "Die Technologie hinter Smart Apps und Conversational AI.",
+    },
+    {
+      label: "Excellence",
+      href: "/excellence",
+      description: "Apps nahtlos in WhatsApp, Web und CRM einbinden.",
+    },
   ],
   omnichannel: [
-    { label: "Excellence", href: "/excellence", description: "Omnichannel-Dialog und Lead Scoring in einem." },
-    { label: "AI Agents", href: "/ai-agents", description: "Autonome KI-Agenten für 24/7 Lead-Qualifizierung." },
-    { label: "RevOps", href: "/revops", description: "Ihre Kundengewinnung als ein eingespieltes System." },
+    {
+      label: "Excellence",
+      href: "/excellence",
+      description: "Omnichannel-Dialog und Lead Scoring in einem.",
+    },
+    {
+      label: "AI Agents",
+      href: "/ai-agents",
+      description: "Autonome KI-Agenten für 24/7 Lead-Qualifizierung.",
+    },
+    {
+      label: "RevOps",
+      href: "/revops",
+      description: "Ihre Kundengewinnung als ein eingespieltes System.",
+    },
   ],
   intelligence: [
-    { label: "Excellence", href: "/excellence", description: "Omnichannel-Dialog und Lead Scoring in einem." },
-    { label: "AI Agents", href: "/ai-agents", description: "Conversational AI als Datenquelle für Lead Scoring." },
-    { label: "RevOps", href: "/revops", description: "Ihre Kundengewinnung als ein eingespieltes System." },
+    {
+      label: "Excellence",
+      href: "/excellence",
+      description: "Omnichannel-Dialog und Lead Scoring in einem.",
+    },
+    {
+      label: "AI Agents",
+      href: "/ai-agents",
+      description: "Conversational AI als Datenquelle für Lead Scoring.",
+    },
+    {
+      label: "RevOps",
+      href: "/revops",
+      description: "Ihre Kundengewinnung als ein eingespieltes System.",
+    },
   ],
 } as const
 
 export const servicesRelatedLinks = [
-  { label: "KI Agenten", href: "/ai-agents", description: "24/7 Lead-Qualifizierung und Conversational AI für den Vertrieb." },
-  { label: "Omnichannel", href: "/omnichannel", description: "WhatsApp, Web und Mail als eine Journey ohne Kontextverlust." },
-  { label: "Praxisbeispiel: AgenticIT Website", href: "/case-studies", description: "Vier Checks, eigene Pläne und ein nachvollziehbarer Nutzerweg." },
+  {
+    label: "KI Agenten",
+    href: "/ai-agents",
+    description:
+      "24/7 Lead-Qualifizierung und Conversational AI für den Vertrieb.",
+  },
+  {
+    label: "Omnichannel",
+    href: "/omnichannel",
+    description: "WhatsApp, Web und Mail als eine Journey ohne Kontextverlust.",
+  },
+  {
+    label: "Praxisbeispiel: AgenticIT Website",
+    href: "/case-studies",
+    description:
+      "Vier Checks, eigene Pläne und ein nachvollziehbarer Nutzerweg.",
+  },
 ] as const
 
 export const pageSeo = {
@@ -322,18 +412,30 @@ export const pageSeo = {
     title: "KI Agenten & Conversational AI für die Deutschschweiz",
     description:
       "Autonome KI Agenten für Inbound, Outbound und 24/7 Lead-Qualifizierung in der Schweiz. Conversational AI mit CRM-Integration für Schweizer KMU.",
-    keywords: ["KI Agenten", "Conversational AI", "AI Agents Schweiz", "Lead Qualifizierung KI", "Vertriebsautomation"],
+    keywords: [
+      "KI Agenten",
+      "Conversational AI",
+      "AI Agents Schweiz",
+      "Lead Qualifizierung KI",
+      "Vertriebsautomation",
+    ],
   },
   revops: {
     title: "Revenue Operations (RevOps) für Schweizer KMU",
     description:
       "AgenticIT übernimmt Ihre digitale Kundengewinnung als ein System: warme Anfragen, sauber qualifiziert und anrufbereit übergeben. Ein Partner, kein Technik-Aufwand.",
-    keywords: ["Revenue Operations", "RevOps Schweiz", "Lead Generierung", "Kundengewinnung", "AgenticIT"],
+    keywords: [
+      "Revenue Operations",
+      "RevOps Schweiz",
+      "Lead Generierung",
+      "Kundengewinnung",
+      "AgenticIT",
+    ],
   },
   excellence: {
-    title: "Social Media, SEO & Performance Marketing",
+    title: "Marketing-Kanäle und Anfragewege für KMU",
     description:
-      "Alle Kanäle aus einer Hand: Social Media, SEO, Performance-Marketing, Content und Omnichannel-Dialog für KMU in der Deutschschweiz.",
+      "Social Media, Suche, Inhalte und CRM passend verbinden. Sechs Bausteine, nachvollziehbare Übergaben und ein Marketing-Setup-Check für Schweizer KMU.",
     keywords: [
       "Social Media Marketing Schweiz",
       "SEO Agentur Schweiz",
@@ -348,13 +450,23 @@ export const pageSeo = {
     title: "Omnichannel Marketing & WhatsApp Business API Schweiz",
     description:
       "Omnichannel-Journeys über WhatsApp Business API, Web, Mail und Telefon. Nahtlose Automation mit vollem Kontext für Schweizer Unternehmen.",
-    keywords: ["Omnichannel Marketing", "WhatsApp Business API", "Omnichannel Kundenservice", "WhatsApp Automation"],
+    keywords: [
+      "Omnichannel Marketing",
+      "WhatsApp Business API",
+      "Omnichannel Kundenservice",
+      "WhatsApp Automation",
+    ],
   },
   intelligence: {
     title: "Lead Scoring & Predicting Data Intelligence Schweiz",
     description:
       "Predicting Lead Scoring und KI-Lead-Qualifizierung in Echtzeit. AgenticIT verwandelt Gespräche und CRM-Daten in klare Vertriebsprioritäten.",
-    keywords: ["Lead Scoring", "Lead Qualifizierung", "Predicting Data Intelligence", "KI Vertrieb"],
+    keywords: [
+      "Lead Scoring",
+      "Lead Qualifizierung",
+      "Predicting Data Intelligence",
+      "KI Vertrieb",
+    ],
   },
   "smart-apps": {
     title: "Smart Apps & KI-Mini-Apps für Schweizer Unternehmen",
@@ -366,19 +478,33 @@ export const pageSeo = {
     title: "KI Services & Paket-Benchmark Schweiz | AgenticIT",
     description:
       "Interaktiver MRR-Benchmark plus KI Agenten, Omnichannel und Lead Scoring – für Schweizer Finanzberater und KMU mit messbarem ROI.",
-    keywords: ["KI Services Schweiz", "Agentic AI", "Enterprise Automation", "MRR Benchmark"],
+    keywords: [
+      "KI Services Schweiz",
+      "Agentic AI",
+      "Enterprise Automation",
+      "MRR Benchmark",
+    ],
   },
   blog: {
     title: "Speed-to-Lead Blog: Lead-Burnout vermeiden | AgenticIT",
     description:
       "78 % der Leads kaufen beim schnellsten Anbieter. Wie Lead-Burnout entsteht, was es kostet und wie KI Agenten das Problem in der Schweiz lösen.",
-    keywords: ["Speed to Lead", "Lead Burnout", "Lead Qualifizierung", "KI Vertrieb Schweiz"],
+    keywords: [
+      "Speed to Lead",
+      "Lead Burnout",
+      "Lead Qualifizierung",
+      "KI Vertrieb Schweiz",
+    ],
   },
   "case-studies": {
     title: "Praxisbeispiel: AgenticIT Website mit interaktiven Checks",
     description:
       "Einblick in die eigene AgenticIT Website: vier Checks, konkrete Orientierung und freiwillige Kontaktaufnahme. Nutzerweg und Prüfumfang direkt nachvollziehen.",
-    keywords: ["AgenticIT Praxisbeispiel", "Website mit Lead Magneten", "Interaktive Checks"],
+    keywords: [
+      "AgenticIT Praxisbeispiel",
+      "Website mit Lead Magneten",
+      "Interaktive Checks",
+    ],
   },
   "ueber-uns": {
     title: "Über AgenticIT – Agentic AI aus der Schweiz",

@@ -191,3 +191,28 @@ test("the digitalisation roadmap covers partner coordination and is accepted by 
   assert.ok(payload.message?.includes("Digitalisierungs-Fahrplan"))
   assert.equal(payload.marketingConsent, false)
 })
+
+test("a requested callback requires a usable number even for a legacy source", () => {
+  const lead = {
+    source: "excellence",
+    name: "Internal Test",
+    email: "callback@example.invalid",
+    consent: true,
+    contactMethod: "phone",
+  }
+  assert.equal(leadSchema.safeParse({ ...lead, phone: "" }).success, false)
+  assert.equal(leadSchema.safeParse({ ...lead, phone: "12" }).success, false)
+  assert.equal(
+    leadSchema.safeParse({ ...lead, phone: "abcdefgh" }).success,
+    false,
+  )
+  assert.equal(
+    leadSchema.safeParse({ ...lead, phone: "00000000" }).success,
+    true,
+  )
+  assert.equal(
+    leadSchema.safeParse({ ...lead, contactMethod: "email", phone: "" })
+      .success,
+    true,
+  )
+})

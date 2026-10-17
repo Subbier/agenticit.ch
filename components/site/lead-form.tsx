@@ -2,16 +2,18 @@
 
 import type { FormEvent } from "react"
 import { useId, useState } from "react"
+import Link from "next/link"
 import { AlertCircle, CheckCircle2, Loader2, Send } from "lucide-react"
 import type { LeadSource } from "@/lib/site-content"
-import { getLeadPriceByLabel } from "@/lib/lead-pricing"
+import { assertLeadAcknowledged } from "@/lib/lead-acknowledgement"
+import shared from "@/components/journey/journey.module.css"
+import styles from "./lead-form.module.css"
 
 type SelectField = {
   name: "leadVolume" | "challenge" | "industry" | "goal"
   label: string
   options: string[]
 }
-
 type LeadFormProps = {
   source: LeadSource
   title: string
@@ -19,8 +21,8 @@ type LeadFormProps = {
   submitLabel: string
   selectFields?: SelectField[]
   compact?: boolean
+  requirePhone?: boolean
 }
-
 type FormState = "idle" | "loading" | "success" | "error"
 
 export function LeadForm({
@@ -30,79 +32,69 @@ export function LeadForm({
   submitLabel,
   selectFields = [],
   compact = false,
+  requirePhone = false,
 }: LeadFormProps) {
   const formId = useId()
   const [state, setState] = useState<FormState>("idle")
   const [message, setMessage] = useState("")
-
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
+    if (state === "loading") return
     setState("loading")
     setMessage("")
-
     const form = event.currentTarget
-    const formData = new FormData(form)
-    const industry = String(formData.get("industry") || "")
-    const leadPrice = getLeadPriceByLabel(industry)
+    const data = new FormData(form)
+    const industry = String(data.get("industry") || "")
     const payload = {
       source,
-      name: String(formData.get("name") || ""),
-      email: String(formData.get("email") || ""),
-      company: String(formData.get("company") || ""),
-      phone: String(formData.get("phone") || ""),
-      message: String(formData.get("message") || ""),
-      leadVolume: String(formData.get("leadVolume") || ""),
-      challenge: String(formData.get("challenge") || ""),
+      name: String(data.get("name") || ""),
+      email: String(data.get("email") || ""),
+      company: String(data.get("company") || ""),
+      phone: String(data.get("phone") || ""),
+      message: String(data.get("message") || ""),
+      leadVolume: String(data.get("leadVolume") || ""),
+      challenge: String(data.get("challenge") || ""),
       industry,
-      // Richtwert pro Kundenanfrage (CHF) für Zoho-Tagging; undefined wenn keine Branche gewählt.
-      leadPrice,
-      goal: String(formData.get("goal") || ""),
-      consent: formData.get("consent") === "on",
-      // Honeypot – muss leer bleiben; nur Bots füllen dieses versteckte Feld aus.
-      company_website: String(formData.get("company_website") || ""),
+      goal: String(data.get("goal") || ""),
+      contactMethod: requirePhone ? "phone" : "email",
+      consent: data.get("consent") === "on",
+      company_website: String(data.get("company_website") || ""),
     }
-
     try {
       const response = await fetch("/api/leads", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(payload),
       })
-
-      if (!response.ok) {
-        const data = await response.json().catch(() => null)
-        throw new Error(data?.message || "Die Anfrage konnte nicht gesendet werden.")
-      }
-
+      await assertLeadAcknowledged(response, payload.company_website)
       setState("success")
       setMessage(
-        "Danke – Ihre Anfrage ist da. Wir melden uns innerhalb eines Werktags mit einem unverbindlichen Rückruf (von +41 76 202 01 36). Kein Verkaufsdruck – Sie entscheiden danach in Ruhe.",
+        "Danke. Ihre Angaben wurden übermittelt. Wir prüfen Ihr Anliegen persönlich und melden uns über die angegebenen Kontaktdaten.",
       )
       form.reset()
     } catch (error) {
       setState("error")
-      setMessage(error instanceof Error ? error.message : "Die Anfrage konnte nicht gesendet werden.")
+      setMessage(
+        error instanceof Error
+          ? error.message
+          : "Die Anfrage konnte nicht übermittelt werden.",
+      )
     }
   }
-
   return (
     <form
       id={`${formId}-form`}
       onSubmit={handleSubmit}
-      className="rounded-lg border border-white/[0.12] bg-white/[0.06] p-5 shadow-2xl shadow-black/20 backdrop-blur-md sm:p-6"
+      className={`${shared.contact} ${styles.form}`}
     >
-      <div className="mb-6">
-        <p className="overline text-sm font-semibold uppercase tracking-[0.18em] text-[#57C7FF]">Lead-Formular</p>
-        <h3 className={`${compact ? "text-2xl" : "text-3xl"} mt-3 font-semibold tracking-tight text-white`}>
-          {title}
-        </h3>
-        <p className="mt-3 text-sm leading-6 text-white/68">{description}</p>
-      </div>
-
-      {/* Honeypot: für Menschen unsichtbar, fängt Bots ab */}
-      <div aria-hidden="true" className="absolute left-[-9999px] top-0 h-0 w-0 overflow-hidden">
+      <header className={styles.heading}>
+        <span className={shared.eyebrow}>Unverbindliche Anfrage</span>
+        <h3 style={{ fontSize: compact ? 24 : 28 }}>{title}</h3>
+        <p>{description}</p>
+      </header>
+      <div className={shared.hiddenField} aria-hidden="true">
         <label>
-          Bitte dieses Feld leer lassen
+          Dieses Feld bitte leer lassen
           <input
             type="text"
             name="company_website"
@@ -111,76 +103,92 @@ export function LeadForm({
           />
         </label>
       </div>
-
-      <div className="grid gap-4 sm:grid-cols-2">
-        <Field label="Vorname & Nachname" name="name" required autoComplete="name" />
-        <Field label="Geschäftliche E-Mail" name="email" type="email" required autoComplete="email" />
-        <Field label="Unternehmen" name="company" autoComplete="organization" />
-        <Field label="Telefon" name="phone" type="tel" autoComplete="tel" />
-
+      <div className={shared.formGrid}>
+        <Field
+          label="Vorname & Nachname *"
+          name="name"
+          required
+          autoComplete="name"
+        />
+        <Field
+          label="Geschäftliche E-Mail *"
+          name="email"
+          type="email"
+          required
+          autoComplete="email"
+        />
+        <Field
+          label="Unternehmen (optional)"
+          name="company"
+          autoComplete="organization"
+        />
+        <Field
+          label={
+            requirePhone ? "Telefon für den Rückruf *" : "Telefon (optional)"
+          }
+          name="phone"
+          type="tel"
+          required={requirePhone}
+          autoComplete="tel"
+        />
         {selectFields.map((field) => (
-          <label key={field.name} className="block text-sm text-white/78">
-            <span className="mb-2 block font-medium">{field.label}</span>
-            <select
-              name={field.name}
-              className="h-11 w-full rounded-lg border border-white/[0.12] bg-black/[0.45] px-3 text-sm text-white outline-none transition focus:border-emerald-300 focus:ring-2 focus:ring-emerald-300/20"
-              defaultValue=""
-            >
-              <option value="" className="bg-neutral-950">
-                Bitte wählen
-              </option>
+          <label key={field.name} className={shared.field}>
+            {field.label}
+            <select name={field.name} defaultValue="">
+              <option value="">Bitte wählen</option>
               {field.options.map((option) => (
-                <option key={option} value={option} className="bg-neutral-950">
+                <option key={option} value={option}>
                   {option}
                 </option>
               ))}
             </select>
           </label>
         ))}
-
-        <label className="block text-sm text-white/78 sm:col-span-2">
-          <span className="mb-2 block font-medium">Nachricht</span>
+        <label className={`${shared.field} ${shared.fieldFull}`}>
+          Nachricht (optional)
           <textarea
             name="message"
             rows={4}
-            className="w-full rounded-lg border border-white/[0.12] bg-black/[0.45] px-3 py-3 text-sm text-white outline-none transition placeholder:text-white/35 focus:border-emerald-300 focus:ring-2 focus:ring-emerald-300/20"
+            maxLength={1200}
             placeholder="Was soll AgenticIT für Sie prüfen?"
           />
         </label>
       </div>
-
-      <label className="mt-5 flex gap-3 text-sm leading-6 text-white/68">
-        <input
-          name="consent"
-          type="checkbox"
-          required
-          className="mt-1 size-4 rounded border-white/20 bg-black accent-emerald-300"
-        />
-        <span>Ich bin einverstanden, dass AgenticIT meine Angaben zur Bearbeitung der Anfrage nutzt.</span>
+      <label className={shared.consent}>
+        <input name="consent" type="checkbox" required />
+        <span>
+          Ich bin einverstanden, dass AgenticIT meine Angaben zur Bearbeitung
+          dieser Anfrage verwendet und mich dazu kontaktiert.{" "}
+          <Link href="/datenschutz">Datenschutz</Link>
+        </span>
       </label>
-
-      <button
-        type="submit"
-        disabled={state === "loading"}
-        className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#8FE05A] px-5 py-3 text-sm font-semibold text-[#122400] transition hover:bg-[#A2E874] disabled:cursor-not-allowed disabled:opacity-70"
-      >
-        {state === "loading" ? <Loader2 className="size-4 animate-spin" /> : <Send className="size-4" />}
-        {state === "loading" ? "Wird gesendet..." : submitLabel}
-      </button>
-
-      {message && (
-        <div
-          className={`mt-4 flex items-start gap-2 rounded-lg border px-3 py-3 text-sm ${
-            state === "success"
-              ? "border-emerald-300/25 bg-emerald-300/10 text-[#57C7FF]"
-              : "border-red-300/25 bg-red-300/10 text-red-100"
-          }`}
-          role="status"
+      <div className={styles.actions}>
+        <button
+          type="submit"
+          disabled={state === "loading"}
+          className={shared.button}
         >
-          {state === "success" ? <CheckCircle2 className="mt-0.5 size-4" /> : <AlertCircle className="mt-0.5 size-4" />}
+          {state === "loading" ? (
+            <Loader2 className="size-4 animate-spin" aria-hidden="true" />
+          ) : (
+            <Send className="size-4" aria-hidden="true" />
+          )}
+          {state === "loading" ? "Wird übermittelt …" : submitLabel}
+        </button>
+      </div>
+      {message ? (
+        <div
+          className={state === "success" ? styles.success : styles.error}
+          role={state === "error" ? "alert" : "status"}
+        >
+          {state === "success" ? (
+            <CheckCircle2 size={18} aria-hidden="true" />
+          ) : (
+            <AlertCircle size={18} aria-hidden="true" />
+          )}
           <span>{message}</span>
         </div>
-      )}
+      ) : null}
     </form>
   )
 }
@@ -192,17 +200,39 @@ type FieldProps = {
   required?: boolean
   autoComplete?: string
 }
-
-function Field({ label, name, type = "text", required = false, autoComplete }: FieldProps) {
+function Field({
+  label,
+  name,
+  type = "text",
+  required = false,
+  autoComplete,
+}: FieldProps) {
+  const maxLength =
+    name === "email"
+      ? 180
+      : name === "company"
+        ? 160
+        : name === "phone"
+          ? 80
+          : 120
   return (
-    <label className="block text-sm text-white/78">
-      <span className="mb-2 block font-medium">{label}</span>
+    <label className={shared.field}>
+      {label}
       <input
         name={name}
         type={type}
         required={required}
         autoComplete={autoComplete}
-        className="h-11 w-full rounded-lg border border-white/[0.12] bg-black/[0.45] px-3 text-sm text-white outline-none transition placeholder:text-white/35 focus:border-emerald-300 focus:ring-2 focus:ring-emerald-300/20"
+        minLength={
+          required
+            ? name === "phone"
+              ? 7
+              : name === "name"
+                ? 2
+                : undefined
+            : undefined
+        }
+        maxLength={maxLength}
       />
     </label>
   )
