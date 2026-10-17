@@ -39,6 +39,8 @@ faq:
 
 ## Wie beginnen wir, wenn bisher nur eine Idee besteht?
 
+Ist noch unklar, ob Sie eine Firmenwebsite, eine Kampagnenseite oder beides brauchen? Unsere [Entscheidungshilfe zu Landingpage und Website](/blog/landingpage-oder-website) ordnet die passenden Einstiege ein.
+
 Formulieren Sie zunächst einen Satz: **«Unsere Website hilft [Zielkunden], [Anliegen] zu lösen. Der nächste Schritt ist [Aktion].»**
 
 Für ein Beratungsteam könnte das heissen: Interessenten erkennen, bei welchem Anliegen das Team hilft, nutzen einen kurzen Check und können danach eine passende Anfrage senden. Das ist ein Planungsbeispiel und keine Zusage bestimmter Kundenzahlen.

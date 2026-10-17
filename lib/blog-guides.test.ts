@@ -7,6 +7,7 @@ const guides = [
   "eigene-ki-agenten-vs-chatgpt",
   "prozessautomatisierung-kmu-leitfaden",
   "website-briefing-vorlage",
+  "landingpage-oder-website",
   "ki-agenten",
   "neukundengewinnung-kmu-schweiz",
 ] as const
@@ -42,7 +43,9 @@ test("reviewed guides preserve publication dates and expose their actual update 
     assert.equal(post.updated, "2026-10-17")
     assert.equal(
       post.date,
-      slug === "website-briefing-vorlage" ? "2026-10-17" : "2026-07-24",
+      ["website-briefing-vorlage", "landingpage-oder-website"].includes(slug)
+        ? "2026-10-17"
+        : "2026-07-24",
     )
     assert.ok(post.sources.length >= 2)
     assert.ok(post.sources.every((source) => source.url.startsWith("https://")))
