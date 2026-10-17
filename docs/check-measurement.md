@@ -70,3 +70,11 @@ Danach wurde ausdrücklich **Heute, 17.10. bis 17.10.2026**, gewählt und das En
 Google nennt für die Datenverarbeitung bis zu 24–48 Stunden; Berichte können sich in diesem Fenster ändern. Das ist eine mögliche Einschränkung der frühen Auswertung, keine hier isoliert bewiesene Fehlerursache und keine garantierte Fertigstellungsfrist. Eine Auswertung der vier eigenen Ereignisse nach Checktyp sowie bestätigte qualifizierte Ergebnisse bleiben offen. Keine neue QA-Nutzung erzeugt, um den Bericht zu füllen; kein Kontaktformular abgeschickt.
 
 Quelle: [Google Analytics: Datenaktualität](https://support.google.com/analytics/answer/11198161?hl=de), am 17.10.2026 gelesen. Screenshot und bereinigter Messnachweis liegen in der zentralen OneDrive-Ablage unter `Umsetzung-2026-10-17/Nachweise/metrics-*`.
+
+## Anfragenplanung unter /potenzial
+
+Der überarbeitete Bestandsrechner plant ab 17.10.2026 mit eigenen Zielwerten. Er ist kein sechster Typ in `check_kind`: Die fünf bestehenden Check-Kennungen, GA4-Dimension und GTM-Konfiguration bleiben unverändert. Es werden keine zusätzlichen eigenen Analytics-Ereignisse für diesen Planer eingerichtet. Seine Nutzung deshalb nicht als fehlende oder erfolglose Ausführung eines der fünf gemessenen Checks auswerten.
+
+Die Rechnung und der Download laufen im Browser. Erst eine ausdrücklich gesendete freiwillige Kontaktanfrage nutzt die vorhandene Quelle `potenzialrechner` und das validierte Feld `acquisitionPlan`. Der Server erstellt den Plan erneut aus den Eingaben, setzt eine persönliche Prüfaufgabe und keine Marketing-Einwilligung. Der zuvor im aktiven Formular verwendete Quellwert `potenzial` war nicht in der Servervalidierung enthalten; die Inkonsistenz ist durch eine vor der Korrektur fehlgeschlagene Prüfung belegt.
+
+Die neue Übergabe ist nur in einer abgeschirmten Simulation geprüft. Weder Annahme durch den produktiven Webhook noch ein echtes CRM-Objekt sind damit nachgewiesen. D03 bleibt offen. Die API-Erfolgsmeldung allein darf auch hier nicht als qualifizierter Lead, Termin oder Auftrag gezählt werden. Es wurde keine reale Anfrage übermittelt.
