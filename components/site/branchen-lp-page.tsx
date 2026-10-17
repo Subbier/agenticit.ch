@@ -314,9 +314,9 @@ export function BranchenLpPage({ slug }: { slug: string }) {
             Ihrem Betrieb automatisieren lassen — konkret, messbar und ohne
             Verpflichtung.
           </p>
-          <CtaContactForm />
+          <CtaContactForm pagePath={"/branchen/" + lp.slug} />
           <p className="mt-4 font-[family-name:var(--font-carbon-text)] text-[12px] text-[#8B94A1]">
-            DSG-konform · Antwort innert 24 Stunden · Keine Verpflichtung
+            Persönliche Rückmeldung · Keine Verpflichtung
           </p>
         </Reveal>
       </section>

@@ -1,21 +1,65 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useId, useRef, useState, type FormEvent } from "react"
 import { CheckCircle2, Send } from "lucide-react"
+import {
+  CALLBACK_GOALS,
+  callbackValidationMessage,
+  createCallbackSender,
+  type CallbackFields,
+} from "@/lib/callback-inquiry"
+import styles from "./callback-form.module.css"
 
-const INPUT_CLASS =
-  "w-full rounded-[11px] border border-[#AEB8C2] bg-white px-4 py-3 text-[15px] font-medium text-[#202522] outline-none transition placeholder:text-[#647068] hover:border-[#7E8A96] focus:border-[#1F9A5E] focus:shadow-[0_0_0_3px_rgba(31,154,94,0.18)]"
+const fields = [
+  {
+    name: "firstName",
+    label: "Vorname",
+    type: "text",
+    autoComplete: "given-name",
+    required: true,
+    max: 59,
+  },
+  {
+    name: "lastName",
+    label: "Nachname",
+    type: "text",
+    autoComplete: "family-name",
+    required: true,
+    max: 59,
+  },
+  {
+    name: "phone",
+    label: "Telefon",
+    type: "tel",
+    autoComplete: "tel",
+    required: true,
+    max: 80,
+  },
+  {
+    name: "email",
+    label: "E-Mail-Adresse",
+    type: "email",
+    autoComplete: "email",
+    required: true,
+    max: 180,
+  },
+  {
+    name: "company",
+    label: "Firma (optional)",
+    type: "text",
+    autoComplete: "organization",
+    required: false,
+    max: 160,
+  },
+] as const
 
-// «Ihr Ziel» steuert Bedarf & Reife im Gespräch (Master: Conversion-Funnel §4).
-const ZIELE = [
-  "Mehr Anfragen",
-  "Planbarer Umsatz",
-  "Zeit gewinnen",
-  "Weiss noch nicht",
-]
+export function CtaContactForm({ pagePath }: { pagePath: string }) {
+  return <CallbackForm key={pagePath} pagePath={pagePath} />
+}
 
-export function CtaContactForm() {
-  const [form, setForm] = useState({
+function CallbackForm({ pagePath }: { pagePath: string }) {
+  const formId = useId()
+  const [form, setForm] = useState<CallbackFields>({
     firstName: "",
     lastName: "",
     company: "",
@@ -24,157 +68,172 @@ export function CtaContactForm() {
     goal: "",
   })
   const [consent, setConsent] = useState(false)
+  const [honey, setHoney] = useState("")
   const [status, setStatus] = useState<"idle" | "loading" | "done" | "error">(
     "idle",
   )
-  const [honey, setHoney] = useState("")
+  const [error, setError] = useState("")
+  const sender = useRef<ReturnType<typeof createCallbackSender> | null>(null)
+  const successRef = useRef<HTMLDivElement>(null)
+  if (sender.current === null) sender.current = createCallbackSender()
+  const valid = callbackValidationMessage(form, consent) === null
 
-  const valid =
-    form.firstName.trim().length >= 2 &&
-    form.lastName.trim().length >= 2 &&
-    form.phone.trim().length >= 7 &&
-    /\S+@\S+\.\S+/.test(form.email) &&
-    consent
+  useEffect(() => {
+    if (status === "done") successRef.current?.focus()
+  }, [status])
 
-  async function submit(e: React.FormEvent) {
-    e.preventDefault()
-    if (!valid) return
+  async function submit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    if (!valid || status === "loading") return
     setStatus("loading")
+    setError("")
     try {
-      const res = await fetch("/api/leads", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({
-          source: "home",
-          name: `${form.firstName.trim()} ${form.lastName.trim()}`,
-          email: form.email.trim(),
-          phone: form.phone.trim(),
-          company: form.company.trim(),
-          goal: form.goal || undefined,
-          consent: true,
-          company_website: honey,
-        }),
-      })
-      if (!res.ok) throw new Error("failed")
-      setStatus("done")
-    } catch {
+      if (await sender.current!({ form, pagePath, consent, honey }))
+        setStatus("done")
+    } catch (failure) {
+      setError(
+        failure instanceof Error
+          ? failure.message
+          : "Die Anfrage konnte nicht übermittelt werden. Bitte versuchen Sie es erneut.",
+      )
       setStatus("error")
     }
   }
 
-  if (status === "done") {
+  if (status === "done")
     return (
-      <div className="mx-auto mt-7 flex w-full max-w-[560px] flex-col items-center rounded-[18px] border border-[#dce3db] bg-white p-8 text-center shadow-[0_10px_30px_rgba(10,12,16,0.08)]">
-        <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#8fe05a]/15 text-[#4d7c36]">
-          <CheckCircle2 className="h-8 w-8" />
-        </div>
-        <h3 className="mt-4 text-[20px] font-extrabold text-[#202522]">
-          Danke{form.firstName ? `, ${form.firstName.trim()}` : ""}!
-        </h3>
-        <p className="mt-2 max-w-[400px] text-[14px] leading-relaxed text-[#647068]">
-          Ihre Anfrage ist bei uns. Wir rufen Sie zeitnah persönlich an.
+      <div
+        className={styles.success}
+        role="status"
+        tabIndex={-1}
+        ref={successRef}
+      >
+        <CheckCircle2 size={32} aria-hidden="true" />
+        <h3>Danke für Ihre Anfrage.</h3>
+        <p>
+          Ihre Rückrufanfrage wurde übermittelt. Wir prüfen Ihr Anliegen
+          persönlich und melden uns über die angegebene Telefonnummer.
         </p>
       </div>
     )
-  }
 
   return (
     <form
       onSubmit={submit}
-      className="mx-auto mt-7 w-full max-w-[560px] rounded-[18px] border border-[#C8D0D8] bg-white p-4 text-left shadow-[0_14px_40px_rgba(10,12,16,0.14)] sm:p-7"
+      className={styles.form}
+      aria-label="Persönlichen Rückruf anfragen"
+      data-callback-page={pagePath}
+      aria-busy={status === "loading"}
     >
-      <div className="grid gap-3 sm:grid-cols-2">
+      <div className={styles.grid}>
+        {fields.map((field) => (
+          <label
+            className={styles.field}
+            htmlFor={formId + "-" + field.name}
+            key={field.name}
+          >
+            <span>
+              {field.label}
+              {field.required ? <span aria-hidden="true"> *</span> : null}
+            </span>
+            <input
+              id={formId + "-" + field.name}
+              name={field.name}
+              type={field.type}
+              required={field.required}
+              autoComplete={field.autoComplete}
+              maxLength={field.max}
+              minLength={
+                field.name === "firstName" || field.name === "lastName"
+                  ? 2
+                  : undefined
+              }
+              value={form[field.name]}
+              onChange={(event) =>
+                setForm((previous) => ({
+                  ...previous,
+                  [field.name]: event.target.value,
+                }))
+              }
+              aria-describedby={
+                field.name === "phone" ? formId + "-phone-hint" : undefined
+              }
+            />
+            {field.name === "phone" ? (
+              <span className={styles.hint} id={formId + "-phone-hint"}>
+                Mit Vorwahl angeben.
+              </span>
+            ) : null}
+          </label>
+        ))}
+        <label className={styles.field} htmlFor={formId + "-goal"}>
+          <span>Ihr Ziel (optional)</span>
+          <select
+            id={formId + "-goal"}
+            name="goal"
+            value={form.goal}
+            onChange={(event) =>
+              setForm((previous) => ({ ...previous, goal: event.target.value }))
+            }
+          >
+            <option value="">Bitte wählen</option>
+            {CALLBACK_GOALS.map((goal) => (
+              <option value={goal} key={goal}>
+                {goal}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
+      <div className={styles.honey} aria-hidden="true">
         <input
-          required
-          autoComplete="given-name"
-          placeholder="Vorname *"
-          value={form.firstName}
-          onChange={(e) => setForm({ ...form, firstName: e.target.value })}
-          className={INPUT_CLASS}
-        />
-        <input
-          required
-          autoComplete="family-name"
-          placeholder="Nachname *"
-          value={form.lastName}
-          onChange={(e) => setForm({ ...form, lastName: e.target.value })}
-          className={INPUT_CLASS}
-        />
-        <input
-          autoComplete="organization"
-          placeholder="Firma (optional)"
-          value={form.company}
-          onChange={(e) => setForm({ ...form, company: e.target.value })}
-          className={INPUT_CLASS}
-        />
-        <input
-          required
-          type="tel"
-          autoComplete="tel"
-          placeholder="Telefon *"
-          value={form.phone}
-          onChange={(e) => setForm({ ...form, phone: e.target.value })}
-          className={INPUT_CLASS}
+          type="text"
+          name="company_website"
+          tabIndex={-1}
+          autoComplete="off"
+          value={honey}
+          onChange={(event) => setHoney(event.target.value)}
         />
       </div>
-      <input
-        required
-        type="email"
-        autoComplete="email"
-        placeholder="E-Mail-Adresse *"
-        value={form.email}
-        onChange={(e) => setForm({ ...form, email: e.target.value })}
-        className={`${INPUT_CLASS} mt-3`}
-      />
-      <select
-        value={form.goal}
-        onChange={(e) => setForm({ ...form, goal: e.target.value })}
-        className={`${INPUT_CLASS} mt-3 ${form.goal ? "text-[#202522]" : "text-[#647068]"}`}
-      >
-        <option value="">Ihr Ziel (optional)</option>
-        {ZIELE.map((z) => (
-          <option key={z} value={z}>
-            {z}
-          </option>
-        ))}
-      </select>
-      <input
-        type="text"
-        tabIndex={-1}
-        autoComplete="off"
-        value={honey}
-        onChange={(e) => setHoney(e.target.value)}
-        className="absolute left-[-9999px] h-0 w-0 opacity-0"
-        aria-hidden="true"
-      />
-      <label className="mt-3 flex items-start gap-2 text-left text-[12.5px] font-medium leading-snug text-[#33404F]">
+      <label className={styles.consent}>
         <input
           type="checkbox"
+          name="consent"
+          required
           checked={consent}
-          onChange={(e) => setConsent(e.target.checked)}
-          className="mt-0.5 h-4 w-4 flex-none accent-[#1F9A5E]"
+          onChange={(event) => setConsent(event.target.checked)}
         />
-        Ich bin einverstanden, dass AgenticIT meine Angaben zur Bearbeitung
-        meiner Anfrage verwendet (DSG-konform).
+        <span>
+          Ich bin einverstanden, dass AgenticIT meine Angaben zur Bearbeitung
+          meiner Rückrufanfrage verwendet.
+        </span>
       </label>
       {status === "error" ? (
-        <p className="mt-3 text-[13px] font-bold text-red-600">
-          Senden fehlgeschlagen. Bitte erneut versuchen.
+        <p className={styles.error} role="alert">
+          {error}
         </p>
       ) : null}
-      <button
-        type="submit"
-        disabled={!valid || status === "loading"}
-        className="mt-4 flex w-full items-center justify-center gap-2 rounded-[13px] bg-[#8FE05A] py-[15px] text-[16px] font-extrabold text-[#122400] shadow-[0_6px_16px_rgba(10,12,16,0.18)] transition hover:-translate-y-[1px] disabled:opacity-50 disabled:hover:translate-y-0"
-      >
-        <Send className="h-[18px] w-[18px]" />
-        {status === "loading"
-          ? "Wird gesendet …"
-          : "Rückruf anfordern – kostenlos"}
-      </button>
-      <p className="mt-3 text-center text-[12.5px] font-medium text-[#33404F]">
-        Ein kurzer Rückruf, ein konkreter Plan für Ihre Branche – Sie
-        entscheiden danach in Ruhe.
+      <div className={styles.submitRow}>
+        <button
+          type="submit"
+          className={styles.submit}
+          disabled={!valid || status === "loading"}
+        >
+          <Send size={17} aria-hidden="true" />
+          {status === "loading" ? "Wird übermittelt …" : "Rückruf anfragen"}
+        </button>
+      </div>
+      <p className={styles.privacy}>
+        Informationen zur Bearbeitung Ihrer Angaben:{" "}
+        <a
+          href="/datenschutz"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Datenschutzerklärung (neuer Tab)"
+          title="Datenschutzerklärung in einem neuen Tab öffnen"
+        >
+          Datenschutzerklärung
+        </a>
       </p>
     </form>
   )

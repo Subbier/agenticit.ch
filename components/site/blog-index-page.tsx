@@ -109,7 +109,7 @@ export function BlogIndexPage() {
             Wir besprechen Ihr Anliegen, die vorhandenen Systeme und einen
             passenden nächsten Schritt.
           </p>
-          <CtaContactForm />
+          <CtaContactForm pagePath="/blog" />
           <p className="mt-4 font-[family-name:var(--font-carbon-text)] text-[12px] text-[#8B94A1]">
             Persönliche Rückmeldung · Keine Verpflichtung
           </p>

@@ -364,7 +364,7 @@ export function VoiceAgentPage() {
               Hinterlassen Sie kurz Ihre Angaben – wir richten eine auf Ihr
               Unternehmen abgestimmte Demo ein und melden uns persönlich.
             </p>
-            <CtaContactForm />
+            <CtaContactForm pagePath="/voiceagent" />
           </div>
         </div>
       </section>

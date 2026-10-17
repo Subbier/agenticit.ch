@@ -205,7 +205,7 @@ export function HubPage({ slug }: { slug: string }) {
           <p className="mt-4 max-w-[520px] text-[clamp(15px,3.5vw,17px)] leading-relaxed text-[#647068]">
             {page.closingText}
           </p>
-          <CtaContactForm />
+          <CtaContactForm pagePath={"/" + page.slug} />
           <p className="mt-4 text-[12px] text-[#9aa9bf]">
             DSG-konform · Antwort innert 24 Stunden · Keine Verpflichtung
           </p>

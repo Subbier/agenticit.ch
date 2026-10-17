@@ -272,7 +272,7 @@ export function BlogArticlePage({ slug }: { slug: string }) {
               diesem Artikel sich in Ihrem Unternehmen automatisieren lassen —
               konkret, messbar und ohne Verpflichtung.
             </p>
-            <CtaContactForm />
+            <CtaContactForm pagePath={"/blog/" + post.slug} />
             <p className="mt-4 font-[family-name:var(--font-carbon-text)] text-[12px] text-[#8B94A1]">
               Persönliche Rückmeldung · Keine Verpflichtung
             </p>

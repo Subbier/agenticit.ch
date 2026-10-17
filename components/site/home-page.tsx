@@ -225,7 +225,7 @@ export function HomePage({ jsonLd = [] }: HomePageProps) {
               Kurz Ihre Angaben hinterlassen – wir rufen Sie persönlich an und zeigen Ihnen in 15 Minuten, wo bei Ihnen
               Zeit und Geld freiliegen.
             </p>
-            <CtaContactForm />
+            <CtaContactForm pagePath="/" />
           </div>
         </div>
       </section>
