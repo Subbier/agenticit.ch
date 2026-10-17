@@ -1,0 +1,78 @@
+AGENTICIT · IHR GEMEINSAMER PROJEKTSTART-PLAN
+
+Eine ausfüllbare Arbeitsvorlage. Im Team verwenden oder zum Gespräch mitbringen.
+Keine Passwörter, geheimen Schlüssel oder Kundendaten in dieser Vorlage speichern.
+Für Umfang, Preise und Leistungen gilt der gemeinsam vereinbarte Auftrag.
+
+1. ZIEL UND AUSGANGSLAGE
+Vorhaben / Aufgabe aus dem Alltag: __________________
+Wer nutzt den Ablauf? __________________
+Heutiger Ablauf / Aufwand / offener Punkt: __________________
+Gewünschtes Ergebnis des ersten Vorhabens: __________________
+Messgrösse | Ausgangswert | Quelle | späterer Vergleich: __________________
+Verantwortliche Person: __________________
+
+2. AUFTRAG UND RAHMEN
+Vereinbarte Leistungen / erwartete Ergebnisse: __________________
+Nicht enthaltene Arbeiten: __________________
+Voraussetzungen und Mitwirkung im Team: __________________
+Einrichtung / Umsetzung: __________________
+Laufender Betrieb / Betreuung: __________________
+Lizenzen / Werbebudget / weitere Fremdkosten: __________________
+Zeitplan / Abhängigkeiten: __________________
+Wer entscheidet über zusätzliche Arbeiten und deren Kosten? __________________
+
+3. ZUSTÄNDIGKEITEN UND START
+Projektverantwortliche auf Kundenseite: __________________
+Projektverantwortliche bei AgenticIT: __________________
+Vertretung / fachliche Mitwirkung: __________________
+Wer darf Inhalte, Änderungen und die Abnahme freigeben? __________________
+Kommunikationsweg / gemeinsamer Aufgabenstand: __________________
+Unterlagen | verantwortliche Person | Termin | vorhanden:
+______________________________________________________________
+Erster Arbeitsschritt / nächster Besprechungstermin: __________________
+
+4. DATEN UND ZUGRIFFE
+Je Dienst nur die für den vereinbarten Auftrag benötigten Rechte festhalten.
+System | Zweck | zuständige Person | benötigte Rolle | Einladung erfolgt:
+______________________________________________________________
+Beteiligte Dienste / Datenwege / Speicherorte: __________________
+Welche Daten sind erforderlich, welche können weggelassen werden? __________________
+Freigabe der Zugriffe / Prüfung beim Abschluss: __________________
+Keine Passwörter im Plan oder per ungeschützter Nachricht versenden.
+
+5. PRÜFUNG UND ABNAHME
+Prüffälle und Testdaten vorab freigeben; möglichst anonymisierte Beispiele nutzen.
+Erwartung | tatsächliches Ergebnis | Nachweis | bestanden / offen:
+Normalfall: __________________________________________________
+Fehlerfall / ausgefallene Verbindung: __________________________
+Wiederholte Übergabe / doppelter Vorgang: _______________________
+Menschliche Übernahme / Rückfrage: _____________________________
+Bei kundenorientierter KI: als KI erkennbar? __________________
+Ausgehende Sales-Nachrichten: menschliche Freigabe technisch eingebaut? __________
+Offene Punkte | verantwortliche Person | Termin | Auswirkung:
+______________________________________________________________
+Abnahme / Entscheidung | freigebende Person | Datum: __________________
+Zusätzliche Arbeiten vor Umsetzung separat abstimmen.
+
+6. BETRIEB UND ÜBERGABE
+Dokumentation / Ablageort: __________________
+Einweisung / Teilnehmende / Datum: __________________
+Wer betreibt und pflegt die Lösung? __________________
+Supportweg / vereinbarte Zeiten und Reaktionszeiten: __________________
+Fehlermeldung / zuständige Person / Vertretung: __________________
+Falls relevant: Sicherung / Wiederherstellung / Prüfnachweis: __________________
+Abschluss: nicht mehr benötigte Zugriffe entfernen / bestätigt durch: __________
+Betreuung / nächster Rückblick / separat vereinbarte Erweiterung: ______________
+
+STARTFREIGABE
+[ ] Ziel, Ergebnis und Verantwortliche geklärt
+[ ] Auftrag, Kosten und Abnahmekriterien vereinbart
+[ ] Unterlagen und benötigte Rechte bereit
+[ ] Prüffälle und menschliche Übernahme festgelegt
+[ ] Übergabe und Betrieb vereinbart oder als offen benannt
+
+Jede offene Voraussetzung mit verantwortlicher Person und Termin festhalten.
+Die Vorlage löst keine Bestellung, Zugriffsfreigabe oder externe Aktion aus.
+
+https://agenticit.ch/zusammenarbeit

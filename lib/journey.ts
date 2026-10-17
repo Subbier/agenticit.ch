@@ -1,3 +1,5 @@
+import { projectStartResource } from "./project-start"
+
 export const challenges = [
   {
     id: "acquisition",
@@ -257,8 +259,7 @@ const playbooks: Record<
       "Verbinden Sie die Auftragsbestätigung mit einer Startcheckliste. Jede erforderliche Unterlage und Aufgabe erhält einen Verantwortlichen und ein Fälligkeitsdatum.",
     measure:
       "Zeit vom Auftrag bis zum vollständigen Start und Anzahl fehlender Angaben.",
-    template:
-      "KUNDENSTART-CHECKLISTE\n[ ] Auftrag, Umfang und Zusagen bestätigt\n[ ] Übergabe von Verkauf an Umsetzung\n[ ] Ansprechpartner und Kommunikationsweg festgelegt\n[ ] Kick-off vereinbart\n[ ] Benötigte Unterlagen vollständig\n[ ] Zugänge rollenbasiert und sicher bereitgestellt\n[ ] Ausgangslage und Erfolgskriterien festgehalten\n[ ] Erster Arbeitsschritt abgestimmt\n[ ] Erster Ergebnis- und Feedbacktermin vereinbart\n\nJe Zeile ergänzen: Verantwortlich | Fällig am | Erledigt am. Keine Zugangsdaten in dieser Checkliste speichern.",
+    template: `KUNDENSTART-CHECKLISTE\n[ ] Auftrag, Umfang und Zusagen bestätigt\n[ ] Übergabe von Verkauf an Umsetzung\n[ ] Ansprechpartner und Kommunikationsweg festgelegt\n[ ] Kick-off vereinbart\n[ ] Benötigte Unterlagen vollständig\n[ ] Zugänge rollenbasiert und sicher bereitgestellt\n[ ] Ausgangslage und Erfolgskriterien festgehalten\n[ ] Erster Arbeitsschritt abgestimmt\n[ ] Erster Ergebnis- und Feedbacktermin vereinbart\n\nJe Zeile ergänzen: Verantwortlich | Fällig am | Erledigt am. Keine Zugangsdaten in dieser Checkliste speichern.\n\nAusfüllbare Vorlage für Projektstart, Abnahme und Betrieb:\nhttps://agenticit.ch${projectStartResource.href}`,
   },
   phone: {
     focus: "Erreichbarkeit mit verlässlicher Übergabe",

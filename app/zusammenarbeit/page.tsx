@@ -1,84 +1,108 @@
 import { JourneyShell } from "@/components/journey/shell"
-import { JourneyCta } from "@/components/journey/sections"
-import { createPageMetadata } from "@/lib/seo"
+import { createPageMetadata, faqPageJsonLd } from "@/lib/seo"
+import { JsonLd } from "@/components/site/json-ld"
+import { ArrowUpRight, Download } from "lucide-react"
+import {
+  projectStartFaqs,
+  projectStartResource,
+  projectStartStages,
+} from "@/lib/project-start"
+import layout from "@/components/journey/collaboration.module.css"
 import styles from "@/components/journey/journey.module.css"
 import Link from "next/link"
 import { company } from "@/lib/company"
 
 export const metadata = createPageMetadata({
-  title: "So starten wir Ihre digitale Kundenreise",
+  title: "Zusammenarbeit: Vom Projektstart bis zur Übergabe",
   description:
-    "Von der Beratung über die passenden Services bis zur Umsetzung und Betreuung. Klare Verantwortlichkeiten, menschliche Freigaben und nachvollziehbare Ergebnisse.",
+    "Ihr Projekt mit AgenticIT: Ziel, Auftrag, Einrichtung, Abnahme und Betreuung klar vereinbaren. Mit einer frei nutzbaren Vorlage für Ihren Projektstart.",
   path: "/zusammenarbeit",
 })
-
-const steps = [
-  [
-    "01",
-    "Ihr Anliegen verstehen",
-    "Wir gehen einen echten Vorgang durch: Was löst ihn aus, wer bearbeitet ihn und wo bleibt etwas liegen? Bestehende Systeme und bisherige Versuche gehören dazu.",
-    "Ergebnis: ein bestätigter Bedarf und eine verantwortliche Person.",
-  ],
-  [
-    "02",
-    "Die passenden Services planen",
-    "Wir stellen die Leistungen für Ihre Ziele zusammen und vereinbaren Abläufe, Übergaben, Umfang, Preis und Fremdkosten. Ausgangslage und Kriterien für die Abnahme stehen vor dem Start fest.",
-    "Ergebnis: ein konkreter Auftrag mit verständlichen Grenzen.",
-  ],
-  [
-    "03",
-    "Den Kundenstart vorbereiten",
-    "Verkauf und Umsetzung übergeben dieselben Zusagen. Im Kick-off klären wir Ansprechpartner, benötigte Unterlagen, sichere Zugänge und den ersten Arbeitsschritt.",
-    "Ergebnis: vollständige Startvoraussetzungen und ein gemeinsamer Ablauf.",
-  ],
-  [
-    "04",
-    "Mit Ihrem Team umsetzen",
-    "Wir richten den vereinbarten Prozess ein und prüfen Normalfall, Fehlerfall und menschliche Übernahme. Schlüsselanwender erhalten eine Einweisung. Bei kundenorientierter KI ist erkennbar, mit wem man spricht.",
-    "Ergebnis: ein geprüfter Ablauf und eine nachvollziehbare Messung.",
-  ],
-  [
-    "05",
-    "Ergebnis und nächsten Schritt entscheiden",
-    "Wir besprechen Wirkung, Aufwand und Grenzen. Sie entscheiden über Abschluss und Übergabe, eine gezielte Anpassung oder eine separat vereinbarte Betreuung.",
-    "Ergebnis: eine fundierte Entscheidung über die Zusammenarbeit.",
-  ],
-]
 
 export default function Page() {
   return (
     <JourneyShell>
+      <JsonLd data={[faqPageJsonLd([...projectStartFaqs])]} />
       <main className={styles.container}>
         <div className={styles.pageHero}>
-          <span className={styles.eyebrow}>Von der Idee in Ihren Alltag</span>
+          <span className={styles.eyebrow}>So arbeiten wir zusammen</span>
           <h1>
-            Ein Partner fürs Ganze.
+            Ein Ziel.
             <br />
-            Schritt für Schritt weiter.
+            Ein klarer Start.
           </h1>
           <p>
-            Wir begleiten Ihr Unternehmen aus der Schweiz in die digitale
-            Zukunft. Website, Systeme, Kommunikation und interne Abläufe denken
-            wir zusammen. KI kommt dort zum Einsatz, wo sie Ihr Team entlastet –
-            mit einem klaren Fahrplan und einem Ansprechpartner.
+            Sie bringen die Aufgabe aus Ihrem Alltag mit. Wir verbinden
+            Marketing, Sales und digitale Abläufe zu einem umsetzbaren Vorhaben.
+            Gemeinsam klären wir Ergebnis, Aufwand und Verantwortung – damit Ihr
+            Team weiss, was passiert und wie es danach weitergeht.
           </p>
+          <div className={styles.actions}>
+            <Link className={styles.button} href="/kontakt">
+              Projekt besprechen <ArrowUpRight size={17} aria-hidden="true" />
+            </Link>
+            <Link className={styles.textLink} href="#startplan">
+              Startvorlage mitnehmen <Download size={17} aria-hidden="true" />
+            </Link>
+          </div>
         </div>
         <section
           className={`${styles.checkArea} ${styles.wideContent}`}
-          aria-label="Ablauf der Zusammenarbeit"
+          aria-labelledby="project-process"
         >
-          <div className={styles.fullSteps}>
-            {steps.map(([number, title, text, outcome]) => (
-              <article className={styles.fullStep} key={number}>
-                <span>{number}</span>
+          <h2 className={layout.processTitle} id="project-process">
+            Von der Aufgabe in den Alltag.
+          </h2>
+          <ol className={layout.steps}>
+            {projectStartStages.map((stage, index) => (
+              <li className={layout.step} key={stage.id}>
+                <span aria-hidden="true">0{index + 1}</span>
                 <div>
-                  <h2>{title}</h2>
-                  <p>{text}</p>
-                  <small>{outcome}</small>
+                  <h3>{stage.title}</h3>
+                  <p>{stage.summary}</p>
+                  <p className={layout.gate}>{stage.gate}</p>
+                  <details className={layout.details}>
+                    <summary>Was wir dafür klären</summary>
+                    <ul>
+                      {stage.checklist.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </details>
                 </div>
-              </article>
+              </li>
             ))}
+          </ol>
+        </section>
+        <section
+          className={layout.startPlan}
+          id="startplan"
+          aria-labelledby="startplan-title"
+        >
+          <span className={styles.eyebrow}>Direkt für Ihr Team nutzbar</span>
+          <h2 id="startplan-title">Ihr gemeinsamer Projektstart-Plan.</h2>
+          <p>
+            Ein ausfüllbarer Plan für Ziel, Umfang, Zuständigkeiten, Zugänge und
+            Abnahme. Mit Platz für offene Punkte und den späteren Betrieb.
+            Nutzen Sie ihn im Team oder bringen Sie ihn zum Gespräch mit.
+          </p>
+          <div className={styles.actions}>
+            <a
+              className={styles.button}
+              href={projectStartResource.downloadHref}
+              download={projectStartResource.filename}
+            >
+              Startplan speichern (.txt){" "}
+              <Download size={17} aria-hidden="true" />
+            </a>
+            <a className={layout.fileView} href={projectStartResource.href}>
+              Vorlage im Browser ansehen{" "}
+              <ArrowUpRight size={17} aria-hidden="true" />
+            </a>
           </div>
+          <p className={layout.note}>
+            Ohne Registrierung. Keine Passwörter oder Kundendaten eintragen.
+          </p>
         </section>
         <section className={styles.section}>
           <span className={styles.eyebrow}>Business und Technologie</span>
@@ -132,7 +156,33 @@ export default function Page() {
               Einblick: So haben wir unsere eigene Website aufgebaut
             </Link>
           </p>
-          <JourneyCta />
+          <div className={styles.cta}>
+            <div>
+              <h2>Welches Vorhaben steht bei Ihnen an?</h2>
+              <p>
+                Bringen Sie Ihre Aufgabe oder einen Check-Plan mit. Wir klären
+                den nächsten Schritt persönlich.
+              </p>
+            </div>
+            <Link className={styles.button} href="/kontakt">
+              Projekt besprechen <ArrowUpRight size={17} aria-hidden="true" />
+            </Link>
+          </div>
+        </section>
+        <section
+          className={`${styles.section} ${styles.wideContent}`}
+          aria-labelledby="collaboration-faq"
+        >
+          <span className={styles.eyebrow}>Vor dem ersten Schritt</span>
+          <h2 id="collaboration-faq">Kurz geklärt.</h2>
+          <div className={styles.faqList}>
+            {projectStartFaqs.map((faq) => (
+              <details className={styles.faq} key={faq.question}>
+                <summary>{faq.question}</summary>
+                <p>{faq.answer}</p>
+              </details>
+            ))}
+          </div>
         </section>
       </main>
     </JourneyShell>

@@ -100,6 +100,16 @@ const nextConfig = {
         source: "/(.*)",
         headers: securityHeaders,
       },
+      {
+        source: "/vorlagen/AgenticIT-Projektstart-Plan.txt",
+        has: [{ type: "query", key: "download", value: "1" }],
+        headers: [
+          {
+            key: "Content-Disposition",
+            value: 'attachment; filename="AgenticIT-Projektstart-Plan.txt"',
+          },
+        ],
+      },
     ]
   },
   async rewrites() {
