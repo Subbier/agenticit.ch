@@ -2,6 +2,7 @@ import Link from "next/link"
 import { ArrowUpRight, Menu, X } from "lucide-react"
 import { ConsentSettingsLink } from "@/components/site/consent-settings-link"
 import { WebsiteFeedbackLink } from "@/components/site/website-feedback"
+import { company } from "@/lib/company"
 import styles from "./journey.module.css"
 
 function Brand() {
@@ -102,8 +103,8 @@ export function JourneyShell({ children }: { children: React.ReactNode }) {
               </div>
               <div>
                 <strong>Kontakt</strong>
-                <a href="tel:+41315394444">031 539 44 44</a>
-                <a href="mailto:info@agenticit.ch">info@agenticit.ch</a>
+                <a href={`tel:${company.phone}`}>{company.phoneLabel}</a>
+                <a href={`mailto:${company.email}`}>{company.email}</a>
                 <Link href="/kontakt">Kontaktformular ↗</Link>
                 <span>Bern, Schweiz</span>
               </div>
@@ -133,7 +134,7 @@ export function JourneyShell({ children }: { children: React.ReactNode }) {
                 <span>Mitglied</span>
               </a>
               <a
-                href="https://www.swico.ch/de/"
+                href={company.swico.directoryUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.footerTrustLink}
@@ -176,7 +177,7 @@ export function JourneyShell({ children }: { children: React.ReactNode }) {
           </div>
           <div className={styles.footerBottom}>
             <span>
-              © {new Date().getFullYear()} AgenticIT GmbH · Bern, Schweiz
+              © {new Date().getFullYear()} {company.legalName} · Bern, Schweiz
             </span>
             <div>
               <Link href="/datenschutz">Datenschutz</Link>

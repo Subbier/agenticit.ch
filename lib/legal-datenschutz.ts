@@ -1,8 +1,9 @@
 import type { LegalSectionContent } from "@/lib/legal-types"
+import { company } from "./company"
 
 export const datenschutzMeta = {
   title: "Datenschutz",
-  description: "Datenschutzerklärung der Agentic IT GmbH (AgenticIT) gemäss Schweizer DSG und DSGVO – Lead-Formulare und Website.",
+  description: `Datenschutzerklärung der ${company.legalName} (AgenticIT) gemäss Schweizer DSG und DSGVO – Lead-Formulare und Website.`,
 }
 
 export const datenschutzSections: readonly LegalSectionContent[] = [
@@ -10,11 +11,12 @@ export const datenschutzSections: readonly LegalSectionContent[] = [
     title: "Verantwortliche Stelle",
     paragraphs: [
       "Verantwortlich für die Datenbearbeitung im Zusammenhang mit dieser Website ist:",
-      "Agentic IT GmbH",
-      "3072 Ostermundigen",
+      company.legalName,
+      company.address.streetAddress,
+      `${company.address.postalCode} ${company.address.addressLocality}`,
       "Schweiz",
     ],
-    links: [{ label: "info@agenticit.ch", href: "mailto:info@agenticit.ch" }],
+    links: [{ label: company.email, href: `mailto:${company.email}` }],
   },
   {
     title: "Technische Umsetzung der Website",

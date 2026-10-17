@@ -1,16 +1,15 @@
 import type { Metadata } from "next"
+import { company } from "./company"
 
 export const SITE_URL = "https://agenticit.ch"
 export const SITE_NAME = "AgenticIT"
 export const SITE_LOCALE = "de_CH"
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/opengraph-image`
 
-// Verifizierte Social-/Autoritätsprofile für sameAs (E-E-A-T-Signal).
-// Sobald die offiziellen Profile bekannt sind (LinkedIn, Zefix, etc.) hier eintragen.
-export const SOCIAL_PROFILES: readonly string[] = []
+// Only pages that identify this exact company, not association homepages.
+export const SOCIAL_PROFILES: readonly string[] = [company.registerUrl]
 
-// Themen, die AgenticIT nachweislich beherrscht – ausgerichtet auf die
-// Ziel-Keyword-Cluster (Basis für thematische Relevanz in Google & KI-Antworten).
+// Topics described by the public services; not certifications or ranking claims.
 export const ENTITY_TOPICS: readonly string[] = [
   "KI-Agenten",
   "Agentische KI",
@@ -26,7 +25,6 @@ export const ENTITY_TOPICS: readonly string[] = [
   "KI-Beratung",
   "Digitale Transformation",
   "Kundendienst-Automatisierung",
-  "Schweizer Datenhaltung",
 ]
 
 export type FaqItem = {
@@ -124,27 +122,28 @@ export function organizationJsonLd() {
     "@context": "https://schema.org",
     "@type": "Organization",
     "@id": `${SITE_URL}/#organization`,
-    name: "Agentic IT GmbH",
+    name: company.legalName,
     alternateName: SITE_NAME,
     url: SITE_URL,
-    logo: `${SITE_URL}/icon.svg`,
-    image: `${SITE_URL}/icon.svg`,
-    description:
-      "Schweizer Agentur für KI-Agenten, agentische Automatisierung und RevOps. Wir automatisieren Vertrieb, Kundendienst und Prozesse – mit Datenhaltung in der Schweiz und messbarem ROI.",
-    email: "info@agenticit.ch",
-    telephone: "+41315394444",
+    logo: absoluteUrl(company.logo),
+    image: absoluteUrl(company.logo),
+    description: company.description,
+    email: company.email,
+    telephone: company.phone,
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Postfach",
-      postalCode: "3072",
-      addressLocality: "Ostermundigen",
-      addressRegion: "Bern",
-      addressCountry: "CH",
+      ...company.address,
+    },
+    identifier: {
+      "@type": "PropertyValue",
+      propertyID: "UID",
+      value: company.uid,
+      url: company.uidUrl,
     },
     contactPoint: {
       "@type": "ContactPoint",
-      telephone: "+41315394444",
-      email: "info@agenticit.ch",
+      telephone: company.phone,
+      email: company.email,
       contactType: "sales",
       areaServed: "CH",
       availableLanguage: ["de", "de-CH"],
@@ -154,53 +153,13 @@ export function organizationJsonLd() {
       name: "Switzerland",
     },
     sameAs: [...SOCIAL_PROFILES],
-    knowsAbout: [...ENTITY_TOPICS],
-  }
-}
-
-export function localBusinessJsonLd() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "@id": `${SITE_URL}/#localbusiness`,
-    name: "Agentic IT GmbH",
-    alternateName: SITE_NAME,
-    url: SITE_URL,
-    logo: `${SITE_URL}/icon.svg`,
-    image: `${SITE_URL}/icon.svg`,
-    description:
-      "KI-Agentur aus Bern (Ostermundigen): KI-Agenten, Prozessautomatisierung und RevOps für Schweizer KMU – Daten sicher in der Schweiz.",
-    email: "info@agenticit.ch",
-    telephone: "+41315394444",
-    priceRange: "$$",
-    currenciesAccepted: "CHF",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "Postfach",
-      postalCode: "3072",
-      addressLocality: "Ostermundigen",
-      addressRegion: "Bern",
-      addressCountry: "CH",
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: 46.9564,
-      longitude: 7.4906,
-    },
-    areaServed: {
-      "@type": "Country",
-      name: "Switzerland",
-    },
-    openingHoursSpecification: [
+    memberOf: [
       {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        opens: "08:00",
-        closes: "18:00",
+        "@type": "Organization",
+        name: company.swico.name,
+        url: company.swico.url,
       },
     ],
-    parentOrganization: { "@id": `${SITE_URL}/#organization` },
-    sameAs: [...SOCIAL_PROFILES],
     knowsAbout: [...ENTITY_TOPICS],
   }
 }
@@ -214,11 +173,6 @@ export function websiteJsonLd() {
     name: SITE_NAME,
     inLanguage: "de-CH",
     publisher: { "@id": `${SITE_URL}/#organization` },
-    potentialAction: {
-      "@type": "SearchAction",
-      target: `${SITE_URL}/blog?q={search_term_string}`,
-      "query-input": "required name=search_term_string",
-    },
   }
 }
 
@@ -265,7 +219,7 @@ export function serviceJsonLd(input: {
     provider: {
       "@type": "Organization",
       "@id": `${SITE_URL}/#organization`,
-      name: input.provider ?? "Agentic IT GmbH",
+      name: input.provider ?? company.legalName,
     },
     areaServed: {
       "@type": "Country",
@@ -298,10 +252,10 @@ export function articleJsonLd(input: {
     publisher: {
       "@type": "Organization",
       "@id": `${SITE_URL}/#organization`,
-      name: "Agentic IT GmbH",
+      name: company.legalName,
       logo: {
         "@type": "ImageObject",
-        url: `${SITE_URL}/icon.svg`,
+        url: absoluteUrl(company.logo),
       },
     },
     inLanguage: "de-CH",

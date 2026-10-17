@@ -19,8 +19,8 @@ import { ConsentBanner } from "@/components/site/consent-banner"
 import { ConsentTags } from "@/components/site/consent-tags"
 import { WebsiteFeedback } from "@/components/site/website-feedback"
 import { CONSENT_DEFAULT_SCRIPT } from "@/lib/consent"
+import { company } from "@/lib/company"
 import {
-  localBusinessJsonLd,
   organizationJsonLd,
   SITE_NAME,
   SITE_URL,
@@ -45,16 +45,15 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} – Agentic AI für Enterprise-Wachstum`,
+    default: `${SITE_NAME} – Marketing, Sales und Digitalisierung mit KI`,
     template: `%s | ${SITE_NAME}`,
   },
-  description:
-    "KI Agenten, Omnichannel-Automation und Predicting Lead Scoring für Schweizer KMU. Speed-to-Lead in Minuten – AgenticIT.",
+  description: company.description,
   generator: SITE_NAME,
   applicationName: SITE_NAME,
-  authors: [{ name: "Agentic IT GmbH", url: SITE_URL }],
-  creator: "Agentic IT GmbH",
-  publisher: "Agentic IT GmbH",
+  authors: [{ name: company.legalName, url: SITE_URL }],
+  creator: company.legalName,
+  publisher: company.legalName,
   formatDetection: { email: false, address: false, telephone: false },
 }
 
@@ -84,9 +83,7 @@ export default function RootLayout({
 
         <ConsentTags />
 
-        <JsonLd
-          data={[organizationJsonLd(), localBusinessJsonLd(), websiteJsonLd()]}
-        />
+        <JsonLd data={[organizationJsonLd(), websiteJsonLd()]} />
         <Suspense fallback={null}>{children}</Suspense>
         <ChatbotWidget />
         <ConsentBanner />

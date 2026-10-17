@@ -5,7 +5,7 @@ import { createPageMetadata } from "@/lib/seo"
 export const metadata: Metadata = createPageMetadata({
   title: "Kontakt – KI-Lösungen für Schweizer KMU",
   description:
-    "Sprechen wir über Ihr Potenzial. Schreiben Sie uns – wir melden uns persönlich. Telefon 031 539 44 44, info@agenticit.ch. Daten in der Schweiz, DSG-konform.",
+    "Ihr Kontakt zu AgenticIT GmbH in Ostermundigen bei Bern. Besprechen wir Marketing, Sales und Digitalisierung mit KI. 031 539 44 44, info@agenticit.ch.",
   path: "/kontakt",
 })
 

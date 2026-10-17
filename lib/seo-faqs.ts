@@ -233,7 +233,7 @@ export const aboutFaqs: FaqItem[] = [
   {
     question: "Wo ist AgenticIT ansässig?",
     answer:
-      "AgenticIT ist die Marke der Agentic IT GmbH mit Sitz in Ostermundigen, Schweiz. Das Team betreut KMU und Enterprise-Kunden in der ganzen Schweiz.",
+      "AgenticIT ist die Marke der AgenticIT GmbH mit Sitz am Eschenweg 12, 3072 Ostermundigen, Schweiz. Das Team betreut Unternehmen in der Schweiz.",
   },
   {
     question: "Welche Branchen betreut AgenticIT?",

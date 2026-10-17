@@ -3,6 +3,7 @@ import { JourneyCta } from "@/components/journey/sections"
 import { createPageMetadata } from "@/lib/seo"
 import styles from "@/components/journey/journey.module.css"
 import Link from "next/link"
+import { company } from "@/lib/company"
 
 export const metadata = createPageMetadata({
   title: "So starten wir Ihre digitale Kundenreise",
@@ -101,6 +102,31 @@ export default function Page() {
               </p>
             </article>
           </div>
+          <aside
+            className={styles.companyFacts}
+            aria-label="Firmenangaben und Mitgliedschaft"
+          >
+            <div>
+              <h3>{company.legalName}</h3>
+              <p>
+                {company.address.streetAddress} · {company.address.postalCode}{" "}
+                {company.address.addressLocality}
+                <br />
+                UID: {company.uid}
+              </p>
+            </div>
+            <div>
+              <a className={styles.textLink} href={company.registerUrl}>
+                Firmenangaben bei Zefix ↗
+              </a>
+              <a className={styles.textLink} href={company.swico.directoryUrl}>
+                Mitglied im Swico-Verzeichnis ↗
+              </a>
+              <Link className={styles.textLink} href="/kontakt">
+                Kontakt aufnehmen ↗
+              </Link>
+            </div>
+          </aside>
           <p>
             <Link className={styles.textLink} href="/case-studies">
               Einblick: So haben wir unsere eigene Website aufgebaut

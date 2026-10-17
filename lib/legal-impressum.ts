@@ -1,18 +1,34 @@
 import type { LegalSectionContent } from "@/lib/legal-types"
+import { company } from "./company"
 
 export const impressumMeta = {
   title: "Impressum",
-  description: "Impressum und Kontakt der Agentic IT GmbH (AgenticIT) – KI Agenten und Lead Automation aus der Schweiz.",
+  description: `Impressum, Firmenangaben und Kontakt der ${company.legalName} in Ostermundigen bei Bern.`,
 }
 
 export const impressumSections: readonly LegalSectionContent[] = [
   {
     title: "Anbieter dieser Website",
-    paragraphs: ["Agentic IT GmbH", "Schweiz"],
+    paragraphs: [
+      company.legalName,
+      company.address.streetAddress,
+      `${company.address.postalCode} ${company.address.addressLocality}`,
+      "Schweiz",
+      `UID: ${company.uid}`,
+    ],
+    links: [
+      {
+        label: "Firmenangaben im Zentralen Firmenindex (Zefix)",
+        href: company.registerUrl,
+      },
+    ],
   },
   {
     title: "Kontakt",
-    links: [{ label: "info@agenticit.ch", href: "mailto:info@agenticit.ch" }],
+    links: [
+      { label: company.email, href: `mailto:${company.email}` },
+      { label: company.phoneLabel, href: `tel:${company.phone}` },
+    ],
   },
   {
     title: "Verantwortlich für den Inhalt",
@@ -24,20 +40,22 @@ export const impressumSections: readonly LegalSectionContent[] = [
   },
   {
     title: "Verantwortlich für die Website",
-    paragraphs: ["Zuständig für die technische Umsetzung und Betreuung dieser Website:"],
+    paragraphs: [
+      "Zuständig für die technische Umsetzung und Betreuung dieser Website:",
+    ],
     links: [{ label: "expertico.com", href: "https://expertico.com" }],
   },
   {
     title: "Haftungsausschluss",
     paragraphs: [
       "Die Inhalte dieser Website wurden mit grösster Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann jedoch keine Gewähr übernommen werden.",
-      "Haftungsansprüche gegen die Agentic IT GmbH wegen Schäden materieller oder ideeller Art, die durch die Nutzung oder Nichtnutzung der bereitgestellten Informationen bzw. durch die Nutzung fehlerhafter und unvollständiger Informationen verursacht wurden, sind ausgeschlossen, soweit seitens der Agentic IT GmbH kein nachweislich vorsätzliches oder grob fahrlässiges Verschulden vorliegt.",
+      `Haftungsansprüche gegen die ${company.legalName} wegen Schäden materieller oder ideeller Art, die durch die Nutzung oder Nichtnutzung der bereitgestellten Informationen bzw. durch die Nutzung fehlerhafter und unvollständiger Informationen verursacht wurden, sind ausgeschlossen, soweit seitens der ${company.legalName} kein nachweislich vorsätzliches oder grob fahrlässiges Verschulden vorliegt.`,
     ],
   },
   {
     title: "Urheberrecht",
     paragraphs: [
-      "Alle Inhalte dieser Website (Texte, Grafiken, Logos, Bilder, Programmcode) sind urheberrechtlich geschützt. Jede Verwendung ausserhalb der Schranken des Urheberrechts bedarf der schriftlichen Zustimmung der Agentic IT GmbH.",
+      `Alle Inhalte dieser Website (Texte, Grafiken, Logos, Bilder, Programmcode) sind urheberrechtlich geschützt. Jede Verwendung ausserhalb der Schranken des Urheberrechts bedarf der schriftlichen Zustimmung der ${company.legalName}.`,
     ],
   },
 ]

@@ -7,10 +7,7 @@ import design from "@/components/journey/content.module.css"
 import { useState } from "react"
 import Link from "next/link"
 import { Phone, Mail, MapPin, CheckCircle2, Send } from "lucide-react"
-
-const PHONE_LABEL = "031 539 44 44"
-const PHONE_TEL = "+41315394444"
-const EMAIL = "info@agenticit.ch"
+import { company } from "@/lib/company"
 
 export function ContactPage() {
   const [form, setForm] = useState({
@@ -85,34 +82,54 @@ export function ContactPage() {
             </h2>
             <div className="mt-5 space-y-4">
               <a
-                href={`tel:${PHONE_TEL}`}
+                href={`tel:${company.phone}`}
                 className="flex items-center gap-3 text-[15px] font-semibold text-[#202522] hover:text-[#4d7c36]"
               >
                 <span className="grid h-10 w-10 flex-none place-items-center rounded-[12px] bg-[#f5f7f2] text-[#4d7c36]">
                   <Phone className="h-5 w-5" />
                 </span>
-                {PHONE_LABEL}
+                {company.phoneLabel}
               </a>
               <a
-                href={`mailto:${EMAIL}`}
+                href={`mailto:${company.email}`}
                 className="flex items-center gap-3 text-[15px] font-semibold text-[#202522] hover:text-[#4d7c36]"
               >
                 <span className="grid h-10 w-10 flex-none place-items-center rounded-[12px] bg-[#f5f7f2] text-[#4d7c36]">
                   <Mail className="h-5 w-5" />
                 </span>
-                {EMAIL}
+                {company.email}
               </a>
               <div className="flex items-center gap-3 text-[15px] font-semibold text-[#202522]">
-                <span className="grid h-10 w-10 flex-none place-items-center rounded-[12px] bg-[#f5f7f2] text-[#F97316]">
+                <span className="grid h-10 w-10 flex-none place-items-center rounded-[12px] bg-[#f5f7f2] text-[#4d7c36]">
                   <MapPin className="h-5 w-5" />
                 </span>
-                AgenticIT · Postfach · 3072 Ostermundigen
+                <address className="not-italic leading-relaxed">
+                  {company.legalName}
+                  <br />
+                  {company.address.streetAddress}
+                  <br />
+                  {company.address.postalCode} {company.address.addressLocality}
+                </address>
               </div>
             </div>
             <p className="mt-6 rounded-[14px] border border-[#dce3db] bg-[#f5f7f2] p-4 text-[13.5px] leading-relaxed text-[#647068]">
-              KI-Lösungen für Schweizer KMU – damit Sie sich auf Ihr
-              Kerngeschäft konzentrieren können. Ihre Daten bleiben in der
-              Schweiz, DSG-konform.
+              Marketing, Sales und Digitalisierung mit KI – gemeinsam geplant,
+              auf Ihren Betrieb abgestimmt. Wir besprechen Ihren Bedarf und
+              vereinbaren den nächsten Schritt persönlich.
+            </p>
+            <p className="mt-4 flex flex-wrap gap-x-5 gap-y-3 text-[13.5px] font-semibold text-[#4d7c36]">
+              <a
+                className="underline underline-offset-4"
+                href={company.registerUrl}
+              >
+                Firmenangaben bei Zefix ↗
+              </a>
+              <a
+                className="underline underline-offset-4"
+                href={company.swico.directoryUrl}
+              >
+                Mitglied im Swico-Verzeichnis ↗
+              </a>
             </p>
           </div>
 
@@ -223,10 +240,16 @@ export function ContactPage() {
                     ? "Wird gesendet …"
                     : "Nachricht senden"}
                 </button>
-                <p className="text-center text-[11px] text-[#9aa9bf]">
-                  Hinweis: Jede KI-Interaktion startet mit „Ich bin der
-                  KI-Assistent von AgenticIT." · DSG-konform · Daten in der
-                  Schweiz.
+                <p className="text-center text-[12px] leading-relaxed text-[#647068]">
+                  Informationen zur Bearbeitung Ihrer Angaben finden Sie in
+                  unserer{" "}
+                  <Link
+                    className="underline underline-offset-4"
+                    href="/datenschutz"
+                  >
+                    Datenschutzerklärung
+                  </Link>
+                  .
                 </p>
               </form>
             )}
@@ -244,11 +267,11 @@ export function ContactPage() {
             {[
               {
                 q: "Wie schnell melden Sie sich?",
-                a: "Anfragen, die an einem Werktag bis 16 Uhr eintreffen, beantworten wir noch am selben Tag. Alles andere spätestens am nächsten Werktag. Erreichbar sind wir Montag bis Freitag von 08:00 bis 18:00 Uhr unter 031 539 44 44.",
+                a: `Wir melden uns persönlich zur Bearbeitung Ihrer Anfrage. Wenn Sie einen bestimmten Zeitpunkt bevorzugen, schreiben Sie ihn ins Nachrichtenfeld. Telefonisch erreichen Sie uns unter ${company.phoneLabel}.`,
               },
               {
                 q: "Was passiert nach meiner Anfrage?",
-                a: "Zuerst ein kurzes Telefonat von rund 15 Minuten: Wir hören zu, welche Aufgaben bei Ihnen täglich Zeit kosten. Danach erhalten Sie von uns eine Einschätzung mit einer konkreten Zahl — welche Aufgabe sich zuerst automatisieren lässt und was das bringt. Erst wenn das für Sie stimmt, sprechen wir über ein Angebot.",
+                a: "Wir klären Ihr Anliegen, Ihre bisherigen Abläufe und die beteiligten Systeme. Danach besprechen wir, welcher nächste Schritt sinnvoll ist und welche Angaben dafür noch fehlen. Umfang und Kosten einer Umsetzung vereinbaren wir vor dem Start.",
               },
               {
                 q: "Kostet das erste Gespräch etwas?",
@@ -260,11 +283,11 @@ export function ContactPage() {
               },
               {
                 q: "Was passiert mit unseren Daten?",
-                a: "Ihre Daten bleiben in der Schweiz und gehören Ihnen. Wir arbeiten nach dem revidierten Schweizer Datenschutzgesetz und der DSGVO, geben nichts an Dritte weiter und betreiben Lösungen auf Wunsch vollständig ohne Internetverbindung. Details stehen in unserer Datenschutzerklärung.",
+                a: "Wir verwenden Ihre Angaben, um Ihre Anfrage zu bearbeiten. Welche Dienste die Website einbindet und welche Daten dabei bearbeitet werden, steht in der Datenschutzerklärung. Bei einer Umsetzung klären wir Hosting, Datenwege und Zugriffe für die gewählte Lösung gesondert.",
               },
               {
                 q: "Für welche Unternehmensgrösse lohnt sich das?",
-                a: "Der Hebel entsteht nicht durch die Anzahl Mitarbeitender, sondern durch wiederkehrende Aufgaben. Sobald mehrere Stunden pro Woche in Routine fliessen — Anfragen beantworten, nachfassen, Daten erfassen — rechnet sich der Einsatz. Das gilt für Betriebe ab wenigen Personen ebenso wie für grössere Teams.",
+                a: "Entscheidend sind Ihre Aufgaben und Ziele: Wie oft fällt ein Vorgang an, wie viel Zeit kostet er und was würde eine Verbesserung bringen? Wir vergleichen diesen Nutzen mit Einrichtung und laufendem Aufwand. Das kann für kleine Betriebe ebenso relevant sein wie für grössere Teams.",
               },
             ].map((f) => (
               <div
