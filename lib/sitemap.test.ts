@@ -58,6 +58,7 @@ test("verified service and calculator updates retain their real content dates", 
     ["/technologie/autonome-ki-agenten", "2026-10-17"],
     ["/technologie/multi-agenten-systeme", "2026-10-17"],
     ["/technologie/enterprise-integration", "2026-10-17"],
+    ["/sicherheit", "2026-10-17"],
   ])
     assert.equal(
       sitemap().find((entry) => entry.url === `${SITE_URL}${path}`)

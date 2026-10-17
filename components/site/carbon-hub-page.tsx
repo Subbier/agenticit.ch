@@ -24,16 +24,23 @@ export function CarbonHubPage({ slug }: { slug: string }) {
         data={[
           {
             "@context": "https://schema.org",
-            "@type": "CollectionPage",
+            "@type": page.schemaType ?? "CollectionPage",
             name: page.meta.title,
             description: page.meta.description,
             url: absoluteUrl("/" + slug),
             inLanguage: "de-CH",
-            hasPart: links.map((link) => ({
-              "@type": "WebPage",
-              name: link.label,
-              url: absoluteUrl(link.href),
-            })),
+            ...(page.sources
+              ? { citation: page.sources.map((source) => source.href) }
+              : {}),
+            ...(page.schemaType === "WebPage"
+              ? {}
+              : {
+                  hasPart: links.map((link) => ({
+                    "@type": "WebPage",
+                    name: link.label,
+                    url: absoluteUrl(link.href),
+                  })),
+                }),
           },
           breadcrumbJsonLd([
             { name: "Startseite", path: "/" },
@@ -107,7 +114,7 @@ export function CarbonHubPage({ slug }: { slug: string }) {
           </div>
           {page.links?.length ? (
             <nav
-              aria-label="Weiterführende Leistungen"
+              aria-label="Weiterführende Informationen"
               className={styles.extraLinks}
             >
               {page.links.map((link) => (
@@ -141,6 +148,26 @@ export function CarbonHubPage({ slug }: { slug: string }) {
           </div>
         </section>
         <SupportingFaq faqs={page.faqs} />
+        {page.sources?.length ? (
+          <details className={styles.sources}>
+            <summary>Fachliche Grundlagen</summary>
+            <p>
+              Diese Quellen erläutern den Umgang mit KI, Informationen und
+              Befugnissen. Welche Schritte Ihr Vorhaben braucht, klären wir
+              anhand des konkreten Ablaufs.
+            </p>
+            <ul>
+              {page.sources.map((source) => (
+                <li key={source.href}>
+                  <a className={styles.textLink} href={source.href}>
+                    {source.label}
+                    <ArrowUpRight size={14} aria-hidden="true" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </details>
+        ) : null}
       </main>
     </JourneyShell>
   )

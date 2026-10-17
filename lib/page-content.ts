@@ -27,6 +27,8 @@ export type PageContent = {
   check?: { href: string; label: string }
   links?: { href: string; label: string }[]
   faqs?: { question: string; answer: string }[]
+  schemaType?: "CollectionPage" | "WebPage"
+  sources?: { href: string; label: string }[]
   meta: { title: string; description: string }
 }
 
@@ -247,54 +249,108 @@ export const PAGES: Record<string, PageContent> = {
 
   sicherheit: {
     slug: "sicherheit",
-    eyebrow: "Sicherheit",
-    h1: "Ihre Daten sind Ihr Kapital. Behalten Sie es.",
-    lead: "KI nutzen, ohne firmeninterne Informationen an fremde Server im Ausland zu geben. Bei uns gilt eine klare Regel: Ihre Daten bleiben bei Ihnen.",
-    introTitle: "Sicherheit ist bei uns kein Zusatz. Sie ist das Fundament.",
+    eyebrow: "KI und Daten",
+    schemaType: "WebPage",
+    h1: "KI nutzen. Daten im Blick.",
+    lead: "Welche Informationen braucht Ihre Lösung? Welche Dienste sind beteiligt? Wer darf den nächsten Schritt ausführen? Wir klären diese Fragen mit Ihnen, bevor wir einen Ablauf einrichten.",
+    introTitle: "Drei Bereiche, die wir gemeinsam klären.",
     introText:
-      "Gerade in Treuhand, Finanzbranche und bei Anwälten entscheidet Vertrauen über jeden Auftrag. Deshalb behalten Sie die volle Kontrolle.",
+      "So wird aus einer allgemeinen Sicherheitsfrage ein konkreter Plan für Ihren Betrieb und Ihr Team.",
     features: [
       {
-        icon: "🇨🇭",
-        title: "Datensouveränität",
-        subtitle: "Sie bestimmen, wo Ihre Daten liegen",
-        text: "Cloud in der Schweiz oder On-Premise? Sie entscheiden – nicht der Anbieter.",
+        icon: "",
+        title: "Daten und Dienste",
+        subtitle: "Wissen, was wohin fliesst.",
+        text: "Wir betrachten die benötigten Informationen und die beteiligten Programme als zusammenhängenden Ablauf.",
         bullets: [
-          "Daten in der Schweiz gespeichert & verarbeitet",
-          "Klar geregelt nach Schweizer DSG",
-          "Jederzeit transparent, wo welche Daten liegen",
+          "Aufgabe, Zweck und benötigte Angaben festhalten",
+          "Anbieter und Verarbeitungsorte prüfen",
+          "Nutzung der Eingaben durch Anbieter klären",
+          "Aufbewahrung und Löschung vereinbaren",
         ],
       },
       {
-        icon: "🔒",
-        title: "Lokale KI-Infrastruktur",
-        subtitle: "Funktioniert sogar offline",
-        text: "Unsere KI kann direkt bei Ihnen im Haus laufen – ohne Abhängigkeit von externen Diensten.",
+        icon: "",
+        title: "Zugriffe und Rollen",
+        subtitle: "Befugnisse passend zur Aufgabe.",
+        text: "Wer Informationen lesen kann, braucht nicht automatisch das Recht, sie zu verändern oder weiterzugeben.",
         bullets: [
-          "Keine Abhängigkeit von Fremdanbietern",
-          "Läuft weiter, auch ohne Internet",
-          "Was lokal bleibt, kann nicht abfliessen",
+          "Freigegebene Quellen und Systeme bestimmen",
+          "Lesezugriff und Änderungen getrennt festlegen",
+          "Kunden- und Unternehmensbereiche abgrenzen",
+          "Zuständige Personen und Zugänge dokumentieren",
         ],
       },
       {
-        icon: "🛡️",
-        title: "Private Enterprise KI",
-        subtitle: "Eine KI nur für Ihr Unternehmen",
-        text: "Keine geteilte Lösung, kein Training Ihrer Daten für Fremde. Ihre KI gehört Ihnen.",
+        icon: "",
+        title: "Freigabe und Betrieb",
+        subtitle: "Ihr Team behält die Verantwortung.",
+        text: "Wir legen fest, wann ein System vorbereiten darf, wann Ihr Team entscheidet und wie es bei Problemen weitergeht.",
         bullets: [
-          "Keine Daten ins Training öffentlicher Modelle",
-          "Zugriff streng geregelt – nur Ihr Unternehmen",
-          "Klare Checkliste: Was bleibt bei Ihnen",
+          "Sales-Nachrichten vor dem Versand freigeben",
+          "KI-Assistenten zu Beginn als KI kennzeichnen",
+          "Fehler und unklare Fälle an Menschen übergeben",
+          "Prüfung, Einweisung und Betreuung vereinbaren",
         ],
       },
     ],
-    closingTitle: "Sehen Sie selbst, wie Ihre Daten geschützt bleiben.",
+    closingTitle: "Ihr Vorhaben auf einer Seite vorbereiten.",
     closingText:
-      "In einem kostenlosen Gespräch zeigen wir Ihnen genau, wo Ihre Daten liegen und wie Sie KI nutzen, ohne Kontrolle abzugeben.",
+      "Die KI-Einsatzkarte hält Aufgabe, Quellen, Befugnisse und Prüffälle zusammen. Nutzen Sie ein erfundenes Beispiel ohne Kundendaten oder Zugangsschlüssel. Bringen Sie die offenen Fragen ins Gespräch mit.",
+    check: {
+      href: "/vorlagen/AgenticIT-KI-Einsatzkarte.txt?download=1",
+      label: "KI-Einsatzkarte speichern (.txt)",
+    },
+    links: [
+      {
+        href: "/datenschutz",
+        label: "Datenschutz dieser Website",
+      },
+      {
+        href: "/blog/ki-agenten-sicherheit-compliance",
+        label: "KI-Abläufe planen und prüfen",
+      },
+    ],
+    faqs: [
+      {
+        question: "Bleiben alle Daten in der Schweiz?",
+        answer:
+          "Die Verarbeitungsorte hängen von den gewählten Programmen, Modellen und Hostingdiensten ab. Wir klären Anbieter, Datenwege und Zugriffe für Ihre konkrete Lösung vor der Einrichtung. Massgeblich sind die tatsächlich beteiligten Dienste und ihre Vereinbarungen.",
+      },
+      {
+        question: "Werden unsere Eingaben für das Training von KI verwendet?",
+        answer:
+          "Das hängt vom Anbieter, dem verwendeten Angebot und dessen Einstellungen und Vereinbarungen ab. Wir prüfen vor dem Einsatz, wie Eingaben genutzt und aufbewahrt werden dürfen. Für erste Beispiele verwenden wir erfundene Angaben ohne Personendaten.",
+      },
+      {
+        question: "Welche Aktionen brauchen eine menschliche Freigabe?",
+        answer:
+          "Ausgehende Sales-Nachrichten und geschäftliche Empfehlungen benötigen eine menschliche Freigabe. Wir bestimmen die zuständige Rolle und legen fest, welche Informationen ein System lesen, welche Schritte es vorbereiten und wann ein Mensch übernehmen soll.",
+      },
+      {
+        question: "Was können wir vor dem ersten Gespräch vorbereiten?",
+        answer:
+          "Beschreiben Sie eine Aufgabe, die betroffenen Programme und das gewünschte Ergebnis. Die KI-Einsatzkarte hilft, Quellen, Befugnisse und Prüffälle festzuhalten. Offene Fragen dürfen offenbleiben; Passwörter oder echte Kundendossiers gehören nicht in die Vorlage.",
+      },
+    ],
+    sources: [
+      {
+        href: "https://www.edoeb.admin.ch/de/ki-und-datenschutz",
+        label: "EDÖB: KI und Datenschutz",
+      },
+      {
+        href: "https://www.bacs.admin.ch/de/csm26-s3-de",
+        label: "BACS: KI im Berufsalltag – Empfehlungen vom 16.10.2026",
+      },
+      {
+        href: "https://genai.owasp.org/llmrisk/llm062025-excessive-agency/",
+        label: "OWASP: Begrenzte Befugnisse und menschliche Freigabe",
+      },
+    ],
     meta: {
-      title: "KI & Datenschutz Schweiz | Daten bleiben im Land – AgenticIT",
+      title: "KI und Datenschutz: Datenwege, Zugriffe und Kontrolle",
       description:
-        "KI nutzen, ohne Ihre Daten aus der Hand zu geben. Schweizer Infrastruktur, DSG-konform, auf Wunsch offline.",
+        "Wie AgenticIT KI-Vorhaben vorbereitet: Anbieter, Datenwege, Zugriffe und menschliche Freigabe klären. Mit frei nutzbarer KI-Einsatzkarte und offiziellen Grundlagen.",
     },
   },
 

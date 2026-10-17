@@ -60,6 +60,7 @@ export const SITEMAP_CONTENT_DATES: Readonly<Partial<Record<string, string>>> =
     "/technologie/autonome-ki-agenten": "2026-10-17",
     "/technologie/multi-agenten-systeme": "2026-10-17",
     "/technologie/enterprise-integration": "2026-10-17",
+    "/sicherheit": "2026-10-17",
     "/automatisierungs-check": "2026-10-17",
     "/kundenreise-check": "2026-10-17",
     "/karriere/ai-revops-architect": "2026-10-16",

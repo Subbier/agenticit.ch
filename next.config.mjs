@@ -160,9 +160,13 @@ const nextConfig = {
       { source: "/smart-apps", destination: "/loesungen", permanent: true },
       // /branchen ist neu eine echte Seite (Vertrieb-Spezialisierung) – keine Weiterleitung mehr.
       { source: "/car-dealerships", destination: "/", permanent: true },
-      { source: "/unternehmen", destination: "/", permanent: true },
+      {
+        source: "/unternehmen",
+        destination: "/zusammenarbeit",
+        permanent: true,
+      },
       { source: "/unternehmen/:slug+", destination: "/", permanent: true },
-      { source: "/ueber-uns", destination: "/", permanent: true },
+      { source: "/ueber-uns", destination: "/zusammenarbeit", permanent: true },
       // GTM/RevOps-Split (26.07.2026): alte Lösungen-Unterseiten → neue Hub-Seiten
       {
         source: "/loesungen/kundendienst-ki",

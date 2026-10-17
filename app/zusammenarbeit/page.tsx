@@ -128,6 +128,9 @@ export default function Page() {
                 Schritt – von Entwicklung und Test bis zur Einweisung und
                 Betreuung.
               </p>
+              <a className={styles.textLink} href="/sicherheit">
+                So klären wir Datenwege und Freigaben ↗
+              </a>
             </article>
           </div>
           <aside
