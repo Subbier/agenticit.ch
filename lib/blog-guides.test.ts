@@ -127,6 +127,12 @@ test("the website briefing is a complete public text download with no contact ga
     page,
     /href="\/vorlagen\/AgenticIT-Website-Briefing\.txt" download="AgenticIT-Website-Briefing\.txt"/,
   )
+  assert.ok(
+    /class="blog-resource-view" href="\/vorlagen\/AgenticIT-Website-Briefing\.txt">/.test(
+      page,
+    ),
+    "A plain browser view must remain available independently of download handling",
+  )
 })
 
 test("webdesign visitors can find the briefing from the service page and blog index", async () => {

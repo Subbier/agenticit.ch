@@ -129,6 +129,9 @@ export function BlogArticlePage({ slug }: { slug: string }) {
             <span>Direkt zum Mitnehmen</span>
             <h2 id="article-resource-title">{post.resource.title}</h2>
             <p>{post.resource.copy}</p>
+            <a className="blog-resource-view" href={post.resource.href}>
+              Im Browser ansehen
+            </a>
           </div>
           <a
             href={post.resource.href}

@@ -219,6 +219,15 @@
 .blog-next-step a svg {
   flex: none;
 }
+.blog-resource .blog-resource-view {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: 8px;
+  color: #c7d4c0;
+  font-size: 13px;
+  text-underline-offset: 4px;
+}
 .blog-next-step {
   margin-block: 20px 56px;
   background: #f5f7f2;
