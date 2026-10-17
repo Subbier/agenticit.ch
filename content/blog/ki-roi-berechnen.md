@@ -1,102 +1,110 @@
 ---
-title: "KI-ROI berechnen: So rechnen Sie ein Automatisierungsprojekt ehrlich durch"
+title: "KI-ROI: Lohnt sich Ihr Projekt?"
 slug: "ki-roi-berechnen"
-description: "Lohnt sich Ihr KI-Projekt? Die ehrliche Formel zur ROI-Berechnung von Automatisierung – mit Rechenbeispiel, versteckten Kosten und realistischen Annahmen."
+description: "KI-ROI berechnen: Zeitgewinn, wirksamen finanziellen Nutzen und Projektkosten nachvollziehbar vergleichen. Mit einem Rechenbeispiel und einer Vorlage für Ihr Team."
 date: "2026-07-24"
+updated: "2026-10-17"
 category: "RevOps"
 tags: ["ki roi", "ki automatisierung", "business case", "revops"]
-keywords: ["ki roi berechnen", "roi ki automatisierung", "automatisierung wirtschaftlichkeit"]
-readingTime: 9
+keywords:
+  [
+    "ki roi berechnen",
+    "roi ki automatisierung",
+    "automatisierung wirtschaftlichkeit",
+  ]
+readingTime: 6
+resource:
+  title: "Beginnen Sie mit einer konkreten Aufgabe."
+  copy: "Unsere bestehende KI-Einsatzkarte hilft, Aufwand, verbleibende Arbeit, Kontrolle und Betrieb gemeinsam festzuhalten. Die bearbeitbare Vorlage ist frei zugänglich."
+  href: "/vorlagen/AgenticIT-KI-Einsatzkarte.txt"
+  label: "Einsatzkarte speichern (.txt)"
+nextStep:
+  title: "Wie viel Zeit steckt in Ihren Aufgaben?"
+  copy: "Der Automatisierungs-Check berechnet mit Ihren Angaben den Zeitgewinn nach zusätzlicher Kontrolle. Ein optionaler Stundensatz zeigt den rechnerischen Zeitwert; Einrichtung und Betrieb vergleichen Sie zusätzlich."
+  href: "/automatisierungs-check"
+  label: "Zeitpotenzial berechnen"
+sources:
+  - label: "UK Government: Freie Kapazität und ausgabenwirksame Einsparung unterscheiden"
+    url: "https://www.gov.uk/government/publications/the-government-efficiency-framework/the-government-efficiency-framework--2"
+  - label: "NIST AI RMF: Nutzen, Kosten, Fehler und menschliche Aufsicht beurteilen"
+    url: "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf"
+faq:
+  - q: "Wie berechnen wir den ROI eines KI-Projekts?"
+    a: "Legen Sie Zeitraum und Kostenbasis fest. Für das einfache Ein-Jahres-Modell in diesem Beitrag ziehen Sie die gesamten Projektkosten dieses Jahres vom finanziell wirksamen Nutzen ab und teilen die Differenz durch dieselben Gesamtkosten. Ein reiner Stundenwert wird dabei nicht als tatsächliche Einsparung mitgerechnet."
+  - q: "Sind eingesparte Stunden automatisch eine Kostenersparnis?"
+    a: "Zunächst entsteht freie Kapazität. Die Ausgaben sinken erst, wenn etwa bezahlte Fremdleistungen oder andere tatsächliche Kosten entfallen. Zusätzlicher Umsatz zählt ebenfalls nicht vollständig als Nutzen; die damit verbundenen Kosten gehören in die Rechnung."
+  - q: "Welche Kosten gehören in die Planung?"
+    a: "Erfassen Sie Einrichtung, Anbindung, Datenaufbereitung und Einführung sowie Lizenzen, Nutzung, Betrieb und Änderungen. Interne Projektarbeit, verbleibende Kontrolle und Nacharbeit werden ebenfalls erfasst. Vermeiden Sie, dieselbe Arbeit sowohl vom Zeitgewinn abzuziehen als auch nochmals als zusätzliche Ausgabe anzusetzen."
+  - q: "Berechnet der Automatisierungs-Check bereits den finanziellen ROI?"
+    a: "Der Check berechnet ein Zeitpotenzial nach zusätzlicher Kontrolle und auf Wunsch einen rechnerischen Zeitwert. Einrichtung, Software und Betriebskosten sind darin nicht als Ausgaben abgezogen. Für einen finanziellen ROI ergänzen Sie die tatsächlichen Kosten und den nachweisbaren finanziellen Nutzen."
 ---
 
-«Rechnet sich das?» ist die wichtigste Frage vor jedem KI-Projekt – und die am schlechtesten beantwortete. Zu oft wird der Nutzen schöngerechnet und die Kosten vergessen. Dieser Beitrag gibt Ihnen eine ehrliche Formel, ein durchgerechnetes Beispiel und den Blick auf die versteckten Posten.
+> **Eine Automatisierung kann Ihrem Team Zeit für Kunden geben, ohne dass die monatlichen Ausgaben sinken.** Halten Sie deshalb drei Ergebnisse getrennt fest: freie Kapazität, tatsächlicher finanzieller Nutzen und die Kosten der Umsetzung. Erst daraus lässt sich ein sinnvoller Vergleich ableiten.
 
-## Die Grundformel
+## Was messen wir vor dem Start?
 
-```
-ROI = (Jährlicher Nutzen − Jährliche Kosten) ÷ Investition × 100 %
-```
+Wählen Sie einen konkreten Ablauf. Erfassen Sie Häufigkeit und aktive Bearbeitungszeit an tatsächlichen Vorgängen. Zum Vergleich gehören auch die künftige Prüfung, Nacharbeit, Ausnahmen und die Pflege der Lösung.
 
-Klingt einfach – der Teufel steckt in den Annahmen. Gehen wir die Bausteine durch.
+Notieren Sie bei jeder Zahl: gemessen, geschätzt oder durch ein Angebot belegt. Legen Sie fest, wer die Annahme bestätigt und wann Sie sie erneut prüfen. Eine einheitliche pauschale Anlaufquote passt nicht zu jedem Betrieb.
 
-## Baustein 1: Der Nutzen
+## Wie viel Zeit wird wirklich frei?
 
-Nutzen entsteht meist aus **drei Quellen**:
+Rechnen Sie den heutigen Aufwand gegen den gesamten verbleibenden Aufwand. **Frei gewähltes Monatsbeispiel:**
 
-1. **Zeitersparnis** – eingesparte Arbeitsstunden × Stundensatz
-2. **Qualität** – weniger Fehler, weniger Nacharbeit, weniger Verlust
-3. **Wachstum** – mehr bearbeitete Anfragen, höhere Abschlussquote
+| Annahme                                                     | Zeit                                      |
+| ----------------------------------------------------------- | ----------------------------------------- |
+| Heute: 200 Vorgänge mit je 8 Minuten                        | 1'600 Minuten                             |
+| Danach: je 3 Minuten einschliesslich Prüfung und Nacharbeit | 600 Minuten                               |
+| Rechnerisch freie Kapazität                                 | 1'000 Minuten, also 16 Stunden 40 Minuten |
 
-Der ehrlichste und am leichtesten messbare Hebel ist die **Zeitersparnis**. Rechnen Sie zuerst diesen – Qualität und Wachstum sind Zusatz, nicht Grundlage.
+Bei einem internen Stundensatz von CHF 60 ergibt das einen **rechnerischen Zeitwert von CHF 1'000 pro Monat**. Die Werte sind Modellannahmen und keine Kundenergebnisse oder Preisangaben. Zusätzliche Pflegezeit müsste noch abgezogen werden.
 
-### Zeitersparnis berechnen
+Die frei gewordene Zeit kann beispielsweise der Kundenbetreuung dienen. Ob deshalb eine Ausgabe entfällt oder ein zusätzlicher Auftrag entsteht, wird separat geprüft. Der [britische Effizienzrahmen unterscheidet entsprechend zwischen Kapazitätsgewinn und ausgabenwirksamer Einsparung](https://www.gov.uk/government/publications/the-government-efficiency-framework/the-government-efficiency-framework--2). Diese Unterscheidung hilft auch bei einer eigenen Projektplanung.
 
-```
-Eingesparte Zeit/Jahr = Vorgänge/Jahr × eingesparte Minuten/Vorgang ÷ 60
-Nutzen/Jahr = eingesparte Zeit/Jahr × interner Stundensatz
-```
+## Welcher Nutzen gehört in die finanzielle Rechnung?
 
-## Baustein 2: Die Kosten (auch die versteckten)
+Erfassen Sie nur nachvollziehbare Veränderungen gegenüber dem Ablauf ohne Projekt:
 
-Der häufigste Fehler: Nur die Lizenzkosten rechnen. Zu den **laufenden Kosten** gehören:
+- **Vermiedene Ausgaben:** etwa eine bezahlte Fremdleistung, die tatsächlich wegfällt.
+- **Zusätzlicher Deckungsbeitrag:** zusätzliche Erlöse abzüglich der dafür zusätzlich anfallenden Kosten. Ein Umsatzwunsch allein ist noch kein belegter Nutzen.
+- **Andere gemessene Effekte:** etwa geringere Nacharbeit. Prüfen Sie, ob diese schon im Zeitvergleich oder in einer anderen Nutzenposition enthalten sind.
 
-- Software-/Nutzungskosten (Modell, Plattform)
-- Betrieb und Wartung
-- Menschliche Freigabe (Human-in-the-Loop kostet Zeit!)
-- gelegentliche Anpassungen
+Zählen Sie denselben Effekt einmal. Wenn die ersparte Zeit für einen zusätzlichen Auftrag genutzt wird, dürfen Stundenwert und daraus entstehender Deckungsbeitrag nicht einfach als zwei unabhängige Vorteile addiert werden.
 
-Zur **einmaligen Investition**:
+## Welche Kosten müssen wir berücksichtigen?
 
-- Einrichtung und Integration
-- Datenaufbereitung (oft unterschätzt)
-- Schulung des Teams
+**Einmalig** entstehen je nach Auftrag Konzeption, Einrichtung, Anbindung, Datenaufbereitung, Prüfung und Einführung. **Laufend** können Lizenzen, Nutzung, Betrieb, Wartung und Änderungen anfallen.
 
-## Baustein 3: Das Rechenbeispiel
+Halten Sie interne Projektarbeit und die verbleibende Kontrolle ebenfalls fest. Für die Ausgabenrechnung wird geklärt, welche zusätzlichen Zahlungen daraus entstehen. Bereits im Zeitvergleich abgezogene Kontrollarbeit darf nicht nochmals als neue Ausgabe erscheinen, wenn gar keine zusätzliche Zahlung anfällt.
 
-Nehmen wir eine **Support-Triage** (Modellannahme, keine Kundenzahlen):
+Auch Fehler und Ausfälle können Aufwand verursachen. Das [NIST AI Risk Management Framework berücksichtigt Nutzen, Kosten, mögliche Fehlerfolgen und menschliche Aufsicht](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf). Planen Sie diese Punkte für Ihren Ablauf mit ein.
 
-| Grösse | Annahme |
-|---|---|
-| Anfragen pro Jahr | 12'000 |
-| Eingesparte Zeit pro Anfrage | 4 Minuten |
-| Interner Stundensatz | CHF 70 |
-| Einmalige Investition | CHF 25'000 |
-| Laufende Kosten pro Jahr | CHF 12'000 |
+## Wie berechnen wir einen einfachen Jahres-ROI?
 
-**Nutzen/Jahr:** 12'000 × 4 ÷ 60 = 800 Stunden × CHF 70 = **CHF 56'000**
+Legen Sie Zeitraum und Kostenbasis ausdrücklich fest. **Unser einfaches Budgetmodell für das erste Jahr** verwendet:
 
-**Netto-Nutzen/Jahr:** 56'000 − 12'000 = **CHF 44'000**
+**Jahresbilanz = finanziell wirksamer Nutzen im Jahr 1 − Gesamtkosten im Jahr 1.**
 
-**ROI Jahr 1:** (44'000 − 25'000) ÷ 25'000 × 100 = **76 %**
+**ROI im ersten Jahr = Jahresbilanz ÷ dieselben Gesamtkosten × 100.**
 
-**Amortisation:** rund 7 Monate
+In den Gesamtkosten stehen hier die einmalige Einrichtung und die zusätzlichen laufenden Ausgaben dieses Jahres. Ein interner Stundenwert wird nicht als ersparte Zahlung eingerechnet.
 
-> Wichtig: Das ist ein Modell. Ihre Zahlen hängen von Volumen, Datenqualität und Prozess ab. Rechnen Sie **konservativ** – halbieren Sie im Zweifel die Zeitersparnis.
+**Weiteres frei gewähltes Beispiel:** Eine externe Einrichtung kostet CHF 6'000. Lizenzen und Support kosten CHF 250 pro Monat. Tatsächlich vermiedene Fremdleistungen werden mit CHF 400 pro Monat angenommen, von Beginn an über zwölf Monate.
 
-## Die ehrlichen Warnhinweise
+| Rechnung                               | Betrag     |
+| -------------------------------------- | ---------- |
+| Vermiedene Ausgaben: 12 × CHF 400      | CHF 4'800  |
+| Gesamtkosten: CHF 6'000 + 12 × CHF 250 | CHF 9'000  |
+| Jahresbilanz: CHF 4'800 − CHF 9'000    | −CHF 4'200 |
 
-### 1. Rechnen Sie mit Anlaufzeit
+Der ROI dieses Modells beträgt **−46.7 %**, gerundet. Der positive Zeitwert aus dem ersten Beispiel wird nicht zusätzlich als Zahlung angesetzt. Eine nützliche Entlastung kann also mit einer negativen finanziellen Jahresbilanz zusammenfallen.
 
-Im ersten Quartal ist der Nutzen geringer, weil das System eingefahren wird. Setzen Sie realistisch ~70 % der Zielersparnis für die Anlaufphase an.
+Die einfache Amortisationszeit läge unter diesen konstanten Annahmen bei **40 Monaten**: CHF 6'000 geteilt durch CHF 150 monatlichen Überschuss nach laufenden Kosten. Beginnt der Nutzen später oder ändern sich die Kosten, muss die Zeitrechnung entsprechend angepasst werden. Bei keinem positiven monatlichen Überschuss ergibt diese Formel keine Amortisation.
 
-### 2. «Eingesparte Zeit» ist nicht automatisch Geld
+## Wie wird aus einer Schätzung eine Entscheidung?
 
-Freigewordene Zeit rechnet sich nur, wenn sie **produktiv genutzt** wird – für Wachstum oder abgebaute Überstunden. Sonst ist es Komfort, kein Cash.
+Vergleichen Sie eine vorsichtigere Annahme mit Ihrem Plan: weniger Vorgänge, mehr Nacharbeit oder ein späterer Start. Kennzeichnen Sie, was noch unbekannt ist. Prüfen Sie in einem abgegrenzten Ablauf, ob die Zeitwerte, Qualität und Zuständigkeiten im Alltag bestehen.
 
-### 3. Human-in-the-Loop kostet – und ist trotzdem richtig
+Der [Automatisierungs-Check](/automatisierungs-check) hilft beim ersten Zeitvergleich und erstellt einen Plan mit Ihren Angaben. Einrichtung, Software und Betriebskosten ergänzen Sie danach. Die Einsatzkarte oben hält Aufgabe, Daten, Kontrolle und Aufwand zusammen.
 
-Die menschliche Freigabe reduziert die Ersparnis etwas. Aber sie schützt vor teuren Fehlern und ist Compliance-Pflicht. Rechnen Sie sie ehrlich ein.
-
-## Welche Projekte den besten ROI liefern
-
-| Merkmal | ROI-Wirkung |
-|---|---|
-| Hoher Wiederholungsanteil | sehr positiv |
-| Klare Regeln | positiv |
-| Gute Datenqualität | positiv |
-| Viele Ausnahmen/Ermessen | dämpfend |
-| Geringes Volumen | dämpfend |
-
-## Fazit
-
-Ein ehrlicher KI-ROI ist konservativ gerechnet, berücksichtigt versteckte Kosten und die Anlaufzeit – und wirkt trotzdem oft überzeugend, weil der Volumen-Hebel stark ist. Wichtig ist: Nicht schönrechnen. Ein Projekt, das sich nur mit Best-Case-Annahmen lohnt, lohnt sich meist nicht. Eine erste Schätzung für Ihren Fall liefert unser [KI-Potenzial-Check](/potenzial).
+Für die Auswahl eines passenden ersten Ablaufs hilft der [Leitfaden zur Prozessautomatisierung](/blog/prozessautomatisierung-kmu-leitfaden). Bei [AgenticIT](/loesungen/prozessautomatisierung) vereinbaren wir Umfang, Kosten und Abnahme passend zu diesem Ablauf.

@@ -17,6 +17,7 @@ export const SITEMAP_CONTENT_DATES: Readonly<Partial<Record<string, string>>> =
     "/blog/prozessautomatisierung-kmu-leitfaden": "2026-10-17",
     "/blog/website-briefing-vorlage": "2026-10-17",
     "/blog/landingpage-oder-website": "2026-10-17",
+    "/blog/ki-roi-berechnen": "2026-10-17",
     "/blog/ki-sprachassistent-telefonie": "2026-10-17",
     "/blog/ki-automatisierung-vertrieb": "2026-10-17",
     "/blog/werbung-fuer-kmu": "2026-10-17",

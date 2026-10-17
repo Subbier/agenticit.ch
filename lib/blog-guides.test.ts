@@ -8,6 +8,7 @@ const guides = [
   "prozessautomatisierung-kmu-leitfaden",
   "website-briefing-vorlage",
   "landingpage-oder-website",
+  "ki-roi-berechnen",
   "ki-agenten",
   "neukundengewinnung-kmu-schweiz",
 ] as const

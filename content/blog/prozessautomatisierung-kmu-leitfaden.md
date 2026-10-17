@@ -68,6 +68,8 @@ Messen Sie zuerst eine Reihe tatsächlicher Vorgänge. Zählen Sie die gesamte a
 
 Das ist zunächst verfügbare Zeit. Daraus folgt noch keine niedrigere Lohnrechnung und kein zusätzlicher Umsatz. Für den wirtschaftlichen Vergleich kommen Einrichtung, Lizenzen und sonstige Betriebskosten hinzu. Ist der verbleibende Aufwand höher als bisher, muss auch ein negatives Ergebnis sichtbar bleiben.
 
+Wie Sie Zeitwert, tatsächliche Ausgaben und den Jahresvergleich getrennt berechnen, zeigt unser [Leitfaden zum KI-ROI](/blog/ki-roi-berechnen).
+
 Im [Automatisierungs-Check](/automatisierungs-check) können Sie mit eigenen Angaben beginnen. Die Rechnung dient zur Orientierung; ein gemessener Vorgang aus Ihrem Betrieb ist belastbarer als eine Schätzung.
 
 ## Was müssen wir vor der Umsetzung festlegen?
