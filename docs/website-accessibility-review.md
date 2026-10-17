@@ -1,6 +1,6 @@
 # Bedienbarkeit der AgenticIT-Website
 
-Prüfstand: 17. Oktober 2026. Produktfassung 66286165bce2813e1850e01660f98290c60f72b3; Tastatureinstieg aus d1c7feb unverändert. Diese Arbeitsabnahme führt konkrete Nachweise zusammen. Sie ist keine vollständige WCAG-Konformitätserklärung und keine Prüfung mit allen assistiven Technologien.
+Prüfstand: 17. Oktober 2026. Produktfassung d302eceb3f475ab86075133b57d5a6dbe4fafdde; Tastatureinstieg aus d1c7feb unverändert. Diese Arbeitsabnahme führt konkrete Nachweise zusammen. Sie ist keine vollständige WCAG-Konformitätserklärung und keine Prüfung mit allen assistiven Technologien.
 
 ## Prüfbereich
 
@@ -53,7 +53,7 @@ Nachweise: Umsetzung-2026-10-17/Nachweise/form-boundaries-*. Veröffentlichtes P
 ## Wiederholbare Abnahme und Ablage
 
 - npm run test:keyboard prüft Hauptinhalt-Ziele sowie Fokuslogik, native Rückfallebene und modifizierte Klicks.
-- Gesamtlauf nach D07: 402 kombinierte Tests in 49 relevanten Dateien, ohne test-leads-Tests. TypeScript, Formatter und Produktionsbuild einschliesslich Import-/Tailwind-Prüfung bestanden. Öffentliche GET-Abnahme nach nachgewiesener Veröffentlichung; kein echter Versand daraus abgeleitet.
+- Gesamtlauf nach Cookie-Fokuskorrektur: 406 kombinierte Tests in 50 relevanten Dateien, ohne test-leads-Tests. TypeScript, Formatter und Produktionsbuild einschliesslich Import-/Tailwind-Prüfung bestanden. Öffentliche GET-Abnahme nach nachgewiesener Veröffentlichung; kein echter Versand daraus abgeleitet.
 - Originale Nachweise in OneDrive: AgenticIT Webseite/Umsetzung-2026-10-17/Nachweise/accessibility-*. Dazu Entwurfsfehler, korrigierter Rückweg, Tastaturfälle je Umgebung, Textfarben, Menü, Videobedienung und Abbildungen.
 - Der bereits zuvor beobachtete lokale NoFallbackError beim Serverende bleibt separat ungeklärt; erfolgreiche 404-Tests sind keine pauschale Laufzeitfehlerfreiheit.
 
@@ -68,4 +68,16 @@ Fünf dauerhafte Feldlabels und optionale Firma/Telefon erhalten. Maximalwerte a
 
 Explizite API-Bestätigung statt HTTP allein, zustandsunabhängige Sperre sowie Sender pro Formularinstanz. Isolierte Tests decken gleichzeitiges/erneutes Senden, fehlende Bestätigung, Fehler und bewussten neuen Versuch ab. Server setzt den Kontaktkontext und persönlichen Prüfauftrag. 402 kombinierte Prüfungen, TypeScript, Formatter und Produktionsbuild bestanden. Echter CRM-Empfang und dauerhaftes Deduplizieren über Sitzungen sind damit nicht belegt. Fokus auf der Erfolgsanzeige ist implementiert, im Browser ohne Versand nicht ausgelöst.
 
-Datenschutzlink kündigt einen neuen Tab an und enthält keine Formularwerte. Attribute und Ziel geprüft, Ursprungseingaben nach lokalem Klick erhalten; IAB lieferte keinen beobachtbaren neuen Tab. Deshalb kein kompletter interaktiver Abzweig-Nachweis. Keine pauschale DSG-/WCAG-Konformitätszusage. Nachweise contact-inquiry-* in der bestehenden OneDrive-Ablage; Lokales und öffentliches Abschlussbild visuell gelesen.
+Datenschutzlink kündigt einen neuen Tab an und enthält keine Formularwerte. Attribute und Ziel geprüft, Ursprungseingaben nach lokalem Klick erhalten; IAB lieferte keinen beobachtbaren neuen Tab. Deshalb kein kompletter interaktiver Abzweig-Nachweis. Keine pauschale DSG-/WCAG-Konformitätszusage. Nachweise contact-inquiry-* in der bestehenden OneDrive-Ablage; lokales und öffentliches Abschlussbild visuell gelesen.
+
+## Cookie-Fenster und Umfrage – ergänzende Tastaturprüfung
+
+Öffentlicher Vorher-Befund: Nach Escape aus den Cookie-Details und nach dem Speichern lag der Fokus auf BODY. Die Tastaturfolge der Aktionen widersprach der sichtbaren Anordnung. Produkt d302ece führt aus Details zu «Einstellungen», beim erneuten Öffnen zum ersten veränderbaren Schalter und nach der Entscheidung zum verbundenen Öffner zurück. Fehlt dieser, wird der Hauptinhalt verwendet; entfernte Ziele werden nicht fokussiert. Vier Fokus-Logiktests vor Implementierung rot, danach grün. Heller Fokusrahmen im dunklen Panel. Reihenfolge jetzt im DOM und visuell «Nur notwendige», «Alle akzeptieren», Einstellungen/Speichern. Kategorien, Texte und Zustimmungsmodell unverändert; keine Fokusfalle eingeführt.
+
+Je sechs lokale und öffentliche Grössen: 320/390/768/1440 × 844, dazu 320 × 568 und 640 × 360. Je sechs echte Tab-Schritte mit geprüftem Ziel, Escape, erneutes Öffnen und unverändertes Speichern. Kein innerer oder Seitenüberlauf. Auf kurzen Displays scrollt das Panel, Aktionen bleiben erreichbar. Statistik und Marketing waren und bleiben ausgeschaltet.
+
+Unveränderte Umfrage: alle fünf Fragen in denselben sechs Grössen, je 30 Ansichten lokal und öffentlich ohne horizontalen Überlauf. Weiter fokussiert die neue Frage, Zurück und Escape funktionieren; Fokus zurück beim Öffner. Kurze Ansichten scrollen intern. Letzte Antwort blieb leer, Senden deaktiviert und nie ausgelöst. Kein Umfrage-Umbau nötig.
+
+Tatsächlicher 200-Prozent-Textzoom bleibt offen: OS-Textskalierung und Zoom-Tastenkombination änderten im verfügbaren Browser weder die gemessenen Schriftgrössen noch die Viewport-Skalierung. OS-Override entfernt. Reflow-/Scrollnachweise werden nicht als Ersatz dafür ausgegeben; kein Produktfehler aus der wirkungslosen Emulation abgeleitet. Primärquellen am 17.10. gelesen: [W3C Resize Text](https://www.w3.org/WAI/WCAG22/Understanding/resize-text.html) und [offizielle Chrome-Protokolldefinition](https://raw.githubusercontent.com/ChromeDevTools/devtools-protocol/master/pdl/domains/Emulation.pdl). Der erste Protokollabruf war nur eine Redirect-Übersicht; Parameter aus der tatsächlichen Definition gelesen.
+
+406 kombinierte Prüfungen in 50 Dateien lokal und mit öffentlicher GET-Basis bestanden. Erster Teillauf enthielt einen HTML-Abruf bei noch beendetem Server: fetch failed, 16 andere Tests grün. Vollständiger Lauf nach Serverstart grün; kein Produktfehler daraus abgeleitet. TypeScript, Formatter und Build bestanden. Deployment dpl_qJeZCET24Vv2vcVfiib57cawzdba (v1-main-9y2nk909b-gntc.vercel.app) READY mit exakt d302eceb3f475ab86075133b57d5a6dbe4fafdde und beiden öffentlichen Domains, danach Live-Abnahme. Nachweise dialog-focus-* und survey-* in OneDrive. Lokales und öffentliches Abschlussbild visuell gelesen; Fenster anschliessend geschlossen und Viewport zurückgesetzt. Startseiten-CSS 255991 Bytes, gleich berechnetes gzip 41357 Bytes, drei Stylesheets. Keine neue PSI-Messung, keine behauptete Ladezeitwirkung. Sitemap unverändert 79 Ziele und 76 Inhaltsdaten. Kein echter Versand. E06 und Gesamtziel bleiben offen.
