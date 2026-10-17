@@ -20,7 +20,7 @@ export default function GlobalError({
     <html lang="de-CH">
       <body className="font-sans antialiased">
         <JourneyShell>
-          <main className={styles.container}>
+          <main id="main-content" tabIndex={-1} className={styles.container}>
             <div className={styles.pageHero}>
               <div className="space-y-2">
                 <h1 className="text-2xl font-semibold tracking-tight">

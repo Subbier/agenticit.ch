@@ -15,7 +15,7 @@ import career from "./careers.module.css"
 export function CareerJob({ job }: { job: KarriereJob }) {
   return (
     <JourneyShell>
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <div className={styles.container}>
           <div className={career.backLink}>
             <Link href="/karriere#stellen" className={styles.textLink}>

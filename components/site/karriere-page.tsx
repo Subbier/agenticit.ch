@@ -15,7 +15,7 @@ const WORK_AREAS = [
 export function KarrierePage() {
   return (
     <JourneyShell>
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <div className={styles.container}>
           <section className={career.hero} aria-labelledby="career-title">
             <div className={career.heroContent}>

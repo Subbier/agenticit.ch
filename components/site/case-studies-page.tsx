@@ -19,7 +19,11 @@ export function CaseStudiesPage() {
   const fmt = formatPlanningNumber
   return (
     <JourneyShell>
-      <main className={`${shared.container} ${ui.main} ${styles.page}`}>
+      <main
+        id="main-content"
+        tabIndex={-1}
+        className={`${shared.container} ${ui.main} ${styles.page}`}
+      >
         <nav className={ui.breadcrumb} aria-label="Seitenpfad">
           <a href="/">Startseite</a>
           <ChevronRight size={13} aria-hidden="true" />

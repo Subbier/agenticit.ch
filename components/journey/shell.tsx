@@ -3,6 +3,7 @@ import { ArrowUpRight, Menu, X } from "lucide-react"
 import { ConsentSettingsLink } from "@/components/site/consent-settings-link"
 import { WebsiteFeedbackLink } from "@/components/site/website-feedback"
 import { company } from "@/lib/company"
+import { SkipToContent } from "./skip-to-content"
 import styles from "./journey.module.css"
 
 function Brand() {
@@ -25,6 +26,7 @@ function Brand() {
 export function JourneyShell({ children }: { children: React.ReactNode }) {
   return (
     <div className={styles.shell} data-site-design="journey">
+      <SkipToContent />
       <div className={styles.container}>
         <header className={styles.header}>
           <Brand />

@@ -27,7 +27,11 @@ export function AngebotAreaPage({ area }: { area: AngebotArea }) {
           faqPageJsonLd(area.faqs),
         ]}
       />
-      <main className={[shared.container, ui.main, styles.page].join(" ")}>
+      <main
+        id="main-content"
+        tabIndex={-1}
+        className={[shared.container, ui.main, styles.page].join(" ")}
+      >
         <nav className={ui.breadcrumb} aria-label="Seitenpfad">
           <a href="/">Startseite</a>
           <span aria-hidden="true">/</span>

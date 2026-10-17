@@ -17,7 +17,7 @@ import styles from "./journey.module.css"
 export function JourneyHome() {
   return (
     <JourneyShell>
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <div className={styles.container}>
           <section className={styles.hero}>
             <div>

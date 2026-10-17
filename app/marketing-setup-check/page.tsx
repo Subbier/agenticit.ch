@@ -33,7 +33,7 @@ export default function Page() {
   return (
     <JourneyShell>
       <JsonLd data={[faqPageJsonLd(faqs)]} />
-      <main className={styles.container}>
+      <main id="main-content" tabIndex={-1} className={styles.container}>
         <div className={styles.pageHero}>
           <span className={styles.eyebrow}>Marketing-Setup-Check</span>
           <h1>

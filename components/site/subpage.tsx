@@ -35,7 +35,11 @@ export function SubPage({ slug }: { slug: string }) {
           ...(page.faqs ? [faqPageJsonLd(page.faqs)] : []),
         ]}
       />
-      <main className={[shared.container, styles.main].join(" ")}>
+      <main
+        id="main-content"
+        tabIndex={-1}
+        className={[shared.container, styles.main].join(" ")}
+      >
         <nav className={styles.breadcrumb} aria-label="Seitenpfad">
           <a href={"/" + page.parentSlug}>{page.parentLabel}</a>
           <span aria-hidden="true">/</span>

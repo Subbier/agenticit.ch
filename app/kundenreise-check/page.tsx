@@ -19,7 +19,11 @@ export default async function Page({
   const { thema } = await searchParams
   return (
     <JourneyShell>
-      <main className={`${styles.container} ${styles.wideContent}`}>
+      <main
+        id="main-content"
+        tabIndex={-1}
+        className={`${styles.container} ${styles.wideContent}`}
+      >
         <div className={styles.pageHero}>
           <span className={styles.eyebrow}>
             Ein guter Anfang braucht Klarheit

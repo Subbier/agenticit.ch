@@ -41,7 +41,11 @@ export default function Page() {
           },
         ]}
       />
-      <main className={`${styles.container} ${styles.companyVideoPage}`}>
+      <main
+        id="main-content"
+        tabIndex={-1}
+        className={`${styles.container} ${styles.companyVideoPage}`}
+      >
         <nav className={styles.companyVideoBreadcrumb} aria-label="Seitenpfad">
           <Link href="/">Startseite</Link>
           <span aria-hidden="true">/</span>

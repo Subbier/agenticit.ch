@@ -33,6 +33,36 @@
   cursor: wait;
   opacity: 0.65;
 }
+.skipLink {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 100;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  max-width: calc(100% - 32px);
+  padding: 10px 18px;
+  border: 1px solid #407e29;
+  border-radius: 7px;
+  background: var(--green);
+  color: #18320d;
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.4;
+  text-decoration: none;
+  transform: translateY(calc(-100% - 24px));
+}
+.skipLink:focus {
+  transform: translateY(0);
+}
+.shell main[id="main-content"] {
+  scroll-margin-top: 20px;
+}
+.shell main[id="main-content"]:focus-visible {
+  outline: 2px solid #407e29;
+  outline-offset: -2px;
+}
 .container {
   width: min(1180px, calc(100% - 64px));
   margin-inline: auto;

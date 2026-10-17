@@ -65,7 +65,11 @@ export function CoreServicePage({
           faqPageJsonLd([...service.faqs]),
         ]}
       />
-      <main className={`${shared.container} ${styles.main}`}>
+      <main
+        id="main-content"
+        tabIndex={-1}
+        className={`${shared.container} ${styles.main}`}
+      >
         <nav className={styles.breadcrumb} aria-label="Seitenpfad">
           <Link href="/pakete">Services</Link>
           <ChevronRight size={13} aria-hidden="true" />

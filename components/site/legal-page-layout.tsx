@@ -17,7 +17,7 @@ export function LegalPageLayout({
 }: LegalPageLayoutProps) {
   return (
     <JourneyShell>
-      <main className={styles.container}>
+      <main id="main-content" tabIndex={-1} className={styles.container}>
         <div className={legal.hero}>
           <span className={styles.eyebrow}>AgenticIT · Rechtliches</span>
           <h1>{title}</h1>

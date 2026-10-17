@@ -11,7 +11,13 @@ export function JourneyContent({
 }) {
   return (
     <JourneyShell>
-      <main data-page-content className={styles.content} style={style}>
+      <main
+        id="main-content"
+        tabIndex={-1}
+        data-page-content
+        className={styles.content}
+        style={style}
+      >
         {children}
       </main>
     </JourneyShell>

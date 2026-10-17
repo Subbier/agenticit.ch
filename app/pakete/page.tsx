@@ -17,7 +17,7 @@ export const metadata = createPageMetadata({
 export default function Page() {
   return (
     <JourneyShell>
-      <main className={styles.container}>
+      <main id="main-content" tabIndex={-1} className={styles.container}>
         <div className={styles.pageHero}>
           <span className={styles.eyebrow}>Drei Bereiche. Ein Partner.</span>
           <h1>

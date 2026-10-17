@@ -5,7 +5,7 @@ import styles from "@/components/journey/journey.module.css"
 export default function NotFound() {
   return (
     <JourneyShell>
-      <main className={styles.container}>
+      <main id="main-content" tabIndex={-1} className={styles.container}>
         <div className={styles.pageHero}>
           <span className={styles.eyebrow}>Seite nicht gefunden</span>
           <h1>Hier geht es gerade nicht weiter.</h1>

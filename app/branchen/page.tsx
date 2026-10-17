@@ -59,7 +59,11 @@ export default function Page() {
           },
         ]}
       />
-      <main className={`${shared.container} ${ui.main} ${styles.main}`}>
+      <main
+        id="main-content"
+        tabIndex={-1}
+        className={`${shared.container} ${ui.main} ${styles.main}`}
+      >
         <div className={shared.pageHero}>
           <span className={shared.eyebrow}>Branchen & Teams</span>
           <h1>

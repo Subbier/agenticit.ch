@@ -23,7 +23,7 @@ export default function Page() {
   return (
     <JourneyShell>
       <JsonLd data={[faqPageJsonLd([...projectStartFaqs])]} />
-      <main className={styles.container}>
+      <main id="main-content" tabIndex={-1} className={styles.container}>
         <div className={styles.pageHero}>
           <span className={styles.eyebrow}>So arbeiten wir zusammen</span>
           <h1>

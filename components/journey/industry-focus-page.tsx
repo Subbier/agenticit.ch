@@ -37,7 +37,11 @@ export function IndustryFocusPage({
           faqPageJsonLd([...focus.faqs]),
         ]}
       />
-      <main className={`${shared.container} ${ui.main} ${styles.main}`}>
+      <main
+        id="main-content"
+        tabIndex={-1}
+        className={`${shared.container} ${ui.main} ${styles.main}`}
+      >
         <nav
           className={`${ui.breadcrumb} ${styles.breadcrumb}`}
           aria-label="Seitenpfad"
