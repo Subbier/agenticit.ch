@@ -186,7 +186,7 @@ export const coreServices = [
     ],
     magnetTitle: "Was braucht Ihr Auftritt als Nächstes?",
     magnetCopy:
-      "Ordnen Sie Ihren Anfrageweg mit drei kurzen Fragen ein. Sie erhalten einen Plan, der zu Ihrem heutigen Auftritt und Ihren Systemen passt.",
+      "Prüfen Sie Angebot, Auftritt, Konten, Messung und Übergabe mit fünf kurzen Fragen. Sie erhalten passende nächste Schritte und einen Plan zum Speichern.",
     faqs: [
       {
         question: "Brauchen wir eine komplett neue Website?",

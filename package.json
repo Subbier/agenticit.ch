@@ -15,6 +15,7 @@
     "test:operations-guides": "node --import tsx --test lib/operations-guides.test.ts",
     "test:marketing-guides": "node --import tsx --test lib/marketing-guides.test.ts",
     "test:workflow-demo": "node --import tsx --test lib/workflow-demo.test.ts",
+    "test:ai-reference": "node --import tsx --test lib/ai-reference.test.ts",
     "test:website-case": "node --import tsx --test lib/website-case.test.ts",
     "test:guides": "node --import tsx --test lib/blog-guides.test.ts",
     "test:industry": "node --import tsx --test lib/industry-focus.test.ts",
