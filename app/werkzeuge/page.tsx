@@ -63,6 +63,22 @@ export default function Page() {
               für ausgewählte Branchen. Datenstand und Schätzungen stehen direkt
               beim Tool; daraus folgt keine Zusage künftiger Anfragen.
             </p>
+            <p>
+              Ihr Kundenziel steht schon? Mit der{" "}
+              <Link
+                href="/potenzial"
+                style={{
+                  textDecoration: "underline",
+                  textUnderlineOffset: 4,
+                  display: "inline-flex",
+                  alignItems: "center",
+                  minHeight: 50,
+                }}
+              >
+                Anfragenplanung
+              </Link>{" "}
+              rechnen Sie aus, wie viele passende Anfragen Sie dafür benötigen.
+            </p>
           </div>
         </div>
         <BranchenRadar />

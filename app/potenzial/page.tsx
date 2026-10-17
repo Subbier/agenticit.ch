@@ -1,40 +1,44 @@
 import type { Metadata } from "next"
 import { PotenzialPage } from "@/components/site/potenzial-page"
-import { breadcrumbJsonLd, createPageMetadata, webApplicationJsonLd } from "@/lib/seo"
+import {
+  breadcrumbJsonLd,
+  createPageMetadata,
+  faqPageJsonLd,
+  webApplicationJsonLd,
+} from "@/lib/seo"
+import { planningFaqs } from "@/lib/potenzial-content"
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Potenzialrechner: Nachfrage in Ihrer Branche | AgenticIT",
+  title: "Anfragenplanung: Vom Kundenziel zum Akquise-Plan | AgenticIT",
   description:
-    "Wählen Sie Ihre Branche und sehen Sie, wie viele Menschen in der Deutschschweiz monatlich danach suchen – und was eine Anfrage wert ist.",
+    "Mit Kundenziel und eigener Abschlussquote passende Anfragen und Bearbeitungsaufwand planen. Transparente Rechnung, vorsichtigere Annahme und speicherbarer Plan.",
   path: "/potenzial",
-  keywords: [
-    "Potenzialrechner",
-    "Nachfrage Schweiz",
-    "Suchvolumen Branche",
-    "Leadgenerierung Schweiz",
-    "Kundengewinnung",
-    "Was kostet eine Kundenanfrage",
-  ],
 })
-
 const jsonLd = [
   webApplicationJsonLd({
-    name: "AgenticIT Potenzialrechner",
+    name: "AgenticIT Anfragenplaner",
     description:
-      "Kostenloser Rechner: monatliche Suchnachfrage und Richtwert pro Kundenanfrage je Schweizer Branche.",
+      "Planungsrechnung mit eigenen Angaben: benötigte Anfragen und optionaler Bearbeitungsaufwand. Keine Markt- oder Ergebnisprognose.",
     path: "/potenzial",
   }),
   breadcrumbJsonLd([
     { name: "Start", path: "/" },
-    { name: "Potenzialrechner", path: "/potenzial" },
+    { name: "Checks & Vorlagen", path: "/werkzeuge" },
+    { name: "Anfragenplanung", path: "/potenzial" },
   ]),
+  faqPageJsonLd(
+    planningFaqs.map((faq) => ({ question: faq.q, answer: faq.a })),
+  ),
 ]
-
 export default function Page() {
   return (
     <>
-      {jsonLd.map((obj, i) => (
-        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(obj) }} />
+      {jsonLd.map((object, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(object) }}
+        />
       ))}
       <PotenzialPage />
     </>

@@ -7,6 +7,11 @@ import {
 } from "./marketing-setup"
 import { buildInquiryPlan, inquirySchema } from "./inquiry-check"
 import { buildCrmPlan, crmSchema } from "./crm-check"
+import {
+  acquisitionPlanSchema,
+  buildAcquisitionPlan,
+  planningIndustryLabels,
+} from "./acquisition-planner"
 
 const optionalText = (max = 500) =>
   z.preprocess(
@@ -103,8 +108,23 @@ export const leadSchema = z
     marketingSetup: marketingSetupSchema.optional(),
     inquiryCheck: inquirySchema.optional(),
     crmCheck: crmSchema.optional(),
+    acquisitionPlan: acquisitionPlanSchema.optional(),
   })
   .superRefine((data, ctx) => {
+    if (
+      data.acquisitionPlan &&
+      (data.source !== "potenzialrechner" ||
+        data.journey ||
+        data.automation ||
+        data.marketingSetup ||
+        data.inquiryCheck ||
+        data.crmCheck)
+    )
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["acquisitionPlan"],
+        message: "Bitte nur die Angaben Ihrer Anfragenplanung übermitteln.",
+      })
     if (data.crmCheck && data.source !== "crm-ablauf-check")
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
@@ -175,7 +195,8 @@ export const leadSchema = z
       data.source !== "automation-check" &&
       data.source !== "marketing-setup-check" &&
       data.source !== "anfragen-check" &&
-      data.source !== "crm-ablauf-check"
+      data.source !== "crm-ablauf-check" &&
+      !data.acquisitionPlan
     )
       return
     if (data.source === "journey-check" && !data.journey)
@@ -233,8 +254,26 @@ export function prepareLeadPayload(
     lead.source === "crm-ablauf-check" && lead.crmCheck
       ? buildCrmPlan(lead.crmCheck)
       : null
+  const acquisitionPlan =
+    lead.source === "potenzialrechner" && lead.acquisitionPlan
+      ? buildAcquisitionPlan(lead.acquisitionPlan)
+      : null
+  const planningIndustry = lead.acquisitionPlan
+    ? planningIndustryLabels(lead.acquisitionPlan.industryIds).join(", ")
+    : ""
   return {
     ...lead,
+    ...(acquisitionPlan
+      ? {
+          message: acquisitionPlan,
+          industry: planningIndustry || undefined,
+          leadPrice: undefined,
+          challenge: "acquisition",
+          goal: "Anfrageziel und Bearbeitung planen",
+          contactMethod: lead.contactMethod ?? "email",
+          marketingConsent: false,
+        }
+      : {}),
     ...(plan
       ? {
           message: plan.download,
@@ -278,8 +317,10 @@ export function prepareLeadPayload(
               : {}),
     crm: "zoho",
     tags: [
-      lead.industry ? `branche:${lead.industry}` : null,
-      typeof lead.leadPrice === "number"
+      (acquisitionPlan ? planningIndustry : lead.industry)
+        ? `branche:${acquisitionPlan ? planningIndustry : lead.industry}`
+        : null,
+      !acquisitionPlan && typeof lead.leadPrice === "number"
         ? `lead_preis:${lead.leadPrice}`
         : null,
       ...(plan
@@ -312,7 +353,13 @@ export function prepareLeadPayload(
                     "service:sales",
                     "herausforderung:admin",
                   ]
-                : []),
+                : acquisitionPlan
+                  ? [
+                      "quelle:anfragenplanung",
+                      "service:marketing",
+                      "herausforderung:acquisition",
+                    ]
+                  : []),
     ].filter((tag): tag is string => Boolean(tag)),
     followUpTask: plan
       ? "Kundenreise-Check persönlich prüfen"
@@ -324,7 +371,9 @@ export function prepareLeadPayload(
             ? "Anfragen-Check persönlich prüfen"
             : crmPlan
               ? "CRM-Ablauf-Check persönlich prüfen"
-              : "Rückruf",
+              : acquisitionPlan
+                ? "Anfragenplanung persönlich prüfen"
+                : "Rückruf",
     submittedAt,
     userAgent,
   }
