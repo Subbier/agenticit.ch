@@ -388,7 +388,7 @@
 .applicationForm textarea {
   width: 100%;
   resize: vertical;
-  border: 1px solid #bfcbb8;
+  border: 1px solid var(--field-border);
   border-radius: 5px;
   padding: 10px 12px;
   color: var(--ink);

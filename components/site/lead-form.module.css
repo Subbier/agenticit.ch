@@ -33,7 +33,7 @@
 .form textarea {
   width: 100%;
   padding: 12px;
-  border: 1px solid #bfcbb8;
+  border: 1px solid var(--field-border);
   background: #fff;
   color: #202522;
   border-radius: 5px;
