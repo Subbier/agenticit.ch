@@ -69,7 +69,6 @@ export function CompanyVideo({ standalone = false }: { standalone?: boolean }) {
             srcLang="de"
             label="Deutsch"
             src={companyVideo.subtitles}
-            default
           />
           Ihr Browser unterstützt keine Videowiedergabe. Sie können das{" "}
           <a href={companyVideo.src}>Video direkt öffnen</a>.

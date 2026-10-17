@@ -67,6 +67,10 @@ test("the homepage keeps click-to-play and offers subtitles plus a collapsed tra
   const html = await (await fetch(baseUrl)).text()
   assert.match(html, /<track\b[^>]*kind="subtitles"[^>]*srcLang="de"/)
   assert.ok(html.includes(`src="${captionPath}"`))
+  assert.ok(
+    !/<track\b[^>]*\bdefault(?:=|\s|>)/.test(html),
+    "The supplied video already has burned-in subtitles; a second track must be opt-in",
+  )
   assert.ok(html.includes('preload="none"'))
   assert.ok(!/<video\b[^>]*autoPlay/i.test(html))
   assert.ok(!/<video\b[^>]*poster=/.test(html))
