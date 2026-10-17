@@ -10,6 +10,14 @@ const pages = [
     "/loesungen/prozessautomatisierung",
     "/loesungen/prozessautomatisierung/opengraph-image",
   ],
+  [
+    "/loesungen/gtm-markteintritt",
+    "/loesungen/gtm-markteintritt/opengraph-image",
+  ],
+  [
+    "/loesungen/revops-umsatzgenerierung",
+    "/loesungen/revops-umsatzgenerierung/opengraph-image",
+  ],
 ] as const
 
 for (const [page, imagePath] of pages) {
