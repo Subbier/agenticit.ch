@@ -1,18 +1,24 @@
-import Link from "next/link"
 import { ArrowDown, ArrowUpRight, Check, ChevronRight } from "lucide-react"
 import { JsonLd } from "@/components/site/json-ld"
+import { CtaContactForm } from "@/components/site/cta-contact-form"
 import { breadcrumbJsonLd, faqPageJsonLd, serviceJsonLd } from "@/lib/seo"
 import {
-  industryFocus,
   industryImplementation,
   type IndustryFocus,
 } from "@/lib/industry-focus"
+import { relatedIndustries } from "@/lib/industry-sectors"
 import { JourneyShell } from "./shell"
 import shared from "./journey.module.css"
 import ui from "./core-service-page.module.css"
 import styles from "./industry-focus.module.css"
 
-export function IndustryFocusPage({ focus }: { focus: IndustryFocus }) {
+export function IndustryFocusPage({
+  focus,
+  showCallback = false,
+}: {
+  focus: IndustryFocus
+  showCallback?: boolean
+}) {
   const path = `/branchen/${focus.slug}`
   return (
     <JourneyShell>
@@ -31,9 +37,12 @@ export function IndustryFocusPage({ focus }: { focus: IndustryFocus }) {
           faqPageJsonLd([...focus.faqs]),
         ]}
       />
-      <main className={`${shared.container} ${ui.main}`}>
-        <nav className={ui.breadcrumb} aria-label="Seitenpfad">
-          <Link href="/branchen">Branchen</Link>
+      <main className={`${shared.container} ${ui.main} ${styles.main}`}>
+        <nav
+          className={`${ui.breadcrumb} ${styles.breadcrumb}`}
+          aria-label="Seitenpfad"
+        >
+          <a href="/branchen">Branchen</a>
           <ChevronRight size={13} aria-hidden="true" />
           <span aria-current="page">{focus.label}</span>
         </nav>
@@ -42,15 +51,15 @@ export function IndustryFocusPage({ focus }: { focus: IndustryFocus }) {
             <span className={shared.eyebrow}>{focus.label}</span>
             <h1 id="industry-title">{focus.headline}</h1>
             <p className={ui.lede}>{focus.intro}</p>
-            <div className={ui.actions}>
-              <Link className={shared.button} href={focus.checkHref}>
+            <div className={`${ui.actions} ${styles.actions}`}>
+              <a className={shared.button} href={focus.checkHref}>
                 {focus.checkLabel}
                 <ArrowUpRight size={17} aria-hidden="true" />
-              </Link>
-              <Link href="#bereiche" className={ui.quietLink}>
+              </a>
+              <a href="#bereiche" className={ui.quietLink}>
                 Möglichkeiten ansehen
                 <ArrowDown size={16} aria-hidden="true" />
-              </Link>
+              </a>
             </div>
             <p className={ui.note}>{focus.audience}</p>
           </div>
@@ -59,7 +68,7 @@ export function IndustryFocusPage({ focus }: { focus: IndustryFocus }) {
             aria-label="Beispiel eines möglichen Ablaufs"
           >
             <div className={ui.visualTop}>
-              <span>Vom Interesse zur Betreuung</span>
+              <span>Vom Anliegen zum nächsten Schritt</span>
               <span className={ui.exampleLabel}>Beispiel</span>
             </div>
             <h2>Ein Anliegen. Ein klarer Weg.</h2>
@@ -108,10 +117,10 @@ export function IndustryFocusPage({ focus }: { focus: IndustryFocus }) {
                     </li>
                   ))}
                 </ul>
-                <Link href={area.href}>
+                <a href={area.href}>
                   {area.name} im Detail
                   <ArrowUpRight size={16} aria-hidden="true" />
-                </Link>
+                </a>
               </article>
             ))}
           </div>
@@ -124,7 +133,9 @@ export function IndustryFocusPage({ focus }: { focus: IndustryFocus }) {
             </h2>
             <p>
               Wir richten die Lösung auf Ihre Arbeit aus und führen Ihr Team an
-              den konkreten Aufgaben ein.
+              den konkreten Aufgaben ein. Kundenorientierte Assistenten stellen
+              sich als KI vor. Ausgehende Sales-Nachrichten benötigen eine
+              menschliche Freigabe vor dem Versand.
             </p>
           </div>
           <ol>
@@ -146,10 +157,13 @@ export function IndustryFocusPage({ focus }: { focus: IndustryFocus }) {
             <h2 id="industry-check-title">{focus.checkTitle}</h2>
             <p>{focus.checkCopy}</p>
           </div>
-          <Link href={focus.checkHref} className={shared.button}>
+          <a
+            href={focus.checkHref}
+            className={`${shared.button} ${styles.checkLink}`}
+          >
             {focus.checkLabel}
             <ArrowUpRight size={18} aria-hidden="true" />
-          </Link>
+          </a>
         </section>
         <section className={ui.questions} aria-labelledby="industry-faq-title">
           <div className={ui.sectionHeading}>
@@ -157,7 +171,7 @@ export function IndustryFocusPage({ focus }: { focus: IndustryFocus }) {
             <h2 id="industry-faq-title">Ihre Fragen. Klar beantwortet.</h2>
             <p>
               Sie haben einen konkreten Ablauf im Blick?{" "}
-              <Link href="/kontakt">Sprechen wir darüber.</Link>
+              <a href="/kontakt">Sprechen wir darüber.</a>
             </p>
           </div>
           <div className={ui.faqs}>
@@ -172,21 +186,44 @@ export function IndustryFocusPage({ focus }: { focus: IndustryFocus }) {
             ))}
           </div>
         </section>
-        <nav className={ui.related} aria-label="Weitere Branchen">
+        <nav
+          className={`${ui.related} ${styles.related}`}
+          aria-label="Weitere Branchen"
+        >
           <span>Weitere Orientierung</span>
-          {industryFocus
-            .filter((item) => item.slug !== focus.slug)
-            .map((item) => (
-              <Link key={item.slug} href={`/branchen/${item.slug}`}>
-                {item.label}
-                <ArrowUpRight size={16} aria-hidden="true" />
-              </Link>
-            ))}
-          <Link href="/branchen">
+          {relatedIndustries(focus).map((item) => (
+            <a key={item.slug} href={`/branchen/${item.slug}`}>
+              {item.label}
+              <ArrowUpRight size={16} aria-hidden="true" />
+            </a>
+          ))}
+          <a href="/branchen">
             Alle Branchen
             <ArrowUpRight size={16} aria-hidden="true" />
-          </Link>
+          </a>
         </nav>
+        {showCallback && (
+          <section
+            id="kontakt"
+            className={styles.contact}
+            aria-labelledby="callback-title"
+          >
+            <div>
+              <span className={shared.eyebrow}>Persönlich weiterdenken</span>
+              <h2 id="callback-title">
+                Welchen Ablauf möchten Sie vereinfachen?
+              </h2>
+              <p>
+                Erzählen Sie uns von Ihrem Betrieb. Wir besprechen, welcher
+                nächste Schritt zu Ihrem Team und Ihren vorhandenen Tools passt.
+              </p>
+              <p className={shared.fine}>
+                Persönliche Rückmeldung · Keine Verpflichtung
+              </p>
+            </div>
+            <CtaContactForm pagePath={path} />
+          </section>
+        )}
       </main>
     </JourneyShell>
   )

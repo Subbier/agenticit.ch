@@ -1,9 +1,8 @@
-import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import { JourneyShell } from "@/components/journey/shell"
 import { JsonLd } from "@/components/site/json-ld"
 import { industryFocus } from "@/lib/industry-focus"
-import { BRANCHEN_LPS } from "@/lib/branchen-content"
+import { additionalIndustryFocus } from "@/lib/industry-sectors"
 import { createPageMetadata, SITE_URL } from "@/lib/seo"
 import shared from "@/components/journey/journey.module.css"
 import ui from "@/components/journey/core-service-page.module.css"
@@ -15,9 +14,7 @@ export const metadata = createPageMetadata({
     "Marketing, Sales und Administration für beratende Schweizer KMU verbinden. Konkrete Abläufe für Beratung, Telesales und Aussendienst mit passenden Checks.",
   path: "/branchen",
 })
-const otherIndustries = BRANCHEN_LPS.filter(
-  (item) => !industryFocus.some((focus) => focus.slug === item.slug),
-)
+const otherIndustries = additionalIndustryFocus
 const roles = [
   [
     "Beratung",
@@ -38,7 +35,7 @@ export default function Page() {
     ...industryFocus,
     ...otherIndustries.map((item) => ({
       slug: item.slug,
-      label: item.navLabel,
+      label: item.label,
     })),
   ]
   return (
@@ -62,7 +59,7 @@ export default function Page() {
           },
         ]}
       />
-      <main className={`${shared.container} ${ui.main}`}>
+      <main className={`${shared.container} ${ui.main} ${styles.main}`}>
         <div className={shared.pageHero}>
           <span className={shared.eyebrow}>Branchen & Teams</span>
           <h1>
@@ -75,14 +72,14 @@ export default function Page() {
             vertriebsorientierte KMU. Aus einzelnen Tools wird ein abgestimmter
             Ablauf – mit Ihrem Team und einem Partner für die Umsetzung.
           </p>
-          <div className={ui.actions}>
-            <Link href="/kundenreise-check" className={shared.button}>
+          <div className={`${ui.actions} ${styles.actions}`}>
+            <a href="/kundenreise-check" className={shared.button}>
               Ihren Einstieg finden
               <ArrowUpRight size={17} aria-hidden="true" />
-            </Link>
-            <Link href="#branchen" className={ui.quietLink}>
+            </a>
+            <a href="#branchen" className={ui.quietLink}>
               Passende Beispiele ansehen
-            </Link>
+            </a>
           </div>
         </div>
         <section
@@ -100,14 +97,14 @@ export default function Page() {
           </div>
           <div className={styles.focusCards}>
             {industryFocus.map((focus) => (
-              <Link key={focus.slug} href={`/branchen/${focus.slug}`}>
+              <a key={focus.slug} href={`/branchen/${focus.slug}`}>
                 <h3>{focus.label}</h3>
                 <p>{focus.audience}</p>
                 <span>
                   Möglichkeiten ansehen
                   <ArrowUpRight size={16} aria-hidden="true" />
                 </span>
-              </Link>
+              </a>
             ))}
           </div>
         </section>
@@ -140,9 +137,9 @@ export default function Page() {
           <summary>Auch für andere Branchen</summary>
           <nav className={styles.otherLinks} aria-label="Weitere Branchen">
             {otherIndustries.map((item) => (
-              <Link key={item.slug} href={`/branchen/${item.slug}`}>
-                {item.navLabel}
-              </Link>
+              <a key={item.slug} href={`/branchen/${item.slug}`}>
+                {item.label}
+              </a>
             ))}
           </nav>
         </details>
@@ -158,10 +155,13 @@ export default function Page() {
               Sie mit uns sprechen möchten.
             </p>
           </div>
-          <Link href="/kundenreise-check" className={shared.button}>
+          <a
+            href="/kundenreise-check"
+            className={`${shared.button} ${styles.checkLink}`}
+          >
             Unverbindlichen Check starten
             <ArrowUpRight size={18} aria-hidden="true" />
-          </Link>
+          </a>
         </section>
       </main>
     </JourneyShell>

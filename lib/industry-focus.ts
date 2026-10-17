@@ -1,5 +1,17 @@
+export type IndustrySlug =
+  | "beratung"
+  | "versicherungen"
+  | "treuhand"
+  | "gastronomie"
+  | "gesundheit"
+  | "autohaus"
+  | "immobilien"
+  | "fitness"
+  | "handwerk"
+  | "hotellerie"
+
 export type IndustryFocus = {
-  slug: "beratung" | "versicherungen"
+  slug: IndustrySlug
   label: string
   title: string
   description: string
@@ -18,6 +30,7 @@ export type IndustryFocus = {
   checkTitle: string
   checkCopy: string
   faqs: readonly { question: string; answer: string }[]
+  relatedSlugs?: readonly IndustrySlug[]
 }
 
 export const industryFocus: readonly IndustryFocus[] = [

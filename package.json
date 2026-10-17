@@ -20,7 +20,7 @@
     "test:offers": "node --import tsx --test lib/offer-pages.test.ts",
     "test:callback": "node --import tsx --test lib/callback-inquiry.test.ts lib/callback-route.test.ts lib/callback-form.test.ts",
     "test:guides": "node --import tsx --test lib/blog-guides.test.ts lib/template-downloads.test.ts",
-    "test:industry": "node --import tsx --test lib/industry-focus.test.ts",
+    "test:industry": "node --import tsx --test lib/industry-focus.test.ts lib/industry-sectors.test.ts",
     "test:inquiry": "node --import tsx --test lib/inquiry-check.test.ts lib/inquiry-check-page.test.ts",
     "test:crm": "node --import tsx --test lib/crm-check.test.ts lib/crm-check-page.test.ts",
     "test:project-start": "node --import tsx --test lib/project-start.test.ts",

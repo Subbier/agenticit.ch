@@ -1,3 +1,28 @@
+.breadcrumb a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+.contact {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 64px;
+  border-top: 1px solid var(--line);
+  padding: 48px 0 24px;
+  margin-top: 40px;
+  scroll-margin-top: 24px;
+}
+.contact h2 {
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 550;
+  line-height: 1.15;
+  letter-spacing: -1px;
+  margin-top: 16px;
+}
+.contact p {
+  color: var(--muted);
+  margin-top: 18px;
+}
 .areaCards {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -50,6 +75,17 @@
   font-size: 14px;
   font-weight: 550;
   text-underline-offset: 4px;
+  align-self: flex-start;
+  max-width: 100%;
+}
+@media (max-width: 540px) {
+  .main .actions,
+  .main .related {
+    padding-right: 80px;
+  }
+  .main .checkLink {
+    max-width: calc(100% - 80px);
+  }
 }
 .focusCards {
   display: grid;
@@ -145,6 +181,12 @@
   }
 }
 @media (max-width: 700px) {
+  .contact {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding-top: 32px;
+    margin-top: 28px;
+  }
   .areaCards,
   .focusCards,
   .roleCards {

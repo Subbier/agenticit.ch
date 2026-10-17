@@ -1,15 +1,14 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
-import { BranchenLpPage } from "@/components/site/branchen-lp-page"
-import { BRANCHEN_LPS, BRANCHEN_LP_BY_SLUG } from "@/lib/branchen-content"
 import { createPageMetadata } from "@/lib/seo"
 import { IndustryFocusPage } from "@/components/journey/industry-focus-page"
+import { allIndustryFocus } from "@/lib/industry-sectors"
 import { industryFocus } from "@/lib/industry-focus"
 
 export const dynamicParams = false
 
 export function generateStaticParams() {
-  return BRANCHEN_LPS.map((lp) => ({ slug: lp.slug }))
+  return allIndustryFocus.map((focus) => ({ slug: focus.slug }))
 }
 
 export async function generateMetadata({
@@ -18,20 +17,12 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>
 }): Promise<Metadata> {
   const { slug } = await params
-  const focus = industryFocus.find((item) => item.slug === slug)
-  if (focus)
-    return createPageMetadata({
-      title: focus.title,
-      description: focus.description,
-      path: `/branchen/${focus.slug}`,
-    })
-  const lp = BRANCHEN_LP_BY_SLUG[slug]
-  if (!lp) return {}
+  const focus = allIndustryFocus.find((item) => item.slug === slug)
+  if (!focus) return {}
   return createPageMetadata({
-    title: lp.meta.title,
-    description: lp.meta.description,
-    path: `/branchen/${lp.slug}`,
-    keywords: lp.keywords,
+    title: focus.title,
+    description: focus.description,
+    path: `/branchen/${focus.slug}`,
   })
 }
 
@@ -41,8 +32,12 @@ export default async function Page({
   params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
-  const focus = industryFocus.find((item) => item.slug === slug)
-  if (focus) return <IndustryFocusPage focus={focus} />
-  if (!BRANCHEN_LP_BY_SLUG[slug]) notFound()
-  return <BranchenLpPage slug={slug} />
+  const focus = allIndustryFocus.find((item) => item.slug === slug)
+  if (!focus) notFound()
+  return (
+    <IndustryFocusPage
+      focus={focus}
+      showCallback={!industryFocus.some((item) => item.slug === slug)}
+    />
+  )
 }

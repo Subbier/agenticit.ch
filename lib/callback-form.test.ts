@@ -3,7 +3,18 @@ import test from "node:test"
 
 const baseUrl = process.env.SITE_TEST_BASE_URL ?? "http://127.0.0.1:3105"
 
-for (const path of ["/blog", "/branchen/treuhand", "/voiceagent"])
+for (const path of [
+  "/blog",
+  "/branchen/treuhand",
+  "/branchen/gastronomie",
+  "/branchen/gesundheit",
+  "/branchen/autohaus",
+  "/branchen/immobilien",
+  "/branchen/fitness",
+  "/branchen/handwerk",
+  "/branchen/hotellerie",
+  "/voiceagent",
+])
   test(`${path}: the callback form keeps six labels, its page and a privacy link`, async () => {
     const response = await fetch(new URL(path, baseUrl))
     assert.equal(response.status, 200)

@@ -17,10 +17,7 @@ test("unchanged content does not acquire a new modification date on a later buil
 })
 
 test("unknown modification dates are omitted instead of inferred from a publication date", () => {
-  for (const path of [
-    "/branchen/treuhand",
-    "/karriere/lehrstelle-informatik-efz",
-  ]) {
+  for (const path of ["/karriere/lehrstelle-informatik-efz"]) {
     assert.equal(
       sitemap().find((entry) => entry.url === `${SITE_URL}${path}`)
         ?.lastModified,
@@ -56,6 +53,14 @@ test("verified service and calculator updates retain their real content dates", 
     ["/branchen", "2026-10-17"],
     ["/branchen/beratung", "2026-10-17"],
     ["/branchen/versicherungen", "2026-10-17"],
+    ["/branchen/treuhand", "2026-10-17"],
+    ["/branchen/gastronomie", "2026-10-17"],
+    ["/branchen/gesundheit", "2026-10-17"],
+    ["/branchen/autohaus", "2026-10-17"],
+    ["/branchen/immobilien", "2026-10-17"],
+    ["/branchen/fitness", "2026-10-17"],
+    ["/branchen/handwerk", "2026-10-17"],
+    ["/branchen/hotellerie", "2026-10-17"],
     ["/case-studies", "2026-10-17"],
     ["/zusammenarbeit", "2026-10-17"],
     ["/loesungen/gtm-markteintritt", "2026-10-17"],
