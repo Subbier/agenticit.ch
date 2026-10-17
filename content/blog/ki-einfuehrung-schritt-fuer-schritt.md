@@ -44,6 +44,8 @@ faq:
 
 ## Welche Aufgabe ist ein guter Anfang?
 
+Noch auf Themensuche? [KI-Trends 2026 für KMU](/blog/ki-trends-2026-schweiz) ordnet dokumentierte Entwicklungen und passende Prüffragen ein. Ein konkreter Einstieg in die Administration ist die [Vorbereitung von Belegen](/blog/buchhaltung-automatisieren-ki).
+
 Beschreiben Sie eine wiederkehrende Situation: Eine Anfrage wird mehrfach weitergeleitet, ein Status muss in verschiedenen Systemen gesucht werden oder Gesprächsnotizen werden von Hand übertragen. Halten Sie fest, welche Arbeit heute anfällt und was sich daran ändern soll.
 
 Für eine erste Entscheidung helfen vier Fragen: Was löst den Vorgang aus? Welche Information wird benötigt? Wer prüft das Ergebnis? Woran erkennt diese Person, dass die Aufgabe richtig erledigt ist?

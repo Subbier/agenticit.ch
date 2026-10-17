@@ -24,6 +24,11 @@ const guides = [
   "ki-einfuehrung-schritt-fuer-schritt",
   "change-management-mit-ki",
   "haeufige-ki-fehler-vermeiden",
+  "buchhaltung-automatisieren-ki",
+  "ki-im-verkaufsgespraech",
+  "ki-vs-mensch-im-service",
+  "ki-trends-2026-schweiz",
+  "multi-agenten-systeme-erklaert",
   "ki-agenten",
   "neukundengewinnung-kmu-schweiz",
 ] as const
@@ -68,11 +73,6 @@ test("reviewed guides preserve publication dates and expose their actual update 
     assert.ok(post.nextStep?.href.startsWith("/"))
     assert.ok(post.faq.length >= 3)
   }
-  assert.equal(
-    getPost("buchhaltung-automatisieren-ki")?.updated,
-    undefined,
-    "Untouched articles must not acquire an update date",
-  )
   assert.equal(
     new Set(getAllPosts().map((post) => post.slug)).size,
     getAllPosts().length,

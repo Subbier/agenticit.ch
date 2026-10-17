@@ -18,7 +18,6 @@ test("unchanged content does not acquire a new modification date on a later buil
 
 test("unknown modification dates are omitted instead of inferred from a publication date", () => {
   for (const path of [
-    "/blog/buchhaltung-automatisieren-ki",
     "/branchen/treuhand",
     "/karriere/lehrstelle-informatik-efz",
   ]) {

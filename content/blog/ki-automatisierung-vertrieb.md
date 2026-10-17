@@ -84,6 +84,8 @@ Der **Prüfplan zum Mitnehmen** enthält normale Eingänge, Dubletten, fehlende 
 
 ## Woran messen wir die Verbesserung?
 
+Für die Arbeit rund um einen Termin zeigt [KI im Verkaufsgespräch](/blog/ki-im-verkaufsgespraech) die Vorbereitung, Notizen und persönlich freigegebene nächste Schritte.
+
 Unterscheiden Sie technische Annahme, gespeicherten CRM-Vorgang, qualifizierte Anfrage, Gespräch und Auftrag. Messen Sie ausserdem Nacharbeit und verbleibende Kontrolle. Gewonnene Zeit ist nicht automatisch zusätzlicher Umsatz. Einen Zeitvergleich mit eigenen Angaben ermöglicht der [Automatisierungs-Check](/automatisierungs-check).
 
 Der EDÖB weist darauf hin, dass das Datenschutzgesetz auch beim KI-Einsatz gilt. Klären Sie Zweck, Datenwege, Berechtigungen und Aufbewahrung für den konkreten Ablauf. Aus einer technischen Verbindung folgt keine pauschale Datenschutzfreigabe.

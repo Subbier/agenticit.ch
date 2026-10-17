@@ -39,6 +39,8 @@ faq:
 
 ## Welche Aufgaben eignen sich für den Einstieg?
 
+Die Entscheidungshilfe [KI und Mensch im Kundenservice](/blog/ki-vs-mensch-im-service) hilft, eine Aufgabe anhand von Wissen, Befugnissen und persönlicher Übernahme einzuordnen.
+
 Wählen Sie einen Bereich, dessen Informationen Ihr Team bereits zuverlässig pflegt. Mögliche Einstiege sind:
 
 - **Anliegen zuordnen:** Eine Anfrage erhält einen Themenvorschlag und eine zuständige Rolle.

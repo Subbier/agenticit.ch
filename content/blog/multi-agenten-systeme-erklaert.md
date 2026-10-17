@@ -1,86 +1,79 @@
 ---
-title: "Multi-Agenten-Systeme einfach erklärt: Wenn KI-Agenten im Team arbeiten"
+title: "Multi-Agenten-Systeme erklärt"
 slug: "multi-agenten-systeme-erklaert"
-description: "Was ist ein Multi-Agenten-System und warum ist es mehr als ein einzelner Chatbot? Konzept, Vorteile und Praxisbeispiele – verständlich erklärt für KMU."
+description: "Mehrere KI-Agenten sinnvoll aufteilen: Rollen, Übergaben, Quellen und Freigaben. Ein verständliches Planungsbeispiel und der Vergleich mit einfacheren Abläufen."
 date: "2026-07-24"
+updated: "2026-10-17"
 category: "KI-Grundlagen"
-tags: ["multi-agenten-systeme", "ki agenten", "autonome ki agenten", "orchestrierung"]
-keywords: ["multi-agenten-systeme", "multi agenten system erklärt", "ki agenten team"]
-readingTime: 8
+tags: ["Multi-Agenten-Systeme", "KI-Entwicklung", "Workflows", "Freigabe"]
+keywords:
+  ["multi-agenten-systeme", "multi agenten system erklärt", "ki agenten team"]
+readingTime: 4
+resource:
+  title: "Aufgabe und Befugnisse vor der Architektur klären."
+  copy: "Beschreiben Sie Quellen, erlaubte Aktionen und Prüffälle mit der KI-Einsatzkarte. Daraus lässt sich die passende Arbeitsteilung ableiten."
+  href: "/vorlagen/AgenticIT-KI-Einsatzkarte.txt"
+  label: "KI-Einsatzkarte speichern (.txt)"
+nextStep:
+  title: "Wie arbeiten KI und Team zusammen?"
+  copy: "Eine vorgegebene Ablauf-Demo zeigt Vorbereitung, menschliche Freigabe und Übernahme bei fehlender Zuständigkeit."
+  href: "/loesungen/ki-entwicklung#beispiele"
+  label: "Ablauf ausprobieren"
+sources:
+  - label: "Anthropic: Workflows, Parallelisierung und Orchestrator-Workers"
+    url: "https://www.anthropic.com/engineering/building-effective-agents"
+  - label: "OWASP: Funktionen, Rechte und Autonomie von Agenten begrenzen"
+    url: "https://genai.owasp.org/llmrisk/llm062025-excessive-agency/"
+faq:
+  - q: "Was ist ein Multi-Agenten-System?"
+    a: "Mehrere KI-Agenten übernehmen voneinander abgegrenzte Aufgaben und geben Ergebnisse weiter. Die Koordination kann nach festen Regeln oder durch einen koordinierenden Agenten erfolgen. Rollen, Werkzeuge und Übergabeformate müssen ausdrücklich eingerichtet werden."
+  - q: "Braucht jede Aufgabe mehrere Agenten?"
+    a: "Nein. Vergleichen Sie zuerst vorhandene Funktionen, einen festen Workflow oder einen einzelnen Assistenten. Zusätzliche Agenten sind sinnvoll zu prüfen, wenn eine konkrete Arbeitsteilung einen messbaren Vorteil bringt und die zusätzlichen Übergaben beherrschbar bleiben."
+  - q: "Erkennt ein Prüf-Agent automatisch alle Fehler?"
+    a: "Eine zweite KI-Ausgabe ist kein unabhängiger Nachweis. Prüfen Sie Quellen und tatsächliche Ergebnisse mit geeigneten Verfahren. Agenten können ähnliche Fehler machen oder ungeprüfte Angaben voneinander übernehmen."
+  - q: "Wie bleiben ausgehende Aktionen kontrollierbar?"
+    a: "Begrenzen Sie Funktionen und Rechte je Rolle. Bei AgenticIT werden ausgehende Sales-Nachrichten und geschäftliche Empfehlungen vor dem Versand menschlich freigegeben. Die erlaubte Aktion wird im ausführenden System technisch geprüft."
 ---
 
-Ein einzelner KI-Agent ist wie ein guter Generalist: fähig, aber irgendwann überfordert, wenn eine Aufgabe viele verschiedene Fähigkeiten verlangt. Die Antwort darauf sind **Multi-Agenten-Systeme** – mehrere spezialisierte Agenten, die zusammenarbeiten wie ein eingespieltes Team. Klingt komplex, ist im Kern aber ein vertrautes Prinzip: Arbeitsteilung.
+> **Ein Multi-Agenten-System verteilt Aufgaben auf mehrere KI-Agenten und koordiniert deren Ergebnisse.** Der Nutzen hängt von der Aufgabe, der Qualität der Übergaben und den tatsächlichen Ergebnissen ab. Mehr Agenten bedeuten auch zusätzliche Abstimmung.
 
-## Die Analogie: Ein Team statt eines Alleskönners
+## Welche Arbeitsteilung ist gemeint?
 
-Stellen Sie sich eine Marketing-Agentur vor. Es gibt nicht eine Person, die alles macht, sondern:
+Ein Agent kann Informationen aus freigegebenen Quellen vorbereiten, ein anderer einen Entwurf erstellen. Eine koordinierende Anwendung hält fest, welche Aufgabe offen ist und welche Angaben übergeben werden.
 
-- eine **Rechercheurin**, die Informationen sammelt
-- einen **Texter**, der Entwürfe schreibt
-- eine **Lektorin**, die prüft und verbessert
-- einen **Koordinator**, der alles zusammenführt
+[Anthropic beschreibt unter anderem feste Abläufe, Parallelisierung und das Muster Orchestrator-Workers](https://www.anthropic.com/engineering/building-effective-agents). Die Architekturprinzipien des Beitrags sind eine Einordnung, keine Garantie für ein bestimmtes Produkt oder dessen aktuelle Funktionen.
 
-Genau so funktioniert ein Multi-Agenten-System: Jeder Agent hat eine klar umrissene Rolle, ein eigenes Werkzeug-Set und eine Spezialisierung. Ein **Orchestrator** verteilt Aufgaben und führt Ergebnisse zusammen.
+Nicht jede Folge mehrerer KI-Aufrufe ist ein autonomes Agententeam. Bei einem festen Workflow sind die Schritte vorgegeben. Welche Form zu Ihrer Aufgabe passt, wird gesondert beurteilt.
 
-## Warum nicht einfach ein grosser Agent?
+## Wie könnte ein einfacher Ablauf aussehen?
 
-Ein einzelner Agent, der alles gleichzeitig können soll, hat drei Probleme:
+**Eigenes Planungsbeispiel:** Ein Team möchte aus freigegebenen Unterlagen einen fachlichen Beitrag vorbereiten.
 
-1. **Kontext-Überlastung:** Je mehr eine Instanz auf einmal berücksichtigen muss, desto fehleranfälliger wird sie.
-2. **Keine Spezialisierung:** Ein Spezialist für Recherche liefert bessere Recherche als ein Alleskönner.
-3. **Schwere Kontrolle:** Ein monolithischer Agent ist schwerer zu prüfen und zu verbessern.
+1. **Quellen vorbereiten:** Eine Rolle sammelt benötigte Informationen mit Herkunft und offenen Punkten.
+2. **Entwurf erstellen:** Eine weitere Rolle formuliert aus dieser Grundlage einen Text.
+3. **Gegenprüfen:** Quellen, Aussagen und vereinbarte Kriterien werden geprüft. Eine zweite KI-Ausgabe genügt dafür allein nicht.
+4. **Persönlich freigeben:** Die zuständige Redaktion entscheidet, welche konkrete Fassung veröffentlicht werden darf.
 
-Aufteilen macht das System **robuster, nachvollziehbarer und leistungsfähiger**.
+Für jede Übergabe braucht es das erwartete Ergebnis und einen Umgang mit fehlenden Angaben. Das Modell zeigt eine mögliche Aufgabenteilung. Leistungen und überprüfbare Ergebnisse werden für das jeweilige Vorhaben vereinbart.
 
-## Die Bausteine eines Multi-Agenten-Systems
+## Wann ist eine einfachere Lösung passend?
 
-### Der Orchestrator
+Wenn ein vorhandenes Tool oder ein fester Ablauf die Aufgabe mit weniger Aufwand erfüllt, ist zusätzliche Koordination nicht automatisch hilfreich. Vergleichen Sie dieselben Prüffälle bei einer einfachen Lösung und einer aufgeteilten Variante.
 
-Nimmt die Gesamtaufgabe entgegen, zerlegt sie in Teilaufgaben und verteilt sie. Er kennt das Ziel und führt die Teilergebnisse zusammen.
+Betrachten Sie Qualität, benötigte Zeit, Nutzungskosten, Kontrolle und Pflege. Parallel arbeitende Rollen können bei unabhängigen Teilaufgaben helfen. Abhängige Schritte können weiterhin aufeinander warten; eine höhere Geschwindigkeit ist nicht pauschal zugesagt.
 
-### Die Spezialisten-Agenten
+## Wie werden Rechte und Freigaben begrenzt?
 
-Jeder erledigt eine klar definierte Teilaufgabe – Recherche, Entwurf, Prüfung, Datenzugriff, Berechnung.
+[OWASP beschreibt die Risiken übermässiger Funktionen, Rechte und Autonomie](https://genai.owasp.org/llmrisk/llm062025-excessive-agency/). Geben Sie jeder Rolle nur die für ihre Aufgabe benötigten Zugriffe. Informationen lesen, einen Entwurf vorbereiten und eine Aktion ausführen sind getrennte Befugnisse.
 
-### Der Werkzeug-Layer
+Bei AgenticIT benötigen ausgehende Sales-Nachrichten und geschäftliche Empfehlungen eine menschliche Freigabe vor dem Versand. Fremde Nachrichten oder Ergebnisse anderer Agenten erteilen keine zusätzlichen Rechte. Eine Anweisung im Prompt ersetzt die Prüfung der erlaubten Aktion im Zielsystem nicht.
 
-Agenten greifen über Werkzeuge auf Systeme zu: CRM, ERP, Suche, Datenbanken, E-Mail.
+## Was prüfen wir vor dem Einsatz?
 
-### Die Freigabe-Instanz (Human-in-the-Loop)
+Spielen Sie neben dem Normalfall auch eine fehlende Quelle, widersprüchliche Ergebnisse, doppelte Ausführung und den Ausfall einer Rolle durch. Halten Sie fest, wer übernimmt und wann der Ablauf stoppt.
 
-Bevor etwas mit Aussenwirkung passiert – eine Mail rausgeht, ein Inhalt publiziert wird – prüft und bestätigt ein Mensch. Diese Stufe ist bei AgenticIT nicht verhandelbar.
+Die Einsatzkarte oben bietet Platz für Aufgabe, Wissen, Befugnisse und Prüffälle. Der Beitrag [KI-Fehler früh erkennen](/blog/haeufige-ki-fehler-vermeiden) ergänzt die Kontrolle. Für die Einordnung vorhandener Werkzeuge hilft [eigener Agent oder vorhandene KI](/blog/eigene-ki-agenten-vs-chatgpt).
 
-## Ein Praxisbeispiel: Content-Erstellung
+## Wie unterstützt AgenticIT?
 
-So könnte ein Multi-Agenten-Team einen Blog-Artikel vorbereiten:
-
-1. **Recherche-Agent** sammelt Fakten und Quellen.
-2. **Struktur-Agent** erstellt eine Gliederung.
-3. **Schreib-Agent** verfasst den Entwurf.
-4. **Prüf-Agent** kontrolliert auf Konsistenz und Tonalität.
-5. **Mensch** liest, korrigiert, ergänzt die KI-Kennzeichnung und gibt frei.
-
-Das Ergebnis ist schneller und gleichmässiger als ein einzelner Durchlauf – aber die redaktionelle Verantwortung bleibt beim Menschen.
-
-## Wann lohnt sich ein Multi-Agenten-System?
-
-**Sinnvoll bei:**
-
-- komplexen Prozessen mit mehreren Teilschritten
-- Aufgaben, die unterschiedliche Fähigkeiten verlangen
-- hohem Volumen mit Anspruch an gleichbleibende Qualität
-
-**Übertrieben bei:**
-
-- einfachen, einstufigen Aufgaben (ein einzelner Agent reicht)
-- geringem Volumen
-
-Nicht jedes Problem braucht ein Team. Aber sobald mehrere spezialisierte Schritte zusammenspielen, ist die Arbeitsteilung überlegen.
-
-## AgenticIT und «Eat your own dogfood»
-
-Wir betreiben unser eigenes Marketing sichtbar mit KI-Agenten-Teams – transparent und mit KI-Kennzeichnung. Das ist kein Marketing-Gag, sondern unser Beweis: Wir setzen ein, was wir empfehlen. Beispiele dafür finden Sie in unseren [Case Studies](/case-studies).
-
-## Fazit
-
-Multi-Agenten-Systeme übertragen ein uraltes Erfolgsprinzip auf KI: Teile eine grosse Aufgabe auf Spezialisten auf und koordiniere sie. Das Ergebnis ist robuster, besser und skalierbarer – solange der Mensch die Freigabe behält. Mehr zur Technologie dahinter unter [Multi-Agenten-Systeme](/technologie/multi-agenten-systeme).
+Wir beginnen mit Aufgabe, vorhandenen Tools und Abnahme. Danach planen wir passende [KI-Anwendungen](/loesungen/ki-entwicklung) oder [Prozessautomatisierungen](/loesungen/prozessautomatisierung). Die verlinkte Ablauf-Demo zeigt Vorbereitung, Freigabe und persönliche Übernahme anhand vorgegebener Inhalte.

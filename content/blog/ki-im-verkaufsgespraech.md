@@ -1,73 +1,80 @@
 ---
-title: "KI im Verkaufsgespräch: Wie Agenten den B2B-Sales-Prozess unterstützen"
+title: "KI im Verkauf"
 slug: "ki-im-verkaufsgespraech"
-description: "Von der Gesprächsvorbereitung bis zum Follow-up: So unterstützen KI-Agenten den B2B-Vertrieb in jeder Phase – ohne den Verkäufer zu ersetzen."
+description: "Gespräche vorbereiten, offene Fragen festhalten und vereinbarte nächste Schritte ins CRM übergeben. KI-Unterstützung für Beratung und Vertrieb mit Teamfreigabe."
 date: "2026-07-24"
+updated: "2026-10-17"
 category: "Vertrieb & Leads"
-tags: ["ki agenten", "b2b vertrieb", "revops", "sales automatisierung"]
+tags: ["Sales", "Gesprächsvorbereitung", "CRM", "KI"]
 keywords: ["ki im vertrieb", "ki verkaufsgespräch", "ki sales automatisierung"]
-readingTime: 8
+readingTime: 4
+resource:
+  title: "Gespräch und nächste Aufgabe verbinden."
+  copy: "Der Anfrage-CRM-Prüfplan hilft bei Zuständigkeit, benötigten Angaben, Freigabe und nachvollziehbarer Übergabe."
+  href: "/vorlagen/AgenticIT-Anfrage-CRM-Pruefplan.txt"
+  label: "Prüfplan speichern (.txt)"
+nextStep:
+  title: "Wie gut werden Ihre Anfragen bearbeitet?"
+  copy: "Prüfen Sie Reaktion, Zuständigkeit und Nachfassen im Anfragen-Check. Sie erhalten einen priorisierten Plan."
+  href: "/anfragen-check"
+  label: "Anfrageweg prüfen"
+sources:
+  - label: "EDÖB: Aufzeichnung von Gesprächen"
+    url: "https://www.edoeb.admin.ch/de/aufzeichnung-von-gespraechen"
+  - label: "EDÖB: KI und Datenschutz"
+    url: "https://www.edoeb.admin.ch/de/ki-und-datenschutz"
+faq:
+  - q: "Wie kann KI ein Verkaufsgespräch unterstützen?"
+    a: "Ein Assistent kann freigegebene Informationen zu einem Briefing ordnen, offene Punkte sichtbar machen und nach dem Gespräch einen Entwurf für Notiz oder nächste Aufgabe erstellen. Quellen, Zusagen und die passende Zuordnung werden persönlich geprüft."
+  - q: "Brauchen wir dafür eine Gesprächsaufzeichnung?"
+    a: "Ein Einstieg ist auch mit bewusst erstellten, freigegebenen Notizen möglich. Vor Aufnahme oder automatischer Transkription werden Zweck, Information, erforderliche Einwilligungen, Anbieter und Datenverwendung für den konkreten Fall geklärt."
+  - q: "Versendet die KI das Follow-up selbst?"
+    a: "Bei AgenticIT benötigen ausgehende Sales-Nachrichten und geschäftliche Empfehlungen eine menschliche Freigabe vor dem Versand. Die zuständige Person prüft Empfänger, vereinbarte Inhalte und nächsten Schritt. Diese Freigabe wird technisch im Ablauf berücksichtigt."
+  - q: "Ist ein erstellter Entwurf schon im CRM gespeichert?"
+    a: "Entwurf, Übertragung und tatsächlicher Eingang sind unterschiedliche Zustände. Prüfen Sie den richtigen Datensatz, die erlaubten Felder und die nächste Aufgabe im Zielsystem. Eine Erfolgsmeldung des Assistenten allein genügt dafür nicht."
 ---
 
-Guter B2B-Vertrieb lebt von Beziehung, Zuhören und Vertrauen – das ersetzt keine KI. Aber rund um das eigentliche Gespräch fällt viel Arbeit an, die Verkäuferinnen und Verkäufer Zeit kostet und selten ihre Stärke ist: Recherche, Vorbereitung, Notizen, Follow-up. Genau hier setzen KI-Agenten an. Sie machen den Menschen im Gespräch **besser vorbereitet und schneller im Nachgang** – nicht überflüssig.
+> **KI unterstützt den Vertrieb rund um ein Gespräch: vorbereiten, ordnen und nächste Schritte zur Prüfung bereitstellen.** Das Team klärt den Bedarf, prüft Zusagen und entscheidet, was dem Kunden mitgeteilt wird.
 
-## Der Sales-Prozess in drei Phasen
+## Was sollte vor dem Gespräch bereitliegen?
 
-### Phase 1: Vor dem Gespräch – Vorbereitung
+Nutzen Sie freigegebene Quellen für ein kurzes Briefing: Anlass, bisherige Vereinbarungen, offene Fragen und gewünschtes Gesprächsziel. Kennzeichnen Sie die Herkunft und ungeprüfte Angaben.
 
-Ein KI-Agent recherchiert den Gesprächspartner und das Unternehmen aus öffentlich verfügbaren und Ihren CRM-Daten und erstellt ein **Briefing**:
+Eine öffentliche Firmenbeschreibung kann Orientierung geben. Sie beweist nicht, welche Ziele eine bestimmte Person verfolgt. Ein Assistent darf fehlende Bedürfnisse oder frühere Zusagen nicht als Tatsache ergänzen.
 
-- Kurzprofil von Unternehmen und Ansprechperson
-- bisherige Interaktionshistorie aus dem CRM
-- mögliche Bedürfnisse und Anknüpfungspunkte
-- offene Punkte aus dem letzten Kontakt
+Der [EDÖB erläutert Datenschutz und Transparenz beim KI-Einsatz](https://www.edoeb.admin.ch/de/ki-und-datenschutz). Klären Sie auch für die Vorbereitung, welche Angaben und Zugriffe tatsächlich benötigt werden.
 
-Der Verkäufer geht so nie unvorbereitet ins Gespräch – und verschwendet keine Stunde mit manueller Recherche.
+## Wie lässt sich das Gespräch sinnvoll festhalten?
 
-> **Datenschutz-Hinweis:** Die Recherche stützt sich auf rechtmässig verfügbare Daten. Es werden keine Fake-Profile oder verdeckten Identitäten genutzt. Verarbeitung nDSG-konform.
+Legen Sie fest, welche Notizen für die weitere Betreuung gebraucht werden. Ein kurzer Vermerk zu Anliegen, offenem Punkt und vereinbartem nächsten Schritt kann genügen.
 
-### Phase 2: Während des Gesprächs – Assistenz
+Vor Aufnahme oder automatischer Transkription werden die Voraussetzungen gesondert geklärt. Der [EDÖB beschreibt das Zusammenspiel von Datenschutz- und Strafrecht bei Gesprächsaufzeichnungen sowie die unterschiedlichen Gesprächssituationen](https://www.edoeb.admin.ch/de/aufzeichnung-von-gespraechen). Daraus folgt keine allgemeine Erlaubnis, Aufnahmen für Marketing oder eine andere spätere Auswertung zu verwenden.
 
-Hier gilt: **Transparenz zuerst.** Wird ein Gespräch aufgezeichnet oder KI-gestützt protokolliert, müssen alle Beteiligten informiert einwilligen. Mit Einwilligung kann ein Agent:
+Wenn eine Aufzeichnung nicht vorgesehen oder nicht freigegeben ist, bleibt die persönliche Notiz ein möglicher Arbeitsweg. Dieser Beitrag richtet keine Aufzeichnung ein.
 
-- die Gesprächsnotizen strukturieren
-- offene Fragen und Zusagen festhalten
-- direkt Aufgaben ableiten
+## Wie entsteht daraus eine nächste Aufgabe?
 
-Der Mensch führt das Gespräch – die KI hält den Stift.
+**Eigenes Planungsbeispiel:** Eine Interessentin bittet im Gespräch um einen Vergleich zu einem konkret besprochenen Angebot.
 
-### Phase 3: Nach dem Gespräch – Follow-up
+1. **Festhalten:** Das Team notiert Anliegen, vereinbarten Umfang und offenen Punkt.
+2. **Vorbereiten:** Ein Assistent erstellt aus freigegebenen Informationen einen Entwurf. Ungeklärte Angaben bleiben markiert.
+3. **Prüfen:** Die zuständige Person kontrolliert Empfänger, Fakten und Zusagen.
+4. **Weitergeben:** Die freigegebene Fassung wird versendet; die tatsächliche CRM-Übernahme und die nächste Aufgabe werden bestätigt.
 
-Das grösste ungenutzte Potenzial liegt oft im Nachgang. Ein Agent entwirft:
+Der Prüfplan oben unterstützt die Übergabe. Der Beitrag [Anfragen ins CRM übergeben](/blog/ki-automatisierung-vertrieb) vertieft Zuordnung und Fehlerfälle.
 
-- eine Follow-up-Mail mit den besprochenen Punkten
-- die CRM-Aktualisierung (Status, nächster Schritt, Notizen)
-- Erinnerungen für vereinbarte Termine
+## Wie vermeiden wir doppelte oder unpassende Kontakte?
 
-Der Verkäufer prüft, personalisiert und gibt frei – **Human-in-the-Loop** bleibt Pflicht, gerade beim Mailversand.
+Prüfen Sie vor jeder ausgehenden Aktion den Kontaktanlass, bereits erfolgte Bearbeitung und einen möglichen Widerspruch. Halten Sie fest, wer antwortet und welcher nächste Schritt vereinbart wurde.
 
-## Was KI im Vertrieb NICHT tun sollte
+Bei AgenticIT werden ausgehende Sales-Nachrichten und geschäftliche Empfehlungen vor dem Versand menschlich freigegeben. Ein Text im Gesprächsprotokoll erteilt einem Assistenten keine zusätzliche Befugnis.
 
-- **Keine automatisierten Kaltakquise-Massenmails** ohne menschliche Freigabe und ohne Einwilligung – das ist Spam und rechtlich heikel.
-- **Keine Vortäuschung eines menschlichen Absenders**, wo eine KI schreibt. Kennzeichnung ist Pflicht.
-- **Keine Entscheidungen über Menschen** (z. B. Bonität, Ablehnung) ohne menschliche Kontrolle.
+## Woran messen wir die Unterstützung?
 
-## Der messbare Effekt
+Vergleichen Sie Vorbereitung, Prüfung, Nacharbeit und Pflege mit der bisherigen Bearbeitung. Erfassen Sie separat, ob die vereinbarte Aufgabe angelegt, das Gespräch geführt und ein Auftrag tatsächlich bestätigt wurde.
 
-Realistische Hebel im B2B-Vertrieb:
+Eine höhere Zahl von Entwürfen oder gespeicherten Notizen ist allein kein Verkaufserfolg. Für klare Stufen und Bezugsgruppen hilft der Beitrag [RevOps-Kennzahlen](/blog/revops-metriken-kennzahlen).
 
-| Bereich | Typischer Effekt |
-|---|---|
-| Gesprächsvorbereitung | von ~45 auf ~10 Minuten |
-| CRM-Pflege | deutlich vollständiger, weil weniger Aufwand |
-| Follow-up-Quote | höher, weil der Entwurf schon bereitliegt |
+## Wie unterstützt AgenticIT?
 
-> Werte sind Erfahrungsrichtwerte, keine Garantie. Der eigentliche Gewinn: mehr Zeit für echte Kundengespräche statt Administration.
-
-## RevOps: KI als Teil des Gesamtsystems
-
-Ein einzelner Verkaufs-Agent ist wertvoll. Sein volles Potenzial entfaltet er als Teil eines **RevOps-Ansatzes**, der Marketing, Vertrieb und Kundenservice datenseitig verbindet. So werden aus isolierten Verbesserungen durchgängige Prozesse – mehr dazu unter [RevOps & Umsatzgenerierung](/loesungen/revops-umsatzgenerierung).
-
-## Fazit
-
-KI im Verkaufsgespräch heisst nicht «Roboter statt Verkäufer». Es heisst: Den Menschen von Recherche und Administration entlasten, damit er das tut, was nur er kann – Beziehungen aufbauen und Abschlüsse machen.
+Wir verbinden [Sales und CRM](/loesungen/revops-umsatzgenerierung) mit passenden Tools, Verantwortlichkeiten und Freigaben. Für die Aufgabenwahl gibt es den [KI-Einführungsleitfaden](/blog/ki-einfuehrung-schritt-fuer-schritt). Der Anfragen-Check unten hilft, die erste Lücke in Ihrer Bearbeitung einzuordnen.
