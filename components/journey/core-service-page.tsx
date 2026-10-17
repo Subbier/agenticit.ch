@@ -78,10 +78,10 @@ export function CoreServicePage({
             <h1 id="service-title">{service.headline}</h1>
             <p className={styles.lede}>{service.intro}</p>
             <div className={styles.actions}>
-              <Link href={service.checkHref} className={shared.button}>
+              <a href={service.checkHref} className={shared.button}>
                 {service.checkLabel}{" "}
                 <ArrowUpRight size={17} aria-hidden="true" />
-              </Link>
+              </a>
               <a href="#beispiele" className={styles.quietLink}>
                 Beispiele ansehen <ArrowDown size={16} aria-hidden="true" />
               </a>
@@ -209,9 +209,9 @@ export function CoreServicePage({
               </div>
             ) : null}
           </div>
-          <Link className={shared.button} href={service.checkHref}>
+          <a className={shared.button} href={service.checkHref}>
             {service.checkLabel} <ArrowUpRight size={18} aria-hidden="true" />
-          </Link>
+          </a>
         </section>
 
         <section className={styles.questions} aria-labelledby="questions-title">
