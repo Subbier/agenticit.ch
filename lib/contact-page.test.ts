@@ -59,3 +59,26 @@ test("the contact form comes before secondary company information in reading and
   assert.ok(main.includes('href="/datenschutz"'))
   assert.match(main, /<button\b[^>]*type="submit"[^>]*disabled=""/)
 })
+
+test("the contact page keeps bounded fields and a privacy detour that preserves the form", async () => {
+  const main = await readContactPage()
+  assert.ok(main.includes('data-contact-page="/kontakt"'))
+  for (const [name, maximum] of [
+    ["name", 120],
+    ["email", 180],
+    ["phone", 80],
+    ["company", 160],
+    ["message", 1200],
+  ]) {
+    const tag =
+      main.match(
+        new RegExp(`<(?:input|textarea)\\b[^>]*id="contact-${name}"[^>]*>`),
+      )?.[0] ?? ""
+    assert.match(tag, new RegExp(`maxLength="${maximum}"`, "i"))
+  }
+  const privacy = main.match(/<a\b[^>]*href="\/datenschutz"[^>]*>/)?.[0] ?? ""
+  assert.ok(privacy.includes('target="_blank"'))
+  assert.ok(privacy.includes('rel="noopener noreferrer"'))
+  assert.ok(privacy.includes("neuer Tab"))
+  assert.doesNotMatch(main, /DSG-konform/)
+})

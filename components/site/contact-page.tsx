@@ -4,13 +4,19 @@ import { JourneyContent } from "@/components/journey/content"
 
 import design from "@/components/journey/content.module.css"
 
-import { useState } from "react"
+import { useEffect, useRef, useState, type FormEvent } from "react"
 import Link from "next/link"
 import { Phone, Mail, MapPin, CheckCircle2, Send } from "lucide-react"
 import { company } from "@/lib/company"
+import { isCallbackPhoneNumber } from "@/lib/callback-inquiry"
+import {
+  contactValidationMessage,
+  createContactSender,
+  type ContactFields,
+} from "@/lib/contact-inquiry"
 
 export function ContactPage() {
-  const [form, setForm] = useState({
+  const [form, setForm] = useState<ContactFields>({
     name: "",
     email: "",
     phone: "",
@@ -22,35 +28,38 @@ export function ContactPage() {
     "idle",
   )
   const [honey, setHoney] = useState("")
+  const [error, setError] = useState("")
+  const sender = useRef<ReturnType<typeof createContactSender> | null>(null)
+  const locked = useRef(false)
+  const successRef = useRef<HTMLDivElement>(null)
+  if (sender.current === null) sender.current = createContactSender()
+  const valid = contactValidationMessage(form, consent) === null
+  const phoneInvalid =
+    Boolean(form.phone.trim()) && !isCallbackPhoneNumber(form.phone.trim())
 
-  const valid =
-    form.name.trim().length >= 2 &&
-    /\S+@\S+\.\S+/.test(form.email) &&
-    form.message.trim().length >= 5 &&
-    consent
+  useEffect(() => {
+    if (status === "done") successRef.current?.focus()
+  }, [status])
 
-  async function submit(e: React.FormEvent) {
+  async function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    if (!valid) return
+    if (!valid || locked.current) return
+    locked.current = true
     setStatus("loading")
+    setError("")
     try {
-      const res = await fetch("/api/leads", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({
-          source: "home",
-          name: form.name.trim(),
-          email: form.email.trim(),
-          phone: form.phone.trim(),
-          company: form.company.trim(),
-          message: form.message.trim(),
-          consent: true,
-          company_website: honey,
-        }),
-      })
-      if (!res.ok) throw new Error("failed")
-      setStatus("done")
-    } catch {
+      if (await sender.current!({ form, consent, honey })) setStatus("done")
+      else {
+        locked.current = false
+        setStatus("idle")
+      }
+    } catch (failure) {
+      locked.current = false
+      setError(
+        failure instanceof Error && !(failure instanceof TypeError)
+          ? failure.message
+          : "Die Anfrage konnte nicht übermittelt werden. Bitte versuchen Sie es erneut.",
+      )
       setStatus("error")
     }
   }
@@ -78,16 +87,22 @@ export function ContactPage() {
           {/* Formular */}
           <div className="min-w-0 rounded-[20px] border border-[#dce3db] bg-white p-5 shadow-[0_18px_48px_rgba(10,12,16,0.10)] md:p-8">
             {status === "done" ? (
-              <div className="py-8 text-center" role="status">
+              <div
+                className={`${design.contactSuccess} py-8 text-center`}
+                role="status"
+                tabIndex={-1}
+                ref={successRef}
+              >
                 <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#8fe05a]/15 text-[#4d7c36]">
-                  <CheckCircle2 className="h-8 w-8" />
+                  <CheckCircle2 className="h-8 w-8" aria-hidden="true" />
                 </div>
                 <h2 className="mt-4 text-[22px] font-extrabold text-[#202522]">
-                  Danke{form.name ? `, ${form.name.split(" ")[0]}` : ""}!
+                  Danke
+                  {form.name ? `, ${form.name.trim().split(/\s+/)[0]}` : ""}!
                 </h2>
                 <p className="mx-auto mt-2 max-w-[400px] text-[14px] leading-relaxed text-[#647068]">
-                  Ihre Nachricht ist bei uns eingegangen. Wir melden uns zeitnah
-                  persönlich bei Ihnen.
+                  Ihre Nachricht wurde übermittelt. Wir prüfen Ihr Anliegen und
+                  melden uns persönlich bei Ihnen.
                 </p>
                 <Link
                   href="/"
@@ -101,6 +116,8 @@ export function ContactPage() {
                 className={`${design.contactForm} space-y-4`}
                 onSubmit={submit}
                 aria-labelledby="contact-heading"
+                data-contact-page="/kontakt"
+                aria-busy={status === "loading"}
               >
                 <h2
                   id="contact-heading"
@@ -125,6 +142,7 @@ export function ContactPage() {
                       autoComplete="name"
                       required
                       minLength={2}
+                      maxLength={120}
                       value={form.name}
                       onChange={(e) =>
                         setForm({ ...form, name: e.target.value })
@@ -145,6 +163,7 @@ export function ContactPage() {
                       autoComplete="email"
                       required
                       type="email"
+                      maxLength={180}
                       value={form.email}
                       onChange={(e) =>
                         setForm({ ...form, email: e.target.value })
@@ -164,12 +183,24 @@ export function ContactPage() {
                       name="phone"
                       autoComplete="tel"
                       type="tel"
+                      maxLength={80}
+                      aria-invalid={phoneInvalid || undefined}
+                      aria-describedby="contact-phone-hint"
                       value={form.phone}
                       onChange={(e) =>
                         setForm({ ...form, phone: e.target.value })
                       }
                       className="w-full rounded-[11px] border border-[#dce3db] px-4 py-3 text-[15px] transition focus:border-[#4d7c36]"
                     />
+                    <p
+                      id="contact-phone-hint"
+                      className="mt-2 text-[12px] text-[#647068]"
+                      aria-live="polite"
+                    >
+                      {phoneInvalid
+                        ? "Bitte die Nummer mit Vorwahl prüfen oder das Feld leer lassen."
+                        : "Optional, mit Vorwahl."}
+                    </p>
                   </div>
                   <div>
                     <label
@@ -182,6 +213,7 @@ export function ContactPage() {
                       id="contact-company"
                       name="company"
                       autoComplete="organization"
+                      maxLength={160}
                       value={form.company}
                       onChange={(e) =>
                         setForm({ ...form, company: e.target.value })
@@ -202,6 +234,7 @@ export function ContactPage() {
                     name="message"
                     required
                     minLength={5}
+                    maxLength={1200}
                     rows={5}
                     value={form.message}
                     onChange={(e) =>
@@ -212,6 +245,7 @@ export function ContactPage() {
                 </div>
                 <input
                   type="text"
+                  name="company_website"
                   tabIndex={-1}
                   autoComplete="off"
                   value={honey}
@@ -233,38 +267,45 @@ export function ContactPage() {
                     className="mt-1 h-5 w-5 shrink-0 accent-[#4d7c36]"
                   />
                   Ich bin einverstanden, dass AgenticIT meine Angaben zur
-                  Bearbeitung meiner Anfrage verwendet (DSG-konform).
+                  Bearbeitung und Beantwortung meiner Anfrage verwendet.
                 </label>
                 {status === "error" ? (
                   <p
                     className="text-[13px] font-bold text-red-600"
                     role="alert"
                   >
-                    Senden fehlgeschlagen. Bitte erneut versuchen oder rufen Sie
-                    uns an.
+                    {error}
                   </p>
                 ) : null}
-                <button
-                  type="submit"
-                  disabled={!valid || status === "loading"}
-                  className="flex w-full items-center justify-center gap-2 rounded-[13px] bg-[#8FE05A] py-[15px] text-[16px] font-extrabold text-[#122400] shadow-[0_6px_16px_rgba(10,12,16,0.18)] transition hover:-translate-y-[1px] disabled:opacity-50 disabled:hover:translate-y-0"
-                >
-                  <Send className="h-[18px] w-[18px]" />
-                  {status === "loading"
-                    ? "Wird gesendet …"
-                    : "Nachricht senden"}
-                </button>
-                <p className="text-center text-[12px] leading-relaxed text-[#647068]">
-                  Informationen zur Bearbeitung Ihrer Angaben finden Sie in
-                  unserer{" "}
-                  <Link
-                    className="underline underline-offset-4"
-                    href="/datenschutz"
+                <div className={design.contactActions}>
+                  <button
+                    type="submit"
+                    disabled={!valid || status === "loading"}
+                    className="flex w-full items-center justify-center gap-2 rounded-[13px] bg-[#8FE05A] py-[15px] text-[16px] font-extrabold text-[#122400] shadow-[0_6px_16px_rgba(10,12,16,0.18)] transition hover:-translate-y-[1px] disabled:opacity-50 disabled:hover:translate-y-0"
                   >
-                    Datenschutzerklärung
-                  </Link>
-                  .
-                </p>
+                    <Send
+                      className="h-[18px] w-[18px] shrink-0"
+                      aria-hidden="true"
+                    />
+                    {status === "loading"
+                      ? "Wird gesendet …"
+                      : "Nachricht senden"}
+                  </button>
+                  <p className="text-center text-[12px] leading-relaxed text-[#647068]">
+                    Informationen zur Bearbeitung Ihrer Angaben finden Sie in
+                    unserer{" "}
+                    <a
+                      className="underline underline-offset-4"
+                      href="/datenschutz"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Datenschutzerklärung (neuer Tab)"
+                    >
+                      Datenschutzerklärung (neuer Tab)
+                    </a>
+                    .
+                  </p>
+                </div>
               </form>
             )}
           </div>

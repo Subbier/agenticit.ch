@@ -65,6 +65,28 @@
   outline: 3px solid #407e29;
   outline-offset: 4px;
 }
+.contactSuccess:focus {
+  outline: 3px solid #407e29;
+  outline-offset: 4px;
+}
+.contactActions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+}
+.contactActions p {
+  overflow-wrap: anywhere;
+}
+.contactActions button {
+  min-height: 48px;
+  padding-inline: 12px;
+  white-space: normal;
+}
+@media (max-width: 1023px) {
+  .contactActions {
+    padding-right: 80px;
+  }
+}
 .pageHero {
   border-bottom: 1px solid #dce3db;
   padding: 56px 24px 48px;

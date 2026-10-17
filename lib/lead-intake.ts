@@ -1,4 +1,5 @@
 import { z } from "zod"
+import { contactSummary } from "./contact-inquiry"
 import {
   CALLBACK_GOALS,
   callbackSourceForPath,
@@ -79,6 +80,7 @@ export const leadSchema = z
       "crm-ablauf-check",
       "industry-page",
       "website-callback",
+      "contact-page",
     ]),
     name: z.string().trim().min(2).max(120),
     email: z.string().trim().email().max(180),
@@ -129,6 +131,41 @@ export const leadSchema = z
     acquisitionPlan: acquisitionPlanSchema.optional(),
   })
   .superRefine((data, ctx) => {
+    if (data.source === "contact-page") {
+      if (!data.message || data.message.length < 5)
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ["message"],
+          message:
+            "Bitte beschreiben Sie Ihr Anliegen in mindestens 5 Zeichen.",
+        })
+      if (data.phone && !isCallbackPhoneNumber(data.phone))
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ["phone"],
+          message: "Bitte prüfen Sie Ihre Telefonnummer mit Vorwahl.",
+        })
+      if (
+        data.contactMethod === "phone" ||
+        data.callback ||
+        data.journey ||
+        data.automation ||
+        data.marketingSetup ||
+        data.inquiryCheck ||
+        data.crmCheck ||
+        data.acquisitionPlan ||
+        data.goal !== undefined ||
+        data.challenge !== undefined ||
+        data.industry !== undefined ||
+        data.leadVolume !== undefined ||
+        data.leadPrice !== undefined
+      )
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ["source"],
+          message: "Bitte nur die Angaben Ihrer Kontaktanfrage übermitteln.",
+        })
+    }
     if (data.contactMethod === "phone" && !isCallbackPhoneNumber(data.phone))
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
@@ -303,6 +340,15 @@ export function prepareLeadPayload(
     : ""
   return {
     ...lead,
+    ...(lead.source === "contact-page"
+      ? {
+          message: contactSummary(lead.message!),
+          pagePath: "/kontakt",
+          goal: "Kontaktanfrage besprechen",
+          contactMethod: "email",
+          marketingConsent: false,
+        }
+      : {}),
     ...(lead.callback
       ? {
           message: callbackSummary(lead.callback),
@@ -365,6 +411,9 @@ export function prepareLeadPayload(
               : {}),
     crm: "zoho",
     tags: [
+      ...(lead.source === "contact-page"
+        ? ["quelle:kontakt", "kontakt:nachricht"]
+        : []),
       ...(lead.callback ? [`quelle:${lead.source}`, "kontakt:rueckruf"] : []),
       (acquisitionPlan ? planningIndustry : lead.industry)
         ? `branche:${acquisitionPlan ? planningIndustry : lead.industry}`
@@ -410,21 +459,24 @@ export function prepareLeadPayload(
                     ]
                   : []),
     ].filter((tag): tag is string => Boolean(tag)),
-    followUpTask: lead.callback
-      ? "Website-Rückruf persönlich prüfen"
-      : plan
-        ? "Kundenreise-Check persönlich prüfen"
-        : automationPlan
-          ? "Automatisierungs-Check persönlich prüfen"
-          : marketingPlan
-            ? "Marketing-Setup-Check persönlich prüfen"
-            : inquiryPlan
-              ? "Anfragen-Check persönlich prüfen"
-              : crmPlan
-                ? "CRM-Ablauf-Check persönlich prüfen"
-                : acquisitionPlan
-                  ? "Anfragenplanung persönlich prüfen"
-                  : "Rückruf",
+    followUpTask:
+      lead.source === "contact-page"
+        ? "Kontaktanfrage persönlich prüfen"
+        : lead.callback
+          ? "Website-Rückruf persönlich prüfen"
+          : plan
+            ? "Kundenreise-Check persönlich prüfen"
+            : automationPlan
+              ? "Automatisierungs-Check persönlich prüfen"
+              : marketingPlan
+                ? "Marketing-Setup-Check persönlich prüfen"
+                : inquiryPlan
+                  ? "Anfragen-Check persönlich prüfen"
+                  : crmPlan
+                    ? "CRM-Ablauf-Check persönlich prüfen"
+                    : acquisitionPlan
+                      ? "Anfragenplanung persönlich prüfen"
+                      : "Rückruf",
     submittedAt,
     userAgent,
   }
