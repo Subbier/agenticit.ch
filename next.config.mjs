@@ -100,16 +100,23 @@ const nextConfig = {
         source: "/(.*)",
         headers: securityHeaders,
       },
-      {
-        source: "/vorlagen/AgenticIT-Projektstart-Plan.txt",
+      ...[
+        "AgenticIT-Akquise-Plan.txt",
+        "AgenticIT-Anfrage-CRM-Pruefplan.txt",
+        "AgenticIT-KI-Einsatzkarte.txt",
+        "AgenticIT-Projektstart-Plan.txt",
+        "AgenticIT-Telefonassistent-Pruefplan.txt",
+        "AgenticIT-Website-Briefing.txt",
+      ].map((filename) => ({
+        source: `/vorlagen/${filename}`,
         has: [{ type: "query", key: "download", value: "1" }],
         headers: [
           {
             key: "Content-Disposition",
-            value: 'attachment; filename="AgenticIT-Projektstart-Plan.txt"',
+            value: `attachment; filename="${filename}"`,
           },
         ],
-      },
+      })),
     ]
   },
   async rewrites() {
@@ -128,11 +135,27 @@ const nextConfig = {
       },
       // Doppelte Rechner-Seite: /potenzialrechner und /potenzial behandelten
       // dasselbe Thema und konkurrierten in der Suche gegeneinander.
-      { source: "/potenzialrechner", destination: "/potenzial", permanent: true },
-      { source: "/sicherheit/:slug+", destination: "/sicherheit", permanent: true },
+      {
+        source: "/potenzialrechner",
+        destination: "/potenzial",
+        permanent: true,
+      },
+      {
+        source: "/sicherheit/:slug+",
+        destination: "/sicherheit",
+        permanent: true,
+      },
       // Entfernte/konsolidierte Seiten → passende Zielseite (301, SEO bleibt heil)
-      { source: "/ai-agents", destination: "/technologie/autonome-ki-agenten", permanent: true },
-      { source: "/revops", destination: "/loesungen/revops-umsatzgenerierung", permanent: true },
+      {
+        source: "/ai-agents",
+        destination: "/technologie/autonome-ki-agenten",
+        permanent: true,
+      },
+      {
+        source: "/revops",
+        destination: "/loesungen/revops-umsatzgenerierung",
+        permanent: true,
+      },
       { source: "/smart-apps", destination: "/loesungen", permanent: true },
       // /branchen ist neu eine echte Seite (Vertrieb-Spezialisierung) – keine Weiterleitung mehr.
       { source: "/car-dealerships", destination: "/", permanent: true },
@@ -140,13 +163,37 @@ const nextConfig = {
       { source: "/unternehmen/:slug+", destination: "/", permanent: true },
       { source: "/ueber-uns", destination: "/", permanent: true },
       // GTM/RevOps-Split (26.07.2026): alte Lösungen-Unterseiten → neue Hub-Seiten
-      { source: "/loesungen/kundendienst-ki", destination: "/loesungen/revops-umsatzgenerierung", permanent: true },
-      { source: "/loesungen/revops-growth", destination: "/loesungen/gtm-markteintritt", permanent: true },
+      {
+        source: "/loesungen/kundendienst-ki",
+        destination: "/loesungen/revops-umsatzgenerierung",
+        permanent: true,
+      },
+      {
+        source: "/loesungen/revops-growth",
+        destination: "/loesungen/gtm-markteintritt",
+        permanent: true,
+      },
       // Angebot-Umbenennung (26.07.2026): Acquire/Convert/Retain/Operate → Begeistern/Umsetzen/Erschaffen/Erweitern
-      { source: "/angebot/acquire", destination: "/angebot/begeistern", permanent: true },
-      { source: "/angebot/convert", destination: "/angebot/umsetzen", permanent: true },
-      { source: "/angebot/retain", destination: "/angebot/erschaffen", permanent: true },
-      { source: "/angebot/operate", destination: "/angebot/erweitern", permanent: true },
+      {
+        source: "/angebot/acquire",
+        destination: "/angebot/begeistern",
+        permanent: true,
+      },
+      {
+        source: "/angebot/convert",
+        destination: "/angebot/umsetzen",
+        permanent: true,
+      },
+      {
+        source: "/angebot/retain",
+        destination: "/angebot/erschaffen",
+        permanent: true,
+      },
+      {
+        source: "/angebot/operate",
+        destination: "/angebot/erweitern",
+        permanent: true,
+      },
     ]
   },
 }

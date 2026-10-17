@@ -24,7 +24,7 @@ nextStep:
   title: "Wie viel Routine könnten Sie abgeben?"
   copy: "Im Automatisierungs-Check wählen Sie Aufgaben und rechnen mit eigenen Zeitangaben. Verbleibende Arbeit und zusätzliche Kontrolle werden berücksichtigt."
   href: "/automatisierungs-check"
-  label: "Automatisierungspotenzial prüfen"
+  label: "Zeitpotenzial prüfen"
 sources:
   - label: "Anthropic: Workflows und Agenten unterscheiden"
     url: "https://www.anthropic.com/engineering/building-effective-agents"

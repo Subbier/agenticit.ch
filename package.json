@@ -17,7 +17,7 @@
     "test:workflow-demo": "node --import tsx --test lib/workflow-demo.test.ts",
     "test:ai-reference": "node --import tsx --test lib/ai-reference.test.ts",
     "test:website-case": "node --import tsx --test lib/website-case.test.ts",
-    "test:guides": "node --import tsx --test lib/blog-guides.test.ts",
+    "test:guides": "node --import tsx --test lib/blog-guides.test.ts lib/template-downloads.test.ts",
     "test:industry": "node --import tsx --test lib/industry-focus.test.ts",
     "test:inquiry": "node --import tsx --test lib/inquiry-check.test.ts lib/inquiry-check-page.test.ts",
     "test:crm": "node --import tsx --test lib/crm-check.test.ts lib/crm-check-page.test.ts",

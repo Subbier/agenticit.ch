@@ -260,3 +260,21 @@
     font-size: 23px;
   }
 }
+
+@media (max-width: 600px) {
+  /* Keep article actions clear of the fixed chat launcher while scrolling. */
+  .blog-resource > a,
+  .blog-next-step > a {
+    max-width: calc(100% - 48px);
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (min-width: 701px) and (max-width: 980px) {
+  .blog-resource {
+    grid-template-columns: 1fr;
+  }
+  .blog-resource > a {
+    justify-self: start;
+  }
+}

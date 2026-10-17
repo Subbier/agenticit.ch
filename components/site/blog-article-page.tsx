@@ -134,7 +134,7 @@ export function BlogArticlePage({ slug }: { slug: string }) {
             </a>
           </div>
           <a
-            href={post.resource.href}
+            href={`${post.resource.href}?download=1`}
             download={post.resource.href.split("/").pop()}
           >
             {post.resource.label}

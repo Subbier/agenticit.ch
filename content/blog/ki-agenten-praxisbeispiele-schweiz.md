@@ -17,7 +17,7 @@ nextStep:
   title: "Wo steckt Routine in Ihrem Alltag?"
   copy: "Wählen Sie im Automatisierungs-Check Ihre Aufgaben. Mit eigenen Zeitangaben sehen Sie mögliche Entlastung und verbleibenden Aufwand."
   href: "/automatisierungs-check"
-  label: "Automatisierungspotenzial prüfen"
+  label: "Zeitpotenzial prüfen"
 sources:
   - label: "Anthropic: Einfache Abläufe und Agenten unterscheiden"
     url: "https://www.anthropic.com/engineering/building-effective-agents"

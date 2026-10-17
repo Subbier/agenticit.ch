@@ -137,7 +137,7 @@ test("the website briefing is a complete public text download with no contact ga
   ).text()
   assert.match(
     page,
-    /href="\/vorlagen\/AgenticIT-Website-Briefing\.txt" download="AgenticIT-Website-Briefing\.txt"/,
+    /href="\/vorlagen\/AgenticIT-Website-Briefing\.txt\?download=1" download="AgenticIT-Website-Briefing\.txt"/,
   )
   assert.ok(
     /class="blog-resource-view" href="\/vorlagen\/AgenticIT-Website-Briefing\.txt">/.test(
