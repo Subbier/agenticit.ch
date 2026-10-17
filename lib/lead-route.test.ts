@@ -1,6 +1,7 @@
 import assert from "node:assert/strict"
 import test from "node:test"
 import { POST } from "../app/api/leads/route"
+import { buildJourneyPlan, type JourneyAnswers } from "./journey"
 
 test("lead endpoint validates before forwarding and handles delivery failure honestly", async (suite) => {
   const originalFetch = globalThis.fetch
@@ -53,6 +54,10 @@ test("lead endpoint validates before forwarding and handles delivery failure hon
         const response = await POST(request(valid, "192.0.2.3"))
         assert.equal(response.status, 200)
         assert.equal(calls, 1)
+        assert.equal(
+          forwarded.message,
+          buildJourneyPlan(valid.journey as JourneyAnswers).download,
+        )
         assert.ok((forwarded.tags as string[]).includes("pilot:workflow"))
         assert.equal(forwarded.marketingConsent, false)
         assert.equal(

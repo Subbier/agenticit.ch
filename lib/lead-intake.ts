@@ -237,7 +237,7 @@ export function prepareLeadPayload(
     ...lead,
     ...(plan
       ? {
-          message: `${plan.title}\n${plan.steps.join("\n")}\nMessung: ${plan.measure}`,
+          message: plan.download,
           challenge: lead.journey!.challenge,
           goal: plan.focus,
           contactMethod: lead.contactMethod ?? "email",

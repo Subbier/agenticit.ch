@@ -255,8 +255,8 @@ export function JourneyContact({
     <form className={styles.contact} onSubmit={submit}>
       <h3>Den nächsten Schritt gemeinsam prüfen?</h3>
       <p>
-        Wir sehen uns Ihren Ablauf an und besprechen, welche Services zu Ihrem
-        Anliegen passen. Ihre Auswahl aus dem Check wird mitgesendet.
+        Wir besprechen Ihren Ablauf und den passenden nächsten Schritt. Ihre
+        Auswahl und der zugehörige Plan werden mitgesendet.
       </p>
       <div className={styles.formGrid}>
         <label className={styles.field}>
@@ -376,6 +376,7 @@ export function JourneyCheck({
   const [step, setStep] = useState(initialChallenge ? 1 : 0)
   const [showContact, setShowContact] = useState(false)
   const heading = useRef<HTMLHeadingElement>(null)
+  const contact = useRef<HTMLDivElement>(null)
   const measurement = useRef(createCheckMeasurement("customer_journey"))
   function go(next: number) {
     if (next > step) measurement.current.record("check_started")
@@ -443,7 +444,16 @@ export function JourneyCheck({
           <button
             type="button"
             className={styles.button}
-            onClick={() => setShowContact(true)}
+            onClick={() => {
+              setShowContact(true)
+              requestAnimationFrame(() => {
+                contact.current?.focus({ preventScroll: true })
+                contact.current?.scrollIntoView({
+                  block: "start",
+                  behavior: "instant",
+                })
+              })
+            }}
             aria-expanded={showContact}
             aria-controls="personal-follow-up"
           >
@@ -461,7 +471,14 @@ export function JourneyCheck({
             Services ansehen →
           </Link>
         </div>
-        <div id="personal-follow-up">
+        <div
+          id="personal-follow-up"
+          ref={contact}
+          tabIndex={-1}
+          role={showContact ? "region" : undefined}
+          aria-label={showContact ? "Optionale Beratungsanfrage" : undefined}
+          style={{ scrollMarginTop: 24 }}
+        >
           {showContact ? <JourneyContact answers={answers} /> : null}
         </div>
         <button type="button" className={styles.back} onClick={() => go(0)}>

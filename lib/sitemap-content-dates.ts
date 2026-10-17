@@ -40,5 +40,6 @@ export const SITEMAP_CONTENT_DATES: Readonly<Partial<Record<string, string>>> =
     "/loesungen/gtm-markteintritt": "2026-10-17",
     "/loesungen/revops-umsatzgenerierung": "2026-10-17",
     "/automatisierungs-check": "2026-10-17",
+    "/kundenreise-check": "2026-10-17",
     "/karriere/ai-revops-architect": "2026-10-16",
   }

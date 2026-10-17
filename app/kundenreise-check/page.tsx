@@ -5,9 +5,9 @@ import { createPageMetadata } from "@/lib/seo"
 import styles from "@/components/journey/journey.module.css"
 
 export const metadata = createPageMetadata({
-  title: "Ihr kostenloser Kundenreise-Check",
+  title: "Ihr unverbindlicher Kundenreise-Check",
   description:
-    "Finden Sie Ihren Ansatzpunkt für mehr passende Anfragen, bessere Übergaben und weniger Routine. Drei Fragen, ein nutzbarer Plan, ohne E-Mail-Pflicht.",
+    "Finden Sie Ihren Ansatzpunkt für mehr passende Anfragen, bessere Übergaben und weniger Routine. Drei Fragen führen zu einem nutzbaren Plan; Kontakt ist freiwillig.",
   path: "/kundenreise-check",
 })
 

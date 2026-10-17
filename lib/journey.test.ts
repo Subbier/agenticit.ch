@@ -124,6 +124,39 @@ test("the server derives package and context and requests human review", () => {
   assert.equal("company_website" in payload, false)
 })
 
+test("every journey handoff contains the complete server-derived visitor plan", () => {
+  for (const challenge of challenges) {
+    for (const channel of ["web", "phone", "mixed"] as const) {
+      for (const system of ["manual", "crm", "connected"] as const) {
+        const journey = {
+          version: 1 as const,
+          challenge: challenge.id,
+          channel,
+          system,
+        }
+        const parsed = leadSchema.parse({
+          ...sample,
+          journey,
+          message: "Untrusted replacement plan",
+        })
+        const payload = prepareLeadPayload(parsed, "2026-10-17T12:00:00.000Z")
+        const plan = buildJourneyPlan(journey)
+        assert.equal(
+          payload.message,
+          plan.download,
+          `${challenge.id}/${channel}/${system}`,
+        )
+        assert.ok(payload.message.includes(plan.template))
+        assert.equal(payload.marketingConsent, false)
+        assert.equal(
+          payload.followUpTask,
+          "Kundenreise-Check persönlich prüfen",
+        )
+      }
+    }
+  }
+})
+
 test("existing lead sources remain compatible and keep their original follow-up", () => {
   const old = leadSchema.parse({
     source: "home",
