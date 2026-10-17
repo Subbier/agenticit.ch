@@ -73,7 +73,7 @@ Ein guter Lead-Magnet erleichtert eine kleine, konkrete Entscheidung. Für eine 
 - **Eine Vergleichsvorlage:** Nach welchen Kriterien lassen sich Angebote beurteilen?
 - **Ein Rechner mit eigenen Angaben:** Welche Grössenordnung ergibt sich unter nachvollziehbaren Annahmen?
 
-Das Ergebnis muss verständlich und direkt nutzbar sein. Fragen Sie nur Angaben ab, die dafür benötigt werden. Eine anschliessende Kontaktaufnahme sollte zum Ergebnis passen und eine bewusste Entscheidung bleiben. Die [Website-Briefing-Vorlage](/blog/website-briefing-vorlage) hilft, diese Verbindung von Inhalt und Anfrage zu planen.
+Das Ergebnis muss verständlich und direkt nutzbar sein. Fragen Sie nur Angaben ab, die dafür benötigt werden. Eine anschliessende Kontaktaufnahme sollte zum Ergebnis passen und eine bewusste Entscheidung bleiben. Der [Leitfaden zur Auswahl von Lead-Magneten](/blog/leadgenerierung-mit-ki-leitfaden) vergleicht passende Formate. Die [Website-Briefing-Vorlage](/blog/website-briefing-vorlage) hilft, diese Verbindung von Inhalt und Anfrage zu planen.
 
 ## Wie wird aus Interesse ein bearbeitbarer Lead?
 
