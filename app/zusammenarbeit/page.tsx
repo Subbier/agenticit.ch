@@ -41,9 +41,13 @@ export default function Page() {
             <Link className={styles.button} href="/kontakt">
               Projekt besprechen <ArrowUpRight size={17} aria-hidden="true" />
             </Link>
-            <Link className={styles.textLink} href="#startplan">
+            <a
+              className={styles.textLink}
+              href={projectStartResource.downloadHref}
+              download={projectStartResource.filename}
+            >
               Startvorlage mitnehmen <Download size={17} aria-hidden="true" />
-            </Link>
+            </a>
           </div>
         </div>
         <section

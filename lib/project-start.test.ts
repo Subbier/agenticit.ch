@@ -43,6 +43,16 @@ test("the collaboration page offers a clear project entry, five native expandabl
   assert.ok(main.includes(`href="${projectStartResource.href}"`))
   assert.ok(main.includes(`href="${projectStartResource.downloadHref}"`))
   assert.ok(main.includes(`download="${projectStartResource.filename}"`))
+  const heroTemplateLink = [
+    ...main.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/g),
+  ].find(([, , content]) => content.includes("Startvorlage mitnehmen"))
+  assert.ok(heroTemplateLink)
+  assert.ok(
+    heroTemplateLink[1].includes(`href="${projectStartResource.downloadHref}"`),
+  )
+  assert.ok(
+    heroTemplateLink[1].includes(`download="${projectStartResource.filename}"`),
+  )
   for (const stage of projectStartStages) {
     assert.ok(main.includes(stage.title), stage.title)
     assert.ok(main.includes(stage.gate), stage.gate)
@@ -91,7 +101,11 @@ test("the download response is a named attachment while the separate view stays 
   ]) {
     const view = await fetch(new URL(path, baseUrl))
     assert.equal(view.status, 200)
-    assert.equal(view.headers.get("content-disposition"), null)
+    const disposition = view.headers.get("content-disposition")
+    assert.ok(
+      disposition === null || /^inline(?:;|$)/.test(disposition),
+      "The normal view must remain inline; hosting may provide an explicit filename",
+    )
     assert.match(view.headers.get("content-type") ?? "", /text\/plain/)
   }
 })
