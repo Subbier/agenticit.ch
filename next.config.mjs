@@ -106,10 +106,12 @@ const nextConfig = {
         "AgenticIT-Akquise-Plan.txt",
         "AgenticIT-Anfrage-CRM-Pruefplan.txt",
         "AgenticIT-KI-Einsatzkarte.txt",
+        "AgenticIT-KI-Projektbriefing.txt",
         "AgenticIT-Kennzahlen-Arbeitsblatt.txt",
         "AgenticIT-Projektstart-Plan.txt",
         "AgenticIT-Telefonassistent-Pruefplan.txt",
         "AgenticIT-Website-Briefing.txt",
+        "AgenticIT-Website-Kostenvergleich.txt",
       ].map((filename) => ({
         source: `/vorlagen/${filename}`,
         has: [{ type: "query", key: "download", value: "1" }],

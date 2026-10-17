@@ -8,6 +8,7 @@ import {
   ShieldCheck,
 } from "lucide-react"
 import { coreServices, type CoreService } from "@/lib/core-services"
+import { decisionGuides } from "@/lib/decision-guides"
 import { breadcrumbJsonLd, faqPageJsonLd, serviceJsonLd } from "@/lib/seo"
 import { JsonLd } from "@/components/site/json-ld"
 import { JourneyShell } from "./shell"
@@ -48,6 +49,9 @@ export function CoreServicePage({
 }) {
   const path = `/loesungen/${service.slug}`
   const guide = serviceGuides[service.slug]
+  const decisionGuide = decisionGuides.find(
+    (item) => item.serviceSlug === service.slug,
+  )
   return (
     <JourneyShell>
       <JsonLd
@@ -204,6 +208,16 @@ export function CoreServicePage({
               <Link className={styles.guideLink} href={guide.href}>
                 {guide.label}
               </Link>
+            ) : null}
+            {decisionGuide ? (
+              <div>
+                <Link
+                  className={styles.guideLink}
+                  href={`/blog/${decisionGuide.slug}`}
+                >
+                  {decisionGuide.linkLabel}
+                </Link>
+              </div>
             ) : null}
             {service.slug === "revops-umsatzgenerierung" ? (
               <div>

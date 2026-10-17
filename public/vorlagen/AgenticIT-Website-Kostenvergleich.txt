@@ -1,0 +1,64 @@
+AGENTICIT | WEBSITE-KOSTENVERGLEICH
+Stand: 18. Oktober 2026
+
+Zwei Offerten mit demselben Umfang vergleichen. Offen ist nicht gleich null.
+Lokal bearbeiten; kein automatischer Upload. Keine Zugangsdaten eintragen.
+Alle Kosten für denselben Zeitraum und mit gleicher MWST-Behandlung erfassen.
+
+1. UNSER VORHABEN
+Zielkunden und Angebot:
+Wichtigste Aktion auf der Website:
+Benötigte Seiten, Sprachen und Funktionen:
+Vorhandene Inhalte und Systeme:
+Gewünschter Umfang der CRM-/Kalenderanbindung:
+
+2. UMFANG JE ANGEBOT
+Für jede Zeile A und B ausfüllen: enthalten / nicht enthalten / offen.
+Zusätzlich allfälligen Preis und unsere Eigenarbeit notieren.
+
+Leistung                              | Angebot A | Angebot B | offene Frage
+Konzept und Seitenstruktur             |           |           |
+Texte und Inhaltsprüfung               |           |           |
+Bilder, Video und Nutzungsrechte       |           |           |
+Gestaltung und mobile Bedienung        |           |           |
+Formulare und Fehlerbehandlung         |           |           |
+CRM-Übergabe und Zuständigkeit         |           |           |
+Übernahme bestehender Inhalte/Adressen |           |           |
+Suchzugänglichkeit und Metadaten       |           |           |
+Prüfung des tatsächlichen Eingangs     |           |           |
+Einführung und Dokumentation           |           |           |
+Zugänge, Inhalte und spätere Übergabe   |           |           |
+Wartung und Betreuung                  |           |           |
+
+3. KOSTEN ÜBER DREI JAHRE
+                                      | Angebot A | Angebot B
+Einrichtung einmalig                   |           |
+Monatliche Kosten x 36                 |           |
+Jährliche Kosten x 3                   |           |
+Geplante Zusatzarbeiten                |           |
+Gesamtsumme ohne doppelte Positionen    |           |
+
+Formel: einmalig + 36 x monatlich + 3 x jährlich + Zusatzarbeiten.
+Dieselbe Leistung nicht gleichzeitig monatlich und jährlich zählen.
+Nicht bezifferte Leistungen bleiben offen; keine fiktiven Nullkosten einsetzen.
+MWST, Lizenzen, Nutzungslimits, Verlängerung und Kündigung separat prüfen.
+
+Eigenaufwand unseres Teams, separat:
+Aufgabe | Stunden | eigener interner Stundensatz | bewerteter Aufwand
+
+4. ABNAHME
+Was muss mobil verständlich und bedienbar sein?
+Welche bestehenden Adressen müssen korrekt weiterführen?
+Welche Daten muss eine Anfrage im richtigen Zielsystem enthalten?
+Wer muss sie erhalten und übernehmen können?
+Was passiert bei unvollständigen Angaben oder einem Verbindungsfehler?
+Wer gibt Testdaten, Testweg und mögliche Aussenwirkungen frei?
+
+5. ENTSCHEIDUNG
+Welche Offerte deckt unseren notwendigen Umfang tatsächlich ab?
+Welche zusätzlichen Verpflichtungen oder offenen Voraussetzungen bestehen?
+Welche Fragen klären wir vor der Beauftragung mit wem?
+
+Leitfaden: https://agenticit.ch/blog/webdesign-kosten-schweiz
+Briefing: https://agenticit.ch/blog/website-briefing-vorlage
+Auftritt einordnen: https://agenticit.ch/marketing-setup-check

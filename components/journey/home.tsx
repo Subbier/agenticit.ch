@@ -12,6 +12,7 @@ import { JourneyMap } from "./journey-map"
 import { CompanyVideo } from "./company-video"
 import { Careers } from "./careers"
 import { ServiceShowcase } from "./service-showcase"
+import { DecisionGuides } from "./decision-guides"
 import styles from "./journey.module.css"
 
 export function JourneyHome() {
@@ -143,6 +144,7 @@ export function JourneyHome() {
           </div>
         </section>
         <div className={styles.container}>
+          <DecisionGuides />
           <Careers />
           <section className={styles.section}>
             <span className={styles.eyebrow}>Gut zu wissen</span>

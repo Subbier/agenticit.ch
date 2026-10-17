@@ -1,0 +1,55 @@
+AGENTICIT | KI-PROJEKTBRIEFING
+Stand: 18. Oktober 2026
+
+Für eine konkrete Aufgabe. Direkt nutzbar, auch mit Ihrem bisherigen IT-Partner.
+Die Datei wird lokal bearbeitet und nicht automatisch übertragen.
+Keine Passwörter, geheimen Schlüssel oder echten Kundendossiers eintragen.
+
+1. DIE AUFGABE
+Welche Routine soll einfacher werden?
+Wer bearbeitet sie heute?
+Wo beginnt und endet der Vorgang?
+Wie oft tritt er auf? Welcher Aufwand entsteht heute?
+
+2. DAS GEWÜNSCHTE ERGEBNIS
+Was soll nachher vorliegen?
+Wer prüft oder verwendet es?
+Was bleibt ausdrücklich ausserhalb dieses ersten Auftrags?
+
+3. WISSEN UND SYSTEME
+Welche freigegebenen Informationsquellen werden benötigt?
+Wer ist für Aktualität und Freigabe zuständig?
+Welche Programme müssen nur gelesen werden?
+Wo sind Schreibaktionen nötig und ausdrücklich erlaubt?
+Wer klärt Schnittstellen, benötigte Rechte und Verarbeitungsorte?
+
+4. BEFUGNISSE UND MENSCHLICHE ÜBERNAHME
+Welche Schritte dürfen automatisch erfolgen?
+Wer gibt Sales-Nachrichten und geschäftliche Empfehlungen vor Versand frei?
+Wie weist sich ein kundenorientierter Assistent als KI aus?
+Wer übernimmt bei fehlendem Wissen, Fehlern oder unklaren Zuständigkeiten?
+
+5. PRÜFFÄLLE VOR DEM EINSATZ
+Jeweils erwartetes Verhalten und tatsächliches Ergebnis festhalten:
+- Vollständiger Normalfall:
+- Entscheidende Angabe fehlt:
+- Quelle enthält keine verlässliche Antwort:
+- Angebundenes System ist nicht erreichbar:
+- Aktion liegt ausserhalb der Befugnisse:
+- Derselbe Vorgang geht erneut ein:
+Wer gibt Testdaten, Testweg und mögliche Aussenwirkungen ausdrücklich frei?
+Welche Kriterien müssen vor dem Start erfüllt sein?
+
+6. AUFWAND UND BETRIEB
+Einrichtung: Anwendung, Datenaufbereitung, Anbindungen, Prüfung, Übergabe:
+Laufend: Modell-/Softwarenutzung, Hosting, Pflege, Betreuung:
+Was liefert unser Team selbst?
+Wer betreut Fehler und Änderungen nach dem Start?
+Wie werden Qualität, Nacharbeit und tatsächlicher Nutzen ausgewertet?
+
+7. OFFENE PUNKTE
+Punkt | zuständige Person | nächster Schritt | gewünschter Termin
+
+Weiterlesen: https://agenticit.ch/blog/ki-agent-entwickeln-lassen
+Eigene Aufgaben einordnen: https://agenticit.ch/automatisierungs-check
+Leistung: https://agenticit.ch/loesungen/ki-entwicklung
