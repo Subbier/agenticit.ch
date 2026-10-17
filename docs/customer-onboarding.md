@@ -37,4 +37,16 @@ Nach Umsetzung 241 passende Prüfungen am Produktionsbuild, TypeScript und Forma
 
 Dateiansicht und Download getrennt: normaler Dateilink bleibt `text/plain`; `?download=1` liefert denselben Inhalt als benannten Dateianhang. Der zusätzliche HTTP-Test war davor rot. Anschliessend sind Dateianhang, Originalbytes und die weiterhin lesbare Ansicht inklusive `?download=0` geprüft. Die Regel gilt nur für diese Vorlage; bestehende Sicherheitsheader bleiben erhalten.
 
-Die Browserbeobachtung meldete beim Speichern innerhalb des Prüffensters weder im In-App-Browser noch in Chrome einen abgeschlossenen Download. Das belegt keinen endgültigen Browserfehler; eine erfolgreiche native Speicherung wird damit aber noch nicht behauptet. Keine Änderung der Browser-Download-Einstellungen oder Umgehung geschützter Browseransichten. Die direkte Dateiansicht und serverseitige Auslieferung sind geprüft. Eine abschliessende Speicherkontrolle auf der veröffentlichten Seite bleibt offen.
+Die lokale Browserbeobachtung meldete beim Speichern innerhalb des Prüffensters weder im In-App-Browser noch in Chrome einen abgeschlossenen Download. Auf der öffentlichen HTTPS-Seite wurde die tatsächliche Speicherung anschliessend bestätigt. Keine Änderung der Browser-Download-Einstellungen oder Umgehung geschützter Browseransichten. Aus dem lokalen Beobachtungsergebnis wird keine allgemeine Browserursache abgeleitet.
+
+## Veröffentlichung und abschliessende Abnahme
+
+Feature `9f29e32` und die direkte Hero-Aktion `b7a15195404e8fd208b00a8ea03c16878188b167` sind gepusht. Nach der Anschlussänderung erneut 241 lokale Prüfungen am Produktionsbuild, TypeScript, Formatierung und Build erfolgreich. Finales Deployment `dpl_FKzbcXXyViEYr5vrhiV2Zx1frR37` ist READY mit genau diesem Commit und der Zuordnung zu `agenticit.ch`.
+
+Der Hero bietet die Vorlage direkt als Datei an. Damit entfällt ein bei der Sichtprüfung beobachteter wirkungsloser Wiederholungsklick auf einen bereits gesetzten Abschnitts-Hash nach der Rückkehr vom Kontaktformular. Der Dateibereich im Seitenverlauf bleibt erhalten. Die dazu ergänzte Prüfung war gegen die vorherige öffentliche Version rot und nach der Änderung erfolgreich.
+
+21 Unit-/öffentliche GET-Prüfungen nach finaler Veröffentlichung bestanden, inklusive aller 78 kanonischen Sitemap-Seiten mit weiterhin 30 belegten Inhaltsdaten. Die normale Ansicht darf ohne Disposition oder mit dem vom Hosting gesetzten `inline` ausgeliefert werden; entscheidend ist die klare Trennung vom Dateianhang. Der anfangs zu enge Test wurde an diese tatsächliche, funktionierende Hostingantwort angepasst.
+
+Öffentliche Dateiansicht, Kontaktweg und Browser-Rückkehr mit korrektem Inhalt geprüft. Native Downloads aus dem Dateibereich und aus dem finalen Hero tatsächlich als gespeicherte Dateien beobachtet und unabhängig mit dem Original verglichen: 4084 Bytes, SHA-256 `5d782ec25b59c52464f321c64254689682d9314ebf52b9634af520a477bb3b93`. Kopie in der zentralen OneDrive-Ablage. Finaler mobiler Hero: keine seitliche Verschiebung, Downloadaktion 44 Pixel hoch. Kein Formular ausgefüllt oder gesendet, kein CRM-Eintrag, keine Telefonie und keine externen Workflows geändert.
+
+Der eigene Prüfserver ist beendet. Die öffentliche Projektstart-Struktur und Vorlage sind nachgewiesen; eine tatsächlich ausgeführte Kundenaufnahme oder automatisierte CRM-Provisionierung wird damit nicht behauptet. Das Gesamtziel und D03 bleiben offen.
