@@ -48,6 +48,8 @@ Wählen Sie einen Bereich, dessen Informationen Ihr Team bereits zuverlässig pf
 
 Beginnen Sie mit einer dieser Aufgaben. Ein Zugriff auf Bestellungen, Verträge oder Termine benötigt passende Anbindungen und Berechtigungen. Für geschäftliche Empfehlungen und ausgehende Sales-Nachrichten gehört bei AgenticIT eine menschliche Freigabe in den Ablauf.
 
+Für den Posteingang zeigt der Beitrag [E-Mails mit KI bearbeiten](/blog/ki-email-management) einen konkreten Ablauf vom Eingang bis zur geprüften Antwort.
+
 ## Wie sieht eine gute Übergabe aus?
 
 **Frei erfundenes Planungsbeispiel:** Eine Person fragt nach dem Stand ihres Auftrags. Eine erforderliche Angabe fehlt. Der vorbereitete Vorgang hält fest:

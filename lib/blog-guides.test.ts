@@ -18,6 +18,9 @@ const guides = [
   "revops-as-a-service",
   "revops-metriken-kennzahlen",
   "ki-datenanalyse-kmu",
+  "kundenakquise-methoden",
+  "ki-social-media-automatisierung",
+  "ki-email-management",
   "ki-agenten",
   "neukundengewinnung-kmu-schweiz",
 ] as const
@@ -63,7 +66,7 @@ test("reviewed guides preserve publication dates and expose their actual update 
     assert.ok(post.faq.length >= 3)
   }
   assert.equal(
-    getPost("ki-email-management")?.updated,
+    getPost("buchhaltung-automatisieren-ki")?.updated,
     undefined,
     "Untouched articles must not acquire an update date",
   )

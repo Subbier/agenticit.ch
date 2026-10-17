@@ -53,6 +53,8 @@ Halten Sie in der Vorlage oben zunächst vier Dinge fest: Zielkunde, aktuelles P
 
 ## Welche Methoden der Kundenakquise kommen infrage?
 
+Der [Vergleich von sieben Akquise-Methoden](/blog/kundenakquise-methoden) hilft bei der Wahl eines ersten Kanals: Suche, Inhalte, Empfehlungen, Partnerschaften, Social Media, Veranstaltungen oder persönlicher Dialog.
+
 Verschiedene Kanäle erfüllen unterschiedliche Aufgaben. Auch [DirectPoint der Schweizerischen Post beschreibt einen Methodenmix, der anhand von Kundenbedürfnissen und Tests weiterentwickelt wird](https://www.directpoint.ch/de/dialogmarketing/neukundengewinnung/10-bewaehrte-methoden-zur-neukundengewinnung). Die folgende Auswahl dient als Entscheidungshilfe, nicht als Rangliste.
 
 | Ausgangslage                                      | Möglicher erster Ansatz                                          |
