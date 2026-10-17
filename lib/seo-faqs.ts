@@ -1,4 +1,5 @@
 import type { FaqItem } from "@/lib/seo"
+import { websiteCase } from "@/lib/website-case"
 
 export const homeFaqs: FaqItem[] = [
   {
@@ -259,23 +260,7 @@ export const servicesFaqs: FaqItem[] = [
   },
 ]
 
-export const caseStudyFaqs: FaqItem[] = [
-  {
-    question: "Was ist advok.app?",
-    answer:
-      "advok.app ist ein KI-Rechtsassistent von AgenticIT, der Nutzern in der Schweiz sofortige juristische Erstorientierung bietet und gleichzeitig Leads für Rechtsschutzversicherungen und Anwaltskanzleien generiert.",
-  },
-  {
-    question: "Welche Resultate erzielte advok.app?",
-    answer:
-      "Nach 90 Tagen: 74 % mehr qualifizierte Mandate, Reaktionszeit unter 3 Minuten (vorher 2–5 Tage), CPL −74 % und NPS +41 %.",
-  },
-  {
-    question: "Wie lange dauerte die Umsetzung?",
-    answer:
-      "Von Discovery bis Go-Live dauerte das advok.app-Projekt 8 Wochen – inklusive KI-Training, CRM-Integration und Pilottest.",
-  },
-]
+export const caseStudyFaqs: FaqItem[] = [...websiteCase.faqs]
 
 export const serviceRelatedLinks = {
   revops: [
@@ -286,15 +271,15 @@ export const serviceRelatedLinks = {
   excellence: [
     { label: "AI Agents", href: "/ai-agents", description: "Autonome KI-Agenten für 24/7 Lead-Qualifizierung." },
     { label: "RevOps", href: "/revops", description: "Ihre Kundengewinnung als ein eingespieltes System." },
-    { label: "Case Study advok.app", href: "/case-studies", description: "74 % mehr Mandate in 90 Tagen – messbare Resultate." },
+    { label: "Praxisbeispiel: AgenticIT Website", href: "/case-studies", description: "Vier Checks, eigene Pläne und ein nachvollziehbarer Nutzerweg." },
   ],
   "ai-agents": [
     { label: "Excellence", href: "/excellence", description: "WhatsApp, Web und Mail als eine Journey – mit Lead Scoring." },
     { label: "RevOps", href: "/revops", description: "Der ganze Ablauf von der Anfrage bis zum Abschluss." },
-    { label: "Case Study advok.app", href: "/case-studies", description: "74 % mehr Mandate in 90 Tagen – messbare Resultate." },
+    { label: "Praxisbeispiel: AgenticIT Website", href: "/case-studies", description: "Vier Checks, eigene Pläne und ein nachvollziehbarer Nutzerweg." },
   ],
   "smart-apps": [
-    { label: "Case Study advok.app", href: "/case-studies", description: "KI-Rechtsassistent als Digital Giveaway und Lead-Maschine." },
+    { label: "Praxisbeispiel: AgenticIT Website", href: "/case-studies", description: "Vier Checks, eigene Pläne und ein nachvollziehbarer Nutzerweg." },
     { label: "AI Agents", href: "/ai-agents", description: "Die Technologie hinter Smart Apps und Conversational AI." },
     { label: "Excellence", href: "/excellence", description: "Apps nahtlos in WhatsApp, Web und CRM einbinden." },
   ],
@@ -313,7 +298,7 @@ export const serviceRelatedLinks = {
 export const servicesRelatedLinks = [
   { label: "KI Agenten", href: "/ai-agents", description: "24/7 Lead-Qualifizierung und Conversational AI für den Vertrieb." },
   { label: "Omnichannel", href: "/omnichannel", description: "WhatsApp, Web und Mail als eine Journey ohne Kontextverlust." },
-  { label: "Case Study advok.app", href: "/case-studies", description: "KI-Rechtsassistent mit 74 % mehr Mandaten in 90 Tagen." },
+  { label: "Praxisbeispiel: AgenticIT Website", href: "/case-studies", description: "Vier Checks, eigene Pläne und ein nachvollziehbarer Nutzerweg." },
 ] as const
 
 export const pageSeo = {
@@ -390,10 +375,10 @@ export const pageSeo = {
     keywords: ["Speed to Lead", "Lead Burnout", "Lead Qualifizierung", "KI Vertrieb Schweiz"],
   },
   "case-studies": {
-    title: "Case Study advok.app – KI-Rechtsassistent",
+    title: "Praxisbeispiel: AgenticIT Website mit interaktiven Checks",
     description:
-      "advok.app: 74 % mehr qualifizierte Mandate, Reaktionszeit unter 3 Minuten. KI-Rechtsassistent als Digital Giveaway für Rechtsschutz und Kanzleien.",
-    keywords: ["Case Study KI", "advok.app", "Lead Generation Rechtsschutz", "KI Rechtsassistent"],
+      "Einblick in die eigene AgenticIT Website: vier Checks, konkrete Orientierung und freiwillige Kontaktaufnahme. Nutzerweg und Prüfumfang direkt nachvollziehen.",
+    keywords: ["AgenticIT Praxisbeispiel", "Website mit Lead Magneten", "Interaktive Checks"],
   },
   "ueber-uns": {
     title: "Über AgenticIT – Agentic AI aus der Schweiz",

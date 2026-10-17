@@ -2,6 +2,7 @@ import { JourneyShell } from "@/components/journey/shell"
 import { JourneyCta } from "@/components/journey/sections"
 import { createPageMetadata } from "@/lib/seo"
 import styles from "@/components/journey/journey.module.css"
+import Link from "next/link"
 
 export const metadata = createPageMetadata({
   title: "So starten wir Ihre digitale Kundenreise",
@@ -100,6 +101,11 @@ export default function Page() {
               </p>
             </article>
           </div>
+          <p>
+            <Link className={styles.textLink} href="/case-studies">
+              Einblick: So haben wir unsere eigene Website aufgebaut
+            </Link>
+          </p>
           <JourneyCta />
         </section>
       </main>

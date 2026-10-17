@@ -1,16 +1,18 @@
 import type { Metadata } from "next"
 import { CaseStudiesPage } from "@/components/site/case-studies-page"
 import { JsonLd } from "@/components/site/json-ld"
-import { articleJsonLd, breadcrumbJsonLd, createPageMetadata, faqPageJsonLd } from "@/lib/seo"
+import {
+  breadcrumbJsonLd,
+  createPageMetadata,
+  faqPageJsonLd,
+  SITE_URL,
+} from "@/lib/seo"
 import { caseStudyFaqs, pageSeo } from "@/lib/seo-faqs"
-import { advokCaseStudy } from "@/lib/case-study-advok"
+import { websiteCase } from "@/lib/website-case"
 
 export const metadata: Metadata = createPageMetadata({
   ...pageSeo["case-studies"],
   path: "/case-studies",
-  type: "article",
-  publishedTime: "2026-04-01",
-  modifiedTime: "2026-05-22",
 })
 
 export default function Page() {
@@ -20,15 +22,25 @@ export default function Page() {
         data={[
           breadcrumbJsonLd([
             { name: "Startseite", path: "/" },
-            { name: "Case Studies", path: "/case-studies" },
+            { name: "Praxisbeispiel", path: "/case-studies" },
           ]),
-          articleJsonLd({
-            headline: advokCaseStudy.hero.title + " " + advokCaseStudy.hero.titleAccent,
-            description: pageSeo["case-studies"].description,
-            path: "/case-studies",
-            datePublished: "2026-04-01",
-            dateModified: "2026-05-22",
-          }),
+          {
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            name: "AgenticIT Website: Einblick in den Nutzerweg",
+            description: websiteCase.description,
+            url: `${SITE_URL}/case-studies`,
+            dateModified: "2026-10-17",
+            mainEntity: {
+              "@type": "ItemList",
+              itemListElement: websiteCase.checks.map((check, index) => ({
+                "@type": "ListItem",
+                position: index + 1,
+                name: check.name,
+                url: `${SITE_URL}${check.href}`,
+              })),
+            },
+          },
           faqPageJsonLd(caseStudyFaqs),
         ]}
       />

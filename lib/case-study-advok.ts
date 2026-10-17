@@ -1,3 +1,5 @@
+// Historical copy. Results, testimonial permission and project attribution are
+// unverified. Do not use in public routes without their supporting evidence.
 export const advokCaseStudy = {
   meta: {
     title: "Case Study: advok.app – AgenticIT",

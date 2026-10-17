@@ -45,6 +45,8 @@ test("verified service and calculator updates retain their real content dates", 
     ["/branchen", "2026-10-17"],
     ["/branchen/beratung", "2026-10-17"],
     ["/branchen/versicherungen", "2026-10-17"],
+    ["/case-studies", "2026-10-17"],
+    ["/zusammenarbeit", "2026-10-17"],
     ["/loesungen/gtm-markteintritt", "2026-10-17"],
     ["/loesungen/revops-umsatzgenerierung", "2026-10-17"],
   ])

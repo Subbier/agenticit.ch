@@ -15,6 +15,8 @@ export const SITEMAP_CONTENT_DATES: Readonly<Partial<Record<string, string>>> =
     "/branchen": "2026-10-17",
     "/branchen/beratung": "2026-10-17",
     "/branchen/versicherungen": "2026-10-17",
+    "/case-studies": "2026-10-17",
+    "/zusammenarbeit": "2026-10-17",
     "/loesungen/ki-entwicklung": "2026-10-17",
     "/loesungen/webdesign": "2026-10-17",
     "/loesungen/prozessautomatisierung": "2026-10-17",
