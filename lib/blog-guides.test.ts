@@ -11,6 +11,8 @@ const guides = [
   "ki-roi-berechnen",
   "leadgenerierung-ki",
   "leadgenerierung-mit-ki-leitfaden",
+  "ki-datenschutz-schweiz-ndsg",
+  "ki-agenten-sicherheit-compliance",
   "ki-agenten",
   "neukundengewinnung-kmu-schweiz",
 ] as const
@@ -67,7 +69,7 @@ test("reviewed guides preserve publication dates and expose their actual update 
 })
 
 for (const slug of guides) {
-  test(`${slug} renders sources, matching article dates, FAQs and a check before asking for contact`, async () => {
+  test(`${slug} renders sources, matching article dates, FAQs and a useful next step before asking for contact`, async () => {
     const post = getPost(slug)!
     const response = await fetch(new URL(`/blog/${slug}`, baseUrl), {
       redirect: "manual",

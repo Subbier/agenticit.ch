@@ -20,6 +20,8 @@ export const SITEMAP_CONTENT_DATES: Readonly<Partial<Record<string, string>>> =
     "/blog/ki-roi-berechnen": "2026-10-17",
     "/blog/leadgenerierung-ki": "2026-10-17",
     "/blog/leadgenerierung-mit-ki-leitfaden": "2026-10-17",
+    "/blog/ki-datenschutz-schweiz-ndsg": "2026-10-17",
+    "/blog/ki-agenten-sicherheit-compliance": "2026-10-17",
     "/blog/ki-sprachassistent-telefonie": "2026-10-17",
     "/blog/ki-automatisierung-vertrieb": "2026-10-17",
     "/blog/werbung-fuer-kmu": "2026-10-17",

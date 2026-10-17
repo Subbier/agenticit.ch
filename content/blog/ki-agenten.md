@@ -103,6 +103,8 @@ Prüfen Sie normale Fälle sowie fehlende Angaben, widersprüchliche Quellen, do
 
 Kundenorientierte Agenten von AgenticIT weisen sich als KI aus. Für ausgehende Sales-Nachrichten planen wir eine menschliche Freigabe. Datenzugriff, Anbieter, Hosting und Aufbewahrung klären wir für die jeweilige Lösung; die Bezeichnung «eigener Agent» garantiert keine Schweizer Datenhaltung.
 
+Der Leitfaden [KI und Datenschutz](/blog/ki-datenschutz-schweiz-ndsg) hilft bei der Vorbereitung dieser Fragen. Wie Befugnisse und Freigaben praktisch geprüft werden, zeigt [KI-Agenten: Wer darf was?](/blog/ki-agenten-sicherheit-compliance).
+
 ## Wie begleitet AgenticIT die Einführung?
 
 Wir klären die Aufgabe mit Ihrem Team, vergleichen vorhandene Tools und entwickeln bei Bedarf eine passende Anwendung. Danach prüfen wir Verhalten, Übergaben und Aufwand am vereinbarten Einsatzfall. Umfang, Kosten, Abnahme und Betreuung werden vor der Umsetzung festgelegt. Mehr zum Angebot: [KI-Entwicklung für Schweizer KMU](/loesungen/ki-entwicklung).

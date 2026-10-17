@@ -1,79 +1,95 @@
 ---
-title: "KI und Datenschutz in der Schweiz: Der nDSG-Leitfaden für KMU"
+title: "KI und Datenschutz"
 slug: "ki-datenschutz-schweiz-ndsg"
-description: "Wie setzen Schweizer KMU KI datenschutzkonform ein? Der praktische Leitfaden zum revidierten Datenschutzgesetz (nDSG) – mit Checkliste für KI-Projekte."
+description: "KI und Datenschutz in der Schweiz: Datenwege, Anbieter, Aufbewahrung und Zuständigkeit vor dem Start klären. Mit Einsatzkarte und aktuellen Primärquellen."
 date: "2026-07-24"
+updated: "2026-10-17"
 category: "Recht & Sicherheit"
-tags: ["ki datenschutz", "ndsg", "dsgvo", "ki agentur schweiz", "compliance"]
-keywords: ["ki datenschutz schweiz", "ndsg ki", "ki dsgvo konform"]
-readingTime: 9
+tags: ["KI", "Datenschutz", "Schweiz", "Datenwege"]
+keywords: ["ki datenschutz schweiz", "dsg ki", "ki datenbearbeitung"]
+readingTime: 5
+resource:
+  title: "Ihre Datenwege zuerst klären."
+  copy: "Die bestehende KI-Einsatzkarte hält Aufgabe, Systeme, Quellen und Befugnisse zusammen. Notieren Sie offene Fragen, bevor Sie Kundendaten oder Zugänge bereitstellen."
+  href: "/vorlagen/AgenticIT-KI-Einsatzkarte.txt"
+  label: "Einsatzkarte speichern (.txt)"
+nextStep:
+  title: "Kontrolle im Ablauf ansehen."
+  copy: "Unser interaktives Beispiel zeigt, was KI vorbereitet und wann Ihr Team entscheidet. Sie können auch eine fehlende Zuständigkeit ausprobieren. Das Beispiel verwendet vorgegebene Inhalte und versendet keine Nachrichten."
+  href: "/loesungen/ki-entwicklung#beispiele"
+  label: "Ablaufbeispiel ausprobieren"
+sources:
+  - label: "EDÖB: KI und Datenschutz"
+    url: "https://www.edoeb.admin.ch/de/ki-und-datenschutz"
+  - label: "EDÖB: Verantwortung und Datenwege bei Auftragsbearbeitung"
+    url: "https://www.edoeb.admin.ch/de/outsourcing-auftragsdatenbearbeitung"
+  - label: "Europäische Kommission: Für welche Unternehmen die DSGVO gilt"
+    url: "https://commission.europa.eu/law/law-topic/data-protection/information-business-and-organisations/application-gdpr_en"
+faq:
+  - q: "Gilt das Schweizer Datenschutzgesetz auch für KI?"
+    a: "Der EDÖB hält fest, dass das Schweizer Datenschutzgesetz auf KI-gestützte Personendatenbearbeitung direkt anwendbar ist. Die konkrete Aufgabe, die verwendeten Daten und die beteiligten Anbieter müssen deshalb vor dem Einsatz geklärt werden."
+  - q: "Gilt für jedes Schweizer KMU mit EU-Kunden automatisch die DSGVO?"
+    a: "Diese Faustregel ist zu pauschal. Für die Anwendbarkeit sind unter anderem eine EU-Niederlassung oder ein auf Personen in der EU gerichtetes Angebot beziehungsweise eine entsprechende Verhaltensbeobachtung relevant. Der konkrete Anwendungsbereich muss geprüft werden."
+  - q: "Reicht eine Anbieterzusage zur Schweizer Datenhaltung?"
+    a: "Klären Sie den tatsächlichen Ablauf: beteiligte Anbieter und Unterauftragnehmer, Orte der Bearbeitung, Zugriffe und vertragliche Regelungen. Eine Standortangabe allein beschreibt nicht alle Datenwege. Bei Bekanntgaben ins Ausland sind die dafür geltenden Voraussetzungen zu prüfen."
+  - q: "Welche Angaben brauchen wir für eine erste Projektklärung?"
+    a: "Zunächst genügen Aufgabe, Datenarten, beteiligte Systeme und offene Fragen. Nutzen Sie erfundene Beispiele ohne Personendaten. Passwörter, Zugangsschlüssel und echte Kundendossiers gehören nicht in die Einsatzkarte oder eine allgemeine Anfrage."
 ---
 
-KI-Projekte scheitern selten an der Technik – oft an der Frage: «Dürfen wir das mit unseren Daten überhaupt?» Seit dem revidierten Datenschutzgesetz (**nDSG**, in Kraft seit September 2023) gelten für Schweizer Unternehmen klarere Pflichten. Wer KI einsetzt, muss sie kennen. Dieser Leitfaden bringt Ordnung ins Thema – praxisnah und ohne Juristendeutsch.
+> **Beginnen Sie mit einer Aufgabe und ihren Datenwegen.** Wer darf welche Angaben wofür verwenden? Welche Anbieter sind beteiligt? Mit diesen Antworten lässt sich ein KI-Vorhaben gezielt prüfen und besprechen.
 
-## Warum KI und Datenschutz zusammengehören
+## Welche Daten braucht die Aufgabe wirklich?
 
-KI-Systeme verarbeiten Daten – oft **personenbezogene** Daten: Kundennamen, E-Mails, Anfragen, Verhalten. Genau hier greift das nDSG. Und für Unternehmen mit Kunden in der EU zusätzlich die **DSGVO**. Beide verfolgen dasselbe Ziel: Menschen sollen wissen und kontrollieren können, was mit ihren Daten geschieht.
+Beschreiben Sie zuerst das gewünschte Ergebnis. Soll ein Assistent Produktwissen finden, eine Anfrage zusammenfassen oder einen Antwortentwurf vorbereiten? Daraus ergibt sich, welche Informationen nötig sind.
 
-## Die wichtigsten nDSG-Prinzipien für KI
+Für einen ersten Entwurf reichen häufig frei erfundene Beispiele ohne Personendaten. Übernehmen Sie keine echten Kundendossiers, um eine Idee zu erklären. «Namen entfernt» bedeutet auch nicht automatisch anonym: Prüfen Sie, ob die Person über andere Angaben weiterhin erkennbar wäre.
 
-### 1. Rechtmässigkeit und Treu und Glauben
+Der [EDÖB bestätigt, dass das geltende Datenschutzgesetz auch auf KI-gestützte Personendatenbearbeitung anwendbar ist](https://www.edoeb.admin.ch/de/ki-und-datenschutz). Die Bezeichnung «KI» schafft keine Ausnahme von der Datenprüfung.
 
-Datenverarbeitung braucht einen legitimen Zweck. KI darf nicht heimlich Daten für Zwecke nutzen, die die betroffene Person nicht erwarten kann.
+## Welche Datenwege sollten wir festhalten?
 
-### 2. Zweckbindung
+Zeichnen Sie einen einzelnen Vorgang vom Eingang bis zum Ergebnis nach. Eine kurze Arbeitsübersicht kann so aussehen:
 
-Daten, die für den Kundenservice erhoben wurden, dürfen nicht ungefragt zum Training eines beliebigen Modells zweckentfremdet werden.
+| Klärung      | Was Ihr Team festhält                       |
+| ------------ | ------------------------------------------- |
+| Eingang      | Quelle, benötigte Angaben und Zweck         |
+| Bearbeitung  | System, Anbieter und berechtigte Rollen     |
+| Ergebnis     | Empfänger, Prüfung und weitere Verwendung   |
+| Aufbewahrung | Speicherorte, Fristen und zuständige Person |
 
-### 3. Verhältnismässigkeit und Datenminimierung
+Erfassen Sie neben der Hauptanwendung auch eingebundene Dienste und Protokolle. Klären Sie ausdrücklich, ob Eingaben für weitere Zwecke wie Modelltraining verwendet werden und welche Einstellungen sowie Verträge tatsächlich gelten.
 
-Verarbeiten Sie **nur die Daten, die der Zweck wirklich erfordert**. Ein KI-Agent braucht selten Zugriff auf alles.
+Die Einsatzkarte oben unterstützt diese erste Übersicht. Sie ist eine Planungshilfe für die Aufgabe und ersetzt keine abgeschlossene Datenschutzprüfung.
 
-### 4. Transparenz
+## Was müssen wir beim Anbieter klären?
 
-Betroffene müssen informiert werden. Für KI heisst das konkret: **KI-Kennzeichnung**. Wenn ein Chatbot antwortet, muss erkennbar sein, dass es kein Mensch ist.
+Der [EDÖB erläutert, dass die Verantwortung für den Datenschutz bei einer Auftragsbearbeitung nicht einfach an den Dienstleister übergeht](https://www.edoeb.admin.ch/de/outsourcing-auftragsdatenbearbeitung). Klären Sie vor der Anbindung:
 
-### 5. Richtigkeit
+- **Auftrag und Vertrag:** Welche Bearbeitung ist vereinbart, welche Weisungen gelten?
+- **Beteiligte Stellen:** Welche Anbieter und Unterauftragnehmer kommen zum Einsatz?
+- **Orte und Zugriffe:** Wo findet die Bearbeitung statt und wer kann zugreifen?
+- **Unterstützung:** Wie werden Auskunft, Korrekturen, Löschfragen und Sicherheitsvorfälle bearbeitet?
 
-KI kann falsch liegen («halluzinieren»). Bei Entscheidungen mit Wirkung auf Menschen braucht es deshalb menschliche Kontrolle.
+Ein Hostingland allein beantwortet diese Fragen nicht. Bei einer Bekanntgabe ins Ausland muss der konkrete Übermittlungsweg mit seinen Voraussetzungen geprüft werden. Lassen Sie unbekannte Anbieterangaben als offene Punkte stehen, statt sie mit einer allgemeinen Sicherheitszusage zu ersetzen.
 
-## Automatisierte Einzelentscheidungen
+## Wann kommt zusätzlich die DSGVO ins Spiel?
 
-Das nDSG (wie die DSGVO) adressiert **automatisierte Einzelentscheidungen** mit erheblichen Auswirkungen. Faustregel für KMU: Entscheidungen, die eine Person spürbar betreffen (Ablehnung, Bonität, Kündigung), gehören **nicht** in die alleinige Hand eines Agenten. Prinzip: **Human-in-the-Loop.**
+«Wir haben EU-Kunden» ist als alleinige Regel zu ungenau. Die [Europäische Kommission beschreibt unter anderem die Bearbeitung im Rahmen einer EU-Niederlassung sowie Angebote an oder Verhaltensbeobachtung von Personen in der EU](https://commission.europa.eu/law/law-topic/data-protection/information-business-and-organisations/application-gdpr_en).
 
-## Datenübermittlung ins Ausland
+Lassen Sie den tatsächlichen Anwendungsbereich für Ihr Unternehmen und den geplanten Ablauf prüfen. Schweizer DSG und europäische DSGVO sollten dabei nicht als identische Checklisten behandelt werden.
 
-Viele KI-Dienste laufen auf Servern ausserhalb der Schweiz. Bei Datenübermittlung ins Ausland ist zu prüfen, ob das Zielland einen **angemessenen Datenschutz** bietet oder ob zusätzliche Garantien nötig sind. Für sensible Daten kann eine Verarbeitung mit klaren vertraglichen und technischen Garantien nötig sein.
+## Was müssen Menschen erkennen und klären können?
 
-## Checkliste: KI-Projekt datenschutzkonform aufsetzen
+Nach den [Hinweisen des EDÖB sind Zweck, Funktionsweise und Datenquellen transparent auszuweisen](https://www.edoeb.admin.ch/de/ki-und-datenschutz). Bei einem direkt kommunizierenden Sprachmodell sollen Menschen wissen, inwieweit sie mit einer Maschine sprechen und wofür ihre Eingaben verwendet werden.
 
-- [ ] **Zweck definiert** – wofür genau wird KI eingesetzt?
-- [ ] **Datenarten erfasst** – welche (personenbezogenen) Daten fliessen ein?
-- [ ] **Rechtsgrundlage geklärt** – Einwilligung, Vertrag oder berechtigtes Interesse?
-- [ ] **Datenminimierung geprüft** – nur das Nötige?
-- [ ] **KI-Kennzeichnung umgesetzt** – für alle kundenseitigen Agenten
-- [ ] **Human-in-the-Loop definiert** – wo gibt der Mensch frei?
-- [ ] **Auslandtransfer geprüft** – wo werden Daten verarbeitet?
-- [ ] **Auftragsbearbeitung geregelt** – Verträge mit Dienstleistern (AVV)
-- [ ] **Betroffenenrechte gewährleistet** – Auskunft, Löschung möglich?
-- [ ] **Bearbeitungsverzeichnis geführt** – Dokumentation vorhanden?
-- [ ] **Protokollierung aktiviert** – KI-Aktionen nachvollziehbar
+Für die Umsetzung planen wir bei AgenticIT die erkennbare KI-Kennzeichnung und eine verantwortliche Rolle für Rückfragen ein. Legen Sie zusätzlich fest, wie betroffene Personen die zuständige Stelle erreichen und wie ihr Anliegen bearbeitet wird.
 
-## Häufige Fehler – und wie man sie vermeidet
+Bei Entscheidungen mit erheblichen Folgen für Menschen, besonders schützenswerten Angaben oder weiteren erhöhten Risiken braucht es eine vertiefte Prüfung. Ob zusätzliche gesetzliche Pflichten bestehen, lässt sich nicht aus einer kurzen Website-Checkliste ableiten.
 
-| Fehler | Besser |
-|---|---|
-| Kundendaten in öffentliche Chatbots kopieren | Kontrollierte, dokumentierte Verarbeitung |
-| Chatbot ohne KI-Kennzeichnung | Klare Kennzeichnung als KI |
-| Vollautomatik bei Kundenmails | Human-in-the-Loop-Freigabe |
-| «Wir sammeln mal alles» | Datenminimierung von Anfang an |
+## Wie machen wir aus offenen Fragen den nächsten Schritt?
 
-## So arbeitet AgenticIT
+Notieren Sie pro ungeklärtem Punkt eine verantwortliche Rolle und den benötigten Nachweis: etwa eine Anbieterantwort, eine Vertragsprüfung oder die Bestätigung eines Speicherorts. Vereinbaren Sie, welche Punkte vor einer Verarbeitung echter Daten geklärt sein müssen.
 
-Compliance ist bei uns kein Nachgedanke, sondern Teil des Designs: KI-Kennzeichnung, Human-in-the-Loop bei allen Aktionen mit Aussenwirkung, Datenminimierung und nDSG/DSGVO-konforme Verarbeitung sind Standard – nicht Option. Mehr dazu auf unserer Seite [Sicherheit](/sicherheit).
+Die technische Durchsetzung von Befugnissen beschreibt der Beitrag [KI-Agenten: Wer darf was?](/blog/ki-agenten-sicherheit-compliance). Im [interaktiven Ablaufbeispiel](/loesungen/ki-entwicklung#beispiele) können Sie Vorbereitung, Teamprüfung und Freigabe ohne echte Daten ausprobieren.
 
-## Fazit
-
-Datenschutzkonforme KI ist kein Widerspruch – sie ist gut geplante KI. Wer die Prinzipien von Anfang an mitdenkt, baut Systeme, die nicht nur rechtlich sauber, sondern auch vertrauenswürdig sind. Und Vertrauen ist im B2B die härteste Währung.
-
-*Rechtlicher Hinweis: Dieser Beitrag dient der allgemeinen Information und ersetzt keine individuelle Rechtsberatung. Für Ihren konkreten Fall konsultieren Sie bitte eine Fachperson.*
+Dieser Beitrag bietet eine allgemeine Orientierung für die Projektvorbereitung. Die rechtliche Beurteilung erfolgt am konkreten Einsatzfall.
