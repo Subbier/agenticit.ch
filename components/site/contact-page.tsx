@@ -73,8 +73,202 @@ export function ContactPage() {
         </div>
       </section>
 
-      <section className="px-6 py-14">
-        <div className="mx-auto grid max-w-[1000px] gap-10 lg:grid-cols-[0.85fr_1.15fr]">
+      <section className="px-4 py-8 md:px-6 md:py-14">
+        <div className="mx-auto grid max-w-[1000px] items-start gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:gap-10">
+          {/* Formular */}
+          <div className="min-w-0 rounded-[20px] border border-[#dce3db] bg-white p-5 shadow-[0_18px_48px_rgba(10,12,16,0.10)] md:p-8">
+            {status === "done" ? (
+              <div className="py-8 text-center" role="status">
+                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#8fe05a]/15 text-[#4d7c36]">
+                  <CheckCircle2 className="h-8 w-8" />
+                </div>
+                <h2 className="mt-4 text-[22px] font-extrabold text-[#202522]">
+                  Danke{form.name ? `, ${form.name.split(" ")[0]}` : ""}!
+                </h2>
+                <p className="mx-auto mt-2 max-w-[400px] text-[14px] leading-relaxed text-[#647068]">
+                  Ihre Nachricht ist bei uns eingegangen. Wir melden uns zeitnah
+                  persönlich bei Ihnen.
+                </p>
+                <Link
+                  href="/"
+                  className="mt-6 inline-block rounded-[12px] bg-[#8FE05A] px-5 py-3 text-[14px] font-extrabold text-[#122400]"
+                >
+                  Zur Startseite
+                </Link>
+              </div>
+            ) : (
+              <form
+                className={`${design.contactForm} space-y-4`}
+                onSubmit={submit}
+                aria-labelledby="contact-heading"
+              >
+                <h2
+                  id="contact-heading"
+                  className="text-[18px] font-extrabold text-[#202522]"
+                >
+                  Ihre Nachricht
+                </h2>
+                <p className="text-[13px] text-[#647068]">
+                  Mit * markierte Felder sind erforderlich.
+                </p>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div>
+                    <label
+                      htmlFor="contact-name"
+                      className="mb-2 block text-[14px] font-semibold text-[#202522]"
+                    >
+                      Name *
+                    </label>
+                    <input
+                      id="contact-name"
+                      name="name"
+                      autoComplete="name"
+                      required
+                      minLength={2}
+                      value={form.name}
+                      onChange={(e) =>
+                        setForm({ ...form, name: e.target.value })
+                      }
+                      className="w-full rounded-[11px] border border-[#dce3db] px-4 py-3 text-[15px] transition focus:border-[#4d7c36]"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="contact-email"
+                      className="mb-2 block text-[14px] font-semibold text-[#202522]"
+                    >
+                      E-Mail *
+                    </label>
+                    <input
+                      id="contact-email"
+                      name="email"
+                      autoComplete="email"
+                      required
+                      type="email"
+                      value={form.email}
+                      onChange={(e) =>
+                        setForm({ ...form, email: e.target.value })
+                      }
+                      className="w-full rounded-[11px] border border-[#dce3db] px-4 py-3 text-[15px] transition focus:border-[#4d7c36]"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="contact-phone"
+                      className="mb-2 block text-[14px] font-semibold text-[#202522]"
+                    >
+                      Telefon (optional)
+                    </label>
+                    <input
+                      id="contact-phone"
+                      name="phone"
+                      autoComplete="tel"
+                      type="tel"
+                      value={form.phone}
+                      onChange={(e) =>
+                        setForm({ ...form, phone: e.target.value })
+                      }
+                      className="w-full rounded-[11px] border border-[#dce3db] px-4 py-3 text-[15px] transition focus:border-[#4d7c36]"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="contact-company"
+                      className="mb-2 block text-[14px] font-semibold text-[#202522]"
+                    >
+                      Firma (optional)
+                    </label>
+                    <input
+                      id="contact-company"
+                      name="company"
+                      autoComplete="organization"
+                      value={form.company}
+                      onChange={(e) =>
+                        setForm({ ...form, company: e.target.value })
+                      }
+                      className="w-full rounded-[11px] border border-[#dce3db] px-4 py-3 text-[15px] transition focus:border-[#4d7c36]"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label
+                    htmlFor="contact-message"
+                    className="mb-2 block text-[14px] font-semibold text-[#202522]"
+                  >
+                    Wie können wir helfen? *
+                  </label>
+                  <textarea
+                    id="contact-message"
+                    name="message"
+                    required
+                    minLength={5}
+                    rows={5}
+                    value={form.message}
+                    onChange={(e) =>
+                      setForm({ ...form, message: e.target.value })
+                    }
+                    className="w-full rounded-[11px] border border-[#dce3db] px-4 py-3 text-[15px] transition focus:border-[#4d7c36]"
+                  />
+                </div>
+                <input
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={honey}
+                  onChange={(e) => setHoney(e.target.value)}
+                  className="absolute left-[-9999px] h-0 w-0 opacity-0"
+                  aria-hidden="true"
+                />
+                <label
+                  htmlFor="contact-consent"
+                  className="flex min-h-11 items-start gap-3 py-2 text-[14px] leading-relaxed text-[#647068]"
+                >
+                  <input
+                    id="contact-consent"
+                    name="consent"
+                    type="checkbox"
+                    required
+                    checked={consent}
+                    onChange={(e) => setConsent(e.target.checked)}
+                    className="mt-1 h-5 w-5 shrink-0 accent-[#4d7c36]"
+                  />
+                  Ich bin einverstanden, dass AgenticIT meine Angaben zur
+                  Bearbeitung meiner Anfrage verwendet (DSG-konform).
+                </label>
+                {status === "error" ? (
+                  <p
+                    className="text-[13px] font-bold text-red-600"
+                    role="alert"
+                  >
+                    Senden fehlgeschlagen. Bitte erneut versuchen oder rufen Sie
+                    uns an.
+                  </p>
+                ) : null}
+                <button
+                  type="submit"
+                  disabled={!valid || status === "loading"}
+                  className="flex w-full items-center justify-center gap-2 rounded-[13px] bg-[#8FE05A] py-[15px] text-[16px] font-extrabold text-[#122400] shadow-[0_6px_16px_rgba(10,12,16,0.18)] transition hover:-translate-y-[1px] disabled:opacity-50 disabled:hover:translate-y-0"
+                >
+                  <Send className="h-[18px] w-[18px]" />
+                  {status === "loading"
+                    ? "Wird gesendet …"
+                    : "Nachricht senden"}
+                </button>
+                <p className="text-center text-[12px] leading-relaxed text-[#647068]">
+                  Informationen zur Bearbeitung Ihrer Angaben finden Sie in
+                  unserer{" "}
+                  <Link
+                    className="underline underline-offset-4"
+                    href="/datenschutz"
+                  >
+                    Datenschutzerklärung
+                  </Link>
+                  .
+                </p>
+              </form>
+            )}
+          </div>
+
           {/* Kontaktdaten */}
           <div>
             <h2 className="text-[20px] font-extrabold text-[#202522]">
@@ -131,128 +325,6 @@ export function ContactPage() {
                 Mitglied im Swico-Verzeichnis ↗
               </a>
             </p>
-          </div>
-
-          {/* Formular */}
-          <div className="rounded-[20px] border border-[#dce3db] bg-white p-6 shadow-[0_18px_48px_rgba(10,12,16,0.10)] md:p-8">
-            {status === "done" ? (
-              <div className="py-8 text-center">
-                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#8fe05a]/15 text-[#4d7c36]">
-                  <CheckCircle2 className="h-8 w-8" />
-                </div>
-                <h2 className="mt-4 text-[22px] font-extrabold text-[#202522]">
-                  Danke{form.name ? `, ${form.name.split(" ")[0]}` : ""}!
-                </h2>
-                <p className="mx-auto mt-2 max-w-[400px] text-[14px] leading-relaxed text-[#647068]">
-                  Ihre Nachricht ist bei uns eingegangen. Wir melden uns zeitnah
-                  persönlich bei Ihnen.
-                </p>
-                <Link
-                  href="/"
-                  className="mt-6 inline-block rounded-[12px] bg-[#8FE05A] px-5 py-3 text-[14px] font-extrabold text-[#122400]"
-                >
-                  Zur Startseite
-                </Link>
-              </div>
-            ) : (
-              <form className="space-y-3" onSubmit={submit}>
-                <h2 className="text-[18px] font-extrabold text-[#202522]">
-                  Ihre Nachricht
-                </h2>
-                <div className="grid gap-3 sm:grid-cols-2">
-                  <input
-                    required
-                    placeholder="Name *"
-                    value={form.name}
-                    onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    className="w-full rounded-[11px] border border-[#dce3db] px-4 py-3 text-[15px] outline-none transition focus:border-[#1F9A5E]"
-                  />
-                  <input
-                    required
-                    type="email"
-                    placeholder="E-Mail *"
-                    value={form.email}
-                    onChange={(e) =>
-                      setForm({ ...form, email: e.target.value })
-                    }
-                    className="w-full rounded-[11px] border border-[#dce3db] px-4 py-3 text-[15px] outline-none transition focus:border-[#1F9A5E]"
-                  />
-                  <input
-                    type="tel"
-                    placeholder="Telefon"
-                    value={form.phone}
-                    onChange={(e) =>
-                      setForm({ ...form, phone: e.target.value })
-                    }
-                    className="w-full rounded-[11px] border border-[#dce3db] px-4 py-3 text-[15px] outline-none transition focus:border-[#1F9A5E]"
-                  />
-                  <input
-                    placeholder="Firma"
-                    value={form.company}
-                    onChange={(e) =>
-                      setForm({ ...form, company: e.target.value })
-                    }
-                    className="w-full rounded-[11px] border border-[#dce3db] px-4 py-3 text-[15px] outline-none transition focus:border-[#1F9A5E]"
-                  />
-                </div>
-                <textarea
-                  required
-                  rows={5}
-                  placeholder="Wie können wir helfen? *"
-                  value={form.message}
-                  onChange={(e) =>
-                    setForm({ ...form, message: e.target.value })
-                  }
-                  className="w-full rounded-[11px] border border-[#dce3db] px-4 py-3 text-[15px] outline-none transition focus:border-[#1F9A5E]"
-                />
-                <input
-                  type="text"
-                  tabIndex={-1}
-                  autoComplete="off"
-                  value={honey}
-                  onChange={(e) => setHoney(e.target.value)}
-                  className="absolute left-[-9999px] h-0 w-0 opacity-0"
-                  aria-hidden="true"
-                />
-                <label className="flex items-start gap-2 text-[12.5px] leading-snug text-[#647068]">
-                  <input
-                    type="checkbox"
-                    checked={consent}
-                    onChange={(e) => setConsent(e.target.checked)}
-                    className="mt-0.5 accent-[#1F9A5E]"
-                  />
-                  Ich bin einverstanden, dass AgenticIT meine Angaben zur
-                  Bearbeitung meiner Anfrage verwendet (DSG-konform).
-                </label>
-                {status === "error" ? (
-                  <p className="text-[13px] font-bold text-red-600">
-                    Senden fehlgeschlagen. Bitte erneut versuchen oder rufen Sie
-                    uns an.
-                  </p>
-                ) : null}
-                <button
-                  type="submit"
-                  disabled={!valid || status === "loading"}
-                  className="flex w-full items-center justify-center gap-2 rounded-[13px] bg-[#8FE05A] py-[15px] text-[16px] font-extrabold text-[#122400] shadow-[0_6px_16px_rgba(10,12,16,0.18)] transition hover:-translate-y-[1px] disabled:opacity-50 disabled:hover:translate-y-0"
-                >
-                  <Send className="h-[18px] w-[18px]" />
-                  {status === "loading"
-                    ? "Wird gesendet …"
-                    : "Nachricht senden"}
-                </button>
-                <p className="text-center text-[12px] leading-relaxed text-[#647068]">
-                  Informationen zur Bearbeitung Ihrer Angaben finden Sie in
-                  unserer{" "}
-                  <Link
-                    className="underline underline-offset-4"
-                    href="/datenschutz"
-                  >
-                    Datenschutzerklärung
-                  </Link>
-                  .
-                </p>
-              </form>
-            )}
           </div>
         </div>
       </section>
