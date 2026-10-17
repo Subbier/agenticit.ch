@@ -1,7 +1,6 @@
 "use client"
 
 import { useId, useReducer } from "react"
-import Link from "next/link"
 import { ArrowRight, ArrowUpRight, Check, RotateCcw } from "lucide-react"
 import { initialWorkflowDemo, workflowDemoReducer } from "@/lib/workflow-demo"
 import shared from "./journey.module.css"
@@ -197,9 +196,9 @@ export function WorkflowDemo() {
       </div>
 
       <div className={styles.footer}>
-        <Link href="/anfragen-check">
+        <a href="/anfragen-check">
           Ihren Anfrageweg prüfen <ArrowUpRight size={16} aria-hidden="true" />
-        </Link>
+        </a>
       </div>
     </div>
   )
