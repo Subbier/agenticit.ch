@@ -10,6 +10,7 @@
 import { useCallback, useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import styles from "./consent-banner.module.css"
+import { restoreConsentFocus } from "@/lib/consent-focus"
 import {
   CONSENT_REOPEN_EVENT,
   applyConsent,
@@ -57,6 +58,10 @@ export function ConsentBanner() {
   const [statistics, setStatistics] = useState(false)
   const [marketing, setMarketing] = useState(false)
   const panelRef = useRef<HTMLDivElement>(null)
+  const previousFocus = useRef<HTMLElement | null>(null)
+  const settingsRef = useRef<HTMLButtonElement>(null)
+  const firstCategoryRef = useRef<HTMLButtonElement>(null)
+  const moveDetailsFocus = useRef(false)
 
   // Erst nach dem Mount entscheiden, ob gefragt werden muss — sonst weicht das
   // Server-HTML vom Client ab (Hydration-Fehler).
@@ -73,11 +78,13 @@ export function ConsentBanner() {
   // Footer-Link „Cookie-Einstellungen" öffnet den Dialog erneut.
   useEffect(() => {
     const reopen = () => {
+      previousFocus.current = document.activeElement as HTMLElement | null
       const stored = readConsent()
       setStatistics(stored?.statistics ?? false)
       setMarketing(stored?.marketing ?? false)
       setShowDetails(true)
       setOpen(true)
+      panelRef.current?.focus()
     }
     window.addEventListener(CONSENT_REOPEN_EVENT, reopen)
     return () => window.removeEventListener(CONSENT_REOPEN_EVENT, reopen)
@@ -91,6 +98,11 @@ export function ConsentBanner() {
       setMarketing(choice.marketing)
       setOpen(false)
       setShowDetails(false)
+      restoreConsentFocus(
+        previousFocus.current,
+        document.getElementById("main-content"),
+      )
+      previousFocus.current = null
     },
     [],
   )
@@ -100,7 +112,11 @@ export function ConsentBanner() {
   useEffect(() => {
     if (!open) return
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && showDetails) setShowDetails(false)
+      if (e.key === "Escape" && showDetails) {
+        e.preventDefault()
+        moveDetailsFocus.current = true
+        setShowDetails(false)
+      }
     }
     window.addEventListener("keydown", onKey)
     return () => window.removeEventListener("keydown", onKey)
@@ -109,6 +125,15 @@ export function ConsentBanner() {
   useEffect(() => {
     if (open) panelRef.current?.focus()
   }, [open])
+
+  useEffect(() => {
+    if (!open || !moveDetailsFocus.current) return
+    moveDetailsFocus.current = false
+    restoreConsentFocus(
+      showDetails ? firstCategoryRef.current : settingsRef.current,
+      panelRef.current,
+    )
+  }, [open, showDetails])
 
   if (!open) return null
 
@@ -130,7 +155,8 @@ export function ConsentBanner() {
       <div
         ref={panelRef}
         tabIndex={-1}
-        className="pointer-events-auto mx-auto max-h-[calc(100dvh-24px)] max-w-[600px] overflow-y-auto rounded-xl border border-white/[0.10] bg-[#1b2a20] p-4 shadow-[0_12px_40px_rgba(0,0,0,0.3)] outline-none"
+        data-consent-panel
+        className={`${styles.panel} pointer-events-auto mx-auto max-h-[calc(100dvh-24px)] max-w-[600px] overflow-y-auto rounded-xl border border-white/[0.10] bg-[#1b2a20] p-4 shadow-[0_12px_40px_rgba(0,0,0,0.3)] outline-none`}
       >
         <div className="flex items-start gap-2.5">
           <span
@@ -178,6 +204,9 @@ export function ConsentBanner() {
                     </div>
 
                     <button
+                      ref={
+                        cat.id === "statistics" ? firstCategoryRef : undefined
+                      }
                       type="button"
                       role="switch"
                       aria-checked={on}
@@ -205,11 +234,21 @@ export function ConsentBanner() {
           </ul>
         )}
 
-        <div className="mt-3 grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:items-center">
+        <div
+          data-consent-actions
+          className="mt-3 grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:items-center"
+        >
+          <button
+            type="button"
+            onClick={() => decide({ statistics: false, marketing: false })}
+            className="min-h-10 rounded-lg border border-white/[0.16] px-3 py-2 font-[family-name:var(--font-carbon-text)] text-[12px] font-semibold text-white transition hover:border-white/30 sm:mr-auto"
+          >
+            Nur notwendige
+          </button>
           <button
             type="button"
             onClick={() => decide({ statistics: true, marketing: true })}
-            className="order-2 min-h-10 rounded-lg bg-[#8FE05A] px-3 py-2 font-[family-name:var(--font-carbon-text)] text-[12px] font-semibold text-[#122400] transition hover:bg-[#A2E874] sm:order-3"
+            className="min-h-10 rounded-lg bg-[#8FE05A] px-3 py-2 font-[family-name:var(--font-carbon-text)] text-[12px] font-semibold text-[#122400] transition hover:bg-[#A2E874]"
           >
             Alle akzeptieren
           </button>
@@ -218,27 +257,23 @@ export function ConsentBanner() {
             <button
               type="button"
               onClick={() => decide({ statistics, marketing })}
-              className="order-3 col-span-2 min-h-10 rounded-lg border border-white/[0.16] px-3 py-2 font-[family-name:var(--font-carbon-text)] text-[12px] font-semibold text-white transition hover:border-white/30 sm:order-2"
+              className="col-span-2 min-h-10 rounded-lg border border-white/[0.16] px-3 py-2 font-[family-name:var(--font-carbon-text)] text-[12px] font-semibold text-white transition hover:border-white/30"
             >
               Auswahl speichern
             </button>
           ) : (
             <button
+              ref={settingsRef}
               type="button"
-              onClick={() => setShowDetails(true)}
-              className="order-3 col-span-2 min-h-10 rounded-lg px-3 py-2 font-[family-name:var(--font-carbon-text)] text-[12px] font-medium text-[#b8c9b0] transition hover:text-white sm:order-2"
+              onClick={() => {
+                moveDetailsFocus.current = true
+                setShowDetails(true)
+              }}
+              className="col-span-2 min-h-10 rounded-lg px-3 py-2 font-[family-name:var(--font-carbon-text)] text-[12px] font-medium text-[#b8c9b0] transition hover:text-white"
             >
               Einstellungen
             </button>
           )}
-
-          <button
-            type="button"
-            onClick={() => decide({ statistics: false, marketing: false })}
-            className="order-1 min-h-10 rounded-lg border border-white/[0.16] px-3 py-2 font-[family-name:var(--font-carbon-text)] text-[12px] font-semibold text-white transition hover:border-white/30 sm:mr-auto"
-          >
-            Nur notwendige
-          </button>
         </div>
       </div>
     </div>
