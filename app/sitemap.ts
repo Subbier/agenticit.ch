@@ -4,6 +4,7 @@ import { getAllPosts } from "@/lib/blog"
 import { BRANCHEN_LPS } from "@/lib/branchen-content"
 import { KARRIERE_JOBS } from "@/lib/karriere-content"
 import { SITEMAP_CONTENT_DATES } from "@/lib/sitemap-content-dates"
+import { companyVideo } from "@/lib/company-video"
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const core: MetadataRoute.Sitemap = INDEXABLE_ROUTES.map((route) => ({
@@ -11,6 +12,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: SITEMAP_CONTENT_DATES[route],
     changeFrequency: route === "/" || route === "/blog" ? "weekly" : "monthly",
     priority: route === "/" ? 1 : route === "/excellence" ? 0.9 : 0.7,
+    ...(route === companyVideo.path
+      ? {
+          videos: [
+            {
+              title: companyVideo.name,
+              description: companyVideo.description,
+              thumbnail_loc: `${SITE_URL}${companyVideo.thumbnail}`,
+              content_loc: `${SITE_URL}${companyVideo.src}`,
+              publication_date: companyVideo.publishedAt,
+              requires_subscription: "no" as const,
+            },
+          ],
+        }
+      : {}),
   }))
 
   const blog: MetadataRoute.Sitemap = getAllPosts().map((post) => ({

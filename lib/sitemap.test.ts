@@ -32,6 +32,7 @@ test("unknown modification dates are omitted instead of inferred from a publicat
 
 test("verified service and calculator updates retain their real content dates", () => {
   for (const [path, date] of [
+    ["/firmenvideo", "2026-10-17"],
     ["/loesungen/ki-entwicklung", "2026-10-17"],
     ["/loesungen/webdesign", "2026-10-17"],
     ["/loesungen/prozessautomatisierung", "2026-10-17"],

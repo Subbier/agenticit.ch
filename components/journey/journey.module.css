@@ -520,6 +520,12 @@
   height: 100%;
   object-fit: contain;
 }
+.companyVideoFrame video::cue {
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  color: #fff;
+  background-color: rgb(10 18 13 / 85%);
+}
 .companyVideoPoster {
   object-fit: cover;
   pointer-events: none;
@@ -553,6 +559,68 @@
 }
 .companyVideoError a {
   text-decoration: underline;
+}
+.companyVideoTranscript {
+  margin-top: 24px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.companyVideoTranscript summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 50px;
+  padding-block: 12px;
+  list-style: none;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+}
+.companyVideoTranscript summary::-webkit-details-marker {
+  display: none;
+}
+.companyVideoTranscript summary span {
+  font-size: 22px;
+  font-weight: 400;
+}
+.companyVideoTranscript[open] summary span {
+  transform: rotate(45deg);
+}
+.companyVideoTranscriptCopy {
+  max-width: 760px;
+  padding-bottom: 24px;
+}
+.companyVideoTranscriptCopy blockquote {
+  margin: 16px 0 24px;
+  color: var(--muted);
+}
+.companyVideoTranscriptCopy blockquote p + p {
+  margin-top: 16px !important;
+}
+.companyVideoPage {
+  padding-block: 24px 64px;
+}
+.companyVideoBreadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  margin-bottom: 24px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.companyVideoBreadcrumb a {
+  color: inherit;
+}
+.section.companyVideoStandalone {
+  padding-top: 0;
+}
+.companyVideoStandalone h1 {
+  font-size: clamp(30px, 5vw, 48px);
+  line-height: 1.12;
+  letter-spacing: -1.2px;
+  font-weight: 550;
 }
 .careerList {
   border-top: 1px solid var(--line);
@@ -1961,6 +2029,9 @@
   .companyVideoFrame {
     margin-top: 22px;
     border-radius: 8px;
+  }
+  .companyVideoFrame video::cue {
+    font-size: 14px;
   }
   .companyVideoFooter {
     align-items: flex-start;

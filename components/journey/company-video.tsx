@@ -5,11 +5,10 @@ import Link from "next/link"
 import Image from "next/image"
 import thumbnail from "@/public/videos/agenticit-thumbnail.jpg"
 import { ArrowUpRight } from "lucide-react"
+import { companyVideo, companyVideoTranscript } from "@/lib/company-video"
 import styles from "./journey.module.css"
 
-const VIDEO_SRC = "/videos/agenticit-firmenvideo.mp4?v=3"
-
-export function CompanyVideo() {
+export function CompanyVideo({ standalone = false }: { standalone?: boolean }) {
   const video = useRef<HTMLVideoElement>(null)
   const [hasStarted, setHasStarted] = useState(false)
   const [playbackError, setPlaybackError] = useState(false)
@@ -25,15 +24,21 @@ export function CompanyVideo() {
 
   return (
     <section
-      className={`${styles.section} ${styles.companyVideo}`}
+      className={`${styles.section} ${styles.companyVideo} ${standalone ? styles.companyVideoStandalone : ""}`}
       id="firmenvideo"
       aria-labelledby="company-video-title"
     >
       <div className={styles.companyVideoHeading}>
-        <span className={styles.eyebrow}>AgenticIT in 60 Sekunden</span>
-        <h2 id="company-video-title">
-          Technik, die Ihnen den Rücken freihält.
-        </h2>
+        {standalone ? (
+          <h1 id="company-video-title">AgenticIT in 60 Sekunden.</h1>
+        ) : (
+          <>
+            <span className={styles.eyebrow}>AgenticIT in 60 Sekunden</span>
+            <h2 id="company-video-title">
+              Technik, die Ihnen den Rücken freihält.
+            </h2>
+          </>
+        )}
         <p className={styles.sectionIntro}>
           Wie wir KI und passende Tools zu Abläufen verbinden, die Ihr Team
           entlasten – und mehr Raum für Ihre Kunden schaffen.
@@ -51,9 +56,16 @@ export function CompanyVideo() {
           aria-label="AgenticIT: Neue Kunden, digitale Abläufe, ein Partner"
           onPlay={() => setHasStarted(true)}
         >
-          <source src={VIDEO_SRC} type="video/mp4" />
+          <source src={companyVideo.src} type="video/mp4" />
+          <track
+            kind="subtitles"
+            srcLang="de"
+            label="Deutsch"
+            src={companyVideo.subtitles}
+            default
+          />
           Ihr Browser unterstützt keine Videowiedergabe. Sie können das{" "}
-          <a href={VIDEO_SRC}>Video direkt öffnen</a>.
+          <a href={companyVideo.src}>Video direkt öffnen</a>.
         </video>
         {!hasStarted ? (
           <Image
@@ -76,7 +88,7 @@ export function CompanyVideo() {
       {playbackError ? (
         <p className={styles.companyVideoError} role="status">
           Bitte starten Sie das Video über die Wiedergabetaste oder{" "}
-          <a href={VIDEO_SRC}>öffnen Sie es direkt</a>.
+          <a href={companyVideo.src}>öffnen Sie es direkt</a>.
         </p>
       ) : null}
       <div className={styles.companyVideoFooter}>
@@ -90,6 +102,27 @@ export function CompanyVideo() {
           <ArrowUpRight size={18} aria-hidden="true" />
         </Link>
       </div>
+      <details className={styles.companyVideoTranscript} open={standalone}>
+        <summary>
+          Video als Text lesen <span aria-hidden="true">+</span>
+        </summary>
+        <div className={styles.companyVideoTranscriptCopy}>
+          <p className={styles.fine}>
+            Gesprochener Text der Videofassung vom 16. Oktober 2026.
+          </p>
+          <blockquote>
+            {companyVideoTranscript.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </blockquote>
+          {!standalone ? (
+            <Link href={companyVideo.path} className={styles.textLink}>
+              Video mit Text öffnen
+              <ArrowUpRight size={16} aria-hidden="true" />
+            </Link>
+          ) : null}
+        </div>
+      </details>
     </section>
   )
 }

@@ -333,6 +333,7 @@ export function webApplicationJsonLd(input: {
 
 export const INDEXABLE_ROUTES = [
   "/",
+  "/firmenvideo",
   "/kundenreise-check",
   "/automatisierungs-check",
   "/marketing-setup-check",
