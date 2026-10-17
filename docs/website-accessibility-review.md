@@ -1,6 +1,6 @@
 # Bedienbarkeit der AgenticIT-Website
 
-Prüfstand: 17. Oktober 2026. Produktfassung 91a3856cc59c7d061afba5c62801f5eb54e9043f; Tastatureinstieg aus d1c7feb unverändert. Diese Arbeitsabnahme führt konkrete Nachweise zusammen. Sie ist keine vollständige WCAG-Konformitätserklärung und keine Prüfung mit allen assistiven Technologien.
+Prüfstand: 17. Oktober 2026. Produktfassung 66286165bce2813e1850e01660f98290c60f72b3; Tastatureinstieg aus d1c7feb unverändert. Diese Arbeitsabnahme führt konkrete Nachweise zusammen. Sie ist keine vollständige WCAG-Konformitätserklärung und keine Prüfung mit allen assistiven Technologien.
 
 ## Prüfbereich
 
@@ -20,7 +20,7 @@ Prüfungen erzeugen keine echten Kontakte, Bewertungen, CRM-Einträge, Buchungen
 | Mobiles Menü | Bei 390 Pixeln öffnet und schliesst Enter das Menü; Hauptinhalt rückt von y=76 auf y=360, also um 284 Pixel. Bestehende Etappen belegen Ausseninteraktion und Seitenwechsel. | Menü bleibt ein nicht-modaler, den Inhalt verschiebender Bereich. Keine zusätzliche Fokusfalle eingeführt. |
 | Bewegte Darstellung | Karussell pausiert bedient; «Sales anzeigen» per Enter wählt Sales, data-running bleibt false. Bestehender Code berücksichtigt prefers-reduced-motion und die Seitensichtbarkeit. | Medienpräferenz in dieser Etappe nicht in allen Browsern emuliert; Quelltextnachweis nicht mit Laufzeitnachweis gleichsetzen. |
 | Video | Wiedergabeknopf per Enter bedient; Video spielte mit readyState 4, Fokus auf VIDEO. Leertaste pausiert; native Steuerung vorhanden. Deutscher Untertitel und Textfassung bestehen weiterhin und werden von den vorhandenen Tests erfasst. | Keine Prüfung aller nativen Medienoberflächen oder vollständige audiovisuelle Barrierefreiheitsabnahme. Originale Ergebnisbehauptung wartet auf den separat angefragten Beleg. |
-| Formulare | Dauerhafte Labels, Einwilligungen, Fokus- und Fehlerzustände in vorhandenen Tests und Etappen belegt. Neue Sprungstrecke erreicht das erste Feld direkt; kein Formular abgesendet. | Echter Empfang und CRM-Kontext bleiben D03. Feldgrenzen inzwischen in fünf Varianten verbessert, siehe unten. Sende-Button und Empfangsprüfung des eigenen Kontaktformulars benötigen den nächsten gezielten Schritt. |
+| Formulare | Dauerhafte Labels, Einwilligungen, Fokus- und Fehlerzustände in vorhandenen Tests und Etappen belegt. Neue Sprungstrecke erreicht das erste Feld direkt; kein Formular abgesendet. | Echter Empfang und CRM-Kontext bleiben D03. Feldgrenzen inzwischen in fünf Varianten verbessert, siehe unten. Sende-Button und Empfangsprüfung des eigenen Kontaktformulars sind in D07 gezielt verbessert; tatsächliche Zustellung bleibt offen. |
 | Textkontrast | Stichprobe auf acht Kernseiten: 530 direkt gerenderte Textstellen mit auswertbaren RGB-Farben; kein gemessener Wert unter der jeweils angesetzten Grenze. | 41 Stellen wegen Verlauf, Deckkraft oder nicht ausgewerteter Farbsyntax offen. Platzhalter, Bildtexte, alle Zustände und sämtliche Seiten sind damit nicht vollständig geprüft. |
 | Reflow und Touch | Kernstrecken bei vier Breiten per Tastatur bedient; Sprunglink mindestens 44 Pixel hoch. Bestehende Etappen enthalten grössere Layout- und Formularprüfungen. | Keine pauschale Mindestgrösse für jedes Textelement oder formale Gesamtprüfung bei Zoom abgeleitet. |
 
@@ -38,7 +38,7 @@ Ein gemeinsamer Farbwert in JourneyShell wird für Text-, Zahlen-, Auswahl- und 
 
 Abnahme: fünf Varianten einschliesslich der Eingaben eines ausgewählten Tasks im Automatisierungs-Check. Je 20 Ansichten und 100 Feldmessungen lokal und öffentlich bei 320/390/768/1440 Pixeln bestehen den Vergleich gegen Innen- und Aussenfläche; kein horizontaler Überlauf. Dunkler Tastaturfokus auf Textarea, Select und Zahleneingabe bleibt sichtbar. Die Kontakt-Textarea hat eine vorhandene 150-ms-Farbtransition; erst der stabile Endzustand wurde als Fokusfarbe protokolliert. Alle 390 bestehenden Prüfungen, TypeScript, Formatter und Produktionsbuild bestanden. Kein Formular abgesendet.
 
-Der visuelle Abschluss zeigte einen neuen konkreten Befund: Auf /kontakt überdeckt der Mia-Öffner bei 390 Pixeln den Sende-Button um etwa 35,2 × 50,3 Pixel; dessen unmittelbarer Container hat keinen rechten Freiraum. Das eigene Kontaktformular in components/site/contact-page.tsx nutzt zudem source home und behandelt HTTP-Erfolg bereits als Erfolg. Diese Punkte sind D07 und noch nicht korrigiert. Die verbesserte Feldgrenze ist keine Gesamtabnahme des Kontaktwegs oder der Zustellung.
+Der visuelle Abschluss zeigte einen neuen konkreten Befund: Auf /kontakt überdeckt der Mia-Öffner bei 390 Pixeln den Sende-Button um etwa 35,2 × 50,3 Pixel; dessen unmittelbarer Container hat keinen rechten Freiraum. Das eigene Kontaktformular in components/site/contact-page.tsx nutzt zudem source home und behandelt HTTP-Erfolg bereits als Erfolg. Diese Punkte wurden anschliessend in D07 korrigiert, siehe unten. Die verbesserte Feldgrenze ist keine Gesamtabnahme des Kontaktwegs oder der Zustellung.
 
 Nachweise: Umsetzung-2026-10-17/Nachweise/form-boundaries-*. Veröffentlichtes Produkt 91a3856, Deployment dpl_5qLaFwBxzyVdnyw4EppyxCAZ8MpL (v1-main-qcfapo56e-gntc.vercel.app), READY für denselben SHA mit agenticit.ch und www.agenticit.ch. CSS-Budget der Startseite: 255939 Bytes, gleich berechnetes gzip 41354 Bytes, drei Stylesheets. Keine neue PSI-/Felddatenmessung; Sitemap weiterhin 79 Ziele und 76 belegte Inhaltsdaten.
 
@@ -53,8 +53,19 @@ Nachweise: Umsetzung-2026-10-17/Nachweise/form-boundaries-*. Veröffentlichtes P
 ## Wiederholbare Abnahme und Ablage
 
 - npm run test:keyboard prüft Hauptinhalt-Ziele sowie Fokuslogik, native Rückfallebene und modifizierte Klicks.
-- Gesamtlauf: 390 kombinierte Tests in 47 relevanten Dateien, ohne test-leads-Tests. TypeScript, Formatter und Produktionsbuild einschliesslich Import-/Tailwind-Prüfung bestanden. Öffentliche GET-Abnahme nach nachgewiesener Veröffentlichung; kein echter Versand daraus abgeleitet.
+- Gesamtlauf nach D07: 402 kombinierte Tests in 49 relevanten Dateien, ohne test-leads-Tests. TypeScript, Formatter und Produktionsbuild einschliesslich Import-/Tailwind-Prüfung bestanden. Öffentliche GET-Abnahme nach nachgewiesener Veröffentlichung; kein echter Versand daraus abgeleitet.
 - Originale Nachweise in OneDrive: AgenticIT Webseite/Umsetzung-2026-10-17/Nachweise/accessibility-*. Dazu Entwurfsfehler, korrigierter Rückweg, Tastaturfälle je Umgebung, Textfarben, Menü, Videobedienung und Abbildungen.
 - Der bereits zuvor beobachtete lokale NoFallbackError beim Serverende bleibt separat ungeklärt; erfolgreiche 404-Tests sind keine pauschale Laufzeitfehlerfreiheit.
 
 Gesamtziel bleibt aktiv. Offene Nachweise zu realer Sichtbarkeit, qualifizierten Kundenanfragen, CRM-Zustellung und vollständiger Barrierefreiheit bleiben im Schlachtplan erhalten.
+
+
+## Eigene Kontaktanfrage – D07
+
+Produkt 6628616, Deployment dpl_QeAi1cuiBLXA9cAvcciUouVf4tnJ READY für denselben SHA mit beiden öffentlichen Domains. Vier Endansichten je Umgebung bei 320/390/768/1440 ohne horizontalen Seitenüberlauf oder Überdeckung des Sende-Buttons. 44,8 Pixel horizontaler Abstand zu Mia auf beiden Smartphone-Breiten, mindestens 57,2 Pixel Buttonhöhe; bei 320 Pixeln zwei Textzeilen und 84,4 Pixel Höhe. Eine erste Grid-Mindestbreite wurde vor Veröffentlichung korrigiert.
+
+Fünf dauerhafte Feldlabels und optionale Firma/Telefon erhalten. Maximalwerte an Server angeglichen. Ungültige eingegebene Nummer erhält aria-invalid, lesbaren Hinweis und blockiert Senden; Leeren stellt die optionale Eingabe wieder her. Lokale und öffentliche Tastaturprüfung erreicht den aktivierten Button mit sichtbarem dunklem Fokusrahmen. Nur fiktive Prüfangaben, kein Versand.
+
+Explizite API-Bestätigung statt HTTP allein, zustandsunabhängige Sperre sowie Sender pro Formularinstanz. Isolierte Tests decken gleichzeitiges/erneutes Senden, fehlende Bestätigung, Fehler und bewussten neuen Versuch ab. Server setzt den Kontaktkontext und persönlichen Prüfauftrag. 402 kombinierte Prüfungen, TypeScript, Formatter und Produktionsbuild bestanden. Echter CRM-Empfang und dauerhaftes Deduplizieren über Sitzungen sind damit nicht belegt. Fokus auf der Erfolgsanzeige ist implementiert, im Browser ohne Versand nicht ausgelöst.
+
+Datenschutzlink kündigt einen neuen Tab an und enthält keine Formularwerte. Attribute und Ziel geprüft, Ursprungseingaben nach lokalem Klick erhalten; IAB lieferte keinen beobachtbaren neuen Tab. Deshalb kein kompletter interaktiver Abzweig-Nachweis. Keine pauschale DSG-/WCAG-Konformitätszusage. Nachweise contact-inquiry-* in der bestehenden OneDrive-Ablage; Lokales und öffentliches Abschlussbild visuell gelesen.
