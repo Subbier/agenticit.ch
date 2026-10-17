@@ -161,7 +161,11 @@ const nextConfig = {
       },
       { source: "/smart-apps", destination: "/loesungen", permanent: true },
       // /branchen ist neu eine echte Seite (Vertrieb-Spezialisierung) – keine Weiterleitung mehr.
-      { source: "/car-dealerships", destination: "/", permanent: true },
+      {
+        source: "/car-dealerships",
+        destination: "/branchen/autohaus",
+        permanent: true,
+      },
       {
         source: "/unternehmen",
         destination: "/zusammenarbeit",
