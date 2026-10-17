@@ -28,6 +28,10 @@ const serviceGuides: Partial<
     href: "/blog/prozessautomatisierung-kmu-leitfaden",
     label: "Welche Aufgabe zuerst? Leitfaden lesen",
   },
+  "revops-umsatzgenerierung": {
+    href: "/blog/ki-automatisierung-vertrieb",
+    label: "Von der Anfrage ins CRM: Leitfaden und Prüfplan",
+  },
 }
 
 export function CoreServicePage({ service }: { service: CoreService }) {

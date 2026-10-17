@@ -10,6 +10,7 @@
     "ios_saf >= 16"
   ],
   "scripts": {
+    "test:operations-guides": "node --import tsx --test lib/operations-guides.test.ts",
     "test:website-case": "node --import tsx --test lib/website-case.test.ts",
     "test:guides": "node --import tsx --test lib/blog-guides.test.ts",
     "test:industry": "node --import tsx --test lib/industry-focus.test.ts",

@@ -1,0 +1,91 @@
+PRÜFPLAN: KI-TELEFONASSISTENT
+AgenticIT GmbH | Stand: 17. Oktober 2026
+
+Für Ihre eigene Abnahme. Unbekanntes als «offen» markieren.
+Ihre ausgefüllte Datei wird nicht automatisch an AgenticIT übertragen.
+Keine Passwörter, API-Schlüssel oder vollständigen Kundendossiers eintragen.
+Nur ausdrücklich freigegebene Testteilnehmende und Testkontakte verwenden.
+Ein neuer Testanruf benötigt eine passende Freigabe; diese Vorlage löst keinen aus.
+
+AUFTRAG UND VERANTWORTUNG
+Welche konkrete Aufgabe soll der Assistent erledigen?
+Antwort:
+Welche Aufgaben bleiben beim Menschen?
+Antwort:
+Verantwortliche Rolle für den Betrieb:
+Antwort:
+Freigegebene Wissensquellen und Datum der Prüfung:
+Antwort:
+Welche Gesprächsdaten sind nötig, wo werden sie verarbeitet und wann gelöscht?
+Antwort:
+Wie sind KI-Kennzeichnung, Information und gegebenenfalls Aufnahme-Einwilligung geklärt?
+Antwort:
+
+KONFIGURATION FÜR DIE PRÜFUNG
+Agent und veröffentlichte Version:
+Antwort:
+Rufnummer und Richtung (eingehend/ausgehend):
+Antwort:
+Erlaubte Aufgabe und Grenze:
+Antwort:
+Kalender, CRM und zuständiges Team (keine geheimen Zugangsdaten):
+Antwort:
+Zeitzone, Arbeitszeiten, Feiertage und Terminlänge:
+Antwort:
+Vereinbarte Kosten-/Testgrenze:
+Antwort:
+
+1. ECHTE TELEFONSTRECKE
+Erwartung: Richtige Nummer und Agentenversion; verständlicher Gesprächsbeginn.
+Prüfen: Zusätzlich zur Browser-Demo einen freigegebenen echten Telefonweg prüfen.
+Ist-Ergebnis:
+Nachweis: Zeitpunkt und interner Vorgangsverweis, ohne unnötige Gesprächsdaten.
+Status: offen / bestanden / nacharbeiten
+
+2. SPRACHE UND UNTERBRECHUNGEN
+Erwartung: Namen und Fachwörter verständlich; kurze Rückfrage bei Unsicherheit.
+Prüfen: Alltagssprache/Dialekt, knappe Antwort, Unterbrechung und Korrektur.
+Ist-Ergebnis:
+Nachweis:
+Status: offen / bestanden / nacharbeiten
+
+3. TERMINE
+Erwartung: Nur freie, erlaubte Zeiten; richtige Person und Gesprächsart.
+Prüfen: Datum, Zeitzone und gespeicherter Kalendereintrag; belegte Zeit ablehnen.
+Prüfen: Bei fehlender Speicherbestätigung keine bestätigte Buchung behaupten.
+Ist-Ergebnis:
+Nachweis:
+Status: offen / bestanden / nacharbeiten
+
+4. DATENÜBERGABE
+Erwartung: Vereinbartes Anliegen erreicht das richtige Firmenkonto und den Vorgang.
+Prüfen: Zielsystem, relevante Angaben, Zuständigkeit und nächster Schritt.
+Ist-Ergebnis:
+Nachweis:
+Status: offen / bestanden / nacharbeiten
+
+5. MENSCHLICHE ÜBERNAHME
+Erwartung: Mensch auf Wunsch erreichbar oder zutreffender vereinbarter Ersatzweg.
+Prüfen: «Ich möchte mit jemandem sprechen»; Team erreichbar und nicht erreichbar.
+Ist-Ergebnis:
+Nachweis:
+Status: offen / bestanden / nacharbeiten
+
+6. AUSFALL UND KONTAKTSTOPP
+Erwartung: Keine erfundene Auskunft/Buchung; Fehler wird zuständig bearbeitet.
+Prüfen: Nicht erreichbarer Kalender/CRM; fehlende Angabe; geäusserter Kontaktstopp.
+Ist-Ergebnis:
+Nachweis:
+Status: offen / bestanden / nacharbeiten
+
+ENTSCHEIDUNG
+Offene Mängel und verantwortliche Rollen:
+Antwort:
+Erneute Prüfung bis:
+Antwort:
+Freigabe durch verantwortliche Person und Datum:
+Antwort:
+Aus einem bestandenen Test folgt keine garantierte Fehlerfreiheit im Betrieb.
+
+Weiterführend: https://agenticit.ch/blog/ki-sprachassistent-telefonie
+Anfrageweg einordnen: https://agenticit.ch/anfragen-check

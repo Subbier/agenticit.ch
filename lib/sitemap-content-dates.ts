@@ -12,6 +12,8 @@ export const SITEMAP_CONTENT_DATES: Readonly<Partial<Record<string, string>>> =
     "/blog/eigene-ki-agenten-vs-chatgpt": "2026-10-17",
     "/blog/prozessautomatisierung-kmu-leitfaden": "2026-10-17",
     "/blog/website-briefing-vorlage": "2026-10-17",
+    "/blog/ki-sprachassistent-telefonie": "2026-10-17",
+    "/blog/ki-automatisierung-vertrieb": "2026-10-17",
     "/branchen": "2026-10-17",
     "/branchen/beratung": "2026-10-17",
     "/branchen/versicherungen": "2026-10-17",

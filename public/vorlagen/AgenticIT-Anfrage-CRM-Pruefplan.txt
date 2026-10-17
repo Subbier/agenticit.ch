@@ -1,0 +1,92 @@
+PRÜFPLAN: VON DER ANFRAGE ZUM CRM UND ZUR NÄCHSTEN AUFGABE
+AgenticIT GmbH | Stand: 17. Oktober 2026
+
+Für Ihre eigene Abnahme. Unbekanntes als «offen» markieren.
+Ihre ausgefüllte Datei wird nicht automatisch an AgenticIT übertragen.
+Keine Passwörter, API-Schlüssel, geheimen Webhook-Adressen oder Kundendossiers eintragen.
+Nur freigegebene Beispieldaten und ausdrücklich erlaubte Testkontakte nutzen.
+Diese Vorlage erstellt keine Leads, versendet keine Nachrichten und löst keinen Anruf aus.
+
+EINEN KONKRETEN WEG FESTLEGEN
+Quelle der Anfrage (z. B. Formular oder Telefon):
+Antwort:
+Marke/Firma und verantwortliches Team:
+Antwort:
+Benötigtes Anliegen und erlaubte Datenfelder:
+Antwort:
+ZIELSYSTEM: Firmenkonto, Modul und Status:
+Antwort:
+Wer übernimmt? Wer vertritt diese Person bei Abwesenheit?
+Antwort:
+Nächste Aufgabe mit Zeitpunkt oder Bearbeitungsregel:
+Antwort:
+Zweck, Zugriffsrollen und Aufbewahrung der Daten:
+Antwort:
+Was ist ein Kontakt, was eine einzelne Anfrage, was ein Übertragungsversuch?
+Antwort:
+Woran werden diese Vorgänge wiedererkannt? Was darf aktualisiert werden?
+Antwort:
+
+1. NORMALER EINGANG
+Erwartung: Freigegebene Anfrage mit richtigen Angaben im richtigen Firmenkonto.
+Prüfen: Gespeicherten Vorgang, Zuständigkeit und nächste Aufgabe direkt ansehen.
+Ist-Ergebnis:
+Nachweis: Interner Vorgangsverweis und Zeitpunkt; keine unnötigen Personendaten.
+Status: offen / bestanden / nacharbeiten
+
+2. DUBLETTEN UND WIEDERHOLUNG
+Erwartung: Wiederholte Übertragung desselben Vorgangs erzeugt keinen zweiten Auftrag.
+Prüfen: Gleichen Vorgang zweimal; danach ein neues Anliegen desselben Kontakts.
+Prüfen: Neue Anfrage bleibt erhalten; vorhandene Angaben nicht blind überschreiben.
+Ist-Ergebnis:
+Nachweis:
+Status: offen / bestanden / nacharbeiten
+
+3. FEHLENDE ODER UNPASSENDE ANGABEN
+Erwartung: Klare Rückmeldung und definierter Bearbeitungsweg statt Scheinerfolg.
+Prüfen: Fehlendes Pflichtfeld und nicht zum vorgesehenen Auftrag passende Quelle.
+Ist-Ergebnis:
+Nachweis:
+Status: offen / bestanden / nacharbeiten
+
+4. FEHLERFALL UND ERNEUTER VERSUCH
+Erwartung: Fehler sichtbar; Nachbearbeitung zuständig; erneuter Versuch zugeordnet.
+Prüfen: Nicht erreichbares Zielsystem und abgelehnte Speicherung.
+Prüfen: Einzelne Fehler bei Sammelübertragung; zutreffende Rückmeldung an Besucher.
+Ist-Ergebnis:
+Nachweis:
+Status: offen / bestanden / nacharbeiten
+
+5. FREIGABE UND KONTAKTSTOPP
+Erwartung: Ausgehende Sales-Nachricht bleibt bis zur menschlichen Freigabe Entwurf.
+Prüfen: Keine Freigabe, Ablehnung, Freigabe und geäusserter Kontaktstopp.
+Prüfen: Kein unbeabsichtigter Versand oder zusätzlicher Anruf durch andere Regeln.
+Ist-Ergebnis:
+Nachweis:
+Status: offen / bestanden / nacharbeiten
+
+6. ÜBERNAHME IM TEAM
+Erwartung: Eine zuständige Person versteht Anliegen und nächsten Schritt.
+Prüfen: Normaler Dienst und Abwesenheit; Rückmeldung am selben Vorgang auffindbar.
+Ist-Ergebnis:
+Nachweis:
+Status: offen / bestanden / nacharbeiten
+
+ERGEBNISSE GETRENNT BETRACHTEN
+Technisch angenommen:
+Im CRM gespeichert:
+Vom Team qualifiziert:
+Gespräch vereinbart/durchgeführt:
+Auftrag:
+Diese Stufen sind unterschiedliche Ergebnisse. Für jede braucht es einen Nachweis.
+Zeitvergleich: heutige Bearbeitung minus verbleibende Bearbeitung und Kontrolle.
+Einrichtung, Betrieb, Lizenzen und Nacharbeit gesondert berücksichtigen.
+
+ENTSCHEIDUNG
+Offene Mängel mit Zuständigkeit und Datum:
+Antwort:
+Freigabe durch verantwortliche Person und Datum:
+Antwort:
+
+Weiterführend: https://agenticit.ch/blog/ki-automatisierung-vertrieb
+Anfrageweg einordnen: https://agenticit.ch/anfragen-check

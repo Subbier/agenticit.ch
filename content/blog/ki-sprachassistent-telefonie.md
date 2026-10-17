@@ -1,63 +1,87 @@
 ---
-title: "KI-Sprachassistent für die Telefonie: Wie Voice-Agenten Ihre Anrufe übernehmen"
+title: "KI-Telefonassistent: Richtig starten."
 slug: "ki-sprachassistent-telefonie"
-description: "KI-Sprachassistenten am Telefon: Wie Schweizer KMU Anrufe rund um die Uhr annehmen, qualifizieren und weiterleiten – mit klarer KI-Kennzeichnung."
+description: "Anrufe annehmen, Anliegen erfassen und Termine vorbereiten: So prüfen Sie Sprache, Telefonstrecke, Kalender und Übergabe – mit bearbeitbarem Prüfplan."
 date: "2026-07-24"
+updated: "2026-10-17"
 category: "KI-Agenten"
-tags: ["voice agent", "ki telefonie", "kundenservice", "terminbuchung"]
-keywords: ["ki sprachassistent", "voice agent", "ki telefonie", "kundenservice ki", "ki agenten"]
-readingTime: 9
+tags: ["KI-Telefonassistent", "Voice Agent", "Telefonie", "Prüfplan"]
+keywords:
+  [
+    "ki telefonassistent",
+    "ki sprachassistent",
+    "voice agent",
+    "ki telefonie schweiz",
+  ]
+readingTime: 5
+resource:
+  title: "Klingt gut. Funktioniert auch der ganze Anruf?"
+  copy: "Mit diesem Prüfplan halten Sie Sprache, Termine, Datenübergabe und menschliche Übernahme fest. Direkt für Ihr Team verwendbar."
+  href: "/vorlagen/AgenticIT-Telefonassistent-Pruefplan.txt"
+  label: "Prüfplan speichern (.txt)"
+nextStep:
+  title: "Was passiert bei Ihnen nach einer Anfrage?"
+  copy: "Der Anfragen-Check ordnet Eingang, Zuständigkeit, Reaktion und Nachfassen ein. Sie erhalten passende nächste Schritte für Ihr Team."
+  href: "/anfragen-check"
+  label: "Anfrageweg prüfen"
+sources:
+  - label: "Aircall: Testumfang, echte Anrufabläufe und Weiterleitungen"
+    url: "https://support.aircall.io/de/articles/31087471863325"
+  - label: "EDÖB: KI und Datenschutz"
+    url: "https://www.edoeb.admin.ch/de/ki-und-datenschutz"
+  - label: "EDÖB: Voraussetzungen und Ausnahmen bei Gesprächsaufzeichnungen"
+    url: "https://www.edoeb.admin.ch/de/aufzeichnung-von-gespraechen"
 faq:
-  - q: "Klingt ein KI-Sprachassistent wie ein Roboter?"
-    a: "Moderne Voice-Agenten sprechen natürlich und reagieren flüssig. Trotzdem weisen sie sich als KI aus – Transparenz ist Pflicht und schafft Vertrauen."
-  - q: "Versteht der Assistent auch Schweizerdeutsch?"
-    a: "Hochdeutsch wird zuverlässig verstanden; für Mundart hängt die Qualität vom Setup ab. Meist arbeitet man mit klarer Hochdeutsch-Führung und Rückfragen bei Unklarheit."
-  - q: "Was passiert, wenn der Agent etwas nicht versteht?"
-    a: "Er fragt nach oder übergibt an einen Menschen bzw. plant einen Rückruf – er rät nicht."
-  - q: "Wie schnell ist ein Voice Agent einsatzbereit?"
-    a: "Für klar definierte Szenarien wie die Terminbuchung ist ein produktiver Start in wenigen Wochen realistisch."
-sources: []
+  - q: "Was kann ein KI-Telefonassistent übernehmen?"
+    a: "Je nach Einrichtung kann er eingehende Anrufe annehmen, ein Anliegen erfassen, freigegebene Fragen beantworten und Kalender oder CRM über angebundene Aktionen nutzen. Welche Aufgaben tatsächlich funktionieren, muss für Ihre Telefonstrecke geprüft werden."
+  - q: "Reicht ein gutes Testgespräch im Browser?"
+    a: "Ein Browser-Test hilft bei Sprache und Gesprächsführung. Er belegt noch nicht die echte Rufnummer, Weiterleitung und Speicherung im Zielsystem. Prüfen Sie diese Schritte zusätzlich mit ausdrücklich freigegebenen Testteilnehmenden."
+  - q: "Versteht der Assistent Schweizerdeutsch?"
+    a: "Das hängt vom Anbieter, der gewählten Sprachverarbeitung und den Gesprächsbedingungen ab. Testen Sie die im Alltag vorkommenden Dialekte, Namen und Fachbegriffe. Bei Unklarheit braucht es eine kurze Rückfrage oder die Übernahme durch einen Menschen."
+  - q: "Wann darf ein Termin als gebucht gelten?"
+    a: "Wenn die Buchungsaktion die Speicherung im richtigen Kalender bestätigt. Tag, Uhrzeit, Zeitzone, zuständige Person und Gesprächsart müssen passen. Ein gesprochener Terminvorschlag allein ist noch keine Buchung."
 ---
 
-Das Telefon klingelt, niemand hat Zeit – und der Anrufer legt auf. KI-Sprachassistenten nehmen Anrufe rund um die Uhr an, buchen Termine und leiten nur das weiter, was wirklich einen Menschen braucht. So funktioniert es.
+> **Ein KI-Telefonassistent ist eine Anwendung, die gesprochene Anliegen aufnimmt und im vereinbarten Rahmen bearbeitet.** Ob daraus ein guter Kundenkontakt wird, entscheidet der ganze Ablauf: verständlich sprechen, die passende Aktion ausführen und bei Bedarf an Ihr Team übergeben.
 
-Der teuerste Anruf ist der, der nie angenommen wird. Verpasste Anrufe bedeuten verpasste Aufträge, unzufriedene Kunden und ein Team, das ständig zwischen Telefon und eigentlicher Arbeit hin- und herspringt. Ein KI-Sprachassistent – oft «Voice Agent» genannt – setzt genau hier an: Er versteht gesprochene Sprache, reagiert natürlich und erledigt strukturierte Aufgaben autonom, während er komplexe Fälle sauber an Menschen übergibt.
+## Welche Aufgabe sollte der Assistent zuerst übernehmen?
 
-## Was ein KI-Sprachassistent kann – und was nicht
+Beginnen Sie mit einem wiederkehrenden Anliegen: eine Rückrufbitte aufnehmen, eine freigegebene Auskunft geben oder einen Beratungstermin vereinbaren. Legen Sie fest, wann die Aufgabe erledigt ist und wann ein Mensch übernimmt.
 
-Ein Voice Agent ist stark bei allem, was strukturiert und wiederkehrend ist: Anrufe annehmen, Anliegen erfassen, Termine buchen und verschieben, Öffnungszeiten und Standardfragen beantworten, Rückrufe organisieren, Anrufe qualifiziert weiterleiten. Er ist bewusst *nicht* dafür gedacht, heikle Beschwerden, emotionale Gespräche oder komplexe Beratung allein zu führen – diese Fälle erkennt er und übergibt an einen Menschen.
+**Mögliches Beispiel:** Ein Beratungsbetrieb möchte Anfragen während laufender Kundengespräche entgegennehmen. Der Assistent erfasst das Anliegen und bereitet eine Rückrufaufgabe vor. Eine konkrete Empfehlung oder ein verbindliches Angebot bleibt beim zuständigen Team. Dieses Beispiel beschreibt einen möglichen Einsatz, keinen belegten Kundenerfolg.
 
-## Typische Einsatzszenarien
+## Warum ist eine gute Demo noch keine bestandene Telefonprüfung?
 
-| Branche | Aufgabe des Voice Agents |
-| --- | --- |
-| Praxen & Kliniken | Terminvergabe, Verschiebungen, Rückrufmanagement |
-| Handwerk & KMU | Anrufannahme ausserhalb der Bürozeiten, Auftragsvormerkung |
-| Hotellerie | Reservationsanfragen, FAQ, Weiterleitung an Rezeption |
-| Dienstleister | Lead-Qualifizierung, Terminbuchung, Erstinformation |
+Ein ruhiger Test zeigt, wie Stimme und Gesprächsführung wirken. Für den Betrieb gehören weitere Fragen dazu: Kommt der Anruf auf der richtigen Nummer an? Ist die gewünschte Version des Agenten aktiv? Funktionieren Unterbrechungen, Weiterleitung und Datenübergabe?
 
-## So läuft ein Anruf ab
+Aircall unterscheidet in seiner Dokumentation zwischen dem integrierten Agententest und realen Anrufabläufen. Echte Weiterleitungen sowie die Protokollierung von Angaben und Integrationsantworten sind im integrierten Test nicht vollständig abgedeckt. **Unsere Empfehlung daraus: Gespräch und Telefonstrecke getrennt abnehmen.** Das ist ein Prüfvorgehen, keine Ferndiagnose einer bestimmten Störung.
 
-**1. Begrüssung mit KI-Kennzeichnung:** Der Assistent stellt sich als KI-Assistent vor. **2. Anliegen erfassen:** Er hört zu und erkennt das Ziel des Anrufs. **3. Erledigen oder weiterleiten:** Standardaufgaben führt er direkt aus, komplexe Fälle leitet er weiter oder plant einen Rückruf. **4. Zusammenfassung:** Jeder Anruf wird protokolliert und – bei Bedarf – ins CRM übertragen, damit ein Mensch nahtlos übernehmen kann.
+## Welche vier Punkte sollten wir prüfen?
 
-> **Human-in-the-Loop:** Der Voice Agent ersetzt nicht Ihr Team, sondern schützt dessen Zeit. Emotionale, rechtlich sensible oder komplexe Gespräche gehen immer an einen Menschen – der Agent bereitet sie nur optimal vor.
+### 1. Verständliche Gespräche
 
-## Nutzen für Schweizer KMU
+Verwenden Sie die Namen, Fachwörter und Dialekte aus Ihrem Alltag. Prüfen Sie eine Unterbrechung und eine knappe Antwort. Der Assistent soll gezielt nachfragen, bereits geklärte Angaben übernehmen und abgelehnte Vorschläge nicht erneut aufzählen. Eine höhere Sprechgeschwindigkeit allein behebt keine unpassenden Gesprächsschritte.
 
-- Kein verpasster Anruf mehr – auch abends und am Wochenende erreichbar.
-- Entlastung des Teams von Routine- und Terminanrufen.
-- Schnellere Reaktion auf Leads statt Rückruf-Warteschleifen.
-- Konsistente, dokumentierte Auskünfte statt Zettelwirtschaft.
-- Skalierbarkeit bei Anrufspitzen ohne zusätzliches Personal.
+### 2. Termine, die wirklich im Kalender stehen
 
-## Compliance: Kennzeichnung und Datenschutz
+Legen Sie Arbeitszeiten, Zeitzone, Feiertage, Terminlänge und zuständige Person fest. Der Assistent fragt freie Zeiten über die angebundene Aktion ab und bestätigt eine Buchung erst nach erfolgreicher Speicherung. Prüfen Sie auch einen inzwischen belegten Termin und ein nicht erreichbares Kalendersystem. Telefon- und Videoberatung müssen mit der vereinbarten Gesprächsart ankommen.
 
-In der Schweiz gilt: Anrufende müssen erkennen, dass sie mit einer KI sprechen – deshalb kennzeichnet sich ein seriöser Voice Agent zu Beginn. Gesprächsdaten unterliegen dem nDSG (und ggf. der DSGVO): Speicherort, Aufbewahrungsdauer und Zweck müssen geklärt und transparent sein. Aufzeichnungen sind nur mit passender Rechtsgrundlage und Hinweis zulässig. AgenticIT setzt Voice-Agenten grundsätzlich mit sichtbarer Kennzeichnung und dokumentiertem Datenschutzkonzept um.
+### 3. Eine nachvollziehbare Übergabe
 
-## Checkliste für den Start
+Das Team benötigt das Anliegen und den vereinbarten nächsten Schritt im richtigen Vorgang. Halten Sie fest, welche Angaben ins CRM gehören und wer sie bearbeitet. Die technische Annahme durch einen Zwischendienst und der gespeicherte CRM-Eintrag sind unterschiedliche Nachweise. Mehr dazu: [KI im Vertrieb und CRM-Übergabe](/blog/ki-automatisierung-vertrieb).
 
-- Welche Anruftypen machen den grössten Anteil aus?
-- Welche Aufgaben darf der Agent selbstständig erledigen?
-- Ab wann wird an einen Menschen übergeben?
-- Wohin fliessen die Gesprächsdaten (CRM, Kalender)?
-- Sind Kennzeichnung und nDSG-Grundlagen geklärt?
+### 4. Eine erreichbare menschliche Übernahme
+
+Testen Sie ausdrücklich den Wunsch «Ich möchte mit jemandem sprechen». Prüfen Sie auch den Fall, dass diese Person gerade nicht erreichbar ist. Dafür braucht es einen vereinbarten Ersatzweg, etwa eine gekennzeichnete Rückrufaufgabe. Der Assistent darf keine erfolgte Verbindung behaupten, wenn niemand übernommen hat.
+
+## Welche Daten brauchen wir für den Start?
+
+Sammeln Sie zunächst Aufgaben, erlaubte Antworten und Zuständigkeiten. Für die ersten Prüfungen genügen freigegebene Beispielszenarien. Der Prüfplan enthält keine Felder für Passwörter oder vollständige Kundendossiers.
+
+Der EDÖB erläutert, dass das Schweizer Datenschutzgesetz auch bei KI-gestützter Datenbearbeitung gilt und die Nutzung transparent sein muss. Vor einer Gesprächsaufzeichnung sind Zulässigkeit, Information und gegebenenfalls Einwilligung für den konkreten Einsatz zu klären; die Behörde beschreibt auch Ausnahmen. Eine freundliche Begrüssung ersetzt diese Abklärung nicht. Bei AgenticIT stellen sich kundenorientierte Assistenten zu Beginn als KI vor.
+
+## Wie erkennen wir, ob sich der Einsatz lohnt?
+
+Vergleichen Sie vergleichbare Zeiträume: Welche Anliegen wurden korrekt erledigt? Wo musste das Team nacharbeiten? Wie viel Bearbeitungszeit bleibt inklusive Kontrolle, Weiterleitung und Betrieb? Rechnen Sie Telefonie- und Anbieterkosten mit ein. Aus einer gefälligen Stimme entsteht noch keine nachgewiesene Ersparnis.
+
+Der **Prüfplan zum Mitnehmen** hilft, Erwartungen und beobachtete Ergebnisse nebeneinander festzuhalten. Den passenden Umfang und die Anbindungen planen wir im Rahmen unserer [KI-Entwicklung](/loesungen/ki-entwicklung) mit Ihrem Team.
