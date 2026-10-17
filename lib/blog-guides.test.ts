@@ -13,6 +13,8 @@ const guides = [
   "leadgenerierung-mit-ki-leitfaden",
   "ki-datenschutz-schweiz-ndsg",
   "ki-agenten-sicherheit-compliance",
+  "ki-agenten-praxisbeispiele-schweiz",
+  "ki-im-kundenservice-leitfaden",
   "ki-agenten",
   "neukundengewinnung-kmu-schweiz",
 ] as const

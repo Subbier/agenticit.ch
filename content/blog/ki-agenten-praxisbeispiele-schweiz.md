@@ -1,95 +1,83 @@
 ---
-title: "KI-Agenten in der Praxis: 9 konkrete Anwendungsfälle für Schweizer KMU"
+title: "KI-Agenten im Alltag"
 slug: "ki-agenten-praxisbeispiele-schweiz"
-description: "Von der Offert-Erstellung bis zum Support: 9 reale Einsatzfelder für KI-Agenten in Schweizer KMU – mit Nutzen, Aufwand und Compliance-Hinweisen."
+description: "Fünf mögliche Abläufe für Schweizer KMU: Anfragen, Offerten, Wissen, Marketing und Belege vorbereiten. Mit Einsatzkarte und einem Beispiel zum Ausprobieren."
 date: "2026-07-24"
+updated: "2026-10-17"
 category: "KI-Agenten"
-tags: ["ki agenten", "ki automatisierung", "kmu schweiz", "revops"]
+tags: ["KI-Agenten", "KMU", "Prozessautomatisierung", "Praxisbeispiele"]
 keywords: ["ki agenten", "ki agenten praxisbeispiele", "ki automatisierung kmu"]
-readingTime: 9
+readingTime: 5
+resource:
+  title: "Welche Aufgabe möchten Sie abgeben?"
+  copy: "Beschreiben Sie einen Ablauf, die benötigten Angaben und die Prüfung durch Ihr Team. Die Einsatzkarte lässt sich direkt bearbeiten."
+  href: "/vorlagen/AgenticIT-KI-Einsatzkarte.txt"
+  label: "Einsatzkarte speichern (.txt)"
+nextStep:
+  title: "Wo steckt Routine in Ihrem Alltag?"
+  copy: "Wählen Sie im Automatisierungs-Check Ihre Aufgaben. Mit eigenen Zeitangaben sehen Sie mögliche Entlastung und verbleibenden Aufwand."
+  href: "/automatisierungs-check"
+  label: "Automatisierungspotenzial prüfen"
+sources:
+  - label: "Anthropic: Einfache Abläufe und Agenten unterscheiden"
+    url: "https://www.anthropic.com/engineering/building-effective-agents"
+  - label: "NIST: KI-Verhalten und Fehler am Einsatzfall messen"
+    url: "https://airc.nist.gov/airmf-resources/playbook/measure/"
+faq:
+  - q: "Welche KI-Agenten-Beispiele passen zu einem KMU?"
+    a: "Mögliche Einstiege sind das Einordnen einer Kundenanfrage, ein Offertentwurf, die Suche in freigegebenen Unterlagen, ein Marketingentwurf oder das Vorbereiten von Belegen. Wählen Sie eine Aufgabe mit überprüfbarem Ergebnis. Die Beispiele in diesem Beitrag sind Planungsbeispiele."
+  - q: "Braucht jede Automatisierung einen KI-Agenten?"
+    a: "Für eine feste Übertragung zwischen Systemen reichen oft Regeln und ein Workflow. KI kann unterschiedlich formulierte Texte einordnen oder Entwürfe vorbereiten. Ein Agent wird interessant, wenn nächste Schritte je nach Situation ausgewählt werden müssen."
+  - q: "Wie viel Zeit sparen solche Abläufe?"
+    a: "Das muss am eigenen Ablauf gemessen werden. Vergleichen Sie heutige Bearbeitung mit verbleibender Arbeit, Kontrolle, Fehlerkorrektur und Pflege. Eine allgemeine Einsparquote lässt sich daraus nicht ableiten."
+  - q: "Können wir einen Ablauf zuerst ausprobieren?"
+    a: "Auf unserer KI-Entwicklungsseite gibt es ein interaktives Beispiel für eine Kundenanfrage. Es zeigt Vorbereitung und Teamprüfung sowie einen Stopp bei fehlender Zuständigkeit. Es verwendet vorgegebene Inhalte und ist keine Verbindung zu einem echten Kundensystem."
 ---
 
-«KI-Agenten» klingt nach Zukunftsmusik – ist aber längst produktiver Alltag. Ein KI-Agent ist keine Chat-Spielerei, sondern ein digitaler Mitarbeiter, der eigenständig Aufgaben plant, Systeme bedient und Ergebnisse liefert. Der Unterschied zu einem klassischen Chatbot: Ein Agent **handelt**, statt nur zu antworten.
+> **KI-Agenten können Anfragen einordnen, Informationen finden und Arbeit für Ihr Team vorbereiten.** Entscheidend ist eine konkrete Aufgabe mit klaren Daten, Befugnissen und einem überprüfbaren Ergebnis. Die folgenden fünf Abläufe sind eigene Planungsbeispiele für Schweizer KMU.
 
-In diesem Beitrag zeigen wir neun Einsatzfelder, die sich in Schweizer KMU bereits heute rechnen – mit einer ehrlichen Einschätzung zu Nutzen, Aufwand und den nötigen Leitplanken.
+## Welche Aufgaben kommen im Alltag infrage?
 
-## Was ist ein KI-Agent – kurz und präzise
+### 1. Kundenanfragen vorbereiten
 
-Ein **KI-Agent** kombiniert ein Sprachmodell mit Werkzeugen (Tools), Gedächtnis und einem Ziel. Er kann:
+Eine Nachricht kommt über die Website oder per E-Mail an. KI schlägt ein Thema vor, hält fehlende Angaben fest und bereitet die Übergabe vor. Eine feste Regel ordnet die zuständige Rolle zu. Fehlt diese Zuordnung, bleibt die Anfrage zur Klärung beim Team.
 
-- Informationen aus mehreren Quellen zusammenführen
-- Entscheidungen im vorgegebenen Rahmen treffen
-- Aktionen in Ihren Systemen auslösen (CRM, ERP, E-Mail, Kalender)
-- Ergebnisse dokumentieren und zur Freigabe vorlegen
+**Zu prüfen:** Ist das Anliegen richtig eingeordnet, und kann eine Person mit den vorhandenen Angaben weiterarbeiten? Auf unserer [KI-Entwicklungsseite können Sie diesen Anfrageweg ausprobieren](/loesungen/ki-entwicklung#beispiele).
 
-Wichtig für die Schweiz: Bei automatisierten Aktionen mit Aussenwirkung – etwa versendeten Mails oder publizierten Inhalten – gilt bei AgenticIT immer das Prinzip **Human-in-the-Loop**. Der Mensch behält die Freigabe.
+### 2. Eine Offerte entwerfen
 
-## Die 9 Anwendungsfälle im Überblick
+Aus freigegebenen Leistungsbausteinen und einer gepflegten Preisgrundlage entsteht ein Entwurf. Fehlende Angaben werden als offen markiert. Der Verkauf prüft Umfang, Preis und Zusagen und gibt den Versand frei.
 
-### 1. Angebots- und Offert-Erstellung
+**Zu prüfen:** Stimmen die verwendete Version und die enthaltenen Leistungen? Vergleichen Sie die gesamte Bearbeitung einschliesslich Korrekturen mit Ihrem bisherigen Vorgehen.
 
-Ein Agent zieht Kundendaten aus dem CRM, kombiniert sie mit Ihrer Preislogik und erstellt eine erste Offert-Version. Der Verkauf prüft, passt an und gibt frei.
+### 3. Internes Wissen auffindbar machen
 
-- **Nutzen:** 60–80 % weniger Zeit pro Offerte (Richtwert, projektabhängig)
-- **Aufwand:** mittel – Preislogik und Vorlagen müssen sauber definiert sein
-- **Compliance:** Freigabe durch den Menschen vor Versand
+Ein Assistent sucht in den Unterlagen, auf die die fragende Person zugreifen darf. Er bereitet eine Antwort mit Quellen vor. Widersprechen sich zwei Versionen, muss das Team die gültige Grundlage klären.
 
-### 2. Eingangs-Triage im Kundenservice
+**Zu prüfen:** Ist die Quelle aktuell und für diese Person freigegeben? Nehmen Sie auch eine Frage auf, für die Ihre Unterlagen keine Antwort enthalten.
 
-Jede eingehende Anfrage wird kategorisiert, priorisiert und mit einem Antwortvorschlag versehen. Dringende Fälle werden eskaliert.
+### 4. Marketinginhalte vorbereiten
 
-- **Nutzen:** schnellere Erstreaktion, weniger «verlorene» Tickets
-- **Compliance:** KI-generierte Antworten werden als solche gekennzeichnet
+KI erstellt aus einem freigegebenen Briefing einen Textentwurf. Zielgruppe, Angebot, Quellen und gewünschter nächster Schritt stehen im Briefing. Eine verantwortliche Person prüft Fakten, Ton und Nutzungsrechte und gibt die Veröffentlichung frei.
 
-### 3. Lead-Qualifizierung im Vertrieb
+**Zu prüfen:** Hilft der Inhalt bei einer konkreten Kundenfrage? Der [Marketing-Setup-Check](/marketing-setup-check) hilft, Angebot, Auftritt und Übergabe vor dem Kampagnenstart abzustimmen.
 
-Der Agent recherchiert eingehende Leads, reichert sie mit Firmendaten an und bewertet sie nach Ihren Kriterien. Der Vertrieb startet mit einer priorisierten Liste in den Tag.
+### 5. Belege für die Bearbeitung ordnen
 
-### 4. Terminkoordination
+Eine Anwendung liest Angaben aus einem Beleg und schlägt eine Zuordnung vor. Feste Prüfungen suchen nach fehlenden Feldern und möglichen Dubletten. Zuständige Mitarbeitende prüfen unklare Angaben und die weitere Verarbeitung.
 
-Ein Agent schlägt Termine vor, gleicht Kalender ab und bereitet die Bestätigung vor – die Buchung selbst wird bestätigt, nicht heimlich ausgeführt.
+**Zu prüfen:** Was passiert bei einem unleserlichen Beleg oder einem zweiten Eingang derselben Datei? Buchungen, Zahlungen und steuerliche Beurteilungen brauchen einen gesondert vereinbarten Ablauf.
 
-### 5. Rechnungs- und Belegvorbereitung
+## Wann reicht eine einfachere Lösung?
 
-Belege werden ausgelesen, kontiert und zur Prüfung vorgelegt. Die Buchung erfolgt nach menschlicher Kontrolle – mehr dazu im Beitrag [Buchhaltung automatisieren mit KI](/blog/buchhaltung-automatisieren-ki).
+Eine feste Feldübertragung lässt sich häufig als Workflow umsetzen. Bei wechselnden Texten kann ein KI-Schritt helfen. Ob dafür ein Agent nötig ist, wird anhand der Aufgabe entschieden. [Anthropic unterscheidet diese Ansätze und empfiehlt, mit der einfachsten passenden Lösung zu beginnen](https://www.anthropic.com/engineering/building-effective-agents). Der Grundlagenbeitrag stammt von 2024; konkrete Werkzeuge müssen aktuell geprüft werden.
 
-### 6. Content-Recherche und Entwürfe
+Für die Auswahl genügt zunächst die Einsatzkarte oben: Auslöser, gewünschtes Ergebnis, benötigte Quellen, erlaubte Aktionen und die Rolle für die Übernahme. Anbieter, Datenwege, Zugriffe und Aufbewahrung gehören vor der Umsetzung dazu. [KI und Datenschutz](/blog/ki-datenschutz-schweiz-ndsg) hilft bei der Vorbereitung.
 
-Der Agent recherchiert ein Thema, erstellt eine Gliederung und einen ersten Entwurf. Die redaktionelle Verantwortung bleibt beim Menschen – inklusive KI-Kennzeichnung.
+## Woran erkennen Sie einen sinnvollen Einstieg?
 
-### 7. Wissens-Assistent für Mitarbeitende
+Testen Sie vollständige und fehlende Angaben, widersprüchliches Wissen, doppelte Eingänge und einen Ausfall des Zielsystems. Halten Sie fest, welches Ergebnis Sie erwarten, was tatsächlich passiert und wer offene Punkte übernimmt.
 
-Ein interner Agent beantwortet Fragen zu Prozessen, Richtlinien und Dokumenten – auf Basis Ihrer eigenen, freigegebenen Wissensbasis.
+Das [NIST-Playbook zur Messung von KI-Systemen](https://airc.nist.gov/airmf-resources/playbook/measure/) beschreibt die Auswahl passender Prüffälle und Messgrössen. Es ist eine freiwillige Orientierung; die konkreten Prüffälle oben sind unsere Vorschläge.
 
-### 8. Reporting und Wochen-Zusammenfassungen
-
-KPIs aus verschiedenen Tools werden automatisch zusammengeführt und als lesbarer Report aufbereitet. Der Mensch kommentiert und versendet.
-
-### 9. Onboarding-Begleitung
-
-Neue Mitarbeitende oder Kundinnen werden Schritt für Schritt begleitet – mit personalisierten Checklisten und automatischen Erinnerungen.
-
-## Aufwand realistisch einschätzen
-
-Nicht jeder Anwendungsfall ist gleich schnell umgesetzt. Als Faustregel:
-
-| Anwendungsfall | Time-to-Value | Datenreife nötig |
-|---|---|---|
-| Support-Triage | schnell (2–4 Wochen) | mittel |
-| Reporting | schnell | hoch |
-| Offert-Erstellung | mittel | hoch |
-| Lead-Qualifizierung | mittel | mittel |
-| Wissens-Assistent | mittel | hoch (saubere Dokumente) |
-
-> Die Zeitangaben sind Erfahrungswerte und keine Garantie. Der grösste Hebel liegt fast nie im Modell, sondern in der Qualität Ihrer Daten und Prozesse.
-
-## Compliance: Die vier Leitplanken
-
-1. **KI-Kennzeichnung** bei allen kundenseitigen Agenten und Chatbots
-2. **Human-in-the-Loop** bei jeder Aktion mit Aussenwirkung
-3. **nDSG/DSGVO-Konformität** – Datenverarbeitung dokumentiert und minimiert
-4. **Keine Fake-Identitäten, kein Spam** – Transparenz als Grundprinzip
-
-## Fazit
-
-KI-Agenten sind kein Grossprojekt, das man «irgendwann» startet. Der pragmatische Weg beginnt mit **einem** klar abgegrenzten Anwendungsfall mit hohem Wiederholungsanteil – und wächst von dort. Einen Überblick über die Technologie dahinter gibt die Seite [Autonome KI-Agenten](/technologie/autonome-ki-agenten).
+Messen Sie aktive Bearbeitungszeit, Kontrolle, Fehlerkorrekturen und laufende Pflege. Freie Zeit ist zunächst zusätzliche Kapazität. Ob daraus weniger Ausgaben oder mehr betreute Kunden entstehen, hängt von der weiteren Nutzung ab. Der Check unten rechnet mit Ihren eigenen Angaben.
