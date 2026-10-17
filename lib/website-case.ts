@@ -1,22 +1,22 @@
+import type { AcquisitionPlanInput } from "./acquisition-planner"
+
 export const websiteCase = {
-  title: "Von der Frage zum nächsten Schritt.",
+  title: "Vom Anliegen zum eigenen Plan.",
+  summary: "Fünf Checks, eine Anfragenplanung und konkrete nächste Schritte.",
   description:
-    "Ein Einblick in die AgenticIT Website: Leistungsseiten, vier interaktive Checks und eigene Pläne helfen Besuchern, ihren nächsten Schritt einzuordnen.",
+    "Die eigene AgenticIT Website zeigt fünf Checks und eine Anfragenplanung. Mit eigenen Angaben einordnen, planen und freiwillig Kontakt aufnehmen.",
   intro:
-    "Auf unserer eigenen Website verbinden wir verständliche Leistungen mit nützlichen Entscheidungshilfen. Besucher wählen ihr Anliegen, nehmen eine erste Orientierung mit und entscheiden selbst über eine Kontaktaufnahme.",
-  flow: [
-    [
-      "Anliegen wählen",
-      "Eine konkrete Frage aus dem eigenen Betrieb aufnehmen",
-    ],
-    [
-      "Orientierung erhalten",
-      "Angaben einordnen und nächste Schritte sichtbar machen",
-    ],
-    ["Selbst entscheiden", "Den Plan nutzen oder freiwillig Kontakt aufnehmen"],
-  ],
-  checks: [
+    "Auf unserer Website führen konkrete Fragen zu einem nächsten Schritt. Mit fünf Checks und einer Anfragenplanung können Sie Ihren Betrieb einordnen, einen Plan mitnehmen und selbst entscheiden, ob Sie Unterstützung möchten.",
+  exampleInput: {
+    version: 1,
+    industryIds: [],
+    monthlyCustomers: 10,
+    closeRate: 25,
+    handlingMinutes: 15,
+  } satisfies AcquisitionPlanInput,
+  tools: [
     {
+      kind: "check",
       name: "Kundenreise-Check",
       question: "Wo sollten wir zuerst ansetzen?",
       copy: "Das eigene Anliegen einordnen und einen passenden Einstieg in Marketing, Sales oder digitale Abläufe finden.",
@@ -24,6 +24,7 @@ export const websiteCase = {
       label: "Meinen Einstieg finden",
     },
     {
+      kind: "check",
       name: "Marketing-Setup-Check",
       question: "Sind wir für passende Anfragen bereit?",
       copy: "Fünf Fragen zu Angebot, Auftritt, Konten, Messung und Übergabe. Daraus entsteht ein priorisierter Plan.",
@@ -31,6 +32,7 @@ export const websiteCase = {
       label: "Mein Marketing-Setup prüfen",
     },
     {
+      kind: "check",
       name: "Anfragen-Check",
       question: "Wer übernimmt unsere nächste Anfrage?",
       copy: "Eingang, Zuständigkeit, Reaktion, Nachfassen und Ergebnis betrachten. Bekannte Lücken und offene Fragen ordnen.",
@@ -38,29 +40,46 @@ export const websiteCase = {
       label: "Meinen Anfrageweg prüfen",
     },
     {
+      kind: "check",
+      name: "CRM-Ablauf-Check",
+      question: "Wo hakt die Datenübergabe?",
+      copy: "Datenübernahme, Zuständigkeit und Fehlerfälle für einen Ablauf prüfen. Der Plan bereitet die Abnahme mit Ihrem Team vor.",
+      href: "/crm-ablauf-check",
+      label: "Meinen CRM-Ablauf prüfen",
+    },
+    {
+      kind: "check",
       name: "Automatisierungs-Check",
       question: "Welche Routine könnten wir vereinfachen?",
       copy: "Eigene Aufgaben und Zeiten eintragen. Verbleibende Kontrolle und ein vorsichtigeres Szenario in die Einordnung einbeziehen.",
       href: "/automatisierungs-check",
       label: "Meinen Zeitaufwand prüfen",
     },
+    {
+      kind: "planner",
+      name: "Anfragenplanung",
+      question: "Wie viele Anfragen braucht unser Ziel?",
+      copy: "Mit Kundenziel, Abschlussquote und optionaler Bearbeitungszeit rechnen. Drei nächste Schritte für Marketing, Sales und Verwaltung festhalten.",
+      href: "/potenzial",
+      label: "Mein Anfrageziel planen",
+    },
   ],
   verification: [
     [
       "Bedienung",
-      "Schmale und breite Ansichten, Auswahl per Tastatur sowie das Öffnen von Fragen und Antworten prüfen.",
+      "Schmale und breite Ansichten, Auswahl per Tastatur sowie das Öffnen von Fragen und Antworten sind geprüft.",
     ],
     [
       "Ergebnislogik",
-      "Vorhandene, teilweise vorhandene, offene und ungeklärte Grundlagen unterscheiden. Im Zeitvergleich auch Kontrolle berücksichtigen.",
+      "Eingaben, Prioritäten und Rechenwege sind mit Prüffällen abgeglichen. Kontrollaufwand und unbekannte Angaben bleiben erkennbar.",
     ],
     [
       "Eigene Entscheidung",
-      "Ergebnis und Kontaktangebot getrennt zeigen. Aus einem Check entsteht nicht automatisch eine Kontaktanfrage.",
+      "Ergebnisse und speicherbare Pläne sind vor der Kontaktaufnahme zugänglich. Aus einem Check entsteht nicht automatisch eine Anfrage.",
     ],
     [
       "Öffentliche Wege",
-      "Leistungsseiten, Checks und weiterführende Informationen auf direkte Erreichbarkeit und passende Verweise prüfen.",
+      "Die veröffentlichten Leistungsseiten, Entscheidungshilfen und weiterführenden Verweise sind direkt aufgerufen und geprüft.",
     ],
   ],
   faqs: [
@@ -72,7 +91,7 @@ export const websiteCase = {
     {
       question: "Was kann ich selbst ausprobieren?",
       answer:
-        "Die vier verlinkten Checks sind öffentlich zugänglich. Sie können ein Anliegen einordnen, Grundlagen prüfen oder mit eigenen Zeitangaben rechnen. Die Ergebnisse dienen zur Orientierung für Ihren Betrieb.",
+        "Fünf Checks helfen bei Kundenreise, Marketing-Setup, Anfragebearbeitung, CRM-Ablauf und Automatisierung. Die Anfragenplanung übersetzt ein Kundenziel in benötigte Anfragen und geplanten Bearbeitungsaufwand. Alle sechs Entscheidungshilfen lassen sich mit eigenen Angaben ausprobieren.",
     },
     {
       question: "Entsteht durch einen Check automatisch eine Anfrage?",
@@ -82,7 +101,7 @@ export const websiteCase = {
     {
       question: "Welche Ergebnisse belegt dieser Einblick?",
       answer:
-        "Im Fokus stehen Bedienung, Eingabeprüfung, Ergebnislogik und öffentliche Erreichbarkeit. Geschäftsergebnisse wie qualifizierte Anfragen, Termine und Aufträge benötigen eigene bestätigte Quellen und einen passenden Messzeitraum.",
+        "Geprüft sind Bedienung, Eingaben, Ergebnislogik und öffentliche Erreichbarkeit. Das Rechenbeispiel nutzt frei gewählte Annahmen. Geschäftsergebnisse wie qualifizierte Anfragen, Termine und Aufträge benötigen eigene bestätigte Quellen und einen passenden Messzeitraum.",
     },
     {
       question: "Können Sie so einen Ablauf für unser Unternehmen umsetzen?",

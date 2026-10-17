@@ -1,18 +1,27 @@
-import Link from "next/link"
 import { ArrowDown, ArrowUpRight, ChevronRight } from "lucide-react"
 import { JourneyShell } from "@/components/journey/shell"
 import { websiteCase } from "@/lib/website-case"
+import {
+  calculateAcquisitionPlan,
+  formatPlanningNumber,
+} from "@/lib/acquisition-planner"
 import { caseStudyFaqs } from "@/lib/seo-faqs"
 import shared from "@/components/journey/journey.module.css"
 import ui from "@/components/journey/core-service-page.module.css"
 import styles from "@/components/journey/website-case.module.css"
 
 export function CaseStudiesPage() {
+  const example = calculateAcquisitionPlan(websiteCase.exampleInput)
+  if (!example || example.handlingMinutes === null)
+    throw new Error("The website case needs a valid planning example")
+  const input = example.input
+  const minutesPerInquiry = websiteCase.exampleInput.handlingMinutes
+  const fmt = formatPlanningNumber
   return (
     <JourneyShell>
-      <main className={`${shared.container} ${ui.main}`}>
+      <main className={`${shared.container} ${ui.main} ${styles.page}`}>
         <nav className={ui.breadcrumb} aria-label="Seitenpfad">
-          <Link href="/">Startseite</Link>
+          <a href="/">Startseite</a>
           <ChevronRight size={13} aria-hidden="true" />
           <span aria-current="page">Praxisbeispiel</span>
         </nav>
@@ -23,14 +32,15 @@ export function CaseStudiesPage() {
             </span>
             <h1 id="case-title">{websiteCase.title}</h1>
             <p className={ui.lede}>{websiteCase.intro}</p>
-            <div className={ui.actions}>
-              <Link href="#results" className={shared.button}>
-                Checks selbst ausprobieren
-                <ArrowDown size={17} aria-hidden="true" />
-              </Link>
-              <Link href="#implementation" className={ui.quietLink}>
-                Einblick in die Prüfung
-              </Link>
+            <div className={`${ui.actions} ${styles.heroActions}`}>
+              <a href="/potenzial" className={shared.button}>
+                Mit eigenen Zahlen planen
+                <ArrowUpRight size={17} aria-hidden="true" />
+              </a>
+              <a href="#results" className={ui.quietLink}>
+                Passenden Check finden
+                <ArrowDown size={15} aria-hidden="true" />
+              </a>
             </div>
             <p className={ui.note}>
               Prüfstand: <time dateTime="2026-10-17">17. Oktober 2026</time>
@@ -38,30 +48,62 @@ export function CaseStudiesPage() {
           </div>
           <aside
             className={ui.visual}
-            aria-label="Nutzerweg auf der AgenticIT Website"
+            aria-label="Beispiel aus der Anfragenplanung"
           >
             <div className={ui.visualTop}>
-              <span>Orientierung vor Kontakt</span>
-              <span className={ui.exampleLabel}>Eigenes Projekt</span>
+              <span>Beispiel · Anfragenplanung</span>
+              <span className={ui.exampleLabel}>Annahmen</span>
             </div>
-            <h2>Ihr Anliegen gibt die Richtung vor.</h2>
-            <ol className={ui.flow}>
-              {websiteCase.flow.map(([title, copy], index) => (
-                <li key={title}>
-                  <span className={ui.flowNumber} aria-hidden="true">
-                    0{index + 1}
-                  </span>
-                  <div>
-                    <strong>{title}</strong>
-                    <p>{copy}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-            <div className={ui.visualFoot}>
-              Leistungen, Entscheidungshilfen und nächste Schritte sind
-              miteinander verbunden.
-            </div>
+            <h2>Vom Kundenziel zum Zeitbedarf.</h2>
+            <dl className={styles.exampleInputs}>
+              <div>
+                <dt>Ziel pro Monat</dt>
+                <dd>{fmt(input.monthlyCustomers)} Neukunden</dd>
+              </div>
+              <div>
+                <dt>Abschlussquote</dt>
+                <dd>{fmt(input.closeRate)} %</dd>
+              </div>
+              <div>
+                <dt>Je Anfrage</dt>
+                <dd>{fmt(minutesPerInquiry)} Minuten</dd>
+              </div>
+            </dl>
+            <dl className={styles.exampleResults}>
+              <div>
+                <dt>Passende Anfragen</dt>
+                <dd>
+                  <strong>{fmt(example.requiredInquiries)}</strong>
+                  <span>im Planungsmonat</span>
+                </dd>
+              </div>
+              <div>
+                <dt>Zeitbedarf</dt>
+                <dd>
+                  <strong>{fmt(example.handlingMinutes / 60)}</strong>
+                  <span>Stunden Bearbeitung</span>
+                </dd>
+              </div>
+            </dl>
+            <details className={styles.calculation}>
+              <summary>
+                Rechenweg ansehen{" "}
+                <span className={styles.toggle} aria-hidden="true" />
+              </summary>
+              <p>
+                {fmt(input.monthlyCustomers)} × 100 ÷ {fmt(input.closeRate)} ={" "}
+                {fmt(example.requiredInquiries)} passende Anfragen.
+              </p>
+              <p>
+                {fmt(example.requiredInquiries)} × {fmt(minutesPerInquiry)} ={" "}
+                {fmt(example.handlingMinutes)} Minuten, also{" "}
+                {fmt(example.handlingMinutes / 60)} Stunden geplanter
+                Bearbeitungsaufwand.
+              </p>
+            </details>
+            <p className={styles.exampleNote}>
+              Frei gewählte Planungswerte für einen Beispielmonat.
+            </p>
           </aside>
         </section>
         <section
@@ -75,9 +117,9 @@ export function CaseStudiesPage() {
               Ein klarer Einstieg in ein breites Angebot.
             </h2>
             <p>
-              Marketing, Sales und Administration greifen im Betrieb ineinander.
-              Auf der Website soll trotzdem verständlich sein, wo Besucher mit
-              ihrem konkreten Anliegen beginnen können. Dafür führen die
+              Marketing, Sales und Verwaltung greifen im Betrieb ineinander. Auf
+              der Website soll trotzdem verständlich sein, wo Besucher mit ihrem
+              konkreten Anliegen beginnen können. Dafür führen die
               Leistungsseiten zu passenden Checks und weiterführenden
               Informationen.
             </p>
@@ -100,15 +142,15 @@ export function CaseStudiesPage() {
             </p>
           </div>
           <div className={styles.checks}>
-            {websiteCase.checks.map((check) => (
+            {websiteCase.tools.map((check) => (
               <article key={check.href}>
                 <span>{check.name}</span>
                 <h3>{check.question}</h3>
                 <p>{check.copy}</p>
-                <Link href={check.href}>
+                <a href={check.href}>
                   {check.label}
                   <ArrowUpRight size={16} aria-hidden="true" />
-                </Link>
+                </a>
               </article>
             ))}
           </div>
@@ -122,9 +164,9 @@ export function CaseStudiesPage() {
             <span className={shared.eyebrow}>Einblick in die Prüfung</span>
             <h2 id="case-proof-title">Der ganze Nutzerweg zählt.</h2>
             <p>
-              Für diesen Einblick betrachten wir Bedienung, Ergebnislogik und
-              Erreichbarkeit. Eingaben, Ergebnis und freiwilliger Kontakt sind
-              getrennte Schritte.
+              Geprüft sind Bedienung, Eingaben, Ergebnislogik und
+              Erreichbarkeit. Ergebnis und freiwilliger Kontakt sind getrennte
+              Schritte.
             </p>
           </div>
           <div className={styles.verification}>
@@ -152,7 +194,7 @@ export function CaseStudiesPage() {
               <details key={faq.question}>
                 <summary>
                   {faq.question}
-                  <span aria-hidden="true">+</span>
+                  <span className={styles.toggle} aria-hidden="true" />
                 </summary>
                 <p>{faq.answer}</p>
               </details>
@@ -169,21 +211,24 @@ export function CaseStudiesPage() {
               mit Ihrem Team.
             </p>
           </div>
-          <Link className={shared.button} href="/kundenreise-check">
-            Unverbindlichen Check starten
+          <a
+            className={`${shared.button} ${styles.finalAction}`}
+            href="/kundenreise-check"
+          >
+            Check starten
             <ArrowUpRight size={17} aria-hidden="true" />
-          </Link>
+          </a>
         </section>
         <nav className={ui.related} aria-label="Weiterführende Informationen">
           <span>Mehr zum Vorgehen</span>
-          <Link href="/zusammenarbeit">
+          <a href="/zusammenarbeit">
             So arbeiten wir
             <ArrowUpRight size={16} aria-hidden="true" />
-          </Link>
-          <Link href="/pakete">
+          </a>
+          <a href="/pakete">
             Services im Überblick
             <ArrowUpRight size={16} aria-hidden="true" />
-          </Link>
+          </a>
         </nav>
       </main>
     </JourneyShell>

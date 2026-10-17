@@ -13,6 +13,7 @@ import { websiteCase } from "@/lib/website-case"
 export const metadata: Metadata = createPageMetadata({
   ...pageSeo["case-studies"],
   path: "/case-studies",
+  modifiedTime: "2026-10-17",
 })
 
 export default function Page() {
@@ -33,7 +34,7 @@ export default function Page() {
             dateModified: "2026-10-17",
             mainEntity: {
               "@type": "ItemList",
-              itemListElement: websiteCase.checks.map((check, index) => ({
+              itemListElement: websiteCase.tools.map((check, index) => ({
                 "@type": "ListItem",
                 position: index + 1,
                 name: check.name,

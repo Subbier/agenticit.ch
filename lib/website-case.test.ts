@@ -1,5 +1,7 @@
 import assert from "node:assert/strict"
 import test from "node:test"
+import { websiteCase } from "./website-case"
+import { calculateAcquisitionPlan } from "./acquisition-planner"
 import {
   caseStudyFaqs,
   pageSeo,
@@ -34,7 +36,15 @@ test("the public case page does not present unverified results, testimonials or 
   )
 })
 
-test("the website case links the four real checks and describes verification limits", async () => {
+test("the website case links five checks plus the planner and describes verification limits", async () => {
+  assert.equal(
+    websiteCase.tools.filter((tool) => tool.kind === "check").length,
+    5,
+  )
+  assert.equal(
+    websiteCase.tools.filter((tool) => tool.kind === "planner").length,
+    1,
+  )
   const html = await (await fetch(new URL("/case-studies", baseUrl))).text()
   const main = html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/)?.[1] ?? ""
   for (const path of [
@@ -42,6 +52,8 @@ test("the website case links the four real checks and describes verification lim
     "/marketing-setup-check",
     "/anfragen-check",
     "/automatisierungs-check",
+    "/crm-ablauf-check",
+    "/potenzial",
   ])
     assert.ok(main.includes(`href="${path}"`), path)
   assert.ok(main.includes("Geschäftsergebnisse"))
@@ -53,6 +65,15 @@ test("the website case links the four real checks and describes verification lim
     ),
   ].flatMap(([, json]) => JSON.parse(json))
   assert.ok(data.some((entry) => entry["@type"] === "CollectionPage"))
+  const collection = data.find((entry) => entry["@type"] === "CollectionPage")
+  const items = collection.mainEntity.itemListElement
+  assert.equal(items.length, 6)
+  assert.deepEqual(
+    items.map((item: { position: number }) => item.position),
+    [1, 2, 3, 4, 5, 6],
+  )
+  for (const item of items)
+    assert.ok(main.includes(`href="${new URL(item.url).pathname}"`))
   assert.ok(
     !data.some((entry) =>
       ["Review", "AggregateRating"].includes(entry["@type"]),
@@ -63,6 +84,22 @@ test("the website case links the four real checks and describes verification lim
   assert.equal(faq.mainEntity.length, 5)
   for (const entry of faq.mainEntity)
     assert.ok(visible.includes(entry.acceptedAnswer.text))
+})
+
+test("the visible planning example uses the existing calculator and labels its assumptions", async () => {
+  const result = calculateAcquisitionPlan(websiteCase.exampleInput)
+  assert.ok(result)
+  assert.equal(result.requiredInquiries, 40)
+  assert.equal(result.handlingMinutes, 600)
+  const html = await (await fetch(new URL("/case-studies", baseUrl))).text()
+  const main = html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/)?.[1] ?? ""
+  assert.match(main, /Frei gewählte Planungswerte/)
+  assert.match(main, /Rechenweg ansehen/)
+  assert.match(main, /href="\/potenzial"/)
+  const visible = main.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ")
+  assert.match(visible, /Passende Anfragen\s+40/)
+  assert.match(visible, /Zeitbedarf\s+10\s+Stunden/)
+  assert.doesNotMatch(visible, /vier Checks|Vier Checks|Die vier verlinkten/)
 })
 
 test("shared case references do not keep advertising the old unsupported results", () => {

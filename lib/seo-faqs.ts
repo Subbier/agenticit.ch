@@ -294,8 +294,7 @@ export const serviceRelatedLinks = {
     {
       label: "Praxisbeispiel: AgenticIT Website",
       href: "/case-studies",
-      description:
-        "Vier Checks, eigene Pläne und ein nachvollziehbarer Nutzerweg.",
+      description: websiteCase.summary,
     },
   ],
   "ai-agents": [
@@ -313,16 +312,14 @@ export const serviceRelatedLinks = {
     {
       label: "Praxisbeispiel: AgenticIT Website",
       href: "/case-studies",
-      description:
-        "Vier Checks, eigene Pläne und ein nachvollziehbarer Nutzerweg.",
+      description: websiteCase.summary,
     },
   ],
   "smart-apps": [
     {
       label: "Praxisbeispiel: AgenticIT Website",
       href: "/case-studies",
-      description:
-        "Vier Checks, eigene Pläne und ein nachvollziehbarer Nutzerweg.",
+      description: websiteCase.summary,
     },
     {
       label: "AI Agents",
@@ -386,8 +383,7 @@ export const servicesRelatedLinks = [
   {
     label: "Praxisbeispiel: AgenticIT Website",
     href: "/case-studies",
-    description:
-      "Vier Checks, eigene Pläne und ein nachvollziehbarer Nutzerweg.",
+    description: websiteCase.summary,
   },
 ] as const
 
@@ -498,8 +494,7 @@ export const pageSeo = {
   },
   "case-studies": {
     title: "Praxisbeispiel: AgenticIT Website mit interaktiven Checks",
-    description:
-      "Einblick in die eigene AgenticIT Website: vier Checks, konkrete Orientierung und freiwillige Kontaktaufnahme. Nutzerweg und Prüfumfang direkt nachvollziehen.",
+    description: websiteCase.description,
     keywords: [
       "AgenticIT Praxisbeispiel",
       "Website mit Lead Magneten",
