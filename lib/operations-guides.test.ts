@@ -71,7 +71,7 @@ for (const guide of guides) {
     const response = await fetch(new URL(guide.resource, baseUrl))
     assert.equal(response.status, 200)
     const text = await response.text()
-    assert.equal(text, readFileSync(`public${guide.resource}`, "utf8"))
+    assert.equal(text, readFileSync(`content/downloads/${guide.resource.split("/").pop()}`, "utf8"))
     for (const term of guide.terms) assert.ok(text.includes(term), term)
     assert.ok(text.includes("nicht automatisch"))
     assert.ok(text.includes("Keine Passwörter"))

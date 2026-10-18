@@ -11,7 +11,7 @@ import { buildJourneyPlan } from "./journey"
 const baseUrl = process.env.SITE_TEST_BASE_URL ?? "http://127.0.0.1:3105"
 
 test("the project start plan covers scope, access, acceptance and the handover without collecting secrets", () => {
-  const text = readFileSync(`public${projectStartResource.href}`, "utf8")
+  const text = readFileSync(`content/downloads/${projectStartResource.filename}`, "utf8")
   assert.equal(projectStartStages.length, 5)
   assert.equal(new Set(projectStartStages.map((s) => s.id)).size, 5)
   for (const term of [
@@ -78,7 +78,7 @@ test("the public project start worksheet matches its editable original", async (
   assert.equal(response.status, 200)
   assert.deepEqual(
     Buffer.from(await response.arrayBuffer()),
-    readFileSync(`public${projectStartResource.href}`),
+    readFileSync(`content/downloads/${projectStartResource.filename}`),
   )
 })
 
@@ -93,7 +93,7 @@ test("the download response is a named attachment while the separate view stays 
   )
   assert.deepEqual(
     Buffer.from(await download.arrayBuffer()),
-    readFileSync(`public${projectStartResource.href}`),
+    readFileSync(`content/downloads/${projectStartResource.filename}`),
   )
   for (const path of [
     projectStartResource.href,

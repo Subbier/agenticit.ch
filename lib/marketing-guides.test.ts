@@ -82,7 +82,7 @@ test("advertising readers can reuse the complete existing acquisition plan", asy
   const response = await fetch(new URL(post.resource!.href, baseUrl))
   assert.equal(response.status, 200)
   const text = await response.text()
-  assert.equal(text, readFileSync(`public${post.resource!.href}`, "utf8"))
+  assert.equal(text, readFileSync(`content/downloads/${post.resource!.href.split("/").pop()}`, "utf8"))
   for (const term of [
     "Kanal und Begründung",
     "Kostenbestandteile",

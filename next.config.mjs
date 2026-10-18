@@ -93,6 +93,7 @@ const nextConfig = {
   // → ENOENT "Helvetica.afm" → "Analyse konnte nicht erstellt werden".
   // Diese Includes erzwingen, dass die Dateien ins /api/analyse-Bundle gelangen.
   outputFileTracingIncludes: {
+    "/vorlagen/[filename]": ["./content/downloads/*.txt"],
     "/api/analyse": ["./node_modules/pdfkit/js/data/**/*"],
     "/api/analyse/route": ["./node_modules/pdfkit/js/data/**/*"],
   },

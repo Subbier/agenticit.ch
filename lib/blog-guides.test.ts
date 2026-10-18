@@ -131,7 +131,7 @@ test("the website briefing is a complete public text download with no contact ga
   const body = await response.text()
   assert.equal(
     body,
-    readFileSync("public/vorlagen/AgenticIT-Website-Briefing.txt", "utf8"),
+    readFileSync("content/downloads/AgenticIT-Website-Briefing.txt", "utf8"),
   )
   for (const term of [
     "ZIELKUNDEN",
@@ -188,7 +188,7 @@ for (const [slug, filename] of [
     assert.equal(response.status, 200)
     assert.match(response.headers.get("content-type") ?? "", /text\/plain/)
     const body = await response.text()
-    assert.equal(body, readFileSync(`public/vorlagen/${filename}`, "utf8"))
+    assert.equal(body, readFileSync(`content/downloads/${filename}`, "utf8"))
     assert.ok(body.split("\n").length >= 40)
     assert.ok(body.includes("Keine Passwörter"))
     assert.ok(body.includes("nicht automatisch an uns gesendet"))

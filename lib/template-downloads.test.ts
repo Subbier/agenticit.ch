@@ -4,14 +4,14 @@ import { readdirSync, readFileSync } from "node:fs"
 import { getAllPosts } from "./blog"
 
 const baseUrl = process.env.SITE_TEST_BASE_URL ?? "http://127.0.0.1:3105"
-const files = readdirSync("public/vorlagen").filter((file) =>
+const files = readdirSync("content/downloads").filter((file) =>
   file.endsWith(".txt"),
 )
 
 for (const filename of files) {
   test(`${filename} explicitly downloads byte-for-byte while both reading variants stay inline`, async () => {
     const path = `/vorlagen/${filename}`
-    const original = readFileSync(`public${path}`)
+    const original = readFileSync(`content/downloads/${filename}`)
     const download = await fetch(new URL(`${path}?download=1`, baseUrl))
     assert.equal(download.status, 200)
     assert.match(download.headers.get("content-type") ?? "", /text\/plain/)
