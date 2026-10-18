@@ -1,6 +1,7 @@
 import nodemailer from "nodemailer"
 import { createFeedbackHandler } from "@/lib/website-feedback-handler"
 import { feedbackMailText } from "@/lib/website-feedback"
+import { isProductionDeployment } from "@/lib/deployment-environment"
 
 export const runtime = "nodejs"
 
@@ -23,7 +24,7 @@ export const POST = createFeedbackHandler(async (answers, receiptId) => {
     disableUrlAccess: true,
   })
   const recipient = "sr@agenticit.ch"
-  const isProduction = process.env.VERCEL_ENV === "production"
+  const isProduction = isProductionDeployment(process.env)
   const result = await transport.sendMail({
     from: { name: "AgenticIT", address: SMTP_USER },
     to: recipient,

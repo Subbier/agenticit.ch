@@ -5,7 +5,7 @@ export const companyVideo = {
   path: "/firmenvideo",
   src: "/videos/agenticit-firmenvideo.mp4?v=3",
   thumbnail: "/videos/agenticit-thumbnail.jpg?v=4",
-  subtitles: "/videos/agenticit-firmenvideo-v3.de.vtt",
+  subtitles: "/firmenvideo/untertitel?v=3",
   durationSeconds: 58.1,
   // First public deployment of the supplied third version, not today's build.
   publishedAt: "2026-10-16T15:33:45.971Z",

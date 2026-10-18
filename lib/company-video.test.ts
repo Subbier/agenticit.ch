@@ -2,9 +2,11 @@ import assert from "node:assert/strict"
 import test from "node:test"
 import { readFileSync } from "node:fs"
 import { createHash } from "node:crypto"
+import { companyVideo } from "./company-video"
 
 const baseUrl = process.env.SITE_TEST_BASE_URL ?? "http://127.0.0.1:3105"
-const captionPath = "/videos/agenticit-firmenvideo-v3.de.vtt"
+const captionPath = companyVideo.subtitles
+const captionFilePath = "public/videos/agenticit-firmenvideo-v3.de.vtt"
 const sourceHash =
   "3880e2908ec36e131d0e594fa08ddabecc6fa34afc256d4699091c3a84cad8d9"
 
@@ -43,7 +45,10 @@ test("the German subtitle file has readable, ordered cues within the measured vi
   assert.equal(response.status, 200)
   assert.match(response.headers.get("content-type") ?? "", /text\/vtt/)
   const vtt = await response.text()
-  assert.equal(vtt, readFileSync(`public${captionPath}`, "utf8"))
+  assert.equal(
+    vtt,
+    readFileSync(captionFilePath, "utf8"),
+  )
   const rows = cues(vtt)
   assert.ok(rows.length >= 10)
   for (const [index, cue] of rows.entries()) {
@@ -117,7 +122,7 @@ test("the dedicated watch page has one video, a matching transcript and factual 
   )
   assert.equal(video.interactionStatistic, undefined)
   assert.equal(video.aggregateRating, undefined)
-  const vtt = readFileSync(`public${captionPath}`, "utf8")
+  const vtt = readFileSync(captionFilePath, "utf8")
   const text = cues(vtt)
     .map((cue) => cue.lines.join(" "))
     .join(" ")

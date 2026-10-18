@@ -39,6 +39,7 @@ import { ConsentBanner } from "@/components/site/consent-banner"
 import { ConsentTags } from "@/components/site/consent-tags"
 import { WebsiteFeedback } from "@/components/site/website-feedback"
 import { CONSENT_DEFAULT_SCRIPT } from "@/lib/consent"
+import { usesVercelTelemetry } from "@/lib/deployment-environment"
 import { company } from "@/lib/company"
 import {
   organizationJsonLd,
@@ -108,8 +109,8 @@ export default function RootLayout({
         <ChatbotWidget />
         <ConsentBanner />
         <WebsiteFeedback />
-        <Analytics />
-        <SpeedInsights />
+        {usesVercelTelemetry(process.env) && <Analytics />}
+        {usesVercelTelemetry(process.env) && <SpeedInsights />}
       </body>
     </html>
   )
