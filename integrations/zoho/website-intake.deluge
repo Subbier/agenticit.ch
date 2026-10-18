@@ -1,0 +1,323 @@
+map agenticit_website_intake(map payload)
+{
+// Keep the separately verified legacy analysis sender on its existing action.
+if(payload.get("source") == null && payload.get("goal") == "agentische-analyse" && payload.get("analysis") != null)
+{
+	return {"ok":true,"state":"legacy_passthrough"};
+}
+// Only the AgenticIT company website uses this branch of the existing flow.
+preview = payload.get("_preview") == true;
+fixtures = ifnull(payload.get("_fixtures"),Map());
+sources = {"home","ai-agents","revops","excellence","omnichannel","intelligence","smart-apps","case-studies","blog","potenzialrechner","gtm-checkliste","journey-check","automation-check","marketing-setup-check","anfragen-check","crm-ablauf-check","industry-page","website-callback","contact-page"};
+source = ifnull(payload.get("source"),"").toString();
+name = ifnull(payload.get("name"),"").toString().trim();
+email = ifnull(payload.get("email"),"").toString().trim().toLowerCase();
+phone = ifnull(payload.get("phone"),"").toString().trim();
+company = ifnull(payload.get("company"),"").toString().trim();
+message = ifnull(payload.get("message"),"").toString();
+goal = ifnull(payload.get("goal"),"").toString();
+contactMethod = ifnull(payload.get("contactMethod"),"email").toString();
+submittedAt = ifnull(payload.get("submittedAt"),"").toString();
+followUpTask = ifnull(payload.get("followUpTask"),"Website-Anfrage persönlich prüfen").toString();
+if(!sources.contains(source) || payload.get("consent") != true || name.length() < 2 || email.length() < 5 || !email.contains("@") || submittedAt.length() < 20 || contactMethod != "email" && contactMethod != "phone")
+{
+	return {"ok":false,"state":"invalid_website_context"};
+}
+paths = {"contact-page":"/kontakt","journey-check":"/kundenreise-check","automation-check":"/automatisierungs-check","marketing-setup-check":"/marketing-setup-check","anfragen-check":"/anfragen-check","crm-ablauf-check":"/crm-ablauf-check","potenzialrechner":"/potenzial","blog":"/blog","industry-page":"/branchen","case-studies":"/case-studies"};
+pagePath = ifnull(paths.get(source),"/");
+callback = payload.get("callback");
+if(callback != null)
+{
+	callbackPath = ifnull(callback.get("path"),"").toString();
+	if(callbackPath.length() <= 240 && callbackPath.matches("/[a-z0-9/-]*"))
+	{
+		pagePath = callbackPath;
+	}
+}
+landingpage = "https://agenticit.ch" + pagePath;
+requestKey = zoho.encryption.sha256(email + "|" + source + "|" + submittedAt + "|" + message + "|" + name + "|" + phone + "|" + company + "|" + goal + "|" + contactMethod);
+marker = "AgenticIT-Website-Eingang: " + requestKey;
+packet = marker + "\nQuelle: " + source + "\nSeite: " + landingpage + "\nEingang (UTC): " + submittedAt + "\nName: " + name + "\nE-Mail: " + email + "\nTelefon: " + phone + "\nFirma: " + company + "\nAnliegen: " + goal + "\nGewünschter Kontaktweg: " + contactMethod + "\nBearbeitung der Anfrage bestätigt; keine allgemeine Marketing-Freigabe.\nPrüfauftrag: " + followUpTask + "\n\n" + message;
+if(packet.length() > 31000 || followUpTask.length() > 255)
+{
+	return {"ok":false,"state":"field_limit_without_truncation","requestKey":requestKey};
+}
+currentOwner = "991895000000542001";
+if(!preview)
+{
+	currentUsersResponse = invokeurl
+	[
+		url :"https://www.zohoapis.eu/crm/v8/users?type=CurrentUser"
+		type :GET
+		connection:"zoho_crm"
+	];
+	currentUsers = currentUsersResponse.get("users");
+	if(currentUsers == null || currentUsers.size() != 1)
+	{
+		return {"ok":false,"state":"connection_identity_unverified","requestKey":requestKey};
+	}
+	currentUser = currentUsers.get(0);
+	if(currentUser.get("id").toString() != currentOwner || currentUser.get("email").toString().toLowerCase() != "sr@agenticit.ch" || currentUser.get("status") != "active")
+	{
+		return {"ok":false,"state":"connection_identity_mismatch","requestKey":requestKey};
+	}
+}
+candidates = List();
+if(preview)
+{
+	candidates = ifnull(fixtures.get("leads"),List());
+}
+else
+{
+	leadSearch = invokeurl
+	[
+		url :"https://www.zohoapis.eu/crm/v8/Leads/search"
+		type :GET
+		parameters:{"email":email,"per_page":"200"}
+		detailed:true
+		connection:"zoho_crm"
+	];
+	if(leadSearch.get("responseCode") == 200)
+	{
+		leadSearchBody = leadSearch.get("responseText").toString().toMap();
+		if(leadSearchBody.get("info") != null && leadSearchBody.get("info").get("more_records") == true)
+		{
+			return {"ok":false,"state":"ambiguous_search_page","requestKey":requestKey};
+		}
+		candidates = ifnull(leadSearchBody.get("data"),List());
+	}
+	else if(leadSearch.get("responseCode") != 204)
+	{
+		return {"ok":false,"state":"lead_lookup_failed","requestKey":requestKey};
+	}
+}
+matches = List();
+for each  candidate in candidates
+{
+	if(ifnull(candidate.get("Email"),"").toString().trim().toLowerCase() == email)
+	{
+		matches.add(candidate);
+	}
+}
+disposition = "create";
+reason = "";
+leadId = "";
+taskOwner = currentOwner;
+existing = Map();
+if(matches.size() > 1)
+{
+	disposition = "manual_review";
+	reason = "Mehrere passende Datensätze: Kundenkontext persönlich klären. Kein Lead überschrieben.";
+}
+else if(matches.size() == 1)
+{
+	existing = matches.get(0);
+	previousPage = ifnull(existing.get("Funnel_Landingpage"),"").toString();
+	previousOwner = existing.get("Owner");
+	if(existing.get("Firma_Gruppe") == "AgenticIT" && existing.get("Kunde") == null && (previousPage == "https://agenticit.ch" || previousPage.startsWith("https://agenticit.ch/")) && previousOwner != null && previousOwner.get("id") != null)
+	{
+		disposition = "update";
+		leadId = existing.get("id").toString();
+		taskOwner = previousOwner.get("id").toString();
+	}
+	else
+	{
+		disposition = "manual_review";
+		reason = "Bestehender Kundenkontext oder Zuständigkeit nicht eindeutig AgenticIT zugeordnet. Kein Lead überschrieben.";
+	}
+}
+if(name.length() > 80 || email.length() > 100 || phone.length() > 30 || company.length() > 200 || landingpage.length() > 200)
+{
+	disposition = "manual_review";
+	reason = "Kontaktangaben überschreiten ein CRM-Feldlimit. Vollständige Angaben in dieser Aufgabe; kein Lead gekürzt oder überschrieben.";
+	leadId = "";
+	taskOwner = currentOwner;
+}
+subject = "Website-Anfrage prüfen [" + requestKey + "]";
+existingTasks = List();
+if(preview)
+{
+	existingTasks = ifnull(fixtures.get("tasks"),List());
+}
+else
+{
+	taskSearch = invokeurl
+	[
+		url :"https://www.zohoapis.eu/crm/v8/Tasks/search"
+		type :GET
+		parameters:{"criteria":"(Subject:equals:" + subject + ")","per_page":"200"}
+		detailed:true
+		connection:"zoho_crm"
+	];
+	if(taskSearch.get("responseCode") == 200)
+	{
+		taskSearchBody = taskSearch.get("responseText").toString().toMap();
+		if(taskSearchBody.get("info") != null && taskSearchBody.get("info").get("more_records") == true)
+		{
+			return {"ok":false,"state":"ambiguous_task_page","requestKey":requestKey};
+		}
+		existingTasks = ifnull(taskSearchBody.get("data"),List());
+	}
+	else if(taskSearch.get("responseCode") != 204)
+	{
+		return {"ok":false,"state":"task_lookup_failed","requestKey":requestKey};
+	}
+}
+matchingTasks = List();
+for each  existingTask in existingTasks
+{
+	if(existingTask.get("Subject") == subject && ifnull(existingTask.get("Description"),"").toString().startsWith(marker))
+	{
+		matchingTasks.add(existingTask);
+	}
+}
+if(matchingTasks.size() > 1)
+{
+	return {"ok":false,"state":"duplicate_tasks_require_review","requestKey":requestKey};
+}
+if(matchingTasks.size() == 1)
+{
+	existingTask = matchingTasks.get(0);
+	taskLead = existingTask.get("What_Id");
+	if(existingTask.get("Owner") == null || existingTask.get("Owner").get("id").toString() != taskOwner || leadId != "" && (taskLead == null || taskLead.get("id").toString() != leadId) || leadId == "" && taskLead != null)
+	{
+		return {"ok":false,"state":"existing_task_context_mismatch","requestKey":requestKey};
+	}
+	return {"ok":true,"state":"already_recorded","requestKey":requestKey,"taskId":existingTask.get("id")};
+}
+leadFields = Map();
+if(disposition != "manual_review")
+{
+	leadFields.put("Last_Name",name);
+	leadFields.put("Email",email);
+	if(company != "")
+	{
+		leadFields.put("Company",company);
+	}
+	if(phone != "")
+	{
+		leadFields.put("Phone",phone);
+	}
+	leadFields.put("Firma_Gruppe","AgenticIT");
+	leadFields.put("Funnel_Landingpage",landingpage);
+	leadFields.put("N_chste_Aktion",followUpTask);
+	description = packet;
+	if(disposition == "update")
+	{
+		oldDescription = ifnull(existing.get("Description"),"").toString();
+		if(oldDescription.contains(marker))
+		{
+			description = oldDescription;
+		}
+		else if(oldDescription != "")
+		{
+			description = packet + "\n\nBisheriger Kontext:\n" + oldDescription;
+			if(description.length() > 32000)
+			{
+				// Preserve history. The new complete packet still goes into the task.
+				description = oldDescription;
+			}
+		}
+	}
+	leadFields.put("Description",description);
+	if(disposition == "create")
+	{
+		leadFields.put("Owner",{"id":currentOwner});
+	}
+	if(!preview)
+	{
+		leadRows = List();
+		leadRows.add(leadFields);
+		leadBody = {"data":leadRows,"trigger":List(),"skip_feature_execution":{{"name":"cadences"}}};
+		if(disposition == "create")
+		{
+			leadWrite = invokeurl
+			[
+				url :"https://www.zohoapis.eu/crm/v8/Leads"
+				type :POST
+				parameters:leadBody.toString()
+				headers:{"Content-Type":"application/json"}
+				connection:"zoho_crm"
+			];
+		}
+		else
+		{
+			leadWrite = invokeurl
+			[
+				url :"https://www.zohoapis.eu/crm/v8/Leads/" + leadId
+				type :PUT
+				parameters:leadBody.toString()
+				headers:{"Content-Type":"application/json"}
+				connection:"zoho_crm"
+			];
+		}
+		if(leadWrite.get("data") == null || leadWrite.get("data").size() != 1 || leadWrite.get("data").get(0).get("code") != "SUCCESS")
+		{
+			return {"ok":false,"state":"lead_write_failed","requestKey":requestKey};
+		}
+		leadId = leadWrite.get("data").get(0).get("details").get("id").toString();
+		savedLead = invokeurl
+		[
+			url :"https://www.zohoapis.eu/crm/v8/Leads/" + leadId
+			type :GET
+			connection:"zoho_crm"
+		];
+		if(savedLead.get("data") == null || savedLead.get("data").size() != 1 || savedLead.get("data").get(0).get("Owner") == null)
+		{
+			return {"ok":false,"state":"saved_owner_unverified","requestKey":requestKey};
+		}
+		taskOwner = savedLead.get("data").get(0).get("Owner").get("id").toString();
+	}
+	else if(disposition == "create")
+	{
+		leadId = "preview-created-lead";
+	}
+}
+taskDescription = packet;
+if(reason != "")
+{
+	taskDescription = packet + "\n\nPersönliche Klärung:\n" + reason;
+}
+taskFields = {"Subject":subject,"Owner":{"id":taskOwner},"Description":taskDescription,"Status":"Not Started","Priority":"Normal","Send_Notification_Email":false,"send_notification":false};
+if(leadId != "")
+{
+	taskFields.put("What_Id",{"id":leadId});
+	taskFields.put("$se_module","Leads");
+}
+if(preview)
+{
+	return {"ok":true,"state":disposition,"requestKey":requestKey,"leadId":leadId,"leadFields":leadFields,"taskFields":taskFields,"businessWrites":0};
+}
+taskRows = List();
+taskRows.add(taskFields);
+taskBody = {"data":taskRows,"trigger":List(),"skip_feature_execution":{{"name":"cadences"}}};
+taskWrite = invokeurl
+[
+	url :"https://www.zohoapis.eu/crm/v8/Tasks"
+	type :POST
+	parameters:taskBody.toString()
+	headers:{"Content-Type":"application/json"}
+	connection:"zoho_crm"
+];
+if(taskWrite.get("data") == null || taskWrite.get("data").size() != 1 || taskWrite.get("data").get(0).get("code") != "SUCCESS")
+{
+	return {"ok":false,"state":"task_write_failed","requestKey":requestKey,"leadId":leadId};
+}
+taskId = taskWrite.get("data").get(0).get("details").get("id").toString();
+savedTaskResponse = invokeurl
+[
+	url :"https://www.zohoapis.eu/crm/v8/Tasks/" + taskId
+	type :GET
+	connection:"zoho_crm"
+];
+if(savedTaskResponse.get("data") == null || savedTaskResponse.get("data").size() != 1)
+{
+	return {"ok":false,"state":"saved_task_unverified","requestKey":requestKey,"leadId":leadId,"taskId":taskId};
+}
+savedTask = savedTaskResponse.get("data").get(0);
+if(savedTask.get("Subject") != subject || savedTask.get("Description") != taskDescription || savedTask.get("Owner") == null || savedTask.get("Owner").get("id").toString() != taskOwner || leadId != "" && (savedTask.get("What_Id") == null || savedTask.get("What_Id").get("id").toString() != leadId))
+{
+	return {"ok":false,"state":"saved_task_context_mismatch","requestKey":requestKey,"leadId":leadId,"taskId":taskId};
+}
+return {"ok":true,"state":disposition,"requestKey":requestKey,"leadId":leadId,"taskId":taskId};
+}
