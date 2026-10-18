@@ -1361,9 +1361,9 @@
 }
 .footerTop {
   display: grid;
-  grid-template-columns: 255px max-content minmax(0, 1fr);
+  grid-template-columns: minmax(0, 255px) minmax(0, 1fr) auto;
   align-items: start;
-  gap: 24px;
+  gap: 24px clamp(24px, 3vw, 48px);
 }
 .footerBrand {
   max-width: 255px;
@@ -1397,6 +1397,7 @@
 }
 .footerLinks {
   display: flex;
+  justify-content: space-between;
   gap: 24px;
   align-items: flex-start;
   font-size: 13px;
@@ -1423,6 +1424,7 @@
 .footerTrust {
   display: flex;
   align-items: flex-start;
+  justify-self: end;
   gap: 16px;
 }
 .footerTrustLink {
@@ -1462,6 +1464,10 @@
   width: 95.2px;
   height: auto;
 }
+.swissMarketingLogo {
+  width: 95.2px;
+  height: auto;
+}
 .swicoImage {
   width: 95.2px;
 }
@@ -1477,28 +1483,28 @@
   filter: brightness(0);
 }
 .footerBottom {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
-  justify-content: space-between;
-  gap: 15px;
-  flex-wrap: wrap;
+  gap: 16px 24px;
   margin-top: 24px;
   padding-top: 19px;
   border-top: 1px solid var(--line);
   font-size: 11px;
   color: var(--muted);
 }
-.footerBottom div {
+.footerMetaLinks {
   display: flex;
+  justify-content: flex-end;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 8px 20px;
 }
 .footerCredit {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  margin-top: 20px;
+  white-space: nowrap;
   color: var(--muted);
   font-size: 12px;
   line-height: 1.4;
@@ -1965,7 +1971,7 @@
     gap: 80px;
   }
 }
-@media (max-width: 1100px) {
+@media (max-width: 1200px) {
   .footerTop {
     grid-template-columns: 1fr auto;
   }
@@ -2248,9 +2254,12 @@
     font-size: 12px;
   }
   .footerTrust {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     grid-column: 1;
     grid-row: 2;
-    justify-self: start;
+    justify-self: stretch;
+    justify-content: space-between;
     gap: 8px;
   }
   .footerCopy {
@@ -2265,6 +2274,9 @@
   .swissictLogo {
     width: 86.8px;
   }
+  .swissMarketingLogo {
+    width: 86.8px;
+  }
   .swicoImage {
     width: 86.8px;
   }
@@ -2276,9 +2288,15 @@
     height: 47.8px;
   }
   .footerBottom {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
     margin-top: 25px;
   }
+  .footerMetaLinks {
+    justify-content: flex-start;
+  }
   .footerCredit {
+    justify-content: flex-start;
     gap: 6px;
     font-size: 11px;
   }
@@ -2357,6 +2375,12 @@
   }
   .checkArea {
     padding-bottom: 42px;
+  }
+}
+@media (max-width: 480px) {
+  .footerTrust {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px 18px;
   }
 }
 @media (max-width: 400px) {

@@ -157,6 +157,26 @@ export function JourneyShell({ children }: { children: React.ReactNode }) {
                 </span>
                 <span>Mitglied</span>
               </a>
+              <a
+                href="https://swissmarketing.ch/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.footerTrustLink}
+                aria-label="Mitglied bei Swiss Marketing"
+                title="Mitglied bei Swiss Marketing"
+              >
+                <span className={styles.footerTrustImage}>
+                  <img
+                    src="/logos/swiss-marketing.png"
+                    alt="Swiss Marketing"
+                    width="278"
+                    height="102"
+                    loading="lazy"
+                    className={styles.swissMarketingLogo}
+                  />
+                </span>
+                <span>Mitglied</span>
+              </a>
               <Link
                 href="/karriere"
                 className={`${styles.footerTrustLink} ${styles.footerTrustTraining}`}
@@ -181,32 +201,32 @@ export function JourneyShell({ children }: { children: React.ReactNode }) {
             <span>
               © {new Date().getFullYear()} {company.legalName} · Bern, Schweiz
             </span>
-            <div>
+            <div className={styles.footerCredit}>
+              <span>Coded in Bärn mit</span>
+              <span
+                className={styles.energyCans}
+                role="img"
+                aria-label="5 Red Bull Sugarfree"
+              >
+                {Array.from({ length: 5 }, (_, index) => (
+                  <img
+                    key={index}
+                    src="/logos/energy-can.png"
+                    width="9"
+                    height="24"
+                    alt=""
+                    loading="lazy"
+                  />
+                ))}
+              </span>
+            </div>
+            <div className={styles.footerMetaLinks}>
               <Link href="/datenschutz">Datenschutz</Link>
               <Link href="/impressum">Impressum</Link>
               <ConsentSettingsLink />
               <WebsiteFeedbackLink />
               <a href="https://admin.agenticit.ch">Login</a>
             </div>
-          </div>
-          <div className={styles.footerCredit}>
-            <span>Coded in Bärn mit</span>
-            <span
-              className={styles.energyCans}
-              role="img"
-              aria-label="5 Red Bull Sugarfree"
-            >
-              {Array.from({ length: 5 }, (_, index) => (
-                <img
-                  key={index}
-                  src="/logos/energy-can.png"
-                  width="9"
-                  height="24"
-                  alt=""
-                  loading="lazy"
-                />
-              ))}
-            </span>
           </div>
         </div>
       </footer>
