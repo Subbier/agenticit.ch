@@ -66,12 +66,12 @@ test("the homepage keeps its initial styles within the first-load budget", async
   const raw = files.reduce((total, file) => total + file.raw, 0)
   const gzip = files.reduce((total, file) => total + file.gzip, 0)
   assert.ok(
-    raw < 280000,
-    `${raw} initial CSS bytes exceeds the 280000-byte budget`,
+    raw < 200000,
+    `${raw} initial CSS bytes exceeds the 200000-byte budget`,
   )
   assert.ok(
-    gzip < 45000,
-    `${gzip} gzip CSS bytes exceeds the 45000-byte budget`,
+    gzip < 35000,
+    `${gzip} gzip CSS bytes exceeds the 35000-byte budget`,
   )
 })
 
