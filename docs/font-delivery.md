@@ -42,3 +42,21 @@ Nachmessung [PageSpeed Mobile](https://pagespeed.web.dev/analysis/https-agentici
 | Speed Index | 2843 ms | 2027 ms |
 
 Automatische Prüfwerte für Barrierefreiheit, Best Practices und SEO jeweils 100. Kein vollständiger manueller Barrierefreiheitsnachweis. Zwei einzelne Laborläufe mit Schwankungen: LCP und Speed Index günstiger, TBT höher; kein isolierter Kausalbeweis. Weiterhin keine CrUX-Felddaten. CSS-Blockierung (geschätzte 570 ms) bleibt offen. Die Schriftänderung wird aufgrund des eindeutig vermiedenen Downloads und der unveränderten Darstellung übernommen, nicht aufgrund eines garantierten Score-Gewinns.
+
+## Erneute Eingrenzung am 18. Oktober 2026
+
+Nach der veröffentlichten CSS-Quellenbereinigung mit Produktcommit `e4ff23f2efb1a16b9441a9639b8e3fabbb4ce1fd` wurde der verbleibende Ladepfad lesend geprüft. Die bestehende Messung vom 18.10., 03:21 MESZ, bleibt massgeblich: [PageSpeed Mobile](https://pagespeed.web.dev/analysis/https-agenticit-ch/g9fav1x3r5?form_factor=mobile), Leistung 96, LCP 2701 ms. Kein neuer Messlauf, Build oder Produktrelease in dieser Prüfung.
+
+| Vorgeladene Schrift | Öffentlich gelieferte Bytes | Beobachtetes Beispiel im Hero |
+| ------------------- | --------------------------- | ----------------------------- |
+| Inter               | 48432                       | Einleitender Absatz, 17 px    |
+| Space Grotesk       | 22320                       | Hauptüberschrift, rund 61 px  |
+| JetBrains Mono      | 31340                       | Bereichszähler, 12 px         |
+
+Alle drei Dateien antworteten mit HTTP 200 und verwenden `font-display: swap`. Insgesamt weiterhin 102092 Bytes. Die berechneten Schriftfamilien der bekannten sichtbaren Hero-Elemente wurden bei 1326 × 1398 Pixeln gelesen; der Fontstatus war `loaded`. Das ist eine gezielte Stichprobe. Native Video-Ersatztexte und abgeschnittene Live-Texte aus der breiteren DOM-Abfrage zählen ausdrücklich nicht als sichtbare Schriftverwendung.
+
+Der aufgeklappte Netzwerkabhängigkeitsbaum desselben abgeschlossenen PageSpeed-Berichts zeigt die Navigation und zwei CSS-Dateien: Navigation 582 ms / 21,75 KiB, CSS 861 ms / 17,54 KiB und 888 ms / 11,99 KiB. Die maximale gemeldete kritische Pfadlatenz beträgt 888 ms. Google nennt keinen weiteren geeigneten Ursprung für eine Vorverbindung.
+
+Die fehlende Auflistung von Schriften in diesem Baum beweist keine fehlende Wirkung auf LCP. Netzwerkzeiten und simulierter LCP werden nicht voneinander abgezogen. Alle verbleibenden Preloads haben einen beobachteten Verwendungszweck im Hero; der Bericht liefert keinen neuen Befund für eine weitere Schrift- oder Preconnect-Änderung. Deshalb keine Konfiguration auf Verdacht geändert. LCP bis 2,5 s und reale Felddaten bleiben offen.
+
+Nachweise in `Umsetzung-2026-10-18/Nachweise`: `font-critical-assets.json`, `font-critical-dependency-tree.txt` und `font-critical-selected-usage.json`. Beide eigenen Prüftabs geschlossen, keine Emulation gesetzt. Keine echte Anfrage oder sonstige Geschäftsaktion.
