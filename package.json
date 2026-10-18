@@ -42,6 +42,7 @@
     "test:feedback": "node --import tsx --test lib/website-feedback.test.ts",
     "test:style-sources": "node --import tsx --test lib/tailwind-sources.test.ts",
     "build": "node --import tsx --test lib/tailwind-sources.test.ts && next build",
+    "build:hostinger": "node --import tsx --test lib/tailwind-sources.test.ts lib/hostinger-build-config.test.ts && node scripts/build-hostinger.mjs",
     "dev": "next dev",
     "dev:clean": "rm -rf .next && next dev",
     "lint": "tsc --noEmit",

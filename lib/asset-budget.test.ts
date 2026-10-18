@@ -183,14 +183,29 @@ test("the deferred code font remains self-hosted and unchanged", async () => {
     assert.ok(path)
     const styleUrl = new URL(path, baseUrl)
     const css = await (await fetch(styleUrl)).text()
-    const match = css.match(/url\(([^)]*GeistMono[^)]*\.woff2)\)/)
-    if (match) {
-      assert.ok(css.includes("--font-geist-mono"))
-      fontUrl = new URL(match[1].replaceAll('"', ""), styleUrl)
-    }
+    postcss.parse(css).walkAtRules("font-face", (fontFace) => {
+      let family = ""
+      let source = ""
+      fontFace.walkDecls("font-family", (declaration) => {
+        family = declaration.value
+      })
+      fontFace.walkDecls("src", (declaration) => {
+        source = declaration.value
+      })
+      if (!family.includes("GeistMono")) return
+      const match = source.match(/url\(([^)]+\.woff2)\)/)
+      if (match) {
+        assert.ok(css.includes("--font-geist-mono"))
+        fontUrl = new URL(match[1].replaceAll('"', ""), styleUrl)
+      }
+    })
   }
   assert.ok(fontUrl, "The code font remains available when a page needs it")
   assert.equal(fontUrl.origin, new URL(baseUrl).origin)
+  assert.ok(
+    preloads.every((tag) => !tag.includes(fontUrl!.pathname)),
+    "The code font remains deferred with either bundler's asset filenames",
+  )
   const response = await fetch(fontUrl)
   assert.equal(response.status, 200)
   assert.deepEqual(
