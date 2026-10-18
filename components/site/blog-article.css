@@ -2,6 +2,17 @@
    Design "Carbon & Signal": Space Grotesk für Titel, Inter für Fliesstext,
    flache Flächen, keine Glow-Effekte. Scoped über .blog-article. */
 
+/* Gleiche Inhaltskanten wie im gemeinsamen Seiten-Hero. */
+.blog-container {
+  width: 100%;
+  max-width: 1180px;
+  margin-inline: auto;
+}
+
+.blog-section {
+  padding-inline: 24px;
+}
+
 .blog-article {
   font-family: var(
     --font-carbon-text,
@@ -159,8 +170,8 @@
 
 .blog-resource,
 .blog-next-step {
-  width: calc(100% - 40px);
-  max-width: 760px;
+  width: calc(100% - 48px);
+  max-width: 1180px;
   margin: 32px auto 0;
   padding: 28px;
   border-radius: 12px;
@@ -241,6 +252,15 @@
 }
 .blog-next-step > a {
   margin-top: 24px;
+}
+@media (max-width: 720px) {
+  .blog-section {
+    padding-inline: 16px;
+  }
+  .blog-resource,
+  .blog-next-step {
+    width: calc(100% - 32px);
+  }
 }
 @media (max-width: 700px) {
   .blog-resource {

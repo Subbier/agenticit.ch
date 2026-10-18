@@ -81,7 +81,7 @@ export function BlogArticlePage({ slug }: { slug: string }) {
 
       {/* HERO — flach Carbon */}
       <section className={design.pageHero}>
-        <div className="mx-auto w-full max-w-[760px]">
+        <div className="blog-container">
           <nav
             aria-label="Brotkrumen"
             className="mb-5 font-[family-name:var(--font-carbon-text)] text-[12px] font-medium text-[#6B7480]"
@@ -147,8 +147,8 @@ export function BlogArticlePage({ slug }: { slug: string }) {
       ) : null}
 
       {/* ARTIKEL */}
-      <section className="bg-white px-5 py-12 sm:px-6 sm:py-16">
-        <div className="mx-auto w-full max-w-[760px]">
+      <section className="blog-section bg-white py-12 sm:py-16">
+        <div className="blog-container">
           <article
             className="blog-article"
             dangerouslySetInnerHTML={{ __html: post.html }}
@@ -194,8 +194,8 @@ export function BlogArticlePage({ slug }: { slug: string }) {
 
       {/* FAQ */}
       {post.faq.length ? (
-        <section className="bg-[#f5f7f2] px-5 py-14 sm:px-6 sm:py-16">
-          <div className="mx-auto w-full max-w-[760px]">
+        <section className="blog-section bg-[#f5f7f2] py-14 sm:py-16">
+          <div className="blog-container">
             <Reveal className="mb-8 flex flex-col items-start">
               <span className="font-[family-name:var(--font-mono-signal)] text-[11px] font-semibold uppercase tracking-[0.22em] text-[#4d7c36]">
                 Häufige Fragen
@@ -226,8 +226,8 @@ export function BlogArticlePage({ slug }: { slug: string }) {
 
       {/* VERWANDTE ARTIKEL */}
       {related.length ? (
-        <section className="bg-white px-5 py-14 sm:px-6 sm:py-16">
-          <div className="mx-auto w-full max-w-[1000px]">
+        <section className="blog-section bg-white py-14 sm:py-16">
+          <div className="blog-container">
             <Reveal className="mb-8 flex flex-col items-center text-center">
               <span className="font-[family-name:var(--font-mono-signal)] text-[11px] font-semibold uppercase tracking-[0.22em] text-[#4d7c36]">
                 Weiterlesen
@@ -261,9 +261,9 @@ export function BlogArticlePage({ slug }: { slug: string }) {
       ) : (
         <section
           id="kontakt"
-          className="scroll-mt-20 bg-[#f5f7f2] px-5 py-16 sm:px-6 sm:py-20"
+          className="blog-section scroll-mt-20 bg-[#f5f7f2] py-16 sm:py-20"
         >
-          <Reveal className="mx-auto flex max-w-[640px] flex-col items-center text-center">
+          <Reveal className="blog-container flex flex-col items-center text-center">
             <span className="font-[family-name:var(--font-mono-signal)] text-[11px] font-semibold uppercase tracking-[0.22em] text-[#4d7c36]">
               Unverbindlich · Persönlich
             </span>
