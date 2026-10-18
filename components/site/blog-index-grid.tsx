@@ -1,12 +1,15 @@
 "use client"
 
-// Kategorie-Filter + Kartenraster der Blog-Übersicht. Erhält nur
+// Suche, Themenfilter und Kartenraster. Erhält nur
 // serialisierbare Metadaten (kein HTML) von der Server-Seite.
-import { useState } from "react"
+import { useRef, useSyncExternalStore } from "react"
 import Link from "next/link"
 import type { BlogPostMeta } from "@/lib/blog"
+import { filterBlogPosts } from "@/lib/blog-search"
+import { createBlogSearchState } from "@/lib/blog-search-state"
+import styles from "./blog-index-grid.module.css"
 
-const ALLE = "Alle Themen"
+const searchState = createBlogSearchState()
 
 function formatDate(iso: string) {
   const d = new Date(`${iso}T00:00:00`)
@@ -28,7 +31,7 @@ function PostCard({
   return (
     <Link
       href={`/blog/${post.slug}`}
-      className={`flex h-full flex-col rounded-[14px] border bg-white p-6 transition hover:-translate-y-[2px] hover:border-[#8FE05A] ${
+      className={`${styles.card} flex h-full flex-col rounded-[14px] border bg-white p-6 transition hover:-translate-y-[2px] hover:border-[#8FE05A] ${
         featured ? "border-[#202522] sm:p-7" : "border-[#dce3db]"
       }`}
     >
@@ -72,60 +75,111 @@ export function BlogIndexGrid({
   posts: BlogPostMeta[]
   categories: string[]
 }) {
-  const [active, setActive] = useState<string>(ALLE)
-
-  const visible =
-    active === ALLE ? posts : posts.filter((p) => p.category === active)
+  const { query, category } = useSyncExternalStore(
+    searchState.subscribe,
+    searchState.getSnapshot,
+    searchState.getServerSnapshot,
+  )
+  const searchRef = useRef<HTMLInputElement>(null)
+  const visible = filterBlogPosts(posts, { query, category })
   const featured = visible.filter((p) => p.pillar)
   const regular = visible.filter((p) => !p.pillar)
+  const hasFilters = query.length > 0 || category.length > 0
 
   return (
     <div>
+      <h2 className="sr-only">Ratgeber finden</h2>
       <div
-        className="mb-10 flex flex-wrap justify-center gap-2"
-        role="tablist"
-        aria-label="Themen filtern"
+        className={styles.filters}
+        role="search"
+        aria-label="Ratgeber suchen"
       >
-        {[ALLE, ...categories].map((c) => {
-          const isActive = c === active
-          return (
-            <button
-              key={c}
-              type="button"
-              role="tab"
-              aria-selected={isActive}
-              onClick={() => setActive(c)}
-              className={`min-h-11 rounded-full border px-4 py-2 font-[family-name:var(--font-carbon-text)] text-[13px] font-semibold transition ${
-                isActive
-                  ? "border-[#8fe05a] bg-[#8fe05a] text-[#18320d]"
-                  : "border-[#dce3db] bg-white text-[#647068] hover:border-[#202522] hover:text-[#202522]"
-              }`}
-            >
-              {c}
-            </button>
-          )
-        })}
+        <div className={styles.field}>
+          <label htmlFor="blog-post-search">Ratgeber durchsuchen</label>
+          <input
+            ref={searchRef}
+            id="blog-post-search"
+            type="search"
+            placeholder="z. B. Belege, CRM, Website"
+            autoComplete="off"
+            maxLength={120}
+            value={query}
+            onChange={(event) => searchState.set({ query: event.target.value })}
+            aria-controls="blog-post-results"
+          />
+        </div>
+        <div className={styles.field}>
+          <label htmlFor="blog-post-category">Thema</label>
+          <select
+            id="blog-post-category"
+            value={category}
+            onChange={(event) =>
+              searchState.set({ category: event.target.value })
+            }
+            aria-controls="blog-post-results"
+          >
+            <option value="">Alle Themen</option>
+            {categories.map((name) => (
+              <option key={name} value={name}>
+                {name}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
-
-      {featured.length ? (
-        <div className="mb-6 grid gap-4 md:grid-cols-2">
-          {featured.map((p) => (
-            <PostCard key={p.slug} post={p} featured />
+      <div className={styles.summary}>
+        <p role="status" aria-live="polite" aria-atomic="true">
+          {visible.length} von {posts.length} Ratgebern
+        </p>
+        {hasFilters ? (
+          <button
+            type="button"
+            className={styles.reset}
+            onClick={() => {
+              searchState.set({ query: "", category: "" })
+              searchRef.current?.focus({ preventScroll: true })
+            }}
+          >
+            Zurücksetzen
+          </button>
+        ) : null}
+      </div>
+      <section id="blog-post-results" aria-label="Gefundene Ratgeber">
+        {featured.length ? (
+          <div
+            className={`mb-6 grid gap-4 ${featured.length === 1 ? "max-w-[680px]" : "md:grid-cols-2"}`}
+          >
+            {featured.map((p) => (
+              <PostCard key={p.slug} post={p} featured />
+            ))}
+          </div>
+        ) : null}
+        <div
+          className={`grid gap-4 ${
+            regular.length === 1
+              ? "max-w-[680px]"
+              : regular.length === 2
+                ? "sm:grid-cols-2"
+                : "sm:grid-cols-2 lg:grid-cols-3"
+          }`}
+        >
+          {regular.map((p) => (
+            <PostCard key={p.slug} post={p} />
           ))}
         </div>
-      ) : null}
-
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {regular.map((p) => (
-          <PostCard key={p.slug} post={p} />
-        ))}
-      </div>
-
-      {visible.length === 0 ? (
-        <p className="py-10 text-center font-[family-name:var(--font-carbon-text)] text-[14px] text-[#6B7480]">
-          Keine Artikel in dieser Kategorie.
-        </p>
-      ) : null}
+        {visible.length === 0 ? (
+          <div className={styles.empty}>
+            <h3>Dazu haben wir noch keinen passenden Ratgeber.</h3>
+            <p>
+              Versuchen Sie einen anderen Begriff oder setzen Sie die Filter
+              zurück.
+            </p>
+            <Link href="#kontakt" className={styles.contactLink}>
+              Ihr Anliegen direkt besprechen →
+            </Link>
+          </div>
+        ) : null}
+      </section>
     </div>
   )
 }
