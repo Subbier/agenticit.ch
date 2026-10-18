@@ -26,11 +26,16 @@ export const datenschutzSections: readonly LegalSectionContent[] = [
     links: [{ label: "expertico.com", href: "https://expertico.com" }],
   },
   {
+    title: "Hosting der Website",
+    paragraphs: [
+      "Diese Website wird bei Hostinger betrieben. Der gebuchte Server befindet sich in Frankfurt am Main, Deutschland; Sicherungskopien werden in Frankreich gespeichert. Technische Zugriffsdaten werden verarbeitet, soweit dies für Betrieb, Sicherheit und Stabilität der Website erforderlich ist. Die Angabe «100% made in Switzerland» bezeichnet die Herkunft unserer Arbeit und ist keine Zusicherung eines Hosting-Standorts in der Schweiz.",
+    ],
+  },
+  {
     title: "Welche Daten wir bearbeiten",
     list: [
       "Kontakt- und Lead-Daten, die Sie uns über Formulare auf dieser Website freiwillig mitteilen (z. B. Name, E-Mail, Unternehmen, Telefon, Nachricht).",
       "Technische Nutzungsdaten beim Besuch der Website (z. B. IP-Adresse, Datum und Uhrzeit des Zugriffs, aufgerufene Seiten, Geräte- und Browserinformationen).",
-      "Performance- und Reichweitenmessung über Vercel Speed Insights in anonymisierter bzw. aggregierter Form, soweit Sie dem nicht widersprechen.",
     ],
   },
   {
@@ -51,7 +56,7 @@ export const datenschutzSections: readonly LegalSectionContent[] = [
   {
     title: "Weitergabe von Daten",
     paragraphs: [
-      "Personenbezogene Daten geben wir nur weiter, wenn dies zur Erfüllung der genannten Zwecke erforderlich ist, Sie eingewilligt haben oder wir gesetzlich dazu verpflichtet sind. Auftragsbearbeiter (z. B. Hosting auf Vercel) werden vertraglich zur Einhaltung des Datenschutzes verpflichtet.",
+      "Personenbezogene Daten geben wir nur weiter, wenn dies zur Erfüllung der genannten Zwecke erforderlich ist, Sie eingewilligt haben oder wir gesetzlich dazu verpflichtet sind. Auftragsbearbeiter (z. B. Hostinger für den Website-Betrieb) werden vertraglich zur Einhaltung des Datenschutzes verpflichtet.",
     ],
   },
   {
@@ -98,7 +103,7 @@ export const datenschutzSections: readonly LegalSectionContent[] = [
     title: "Änderungen",
     paragraphs: [
       "Wir können diese Datenschutzerklärung bei Bedarf anpassen. Es gilt jeweils die auf dieser Seite veröffentlichte aktuelle Fassung.",
-      "Stand: 16. Oktober 2026",
+      "Stand: 18. Oktober 2026",
     ],
   },
 ]

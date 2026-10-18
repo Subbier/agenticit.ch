@@ -87,7 +87,7 @@ export function JourneyShell({ children }: { children: React.ReactNode }) {
                   height="20"
                   alt=""
                 />
-                <span>100% Schweizer Software &amp; Hosting</span>
+                <span>100% made in Switzerland</span>
               </div>
             </div>
             <nav aria-label="Fussnavigation" className={styles.footerLinks}>
