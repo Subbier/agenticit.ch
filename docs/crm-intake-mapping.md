@@ -1,6 +1,6 @@
 # Website-Anfrage ins AgenticIT-CRM
 
-Stand: 18. Oktober 2026. D03 des Schlachtplans. Sabir hat «Felder und Prüfaufgabe freigeben» ausdrücklich bestätigt. Der erweiterte bestehende Zoho-Flow ist veröffentlicht und zeigt «Live». Die eindeutige Vercel-Bindung und der dazugehörige Produktions-Redeploy sind noch offen: Die Browser-Anmeldung verlangt einen Passkey-Schritt durch Sabir. Keine echte Anfrage wurde abgesendet.
+Stand: 18. Oktober 2026. D03 des Schlachtplans. Sabir hat «Felder und Prüfaufgabe freigeben» ausdrücklich bestätigt. Der erweiterte bestehende Zoho-Flow ist veröffentlicht und zeigt «Live». Nach Sabirs Anmeldung wurde die eindeutige Vercel-Bindung geschützt gespeichert. Produktions-Redeploy, tatsächlicher SHA und öffentliche Abnahme werden im gesonderten Abschlussnachweis dokumentiert. Keine echte Anfrage wurde abgesendet; produktiver CRM-Eingang weiterhin ungeprüft.
 
 ## Freigegebene Einrichtung
 
@@ -18,7 +18,7 @@ Stand: 18. Oktober 2026. D03 des Schlachtplans. Sabir hat «Felder und Prüfaufg
 - Fünf lokale Quellcode-Leitplanken und zwölf isolierte Website-Endpunkttests bestanden. Alle externen Abrufe der Endpunkttests sind gemockt.
 - Ein sehr grosser Prüffall mit 31'950 Zeichen bestehender Beschreibung scheiterte im Zoho-Testdialog an einer allgemeinen Plattformfehlermeldung. Ursache und obere Grenzfall-Abnahme offen; nicht als bestanden zählen.
 - Der produktive API-Schreib-/Rücklesezweig ist ohne echten Datensatz nicht Ende zu Ende geprüft. Ein Webhook-HTTP-Erfolg beweist keinen CRM-Eingang. Funktionsantworten mit `ok=false` sind ausdrücklich als Fehlerzustand zurückgegeben; eine automatisch garantierte Wiederholung oder Alarmierung ist damit nicht belegt.
-- Vercel: vorhandene Variable `LEADS_WEBHOOK_URL` ist vom Typ Sensitive und derzeit für Production/Preview vorhanden. Neuer Wert noch nicht gespeichert, kein neuer Produktions-Redeploy. Die aus dem richtigen Flow gelesene Adresse bleibt nur im Arbeitsspeicher, nie in Code, Nachweis oder synchronisierter Übergabe.
+- Vercel: vorhandene Variable `LEADS_WEBHOOK_URL` im bestätigten Projekt gntc/v1-main aktualisiert. Vor dem Speichern exakte Übereinstimmung mit dem bestätigten Flow-Webhook geprüft, ohne den Wert anzuzeigen. Secret-Typ und ausschliesslicher Production-Umfang nach dem Speichern zusätzlich über die Vercel-Metadaten bestätigt. Preview und Development erhalten diese neue Bindung nicht. Die Adresse wurde nur im Arbeitsspeicher übertragen; Zwischenwert und Zwischenablage danach geleert. Kein geheimer Wert in Code, Nachweis oder synchronisierter Übergabe. Eine bestehende Vorschau-Bereitstellung verliert bereits eingebettete Werte nicht rückwirkend.
 - Nachweise unter `Umsetzung-2026-10-18/Nachweise/crm-approved-*`. Kein Testlead, keine Kundenmitteilung, kein Anruf und kein Termin. Mia/TestLeads sowie andere Kundenwege wurden nicht geändert.
 
 ## Direkt geprüfter Ausgangspunkt vor der Freigabe
