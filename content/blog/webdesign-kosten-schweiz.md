@@ -15,7 +15,7 @@ keywords:
 readingTime: 6
 resource:
   title: "Vergleichen Sie den Umfang hinter dem Preis."
-  copy: "Die bearbeitbare Vorlage trennt Einrichtung, Eigenaufwand und laufende Kosten. Halten Sie fehlende Leistungen und offene Fragen neben den Angeboten fest."
+  copy: "Vergleichen Sie zwei eigene Offerten direkt hier oder verwenden Sie die bearbeitbare Vorlage. Einrichtung und laufende Kosten getrennt erfassen, offene Leistungen zuerst klären."
   href: "/vorlagen/AgenticIT-Website-Kostenvergleich.txt"
   label: "Kostenvergleich speichern (.txt)"
 nextStep:
@@ -42,6 +42,8 @@ faq:
 ---
 
 > **Vergleichen Sie bei Website-Offerten das vereinbarte Ergebnis und die Gesamtkosten.** Eine Seite mit gelieferten Texten ist ein anderer Auftrag als ein neuer Auftritt mit Positionierung, Inhalten, CRM-Anbindung und Betreuung. Erst ein gemeinsamer Umfang macht die Preise vergleichbar.
+
+Im [interaktiven Offertenvergleich oben](#offertenvergleich) können Sie mit Ihren eigenen Beträgen über ein, zwei oder drei Jahre rechnen. Leere Felder bleiben offen. Der gespeicherte Vergleich enthält Ihre Angaben und kennzeichnet, ob Sie Leistungsumfang und MWST-Basis bereits abgeglichen haben.
 
 ## Welche Preisbeispiele sind öffentlich sichtbar?
 

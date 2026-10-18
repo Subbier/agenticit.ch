@@ -1,0 +1,240 @@
+.calculator {
+  grid-column: 1 / -1;
+  min-width: 0;
+  border-top: 1px solid #50634b;
+  padding-top: 8px;
+}
+.calculator summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 48px;
+  cursor: pointer;
+  list-style: none;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 550;
+}
+.calculator summary::-webkit-details-marker {
+  display: none;
+}
+.calculator summary svg {
+  flex: none;
+  transition: transform 0.2s;
+}
+.calculator[open] summary svg {
+  transform: rotate(180deg);
+}
+.calculator :is(summary, input, select, button, a):focus-visible {
+  outline: 3px solid #527e3d;
+  outline-offset: 3px;
+}
+.calculator summary:focus-visible {
+  outline-color: #a4df7f;
+}
+.body {
+  margin-top: 12px;
+  padding: 20px;
+  border-radius: 10px;
+  background: #f5f7f2;
+  color: #202522;
+  min-width: 0;
+}
+.body p.intro,
+.body p.hint,
+.body p.status {
+  color: #48554c;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.period {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 18px;
+}
+.period label,
+.field label {
+  font-size: 13px;
+  font-weight: 550;
+}
+.period select {
+  min-height: 44px;
+  border: 1px solid #7b8a74;
+  border-radius: 6px;
+  padding: 8px 12px;
+  background: #fff;
+  color: #202522;
+  font-size: 16px;
+}
+.offers {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 22px;
+}
+.offer {
+  min-width: 0;
+  border: 1px solid #c3cebd;
+  border-radius: 8px;
+  padding: 16px;
+}
+.offer legend {
+  padding: 0 6px;
+  font-size: 16px;
+  font-weight: 550;
+  color: #202522;
+}
+.fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 10px;
+}
+.field {
+  min-width: 0;
+}
+.field label {
+  display: block;
+  margin-bottom: 6px;
+}
+.field input {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  border: 1px solid #7b8a74;
+  border-radius: 6px;
+  padding: 8px;
+  color: #202522;
+  background: #fff;
+  font-size: 16px;
+}
+.field input[aria-invalid="true"] {
+  border-color: #9c2f2f;
+}
+.field .error {
+  display: block;
+  margin-top: 6px;
+  color: #8c2525;
+  font-size: 12px;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+.body p.hint {
+  margin-top: 16px;
+}
+.totals {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 22px;
+}
+.totals > div {
+  padding: 14px;
+  border: 1px solid #dce3db;
+  border-radius: 8px;
+  background: #fff;
+  min-width: 0;
+}
+.totals h3 {
+  font-size: 12px;
+  font-weight: 500;
+  margin: 0 0 8px;
+  color: #48554c;
+}
+.totals output {
+  display: block;
+  font-size: clamp(20px, 3vw, 26px);
+  font-weight: 550;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+.scope {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  min-height: 44px;
+  margin-top: 18px;
+  padding: 10px 0;
+  font-size: 13px;
+  line-height: 1.6;
+  cursor: pointer;
+}
+.scope input {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  accent-color: #527e3d;
+}
+.body p.status {
+  color: #28491b;
+  font-size: 15px;
+  font-weight: 550;
+  margin-top: 8px;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  margin-top: 22px;
+}
+.actions button,
+.actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  border: 1px solid #78ac54;
+  border-radius: 6px;
+  padding: 10px 12px;
+  background: #8fe05a;
+  color: #18320d;
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 550;
+  text-decoration: none;
+}
+.actions svg {
+  flex: none;
+}
+.actions button:disabled {
+  cursor: not-allowed;
+  background: #e1e8dc;
+  color: #52604b;
+  border-color: #c3cebd;
+}
+.actions button.reset,
+.actions a {
+  border-color: transparent;
+  background: transparent;
+  color: #375e25;
+  padding-inline: 0;
+}
+.actions a {
+  justify-content: flex-start;
+}
+@media (max-width: 600px) {
+  .body {
+    padding: 16px;
+  }
+  .offers,
+  .totals {
+    grid-template-columns: 1fr;
+  }
+  .offer {
+    padding: 12px;
+  }
+  .actions {
+    padding-right: 48px;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .calculator summary svg {
+    transition: none;
+  }
+}

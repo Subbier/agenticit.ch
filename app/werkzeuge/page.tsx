@@ -79,6 +79,17 @@ export default function Page() {
               </Link>{" "}
               rechnen Sie aus, wie viele passende Anfragen Sie dafür benötigen.
             </p>
+            <p>
+              Sie planen einen neuen Webauftritt?{" "}
+              <Link
+                className={styles.textLink}
+                href="/blog/webdesign-kosten-schweiz#offertenvergleich"
+              >
+                Website-Offerten vergleichen{" "}
+                <ArrowUpRight size={16} aria-hidden="true" />
+              </Link>{" "}
+              – mit Ihren eigenen Beträgen und einem speicherbaren Ergebnis.
+            </p>
           </div>
         </div>
         <BranchenRadar />

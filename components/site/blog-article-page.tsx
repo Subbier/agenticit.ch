@@ -9,6 +9,7 @@ import { notFound } from "next/navigation"
 import { getPost, getRelatedPosts, type BlogPost } from "@/lib/blog"
 import { Reveal } from "@/components/site/reveal"
 import { CtaContactForm } from "@/components/site/cta-contact-form"
+import { WebsiteCostComparison } from "@/components/site/website-cost-comparison"
 import { articleJsonLd, breadcrumbJsonLd, faqPageJsonLd } from "@/lib/seo"
 import "./blog-article.css"
 
@@ -120,7 +121,9 @@ export function BlogArticlePage({ slug }: { slug: string }) {
         </div>
       </section>
 
-      {post.resource ? (
+      {post.resource && post.slug === "webdesign-kosten-schweiz" ? (
+        <WebsiteCostComparison resource={post.resource} />
+      ) : post.resource ? (
         <aside
           className="blog-resource"
           aria-labelledby="article-resource-title"
