@@ -1,18 +1,20 @@
 ---
-title: "Marketing-Automatisierung: Fünf Abläufe für Ihr KMU."
+title: "Marketing Automation für KMU: Tools und fünf Abläufe"
 slug: "marketing-automatisierung-kmu"
-description: "Vom hilfreichen Website-Check bis zur persönlichen Bearbeitung im CRM: Fünf konkrete Abläufe, klare Freigaben und ein Plan für den ersten sinnvollen Einstieg."
+description: "Marketing Automation für Schweizer KMU: CRM und Tools verbinden, fünf Abläufe planen und Ergebnisse messen. Mit Akquise-Plan und Marketing-Setup-Check."
 date: "2026-10-18"
-updated: "2026-10-18"
+updated: "2026-10-19"
 category: "Webdesign & Marketing"
 tags: ["Marketing-Automatisierung", "CRM", "Kundengewinnung", "KMU"]
 keywords:
   [
     "marketing automatisierung",
+    "marketing automation",
     "marketing automation kmu",
+    "marketing automation tools",
     "marketing crm verbinden",
   ]
-readingTime: 6
+readingTime: 8
 resource:
   title: "Planen Sie Ihren ersten verbundenen Anfrageweg."
   copy: "Mit dem Akquise-Plan halten Sie Zielkunde, Angebot, Kanal, nützlichen Einstieg und die Übergabe an Ihr Team fest. Direkt bearbeiten und gemeinsam weiterentwickeln."
@@ -24,6 +26,10 @@ nextStep:
   href: "/marketing-setup-check"
   label: "Marketing-Setup prüfen"
 sources:
+  - label: "Mautic: Kampagnen mit Bedingungen, Entscheidungen und Aktionen"
+    url: "https://docs.mautic.org/en/5.x/campaigns/campaign_builder.html"
+  - label: "Zoho Marketing Automation: Funktionen und CRM-Anbindungen"
+    url: "https://www.zoho.com/marketingautomation/"
   - label: "Zoho CRM: Auslöser, Bedingungen und Aktionen in Workflows"
     url: "https://help.zoho.com/portal/en/kb/crm/automate-business-processes/workflows/articles/configuring-workflow-rules"
   - label: "Google Ads: Tatsächliche spätere Ergebnisse als Offline-Conversions erfassen"
@@ -39,7 +45,30 @@ faq:
     a: "Ausgehende Sales-Nachrichten und geschäftliche Empfehlungen brauchen eine menschliche Freigabe. Kontaktwunsch, erlaubter Kanal und Abmeldungen gehören zu den Regeln des konkreten Ablaufs. Ein Download allein ist keine Freigabe für eine Kontaktserie."
 ---
 
-> **Marketing-Automatisierung verbindet wiederkehrende Arbeitsschritte vom ersten Interesse bis zur nächsten verantwortlichen Person.** Ihr Nutzen entsteht dort, wo heute Daten kopiert, Anfragen gesucht oder Aufgaben vergessen werden. Ein zusätzlicher Tool-Vertrag löst diese Übergaben noch nicht.
+> **Marketing Automation bedeutet: Software verbindet wiederkehrende Marketingaufgaben anhand festgelegter Auslöser und Regeln.** Für Ihr KMU entsteht der Nutzen dort, wo heute Daten kopiert, Anfragen gesucht oder Aufgaben vergessen werden. Hier sehen Sie, wie Website, Kampagnen und CRM zusammenarbeiten können – mit fünf konkreten Abläufen und einer Entscheidungshilfe für die Tools.
+
+## Was ist der Unterschied zwischen CRM und Marketing Automation?
+
+Das **CRM-System** hält fest, wer Ihre Interessenten und Kunden sind, was besprochen wurde und wer den nächsten Schritt übernimmt. **Marketing Automation** steuert die wiederkehrenden Schritte davor und dazwischen: ein Anliegen zuordnen, passende Inhalte vorbereiten oder eine interne Aufgabe auslösen.
+
+Beides muss denselben Stand nutzen. Hat jemand bereits mit Ihrem Team gesprochen, darf ihn der Marketing-Ablauf nicht weiter wie einen neuen Kontakt behandeln. Legen Sie deshalb fest, welches System für Kontaktangaben, Kontaktwünsche und den Bearbeitungsstand führend ist. Prüfen Sie den Datenweg in beide Richtungen, falls beide Systeme Änderungen zurückschreiben.
+
+Für B2B Marketing Automation ist diese Übergabe besonders wichtig: Eine Anfrage kann mehrere Personen und längere Entscheidungswege betreffen. Halten Sie Firma, Anliegen und vereinbarten nächsten Schritt zusammen. Ein einzelner Download sagt noch nicht, ob eine Kaufabsicht besteht.
+
+## Welche Marketing-Automation-Tools passen zu einem KMU?
+
+Starten Sie mit Ihrem vorhandenen Werkzeugbestand. Für eine eindeutige Zuständigkeit und eine interne Aufgabe können die Workflows Ihres CRM bereits genügen. Ein zusätzliches System lohnt sich erst, wenn ein benannter Ablauf mit den vorhandenen Mitteln nicht sinnvoll abbildbar ist.
+
+| Ausgangslage                                         | Was Sie zuerst prüfen                               | Entscheidender Test                                       |
+| ---------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------------- |
+| Website und CRM sind vorhanden                       | Formularanbindung, Feldzuordnung, Zuständigkeiten   | Kommt eine Anfrage mit ihrem Anliegen genau einmal an?    |
+| Mehrere erlaubte Kontaktwege müssen zusammenarbeiten | Marketing-Automation-Software und CRM-Anbindung     | Stoppt der Ablauf nach einer Antwort oder Abmeldung?      |
+| Ihr Team will die Plattform selbst betreiben         | Open-Source-Ansatz und verfügbare Betriebskapazität | Wer übernimmt Updates, Zustellbarkeit und Störungen?      |
+| Freie Texte kosten viel Bearbeitungszeit             | KI als vorbereitender Schritt im bestehenden Ablauf | Bleiben Original, Korrektur und Freigabe nachvollziehbar? |
+
+**Zwei Beispiele zur Einordnung, keine pauschale Produktempfehlung:** [Zoho Marketing Automation](https://www.zoho.com/marketingautomation/) bietet unter anderem kanalübergreifende Abläufe und CRM-Anbindungen. Bei einer bestehenden Zoho-Umgebung prüfen Sie damit insbesondere die benötigten Module, Synchronisierungsregeln und Berechtigungen. [Mautic dokumentiert einen Kampagnen-Builder](https://docs.mautic.org/en/5.x/campaigns/campaign_builder.html) mit Kontaktquellen, Bedingungen und Aktionen. Bei einem selbst betriebenen Ansatz gehören Hosting, Updates und laufende Betreuung in den Vergleich.
+
+Vergleichen Sie die Gesamtkosten für Ihren konkreten Ablauf: Einrichtung, Kontakte oder Nutzungsvolumen, benötigte Funktionen, Schnittstellen und Betrieb. Ein günstiger Einstiegspreis allein beantwortet diese Frage nicht. Die Auswahl folgt Ihrer Aufgabe und den Fähigkeiten Ihres Teams.
 
 ## Welcher Ablauf bringt uns zuerst weiter?
 
@@ -96,6 +125,19 @@ Trennen Sie eingegangene Anfragen, passende Kontakte, geführte Gespräche und g
 | Eine freie Anfrage zusammenfassen             | KI mit Originaltext und menschlicher Prüfung   |
 | Eine persönliche Rückmeldung vorbereiten      | Entwurf mit Freigabe vor Versand               |
 | Einen Auftrag als Ergebnis zählen             | Bestätigter Geschäftsstatus aus dem Zielsystem |
+
+## Wie messen wir, ob automatisiertes Marketing hilft?
+
+Vereinbaren Sie vor dem Start einen Ausgangswert und eine klare Definition für jedes Ergebnis. Eine **Conversion Rate** ist nur vergleichbar, wenn Zähler und Nenner gleich bleiben: bestätigte Anfragen je Besuch sind etwas anderes als geführte Gespräche je Anfrage.
+
+- **Übergabe:** Wie viele gesendete Anfragen kommen vollständig und genau einmal im CRM an?
+- **Bearbeitung:** Wie lange dauert es innerhalb Ihrer Geschäftszeiten bis zur persönlichen Übernahme?
+- **Passung:** Wie viele Kontakte erfüllen die mit Ihrem Team vereinbarten Kriterien?
+- **Ergebnis:** Wie viele passende Gespräche und bestätigte Aufträge entstehen daraus?
+
+Lead Scoring kann diese Bearbeitung priorisieren. Es ersetzt keine Prüfung der Angaben. Lead Nurturing meint, Interessenten mit passenden Informationen bis zum nächsten sinnvollen Schritt zu begleiten. Welche Inhalte und Kontaktwege erlaubt und hilfreich sind, wird dafür ausdrücklich festgelegt. Beginnen Sie mit einer nachvollziehbaren Regel, statt aus wenigen Klicks eine vermeintlich genaue Kaufwahrscheinlichkeit abzuleiten.
+
+Werten Sie einen ausreichend langen Zeitraum gemeinsam mit dem Team aus. Notieren Sie Änderungen an Budget, Zielgruppe und Angebot, damit diese nicht fälschlich der Automatisierung zugeschrieben werden. Bei wenigen Anfragen sind einzelne Fälle für die Fehlersuche nützlich; eine belastbare Erfolgsquote entsteht daraus noch nicht.
 
 ## Wie beginnen wir ohne grosses Umbauprojekt?
 

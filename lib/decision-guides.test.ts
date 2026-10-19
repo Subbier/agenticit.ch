@@ -11,7 +11,12 @@ for (const guide of decisionGuides) {
     const post = getPost(guide.slug)
     assert.ok(post)
     assert.equal(post.date, "2026-10-18")
-    assert.equal(post.updated, "2026-10-18")
+    assert.equal(
+      post.updated,
+      guide.slug === "marketing-automatisierung-kmu"
+        ? "2026-10-19"
+        : "2026-10-18",
+    )
     assert.ok(post.resource)
     assert.ok(post.nextStep)
     assert.ok(post.sources.length >= 2)

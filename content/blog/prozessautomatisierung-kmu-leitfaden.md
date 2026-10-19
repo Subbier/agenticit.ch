@@ -1,18 +1,21 @@
 ---
 title: "Prozessautomatisierung für KMU: Welche Aufgabe zuerst?"
 slug: "prozessautomatisierung-kmu-leitfaden"
-description: "Wiederkehrende Aufgaben sinnvoll automatisieren: geeignete Abläufe auswählen, Zeit nach Kontrolle berechnen und die Übergabe ins Team prüfen."
+description: "Prozessautomatisierung für KMU erklärt: Beispiele, Software-Auswahl und Vorgehen. Finden Sie geeignete Aufgaben und berechnen Sie den Nutzen nach Kontrolle."
 date: "2026-07-24"
-updated: "2026-10-17"
+updated: "2026-10-19"
 category: "KI-Automatisierung"
 tags: ["Prozessautomatisierung", "KMU", "KI", "Zeitersparnis"]
 keywords:
   [
     "prozessautomatisierung kmu",
+    "prozessautomatisierung",
+    "prozessautomatisierung software",
+    "intelligente prozessautomatisierung",
     "aufgaben automatisieren",
     "ki automatisierung",
   ]
-readingTime: 5
+readingTime: 7
 nextStep:
   title: "Rechnen Sie mit Ihrem eigenen Aufwand."
   copy: "Der Automatisierungs-Check berücksichtigt Ihre manuellen Aufgaben, Häufigkeit, Bearbeitungszeit und verbleibende Kontrolle. Das Ergebnis ist eine Einordnung und kein Sparversprechen."
@@ -34,7 +37,20 @@ faq:
     a: "Vor dem Start wird festgelegt, wie der Vorgang angehalten, sichtbar gemacht und an eine zuständige Person übergeben wird. Fehlende Angaben oder ein nicht erreichbares Zielsystem dürfen nicht als erfolgreiche Bearbeitung gelten."
 ---
 
-> **Beginnen Sie mit einer Aufgabe, deren Ergebnis Sie prüfen können.** Erfassen Sie den heutigen Zeitaufwand, die Ausnahmen und die zuständige Person. Vergleichen Sie damit einen Ablauf, der auch Kontrolle, Nacharbeit und Betrieb berücksichtigt. Erst daraus wird ein sinnvoller Automatisierungsentscheid.
+> **Prozessautomatisierung verbindet wiederkehrende Arbeitsschritte so, dass Software vereinbarte Aufgaben übernimmt.** Für ein KMU kann das die Übergabe einer Anfrage ins CRM oder die Vorbereitung von Gesprächsaufgaben sein. Beginnen Sie mit einem prüfbaren Ergebnis. Der Vergleich berücksichtigt den heutigen Aufwand ebenso wie Kontrolle, Nacharbeit und Betrieb nach der Umstellung.
+
+## Wie sieht Prozessautomatisierung im Büro aus?
+
+Diese Beispiele zeigen mögliche Abläufe für Beratung, Verkauf und Kundenbetreuung. Sie beschreiben ein Zielbild, keine bereits gemessenen Kundenergebnisse.
+
+| Aufgabe heute                                 | Möglicher automatisierter Schritt                          | Was bei Ihrem Team bleibt                   |
+| --------------------------------------------- | ---------------------------------------------------------- | ------------------------------------------- |
+| Eine Webanfrage abtippen und weiterleiten     | Angaben prüfen, ins CRM übertragen, Zuständigkeit zuordnen | Unklare Angaben und persönliche Bearbeitung |
+| Nach einem Meeting Aufgaben von Hand erfassen | Aus freigegebenen Notizen Aufgabenentwürfe vorbereiten     | Inhalt und Zuständigkeiten bestätigen       |
+| Belege einzeln vorsortieren                   | Dokumente zuordnen und fehlende Angaben markieren          | Sachliche Prüfung und Freigabe              |
+| Beim Kundenstart Unterlagen zusammensuchen    | Checkliste und interne Aufgaben auslösen                   | Ausnahmen klären und den Kunden begleiten   |
+
+Ein guter erster Ablauf entlastet eine wiederkehrende Übergabe. Er muss nicht die gesamte Abteilung auf einmal abdecken. Wer etwa viele Telefonanfragen bearbeitet, kann mit der Erfassung des Anliegens und einer klaren Übergabe beginnen. Der [Leitfaden zu KI-Telefonie](/blog/ki-sprachassistent-telefonie) hilft bei der Einordnung dieses Einsatzes.
 
 ## Welche Aufgabe sollten wir zuerst automatisieren?
 
@@ -54,6 +70,19 @@ Für jeden Kandidaten halten Sie fünf Angaben fest: **Was löst die Aufgabe aus
 Ein Formularfeld nach einer festen Regel ins CRM zu übertragen ist ein anderer Fall, als das Anliegen aus einer freien E-Mail einzuordnen. Für den ersten Schritt kann ein klassischer Workflow reichen. Im zweiten kann KI einen Vorschlag vorbereiten.
 
 Ein Agent ist wiederum dann interessant, wenn die nächsten Schritte flexibel ausgewählt werden müssen. Die [Unterscheidung zwischen Workflows und Agenten bei Anthropic](https://www.anthropic.com/engineering/building-effective-agents) hilft bei dieser technischen Einordnung. Unser Ausgangspunkt bleibt die einfachste Lösung, die die vereinbarte Aufgabe verlässlich genug erfüllt.
+
+**Intelligente Prozessautomatisierung** beschreibt hier die Verbindung solcher festen Abläufe mit KI für unstrukturierte Angaben, etwa freie Texte. Der Begriff allein sagt noch nichts über die Qualität aus. Prüfen Sie: Welche Entscheidung darf die KI vorbereiten, welche Aktion ist erlaubt und wann muss eine Person übernehmen?
+
+## Wie wählen wir die Software für Prozessautomatisierung?
+
+Prüfen Sie zuerst die Programme, in denen Ihr Team bereits arbeitet. Kann Ihr CRM die nötige Aufgabe auslösen? Gibt es eine dokumentierte Schnittstelle? Welche Angaben kommen tatsächlich an? Eine zusätzliche Plattform schafft nur dann einen Vorteil, wenn sie den vereinbarten Ablauf einfacher betreibbar macht.
+
+- **Vorhandene Workflows:** Für feste Regeln und klare Felder zuerst die Möglichkeiten der bestehenden Systeme prüfen.
+- **Verbindungen zwischen Tools:** Wenn mehrere Programme beteiligt sind, Feldzuordnung, doppelte Eingänge und das Verhalten bei Ausfällen testen.
+- **Low-Code oder No-Code:** Visuelle Werkzeuge anhand derselben Betriebsfragen beurteilen. Auch ein Ablauf ohne viel Programmcode braucht Zuständigkeit, Tests und Pflege.
+- **Individuelle Entwicklung:** Prüfen, wenn Anforderungen oder bestehende Schnittstellen mit den vorhandenen Werkzeugen nicht sinnvoll abgedeckt sind.
+
+Für den Vergleich zählen Einrichtung, Lizenzen, Nutzungsgrenzen, Wartung und der Umgang mit Ausnahmen. Halten Sie auch fest, wie Sie Ihre Daten und Abläufe später exportieren oder umziehen können. Die beste Auswahl ist für Ihr Team verständlich genug, um Fehler zu erkennen und Hilfe gezielt anzufordern.
 
 ## Wie berechnen wir die Zeitersparnis realistisch?
 

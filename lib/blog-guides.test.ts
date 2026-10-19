@@ -61,7 +61,12 @@ test("reviewed guides preserve publication dates and expose their actual update 
   for (const slug of guides) {
     const post = getPost(slug)
     assert.ok(post, slug)
-    assert.equal(post.updated, "2026-10-17")
+    assert.equal(
+      post.updated,
+      slug === "prozessautomatisierung-kmu-leitfaden"
+        ? "2026-10-19"
+        : "2026-10-17",
+    )
     assert.equal(
       post.date,
       ["website-briefing-vorlage", "landingpage-oder-website"].includes(slug)
@@ -101,7 +106,10 @@ for (const slug of guides) {
       ),
     )
     assert.ok(main.includes(`href="${post.nextStep!.href}"`))
-    assert.match(main, /<time\b[^>]*datetime="2026-10-17"/i)
+    assert.ok(
+      main.includes(`dateTime="${post.updated}"`) ||
+        main.includes(`datetime="${post.updated}"`),
+    )
     assert.ok(
       html.includes(`rel="canonical" href="https://agenticit.ch/blog/${slug}"`),
     )
