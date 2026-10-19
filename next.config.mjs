@@ -165,6 +165,12 @@ const nextConfig = {
         destination: "/loesungen/revops-umsatzgenerierung",
         permanent: true,
       },
+      // Die frühere Daten- und Vertriebsanalyse gehört heute zum RevOps-Service.
+      {
+        source: "/intelligence",
+        destination: "/loesungen/revops-umsatzgenerierung",
+        permanent: true,
+      },
       { source: "/smart-apps", destination: "/loesungen", permanent: true },
       // /branchen ist neu eine echte Seite (Vertrieb-Spezialisierung) – keine Weiterleitung mehr.
       {
