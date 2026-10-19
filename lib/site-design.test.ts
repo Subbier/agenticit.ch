@@ -85,6 +85,16 @@ function escapeHtml(value: string) {
     .replace(/'/g, "&#x27;")
 }
 
+test("/impressum groups short details compactly and shows the LinkedIn brand", async () => {
+  const html = await readPage("/impressum")
+  assert.equal((html.match(/data-legal-compact="true"/g) ?? []).length, 3)
+  assert.match(
+    html,
+    /href="https:\/\/www\.linkedin\.com\/in\/rastoder"[^>]*><svg[^>]*data-brand="linkedin"/,
+  )
+  assert.match(html, /<ul[^>]*data-legal-links="true"/)
+})
+
 for (const [path, sections] of [
   ["/datenschutz", datenschutzSections],
   ["/impressum", impressumSections],

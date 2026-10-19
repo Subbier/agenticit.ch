@@ -9,6 +9,7 @@ export const impressumMeta = {
 export const impressumSections: readonly LegalSectionContent[] = [
   {
     title: "Anbieter dieser Website",
+    compact: true,
     paragraphs: [
       company.legalName,
       company.address.streetAddress,
@@ -25,6 +26,7 @@ export const impressumSections: readonly LegalSectionContent[] = [
   },
   {
     title: "Kontakt",
+    compact: true,
     links: [
       { label: company.email, href: `mailto:${company.email}` },
       { label: company.phoneLabel, href: `tel:${company.phone}` },
@@ -32,6 +34,7 @@ export const impressumSections: readonly LegalSectionContent[] = [
   },
   {
     title: "Verantwortlich für Inhalt und Website",
+    compact: true,
     paragraphs: ["Sabir Rastoder", "Certified AI Solution Architect"],
     links: [
       { label: "sr@agenticit.ch", href: "mailto:sr@agenticit.ch" },

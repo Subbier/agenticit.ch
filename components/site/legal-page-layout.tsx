@@ -54,7 +54,8 @@ export function LegalPageLayout({
               <section
                 key={section.title}
                 id={`abschnitt-${index + 1}`}
-                className={legal.section}
+                className={`${legal.section} ${section.compact ? legal.compact : ""}`}
+                data-legal-compact={section.compact || undefined}
                 aria-labelledby={`titel-${index + 1}`}
               >
                 <h2 id={`titel-${index + 1}`}>{section.title}</h2>
@@ -69,10 +70,26 @@ export function LegalPageLayout({
                   </ul>
                 ) : null}
                 {section.links ? (
-                  <ul>
+                  <ul className={legal.links} data-legal-links="true">
                     {section.links.map((link) => (
                       <li key={link.href}>
-                        <a href={link.href}>{link.label}</a>
+                        <a href={link.href}>
+                          {link.href ===
+                          "https://www.linkedin.com/in/rastoder" ? (
+                            <svg
+                              data-brand="linkedin"
+                              className={legal.linkedin}
+                              aria-hidden="true"
+                              viewBox="0 0 24 24"
+                              width="20"
+                              height="20"
+                              fill="currentColor"
+                            >
+                              <path d="M20.45 2H3.55C2.69 2 2 2.68 2 3.52v16.96c0 .84.69 1.52 1.55 1.52h16.9c.86 0 1.55-.68 1.55-1.52V3.52c0-.84-.69-1.52-1.55-1.52ZM7.93 18.75H4.98V9.2h2.95v9.55ZM6.45 7.89a1.71 1.71 0 1 1 0-3.42 1.71 1.71 0 0 1 0 3.42Zm12.3 10.86H15.8V14.1c0-1.11-.02-2.54-1.55-2.54-1.55 0-1.79 1.21-1.79 2.46v4.73H9.51V9.2h2.83v1.3h.04c.39-.74 1.36-1.52 2.79-1.52 2.98 0 3.58 1.96 3.58 4.5v5.27Z" />
+                            </svg>
+                          ) : null}
+                          {link.label}
+                        </a>
                       </li>
                     ))}
                   </ul>

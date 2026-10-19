@@ -107,6 +107,42 @@
   text-underline-offset: 4px;
   overflow-wrap: anywhere;
 }
+.compact h2 {
+  margin-bottom: 12px;
+}
+.compact p {
+  margin: 0;
+  line-height: 1.55;
+}
+.compact p + p {
+  margin-top: 2px;
+}
+.section .links {
+  gap: 0;
+  padding: 0;
+  list-style: none;
+}
+.compact .links {
+  margin-top: 8px;
+}
+.links li {
+  margin: 0;
+}
+.compact h2 + .links {
+  margin-top: 0;
+}
+.links a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  min-height: 36px;
+  line-height: 1.5;
+}
+.linkedin {
+  flex-shrink: 0;
+  color: #0a66c2;
+}
 .back {
   margin-top: 28px;
 }
@@ -131,6 +167,9 @@
   }
 }
 @media (max-width: 540px) {
+  .links a {
+    min-height: 44px;
+  }
   .hero {
     padding-block: 36px 28px;
   }
