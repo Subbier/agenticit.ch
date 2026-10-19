@@ -1,9 +1,9 @@
 ---
-title: "KI im Verkauf"
+title: "KI im Verkaufsgespräch: Vorbereiten und gezielt nachfassen"
 slug: "ki-im-verkaufsgespraech"
 description: "Gespräche vorbereiten, offene Fragen festhalten und vereinbarte nächste Schritte ins CRM übergeben. KI-Unterstützung für Beratung und Vertrieb mit Teamfreigabe."
 date: "2026-07-24"
-updated: "2026-10-17"
+updated: "2026-10-19"
 category: "Vertrieb & Leads"
 tags: ["Sales", "Gesprächsvorbereitung", "CRM", "KI"]
 keywords: ["ki im vertrieb", "ki verkaufsgespräch", "ki sales automatisierung"]
@@ -34,7 +34,13 @@ faq:
     a: "Entwurf, Übertragung und tatsächlicher Eingang sind unterschiedliche Zustände. Prüfen Sie den richtigen Datensatz, die erlaubten Felder und die nächste Aufgabe im Zielsystem. Eine Erfolgsmeldung des Assistenten allein genügt dafür nicht."
 ---
 
-> **KI unterstützt den Vertrieb rund um ein Gespräch: vorbereiten, ordnen und nächste Schritte zur Prüfung bereitstellen.** Das Team klärt den Bedarf, prüft Zusagen und entscheidet, was dem Kunden mitgeteilt wird.
+> **Vorbereitet ins Gespräch gehen und danach keine Vereinbarung verlieren: Dabei kann KI Ihren Verkauf unterstützen.** Ein kurzes Briefing bündelt den Anlass. Nach dem Gespräch werden offene Fragen und vereinbarte Aufgaben geordnet. Bedarf, Zusagen und persönliche Rückmeldung bleiben in der Verantwortung Ihres Teams.
+
+## Ein Briefing, das im Gespräch wirklich hilft
+
+Statt einer langen Firmenbeschreibung braucht die beratende Person vor allem vier Angaben: **Warum sprechen wir miteinander? Was wurde bereits vereinbart? Was ist noch offen? Was soll nach dem Gespräch klarer sein?** Quellen und ungeprüfte Angaben bleiben erkennbar.
+
+Ein eigener Beispielfall: Ein Interessent möchte zunächst wissen, ob sein bestehendes CRM weitergenutzt werden kann. Das Briefing führt diese Frage an erster Stelle. Es ergänzt weder ein Kaufbudget noch eine Wechselabsicht. So bereitet der Assistent das Zuhören vor, statt dem Gespräch eine erfundene Richtung zu geben.
 
 ## Was sollte vor dem Gespräch bereitliegen?
 

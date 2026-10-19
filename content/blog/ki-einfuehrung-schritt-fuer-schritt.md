@@ -1,9 +1,9 @@
 ---
-title: "KI einführen: Ein klarer Start"
+title: "KI im Unternehmen einführen: Fünf Schritte für KMU"
 slug: "ki-einfuehrung-schritt-fuer-schritt"
 description: "KI im KMU einführen: Aufgabe auswählen, Team und Datenwege klären, Ergebnis prüfen und den Betrieb übergeben. Mit einem ausfüllbaren Projektstart-Plan."
 date: "2026-07-24"
-updated: "2026-10-17"
+updated: "2026-10-19"
 category: "KI-Grundlagen"
 tags: ["KI-Einführung", "KMU", "Projektstart", "Automatisierung"]
 keywords:
@@ -40,7 +40,13 @@ faq:
     a: "Vereinbaren Sie erlaubte Aktionen, menschliche Freigaben, Prüffälle und eine zuständige Person für Ausnahmen. Bei AgenticIT stellen sich kundenorientierte Assistenten zu Beginn als KI vor. Ausgehende Sales-Nachrichten und geschäftliche Empfehlungen werden vor dem Versand menschlich freigegeben."
 ---
 
-> **KI im Unternehmen einzuführen bedeutet, eine konkrete Aufgabe mit geeigneten Tools, Daten und Verantwortlichen zu verbinden.** Beginnen Sie mit einem überprüfbaren Ergebnis. Ihr Team arbeitet von der Auswahl bis zur Übergabe mit.
+> **KI einführen heisst: Eine Aufgabe soll im Alltag besser funktionieren.** Dafür verbinden Sie passende Tools mit Ihrem Wissen, Ihren Systemen und den Menschen im Team. Die folgenden fünf Schritte führen von der ersten Aufgabenwahl bis zur Übergabe. Für jeden Schritt steht fest, welches Ergebnis Sie brauchen.
+
+## Was am Ende des ersten Planungsgesprächs vorliegen sollte
+
+Nehmen Sie einen Vorgang, den Ihr Team kennt: Nach jedem Beratungsgespräch werden dieselben Angaben erneut erfasst. Zeichnen Sie den heutigen Weg auf und markieren Sie die doppelte Arbeit. Beschreiben Sie anschliessend, welche Informationen künftig einmal erfasst und gemeinsam weitergenutzt werden sollen.
+
+Das Ergebnis des Gesprächs ist eine Aufgabenkarte mit Anfang, Ende und verantwortlicher Person. Ein allgemeiner Wunsch wie «Wir wollen digitaler werden» darf als Ziel bleiben; der erste Auftrag braucht einen engeren Umfang. So können Sie nach der Umsetzung beurteilen, ob die gewählte Arbeit tatsächlich einfacher geworden ist.
 
 ## Welche Aufgabe ist ein guter Anfang?
 

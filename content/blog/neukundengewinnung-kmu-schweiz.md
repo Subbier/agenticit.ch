@@ -1,9 +1,9 @@
 ---
-title: "Neukundengewinnung: Ihr Anfrageweg als KMU"
+title: "Neukundengewinnung für KMU in der Schweiz: Ihr Anfrageweg"
 slug: "neukundengewinnung-kmu-schweiz"
 description: "Zielkunden, Angebot, Kanal und Bearbeitung zusammen planen. So bauen Schweizer KMU einen überprüfbaren Anfrageweg auf – mit Vorlage und Marketing-Setup-Check."
 date: "2026-07-24"
-updated: "2026-10-17"
+updated: "2026-10-19"
 category: "Vertrieb & Leads"
 tags: ["Neukundengewinnung", "Kundenakquise", "KMU", "Marketing", "CRM"]
 keywords:
@@ -13,7 +13,7 @@ keywords:
     "akquise von neukunden",
     "neukundengewinnung kmu schweiz",
   ]
-readingTime: 6
+readingTime: 7
 pillar: true
 resource:
   title: "Ihr Akquise-Plan zum Ausfüllen."
@@ -41,7 +41,18 @@ faq:
     a: "Eine Anfrage ist zunächst ein Kontakt mit Interesse. Ihr Team prüft, ob Bedarf, Zuständigkeit und Angebot passen. Ein Gespräch, eine Offerte und ein Auftrag sind weitere Schritte mit eigenen Nachweisen. Ein Werbeklick oder ein ausgefülltes Formular belegt noch keinen gewonnenen Kunden."
 ---
 
-> **Neukundengewinnung verbindet Sichtbarkeit mit einem Angebot und einem verlässlichen nächsten Schritt.** Für ein KMU ist ein überprüfbarer Anfrageweg ein guter Anfang: eine Zielgruppe, ein konkretes Anliegen, ein passender Kanal und ein Team, das die Anfrage übernimmt.
+> **Neue Kunden gewinnen Sie über einen zusammenhängenden Weg: gefunden werden, verstanden werden, angefragt werden und persönlich weiterhelfen.** Dieser Leitfaden verbindet Zielgruppe, Angebot, Kanal und Teamübergabe. Mit dem Akquise-Plan können Sie einen ersten Anfrageweg für Ihr KMU festhalten.
+
+## Wo bricht Ihr Anfrageweg heute ab?
+
+| Was Sie beobachten                                | Die erste Frage an Ihren Ablauf                    |
+| ------------------------------------------------- | -------------------------------------------------- |
+| Kaum passende Menschen erreichen die Seite        | Wo und mit welchem Anliegen sucht Ihre Zielgruppe? |
+| Besucher sehen das Angebot, fragen aber selten an | Ist der Nutzen des nächsten Schritts verständlich? |
+| Anfragen kommen, Gespräche bleiben aus            | Wer übernimmt und was fehlt für den Kontakt?       |
+| Gespräche finden statt, Entscheide bleiben offen  | Welcher nächste Schritt wurde wirklich vereinbart? |
+
+Beginnen Sie bei einer belegbaren Lücke. Die Tabelle ist keine automatische Diagnose. Sie hilft Ihnen, die richtige Stelle zu untersuchen, bevor Sie zusätzliche Reichweite oder ein neues Tool einkaufen.
 
 ## Wo beginnen wir, wenn bisher zu wenig passende Anfragen kommen?
 

@@ -1,9 +1,9 @@
 ---
-title: "KI-Datenanalyse für KMU"
+title: "KI-Datenanalyse für KMU: Von Zahlen zu Entscheidungen"
 slug: "ki-datenanalyse-kmu"
 description: "Vorhandene Daten für konkrete Geschäftsfragen nutzen: Quellen prüfen, Berechnungen nachvollziehen und KI-Aussagen einordnen. Mit einem Kennzahlen-Arbeitsblatt."
 date: "2026-07-24"
-updated: "2026-10-17"
+updated: "2026-10-19"
 category: "RevOps"
 tags: ["KI-Datenanalyse", "Datenqualität", "RevOps", "KMU"]
 keywords:
@@ -37,7 +37,13 @@ faq:
     a: "Beginnen Sie mit der Geschäftsfrage, der benötigten Entscheidung und der verfügbaren Datengrundlage. Daraus ergibt sich, ob ein vorhandener Bericht, eine einfache Auswertung oder eine zusätzliche Anwendung sinnvoll ist."
 ---
 
-> **KI-Datenanalyse beginnt mit einer konkreten Geschäftsfrage und überprüfbaren Quellen.** Ein Assistent kann Ergebnisse verständlich aufbereiten und Fragen zur Prüfung vorschlagen. Für Entscheidungen zählen die zugrunde liegenden Daten, nachvollziehbare Berechnungen und das Urteil der zuständigen Personen.
+> **Welche Ihrer Anfragen werden zu passenden Gesprächen?** Diese Frage ist ein brauchbarer Start für KI-Datenanalyse im KMU. Ein Assistent kann Daten erläutern und Auffälligkeiten beschreiben. Damit Ihr Team daraus eine Entscheidung ableiten kann, müssen Zeitraum, Zählregel und fehlende Angaben erkennbar bleiben.
+
+## Warum dieselben Zahlen unterschiedliche Geschichten erzählen
+
+**Frei gewähltes Beispiel:** Kanal A bringt 20 Anfragen, davon fünf geführte Gespräche. Kanal B bringt zehn Anfragen, davon vier Gespräche. A liefert mehr Gespräche, B hat die höhere Gesprächsquote. Welche Quelle wirtschaftlich sinnvoller ist, lässt sich ohne Kosten, Passung und spätere Ergebnisse noch nicht beurteilen.
+
+Bitten Sie den Assistenten deshalb zuerst um die Rechnung und danach um die Einordnung. Fünf von 20 sind 25 Prozent, vier von zehn sind 40 Prozent. Die Aussage «B ist besser» geht über diese Rechnung hinaus. Eine gute Auswertung trennt beides und nennt die Information, die für Ihre nächste Entscheidung noch fehlt.
 
 ## Mit welcher Frage können wir starten?
 

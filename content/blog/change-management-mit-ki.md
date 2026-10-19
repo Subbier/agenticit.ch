@@ -1,9 +1,9 @@
 ---
-title: "KI im Team einführen"
+title: "Change Management mit KI: So nehmen Sie Ihr Team mit"
 slug: "change-management-mit-ki"
 description: "KI gemeinsam in den Arbeitsalltag bringen: Aufgaben, Freigaben und Vertretung klären, an Beispielen üben und Rückmeldungen in den Ablauf aufnehmen."
 date: "2026-07-24"
-updated: "2026-10-17"
+updated: "2026-10-19"
 category: "KI-Grundlagen"
 tags: ["Change Management", "KI-Einführung", "Mitarbeitende", "Zusammenarbeit"]
 keywords:
@@ -40,7 +40,15 @@ faq:
     a: "Betrachten Sie bearbeitete Vorgänge, verbleibende Arbeit, Korrekturen und Rückfragen gemeinsam mit dem Team. Reine Nutzungszahlen zeigen noch nicht, ob die Aufgabe gut erledigt wird. Ziele und Folgen für die Arbeit werden offen besprochen."
 ---
 
-> **Change Management bei KI bedeutet, die Veränderung der Arbeit gemeinsam zu gestalten.** Klären Sie, welche Aufgabe sich ändert, was der Assistent vorbereitet und wo Menschen entscheiden. Eine verständliche Einweisung und ein erreichbarer Rückweg gehören zum Ablauf.
+> **Ihr Team muss kein KI-Studium absolvieren, um einen neuen Ablauf sicher zu nutzen.** Es braucht eine verständliche Aufgabe, eine passende Einweisung und Hilfe bei Ausnahmen. Change Management bei KI beginnt deshalb dort, wo die Arbeit stattfindet: gemeinsam mit den Menschen, die Anfragen bearbeiten, beraten und Kunden betreuen.
+
+## Woran merkt Ihr Team die Verbesserung?
+
+«Wir haben jetzt einen Assistenten» ist noch kein gemeinsames Ziel. «Bei einer neuen Anfrage liegen Anliegen, letzte Rückmeldung und nächster Schritt zusammen» lässt sich im Alltag beurteilen.
+
+Vereinbaren Sie vor der Einführung zwei Beobachtungen: Was soll einfacher werden, und welche zusätzliche Prüfung darf höchstens entstehen? Lassen Sie die spätere Nutzerin oder den späteren Nutzer einen Beispielvorgang bearbeiten und laut erklären, wo etwas fehlt. Diese Rückmeldung führt direkt zu einer Änderung am Ablauf.
+
+**Ein hilfreicher Einstieg ins Teamgespräch:** «Welche Rückfrage müssen Sie heute immer wieder stellen?» Die Antwort liefert einen konkreten Ausgangspunkt. Erst danach entscheiden Sie, welche Funktion und welche Einweisung dafür nötig sind.
 
 ## Welche Fragen sollte das erste Teamgespräch beantworten?
 

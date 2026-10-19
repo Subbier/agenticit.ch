@@ -1,9 +1,9 @@
 ---
-title: "KI-Agenten im Alltag"
+title: "KI-Agenten: Fünf Praxisbeispiele für Schweizer KMU"
 slug: "ki-agenten-praxisbeispiele-schweiz"
 description: "Fünf mögliche Abläufe für Schweizer KMU: Anfragen, Offerten, Wissen, Marketing und Belege vorbereiten. Mit Einsatzkarte und einem Beispiel zum Ausprobieren."
 date: "2026-07-24"
-updated: "2026-10-17"
+updated: "2026-10-19"
 category: "KI-Agenten"
 tags: ["KI-Agenten", "KMU", "Prozessautomatisierung", "Praxisbeispiele"]
 keywords: ["ki agenten", "ki agenten praxisbeispiele", "ki automatisierung kmu"]
@@ -34,7 +34,13 @@ faq:
     a: "Auf unserer KI-Entwicklungsseite gibt es ein interaktives Beispiel für eine Kundenanfrage. Es zeigt Vorbereitung und Teamprüfung sowie einen Stopp bei fehlender Zuständigkeit. Es verwendet vorgegebene Inhalte und ist keine Verbindung zu einem echten Kundensystem."
 ---
 
-> **KI-Agenten können Anfragen einordnen, Informationen finden und Arbeit für Ihr Team vorbereiten.** Entscheidend ist eine konkrete Aufgabe mit klaren Daten, Befugnissen und einem überprüfbaren Ergebnis. Die folgenden fünf Abläufe sind eigene Planungsbeispiele für Schweizer KMU.
+> **Wo könnte ein KI-Agent Ihrem Team Arbeit abnehmen?** Die folgenden fünf Beispiele führen vom Kundeneingang über Offerten und Wissen bis zu Marketing und Belegen. Jeder Ablauf zeigt, was vorbereitet wird und woran Sie ein brauchbares Ergebnis erkennen. Es sind eigene Planungsbeispiele für Schweizer KMU, keine behaupteten Kundenresultate.
+
+## Welches Beispiel passt zu Ihrem Betrieb?
+
+Wählen Sie nach der Arbeit, die heute liegen bleibt. Fehlt dem Verkauf der Überblick über neue Anfragen, beginnen Sie mit Beispiel eins. Kostet das Zusammensuchen von Leistungsbausteinen viel Zeit, schauen Sie die Offertenvorbereitung an. Werden dieselben internen Fragen immer wieder gestellt, ist die Wissenssuche ein naheliegender Kandidat.
+
+Schätzen Sie zunächst **Häufigkeit, heutige Bearbeitungszeit und verbleibende Prüfung**. Nehmen Sie zwei Kandidaten in die engere Wahl und spielen Sie beide mit einem erfundenen Vorgang durch. Das ist konkreter als eine lange Wunschliste für einen Assistenten, der sofort alles können soll.
 
 ## Welche Aufgaben kommen im Alltag infrage?
 

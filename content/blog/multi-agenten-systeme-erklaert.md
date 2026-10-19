@@ -1,9 +1,9 @@
 ---
-title: "Multi-Agenten-Systeme erklärt"
+title: "Multi-Agenten-Systeme: Wann mehrere KI-Agenten helfen"
 slug: "multi-agenten-systeme-erklaert"
 description: "Mehrere KI-Agenten sinnvoll aufteilen: Rollen, Übergaben, Quellen und Freigaben. Ein verständliches Planungsbeispiel und der Vergleich mit einfacheren Abläufen."
 date: "2026-07-24"
-updated: "2026-10-17"
+updated: "2026-10-19"
 category: "KI-Grundlagen"
 tags: ["Multi-Agenten-Systeme", "KI-Entwicklung", "Workflows", "Freigabe"]
 keywords:
@@ -35,7 +35,13 @@ faq:
     a: "Begrenzen Sie Funktionen und Rechte je Rolle. Bei AgenticIT werden ausgehende Sales-Nachrichten und geschäftliche Empfehlungen vor dem Versand menschlich freigegeben. Die erlaubte Aktion wird im ausführenden System technisch geprüft."
 ---
 
-> **Ein Multi-Agenten-System verteilt Aufgaben auf mehrere KI-Agenten und koordiniert deren Ergebnisse.** Der Nutzen hängt von der Aufgabe, der Qualität der Übergaben und den tatsächlichen Ergebnissen ab. Mehr Agenten bedeuten auch zusätzliche Abstimmung.
+> **In einem Multi-Agenten-System übernehmen mehrere KI-Agenten unterschiedliche Teilaufgaben.** Eine Anwendung koordiniert die Ergebnisse und die nächsten Schritte. Diese Arbeitsteilung kann sinnvoll sein, wenn Aufgaben klar trennbar sind. Sie bringt aber auch zusätzliche Übergaben mit sich, die gepflegt und geprüft werden müssen.
+
+## Teilen Sie die Arbeit nach Ergebnissen auf
+
+«Agent eins recherchiert, Agent zwei schreibt» ist noch kein vollständiger Ablauf. Die schreibende Rolle braucht die gefundenen Informationen samt Quelle, offenen Punkten und erlaubtem Verwendungszweck. Fehlt diese Übergabe, kann sie eine Lücke übersehen oder als Tatsache formulieren.
+
+Beschreiben Sie deshalb zuerst die Ergebnisse der einzelnen Rollen. Prüfen Sie dann, ob diese tatsächlich unabhängig entstehen können. Muss eine Rolle auf die andere warten, wird dieser Teil durch zusätzliche Agenten nicht automatisch schneller. Vergleichen Sie die aufgeteilte Lösung mit einem einfacheren Ablauf anhand derselben Aufgabe.
 
 ## Welche Arbeitsteilung ist gemeint?
 

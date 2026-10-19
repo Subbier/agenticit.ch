@@ -3,7 +3,7 @@ title: "KI-Agenten für KMU: Beispiele und Grenzen"
 slug: "ki-agenten"
 description: "Was KI-Agenten im Betrieb übernehmen können, wann ein Workflow reicht und wie Sie Nutzen und Fehlerfälle prüfen. Mit einer bearbeitbaren Einsatzkarte."
 date: "2026-07-24"
-updated: "2026-10-17"
+updated: "2026-10-19"
 category: "KI-Agenten"
 tags: ["KI-Agenten", "KMU", "Prozessautomatisierung", "Entscheidungshilfe"]
 keywords:
@@ -13,7 +13,7 @@ keywords:
     "ki agenten unternehmen",
     "ki agenten kmu",
   ]
-readingTime: 6
+readingTime: 7
 pillar: true
 resource:
   title: "Ihre erste Aufgabe für KI – auf einer Einsatzkarte."
@@ -41,7 +41,15 @@ faq:
     a: "Nein. Vergleichen Sie die heutige Bearbeitung mit verbleibender Handarbeit, Kontrolle und laufender Pflege. Einrichtung, Lizenzen und Betrieb kommen hinzu. Freie Arbeitszeit wird erst dann wirtschaftlich nutzbar, wenn Ihr Team sie sinnvoll einsetzen kann."
 ---
 
-> **Ein KI-Agent kann Arbeitsschritte auswählen und Werkzeuge nutzen, um eine Aufgabe zu bearbeiten.** Für Ihren Betrieb zählt, ob das Ergebnis zuverlässig genug ist und der gesamte Aufwand sinkt. Starten Sie bei einer konkreten Aufgabe, die Ihr Team heute bereits kennt.
+> **Ein KI-Agent verbindet ein KI-Modell mit Wissen, Werkzeugen und klaren Befugnissen.** Er kann innerhalb dieser Grenzen nächste Arbeitsschritte auswählen. Für Ihr KMU wird das greifbar, wenn aus einer Kundenanfrage eine gut vorbereitete Aufgabe wird – mit erkennbarem Ergebnis und einer Person, die bei Bedarf übernimmt.
+
+## Der Unterschied wird an einer Anfrage sichtbar
+
+«Ich interessiere mich für Ihre Beratung. Passt das auch für ein kleines Verkaufsteam?» Eine feste Formularregel kann diese Anfrage zuordnen. Ein KI-Schritt kann das Anliegen zusammenfassen. Ein Agent kann zusätzlich entscheiden, welche freigegebene Leistungsbeschreibung er nachschlägt und welche Rückfrage noch offen ist.
+
+Der Mehrwert liegt im Zusammenhang zwischen diesen Schritten. Ihr Team sieht die Anfrage, die verwendete Quelle und den vorbereiteten nächsten Schritt zusammen. Ob die Anwendung diesen Schritt nur vorschlagen oder nach Freigabe ausführen darf, wird vorab festgelegt.
+
+**Der erste Nachweis:** Lassen Sie sich denselben Vorgang mit einer vollständigen und einer unklaren Anfrage zeigen. Ein brauchbarer Assistent macht den Unterschied sichtbar, statt beide Fälle mit einer gleich überzeugenden Antwort abzuschliessen.
 
 ## Was sind KI-Agenten – und was sind sie nicht automatisch?
 

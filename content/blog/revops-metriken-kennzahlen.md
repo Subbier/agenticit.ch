@@ -1,9 +1,9 @@
 ---
-title: "RevOps-Kennzahlen"
+title: "RevOps-Kennzahlen: Anfrage, Gespräch und Auftrag messen"
 slug: "revops-metriken-kennzahlen"
 description: "Vier Kennzahlen vom Anfrageeingang bis zum Auftrag: Zählregeln, Bezugsgrössen und fehlende Werte verständlich festhalten. Mit bearbeitbarem Arbeitsblatt."
 date: "2026-07-24"
-updated: "2026-10-17"
+updated: "2026-10-19"
 category: "RevOps"
 tags: ["RevOps", "Kennzahlen", "CRM", "Marketing", "Sales"]
 keywords:
@@ -13,7 +13,7 @@ keywords:
     "revenue operations kennzahlen",
     "vertrieb kennzahlen",
   ]
-readingTime: 5
+readingTime: 4
 resource:
   title: "Ihre Kennzahlen verständlich festhalten."
   copy: "Definieren Sie Eingang, Passung, Gespräch und Auftrag mit Quelle, Bezugsgrösse und verantwortlicher Rolle. Das Arbeitsblatt ist direkt nutzbar."
@@ -26,7 +26,7 @@ nextStep:
   label: "Anfrageweg prüfen"
 sources:
   - label: "Google Analytics: Anfrage, Qualifizierung und Abschluss getrennt erfassen"
-    url: "https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events"
+    url: "https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events?hl=de"
   - label: "UK Government: Vollständigkeit und Richtigkeit unterscheiden"
     url: "https://www.gov.uk/government/publications/the-government-data-quality-framework/the-government-data-quality-framework"
 faq:
@@ -40,7 +40,13 @@ faq:
     a: "Das hängt von Angebot, Zielgruppe, Kanal, Bearbeitung und gewählter Definition ab. Beginnen Sie mit einer nachvollziehbaren eigenen Ausgangsmessung. Kleine, offene oder unterschiedlich lange bearbeitete Gruppen erlauben noch keinen belastbaren Vergleich."
 ---
 
-> **Hilfreiche RevOps-Kennzahlen zeigen, wie Anfragen weiterbearbeitet werden.** Für jede Zahl braucht Ihr Team eine Zählregel, eine Datenquelle und eine zuständige Rolle. Beginnen Sie mit wenigen Stufen, die im eigenen Betrieb tatsächlich nachweisbar sind.
+> **Vier nachvollziehbare Stufen sind ein guter Anfang für Ihre RevOps-Auswertung: Anfrage, Passung, geführtes Gespräch und Auftrag.** Der Wert entsteht durch gemeinsame Definitionen. Dieser Beitrag zeigt die Zählregeln und rechnet die Übergänge an einem frei gewählten Beispiel durch.
+
+## Klären Sie zuerst, was ein Status bedeutet
+
+Fragen Sie Marketing und Verkauf unabhängig voneinander: «Wann gilt bei uns eine Anfrage als qualifiziert?» Wenn die Antworten unterschiedlich sind, zeigt ein gemeinsames Dashboard noch keinen gemeinsamen Stand.
+
+Halten Sie die Definition mit einem passenden und einem unpassenden Beispiel fest. Benennen Sie Quelle und verantwortliche Rolle. Danach kann Ihr Team die Zahl prüfen und Veränderungen besprechen. Das Arbeitsblatt oben enthält dafür Zähler, Nenner und Auswertungsstand. Es hilft auch, einen gebuchten Termin von einem tatsächlich geführten Gespräch zu unterscheiden.
 
 ## Welche vier Kennzahlen sind ein verständlicher Einstieg?
 
@@ -53,7 +59,7 @@ Das folgende Modell ist ein eigener Vorschlag für Beratungs- und Vertriebsteams
 | Geführtes Gespräch | Anfragevorgänge aus der passenden Gruppe mit tatsächlich geführtem Gespräch            |
 | Auftrag            | Anfragevorgänge aus der Gesprächsgruppe mit nachgewiesenem Auftrag                     |
 
-Ein gebuchter Termin und ein geführtes Gespräch sind verschiedene Stände. Ein Auftrag braucht einen eigenen Beleg und bedeutet noch keinen Zahlungseingang. Auch [Google Analytics führt unterschiedliche Ereignisse für Anfrage, Qualifizierung und Abschluss](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events).
+Ein gebuchter Termin und ein geführtes Gespräch sind verschiedene Stände. Ein Auftrag braucht einen eigenen Beleg und bedeutet noch keinen Zahlungseingang. Auch [Google Analytics führt unterschiedliche Ereignisse für Anfrage, Qualifizierung und Abschluss](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events?hl=de).
 
 ## Wie lassen sich Übergänge berechnen?
 

@@ -1,14 +1,14 @@
 ---
-title: "RevOps für Ihr Team"
+title: "RevOps für KMU: Marketing, Sales und Betreuung verbinden"
 slug: "revops-as-a-service"
 description: "Marketing, Sales und Kundenbetreuung verbinden: So klären Schweizer KMU Übergaben, CRM, Zuständigkeiten und den nächsten sinnvollen Schritt."
 date: "2026-07-24"
-updated: "2026-10-17"
+updated: "2026-10-19"
 category: "RevOps"
 tags: ["RevOps", "CRM", "Marketing", "Sales", "Kundenbetreuung"]
 keywords:
   ["revops", "revops as a service", "revenue operations", "revops schweiz"]
-readingTime: 5
+readingTime: 4
 pillar: true
 resource:
   title: "Eine Übergabe gemeinsam prüfen."
@@ -36,7 +36,13 @@ faq:
     a: "KI kann freie Anfragen einordnen, Notizen strukturieren oder Entwürfe vorbereiten. Feste Übertragungen lassen sich häufig mit Regeln abbilden. Zugriffe, Fehlerfälle und menschliche Freigaben werden für die konkrete Aufgabe festgelegt."
 ---
 
-> **RevOps verbindet Marketing, Sales und Kundenbetreuung durch einen gemeinsamen Ablauf.** Ihr Team klärt, welche Angaben gebraucht werden, wer übernimmt und welches Ergebnis als nächster Schritt zählt. Dazu gehören passende Tools und überprüfbare Übergaben.
+> **RevOps sorgt dafür, dass Marketing, Sales und Kundenbetreuung am selben Vorgang weiterarbeiten können.** Gemeinsam werden Begriffe, Verantwortung, Daten und Übergaben geklärt. Für Ihr KMU beginnt das meist bei einer konkreten Lücke zwischen zwei Teams oder Arbeitsschritten.
+
+## Ein Auftrag ist der Anfang der nächsten Übergabe
+
+Der Verkauf hat eine Leistung vereinbart. Die Betreuung erhält den Kontakt, aber nicht die besonderen Zusagen aus dem Gespräch. Sie muss intern nachfragen und dem Kunden Fragen stellen, die bereits beantwortet wurden.
+
+RevOps betrachtet diese Übergabe als Teil des gemeinsamen Ablaufs. Welche Angaben braucht die nächste Person? Wer bestätigt, dass sie angekommen sind? Wo bleiben offene Punkte sichtbar? Eine klare Antwort kann bestehende Systeme bereits besser nutzbar machen. Falls Sie RevOps als externe Unterstützung beziehen, sollten genau diese Aufgaben und Verantwortlichkeiten im Leistungsumfang stehen.
 
 ## Wo hilft ein gemeinsamer Ablauf?
 

@@ -3,7 +3,7 @@ title: "Werbung für KMU: Kanal wählen, Anfragen gewinnen"
 slug: "werbung-fuer-kmu"
 description: "Welche Werbung passt zu Ihrem KMU? Kanal, Testbudget, Zielseite und Bearbeitung zusammen planen – mit Akquise-Vorlage und Marketing-Setup-Check."
 date: "2026-07-24"
-updated: "2026-10-17"
+updated: "2026-10-19"
 category: "Vertrieb & Leads"
 tags: ["Werbung für KMU", "Online-Marketing", "Google Ads", "Kundenakquise"]
 keywords:
@@ -42,7 +42,13 @@ faq:
     a: "Eine bestehende Seite kann genügen, wenn sie genau zum beworbenen Anliegen passt, mobil funktioniert und einen klaren nächsten Schritt anbietet. Eine eigene Zielseite ist sinnvoll, wenn Zielgruppe, Angebot oder Anfrageweg deutlich vom übrigen Auftritt abweichen."
 ---
 
-> **Für ein KMU passt der Werbekanal, der seine Zielkunden in der richtigen Situation erreicht.** Klären Sie zuerst Bedarf, Angebot und nächste Aktion. Dann testen Sie einen begründeten Kanal mit einer passenden Zielseite und klarer Bearbeitung der Anfragen.
+> **Welche Werbung bringt Ihr KMU zu den passenden Menschen?** Die Antwort beginnt beim Anliegen Ihrer Zielkunden. Manche suchen bereits einen Anbieter, andere müssen das Problem zuerst verstehen. Dieser Leitfaden verbindet die Kanalwahl mit Angebot, Zielseite, Budgetrahmen und der Bearbeitung neuer Anfragen.
+
+## Formulieren Sie eine prüfbare Werbeidee
+
+Eine brauchbare Idee passt in diesen Satz: **«Wir erreichen [Zielgruppe] mit [Anliegen] und bieten als nächsten Schritt [konkrete Hilfe].»** Beispielsweise kann ein Dienstleister eine Vergleichsvorlage anbieten, mit der Interessenten ihr Vorhaben besser vorbereiten.
+
+Danach klären Sie, wo diese Menschen erreichbar sind und wer ihre Anfragen übernimmt. So lässt sich ein Werbetest als Ganzes beurteilen. Ein auffälliges Motiv kann Aufmerksamkeit schaffen; die versprochene Hilfe und der nächste Kontakt müssen dieselbe Erwartung weiterführen. Der Akquise-Plan oben hält diese Entscheidungen zusammen.
 
 ## Welche Werbung passt zu Ihrer Ausgangslage?
 

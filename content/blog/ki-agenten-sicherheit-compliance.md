@@ -1,9 +1,9 @@
 ---
-title: "KI-Agenten: Wer darf was?"
+title: "KI-Agenten sicher einsetzen: Rechte und Freigaben prüfen"
 slug: "ki-agenten-sicherheit-compliance"
 description: "KI-Agenten sicher planen: Leserechte, Entwürfe, Freigaben und Fehlerfälle klar abgrenzen. Mit einem Ablaufbeispiel und einer bearbeitbaren Einsatzkarte."
 date: "2026-07-24"
-updated: "2026-10-17"
+updated: "2026-10-19"
 category: "Recht & Sicherheit"
 tags: ["KI-Agenten", "Berechtigungen", "Freigabe", "Sicherheit"]
 keywords: ["ki agenten sicherheit", "ki agenten berechtigungen", "ki freigabe"]
@@ -34,7 +34,13 @@ faq:
     a: "Das Beispiel zeigt Vorbereitung, Teamprüfung und einen Stopp bei fehlender Zuständigkeit. Es ist eine lokale Simulation ohne echte KI-, CRM- oder Versandverbindung. Die Sicherheit einer produktiven Lösung muss an ihren tatsächlichen Zugängen, Aktionen und Fehlerfällen geprüft werden."
 ---
 
-> **Eine klare Aufgabe braucht klare Befugnisse.** Legen Sie fest, was ein KI-Agent lesen, nur als Entwurf vorbereiten oder nach Freigabe ausführen darf. So wird die Kontrolle für Ihr Team konkret prüfbar.
+> **Ein KI-Agent braucht genau die Rechte für seine Aufgabe.** Wer eine Anfrage zusammenfasst, muss deshalb noch keine Nachricht versenden oder Kundendaten löschen können. Dieser Leitfaden trennt Lesen, Vorbereiten und Ausführen und zeigt, wie Sie die Grenzen am tatsächlichen Verhalten prüfen.
+
+## Prüfen Sie die Grenze an der ausführenden Aktion
+
+Ein Antwortentwurf sieht gut aus. Nun ändern Sie im Test den Empfänger, nachdem der Entwurf freigegeben wurde. Kann die Nachricht ohne erneute Prüfung an diese andere Person gehen? Dann schützt die Freigabe nicht dieselbe Aktion, die später ausgeführt wird.
+
+Dieses eigene Prüfbeispiel macht eine häufig abstrakte Sicherheitsfrage verständlich: **Was wurde von wem für welchen Empfänger freigegeben?** Halten Sie den erlaubten Umfang vor dem Test fest. Die Prüfung gehört an die Stelle, die die Aktion tatsächlich ausführt; ein höflicher Hinweis im Gespräch ersetzt sie nicht.
 
 ## Was soll die Anwendung dürfen?
 

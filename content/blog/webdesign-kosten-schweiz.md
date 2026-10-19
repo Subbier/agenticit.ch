@@ -1,9 +1,9 @@
 ---
 title: "Was kostet eine Website in der Schweiz?"
 slug: "webdesign-kosten-schweiz"
-description: "Öffentliche Preisbeispiele, die wichtigsten Kostenfaktoren und ein bearbeitbarer Offertenvergleich. So planen Schweizer KMU Auftritt, Anfrageweg und laufenden Betrieb."
+description: "Website-Kosten in der Schweiz vergleichen: öffentliche Preisbeispiele, Kostenfaktoren und ein interaktiver Offertenvergleich über ein bis drei Jahre."
 date: "2026-10-18"
-updated: "2026-10-18"
+updated: "2026-10-19"
 category: "Webdesign & Marketing"
 tags: ["Webdesign", "Website-Kosten", "Offertenvergleich", "KMU"]
 keywords:
@@ -41,9 +41,15 @@ faq:
     a: "Wir kalkulieren nach dem gemeinsam geklärten Umfang. Sie sollen erkennen, welche Inhalte, Funktionen, Übergaben und Prüfungen enthalten sind und welche Kosten einmalig oder laufend anfallen. Die fremden Preisbeispiele sind keine Preiszusage von AgenticIT."
 ---
 
-> **Vergleichen Sie bei Website-Offerten das vereinbarte Ergebnis und die Gesamtkosten.** Eine Seite mit gelieferten Texten ist ein anderer Auftrag als ein neuer Auftritt mit Positionierung, Inhalten, CRM-Anbindung und Betreuung. Erst ein gemeinsamer Umfang macht die Preise vergleichbar.
+> **Was eine Website in der Schweiz kostet, hängt vor allem vom vereinbarten Umfang ab.** Gelieferte Texte in ein vorhandenes Design einzusetzen ist ein anderer Auftrag als Positionierung, Inhalte, Gestaltung und CRM-Anbindung neu aufzubauen. Hier finden Sie datierte öffentliche Preisbeispiele und einen Vergleich für die Gesamtkosten Ihres Vorhabens.
 
 Im [interaktiven Offertenvergleich oben](#offertenvergleich) können Sie mit Ihren eigenen Beträgen über ein, zwei oder drei Jahre rechnen. Leere Felder bleiben offen. Der gespeicherte Vergleich enthält Ihre Angaben und kennzeichnet, ob Sie Leistungsumfang und MWST-Basis bereits abgeglichen haben.
+
+## Die Frage, die vor dem Preisvergleich kommt
+
+Was muss die Website nach der Übergabe leisten? Für einen Betrieb kann das eine verständliche Firmenpräsentation sein. Ein anderer braucht zusätzlich mehrere Beratungsangebote, einen Check und eine geprüfte CRM-Übergabe.
+
+Schreiben Sie die erwarteten Ergebnisse auf eine gemeinsame Liste. Markieren Sie pro Offerte **enthalten, zusätzlich oder ungeklärt**. So wird sichtbar, ob ein Preisunterschied aus einem anderen Umfang stammt. Die niedrigere Startsumme ist erst dann aussagekräftig, wenn Inhalte, Funktionen und laufende Leistungen vergleichbar sind.
 
 ## Welche Preisbeispiele sind öffentlich sichtbar?
 

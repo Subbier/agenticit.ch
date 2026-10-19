@@ -3,7 +3,7 @@ title: "Landingpage oder Website: Was braucht Ihr KMU?"
 slug: "landingpage-oder-website"
 description: "Firmenwebsite, Landingpage oder beides? Entscheiden Sie anhand Ihres Angebots, der Besucher und des Anfragewegs. Mit Beispielen und einer Vorlage für Ihr Team."
 date: "2026-10-17"
-updated: "2026-10-17"
+updated: "2026-10-19"
 category: "Webdesign & Marketing"
 tags: ["Webdesign", "Landingpage", "Kundengewinnung", "KMU"]
 keywords:
@@ -12,7 +12,7 @@ keywords:
     "landingpage unterschied website",
     "firmenwebsite kmu",
   ]
-readingTime: 5
+readingTime: 6
 resource:
   title: "Halten Sie Ihren nächsten Auftritt fest."
   copy: "Nutzen Sie unsere bestehende Website-Briefing-Vorlage für Zielkunden, Angebot, Inhalte und Anfrageweg. Direkt bearbeiten und mit Ihrem Team besprechen."
@@ -41,7 +41,13 @@ faq:
     a: "Nein. Angebot, Besucher, Vertrauen, Bedienung und die Bearbeitung der Anfragen wirken zusammen. Prüfen Sie neben abgesendeten Formularen auch den bestätigten Eingang, passende Gespräche und tatsächliche Aufträge."
 ---
 
-> **Ihre Firmenwebsite erklärt, wer Sie sind und wem Sie helfen. Eine Landingpage führt Besucher gezielt zu einem Angebot und einem nächsten Schritt.** Beides kann unter derselben Domain zusammenarbeiten. Entscheidend ist, mit welcher Frage jemand auf Ihre Seite kommt.
+> **Eine Firmenwebsite schafft den Überblick. Eine Landingpage vertieft ein bestimmtes Angebot für eine bestimmte Zielgruppe.** Sie können beides unter derselben Domain nutzen. Entscheidend ist, ob Besucher ihre Frage wiederfinden und verstehen, was der nächste Schritt für sie bringt.
+
+## Prüfen Sie den Übergang von der Anzeige zur Seite
+
+Eine Anzeige verspricht einen Vergleich für ein bestimmtes Vorhaben. Nach dem Klick sieht der Besucher eine allgemeine Firmenvorstellung mit vielen Leistungen. Das Angebot ist irgendwo vorhanden, muss aber erst gesucht werden.
+
+Öffnen Sie Anzeige und Zielseite nebeneinander. Markieren Sie das versprochene Anliegen, die angebotene Hilfe und die nächste Aktion. Finden Sie diese drei Punkte auf der Zielseite direkt wieder? Wenn ja, kann die bestehende Leistungsseite genügen. Wenn die Seite ein anderes Anliegen verfolgt, ist ein eigener Einstieg sinnvoll. Der Seitentyp folgt dieser Aufgabe, nicht umgekehrt.
 
 ## Wann brauchen wir eine Firmenwebsite, wann eine Landingpage?
 

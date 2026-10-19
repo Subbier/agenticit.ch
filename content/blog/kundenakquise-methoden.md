@@ -1,9 +1,9 @@
 ---
-title: "Kundenakquise: Welcher Weg passt?"
+title: "Kundenakquise für KMU: Sieben Methoden sinnvoll auswählen"
 slug: "kundenakquise-methoden"
-description: "Sieben Akquise-Methoden nach Ausgangslage vergleichen: Suche, Inhalte, Empfehlungen, Partnerschaften und persönliche Gespräche. Mit Akquise-Plan und Setup-Check."
+description: "Sieben Akquise-Methoden vergleichen: Suche, Inhalte, Empfehlungen, Partner und persönliche Gespräche. Mit Akquise-Plan und Marketing-Setup-Check für Ihr KMU."
 date: "2026-07-24"
-updated: "2026-10-17"
+updated: "2026-10-19"
 category: "Vertrieb & Leads"
 tags: ["Kundenakquise", "Neukundengewinnung", "Marketing", "KMU"]
 keywords:
@@ -40,7 +40,18 @@ faq:
     a: "Trennen Sie Sichtbarkeit, bestätigte Anfragen, passende Gespräche und Aufträge. Dokumentieren Sie Kanal, Zeitraum, Bearbeitungsstand und enthaltene Kosten. Viele Klicks allein zeigen noch nicht, ob Sie die richtigen Kunden erreichen."
 ---
 
-> **Kundenakquise bedeutet, passende Menschen auf Ihre Leistung aufmerksam zu machen und einen sinnvollen nächsten Schritt zu ermöglichen.** Die Methode wählen Sie anhand der Situation Ihrer Zielkunden. Für einen Beratungsbetrieb zählt, ob aus dem ersten Interesse ein passendes Gespräch entsteht.
+> **Welche Akquise-Methode passt zu Ihren Zielkunden und Ihrem Team?** Suche, Fachinhalte, Empfehlungen und persönlicher Dialog erfüllen unterschiedliche Aufgaben. Dieser Vergleich hilft Ihnen, einen ersten Weg auszuwählen und bis zum passenden Gespräch weiterzudenken.
+
+## Wählen Sie den Kanal nach der Ausgangslage
+
+| Beobachtung in Ihrem Betrieb                                      | Was Sie zuerst prüfen können                              |
+| ----------------------------------------------------------------- | --------------------------------------------------------- |
+| Menschen suchen bereits gezielt nach der Leistung                 | Verständliche Leistungsseite und passende Suchanfragen    |
+| Das Problem ist bekannt, der Lösungsweg noch unklar               | Fachinhalt mit konkreter Entscheidungshilfe               |
+| Empfehlungen kommen, doch das Erstgespräch braucht viel Erklärung | Ein hilfreiches Beispiel für den empfohlenen Einstieg     |
+| Es kommen Anfragen, aber Termine bleiben aus                      | Zuständigkeit und Bearbeitung vor zusätzlicher Reichweite |
+
+Diese Zuordnung ist ein Planungsvorschlag. Sie zeigt, welche Frage zuerst geklärt werden sollte. Einen Kanal wählen Sie anschliessend passend zu Ihren verfügbaren Mitteln und der tatsächlichen Bearbeitungskapazität.
 
 ## Welche Ausgangslage haben Ihre Zielkunden?
 

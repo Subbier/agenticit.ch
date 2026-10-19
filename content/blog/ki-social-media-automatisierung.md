@@ -1,9 +1,9 @@
 ---
-title: "Social Media mit KI"
+title: "Social Media mit KI: Von der Kundenfrage zum guten Beitrag"
 slug: "ki-social-media-automatisierung"
-description: "Kundenfragen in hilfreiche Beiträge verwandeln: KI für Briefing, Entwurf und Varianten nutzen. Mit klarer Redaktion, menschlicher Freigabe und passendem Anfrageweg."
+description: "Kundenfragen in hilfreiche Beiträge verwandeln: KI für Briefing, Entwurf und Varianten nutzen. Mit Redaktion, Freigabe und passendem Anfrageweg."
 date: "2026-07-24"
-updated: "2026-10-17"
+updated: "2026-10-19"
 category: "KI-Automatisierung"
 tags: ["Social Media", "KI", "Content", "Marketing", "Freigabe"]
 keywords:
@@ -42,7 +42,13 @@ faq:
     a: "Beginnen Sie mit einer Kundenfrage, einer freigegebenen Quelle und einem vorhandenen Kanal. Prüfen Sie zunächst den Ablauf vom Briefing bis zum freigegebenen Beitrag. Zusätzliche Planung, Veröffentlichung und CRM-Anbindungen werden nach Bedarf geklärt."
 ---
 
-> **Social-Media-Automatisierung mit KI unterstützt die Vorbereitung von Beiträgen und die Arbeit Ihrer Redaktion.** Sie verbinden Kundenfrage, belegten Inhalt und passenden nächsten Schritt. Ihr Team entscheidet, was unter Ihrem Namen veröffentlicht wird.
+> **Der beste Ausgangspunkt für einen Social-Media-Beitrag ist eine echte Frage Ihrer Zielkunden.** KI kann daraus Entwürfe und passende Formate vorbereiten. Ihre Redaktion liefert den eigenen Blick, prüft Fakten und entscheidet über die Veröffentlichung. So entsteht ein wiederholbarer Ablauf mit erkennbarer Handschrift.
+
+## Ein Thema, unterschiedliche Aufgaben für den Inhalt
+
+Nehmen Sie die Frage: «Müssen wir für eine Automatisierung unser CRM ersetzen?» Ein kurzer Beitrag kann die Entscheidung erklären. Eine Grafik kann zeigen, wo Website, CRM und Team zusammenkommen. Ein Video kann einen Beispielvorgang vom Eingang bis zur Übernahme durchgehen.
+
+Jedes Format braucht einen eigenen Aufbau. Kopieren Sie denselben Absatz nicht unverändert in alle Kanäle. Halten Sie die Kernaussage zusammen und führen Sie zum passenden [Ratgeber zur Marketing Automation](/blog/marketing-automatisierung-kmu) oder einem hilfreichen Check. Der Klick soll die angekündigte Frage vertiefen, statt bloss auf der Startseite zu enden.
 
 ## Welche Inhalte helfen unseren Zielkunden?
 

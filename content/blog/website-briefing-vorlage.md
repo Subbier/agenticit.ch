@@ -1,9 +1,9 @@
 ---
-title: "Website-Briefing: Von Ihrer Idee zur klaren Anfrage."
+title: "Website-Briefing-Vorlage: Sieben Punkte für Ihr Projekt"
 slug: "website-briefing-vorlage"
 description: "Planen Sie Ihren neuen Webauftritt mit einer bearbeitbaren Vorlage: Zielkunden, Inhalte, Anfrageweg, CRM, Zuständigkeiten und Abnahme verständlich festhalten."
 date: "2026-10-17"
-updated: "2026-10-17"
+updated: "2026-10-19"
 category: "Webdesign & Marketing"
 tags: ["Webdesign", "Website-Briefing", "KMU", "Vorlage"]
 keywords:
@@ -35,7 +35,13 @@ faq:
     a: "Prüfen Sie mobile Darstellung, Tastaturbedienung, verständliche Formulare, Fehlerfälle und den tatsächlichen Eingang einer freigegebenen Anfrage im Zielsystem. Ein erfolgreicher Seitenaufruf allein bestätigt diese Strecke nicht."
 ---
 
-> **Ein Website-Briefing beschreibt, für wen die Seite da ist, was Besucher verstehen und tun sollen und wie Ihr Team danach übernimmt.** Sie brauchen dafür noch keine fertige Technikentscheidung. Schreiben Sie offene Fragen ausdrücklich auf, damit sie vor der Umsetzung geklärt werden können.
+> **Ein gutes Website-Briefing macht Ihre Idee für andere umsetzbar.** Es beschreibt Zielkunden, Angebot, Inhalte und den gewünschten Anfrageweg. Unsere Vorlage führt durch sieben Punkte. Auch Ungeklärtes hat Platz: Sie müssen das Design und die Technik noch nicht entschieden haben, um sinnvoll zu beginnen.
+
+## Aus «modern und übersichtlich» wird eine klare Aufgabe
+
+Diese beiden Wünsche beschreiben eine Richtung, aber noch keine Abnahme. Konkreter wird das Briefing mit einem Besucherweg: «Ein Interessent erkennt auf dem Smartphone, ob unser Service zu seinem Anliegen passt, und kann eine passende Beratung anfragen.»
+
+Ergänzen Sie, was Ihr Team danach braucht: Anliegen, Kontaktdaten und eine verantwortliche Person. Daraus folgen Entscheidungen über Struktur, Texte, Formular und Anbindung. Die Gestaltung unterstützt diesen Weg. So können Auftraggeber und Umsetzungspartner später gemeinsam prüfen, ob das Ergebnis die vereinbarte Aufgabe erfüllt.
 
 ## Wie beginnen wir, wenn bisher nur eine Idee besteht?
 

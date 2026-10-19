@@ -1,9 +1,9 @@
 ---
-title: "KI-Telefonassistent: Richtig starten."
+title: "KI-Telefonassistent für KMU: Gespräch und Anrufweg prüfen"
 slug: "ki-sprachassistent-telefonie"
 description: "Anrufe annehmen, Anliegen erfassen und Termine vorbereiten: So prüfen Sie Sprache, Telefonstrecke, Kalender und Übergabe – mit bearbeitbarem Prüfplan."
 date: "2026-07-24"
-updated: "2026-10-17"
+updated: "2026-10-19"
 category: "KI-Agenten"
 tags: ["KI-Telefonassistent", "Voice Agent", "Telefonie", "Prüfplan"]
 keywords:
@@ -42,7 +42,13 @@ faq:
     a: "Wenn die Buchungsaktion die Speicherung im richtigen Kalender bestätigt. Tag, Uhrzeit, Zeitzone, zuständige Person und Gesprächsart müssen passen. Ein gesprochener Terminvorschlag allein ist noch keine Buchung."
 ---
 
-> **Ein KI-Telefonassistent ist eine Anwendung, die gesprochene Anliegen aufnimmt und im vereinbarten Rahmen bearbeitet.** Ob daraus ein guter Kundenkontakt wird, entscheidet der ganze Ablauf: verständlich sprechen, die passende Aktion ausführen und bei Bedarf an Ihr Team übergeben.
+> **Ein KI-Telefonassistent soll Anrufern den nächsten Schritt erleichtern.** Dafür braucht es mehr als eine angenehme Stimme: verständliche Gesprächsführung, passende Systemaktionen und eine erreichbare Übergabe an Ihr Team. Dieser Leitfaden zeigt, wie Sie das Gespräch und die echte Telefonstrecke getrennt prüfen.
+
+## Hören Sie auf das Gespräch, prüfen Sie das Ergebnis
+
+Ein Kunde sagt: «Abends passt es besser.» Der Assistent sollte diese Angabe übernehmen und passende freie Zeiten prüfen. Eine erneute Frage nach der Tageszeit oder eine lange Liste schon abgelehnter Termine erzeugt unnötige Schleifen.
+
+Notieren Sie im Test **die Kundenangabe, den nächsten Gesprächsschritt und das Ergebnis im Kalender**. So lassen sich zwei verschiedene Probleme unterscheiden: schlechte Gesprächsführung und eine fehlerhafte Buchung. Der Assistent darf einen Termin erst als gebucht bestätigen, wenn die dafür vorgesehene Aktion erfolgreich war. Ein gesprochenes «Das ist eingetragen» allein genügt für die Abnahme nicht.
 
 ## Welche Aufgabe sollte der Assistent zuerst übernehmen?
 

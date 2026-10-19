@@ -14,7 +14,7 @@ keywords:
     "marketing automation tools",
     "marketing crm verbinden",
   ]
-readingTime: 8
+readingTime: 9
 resource:
   title: "Planen Sie Ihren ersten verbundenen Anfrageweg."
   copy: "Mit dem Akquise-Plan halten Sie Zielkunde, Angebot, Kanal, nützlichen Einstieg und die Übergabe an Ihr Team fest. Direkt bearbeiten und gemeinsam weiterentwickeln."

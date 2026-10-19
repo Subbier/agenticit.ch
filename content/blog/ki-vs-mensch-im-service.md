@@ -1,9 +1,9 @@
 ---
-title: "KI und Mensch im Kundenservice"
+title: "KI oder Mensch im Kundenservice? Die Aufgabe entscheidet"
 slug: "ki-vs-mensch-im-service"
 description: "Welche Serviceaufgabe passt zu KI, welche ins Team? Eine Entscheidungshilfe zu Wissen, Befugnissen, persönlicher Übernahme und tatsächlicher Erledigung."
 date: "2026-07-24"
-updated: "2026-10-17"
+updated: "2026-10-19"
 category: "KI-Agenten"
 tags: ["Kundenservice", "Teamübergabe", "KI-Agenten", "Kundenbetreuung"]
 keywords:
@@ -40,7 +40,13 @@ faq:
     a: "Das lässt sich nicht allgemein zusagen. Prüfen Sie Verständlichkeit, hilfreiche Ergebnisse und erreichbare persönliche Hilfe mit den betroffenen Nutzenden. Rückfragen und Beschwerden gehören ebenso in die Auswertung wie gelöste Anliegen."
 ---
 
-> **Die Arbeitsteilung im Kundenservice wird an der konkreten Aufgabe entschieden.** Massgeblich sind verlässliches Wissen, erlaubte Aktionen und eine erreichbare Person für Rückfragen. Eine pauschale Rangliste von KI und Mensch hilft dabei wenig.
+> **Eine Öffnungszeit nachschlagen und eine Beschwerde klären sind verschiedene Serviceaufgaben.** Ob KI informiert, eine Antwort vorbereitet oder an einen Menschen übergibt, sollte genau daran entschieden werden. Vier Fragen helfen Ihnen, diese Arbeitsteilung für Ihren Betrieb festzulegen.
+
+## Wo endet die vorbereitete Hilfe?
+
+Ein Assistent kann erklären, welche Unterlagen für ein Gespräch gebraucht werden. Sagt die Kundin anschliessend: «Ich habe diese schon geschickt und warte seit Tagen», hat sich das Anliegen verändert. Jetzt geht es um einen konkreten Vorgang und möglicherweise um eine Beschwerde.
+
+Planen Sie diesen Wechsel ausdrücklich ein. Die übernehmende Person braucht die bisherige Frage und den offenen Punkt. Die Kundin braucht eine verständliche Auskunft darüber, wie es weitergeht. Das ist der praktische Massstab für die Arbeitsteilung: Kommt sie ihrem Anliegen näher, oder bleibt sie in einer Schleife aus Standardantworten?
 
 ## Welche Fragen entscheiden über die passende Bearbeitung?
 

@@ -25,7 +25,7 @@ for (const guide of guides) {
     const post = getPost(guide.slug)!
     assert.ok(post)
     assert.equal(post.date, "2026-07-24")
-    assert.equal(post.updated, "2026-10-17")
+    assert.equal(post.updated, "2026-10-19")
     assert.equal(post.nextStep?.href, guide.nextStep)
     assert.equal(post.faq.length, 4)
     assert.ok(post.sources.length >= 2)
@@ -34,7 +34,7 @@ for (const guide of guides) {
     assert.equal(
       sitemap().find(({ url }) => url.endsWith(`/blog/${guide.slug}`))
         ?.lastModified,
-      "2026-10-17",
+      "2026-10-19",
     )
   })
 
@@ -82,7 +82,13 @@ test("advertising readers can reuse the complete existing acquisition plan", asy
   const response = await fetch(new URL(post.resource!.href, baseUrl))
   assert.equal(response.status, 200)
   const text = await response.text()
-  assert.equal(text, readFileSync(`content/downloads/${post.resource!.href.split("/").pop()}`, "utf8"))
+  assert.equal(
+    text,
+    readFileSync(
+      `content/downloads/${post.resource!.href.split("/").pop()}`,
+      "utf8",
+    ),
+  )
   for (const term of [
     "Kanal und Begründung",
     "Kostenbestandteile",

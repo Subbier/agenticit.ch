@@ -1,9 +1,9 @@
 ---
-title: "KI-Fehler früh erkennen"
+title: "KI-Fehler vermeiden: Neun Prüffragen vor dem Start"
 slug: "haeufige-ki-fehler-vermeiden"
 description: "Neun Prüffragen für Ihr KI-Vorhaben: Aufgabe, Quellen, Freigabe, Datenwege, Team und Betrieb. Mit konkreten nächsten Schritten und KI-Einsatzkarte."
 date: "2026-07-24"
-updated: "2026-10-17"
+updated: "2026-10-19"
 category: "KI-Grundlagen"
 tags: ["KI-Einführung", "Qualität", "KI-Agenten", "KMU"]
 keywords:
@@ -42,7 +42,15 @@ faq:
     a: "Wenn Voraussetzungen fehlen oder der Aufwand einschliesslich Kontrolle und Pflege den erwarteten Nutzen nicht trägt, kann eine einfachere Lösung oder ein Aufschub sinnvoll sein. Halten Sie den Grund und den nächsten Klärungsschritt fest."
 ---
 
-> **KI-Fehler lassen sich besser einordnen, wenn die erwartete Aufgabe und das tatsächliche Ergebnis klar sind.** Die folgenden neun Prüffragen helfen, offene Punkte vor dem Einsatz und im Betrieb sichtbar zu machen. Sie sind eine eigene Arbeitshilfe, keine statistische Rangliste von Scheitergründen.
+> **Der aufschlussreichste KI-Test ist oft der Fall, in dem etwas fehlt.** Erkennt der Assistent die Lücke, oder arbeitet er mit einer Annahme weiter? Die folgenden neun Prüffragen helfen Ihnen, ein Vorhaben vom ersten Beispiel bis zum Betrieb zu beurteilen. Sie können daraus direkt Ihre offene Aufgabenliste erstellen.
+
+## So wird aus einem Fehler ein brauchbarer Befund
+
+Ein Assistent soll eine Anfrage weiterleiten. Im normalen Beispiel klappt das. Im zweiten Beispiel fehlt die Zuständigkeit. Wenn die Anwendung trotzdem «erledigt» meldet, haben Sie einen konkreten Befund: Der Abschlussstatus passt nicht zum tatsächlichen Ergebnis.
+
+Notieren Sie vier Dinge: **Eingabe, erwartetes Verhalten, beobachtetes Verhalten und notwendige Korrektur.** Im Beispiel müsste der Vorgang offenbleiben und bei einer benannten Vertretung erscheinen. Wiederholen Sie danach genau diesen Fall. So lässt sich eine Verbesserung belegen, statt nur den Anweisungstext länger zu machen.
+
+Die neun Punkte sind unsere Arbeitshilfe für solche Prüfungen. Sie sind keine statistische Rangliste der häufigsten Scheitergründe.
 
 ## Welche neun Punkte sollten wir prüfen?
 

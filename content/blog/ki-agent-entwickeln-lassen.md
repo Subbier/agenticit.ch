@@ -1,9 +1,9 @@
 ---
-title: "KI-Agent entwickeln lassen: So wird aus der Idee ein Auftrag."
+title: "KI-Agent entwickeln lassen: Briefing, Kosten und Abnahme"
 slug: "ki-agent-entwickeln-lassen"
 description: "Welche Aufgabe eignet sich, was gehört ins Briefing und woran erkennen Sie eine brauchbare Lösung? Eine Entscheidungshilfe für Schweizer KMU mit Projektvorlage."
 date: "2026-10-18"
-updated: "2026-10-18"
+updated: "2026-10-19"
 category: "KI-Agenten"
 tags: ["KI-Entwicklung", "KI-Agenten", "Projektplanung", "KMU"]
 keywords:
@@ -35,7 +35,13 @@ faq:
     a: "Wenn die vereinbarten Normal-, Ausnahme- und Fehlerfälle geprüft sind, unerlaubte Aktionen unterbleiben und eine verantwortliche Person übernehmen kann. Eine gelungene Vorführung allein genügt nicht als Betriebsabnahme."
 ---
 
-> **Ein KI-Agent lohnt sich, wenn er eine konkrete Aufgabe besser bearbeitbar macht.** Beginnen Sie mit einem Vorgang, einem klaren Ergebnis und einer zuständigen Person. So lässt sich eine Entwicklung vergleichen, prüfen und später sinnvoll ausbauen.
+> **Wer einen KI-Agenten entwickeln lässt, beauftragt einen Arbeitsablauf – nicht bloss ein Chatfenster.** Ein gutes Briefing beschreibt deshalb Aufgabe, Wissen, Anbindungen und das erwartete Ergebnis. Hier sehen Sie, wie daraus ein vergleichbarer Auftrag wird und was Sie vor der Abnahme selbst prüfen können.
+
+## So machen Sie zwei Angebote vergleichbar
+
+Schicken Sie beiden Anbietern denselben Beispielvorgang. Etwa: Eine Anfrage geht ein, enthält eine offene Frage und soll als vorbereitete Aufgabe beim richtigen Team erscheinen. Lassen Sie beschreiben, welche Systeme beteiligt sind, welche Arbeit bei Ihnen bleibt und was bei einem Ausfall geschieht.
+
+Fragen Sie anschliessend: «Welche Teile dieses Vorgangs sind im Preis enthalten?» Damit werden Unterschiede greifbar. Eine Oberfläche kann günstig wirken, während Datenaufbereitung, CRM-Anbindung oder Betreuung erst später hinzukommen. Die Projektvorlage oben hilft, diese Leistungen bereits in der Anfrage zusammenzuhalten.
 
 ## Welche Aufgabe eignet sich als erstes KI-Projekt?
 

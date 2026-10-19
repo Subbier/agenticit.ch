@@ -1,9 +1,9 @@
 ---
-title: "Speed-to-Lead: Anfragen schneller richtig übernehmen"
+title: "Speed-to-Lead: Reaktionszeit im Vertrieb sinnvoll messen"
 slug: "speed-to-lead-5-minuten-regel"
 description: "Wie schnell antwortet Ihr Team auf neue Anfragen? Reaktionszeit, Zuständigkeit und Vertretung klären – mit Beispiel und Anfragen-Check."
 date: "2026-07-24"
-updated: "2026-10-17"
+updated: "2026-10-19"
 category: "RevOps"
 tags: ["Speed-to-Lead", "Anfragen", "CRM", "Vertrieb", "KI-Automatisierung"]
 keywords:
@@ -37,7 +37,13 @@ faq:
     a: "KI kann Anliegen zusammenfassen und eine Antwort für das Team vorbereiten. Feste Regeln können Daten zuweisen und interne Aufgaben anlegen. Ausgehende Sales-Nachrichten und geschäftliche Empfehlungen brauchen vor dem Versand eine menschliche Freigabe. Ein kundenorientierter KI-Agent weist sich zu Beginn als KI aus."
 ---
 
-> **Schnelle Bearbeitung beginnt mit einem klaren Eingang und einer zuständigen Person.** Definieren Sie, wann Ihr Team persönlich reagiert, wer bei Abwesenheit übernimmt und woran Sie den tatsächlichen Kontakt erkennen. Eine automatische Bestätigung allein erledigt die Anfrage noch nicht.
+> **Speed-to-Lead beschreibt, wie schnell Ihr Vertrieb auf eine neue Anfrage reagiert.** Entscheidend ist, welche Reaktion Sie messen: eine Eingangsbestätigung, einen persönlichen Kontaktversuch oder ein tatsächlich geführtes Gespräch. Mit dieser Trennung wird aus «Wir melden uns schnell» ein überprüfbarer Ablauf für Ihr Team.
+
+## Wenn die Anfrage schneller ist als die Zuständigkeit
+
+Eine Rückrufbitte kommt während der Geschäftszeit an. Die Bestätigung wird sofort angezeigt, aber die zuständige Person sieht den Vorgang erst später. Eine schnellere Bestätigungsnachricht würde diese Wartezeit nicht verkürzen.
+
+Prüfen Sie deshalb den Zeitpunkt, an dem die Anfrage bearbeitbar bei einer Person ankommt. Sind Anliegen und gewünschter Kontaktweg sichtbar? Wer übernimmt, wenn diese Person gerade im Gespräch ist? Verbessern Sie diesen Übergang und messen Sie danach erneut. Die Reaktionszeit entsteht aus dem ganzen Ablauf, nicht allein aus der Geschwindigkeit des Formulars.
 
 ## Welche Reaktionszeit messen Sie?
 

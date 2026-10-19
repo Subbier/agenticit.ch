@@ -61,12 +61,7 @@ test("reviewed guides preserve publication dates and expose their actual update 
   for (const slug of guides) {
     const post = getPost(slug)
     assert.ok(post, slug)
-    assert.equal(
-      post.updated,
-      slug === "prozessautomatisierung-kmu-leitfaden"
-        ? "2026-10-19"
-        : "2026-10-17",
-    )
+    assert.equal(post.updated, "2026-10-19")
     assert.equal(
       post.date,
       ["website-briefing-vorlage", "landingpage-oder-website"].includes(slug)

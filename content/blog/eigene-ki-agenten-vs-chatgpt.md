@@ -3,7 +3,7 @@ title: "ChatGPT oder eigener KI-Agent: Was braucht Ihr Betrieb?"
 slug: "eigene-ki-agenten-vs-chatgpt"
 description: "Wann ein vorhandenes KI-Tool reicht, wann ein Workflow hilft und wann eigene KI-Entwicklung sinnvoll ist. Mit Beispiel, Prüffragen und Grenzen."
 date: "2026-07-24"
-updated: "2026-10-17"
+updated: "2026-10-19"
 category: "KI-Agenten"
 tags: ["KI-Agenten", "KI-Entwicklung", "ChatGPT", "Workflows"]
 keywords: ["eigene ki agenten", "ki agent vs chatgpt", "ki entwicklung kmu"]
@@ -33,7 +33,15 @@ faq:
     a: "Das hängt vom vereinbarten Aufbau und den Anbietern ab. Wissen bereitzustellen oder Dokumente gezielt nachzuschlagen ist nicht dasselbe wie ein Modell zu trainieren. Diese Wege müssen im Setup unterschieden werden."
 ---
 
-> **Die kurze Antwort:** Prüfen Sie zuerst die Aufgabe. Ein vorhandenes KI-Tool kann für Entwürfe und Wissensarbeit reichen. Ein Workflow verbindet feste Schritte. Eine eigene Agenten-Anwendung wird interessant, wenn Ihr Ablauf besondere Werkzeuge, flexible Entscheidungen oder eine eigene Bedienoberfläche braucht.
+> **ChatGPT oder eigener KI-Agent? Entscheidend ist, wie weit Ihre Aufgabe reichen soll.** Für einen geprüften Entwurf kann ein vorhandenes Tool genügen. Soll daraus ein verlässlicher Vorgang über mehrere Systeme werden, müssen auch Zugriffe, Übergaben und Fehlerfälle passen. Eine eigene Anwendung ist dann sinnvoll, wenn sie eine konkrete Lücke schliesst.
+
+## Derselbe Kundenwunsch, drei mögliche Lösungen
+
+Ein Kunde fragt nach einer Leistung und dem nächsten freien Beratungstermin. Ihr Team kann einen Antwortentwurf mit einem vorhandenen KI-Tool vorbereiten. Ein fester Workflow kann die Anfrage erfassen und eine zuständige Person informieren. Ein Agent kann innerhalb erlaubter Zugriffe fehlende Informationen erkennen und passende nächste Schritte vorbereiten.
+
+Vergleichen Sie die drei Wege mit demselben Beispiel. Welche Arbeit bleibt beim Team? Wo braucht es einen Systemzugriff? Wer übernimmt bei einer unklaren Anfrage? Erst diese Antworten zeigen, ob die zusätzliche Entwicklung einen Vorteil bringt.
+
+**Praktische Entscheidung:** Wenn das vorhandene Werkzeug die Aufgabe samt Kontrolle gut genug erfüllt, nutzen Sie es. Investieren Sie in eine eigene Anwendung, wenn der zusätzliche Nutzen benannt und im Test überprüfbar ist.
 
 ## Was kann ChatGPT heute bereits übernehmen?
 

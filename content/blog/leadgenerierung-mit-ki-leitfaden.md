@@ -1,9 +1,9 @@
 ---
-title: "Lead-Magnete, die weiterhelfen"
+title: "Lead-Magnet für KMU: Checkliste, Selbstcheck oder Rechner?"
 slug: "leadgenerierung-mit-ki-leitfaden"
 description: "Welcher Lead-Magnet passt zu Ihrem KMU? Checkliste, Selbstcheck oder Rechner sinnvoll wählen. Mit drei AgenticIT-Beispielen, Akquise-Plan und nächstem Schritt."
 date: "2026-07-24"
-updated: "2026-10-17"
+updated: "2026-10-19"
 category: "Webdesign & Marketing"
 tags: ["Lead-Magnet", "Kundenakquise", "Website", "Marketing"]
 keywords: ["lead magnet", "lead magnet erstellen", "lead magnet beratung"]
@@ -34,7 +34,13 @@ faq:
     a: "Erklären Sie nach dem Ergebnis, welchen nächsten Schritt Ihr Team anbietet und welche Angaben dafür benötigt werden. Der Besucher entscheidet sich bewusst für Kontakt. Danach werden tatsächlicher Eingang, Zuständigkeit und Bearbeitung geprüft. Eine Nutzung oder ein Dateiaufruf ist noch keine Kundenanfrage."
 ---
 
-> **Ein guter Lead-Magnet hilft bei einer Entscheidung, bevor er nach Kontakt fragt.** Der Besucher erkennt seine Ausgangslage, nimmt etwas Brauchbares mit und versteht, wobei Ihr Team anschliessend helfen kann.
+> **Ein Lead-Magnet ist dann nützlich, wenn der Besucher damit eine kleine Entscheidung besser treffen kann.** Eine Vorlage, ein Selbstcheck oder ein Rechner liefert dafür ein konkretes Ergebnis. Dieser Leitfaden zeigt, welches Format zu welcher Frage passt und wie daraus eine passende Beratungsanfrage werden kann.
+
+## Testen Sie zuerst das Versprechen
+
+«Laden Sie unser E-Book herunter» beschreibt ein Format. «Halten Sie die fehlenden Angaben für Ihre Website-Offerte fest» beschreibt einen Nutzen. Der zweite Satz hilft Ihnen beim Entwurf: Jede Frage und jeder Abschnitt muss zu diesem Ergebnis beitragen.
+
+Geben Sie den ersten Entwurf einer Person, die das Angebot noch nicht kennt. Fragen Sie anschliessend: **Was wissen Sie jetzt besser, und welchen nächsten Schritt können Sie machen?** Fehlt eine konkrete Antwort, überarbeiten Sie die Hilfe, bevor Sie ein Kontaktformular davorsetzen. Damit prüfen Sie den Inhalt selbst und nicht bloss die Bereitschaft, eine E-Mail-Adresse anzugeben.
 
 ## Welche Frage soll Ihr Lead-Magnet beantworten?
 

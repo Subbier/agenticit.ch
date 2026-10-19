@@ -24,7 +24,7 @@ for (const guide of guides) {
   test(`${guide.slug} offers a sourced decision guide without unsupported promises`, () => {
     const post = getPost(guide.slug)!
     assert.equal(post.date, "2026-07-24")
-    assert.equal(post.updated, "2026-10-17")
+    assert.equal(post.updated, "2026-10-19")
     assert.equal(post.resource?.href, guide.resource)
     assert.equal(post.nextStep?.href, "/anfragen-check")
     assert.ok(post.sources.length >= 2)
@@ -71,7 +71,13 @@ for (const guide of guides) {
     const response = await fetch(new URL(guide.resource, baseUrl))
     assert.equal(response.status, 200)
     const text = await response.text()
-    assert.equal(text, readFileSync(`content/downloads/${guide.resource.split("/").pop()}`, "utf8"))
+    assert.equal(
+      text,
+      readFileSync(
+        `content/downloads/${guide.resource.split("/").pop()}`,
+        "utf8",
+      ),
+    )
     for (const term of guide.terms) assert.ok(text.includes(term), term)
     assert.ok(text.includes("nicht automatisch"))
     assert.ok(text.includes("Keine Passwörter"))

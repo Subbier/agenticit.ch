@@ -1,9 +1,9 @@
 ---
-title: "KI für passende Anfragen"
+title: "Leadgenerierung mit KI: Welche Vorarbeit sich lohnt"
 slug: "leadgenerierung-ki"
 description: "Leadgenerierung mit KI für Schweizer KMU: sinnvolle Aufgaben auswählen, Anfragen vorbereiten und Ihr Team einbinden. Mit Einsatzkarte und Anfragen-Check."
 date: "2026-07-24"
-updated: "2026-10-17"
+updated: "2026-10-19"
 category: "Vertrieb & Leads"
 tags: ["Leadgenerierung", "KI", "Kundenakquise", "CRM"]
 keywords:
@@ -35,7 +35,13 @@ faq:
     a: "Vergleichen Sie Bearbeitungszeit, Fehler und Nacharbeit mit dem bisherigen Ablauf. Erfassen Sie separat eingegangene Anfragen, vom Team geprüfte passende Kontakte, tatsächlich geführte Gespräche und gewonnene Aufträge. Mehr automatisch erstellte Datensätze sind für sich kein Erfolg."
 ---
 
-> **KI kann die Vorarbeit in Ihrer Akquise übernehmen, damit Ihr Team mehr Zeit für das Gespräch hat.** Entscheidend ist eine konkrete Aufgabe: Was soll vorbereitet werden, woran erkennen wir ein brauchbares Ergebnis und wer übernimmt danach?
+> **Bei der Leadgenerierung mit KI liegt ein konkreter Hebel in der Vorarbeit für Ihr Team.** Ein Assistent kann Kundenfragen strukturieren, eine Anfrage zusammenfassen und fehlende Angaben sichtbar machen. Dieser Beitrag hilft Ihnen, eine solche Aufgabe auszuwählen und ihren Nutzen bis zur persönlichen Bearbeitung zu prüfen.
+
+## Mehr Datensätze lösen den Engpass nicht immer
+
+Stellen Sie sich zwei Anfragen vor. Die erste enthält nur Kontaktdaten. Bei der zweiten sind Anliegen, gewünschte Leistung und nächster Kontaktweg erkennbar. Für das Team entsteht daraus eine andere Vorbereitung – auch wenn beide in der Statistik als ein Lead zählen.
+
+Legen Sie daher vor dem KI-Einsatz fest, was «bearbeitbar» in Ihrem Betrieb bedeutet. Lassen Sie unbekannte Angaben offen. Ein Assistent kann eine Rückfrage vorschlagen; er sollte aus einem lückenhaften Formular weder Bedarf noch Budget erfinden. So hilft die Technik dem nächsten Gespräch, statt lediglich die Datenmenge zu vergrössern.
 
 ## Wo hilft KI bei der Leadgenerierung?
 

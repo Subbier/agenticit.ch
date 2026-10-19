@@ -1,9 +1,9 @@
 ---
-title: "KI-Trends 2026 für KMU"
+title: "KI-Trends 2026 in der Schweiz: Was für KMU relevant ist"
 slug: "ki-trends-2026-schweiz"
-description: "Vier dokumentierte Entwicklungen einordnen: agentische Abläufe, gemeinsame Standards, KI-Suche und Schweizer Regulierungsplanung. Mit konkreten Prüffragen für KMU."
+description: "Vier KI-Entwicklungen für Schweizer KMU einordnen: Agenten, Standards, KI-Suche und Regulierungsplanung. Mit Quellen und Prüffragen für Ihren Betrieb."
 date: "2026-07-24"
-updated: "2026-10-17"
+updated: "2026-10-19"
 category: "KI-Grundlagen"
 tags: ["KI-Trends 2026", "Schweiz", "KI-Agenten", "Strategie"]
 keywords: ["ki trends 2026", "ki schweiz", "agentische ki", "ki sichtbarkeit"]
@@ -38,7 +38,13 @@ faq:
     a: "Die hier verlinkte BAKOM-Seite beschreibt einen Regulierungsansatz und geplante nächste Schritte. Planung und geltende Anforderungen werden getrennt betrachtet. Für ein konkretes Vorhaben sind der aktuelle Stand und die einschlägigen Vorgaben gesondert zu prüfen."
 ---
 
-> **KI-Trends werden für ein KMU erst durch eine konkrete Aufgabe relevant.** Stand 17. Oktober 2026 ordnen wir vier dokumentierte Themen ein. Die Auswahl ist eine Orientierung, keine Rangliste der meistgenutzten Lösungen oder Prognose für Ihren Betrieb.
+> **Welcher KI-Trend verdient Ihre Aufmerksamkeit – und welcher kann warten?** Für ein KMU zählt, ob eine Entwicklung eine konkrete Aufgabe verbessert. Wir ordnen vier dokumentierte Themen mit Quellenstand 17. Oktober 2026 ein und verbinden jedes mit einer Prüffrage für Ihren Betrieb. Die Auswahl ist keine Marktanteilsrangliste.
+
+## Ein Filter gegen die nächste Tool-Wunschliste
+
+Beurteilen Sie eine Neuigkeit in drei Schritten: **Was kann sie zusätzlich? Welche Arbeit von uns betrifft das? Was müssten wir im eigenen Ablauf prüfen?** Wenn die zweite Antwort fehlt, bleibt das Thema vorerst auf Ihrer Beobachtungsliste.
+
+Ein Beispiel: Eine neue Agentenfunktion klingt spannend. Wenn Ihre eigentliche Lücke darin besteht, dass eingehende Anfragen keine zuständige Person haben, hilft zuerst eine klare Übergaberegel. Die Funktion kann später wieder interessant werden. So halten Sie die technische Entwicklung im Blick, ohne bei jeder Neuigkeit Ihren Arbeitsablauf umzubauen.
 
 ## 1. Agentische Abläufe: vom Text zur vorbereiteten Aktion
 

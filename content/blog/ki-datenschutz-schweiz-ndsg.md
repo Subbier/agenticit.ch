@@ -1,9 +1,9 @@
 ---
-title: "KI und Datenschutz"
+title: "KI und Datenschutz in der Schweiz: Datenwege klären"
 slug: "ki-datenschutz-schweiz-ndsg"
 description: "KI und Datenschutz in der Schweiz: Datenwege, Anbieter, Aufbewahrung und Zuständigkeit vor dem Start klären. Mit Einsatzkarte und aktuellen Primärquellen."
 date: "2026-07-24"
-updated: "2026-10-17"
+updated: "2026-10-19"
 category: "Recht & Sicherheit"
 tags: ["KI", "Datenschutz", "Schweiz", "Datenwege"]
 keywords: ["ki datenschutz schweiz", "dsg ki", "ki datenbearbeitung"]
@@ -36,7 +36,13 @@ faq:
     a: "Zunächst genügen Aufgabe, Datenarten, beteiligte Systeme und offene Fragen. Nutzen Sie erfundene Beispiele ohne Personendaten. Passwörter, Zugangsschlüssel und echte Kundendossiers gehören nicht in die Einsatzkarte oder eine allgemeine Anfrage."
 ---
 
-> **Beginnen Sie mit einer Aufgabe und ihren Datenwegen.** Wer darf welche Angaben wofür verwenden? Welche Anbieter sind beteiligt? Mit diesen Antworten lässt sich ein KI-Vorhaben gezielt prüfen und besprechen.
+> **Welche Daten verlassen Ihren Betrieb, wenn ein KI-Assistent arbeitet?** Die Antwort hängt vom konkreten Aufbau ab. Dieser Leitfaden hilft Ihnen, Angaben, Anbieter, Zugriffe und Aufbewahrung für ein Vorhaben festzuhalten. Damit können Sie offene Datenschutzfragen gezielt mit den zuständigen Personen klären.
+
+## Zeichnen Sie zuerst einen einzelnen Datenweg
+
+Ein Assistent soll eine Kundenanfrage zusammenfassen. Dafür können neben der Website auch eine Verbindung zum KI-Anbieter, das CRM und technische Protokolle beteiligt sein. «Die Website steht in Europa» beschreibt deshalb noch nicht den gesamten Weg.
+
+Notieren Sie für jeden Schritt: **Welche Angaben werden benötigt, wo werden sie bearbeitet und wer kann sie sehen?** Verwenden Sie in der ersten Skizze ein erfundenes Anliegen. So lässt sich der geplante Ablauf besprechen, bevor echte Personendaten übermittelt werden. Die rechtliche Beurteilung bleibt vom konkreten Einsatz und seinen Voraussetzungen abhängig.
 
 ## Welche Daten braucht die Aufgabe wirklich?
 

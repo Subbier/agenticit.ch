@@ -1,9 +1,9 @@
 ---
-title: "Belege mit KI vorbereiten"
+title: "Buchhaltung automatisieren: Vom Beleg zur Prüfung"
 slug: "buchhaltung-automatisieren-ki"
 description: "Buchhaltung automatisieren beginnt bei einem klaren Belegablauf: Angaben erfassen, mit dem Original prüfen und zur fachlichen Bearbeitung übergeben."
 date: "2026-07-24"
-updated: "2026-10-17"
+updated: "2026-10-19"
 category: "KI-Automatisierung"
 tags: ["Belegerfassung", "Buchhaltung", "Automatisierung", "KMU"]
 keywords:
@@ -41,7 +41,15 @@ faq:
     a: "Das muss am eigenen Ablauf gemessen werden. Erfassen Sie Belegvolumen, heutige Bearbeitung, verbleibende Prüfung, Korrekturen und Pflege. Allgemeine Sekundenwerte oder eine einzelne gut lesbare Rechnung reichen für eine Nutzenzusage nicht aus."
 ---
 
-> **KI kann die Vorbereitung von Belegen unterstützen: Angaben erfassen, Vorschläge erstellen und Rückfragen sichtbar machen.** Ein sinnvoller Start verbindet das Originaldokument mit einer klaren Prüfung und der zuständigen Buchhaltung.
+> **Buchhaltung automatisieren beginnt vor der Buchung: bei Belegen, die vollständig am richtigen Ort ankommen.** KI kann Angaben auslesen und eine Zuordnung vorbereiten. Ihr Team erhält das Original und die offenen Fragen zusammen. So lässt sich prüfen, ob weniger Erfassungsarbeit entsteht, ohne die fachliche Kontrolle zu verlieren.
+
+## Ein Beleg, zwei unterschiedliche Entscheidungen
+
+Stellen Sie sich eine Rechnung für ein Jahresabo vor. Lieferant und Gesamtbetrag sind gut lesbar, der Leistungszeitraum steht im Kleingedruckten. Das Übertragen der sichtbaren Angaben ist eine Erfassungsaufgabe. Wie der Aufwand zeitlich zugeordnet wird, ist eine fachliche Entscheidung.
+
+Beschreiben Sie beide Schritte getrennt. Der Assistent bereitet den Beleg vor und markiert den Zeitraum. Die Buchhaltung beurteilt die Zuordnung. Gerade diese Arbeitsteilung macht eine Auswertung brauchbar: Sie sehen, wie viel Erfassung entfällt und wie viel Prüfung bleibt.
+
+**Für Ihr erstes Beispiel:** Wählen Sie eine regelmässige Belegart, etwa wiederkehrende Lieferantenrechnungen. Erfassen Sie fehlende Angaben und Korrekturen neben der Bearbeitungszeit. So vergleichen Sie den gesamten Weg statt nur die Geschwindigkeit der Texterkennung.
 
 ## Welcher Schritt verursacht heute Arbeit?
 

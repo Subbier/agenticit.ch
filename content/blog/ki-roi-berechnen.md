@@ -1,9 +1,9 @@
 ---
-title: "KI-ROI: Lohnt sich Ihr Projekt?"
+title: "KI-ROI berechnen: Zeitgewinn, Kosten und Nutzen trennen"
 slug: "ki-roi-berechnen"
-description: "KI-ROI berechnen: Zeitgewinn, wirksamen finanziellen Nutzen und Projektkosten nachvollziehbar vergleichen. Mit einem Rechenbeispiel und einer Vorlage für Ihr Team."
+description: "KI-ROI berechnen: Zeitgewinn, finanziellen Nutzen und Projektkosten nachvollziehbar vergleichen. Mit zwei Rechenbeispielen und einer Vorlage für Ihr Team."
 date: "2026-07-24"
-updated: "2026-10-17"
+updated: "2026-10-19"
 category: "RevOps"
 tags: ["ki roi", "ki automatisierung", "business case", "revops"]
 keywords:
@@ -39,7 +39,13 @@ faq:
     a: "Der Check berechnet ein Zeitpotenzial nach zusätzlicher Kontrolle und auf Wunsch einen rechnerischen Zeitwert. Einrichtung, Software und Betriebskosten sind darin nicht als Ausgaben abgezogen. Für einen finanziellen ROI ergänzen Sie die tatsächlichen Kosten und den nachweisbaren finanziellen Nutzen."
 ---
 
-> **Eine Automatisierung kann Ihrem Team Zeit für Kunden geben, ohne dass die monatlichen Ausgaben sinken.** Halten Sie deshalb drei Ergebnisse getrennt fest: freie Kapazität, tatsächlicher finanzieller Nutzen und die Kosten der Umsetzung. Erst daraus lässt sich ein sinnvoller Vergleich ableiten.
+> **Was bringt Ihr KI-Projekt nach Einrichtung, Kontrolle und Betrieb?** Für eine brauchbare ROI-Rechnung trennen Sie freie Arbeitszeit von tatsächlich vermiedenen Ausgaben und zusätzlichem Deckungsbeitrag. Zwei Rechenbeispiele zeigen, wie Sie den Nutzen einordnen und mit denselben Kosten vergleichen.
+
+## Drei Fragen vor der ersten Formel
+
+**Welche Arbeit entfällt?** Beschreiben Sie den Vorgang und messen Sie die aktive Zeit. **Was bleibt?** Zählen Sie Kontrolle, Korrekturen und Pflege mit. **Wie wird die freie Kapazität genutzt?** Zusätzliche Beratung und eine entfallende Fremdleistung sind unterschiedliche wirtschaftliche Effekte.
+
+Führen Sie für jede Annahme eine kurze Herkunftsnotiz. «Im Team geschätzt» und «an Vorgängen gemessen» dürfen nebeneinanderstehen, sollten aber nicht gleich aussehen. Die Rechnung bleibt damit auch dann nützlich, wenn eine Annahme später korrigiert werden muss. Das folgende Modell ist eine Planungshilfe für ein Projektbudget, keine Erfolgszusage.
 
 ## Was messen wir vor dem Start?
 

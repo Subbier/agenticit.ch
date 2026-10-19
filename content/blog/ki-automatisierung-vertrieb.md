@@ -1,9 +1,9 @@
 ---
-title: "KI im Vertrieb: Von der Anfrage zum klaren nächsten Schritt."
+title: "KI im Vertrieb: Anfragen, CRM und Team verbinden"
 slug: "ki-automatisierung-vertrieb"
 description: "Anfragen ins CRM übernehmen, Zuständigkeiten klären und Nachfassen vorbereiten. Ein praktischer Leitfaden für Beratung und Verkauf mit bearbeitbarem Prüfplan."
 date: "2026-07-24"
-updated: "2026-10-17"
+updated: "2026-10-19"
 category: "KI-Automatisierung"
 tags: ["KI im Vertrieb", "CRM", "Anfragen", "Automatisierung"]
 keywords:
@@ -42,7 +42,13 @@ faq:
     a: "Wenn die freigegebene Anfrage im richtigen System mit den vereinbarten Angaben ankommt und die zuständige Person den nächsten Schritt findet. Prüfen Sie zusätzlich doppelte Eingänge, unvollständige Angaben und einen ausgefallenen Übergabeweg."
 ---
 
-> **KI im Vertrieb kann aus unstrukturierten Informationen eine bearbeitbare Aufgabe vorbereiten.** Der Nutzen entsteht, wenn Ihr Team das Anliegen versteht, die Zuständigkeit kennt und den vereinbarten nächsten Schritt ausführen kann. Dafür müssen Formular, Telefonie und CRM zusammenpassen.
+> **Eine neue Anfrage hilft Ihrem Vertrieb erst, wenn jemand mit ihr weiterarbeiten kann.** KI kann das Anliegen ordnen, fehlende Angaben markieren und den nächsten Schritt vorbereiten. Der entscheidende Teil bleibt die Verbindung: Formular oder Telefonie, passendes CRM und eine zuständige Person im Team.
+
+## Folgen Sie einer Anfrage durch Ihren Betrieb
+
+Eine Interessentin sendet am Nachmittag eine Beratungsfrage. Das Formular bestätigt den Eingang. Im CRM steht zwar ihr Name, aber weder das Anliegen noch eine zuständige Person. Technisch wurde etwas gespeichert; für den Verkauf ist die Arbeit noch nicht vorbereitet.
+
+Verfolgen Sie deshalb einen freigegebenen Testfall bis zur tatsächlichen Übernahme. Können die Mitarbeitenden die ursprüngliche Frage sehen? Wissen sie, welcher Kontaktweg gewünscht ist? Wird eine bereits bearbeitete Anfrage als solche erkannt? Der Prüfplan oben führt genau durch diese Strecke. Er hilft, den Engpass zu finden, bevor Sie neue Kampagnen darauf schicken.
 
 ## Welche Aufgabe sollten wir zuerst vereinfachen?
 
