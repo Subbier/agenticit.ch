@@ -1,5 +1,6 @@
 import { JourneyShell } from "@/components/journey/shell"
 import { ChallengeCards, JourneyCta } from "@/components/journey/sections"
+import { WorksheetLibrary } from "@/components/journey/worksheet-library"
 import { BranchenRadar } from "@/components/site/branchen-radar"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
@@ -51,6 +52,7 @@ export default function Page() {
                 CRM-Ablauf prüfen <ArrowUpRight size={17} aria-hidden="true" />
               </Link>
             </div>
+            <WorksheetLibrary />
             <JourneyCta />
           </section>
           <div className={styles.toolArchive}>
