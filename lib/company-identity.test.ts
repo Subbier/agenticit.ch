@@ -102,7 +102,12 @@ test("identity unit: Sabir Rastoder is responsible for the website and content w
   )
   assert.ok(responsible)
   assert.ok(responsible.paragraphs?.includes("Sabir Rastoder"))
-  assert.ok(responsible.paragraphs?.includes("Certified AI Architect"))
+  assert.ok(responsible.paragraphs?.includes("Certified AI Solution Architect"))
+  assert.ok(
+    responsible.links?.some(
+      (link) => link.href === "https://www.linkedin.com/in/rastoder",
+    ),
+  )
   assert.doesNotMatch(JSON.stringify(impressumSections), /expertico/i)
 })
 

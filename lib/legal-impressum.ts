@@ -32,10 +32,14 @@ export const impressumSections: readonly LegalSectionContent[] = [
   },
   {
     title: "Verantwortlich für Inhalt und Website",
-    paragraphs: ["Sabir Rastoder", "Certified AI Architect"],
+    paragraphs: ["Sabir Rastoder", "Certified AI Solution Architect"],
     links: [
       { label: "sr@agenticit.ch", href: "mailto:sr@agenticit.ch" },
       { label: "+41 76 202 01 36", href: "tel:+41762020136" },
+      {
+        label: "Sabir Rastoder auf LinkedIn",
+        href: "https://www.linkedin.com/in/rastoder",
+      },
     ],
   },
   {
