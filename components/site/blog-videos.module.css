@@ -79,6 +79,46 @@
   background: #8fe05a;
   border-color: #8fe05a;
 }
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 12px;
+}
+.filters button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid #cbd5c7;
+  border-radius: 999px;
+  background: #f7f9f4;
+  color: #365038;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.filters button:hover {
+  border-color: #4d7c36;
+}
+.filters button[aria-pressed="true"] {
+  background: #17251e;
+  color: white;
+  border-color: #17251e;
+}
+.filters button span {
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.75;
+}
+.resultCount {
+  margin: 0 0 12px;
+  color: #647068;
+  font-size: 12px;
+}
 .rail {
   display: grid;
   grid-auto-flow: column;
@@ -341,6 +381,18 @@
   }
 }
 @media (max-width: 600px) {
+  .filters {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .filters button {
+    padding: 9px 8px;
+    font-size: 12px;
+    gap: 5px;
+  }
+  .filters button:first-child {
+    grid-column: 1 / -1;
+  }
   .section {
     margin: 48px 0;
   }

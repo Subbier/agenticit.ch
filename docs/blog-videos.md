@@ -6,7 +6,7 @@
 
 - Blog-Karte: passendes Vorschaubild, Play-Symbol und echte Laufzeit. Der Link führt zum Artikel mit Video.
 - Artikel: Player unmittelbar nach der Einleitung. Native Bedienelemente, Vollbild und Inline-Wiedergabe auf Mobile. Direkter Sprung zum Lesetext.
-- Startseite: sechs kuratierte Videos in einer horizontalen Reihe. Die nächste Karte bleibt angeschnitten sichtbar. Wischen, Trackpad und Pfeiltasten sind nutzbar; ein Klick öffnet ein zugängliches Dialogfenster. Escape schliesst es, der Fokus kehrt zur gewählten Karte zurück.
+- Startseite: alle 34 Videos in einer horizontalen Reihe, die sechs bisherigen Empfehlungen zuerst. Vier Themenfilter («Kunden gewinnen»: 10, «Verkauf verbessern»: 6, «Alltag vereinfachen»: 8, «KI richtig einführen»: 10) plus «Alle Videos». Die eindeutige Zuordnung und Reihenfolge liegen in `lib/blog-videos.ts`. Ein Filterwechsel setzt die Reihe an den Anfang; sichtbare Anzahl und Auswahl werden zugänglich ausgegeben. Die nächste Karte bleibt angeschnitten sichtbar. Wischen, Trackpad und Pfeiltasten sind nutzbar; ein Klick öffnet ein zugängliches Dialogfenster. Escape schliesst es, der Fokus kehrt zur gewählten Karte zurück.
 - Keine automatisch laufende Reihe und keine automatisch startenden Tonspuren. Videos laden mit `preload="none"`; in der Reihe werden zunächst nur kleine WebP-Bilder geladen.
 
 ## Medien und Veröffentlichung
@@ -19,7 +19,7 @@ Die Web-Dateien verwenden H.264/AAC und Fast Start. Die vollständige Dekodierun
 
 ## Prüfung
 
-`lib/blog-videos.test.ts`: vollständige eindeutige Zuordnung, Posterbudget, Laufzeiten und Wiedergabekoordination.
+`lib/blog-videos.test.ts`: vollständige eindeutige Zuordnung zu vier Themen, Filterergebnisse, Posterbudget, Laufzeiten und Wiedergabekoordination.
 
 `lib/blog-videos-page.test.ts`: alle 34 Artikelseiten, Video- und Posteradressen, HTTP 206/Range, frühe Player-Platzierung und schlanke Startseite. Ziel über `SITE_TEST_BASE_URL` setzen.
 

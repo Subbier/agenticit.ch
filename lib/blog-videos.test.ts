@@ -7,6 +7,8 @@ import {
   formatVideoDuration,
   homeVideoSlugs,
   pauseOtherMedia,
+  videoTopics,
+  filterVideos,
 } from "./blog-videos"
 
 test("all 34 articles resolve to their own supplied video and a small poster", () => {
@@ -36,8 +38,30 @@ test("duration labels and home selection use real media metadata", () => {
   assert.equal(formatVideoDuration(164.367), "2:45")
   assert.equal(formatVideoDuration(60), "1:00")
   assert.equal(formatVideoDuration(9), "0:09")
-  assert.equal(new Set(homeVideoSlugs).size, 6)
+  assert.equal(new Set(homeVideoSlugs).size, 34)
   for (const slug of homeVideoSlugs) assert.ok(getBlogVideo(slug))
+})
+
+test("four useful topics cover every article once, with no missing or invented video", () => {
+  const posts = getAllPosts()
+  const assigned = videoTopics.flatMap((topic) => [...topic.slugs])
+  assert.equal(videoTopics.length, 4)
+  assert.equal(assigned.length, 34)
+  assert.equal(new Set(assigned).size, 34)
+  assert.deepEqual([...assigned].sort(), posts.map((post) => post.slug).sort())
+  assert.deepEqual([...homeVideoSlugs].sort(), [...assigned].sort())
+  assert.equal(homeVideoSlugs[0], "ki-agenten")
+  assert.equal(filterVideos(posts, "all"), posts)
+  for (const topic of videoTopics) {
+    const filtered = filterVideos(posts, topic.id)
+    assert.equal(filtered.length, topic.slugs.length)
+    assert.ok(filtered.length >= 6)
+    assert.deepEqual(
+      filtered,
+      posts.filter((post) => new Set<string>(topic.slugs).has(post.slug)),
+    )
+  }
+  assert.deepEqual(filterVideos([], "marketing"), [])
 })
 
 test("starting a blog video stops every other player and leaves itself playing", () => {

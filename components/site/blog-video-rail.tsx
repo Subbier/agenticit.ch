@@ -4,7 +4,13 @@ import { useRef, useState } from "react"
 import Link from "next/link"
 import * as Dialog from "@radix-ui/react-dialog"
 import { ArrowLeft, ArrowRight, Play, X } from "lucide-react"
-import { formatVideoDuration, type BlogVideo } from "@/lib/blog-videos"
+import {
+  filterVideos,
+  formatVideoDuration,
+  videoTopics,
+  type BlogVideo,
+  type VideoTopicId,
+} from "@/lib/blog-videos"
 import { BlogVideoPlayer } from "./blog-video-player"
 import styles from "./blog-videos.module.css"
 
@@ -19,6 +25,9 @@ export function BlogVideoRail({ items }: { items: VideoCard[] }) {
   const rail = useRef<HTMLUListElement>(null)
   const trigger = useRef<HTMLButtonElement | null>(null)
   const [active, setActive] = useState<VideoCard | null>(null)
+  const [topicId, setTopicId] = useState<VideoTopicId>("all")
+  const visibleItems = filterVideos(items, topicId)
+  const filters = [{ id: "all" as const, label: "Alle Videos" }, ...videoTopics]
   function move(direction: number) {
     const list = rail.current
     if (!list) return
@@ -69,13 +78,38 @@ export function BlogVideoRail({ items }: { items: VideoCard[] }) {
           </div>
         </div>
       </div>
+      <div
+        className={styles.filters}
+        role="group"
+        aria-label="Videos nach Thema filtern"
+      >
+        {filters.map((topic) => (
+          <button
+            key={topic.id}
+            type="button"
+            aria-pressed={topicId === topic.id}
+            aria-controls="home-video-rail"
+            onClick={() => {
+              setTopicId(topic.id)
+              rail.current?.scrollTo({ left: 0, behavior: "instant" })
+            }}
+          >
+            {topic.label}
+            <span>{filterVideos(items, topic.id).length}</span>
+          </button>
+        ))}
+      </div>
+      <p className={styles.resultCount} role="status">
+        {visibleItems.length} Videos ·{" "}
+        {filters.find((topic) => topic.id === topicId)?.label}
+      </p>
       <ul
         ref={rail}
         id="home-video-rail"
         className={styles.rail}
         aria-label="Videos von AgenticIT"
       >
-        {items.map((item) => (
+        {visibleItems.map((item) => (
           <li key={item.slug} className={styles.railCard}>
             <button
               type="button"

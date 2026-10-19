@@ -1,7 +1,7 @@
 import assert from "node:assert/strict"
 import test from "node:test"
 import { getAllPosts } from "./blog"
-import { getBlogVideo } from "./blog-videos"
+import { getBlogVideo, videoTopics } from "./blog-videos"
 
 const base = process.env.SITE_TEST_BASE_URL ?? "http://localhost:3109"
 
@@ -48,4 +48,7 @@ test("index announces all 34 videos and homepage has one media player before a s
     "only the existing company video is mounted",
   )
   assert.ok(home.includes("Weitere Videos"))
+  assert.equal((home.match(/<img[^>]+src="\/blog-videos\//g) ?? []).length, 34)
+  assert.ok(home.includes('aria-label="Videos nach Thema filtern"'))
+  for (const topic of videoTopics) assert.ok(home.includes(topic.label))
 })
