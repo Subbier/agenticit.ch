@@ -129,7 +129,6 @@ const brands: Brand[] = [
   {
     name: "LinkedIn",
     slug: "linkedin",
-    si: "linkedin",
     mono: "in",
     use: "B2B-Inhalte und Ansprache planen",
   },
