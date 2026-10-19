@@ -89,10 +89,7 @@ export function BlogVideoRail({ items }: { items: VideoCard[] }) {
             type="button"
             aria-pressed={topicId === topic.id}
             aria-controls="home-video-rail"
-            onClick={() => {
-              setTopicId(topic.id)
-              rail.current?.scrollTo({ left: 0, behavior: "instant" })
-            }}
+            onClick={() => setTopicId(topic.id)}
           >
             {topic.label}
             <span>{filterVideos(items, topic.id).length}</span>
@@ -104,6 +101,7 @@ export function BlogVideoRail({ items }: { items: VideoCard[] }) {
         {filters.find((topic) => topic.id === topicId)?.label}
       </p>
       <ul
+        key={topicId}
         ref={rail}
         id="home-video-rail"
         className={styles.rail}
