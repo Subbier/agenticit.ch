@@ -1,10 +1,10 @@
 "use client"
 
 import { useEffect, useRef, useState, type FormEvent } from "react"
-import * as Dialog from "@radix-ui/react-dialog"
+import dynamic from "next/dynamic"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { ArrowLeft, ArrowRight, Check, MessageSquare, X } from "lucide-react"
+import { ArrowLeft, ArrowRight, Check } from "lucide-react"
 import {
   canOfferFeedback,
   feedbackQuestions,
@@ -16,6 +16,10 @@ import {
 } from "@/lib/website-feedback"
 import styles from "./website-feedback.module.css"
 import { CONSENT_REOPEN_EVENT } from "@/lib/consent"
+
+const WebsiteFeedbackPanel = dynamic(() => import("./website-feedback-panel"), {
+  ssr: false,
+})
 
 export function WebsiteFeedbackLink() {
   return (
@@ -32,6 +36,7 @@ export function WebsiteFeedbackLink() {
 export function WebsiteFeedback() {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
+  const [activated, setActivated] = useState(false)
   const [step, setStep] = useState(0)
   const [answers, setAnswers] = useState<Partial<FeedbackAnswers>>({})
   const [status, setStatus] = useState<"editing" | "sending" | "sent">(
@@ -60,6 +65,7 @@ export function WebsiteFeedback() {
       previousFocus.current = document.activeElement as HTMLElement | null
       restoreFocusOnClose.current = true
       manual.current = true
+      setActivated(true)
       setOpen(true)
     }
     const hideForConsent = () => setOpen(false)
@@ -113,9 +119,9 @@ export function WebsiteFeedback() {
           visible: document.visibilityState === "visible",
           blocked: Boolean(
             activeField ||
-              playingVideo ||
-              otherDialog ||
-              document.getElementById("consent-title"),
+            playingVideo ||
+            otherDialog ||
+            document.getElementById("consent-title"),
           ),
           pathname,
           navigationOpen: Boolean(
@@ -127,6 +133,7 @@ export function WebsiteFeedback() {
         manual.current = false
         previousFocus.current = document.activeElement as HTMLElement | null
         restoreFocusOnClose.current = true
+        setActivated(true)
         setOpen(true)
       } else if (!alreadyOffered.current && !stored)
         timer = setTimeout(offer, 1000)
@@ -169,157 +176,152 @@ export function WebsiteFeedback() {
     }
   }
 
+  if (!activated) return null
+
   return (
-    <Dialog.Root open={open} onOpenChange={setOpen} modal={false}>
-      <Dialog.Portal>
-        <Dialog.Content
-          className={styles.panel}
-          data-website-feedback
-          onOpenAutoFocus={(event) => {
-            if (!manual.current) event.preventDefault()
-          }}
-          onCloseAutoFocus={(event) => {
-            event.preventDefault()
-            if (restoreFocusOnClose.current) previousFocus.current?.focus()
-          }}
-          onInteractOutside={() => {
-            restoreFocusOnClose.current = false
-          }}
-        >
-          <Dialog.Close
-            className={styles.close}
-            aria-label="Umfrage schliessen"
+    <WebsiteFeedbackPanel
+      open={open}
+      onOpenChange={setOpen}
+      title={
+        status === "sent"
+          ? "Danke für Ihren Blick von aussen."
+          : "Ihr Eindruck zählt."
+      }
+      description={
+        status === "sent"
+          ? "Ihre Rückmeldung ist bei uns angekommen. Sie helfen uns, die Webseite für Sie und andere besser zu machen."
+          : "5 kurze Fragen zu unserer neuen Webseite. Freiwillig und ohne Kontaktdaten."
+      }
+      onOpenAutoFocus={(event) => {
+        if (!manual.current) event.preventDefault()
+      }}
+      onCloseAutoFocus={(event) => {
+        event.preventDefault()
+        if (restoreFocusOnClose.current) previousFocus.current?.focus()
+      }}
+      onInteractOutside={() => {
+        restoreFocusOnClose.current = false
+      }}
+    >
+      {status === "sent" ? (
+        <div className={styles.thanks} role="status">
+          <span className={styles.thanksIcon}>
+            <Check size={30} strokeWidth={1.6} aria-hidden="true" />
+          </span>
+          <p>Schön, dass Sie sich Zeit genommen haben.</p>
+          <button
+            type="button"
+            className={styles.primary}
+            onClick={() => setOpen(false)}
           >
-            <X size={18} aria-hidden="true" />
-          </Dialog.Close>
-          <div className={styles.eyebrow}>
-            <MessageSquare size={14} aria-hidden="true" /> Ihre Meinung
+            Weiter entdecken <ArrowRight size={16} aria-hidden="true" />
+          </button>
+        </div>
+      ) : (
+        <form onSubmit={submit}>
+          <div className={styles.progressLabel}>
+            <span>
+              Frage {step + 1} von {feedbackQuestions.length}
+            </span>
+            <span>Ca. 30 Sekunden</span>
           </div>
-          <Dialog.Title className={styles.title}>
-            {status === "sent"
-              ? "Danke für Ihren Blick von aussen."
-              : "Ihr Eindruck zählt."}
-          </Dialog.Title>
-          <Dialog.Description className={styles.description}>
-            {status === "sent"
-              ? "Ihre Rückmeldung ist bei uns angekommen. Sie helfen uns, die Webseite für Sie und andere besser zu machen."
-              : "5 kurze Fragen zu unserer neuen Webseite. Freiwillig und ohne Kontaktdaten."}
-          </Dialog.Description>
-          {status === "sent" ? (
-            <div className={styles.thanks} role="status">
-              <span className={styles.thanksIcon}>
-                <Check size={30} strokeWidth={1.6} aria-hidden="true" />
-              </span>
-              <p>Schön, dass Sie sich Zeit genommen haben.</p>
-              <Dialog.Close className={styles.primary}>
-                Weiter entdecken <ArrowRight size={16} aria-hidden="true" />
-              </Dialog.Close>
+          <div
+            className={styles.progress}
+            role="progressbar"
+            aria-label="Fortschritt der Umfrage"
+            aria-valuemin={0}
+            aria-valuemax={5}
+            aria-valuenow={step + 1}
+          >
+            {feedbackQuestions.map((item, index) => (
+              <span key={item.id} data-active={index <= step} />
+            ))}
+          </div>
+          <fieldset
+            className={styles.question}
+            disabled={status === "sending"}
+            key={question.id}
+          >
+            <legend ref={questionHeading} tabIndex={-1}>
+              {question.title}
+            </legend>
+            <div
+              className={`${styles.options} ${question.id === "overall" ? styles.rating : ""}`}
+            >
+              {question.options.map((option) => (
+                <label className={styles.option} key={option.value}>
+                  <input
+                    type="radio"
+                    name={question.id}
+                    value={option.value}
+                    checked={answers[question.id] === option.value}
+                    onChange={() =>
+                      setAnswers((current) => ({
+                        ...current,
+                        [question.id]: option.value,
+                      }))
+                    }
+                    aria-label={option.label}
+                    required
+                  />
+                  <span>
+                    {question.id === "overall" ? option.value : option.label}
+                  </span>
+                </label>
+              ))}
             </div>
-          ) : (
-            <form onSubmit={submit}>
-              <div className={styles.progressLabel}>
-                <span>
-                  Frage {step + 1} von {feedbackQuestions.length}
-                </span>
-                <span>Ca. 30 Sekunden</span>
+            {question.id === "overall" ? (
+              <div className={styles.ratingLabels}>
+                <span>Schwach</span>
+                <span>Sehr gut</span>
               </div>
-              <div
-                className={styles.progress}
-                role="progressbar"
-                aria-label="Fortschritt der Umfrage"
-                aria-valuemin={0}
-                aria-valuemax={5}
-                aria-valuenow={step + 1}
-              >
-                {feedbackQuestions.map((item, index) => (
-                  <span key={item.id} data-active={index <= step} />
-                ))}
-              </div>
-              <fieldset
-                className={styles.question}
+            ) : null}
+          </fieldset>
+          <div className={styles.actions}>
+            {step > 0 ? (
+              <button
+                type="button"
+                className={styles.back}
+                onClick={() => changeStep(step - 1)}
                 disabled={status === "sending"}
-                key={question.id}
               >
-                <legend ref={questionHeading} tabIndex={-1}>
-                  {question.title}
-                </legend>
-                <div
-                  className={`${styles.options} ${question.id === "overall" ? styles.rating : ""}`}
-                >
-                  {question.options.map((option) => (
-                    <label className={styles.option} key={option.value}>
-                      <input
-                        type="radio"
-                        name={question.id}
-                        value={option.value}
-                        checked={answers[question.id] === option.value}
-                        onChange={() =>
-                          setAnswers((current) => ({
-                            ...current,
-                            [question.id]: option.value,
-                          }))
-                        }
-                        aria-label={option.label}
-                        required
-                      />
-                      <span>
-                        {question.id === "overall"
-                          ? option.value
-                          : option.label}
-                      </span>
-                    </label>
-                  ))}
-                </div>
-                {question.id === "overall" ? (
-                  <div className={styles.ratingLabels}>
-                    <span>Schwach</span>
-                    <span>Sehr gut</span>
-                  </div>
-                ) : null}
-              </fieldset>
-              <div className={styles.actions}>
-                {step > 0 ? (
-                  <button
-                    type="button"
-                    className={styles.back}
-                    onClick={() => changeStep(step - 1)}
-                    disabled={status === "sending"}
-                  >
-                    <ArrowLeft size={15} aria-hidden="true" /> Zurück
-                  </button>
-                ) : (
-                  <Dialog.Close className={styles.back}>
-                    Nicht jetzt
-                  </Dialog.Close>
-                )}
-                <button
-                  type="submit"
-                  className={styles.primary}
-                  disabled={!answers[question.id] || status === "sending"}
-                >
-                  {status === "sending"
-                    ? "Wird gesendet …"
-                    : step === 4
-                      ? "Bewertung senden"
-                      : "Weiter"}
-                  <ArrowRight size={16} aria-hidden="true" />
-                </button>
-              </div>
-              {error ? (
-                <p className={styles.error} role="alert">
-                  {error}
-                </p>
-              ) : null}
-              <p className={styles.privacy}>
-                Nur Ihre Antworten werden übermittelt.{" "}
-                <Link href="/datenschutz" onClick={() => setOpen(false)}>
-                  Datenschutz
-                </Link>
-              </p>
-            </form>
-          )}
-        </Dialog.Content>
-      </Dialog.Portal>
-    </Dialog.Root>
+                <ArrowLeft size={15} aria-hidden="true" /> Zurück
+              </button>
+            ) : (
+              <button
+                type="button"
+                className={styles.back}
+                onClick={() => setOpen(false)}
+              >
+                Nicht jetzt
+              </button>
+            )}
+            <button
+              type="submit"
+              className={styles.primary}
+              disabled={!answers[question.id] || status === "sending"}
+            >
+              {status === "sending"
+                ? "Wird gesendet …"
+                : step === 4
+                  ? "Bewertung senden"
+                  : "Weiter"}
+              <ArrowRight size={16} aria-hidden="true" />
+            </button>
+          </div>
+          {error ? (
+            <p className={styles.error} role="alert">
+              {error}
+            </p>
+          ) : null}
+          <p className={styles.privacy}>
+            Nur Ihre Antworten werden übermittelt.{" "}
+            <Link href="/datenschutz" onClick={() => setOpen(false)}>
+              Datenschutz
+            </Link>
+          </p>
+        </form>
+      )}
+    </WebsiteFeedbackPanel>
   )
 }
