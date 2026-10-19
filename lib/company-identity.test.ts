@@ -6,7 +6,7 @@ import {
   websiteJsonLd,
   serviceJsonLd,
   articleJsonLd,
-  webApplicationJsonLd,
+  toolPageJsonLd,
   SITE_URL,
 } from "./seo"
 import { impressumSections } from "./legal-impressum"
@@ -57,7 +57,7 @@ test("identity unit: services, articles and tools refer to the same company", ()
     path: "/blog/website-briefing-vorlage",
     datePublished: "2026-10-17",
   })
-  const tool = webApplicationJsonLd({
+  const tool = toolPageJsonLd({
     name: "Anfragen-Check",
     description: "Anfragen prüfen",
     path: "/anfragen-check",
@@ -66,7 +66,7 @@ test("identity unit: services, articles and tools refer to the same company", ()
   assert.equal(service.provider.name, "AgenticIT GmbH")
   assert.equal(article.publisher["@id"], entityId)
   assert.equal(article.publisher.name, "AgenticIT GmbH")
-  assert.equal(tool.provider["@id"], entityId)
+  assert.equal(tool.publisher["@id"], entityId)
 })
 
 test("identity unit: the website does not advertise a non-functional blog search", () => {

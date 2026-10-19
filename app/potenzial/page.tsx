@@ -4,7 +4,7 @@ import {
   breadcrumbJsonLd,
   createPageMetadata,
   faqPageJsonLd,
-  webApplicationJsonLd,
+  toolPageJsonLd,
 } from "@/lib/seo"
 import { planningFaqs } from "@/lib/potenzial-content"
 
@@ -15,7 +15,7 @@ export const metadata: Metadata = createPageMetadata({
   path: "/potenzial",
 })
 const jsonLd = [
-  webApplicationJsonLd({
+  toolPageJsonLd({
     name: "AgenticIT Anfragenplaner",
     description:
       "Planungsrechnung mit eigenen Angaben: benötigte Anfragen und optionaler Bearbeitungsaufwand. Keine Markt- oder Ergebnisprognose.",

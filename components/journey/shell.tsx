@@ -96,12 +96,14 @@ export function JourneyShell({ children }: { children: React.ReactNode }) {
                 <Link href="/werkzeuge">Checks & Vorlagen</Link>
                 <Link href="/pakete">Services</Link>
                 <Link href="/zusammenarbeit">So arbeiten wir</Link>
+                <Link href="/excellence">Marketing-Kanäle</Link>
               </div>
               <div>
                 <strong>Wissen</strong>
                 <Link href="/blog">Blog</Link>
                 <Link href="/branchen">Branchen</Link>
                 <Link href="/karriere">Jobs</Link>
+                <Link href="/sicherheit">Sicherheit & Datenschutz</Link>
               </div>
               <div>
                 <strong>Kontakt</strong>

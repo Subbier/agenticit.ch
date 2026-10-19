@@ -232,6 +232,22 @@ export function CoreServicePage({
           </a>
         </section>
 
+        {service.slug === "ki-entwicklung" ? (
+          <nav className={styles.related} aria-label="KI-Technologie verstehen">
+            <span>Technologie verstehen</span>
+            <Link href="/technologie">KI-Technologie im Überblick</Link>
+            <Link href="/technologie/autonome-ki-agenten">
+              So arbeiten KI-Agenten
+            </Link>
+            <Link href="/technologie/multi-agenten-systeme">
+              Wenn mehrere Agenten zusammenarbeiten
+            </Link>
+            <Link href="/technologie/enterprise-integration">
+              KI mit Ihren Systemen verbinden
+            </Link>
+          </nav>
+        ) : null}
+
         <section className={styles.questions} aria-labelledby="questions-title">
           <div className={styles.sectionHeading}>
             <span className={shared.eyebrow}>Vor dem Start</span>

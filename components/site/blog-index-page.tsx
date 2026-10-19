@@ -42,7 +42,7 @@ export function BlogIndexPage() {
 
   const jsonLd = [
     breadcrumbJsonLd([
-      { name: "Start", path: "/" },
+      { name: "AgenticIT", path: "/" },
       { name: "Blog", path: "/blog" },
     ]),
   ]
@@ -65,7 +65,7 @@ export function BlogIndexPage() {
             className="mb-5 font-[family-name:var(--font-carbon-text)] text-[12px] font-medium text-[#6B7480]"
           >
             <Link href="/" className="hover:text-[#202522]">
-              Start
+              AgenticIT
             </Link>
             <span className="mx-2 text-[#202522]">/</span>
             <span className="text-[#647068]">Blog</span>

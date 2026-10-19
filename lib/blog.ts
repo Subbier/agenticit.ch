@@ -136,8 +136,15 @@ export function getPost(slug: string): BlogPost | undefined {
 }
 
 export function getRelatedPosts(post: BlogPost, count = 3): BlogPost[] {
-  const all = getAllPosts().filter((p) => p.slug !== post.slug)
-  const sameCategory = all.filter((p) => p.category === post.category)
+  const all = getAllPosts()
+  const category = all.filter((p) => p.category === post.category)
+  const position = category.findIndex((p) => p.slug === post.slug)
+  // Continue within the topic instead of always recommending its first three
+  // articles. This keeps later guides connected to the same topic as well.
+  const sameCategory = [
+    ...category.slice(position + 1),
+    ...category.slice(0, position),
+  ]
   const rest = all.filter((p) => p.category !== post.category)
   return [...sameCategory, ...rest].slice(0, count)
 }

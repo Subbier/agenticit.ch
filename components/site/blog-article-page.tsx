@@ -58,7 +58,7 @@ export function BlogArticlePage({ slug }: { slug: string }) {
       author: "AgenticIT GmbH",
     }),
     breadcrumbJsonLd([
-      { name: "Start", path: "/" },
+      { name: "AgenticIT", path: "/" },
       { name: "Blog", path: "/blog" },
       { name: post.title, path: `/blog/${post.slug}` },
     ]),
@@ -87,7 +87,7 @@ export function BlogArticlePage({ slug }: { slug: string }) {
             className="mb-5 font-[family-name:var(--font-carbon-text)] text-[12px] font-medium text-[#6B7480]"
           >
             <Link href="/" className="hover:text-[#202522]">
-              Start
+              AgenticIT
             </Link>
             <span className="mx-2 text-[#202522]">/</span>
             <Link href="/blog" className="hover:text-[#202522]">

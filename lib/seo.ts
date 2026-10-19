@@ -263,25 +263,21 @@ export function articleJsonLd(input: {
   }
 }
 
-export function webApplicationJsonLd(input: {
+export function toolPageJsonLd(input: {
   name: string
   description: string
   path: string
 }) {
   return {
     "@context": "https://schema.org",
-    "@type": "WebApplication",
+    "@type": "WebPage",
     name: input.name,
     description: input.description,
     url: absoluteUrl(input.path),
-    applicationCategory: "BusinessApplication",
-    operatingSystem: "Web",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "CHF",
-    },
-    provider: { "@id": `${SITE_URL}/#organization` },
+    inLanguage: "de-CH",
+    isAccessibleForFree: true,
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+    publisher: { "@id": `${SITE_URL}/#organization` },
   }
 }
 
