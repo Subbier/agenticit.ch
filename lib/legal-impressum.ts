@@ -31,19 +31,12 @@ export const impressumSections: readonly LegalSectionContent[] = [
     ],
   },
   {
-    title: "Verantwortlich für den Inhalt",
-    paragraphs: ["Sabir Rastoder", "CTO"],
+    title: "Verantwortlich für Inhalt und Website",
+    paragraphs: ["Sabir Rastoder", "Certified AI Architect"],
     links: [
       { label: "sr@agenticit.ch", href: "mailto:sr@agenticit.ch" },
       { label: "+41 76 202 01 36", href: "tel:+41762020136" },
     ],
-  },
-  {
-    title: "Verantwortlich für die Website",
-    paragraphs: [
-      "Zuständig für die technische Umsetzung und Betreuung dieser Website:",
-    ],
-    links: [{ label: "expertico.com", href: "https://expertico.com" }],
   },
   {
     title: "Haftungsausschluss",

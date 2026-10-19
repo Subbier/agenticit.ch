@@ -96,6 +96,16 @@ test("identity unit: official address and UID are visible in the imprint and con
     assert.ok(JSON.stringify(controller).includes(value), value)
 })
 
+test("identity unit: Sabir Rastoder is responsible for the website and content without external agency attribution", () => {
+  const responsible = impressumSections.find(
+    (section) => section.title === "Verantwortlich für Inhalt und Website",
+  )
+  assert.ok(responsible)
+  assert.ok(responsible.paragraphs?.includes("Sabir Rastoder"))
+  assert.ok(responsible.paragraphs?.includes("Certified AI Architect"))
+  assert.doesNotMatch(JSON.stringify(impressumSections), /expertico/i)
+})
+
 test("identity unit: the schema logo is real SVG, large enough and uses the existing dark brand drawing", () => {
   const url = new URL(organizationJsonLd().logo)
   const svg = readFileSync(`public${url.pathname}`, "utf8")
