@@ -11,7 +11,7 @@ Der Schwerpunkt liegt auf Unternehmen mit Beratung, Verkauf und Kundenbetreuung.
 - UID: CHE-157.845.314
 - E-Mail: info@agenticit.ch
 - Telefon: 031 539 44 44
-- [Amtlicher Firmeneintrag in Zefix](https://www.zefix.ch/de/search/entity/list/firm/1750164)
+- [Amtlicher Firmeneintrag im UID-Register](https://www.uid.admin.ch/Detail.aspx?uid_id=CHE157845314)
 
 ## Leistungen
 

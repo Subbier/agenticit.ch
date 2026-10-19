@@ -357,7 +357,7 @@ export function ContactPage() {
                 className="underline underline-offset-4"
                 href={company.registerUrl}
               >
-                Firmenangaben bei Zefix ↗
+                Firmenangaben im UID-Register ↗
               </a>
               <a
                 className="underline underline-offset-4"

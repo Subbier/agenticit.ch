@@ -148,7 +148,7 @@ export default function Page() {
             </div>
             <div>
               <a className={styles.textLink} href={company.registerUrl}>
-                Firmenangaben bei Zefix ↗
+                Firmenangaben im UID-Register ↗
               </a>
               <a className={styles.textLink} href={company.swico.directoryUrl}>
                 Mitglied im Swico-Verzeichnis ↗

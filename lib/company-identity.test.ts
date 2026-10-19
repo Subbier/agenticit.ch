@@ -13,9 +13,9 @@ import { impressumSections } from "./legal-impressum"
 import { datenschutzSections } from "./legal-datenschutz"
 
 const entityId = `${SITE_URL}/#organization`
-const registerUrl = "https://www.zefix.ch/de/search/entity/list/firm/1750164"
+const registerUrl = "https://www.uid.admin.ch/Detail.aspx?uid_id=CHE157845314"
 
-test("identity unit: company name, address and UID match the official Zefix entry", () => {
+test("identity unit: company name, address and UID match the official UID register entry", () => {
   const entity = organizationJsonLd() as Record<string, any>
   assert.equal(entity.name, "AgenticIT GmbH")
   assert.equal(entity["@id"], entityId)

@@ -1,4 +1,5 @@
-// Public company facts checked in Zefix and the Swico member directory on 2026-10-17.
+// Public company facts checked in the official UID register on 2026-10-19
+// and the Swico member directory on 2026-10-17.
 // Sources and unresolved claims are documented in docs/company-identity.md.
 export const company = {
   legalName: "AgenticIT GmbH",
@@ -16,7 +17,7 @@ export const company = {
     addressCountry: "CH",
   },
   uid: "CHE-157.845.314",
-  registerUrl: "https://www.zefix.ch/de/search/entity/list/firm/1750164",
+  registerUrl: "https://www.uid.admin.ch/Detail.aspx?uid_id=CHE157845314",
   uidUrl: "https://www.uid.admin.ch/Detail.aspx?uid_id=CHE157845314",
   logo: "/logos/agenticit-symbol.svg",
   swico: {

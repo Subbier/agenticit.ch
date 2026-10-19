@@ -18,7 +18,7 @@ export const impressumSections: readonly LegalSectionContent[] = [
     ],
     links: [
       {
-        label: "Firmenangaben im Zentralen Firmenindex (Zefix)",
+        label: "Firmenangaben im amtlichen UID-Register",
         href: company.registerUrl,
       },
     ],

@@ -73,3 +73,18 @@ test("the footer exposes security information and the marketing channel explanat
   assert.match(footer, /href="\/sicherheit"/)
   assert.match(footer, /href="\/excellence"/)
 })
+
+test("company references use the available official UID register rather than the failing Zefix endpoint", async () => {
+  const reference = "https://www.uid.admin.ch/Detail.aspx?uid_id=CHE157845314"
+  for (const path of ["/zusammenarbeit", "/kontakt", "/impressum"]) {
+    const html = await page(path)
+    assert.ok(html.includes(`href="${reference}"`), path)
+    assert.ok(
+      !html.includes(
+        'href="https://www.zefix.ch/de/search/entity/list/firm/1750164"',
+      ),
+      path,
+    )
+    assert.ok(html.includes("UID-Register"), path)
+  }
+})
