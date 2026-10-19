@@ -1,5 +1,5 @@
 ---
-title: "RevOps-Kennzahlen: Anfrage, Gespräch und Auftrag messen"
+title: "RevOps-Kennzahlen: Anfragen und Aufträge messen"
 slug: "revops-metriken-kennzahlen"
 description: "Vier Kennzahlen vom Anfrageeingang bis zum Auftrag: Zählregeln, Bezugsgrössen und fehlende Werte verständlich festhalten. Mit bearbeitbarem Arbeitsblatt."
 date: "2026-07-24"

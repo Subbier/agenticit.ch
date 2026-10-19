@@ -1,5 +1,5 @@
 ---
-title: "Speed-to-Lead: Reaktionszeit im Vertrieb sinnvoll messen"
+title: "Speed to Lead: Anfragen zügig bearbeiten"
 slug: "speed-to-lead-5-minuten-regel"
 description: "Wie schnell antwortet Ihr Team auf neue Anfragen? Reaktionszeit, Zuständigkeit und Vertretung klären – mit Beispiel und Anfragen-Check."
 date: "2026-07-24"

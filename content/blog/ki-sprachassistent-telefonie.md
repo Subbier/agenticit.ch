@@ -1,5 +1,5 @@
 ---
-title: "KI-Telefonassistent für KMU: Gespräch und Anrufweg prüfen"
+title: "KI-Telefonassistent: Empfang und Termine"
 slug: "ki-sprachassistent-telefonie"
 description: "Anrufe annehmen, Anliegen erfassen und Termine vorbereiten: So prüfen Sie Sprache, Telefonstrecke, Kalender und Übergabe – mit bearbeitbarem Prüfplan."
 date: "2026-07-24"

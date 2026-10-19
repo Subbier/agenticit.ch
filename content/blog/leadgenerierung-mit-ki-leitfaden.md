@@ -1,5 +1,5 @@
 ---
-title: "Lead-Magnet für KMU: Checkliste, Selbstcheck oder Rechner?"
+title: "Lead-Magnet für KMU: Welches Format passt?"
 slug: "leadgenerierung-mit-ki-leitfaden"
 description: "Welcher Lead-Magnet passt zu Ihrem KMU? Checkliste, Selbstcheck oder Rechner sinnvoll wählen. Mit drei AgenticIT-Beispielen, Akquise-Plan und nächstem Schritt."
 date: "2026-07-24"

@@ -1,5 +1,5 @@
 ---
-title: "E-Mail-Management mit KI: Ordnen, vorbereiten, antworten"
+title: "KI im E-Mail-Management: Weniger Sucharbeit"
 slug: "ki-email-management"
 description: "Posteingänge ordnen, Anfragen zusammenfassen und Antworten vorbereiten. So planen KMU E-Mail-Abläufe mit klarer Zuständigkeit und menschlicher Freigabe."
 date: "2026-07-24"

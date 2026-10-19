@@ -1,5 +1,5 @@
 ---
-title: "Social Media mit KI: Von der Kundenfrage zum guten Beitrag"
+title: "Social Media mit KI: Inhalte gezielt vorbereiten"
 slug: "ki-social-media-automatisierung"
 description: "Kundenfragen in hilfreiche Beiträge verwandeln: KI für Briefing, Entwurf und Varianten nutzen. Mit Redaktion, Freigabe und passendem Anfrageweg."
 date: "2026-07-24"

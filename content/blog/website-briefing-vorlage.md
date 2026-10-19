@@ -1,5 +1,5 @@
 ---
-title: "Website-Briefing-Vorlage: Sieben Punkte für Ihr Projekt"
+title: "Website-Briefing: Ziele und Anforderungen klären"
 slug: "website-briefing-vorlage"
 description: "Planen Sie Ihren neuen Webauftritt mit einer bearbeitbaren Vorlage: Zielkunden, Inhalte, Anfrageweg, CRM, Zuständigkeiten und Abnahme verständlich festhalten."
 date: "2026-10-17"

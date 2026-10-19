@@ -1,5 +1,5 @@
 ---
-title: "Prozessautomatisierung für KMU: Welche Aufgabe zuerst?"
+title: "Prozessautomatisierung: Beispiele und Tools"
 slug: "prozessautomatisierung-kmu-leitfaden"
 description: "Prozessautomatisierung für KMU erklärt: Beispiele, Software-Auswahl und Vorgehen. Finden Sie geeignete Aufgaben und berechnen Sie den Nutzen nach Kontrolle."
 date: "2026-07-24"

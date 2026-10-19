@@ -1,5 +1,5 @@
 ---
-title: "KI-Agenten sicher einsetzen: Rechte und Freigaben prüfen"
+title: "KI-Agenten absichern: Zugriffe und Freigaben"
 slug: "ki-agenten-sicherheit-compliance"
 description: "KI-Agenten sicher planen: Leserechte, Entwürfe, Freigaben und Fehlerfälle klar abgrenzen. Mit einem Ablaufbeispiel und einer bearbeitbaren Einsatzkarte."
 date: "2026-07-24"

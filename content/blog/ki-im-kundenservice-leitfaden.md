@@ -1,5 +1,5 @@
 ---
-title: "KI im Kundenservice: Antworten und Übergaben verbessern"
+title: "KI im Kundenservice: Antworten und Übergaben"
 slug: "ki-im-kundenservice-leitfaden"
 description: "Kundenanfragen mit KI einordnen, Wissen finden und Antworten vorbereiten. So planen Schweizer KMU die Übergabe ans Team und prüfen die tatsächliche Entlastung."
 date: "2026-07-24"

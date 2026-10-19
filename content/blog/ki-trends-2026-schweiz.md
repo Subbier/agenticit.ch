@@ -1,5 +1,5 @@
 ---
-title: "KI-Trends 2026 in der Schweiz: Was für KMU relevant ist"
+title: "KI-Trends 2026: Was Schweizer KMU hilft"
 slug: "ki-trends-2026-schweiz"
 description: "Vier KI-Entwicklungen für Schweizer KMU einordnen: Agenten, Standards, KI-Suche und Regulierungsplanung. Mit Quellen und Prüffragen für Ihren Betrieb."
 date: "2026-07-24"

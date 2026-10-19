@@ -1,5 +1,5 @@
 ---
-title: "KI im Verkaufsgespräch: Vorbereiten und gezielt nachfassen"
+title: "KI im Verkaufsgespräch: Gut vorbereitet beraten"
 slug: "ki-im-verkaufsgespraech"
 description: "Gespräche vorbereiten, offene Fragen festhalten und vereinbarte nächste Schritte ins CRM übergeben. KI-Unterstützung für Beratung und Vertrieb mit Teamfreigabe."
 date: "2026-07-24"

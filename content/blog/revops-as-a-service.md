@@ -1,5 +1,5 @@
 ---
-title: "RevOps für KMU: Marketing, Sales und Betreuung verbinden"
+title: "RevOps für KMU: Marketing und Sales verbinden"
 slug: "revops-as-a-service"
 description: "Marketing, Sales und Kundenbetreuung verbinden: So klären Schweizer KMU Übergaben, CRM, Zuständigkeiten und den nächsten sinnvollen Schritt."
 date: "2026-07-24"

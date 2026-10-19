@@ -1,5 +1,5 @@
 ---
-title: "KI oder Mensch im Kundenservice? Die Aufgabe entscheidet"
+title: "KI oder Mensch: Kundenservice sinnvoll aufteilen"
 slug: "ki-vs-mensch-im-service"
 description: "Welche Serviceaufgabe passt zu KI, welche ins Team? Eine Entscheidungshilfe zu Wissen, Befugnissen, persönlicher Übernahme und tatsächlicher Erledigung."
 date: "2026-07-24"

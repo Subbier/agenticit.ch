@@ -1,5 +1,5 @@
 ---
-title: "Neukundengewinnung für KMU in der Schweiz: Ihr Anfrageweg"
+title: "Neukunden gewinnen: Ein Leitfaden für KMU"
 slug: "neukundengewinnung-kmu-schweiz"
 description: "Zielkunden, Angebot, Kanal und Bearbeitung zusammen planen. So bauen Schweizer KMU einen überprüfbaren Anfrageweg auf – mit Vorlage und Marketing-Setup-Check."
 date: "2026-07-24"

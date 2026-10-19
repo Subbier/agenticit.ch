@@ -1,5 +1,5 @@
 ---
-title: "KI-Agent entwickeln lassen: Briefing, Kosten und Abnahme"
+title: "KI-Agent entwickeln lassen: Auftrag und Abnahme"
 slug: "ki-agent-entwickeln-lassen"
 description: "Welche Aufgabe eignet sich, was gehört ins Briefing und woran erkennen Sie eine brauchbare Lösung? Eine Entscheidungshilfe für Schweizer KMU mit Projektvorlage."
 date: "2026-10-18"

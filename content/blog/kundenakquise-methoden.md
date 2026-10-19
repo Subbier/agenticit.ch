@@ -1,5 +1,5 @@
 ---
-title: "Kundenakquise für KMU: Sieben Methoden sinnvoll auswählen"
+title: "Methoden der Kundenakquise für Schweizer KMU"
 slug: "kundenakquise-methoden"
 description: "Sieben Akquise-Methoden vergleichen: Suche, Inhalte, Empfehlungen, Partner und persönliche Gespräche. Mit Akquise-Plan und Marketing-Setup-Check für Ihr KMU."
 date: "2026-07-24"

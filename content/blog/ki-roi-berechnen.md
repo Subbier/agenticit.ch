@@ -1,5 +1,5 @@
 ---
-title: "KI-ROI berechnen: Zeitgewinn, Kosten und Nutzen trennen"
+title: "KI-ROI berechnen: Aufwand und Nutzen vergleichen"
 slug: "ki-roi-berechnen"
 description: "KI-ROI berechnen: Zeitgewinn, finanziellen Nutzen und Projektkosten nachvollziehbar vergleichen. Mit zwei Rechenbeispielen und einer Vorlage für Ihr Team."
 date: "2026-07-24"

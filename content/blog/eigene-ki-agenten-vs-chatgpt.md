@@ -1,5 +1,5 @@
 ---
-title: "ChatGPT oder eigener KI-Agent: Was braucht Ihr Betrieb?"
+title: "Eigener KI-Agent oder ChatGPT: Was passt zum KMU?"
 slug: "eigene-ki-agenten-vs-chatgpt"
 description: "Wann ein vorhandenes KI-Tool reicht, wann ein Workflow hilft und wann eigene KI-Entwicklung sinnvoll ist. Mit Beispiel, Prüffragen und Grenzen."
 date: "2026-07-24"
