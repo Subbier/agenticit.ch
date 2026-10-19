@@ -110,6 +110,18 @@ export const PAGES: Record<string, PageContent> = {
         href: "/loesungen/ki-entwicklung",
         label: "KI-Entwicklung im Detail",
       },
+      {
+        href: "/angebot",
+        label: "Services nach Ihrer Aufgabe auswählen",
+      },
+      {
+        href: "/excellence",
+        label: "Marketing-Kanäle und Anfragewege planen",
+      },
+      {
+        href: "/case-studies",
+        label: "Unsere Website als Praxisbeispiel",
+      },
     ],
     faqs: [
       {
