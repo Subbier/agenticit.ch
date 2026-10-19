@@ -13,6 +13,7 @@ import { CompanyVideo } from "./company-video"
 import { Careers } from "./careers"
 import { ServiceShowcase } from "./service-showcase"
 import { DecisionGuides } from "./decision-guides"
+import { HomeVideos } from "./home-videos"
 import styles from "./journey.module.css"
 
 export function JourneyHome() {
@@ -145,6 +146,7 @@ export function JourneyHome() {
         </section>
         <div className={styles.container}>
           <DecisionGuides />
+          <HomeVideos />
           <Careers />
           <section className={styles.section}>
             <span className={styles.eyebrow}>Gut zu wissen</span>

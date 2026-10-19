@@ -8,6 +8,8 @@ import type { BlogPostMeta } from "@/lib/blog"
 import { filterBlogPosts } from "@/lib/blog-search"
 import { createBlogSearchState } from "@/lib/blog-search-state"
 import styles from "./blog-index-grid.module.css"
+import { Play } from "lucide-react"
+import { getBlogVideo, formatVideoDuration } from "@/lib/blog-videos"
 
 const searchState = createBlogSearchState()
 
@@ -28,13 +30,33 @@ function PostCard({
   post: BlogPostMeta
   featured?: boolean
 }) {
+  const video = getBlogVideo(post.slug)
   return (
     <Link
       href={`/blog/${post.slug}`}
-      className={`${styles.card} flex h-full flex-col rounded-[14px] border bg-white p-6 transition hover:-translate-y-[2px] hover:border-[#8FE05A] ${
+      className={`${styles.card} ${featured ? styles.featured : ""} flex h-full flex-col rounded-[14px] border bg-white p-6 transition hover:-translate-y-[2px] hover:border-[#8FE05A] ${
         featured ? "border-[#202522] sm:p-7" : "border-[#dce3db]"
       }`}
     >
+      {video ? (
+        <div className={styles.videoCover}>
+          <img
+            src={video.poster}
+            alt=""
+            width={960}
+            height={540}
+            loading="lazy"
+            decoding="async"
+          />
+          <span className={styles.videoBadge}>
+            <Play size={13} fill="currentColor" aria-hidden="true" /> Video ·{" "}
+            {formatVideoDuration(video.durationSeconds)}
+          </span>
+          <span className={styles.videoPlay}>
+            <Play size={20} fill="currentColor" aria-hidden="true" />
+          </span>
+        </div>
+      ) : null}
       <div className="flex items-center gap-2">
         <span className="font-[family-name:var(--font-mono-signal)] text-[10.5px] font-semibold uppercase tracking-[0.2em] text-[#4d7c36]">
           {post.category}
@@ -61,7 +83,7 @@ function PostCard({
           {formatDate(post.updated ?? post.date)} · {post.readingTime} Min.
         </span>
         <span className="font-[family-name:var(--font-carbon-text)] text-[13px] font-semibold text-[#4d7c36]">
-          Lesen →
+          {video ? "Video & Artikel →" : "Lesen →"}
         </span>
       </div>
     </Link>

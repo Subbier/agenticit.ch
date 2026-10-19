@@ -12,6 +12,7 @@ import { CtaContactForm } from "@/components/site/cta-contact-form"
 import { WebsiteCostComparison } from "@/components/site/website-cost-comparison"
 import { articleJsonLd, breadcrumbJsonLd, faqPageJsonLd } from "@/lib/seo"
 import "./blog-article.css"
+import { BlogArticleVideo } from "./blog-article-video"
 
 function formatDate(iso: string) {
   const d = new Date(`${iso}T00:00:00`)
@@ -121,6 +122,8 @@ export function BlogArticlePage({ slug }: { slug: string }) {
         </div>
       </section>
 
+      <BlogArticleVideo slug={post.slug} title={post.title} />
+
       {post.resource && post.slug === "webdesign-kosten-schweiz" ? (
         <WebsiteCostComparison resource={post.resource} />
       ) : post.resource ? (
@@ -150,6 +153,7 @@ export function BlogArticlePage({ slug }: { slug: string }) {
       <section className="blog-section bg-white py-12 sm:py-16">
         <div className="blog-container">
           <article
+            id="artikel"
             className="blog-article"
             dangerouslySetInnerHTML={{ __html: post.html }}
           />

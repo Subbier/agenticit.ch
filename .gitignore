@@ -40,3 +40,6 @@ pnpm-debug.log*
 
 # misc / scratch
 write-test
+
+# Large supplied blog masters are delivered separately from the source archive.
+/public/blog-videos/*.mp4
