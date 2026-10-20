@@ -10,6 +10,29 @@ const services = [
   ["revops-umsatzgenerierung", /Sales/],
 ] as const
 
+test("desktop and mobile offer navigation expose all five services on every page", async () => {
+  const expected = services.map(([slug]) => `/loesungen/${slug}`)
+  for (const path of ["/", "/blog/ki-agenten"]) {
+    const response = await fetch(new URL(path, baseUrl))
+    assert.equal(response.status, 200)
+    const html = await response.text()
+    const header = html.match(/<header\b[^>]*>([\s\S]*?)<\/header>/)?.[1] ?? ""
+    for (const view of ["desktop", "mobile"]) {
+      const group = header.match(
+        new RegExp(`data-offer-navigation="${view}"[\\s\\S]*?<\\/(?:details|div)>`),
+      )?.[0]
+      assert.ok(group, `${path}: ${view} offer navigation is missing`)
+      assert.match(group, /Angebote/)
+      const destinations = [...group.matchAll(/<a\b[^>]*>/g)]
+        .map(([tag]) => tag)
+        .filter((tag) => tag.includes("data-offer-link"))
+        .map((tag) => tag.match(/href="([^"]+)"/)?.[1])
+      assert.deepEqual(destinations, expected, `${path}: ${view}`)
+      assert.ok(group.includes('href="/pakete"'))
+    }
+  }
+})
+
 for (const [slug, intent] of services) {
   test(`${slug} serves its own useful, indexable service page`, async () => {
     const path = `/loesungen/${slug}`

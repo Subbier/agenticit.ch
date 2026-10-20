@@ -1,8 +1,9 @@
 import Link from "next/link"
-import { ArrowUpRight, Menu, X } from "lucide-react"
+import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react"
 import { ConsentSettingsLink } from "@/components/site/consent-settings-link"
 import { WebsiteFeedbackLink } from "@/components/site/website-feedback"
 import { company } from "@/lib/company"
+import { coreServices } from "@/lib/core-services"
 import { SkipToContent } from "./skip-to-content"
 import styles from "./journey.module.css"
 
@@ -32,7 +33,28 @@ export function JourneyShell({ children }: { children: React.ReactNode }) {
           <Brand />
           <nav aria-label="Hauptnavigation" className={styles.nav}>
             <Link href="/werkzeuge">Ihr Ansatzpunkt</Link>
-            <Link href="/pakete">Services</Link>
+            <details
+              className={styles.offerNav}
+              data-offer-navigation="desktop"
+            >
+              <summary>
+                Angebote <ChevronDown size={14} aria-hidden="true" />
+              </summary>
+              <div className={styles.offerMenu}>
+                <Link href="/pakete" className={styles.offerOverview}>
+                  Alle Angebote
+                </Link>
+                {coreServices.map((service) => (
+                  <Link
+                    key={service.slug}
+                    href={`/loesungen/${service.slug}`}
+                    data-offer-link=""
+                  >
+                    {service.name}
+                  </Link>
+                ))}
+              </div>
+            </details>
             <Link href="/zusammenarbeit">Zusammenarbeit</Link>
             <Link href="/karriere">Jobs</Link>
             <Link
@@ -59,7 +81,22 @@ export function JourneyShell({ children }: { children: React.ReactNode }) {
             </summary>
             <div>
               <Link href="/werkzeuge">Ihr Ansatzpunkt</Link>
-              <Link href="/pakete">Services</Link>
+              <div
+                className={styles.mobileOffers}
+                data-offer-navigation="mobile"
+              >
+                <strong>Angebote</strong>
+                <Link href="/pakete">Alle Angebote</Link>
+                {coreServices.map((service) => (
+                  <Link
+                    key={service.slug}
+                    href={`/loesungen/${service.slug}`}
+                    data-offer-link=""
+                  >
+                    {service.name}
+                  </Link>
+                ))}
+              </div>
               <Link href="/zusammenarbeit">Zusammenarbeit</Link>
               <Link href="/karriere">Jobs</Link>
               <Link href="/kundenreise-check">
