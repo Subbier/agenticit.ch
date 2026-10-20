@@ -1,7 +1,7 @@
 {
   "buchhaltung-automatisieren-ki": {
     "src": "/blog-videos/AgenticIT_buchhaltung-automatisieren-ki_16x9_v01_1.mp4",
-    "poster": "/blog-videos/buchhaltung-automatisieren-ki.webp",
+    "poster": "/blog-videos/editorial/buchhaltung-automatisieren-ki.webp",
     "durationSeconds": 178.75,
     "width": 1280,
     "height": 720,
@@ -10,7 +10,7 @@
   },
   "change-management-mit-ki": {
     "src": "/blog-videos/AgenticIT_change-management-mit-ki_16x9_v01_1.mp4",
-    "poster": "/blog-videos/change-management-mit-ki.webp",
+    "poster": "/blog-videos/editorial/change-management-mit-ki.webp",
     "durationSeconds": 168.25,
     "width": 1280,
     "height": 720,
@@ -19,7 +19,7 @@
   },
   "eigene-ki-agenten-vs-chatgpt": {
     "src": "/blog-videos/AgenticIT_eigene-ki-agenten-vs-chatgpt_16x9_v01_1.mp4",
-    "poster": "/blog-videos/eigene-ki-agenten-vs-chatgpt.webp",
+    "poster": "/blog-videos/editorial/eigene-ki-agenten-vs-chatgpt.webp",
     "durationSeconds": 178.833,
     "width": 1280,
     "height": 720,
@@ -28,7 +28,7 @@
   },
   "haeufige-ki-fehler-vermeiden": {
     "src": "/blog-videos/AgenticIT_haeufige-ki-fehler-vermeiden_16x9_v01_1.mp4",
-    "poster": "/blog-videos/haeufige-ki-fehler-vermeiden.webp",
+    "poster": "/blog-videos/editorial/haeufige-ki-fehler-vermeiden.webp",
     "durationSeconds": 177.583,
     "width": 1280,
     "height": 720,
@@ -37,7 +37,7 @@
   },
   "ki-agent-entwickeln-lassen": {
     "src": "/blog-videos/AgenticIT_ki-agent-entwickeln-lassen_16x9_v01_1.mp4",
-    "poster": "/blog-videos/ki-agent-entwickeln-lassen.webp",
+    "poster": "/blog-videos/editorial/ki-agent-entwickeln-lassen.webp",
     "durationSeconds": 176.625,
     "width": 1280,
     "height": 720,
@@ -46,7 +46,7 @@
   },
   "ki-agenten": {
     "src": "/blog-videos/AgenticIT_ki-agenten_16x9_v01.mp4",
-    "poster": "/blog-videos/ki-agenten.webp",
+    "poster": "/blog-videos/editorial/ki-agenten.webp",
     "durationSeconds": 164.375,
     "width": 1280,
     "height": 720,
@@ -55,7 +55,7 @@
   },
   "ki-agenten-praxisbeispiele-schweiz": {
     "src": "/blog-videos/AgenticIT_ki-agenten-praxisbeispiele-schweiz_16x9_v01_1.mp4",
-    "poster": "/blog-videos/ki-agenten-praxisbeispiele-schweiz.webp",
+    "poster": "/blog-videos/editorial/ki-agenten-praxisbeispiele-schweiz.webp",
     "durationSeconds": 175.667,
     "width": 1280,
     "height": 720,
@@ -64,7 +64,7 @@
   },
   "ki-agenten-sicherheit-compliance": {
     "src": "/blog-videos/AgenticIT_ki-agenten-sicherheit-compliance_16x9_v01_1.mp4",
-    "poster": "/blog-videos/ki-agenten-sicherheit-compliance.webp",
+    "poster": "/blog-videos/editorial/ki-agenten-sicherheit-compliance.webp",
     "durationSeconds": 179.958,
     "width": 1280,
     "height": 720,
@@ -73,7 +73,7 @@
   },
   "ki-automatisierung-vertrieb": {
     "src": "/blog-videos/AgenticIT_ki-automatisierung-vertrieb_16x9_v01_1.mp4",
-    "poster": "/blog-videos/ki-automatisierung-vertrieb.webp",
+    "poster": "/blog-videos/editorial/ki-automatisierung-vertrieb.webp",
     "durationSeconds": 198.375,
     "width": 1280,
     "height": 720,
@@ -82,7 +82,7 @@
   },
   "ki-datenanalyse-kmu": {
     "src": "/blog-videos/AgenticIT_ki-datenanalyse-kmu_16x9_v01_1.mp4",
-    "poster": "/blog-videos/ki-datenanalyse-kmu.webp",
+    "poster": "/blog-videos/editorial/ki-datenanalyse-kmu.webp",
     "durationSeconds": 188.542,
     "width": 1280,
     "height": 720,
@@ -91,7 +91,7 @@
   },
   "ki-datenschutz-schweiz-ndsg": {
     "src": "/blog-videos/AgenticIT_ki-datenschutz-schweiz-ndsg_16x9_v01_1.mp4",
-    "poster": "/blog-videos/ki-datenschutz-schweiz-ndsg.webp",
+    "poster": "/blog-videos/editorial/ki-datenschutz-schweiz-ndsg.webp",
     "durationSeconds": 191.042,
     "width": 1280,
     "height": 720,
@@ -100,8 +100,8 @@
   },
   "ki-einfuehrung-schritt-fuer-schritt": {
     "src": "/blog-videos/AgenticIT_ki-einfuehrung-schritt-fuer-schritt_16x9_v01_1.mp4",
-    "poster": "/blog-videos/ki-einfuehrung-schritt-fuer-schritt.webp",
-    "durationSeconds": 200.0,
+    "poster": "/blog-videos/editorial/ki-einfuehrung-schritt-fuer-schritt.webp",
+    "durationSeconds": 200,
     "width": 1280,
     "height": 720,
     "bytes": 4637835,
@@ -109,7 +109,7 @@
   },
   "ki-email-management": {
     "src": "/blog-videos/AgenticIT_ki-email-management_16x9_v01.mp4",
-    "poster": "/blog-videos/ki-email-management.webp",
+    "poster": "/blog-videos/editorial/ki-email-management.webp",
     "durationSeconds": 177.083,
     "width": 1280,
     "height": 720,
@@ -118,7 +118,7 @@
   },
   "ki-im-kundenservice-leitfaden": {
     "src": "/blog-videos/AgenticIT_ki-im-kundenservice-leitfaden_16x9_v01.mp4",
-    "poster": "/blog-videos/ki-im-kundenservice-leitfaden.webp",
+    "poster": "/blog-videos/editorial/ki-im-kundenservice-leitfaden.webp",
     "durationSeconds": 169.417,
     "width": 1280,
     "height": 720,
@@ -127,7 +127,7 @@
   },
   "ki-im-verkaufsgespraech": {
     "src": "/blog-videos/AgenticIT_ki-im-verkaufsgespraech_16x9_v01.mp4",
-    "poster": "/blog-videos/ki-im-verkaufsgespraech.webp",
+    "poster": "/blog-videos/editorial/ki-im-verkaufsgespraech.webp",
     "durationSeconds": 199.417,
     "width": 1280,
     "height": 720,
@@ -136,7 +136,7 @@
   },
   "ki-roi-berechnen": {
     "src": "/blog-videos/AgenticIT_ki-roi-berechnen_16x9_v01.mp4",
-    "poster": "/blog-videos/ki-roi-berechnen.webp",
+    "poster": "/blog-videos/editorial/ki-roi-berechnen.webp",
     "durationSeconds": 200.833,
     "width": 1280,
     "height": 720,
@@ -145,7 +145,7 @@
   },
   "ki-social-media-automatisierung": {
     "src": "/blog-videos/AgenticIT_ki-social-media-automatisierung_16x9_v01.mp4",
-    "poster": "/blog-videos/ki-social-media-automatisierung.webp",
+    "poster": "/blog-videos/editorial/ki-social-media-automatisierung.webp",
     "durationSeconds": 184.083,
     "width": 1280,
     "height": 720,
@@ -154,7 +154,7 @@
   },
   "ki-sprachassistent-telefonie": {
     "src": "/blog-videos/AgenticIT_ki-sprachassistent-telefonie_16x9_v01.mp4",
-    "poster": "/blog-videos/ki-sprachassistent-telefonie.webp",
+    "poster": "/blog-videos/editorial/ki-sprachassistent-telefonie.webp",
     "durationSeconds": 188.667,
     "width": 1280,
     "height": 720,
@@ -163,7 +163,7 @@
   },
   "ki-trends-2026-schweiz": {
     "src": "/blog-videos/AgenticIT_ki-trends-2026-schweiz_16x9_v01.mp4",
-    "poster": "/blog-videos/ki-trends-2026-schweiz.webp",
+    "poster": "/blog-videos/editorial/ki-trends-2026-schweiz.webp",
     "durationSeconds": 193.917,
     "width": 1280,
     "height": 720,
@@ -172,7 +172,7 @@
   },
   "ki-vs-mensch-im-service": {
     "src": "/blog-videos/AgenticIT_ki-vs-mensch-im-service_16x9_v01.mp4",
-    "poster": "/blog-videos/ki-vs-mensch-im-service.webp",
+    "poster": "/blog-videos/editorial/ki-vs-mensch-im-service.webp",
     "durationSeconds": 182.75,
     "width": 1280,
     "height": 720,
@@ -181,7 +181,7 @@
   },
   "kundenakquise-methoden": {
     "src": "/blog-videos/AgenticIT_kundenakquise-methoden_16x9_v01.mp4",
-    "poster": "/blog-videos/kundenakquise-methoden.webp",
+    "poster": "/blog-videos/editorial/kundenakquise-methoden.webp",
     "durationSeconds": 181.708,
     "width": 1280,
     "height": 720,
@@ -190,8 +190,8 @@
   },
   "landingpage-oder-website": {
     "src": "/blog-videos/AgenticIT_landingpage-oder-website_16x9_v01.mp4",
-    "poster": "/blog-videos/landingpage-oder-website.webp",
-    "durationSeconds": 176.0,
+    "poster": "/blog-videos/editorial/landingpage-oder-website.webp",
+    "durationSeconds": 176,
     "width": 1280,
     "height": 720,
     "bytes": 4378982,
@@ -199,7 +199,7 @@
   },
   "leadgenerierung-ki": {
     "src": "/blog-videos/AgenticIT_leadgenerierung-ki_16x9_v01.mp4",
-    "poster": "/blog-videos/leadgenerierung-ki.webp",
+    "poster": "/blog-videos/editorial/leadgenerierung-ki.webp",
     "durationSeconds": 193.458,
     "width": 1280,
     "height": 720,
@@ -208,7 +208,7 @@
   },
   "leadgenerierung-mit-ki-leitfaden": {
     "src": "/blog-videos/AgenticIT_leadgenerierung-mit-ki-leitfaden_16x9_v01.mp4",
-    "poster": "/blog-videos/leadgenerierung-mit-ki-leitfaden.webp",
+    "poster": "/blog-videos/editorial/leadgenerierung-mit-ki-leitfaden.webp",
     "durationSeconds": 172.917,
     "width": 1280,
     "height": 720,
@@ -217,7 +217,7 @@
   },
   "marketing-automatisierung-kmu": {
     "src": "/blog-videos/AgenticIT_marketing-automatisierung-kmu_16x9_v01.mp4",
-    "poster": "/blog-videos/marketing-automatisierung-kmu.webp",
+    "poster": "/blog-videos/editorial/marketing-automatisierung-kmu.webp",
     "durationSeconds": 169.417,
     "width": 1280,
     "height": 720,
@@ -226,7 +226,7 @@
   },
   "multi-agenten-systeme-erklaert": {
     "src": "/blog-videos/AgenticIT_multi-agenten-systeme-erklaert_16x9_v01.mp4",
-    "poster": "/blog-videos/multi-agenten-systeme-erklaert.webp",
+    "poster": "/blog-videos/editorial/multi-agenten-systeme-erklaert.webp",
     "durationSeconds": 175.542,
     "width": 1280,
     "height": 720,
@@ -235,7 +235,7 @@
   },
   "neukundengewinnung-kmu-schweiz": {
     "src": "/blog-videos/AgenticIT_neukundengewinnung-kmu-schweiz_16x9_v01.mp4",
-    "poster": "/blog-videos/neukundengewinnung-kmu-schweiz.webp",
+    "poster": "/blog-videos/editorial/neukundengewinnung-kmu-schweiz.webp",
     "durationSeconds": 190.417,
     "width": 1280,
     "height": 720,
@@ -244,7 +244,7 @@
   },
   "prozessautomatisierung-kmu-leitfaden": {
     "src": "/blog-videos/AgenticIT_prozessautomatisierung-kmu-leitfaden_16x9_v01.mp4",
-    "poster": "/blog-videos/prozessautomatisierung-kmu-leitfaden.webp",
+    "poster": "/blog-videos/editorial/prozessautomatisierung-kmu-leitfaden.webp",
     "durationSeconds": 178.667,
     "width": 1280,
     "height": 720,
@@ -253,7 +253,7 @@
   },
   "revops-as-a-service": {
     "src": "/blog-videos/AgenticIT_revops-as-a-service_16x9_v01.mp4",
-    "poster": "/blog-videos/revops-as-a-service.webp",
+    "poster": "/blog-videos/editorial/revops-as-a-service.webp",
     "durationSeconds": 189.75,
     "width": 1280,
     "height": 720,
@@ -262,7 +262,7 @@
   },
   "revops-metriken-kennzahlen": {
     "src": "/blog-videos/AgenticIT_revops-metriken-kennzahlen_16x9_v01.mp4",
-    "poster": "/blog-videos/revops-metriken-kennzahlen.webp",
+    "poster": "/blog-videos/editorial/revops-metriken-kennzahlen.webp",
     "durationSeconds": 184.042,
     "width": 1280,
     "height": 720,
@@ -271,7 +271,7 @@
   },
   "speed-to-lead-5-minuten-regel": {
     "src": "/blog-videos/AgenticIT_speed-to-lead-5-minuten-regel_16x9_v01.mp4",
-    "poster": "/blog-videos/speed-to-lead-5-minuten-regel.webp",
+    "poster": "/blog-videos/editorial/speed-to-lead-5-minuten-regel.webp",
     "durationSeconds": 197.375,
     "width": 1280,
     "height": 720,
@@ -280,7 +280,7 @@
   },
   "webdesign-kosten-schweiz": {
     "src": "/blog-videos/AgenticIT_webdesign-kosten-schweiz_16x9_v01.mp4",
-    "poster": "/blog-videos/webdesign-kosten-schweiz.webp",
+    "poster": "/blog-videos/editorial/webdesign-kosten-schweiz.webp",
     "durationSeconds": 205.75,
     "width": 1280,
     "height": 720,
@@ -289,7 +289,7 @@
   },
   "website-briefing-vorlage": {
     "src": "/blog-videos/AgenticIT_website-briefing-vorlage_16x9_v01.mp4",
-    "poster": "/blog-videos/website-briefing-vorlage.webp",
+    "poster": "/blog-videos/editorial/website-briefing-vorlage.webp",
     "durationSeconds": 163.75,
     "width": 1280,
     "height": 720,
@@ -298,7 +298,7 @@
   },
   "werbung-fuer-kmu": {
     "src": "/blog-videos/AgenticIT_werbung-fuer-kmu_16x9_v01.mp4",
-    "poster": "/blog-videos/werbung-fuer-kmu.webp",
+    "poster": "/blog-videos/editorial/werbung-fuer-kmu.webp",
     "durationSeconds": 187.583,
     "width": 1280,
     "height": 720,

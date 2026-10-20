@@ -24,7 +24,7 @@
   margin: 10px 0 12px;
   color: #202522;
   font:
-    600 clamp(28px, 4vw, 42px)/1.08
+    600 clamp(28px, 4vw, 42px) / 1.08
       var(--font-display, var(--font-geist-sans, Arial)),
     sans-serif;
   letter-spacing: -0.035em;
@@ -146,9 +146,9 @@
   padding: 0;
   overflow: hidden;
   border: 1px solid #dce3db;
-  border-radius: 16px;
-  background: #17251e;
-  color: white;
+  border-radius: 12px;
+  background: #fff;
+  color: #202522;
   font: inherit;
   text-align: left;
   cursor: pointer;
@@ -166,7 +166,7 @@
   width: 100%;
   aspect-ratio: 16/9;
   overflow: hidden;
-  background: #eaf1e3;
+  background: #31452d;
 }
 .cover img {
   display: block;
@@ -182,11 +182,10 @@
   place-items: center;
   width: 48px;
   height: 48px;
-  border: 1px solid #96dc6c;
+  border: 1px solid #ffffff70;
   border-radius: 50%;
-  background: #8fe05a;
-  color: #17251e;
-  box-shadow: 0 2px 14px #17251e30;
+  background: #f4f5ef;
+  color: #31452d;
 }
 .duration {
   position: absolute;
@@ -208,7 +207,7 @@
   padding: 24px;
 }
 .cardCopy .eyebrow {
-  color: #a4dd82;
+  color: #647068;
   font-size: 10px;
 }
 .cardTitle {
@@ -224,7 +223,7 @@
   align-items: center;
   gap: 10px;
   margin-top: 8px;
-  color: #c9dcbd;
+  color: #365038;
   font-size: 13px;
   font-weight: 500;
 }
@@ -254,7 +253,7 @@
   margin: 8px 0 0;
   color: #202522;
   font:
-    600 clamp(22px, 3vw, 30px)/1.2
+    600 clamp(22px, 3vw, 30px) / 1.2
       var(--font-display, var(--font-geist-sans, Arial)),
     sans-serif;
   letter-spacing: -0.02em;
@@ -285,15 +284,15 @@
   place-items: center;
   width: 76px;
   height: 76px;
-  border: 1px solid #bdeaa3;
+  border: 1px solid #ffffff70;
   border-radius: 50%;
-  background: #8fe05a;
-  color: #17251e;
+  background: #f4f5ef;
+  color: #31452d;
   cursor: pointer;
   box-shadow: 0 0 0 12px #17251e25;
 }
 .start:hover {
-  background: #a4ec76;
+  background: #fff;
 }
 .readLink {
   margin-top: 14px;
@@ -340,7 +339,7 @@
   margin: 0;
   color: #202522;
   font:
-    600 clamp(20px, 3vw, 28px)/1.2
+    600 clamp(20px, 3vw, 28px) / 1.2
       var(--font-display, var(--font-geist-sans, Arial)),
     sans-serif;
 }

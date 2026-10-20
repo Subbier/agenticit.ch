@@ -12,7 +12,7 @@
   overflow: hidden;
   margin: -24px -24px 22px;
   border-radius: 13px 13px 0 0;
-  background: #eaf1e3;
+  background: #31452d;
 }
 .videoCover img {
   display: block;
@@ -22,14 +22,14 @@
 }
 .videoBadge {
   position: absolute;
-  top: 12px;
-  left: 12px;
+  bottom: 14px;
+  left: 14px;
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  border: 1px solid #7d9974;
+  border: 1px solid #ffffff40;
   border-radius: 6px;
-  background: #17251ef5;
+  background: #31452df5;
   color: #fff;
   padding: 6px 9px;
   font:
@@ -46,8 +46,8 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: #8fe05a;
-  color: #17251e;
+  background: #f4f5ef;
+  color: #31452d;
 }
 @media (min-width: 640px) {
   .featured .videoCover {
