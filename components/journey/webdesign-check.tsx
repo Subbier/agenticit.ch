@@ -125,13 +125,9 @@ export function WebdesignCheck() {
             <h3 ref={heading} tabIndex={-1}>
               Für wen dürfen wir das Konzept erstellen?
             </h3>
-            <p className={styles.contactIntro}>
-              Ihre Auswahl wird zu einem persönlichen PDF – mit Seitenstruktur,
-              Bildsprache und einer passenden Hauptaktion.
-            </p>
             <div className={styles.contactFields}>
               <label>
-                Name
+                Wie heissen Sie?
                 <input
                   name="name"
                   required
@@ -141,7 +137,7 @@ export function WebdesignCheck() {
                 />
               </label>
               <label>
-                Unternehmen
+                Wie heisst Ihr Unternehmen?
                 <input
                   name="company"
                   required
@@ -151,7 +147,7 @@ export function WebdesignCheck() {
                 />
               </label>
               <label className={styles.full}>
-                E-Mail
+                An welche E-Mail-Adresse dürfen wir Ihr Konzept senden?
                 <input
                   name="email"
                   type="email"
@@ -216,7 +212,7 @@ export function WebdesignCheck() {
                   </>
                 ) : (
                   <>
-                    Mein Website-Konzept erhalten
+                    Mein Website-Konzept als PDF erstellen
                     <ArrowRight size={17} />
                   </>
                 )}
@@ -291,7 +287,15 @@ export function WebdesignCheck() {
                 disabled={!answers[question.id]}
                 onClick={next}
               >
-                {step === 4 ? "Mein Konzept sichern" : "Weiter"}
+                {
+                  [
+                    "Mein Ziel wählen",
+                    "Meinen Stil wählen",
+                    "Meine Inhalte angeben",
+                    "Meinen Wunschtermin wählen",
+                    "Mein Website-Konzept anfordern",
+                  ][step]
+                }
                 <ArrowRight size={17} />
               </button>
             </div>

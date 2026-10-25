@@ -55,14 +55,14 @@ export function scenarioChoices(
       id: String(index),
       title: time
         ? `${reduction} % weniger Handarbeit`
-        : `${Number((targetRate - baseline.currentRate).toFixed(2))} Prozentpunkte mehr`,
+        : `${Number((targetRate - baseline.currentRate).toFixed(2))} zusätzliche ${kind === "retention" ? "Verlängerungen" : "Aufträge"}`,
       caption: time
         ? `${baseline.minutes} → ${Number((baseline.minutes * (1 - reduction / 100)).toFixed(2))} Minuten pro Vorgang`
         : kind === "acquisition"
-          ? `${baseline.volume} → ${Math.round(baseline.volume * (1 + growth / 100))} Anfragen · ${baseline.currentRate} → ${targetRate} % Quote`
+          ? `Dazu ${growth} % mehr Kundenanfragen`
           : kind === "retention"
-            ? `${baseline.currentRate} → ${targetRate} % Verlängerungsquote`
-            : `${baseline.currentRate} → ${targetRate} % Abschlussquote`,
+            ? `${baseline.currentRate} → ${targetRate} von 100 Kunden verlängern`
+            : `${baseline.currentRate} → ${targetRate} Aufträge je 100 ${kind === "phone" ? "Anrufe" : "Anfragen"}`,
       targetRate: time ? undefined : targetRate,
       targetMinutes: time
         ? Number((baseline.minutes * (1 - reduction / 100)).toFixed(2))

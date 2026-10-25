@@ -3,7 +3,7 @@ import { z } from "zod"
 export const websiteQuestions = [
   {
     id: "type",
-    title: "Welche Website wünschen Sie sich?",
+    title: "Welche Website soll Ihnen neue Kunden bringen?",
     label: "Ihr Vorhaben",
     options: [
       {
@@ -34,7 +34,7 @@ export const websiteQuestions = [
   },
   {
     id: "goal",
-    title: "Was soll Ihre Website für Sie erreichen?",
+    title: "Was möchten Sie mit Ihrer Website gewinnen?",
     label: "Ihr Nutzen",
     options: [
       {
@@ -65,7 +65,7 @@ export const websiteQuestions = [
   },
   {
     id: "style",
-    title: "Welcher Auftritt spricht Sie an?",
+    title: "Wie soll Ihre Website Ihre Kunden ansprechen?",
     label: "Ihr Stil",
     options: [
       {
@@ -96,8 +96,8 @@ export const websiteQuestions = [
   },
   {
     id: "content",
-    title: "Was bringen Sie schon mit?",
-    label: "Ihre Grundlage",
+    title: "Welche Bilder und Texte haben Sie schon für Ihre Website?",
+    label: "Zeit beim Start sparen",
     options: [
       {
         value: "ready",
@@ -127,7 +127,7 @@ export const websiteQuestions = [
   },
   {
     id: "timing",
-    title: "Wann möchten Sie online gehen?",
+    title: "Ab wann möchten Sie mit Ihrer neuen Website Kunden gewinnen?",
     label: "Ihr Wunschtermin",
     options: [
       {

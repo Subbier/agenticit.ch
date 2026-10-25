@@ -6,10 +6,12 @@ export function PotentialPage({
   kind,
   chooseKind = false,
   title,
+  context,
 }: {
   kind: PotentialKind
   chooseKind?: boolean
   title?: string
+  context?: "crm"
 }) {
   return (
     <JourneyShell>
@@ -18,6 +20,7 @@ export function PotentialPage({
           initialKind={kind}
           chooseKind={chooseKind}
           title={title}
+          context={context}
         />
       </main>
     </JourneyShell>

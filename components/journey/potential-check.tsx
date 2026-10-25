@@ -7,6 +7,11 @@ import { PotentialArt } from "./potential-art"
 import { LeadPdfPreview } from "./lead-pdf-preview"
 import { potentialScenes, scenarioChoices } from "@/lib/potential-visual"
 import {
+  potentialQuestions,
+  potentialStepLabels,
+  hourlyValueQuestion,
+} from "@/lib/potential-questions"
+import {
   potentialConfigs,
   potentialKinds,
   type PotentialInput,
@@ -34,11 +39,13 @@ export function PotentialCheck({
   chooseKind = false,
   embedded = false,
   title,
+  context,
 }: {
   initialKind: PotentialKind
   chooseKind?: boolean
   embedded?: boolean
   title?: string
+  context?: "crm"
 }) {
   const [kind, setKind] = useState(initialKind)
   const [step, setStep] = useState(0)
@@ -51,7 +58,15 @@ export function PotentialCheck({
   const heading = useRef<HTMLHeadingElement>(null)
   const c = potentialConfigs[kind]
   const revenue = c.mode === "revenue"
-  const scene = potentialScenes[kind]
+  const questions =
+    context === "crm"
+      ? {
+          volume: "Wie viele CRM-Einträge bearbeiten Sie pro Monat von Hand?",
+          time: "Wie viele Minuten brauchen Sie heute pro CRM-Eintrag?",
+          targetTime:
+            "Wie viele Minuten möchten Sie künftig pro CRM-Eintrag aufwenden?",
+        }
+      : potentialQuestions[kind]
   const scenarios = scenarioChoices(kind, {
     volume: Number(values.volume),
     currentRate: Number(values.currentRate),
@@ -199,7 +214,7 @@ export function PotentialCheck({
           <progress aria-label="Ihr Fortschritt" value={step + 1} max={3} />
         </div>
         <ol className={styles.progress} aria-label="Ihre drei Schritte">
-          {["Heute", "Ihr Ziel", "Ihr PDF"].map((label, i) => (
+          {potentialStepLabels.map((label, i) => (
             <li
               key={label}
               className={
@@ -229,14 +244,19 @@ export function PotentialCheck({
             </a>
           </div>
         ) : (
-          <form onSubmit={submit}>
+          <form onSubmit={submit} data-check-step={step}>
+            {step === 2 ? <LeadPdfPreview /> : null}
             <div className={styles.formHead}>
               <h2 ref={heading} tabIndex={-1}>
                 {step === 0
-                  ? "Ihre Ausgangslage"
+                  ? revenue
+                    ? "Ihre Chance auf mehr Umsatz berechnen"
+                    : "Ihre Chance auf mehr freie Zeit berechnen"
                   : step === 1
-                    ? "Was möchten Sie verbessern?"
-                    : "Wohin gehört Ihre Berechnung?"}
+                    ? revenue
+                      ? "Ihr Wunsch: mehr Umsatz"
+                      : "Ihr Wunsch: mehr freie Zeit"
+                    : "Ihr persönliches Potenzial-PDF"}
               </h2>
               <span className={styles.note}>Schritt {step + 1} von 3</span>
             </div>
@@ -273,26 +293,32 @@ export function PotentialCheck({
                       ))}
                     </div>
                   </fieldset>
-                ) : (
-                  <div className={styles.scene}>
-                    <PotentialArt kind={kind} />
-                    <div>
-                      <strong>{scene.title}</strong>
-                      <p>{scene.caption}</p>
-                    </div>
-                  </div>
-                )}
+                ) : null}
                 <div className={styles.grid}>
-                  {field("volume", c.unit, { max: 1000000, step: "1" })}
+                  {field("volume", questions.volume, {
+                    max: 1000000,
+                    step: "1",
+                  })}
                   {revenue ? (
                     <>
-                      {field("currentRate", c.rate, { max: 100 })}
-                      {field("value", c.value)}
+                      {field(
+                        "currentRate",
+                        "rate" in questions ? questions.rate : c.rate,
+                        { max: 100 },
+                      )}
+                      {field(
+                        "value",
+                        "value" in questions ? questions.value : c.value,
+                      )}
                     </>
                   ) : (
                     <>
-                      {field("minutes", c.time, { max: 10080 })}
-                      {field("hourlyRate", "Wert einer Arbeitsstunde (CHF)", {
+                      {field(
+                        "minutes",
+                        "time" in questions ? questions.time : c.time,
+                        { max: 10080 },
+                      )}
+                      {field("hourlyRate", hourlyValueQuestion, {
                         max: 10000,
                       })}
                     </>
@@ -300,7 +326,7 @@ export function PotentialCheck({
                 </div>
                 {revenue ? (
                   <details className={styles.more}>
-                    <summary>Wie berechne ich meine Quote?</summary>
+                    <summary>So berechnen Sie den Prozentwert</summary>
                     <p>
                       Abschlüsse bzw. Verlängerungen ÷ Anfragen bzw. anstehende
                       Verlängerungen × 100. Beispiel: 5 von 20 = 25 %.
@@ -311,7 +337,13 @@ export function PotentialCheck({
             ) : step === 1 ? (
               <>
                 <fieldset className={styles.kindChoices}>
-                  <legend>Welches Szenario möchten Sie durchrechnen?</legend>
+                  <legend>
+                    {revenue
+                      ? kind === "retention"
+                        ? "Von 100 Kunden: Wie viele sollen zusätzlich verlängern?"
+                        : `Aus 100 ${kind === "phone" ? "Anrufen" : "Anfragen"}: Wie viele zusätzliche Aufträge wünschen Sie sich?`
+                      : "Wie viel weniger Handarbeit wünschen Sie sich?"}
+                  </legend>
                   <div className={styles.scenarioChoices}>
                     {scenarios.map((option) => (
                       <label
@@ -357,28 +389,45 @@ export function PotentialCheck({
                     ))}
                   </div>
                 </fieldset>
-                <p className={styles.scenarioNote}>
-                  Frei gewählte Annahmen, keine Prognose. Sie können die Werte
-                  unten anpassen.
-                </p>
                 <div className={styles.grid}>
                   {kind === "acquisition"
-                    ? field("targetVolume", c.targetUnit, {
-                        max: 1000000,
-                        step: "1",
-                      })
+                    ? field(
+                        "targetVolume",
+                        "targetVolume" in questions
+                          ? questions.targetVolume
+                          : c.targetUnit,
+                        {
+                          max: 1000000,
+                          step: "1",
+                        },
+                      )
                     : null}
                   {revenue
-                    ? field("targetRate", c.targetRate, { max: 100 })
-                    : field("targetMinutes", c.targetTime, { max: 10080 })}
+                    ? field(
+                        "targetRate",
+                        "targetRate" in questions
+                          ? questions.targetRate
+                          : c.targetRate,
+                        { max: 100 },
+                      )
+                    : field(
+                        "targetMinutes",
+                        "targetTime" in questions
+                          ? questions.targetTime
+                          : c.targetTime,
+                        { max: 10080 },
+                      )}
                 </div>
+                <p className={styles.scenarioNote}>
+                  Ihr Wunschziel ist eine Annahme, keine Erfolgszusage. Sie
+                  können alle Werte selbst ändern.
+                </p>
               </>
             ) : (
               <>
-                <LeadPdfPreview />
                 <div className={styles.grid}>
                   <label className={styles.field}>
-                    <span>Name</span>
+                    <span>Wie heissen Sie?</span>
                     <input
                       name="name"
                       autoComplete="name"
@@ -388,7 +437,7 @@ export function PotentialCheck({
                     />
                   </label>
                   <label className={styles.field}>
-                    <span>Unternehmen</span>
+                    <span>Wie heisst Ihr Unternehmen?</span>
                     <input
                       name="company"
                       autoComplete="organization"
@@ -398,7 +447,9 @@ export function PotentialCheck({
                     />
                   </label>
                   <label className={`${styles.field} ${styles.full}`}>
-                    <span>E-Mail</span>
+                    <span>
+                      An welche E-Mail-Adresse dürfen wir Ihr PDF senden?
+                    </span>
                     <input
                       name="email"
                       type="email"
@@ -471,11 +522,14 @@ export function PotentialCheck({
                   </>
                 ) : step === 2 ? (
                   <>
-                    Mein PDF erstellen <Download size={17} />
+                    Mein Potenzial-PDF erstellen <Download size={17} />
                   </>
                 ) : (
                   <>
-                    Weiter <ArrowRight size={17} />
+                    {step === 0
+                      ? "Mein Wunschziel wählen"
+                      : "Mein PDF anfordern"}{" "}
+                    <ArrowRight size={17} />
                   </>
                 )}
               </button>

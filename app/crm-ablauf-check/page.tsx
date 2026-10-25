@@ -12,6 +12,7 @@ export default function Page() {
   return (
     <PotentialPage
       kind="admin"
+      context="crm"
       title="Wie viel Zeit steckt in Ihrer CRM-Handarbeit?"
     />
   )
