@@ -188,8 +188,11 @@
   display: grid;
   grid-template-columns: 0.95fr 1.05fr;
   gap: 80px;
-  padding: 48px 0 64px;
-  border-top: 1px solid var(--line);
+  padding: 40px;
+  margin-bottom: 24px;
+  border: 1px solid #e0e7db;
+  border-radius: 18px;
+  background: #fcfdfb;
 }
 .benefits {
   list-style: none;
@@ -218,7 +221,11 @@
   font-size: 14px !important;
 }
 .section {
-  padding: 32px 0 64px;
+  padding: 40px;
+  margin-bottom: 24px;
+  border: 1px solid #d8e2d1;
+  border-radius: 18px;
+  background: #eef3e9;
   scroll-margin-top: 24px;
 }
 .expert {
@@ -490,13 +497,17 @@
   .outcomes {
     grid-template-columns: 1fr;
     gap: 28px;
-    padding: 32px 0 40px;
+    padding: 24px 20px;
+    border-radius: 14px;
+    margin-bottom: 20px;
   }
   .benefits {
     gap: 22px;
   }
   .section {
-    padding: 12px 0 40px;
+    padding: 24px 20px;
+    border-radius: 14px;
+    margin-bottom: 20px;
   }
   .sectionHeading h2,
   .process h2,
