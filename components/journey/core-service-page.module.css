@@ -442,9 +442,6 @@
   .flow {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 24px;
-    padding: 24px 20px;
-    margin: 20px 0;
-    border-radius: 14px;
   }
   .flow li {
     flex-direction: column;
@@ -557,6 +554,8 @@
     grid-template-columns: 1fr;
     gap: 24px;
     padding: 24px 20px;
+    margin: 20px 0;
+    border-radius: 14px;
   }
   .questions h2 {
     max-width: 22ch;
