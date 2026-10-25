@@ -1,25 +1,25 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { useEffect, useId, useRef, useState, type FormEvent } from "react"
-import { ArrowLeft, ArrowRight, Check, Download, Loader2 } from "lucide-react"
-import { PotentialArt } from "./potential-art"
-import { LeadPdfPreview } from "./lead-pdf-preview"
-import { potentialScenes, scenarioChoices } from "@/lib/potential-visual"
+import Link from "next/link";
+import { useEffect, useId, useRef, useState, type FormEvent } from "react";
+import { ArrowLeft, ArrowRight, Check, Download, Loader2 } from "lucide-react";
+import { PotentialArt } from "./potential-art";
+import { LeadPdfPreview } from "./lead-pdf-preview";
+import { potentialScenes, scenarioChoices } from "@/lib/potential-visual";
 import {
   potentialQuestions,
   potentialStepLabels,
   hourlyValueQuestion,
-} from "@/lib/potential-questions"
+} from "@/lib/potential-questions";
 import {
   potentialConfigs,
   potentialKinds,
   type PotentialInput,
   type PotentialKind,
-} from "@/lib/potential-report"
-import styles from "./potential-check.module.css"
+} from "@/lib/potential-report";
+import styles from "./potential-check.module.css";
 
-type NumericKey = Exclude<keyof PotentialInput, "kind" | "version">
+type NumericKey = Exclude<keyof PotentialInput, "kind" | "version">;
 const empty = {
   volume: "",
   targetVolume: "",
@@ -32,7 +32,7 @@ const empty = {
   hourlyRate: "",
   setupCost: "0",
   monthlyCost: "0",
-}
+};
 
 export function PotentialCheck({
   initialKind,
@@ -41,23 +41,23 @@ export function PotentialCheck({
   title,
   context,
 }: {
-  initialKind: PotentialKind
-  chooseKind?: boolean
-  embedded?: boolean
-  title?: string
-  context?: "crm"
+  initialKind: PotentialKind;
+  chooseKind?: boolean;
+  embedded?: boolean;
+  title?: string;
+  context?: "crm";
 }) {
-  const [kind, setKind] = useState(initialKind)
-  const [step, setStep] = useState(0)
-  const [values, setValues] = useState(empty)
-  const [busy, setBusy] = useState(false)
-  const [error, setError] = useState("")
-  const [download, setDownload] = useState("")
-  const [scenario, setScenario] = useState("")
-  const choiceId = useId()
-  const heading = useRef<HTMLHeadingElement>(null)
-  const c = potentialConfigs[kind]
-  const revenue = c.mode === "revenue"
+  const [kind, setKind] = useState(initialKind);
+  const [step, setStep] = useState(0);
+  const [values, setValues] = useState(empty);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
+  const [download, setDownload] = useState("");
+  const [scenario, setScenario] = useState("");
+  const choiceId = useId();
+  const heading = useRef<HTMLHeadingElement>(null);
+  const c = potentialConfigs[kind];
+  const revenue = c.mode === "revenue";
   const questions =
     context === "crm"
       ? {
@@ -66,32 +66,32 @@ export function PotentialCheck({
           targetTime:
             "Wie viele Minuten möchten Sie künftig pro CRM-Eintrag aufwenden?",
         }
-      : potentialQuestions[kind]
+      : potentialQuestions[kind];
   const scenarios = scenarioChoices(kind, {
     volume: Number(values.volume),
     currentRate: Number(values.currentRate),
     minutes: Number(values.minutes),
-  })
-  const Heading = embedded ? "h2" : "h1"
+  });
+  const Heading = embedded ? "h2" : "h1";
   useEffect(
     () => () => {
-      if (download) URL.revokeObjectURL(download)
+      if (download) URL.revokeObjectURL(download);
     },
     [download],
-  )
+  );
   function move(next: number) {
-    setStep(next)
-    setError("")
-    requestAnimationFrame(() => heading.current?.focus())
+    setStep(next);
+    setError("");
+    requestAnimationFrame(() => heading.current?.focus());
   }
   function field(
     key: NumericKey,
     label: string,
     options: {
-      max?: number
-      step?: string
-      optional?: boolean
-      help?: string
+      max?: number;
+      step?: string;
+      optional?: boolean;
+      help?: string;
     } = {},
   ) {
     return (
@@ -108,26 +108,26 @@ export function PotentialCheck({
           required={!options.optional}
           value={values[key]}
           onChange={(e) => {
-            setValues({ ...values, [key]: e.target.value })
-            setScenario("")
+            setValues({ ...values, [key]: e.target.value });
+            setScenario("");
           }}
         />
       </label>
-    )
+    );
   }
   async function submit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    if (busy || download) return
+    event.preventDefault();
+    if (busy || download) return;
     if (step < 2) {
-      move(step + 1)
-      return
+      move(step + 1);
+      return;
     }
-    setBusy(true)
-    setError("")
-    const form = new FormData(event.currentTarget)
+    setBusy(true);
+    setError("");
+    const form = new FormData(event.currentTarget);
     const numeric = Object.fromEntries(
       Object.entries(values).map(([key, value]) => [key, Number(value)]),
-    )
+    );
     const input = {
       ...numeric,
       version: 1,
@@ -139,7 +139,7 @@ export function PotentialCheck({
       ...(!revenue
         ? { currentRate: 0, targetRate: 0, value: 0, margin: 0 }
         : { minutes: 0, targetMinutes: 0, hourlyRate: 0, margin: 0 }),
-    }
+    };
     try {
       const response = await fetch("/api/potential-report", {
         method: "POST",
@@ -154,25 +154,25 @@ export function PotentialCheck({
           company_website: form.get("company_website"),
           consent: form.get("consent") === "on",
         }),
-      })
+      });
       if (
         !response.ok ||
         !response.headers.get("content-type")?.includes("application/pdf")
       ) {
-        const data = await response.json().catch(() => ({}))
+        const data = await response.json().catch(() => ({}));
         throw new Error(
           data.message ||
             "Ihre Anfrage konnte noch nicht übermittelt werden. Bitte versuchen Sie es erneut.",
-        )
+        );
       }
-      setDownload(URL.createObjectURL(await response.blob()))
-      requestAnimationFrame(() => heading.current?.focus())
+      setDownload(URL.createObjectURL(await response.blob()));
+      requestAnimationFrame(() => heading.current?.focus());
     } catch (e) {
       setError(
         e instanceof Error ? e.message : "Bitte versuchen Sie es erneut.",
-      )
+      );
     } finally {
-      setBusy(false)
+      setBusy(false);
     }
   }
   return (
@@ -283,9 +283,9 @@ export function PotentialCheck({
                             value={id}
                             checked={kind === id}
                             onChange={() => {
-                              setKind(id)
-                              setValues(empty)
-                              setScenario("")
+                              setKind(id);
+                              setValues(empty);
+                              setScenario("");
                             }}
                           />
                           <PotentialArt kind={id} />
@@ -362,7 +362,7 @@ export function PotentialCheck({
                           value={option.id}
                           checked={scenario === option.id}
                           onChange={() => {
-                            setScenario(option.id)
+                            setScenario(option.id);
                             setValues({
                               ...values,
                               ...(option.targetRate !== undefined
@@ -376,7 +376,7 @@ export function PotentialCheck({
                               ...(option.targetVolume !== undefined
                                 ? { targetVolume: String(option.targetVolume) }
                                 : {}),
-                            })
+                            });
                           }}
                         />
                         <PotentialArt kind={kind} level={option.level} />
@@ -553,5 +553,5 @@ export function PotentialCheck({
         )}
       </section>
     </div>
-  )
+  );
 }
