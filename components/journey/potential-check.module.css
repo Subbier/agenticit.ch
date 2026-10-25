@@ -425,6 +425,16 @@
   margin-bottom: 22px;
   overflow: hidden;
 }
+.questionArt {
+  width: 160px;
+  max-width: 45%;
+  margin-bottom: 16px;
+}
+.questionArt > svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 .scene > svg {
   width: 190px;
   flex-shrink: 0;

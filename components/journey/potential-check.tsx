@@ -247,6 +247,11 @@ export function PotentialCheck({
         ) : (
           <form onSubmit={submit} data-check-step={step}>
             {step === 2 ? <LeadPdfPreview /> : null}
+            {step < 2 ? (
+              <div className={styles.questionArt} aria-hidden="true">
+                <PotentialArt kind={kind} />
+              </div>
+            ) : null}
             <div className={styles.formHead}>
               <h2 ref={heading} tabIndex={-1}>
                 {step === 0
