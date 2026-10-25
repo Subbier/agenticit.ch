@@ -35,31 +35,63 @@
   .scrollRegion > [data-swipe-group] > * {
     scroll-snap-align: start;
   }
+}
+
+.controls {
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+  color: var(--swipe-label, #183629);
+  font-size: 13px;
+}
+.controls button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--swipe-button, #183629);
+  border-radius: 50%;
+  background: var(--swipe-button, #183629);
+  color: var(--swipe-arrow, #fff);
+  cursor: pointer;
+}
+.controls button:focus-visible {
+  outline: 2px solid var(--swipe-label, #183629);
+  outline-offset: 2px;
+}
+
+@media (max-width: 760px) {
   .controls {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    margin-bottom: 10px;
-    color: var(--swipe-label, #183629);
-    font-size: 13px;
   }
-  .controls button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    flex: none;
-    width: 44px;
-    height: 44px;
-    border: 1px solid var(--swipe-button, #183629);
-    border-radius: 50%;
-    background: var(--swipe-button, #183629);
-    color: var(--swipe-arrow, #fff);
-    cursor: pointer;
+}
+
+@media (min-width: 761px) {
+  .desktop .controls {
+    display: flex;
   }
-  .controls button:focus-visible {
-    outline: 2px solid var(--swipe-label, #183629);
-    outline-offset: 2px;
+  .desktop .scrollRegion[tabindex] {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: none;
+    grid-auto-columns: calc((100% - 64px) / 3);
+    grid-template-rows: auto;
+    gap: 20px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    max-height: none;
+    padding: 4px 4px 12px;
+    scroll-padding-inline: 4px;
+    scroll-snap-type: x proximity;
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
+    scrollbar-color: #183629 #edf1e9;
+  }
+  .desktop .scrollRegion > * {
+    scroll-snap-align: start;
   }
 }
 

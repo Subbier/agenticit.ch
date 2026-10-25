@@ -1,30 +1,35 @@
-"use client"
+"use client";
 
-import { useRef, type ReactNode } from "react"
-import { ArrowLeft, ArrowRight } from "lucide-react"
-import styles from "./mobile-scroll.module.css"
+import { useRef, type ReactNode } from "react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import styles from "./mobile-scroll.module.css";
 
 export function MobileSwipe({
   children,
   label,
+  desktop = false,
 }: {
-  children: ReactNode
-  label: string
+  children: ReactNode;
+  label: string;
+  desktop?: boolean;
 }) {
-  const frame = useRef<HTMLDivElement>(null)
+  const frame = useRef<HTMLDivElement>(null);
   function move(direction: number) {
     const track =
-      frame.current?.querySelector<HTMLElement>("[data-swipe-track]")
-    if (!track) return
+      frame.current?.querySelector<HTMLElement>("[data-swipe-track]");
+    if (!track) return;
     track.scrollBy({
       left: direction * (track.clientWidth - 20),
       behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
         ? "instant"
         : "smooth",
-    })
+    });
   }
   return (
-    <div ref={frame} className={styles.frame}>
+    <div
+      ref={frame}
+      className={`${styles.frame} ${desktop ? styles.desktop : ""}`}
+    >
       <div
         className={styles.controls}
         aria-label={`${label}: Wisch-Navigation`}
@@ -47,5 +52,5 @@ export function MobileSwipe({
       </div>
       {children}
     </div>
-  )
+  );
 }

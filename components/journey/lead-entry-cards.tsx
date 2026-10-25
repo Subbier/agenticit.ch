@@ -1,15 +1,15 @@
-import { MobileSwipe } from "../site/mobile-swipe"
-import mobile from "../site/mobile-scroll.module.css"
-import Link from "next/link"
-import { ArrowUpRight, FileDown } from "lucide-react"
-import { leadEntries } from "@/lib/lead-entry"
-import { PotentialArt } from "./potential-art"
-import { WebsiteOptionArt } from "./website-option-art"
-import styles from "./lead-entry-cards.module.css"
+import { MobileSwipe } from "../site/mobile-swipe";
+import mobile from "../site/mobile-scroll.module.css";
+import Link from "next/link";
+import { ArrowUpRight, FileDown } from "lucide-react";
+import { leadEntries } from "@/lib/lead-entry";
+import { PotentialArt } from "./potential-art";
+import { WebsiteOptionArt } from "./website-option-art";
+import styles from "./lead-entry-cards.module.css";
 
 export function LeadEntryCards() {
   return (
-    <MobileSwipe label="Anliegen">
+    <MobileSwipe label="Anliegen" desktop>
       <div
         className={`${styles.grid} ${mobile.scrollRegion}`}
         data-visual-lead-entries="true"
@@ -48,5 +48,5 @@ export function LeadEntryCards() {
         ))}
       </div>
     </MobileSwipe>
-  )
+  );
 }
