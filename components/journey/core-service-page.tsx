@@ -129,7 +129,7 @@ export function CoreServicePage({
               </a>
             </div>
             <p className={styles.note}>
-              Kostenlos · Persönliches PDF nach Ihren Kontaktdaten
+              Kostenlos · Persönliches PDF mit Ihren Ergebnissen
             </p>
           </div>
 
@@ -330,7 +330,6 @@ export function CoreServicePage({
                 </Link>
               ))}
           </nav>
-
         </MobileReadMore>
       </main>
     </JourneyShell>

@@ -53,7 +53,7 @@ export function LeadPdfPreview({ website = false }: { website?: boolean }) {
         </p>
         <span className={styles.download}>
           <FileDown size={15} aria-hidden="true" />
-          Nach Ihren Kontaktdaten herunterladen
+          Ihr persönliches PDF herunterladen
         </span>
       </div>
     </div>

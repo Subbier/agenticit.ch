@@ -22,7 +22,8 @@ test("marketing potential starts with business numbers and an explicit contact g
   assert.ok(main.includes('name="volume"'))
   assert.ok(main.includes('name="currentRate"'))
   assert.ok(main.includes('aria-label="Ihr Fortschritt"'))
-  assert.ok(main.includes("nach Eingabe Ihrer Kontaktdaten"))
+  assert.ok(!main.includes("nach Eingabe Ihrer Kontaktdaten"))
+  assert.ok(main.includes("Ihr persönliches Ergebnis als PDF."))
   assert.ok(!main.includes('download="'))
 })
 

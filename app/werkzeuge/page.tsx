@@ -28,8 +28,7 @@ export default function Page() {
             </h1>
             <p>
               Mehr Umsatz. Mehr freie Zeit. Ihr passender Webauftritt. Ein Klick
-              öffnet Ihre Entscheidungshilfe. Ihr persönliches PDF erhalten Sie
-              nach Ihren Kontaktdaten.
+              öffnet Ihre Entscheidungshilfe. Ihr persönliches Ergebnis als PDF.
             </p>
           </div>
           <section

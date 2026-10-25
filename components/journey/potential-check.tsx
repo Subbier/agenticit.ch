@@ -150,6 +150,7 @@ export function PotentialCheck({
           name: form.get("name"),
           company: form.get("company"),
           email: form.get("email"),
+          phone: form.get("phone"),
           company_website: form.get("company_website"),
           consent: form.get("consent") === "on",
         }),
@@ -186,13 +187,13 @@ export function PotentialCheck({
         <Heading>{title ?? c.title}</Heading>
         <p>
           {embedded ? (
-            "Ihre persönliche Berechnung als PDF – nach Ihren Kontaktdaten."
+            "Ihre persönliche Berechnung als PDF."
           ) : (
             <>
               {revenue
                 ? "Berechnen Sie Ihren möglichen Mehrumsatz."
                 : "Berechnen Sie Ihre mögliche Zeitersparnis."}{" "}
-              Ihr Ergebnis erhalten Sie nach Eingabe Ihrer Kontaktdaten als PDF.
+              Ihr persönliches Ergebnis als PDF.
             </>
           )}
         </p>
@@ -427,7 +428,7 @@ export function PotentialCheck({
               <>
                 <div className={styles.grid}>
                   <label className={styles.field}>
-                    <span>Wie heissen Sie?</span>
+                    <span>Vollständiger Name</span>
                     <input
                       name="name"
                       autoComplete="name"
@@ -437,7 +438,7 @@ export function PotentialCheck({
                     />
                   </label>
                   <label className={styles.field}>
-                    <span>Wie heisst Ihr Unternehmen?</span>
+                    <span>Firmenname</span>
                     <input
                       name="company"
                       autoComplete="organization"
@@ -446,16 +447,25 @@ export function PotentialCheck({
                       maxLength={160}
                     />
                   </label>
-                  <label className={`${styles.field} ${styles.full}`}>
-                    <span>
-                      An welche E-Mail-Adresse dürfen wir Ihr PDF senden?
-                    </span>
+                  <label className={styles.field}>
+                    <span>E-Mail-Adresse</span>
                     <input
                       name="email"
                       type="email"
                       autoComplete="email"
                       required
                       maxLength={180}
+                    />
+                  </label>
+                  <label className={styles.field}>
+                    <span>Telefonnummer</span>
+                    <input
+                      name="phone"
+                      type="tel"
+                      autoComplete="tel"
+                      required
+                      minLength={7}
+                      maxLength={80}
                     />
                   </label>
                 </div>

@@ -139,6 +139,15 @@ export const leadSchema = z
     websiteBrief: websiteBriefSchema.optional(),
   })
   .superRefine((data, ctx) => {
+    if (
+      (data.potentialReport || data.websiteBrief) &&
+      !isCallbackPhoneNumber(data.phone)
+    )
+      ctx.addIssue({
+        code: "custom",
+        path: ["phone"],
+        message: "Bitte geben Sie Ihre Telefonnummer an.",
+      })
     if (data.websiteBrief) {
       if (
         data.source !== "journey-check" ||

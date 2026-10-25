@@ -5,7 +5,7 @@ import { createPageMetadata } from "@/lib/seo"
 export const metadata = createPageMetadata({
   title: "Ihr persönliches Potenzial: Mehr Wert für Ihr Unternehmen",
   description:
-    "Mehr Umsatz oder mehr freie Zeit? Berechnen Sie Ihr persönliches Szenario in drei Schritten. Ihr Potenzial-PDF erhalten Sie nach Eingabe Ihrer Kontaktdaten.",
+    "Mehr Umsatz oder mehr freie Zeit? Berechnen Sie Ihr persönliches Szenario in drei Schritten. Ihr persönliches Potenzial als PDF.",
   path: "/kundenreise-check",
 })
 

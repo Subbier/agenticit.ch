@@ -5,8 +5,7 @@ import { createPageMetadata } from "@/lib/seo"
 export const metadata = createPageMetadata({
   title: potentialConfigs.conversion.label + ": Ihr persönliches Potenzial",
   description:
-    potentialConfigs.conversion.intro +
-    " Drei Schritte. Persönliches PDF nach Eingabe Ihrer Kontaktdaten.",
+    potentialConfigs.conversion.intro + " Drei Schritte. Ihr persönliches PDF.",
   path: "/anfragen-check",
 })
 

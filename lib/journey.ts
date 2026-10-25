@@ -187,9 +187,9 @@ export const journeyStages = [
 
 export const journeyFaqs = [
   {
-    question: "Muss ich für den Check meine E-Mail angeben?",
+    question: "Was erhalte ich mit meinem Check?",
     answer:
-      "Nein. Sie sehen das Ergebnis direkt und können Ihren Plan speichern. Kontaktdaten brauchen wir erst, wenn Sie eine persönliche Rückmeldung wünschen.",
+      "Sie sehen Ihre mögliche Umsatzchance oder Ihren Zeitgewinn – mit Ihren Zahlen gerechnet und als PDF zum Herunterladen. Der Check ist kostenlos.",
   },
   {
     question: "Müssen wir unser bestehendes CRM ersetzen?",

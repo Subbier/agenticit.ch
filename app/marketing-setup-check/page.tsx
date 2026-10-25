@@ -6,7 +6,7 @@ export const metadata = createPageMetadata({
   title: potentialConfigs.acquisition.label + ": Ihr persönliches Potenzial",
   description:
     potentialConfigs.acquisition.intro +
-    " Drei Schritte. Persönliches PDF nach Eingabe Ihrer Kontaktdaten.",
+    " Drei Schritte. Ihr persönliches PDF.",
   path: "/marketing-setup-check",
 })
 

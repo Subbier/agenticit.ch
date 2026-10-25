@@ -14,6 +14,7 @@ test("PDF gate validates contact, rejects delivery errors, and sends all seven c
     name: "Example Person",
     company: "Example Company",
     email: "test@example.invalid",
+    phone: "+41 00 000 00 00",
     consent: true,
     potentialReport: {
       version: 1,
@@ -46,6 +47,7 @@ test("PDF gate validates contact, rejects delivery errors, and sends all seven c
     globalThis.fetch = async (_url, options) => {
       calls++
       const payload = JSON.parse(String(options?.body))
+      assert.equal(payload.phone, base.phone)
       assert.equal(payload.marketingConsent, false)
       assert.ok(payload.message.includes("Szenario"))
       assert.ok(
@@ -57,6 +59,10 @@ test("PDF gate validates contact, rejects delivery errors, and sends all seven c
       )
     }
     for (const patch of [
+      { phone: "" },
+      { phone: undefined },
+      { phone: "invalid" },
+      { name: "" },
       { email: "" },
       { consent: false },
       { company: "" },

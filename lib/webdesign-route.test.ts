@@ -13,6 +13,7 @@ test("Website concept requires valid contact and successful lead acknowledgement
     name: "Example Person",
     company: "Example Company",
     email: "test@example.invalid",
+    phone: "+41 00 000 00 00",
     consent: true,
     websiteBrief: {
       version: 1,
@@ -38,6 +39,7 @@ test("Website concept requires valid contact and successful lead acknowledgement
     globalThis.fetch = async (_url, options) => {
       calls++
       const payload = JSON.parse(String(options?.body))
+      assert.equal(payload.phone, base.phone)
       assert.equal(payload.marketingConsent, false)
       assert.ok(payload.message.includes("WEBSITE-KONZEPT"))
       assert.equal(payload.pagePath, "/loesungen/webdesign")
@@ -48,6 +50,10 @@ test("Website concept requires valid contact and successful lead acknowledgement
       )
     }
     for (const patch of [
+      { phone: "" },
+      { phone: undefined },
+      { phone: "invalid" },
+      { name: "" },
       { email: "" },
       { consent: false },
       { company: "" },

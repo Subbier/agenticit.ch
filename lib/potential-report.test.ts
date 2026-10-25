@@ -91,6 +91,7 @@ test("lead context is validated and derived server side without marketing permis
     name: "Example",
     email: "example@example.invalid",
     company: "Example",
+    phone: "+41 00 000 00 00",
     consent: true,
     potentialReport: base,
     message: "Forged result",

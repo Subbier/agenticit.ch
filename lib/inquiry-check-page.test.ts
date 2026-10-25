@@ -33,7 +33,8 @@ test("the inquiry potential calculator is indexable and starts without exposing 
     html.includes('rel="canonical" href="https://agenticit.ch/anfragen-check"'),
   )
   assert.ok(!html.includes('content="noindex'))
-  assert.ok(main.includes("nach Eingabe Ihrer Kontaktdaten"))
+  assert.ok(!main.includes("nach Eingabe Ihrer Kontaktdaten"))
+  assert.ok(main.includes("Ihr persönliches Ergebnis als PDF."))
   assert.equal((html.match(/<h1\b/g) ?? []).length, 1)
 })
 test("relevant entry points and sitemap find the inquiry check", async () => {

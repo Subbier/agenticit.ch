@@ -53,6 +53,7 @@ export function WebdesignCheck() {
           name: form.get("name"),
           company: form.get("company"),
           email: form.get("email"),
+          phone: form.get("phone"),
           consent: form.get("consent") === "on",
           company_website: form.get("company_website"),
         }),
@@ -127,7 +128,7 @@ export function WebdesignCheck() {
             </h3>
             <div className={styles.contactFields}>
               <label>
-                Wie heissen Sie?
+                Vollständiger Name
                 <input
                   name="name"
                   required
@@ -137,7 +138,7 @@ export function WebdesignCheck() {
                 />
               </label>
               <label>
-                Wie heisst Ihr Unternehmen?
+                Firmenname
                 <input
                   name="company"
                   required
@@ -146,14 +147,25 @@ export function WebdesignCheck() {
                   autoComplete="organization"
                 />
               </label>
-              <label className={styles.full}>
-                An welche E-Mail-Adresse dürfen wir Ihr Konzept senden?
+              <label>
+                E-Mail-Adresse
                 <input
                   name="email"
                   type="email"
                   required
                   maxLength={180}
                   autoComplete="email"
+                />
+              </label>
+              <label>
+                Telefonnummer
+                <input
+                  name="phone"
+                  type="tel"
+                  autoComplete="tel"
+                  required
+                  minLength={7}
+                  maxLength={80}
                 />
               </label>
             </div>
@@ -300,8 +312,8 @@ export function WebdesignCheck() {
               </button>
             </div>
             <p className={styles.note}>
-              Ihr PDF erhalten Sie am Schluss nach Eingabe Ihrer Kontaktdaten.
-              Die Bilder zeigen beispielhafte Gestaltungen.
+              Ihr persönliches Website-Konzept als PDF. Die Bilder zeigen
+              beispielhafte Gestaltungen.
             </p>
           </>
         )}

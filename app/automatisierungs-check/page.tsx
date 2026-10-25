@@ -5,8 +5,7 @@ import { createPageMetadata } from "@/lib/seo"
 export const metadata = createPageMetadata({
   title: potentialConfigs.admin.label + ": Ihr persönliches Potenzial",
   description:
-    potentialConfigs.admin.intro +
-    " Drei Schritte. Persönliches PDF nach Eingabe Ihrer Kontaktdaten.",
+    potentialConfigs.admin.intro + " Drei Schritte. Ihr persönliches PDF.",
   path: "/automatisierungs-check",
 })
 

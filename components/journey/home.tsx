@@ -47,7 +47,7 @@ export function JourneyHome() {
                 </Link>
               </div>
               <p className={`${styles.fine} ${styles.heroFine}`}>
-                Kostenlos · Persönliches PDF nach Ihren Kontaktdaten
+                Kostenlos · Persönliches PDF mit Ihren Ergebnissen
               </p>
             </div>
             <ServiceShowcase />
