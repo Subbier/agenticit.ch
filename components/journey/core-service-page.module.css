@@ -320,7 +320,11 @@
   display: grid;
   grid-template-columns: 0.8fr 1.2fr;
   gap: 64px;
-  padding: 56px 0;
+  padding: 40px;
+  margin: 24px 0;
+  border: 1px solid #d8e2d1;
+  border-radius: 18px;
+  background: #eef3e9;
 }
 .questions h2 {
   max-width: 15ch;
@@ -438,6 +442,9 @@
   .flow {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 24px;
+    padding: 24px 20px;
+    margin: 20px 0;
+    border-radius: 14px;
   }
   .flow li {
     flex-direction: column;
