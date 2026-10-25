@@ -41,7 +41,7 @@
     justify-content: space-between;
     gap: 10px;
     margin-bottom: 10px;
-    color: #365d24;
+    color: var(--swipe-label, #183629);
     font-size: 13px;
   }
   .controls button {
@@ -51,14 +51,14 @@
     flex: none;
     width: 44px;
     height: 44px;
-    border: 1px solid #b7c9ac;
+    border: 1px solid var(--swipe-button, #183629);
     border-radius: 50%;
-    background: #f1f7ed;
-    color: #365d24;
+    background: var(--swipe-button, #183629);
+    color: var(--swipe-arrow, #fff);
     cursor: pointer;
   }
   .controls button:focus-visible {
-    outline: 2px solid #365d24;
+    outline: 2px solid var(--swipe-label, #183629);
     outline-offset: 2px;
   }
 }

@@ -1266,6 +1266,9 @@
   font-size: 12px !important;
 }
 .pilotSection {
+  --swipe-label: #fff;
+  --swipe-button: #fff;
+  --swipe-arrow: #183629;
   --muted: #b8c9b0;
   --line: #40533f;
   position: relative;
