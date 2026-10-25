@@ -1,3 +1,4 @@
+import { MobileSwipe } from "../site/mobile-swipe"
 import mobile from "../site/mobile-scroll.module.css"
 import Link from "next/link"
 import { ArrowRight, ArrowUpRight, Check } from "lucide-react"
@@ -13,67 +14,73 @@ export function ChallengeCards() {
 export function PackageCards({ expanded = false }: { expanded?: boolean }) {
   return (
     <>
-      <div
-        className={`${styles.packageGrid} ${mobile.scrollRegion}`}
-        role="region"
-        aria-label="Unsere Services"
-        tabIndex={0}
-      >
-        {packages.map((item, index) => (
-          <article
-            key={item.id}
-            className={`${styles.package} ${index === 1 ? styles.featuredPackage : ""}`}
-          >
-            <span className={styles.packageNumber}>BEREICH {item.number}</span>
-            {expanded ? <h2>{item.title}</h2> : <h3>{item.title}</h3>}
-            <p>{item.short}</p>
-            <p className={styles.scope}>{item.scope}</p>
-            <ul>
-              {item.items.map((line) => (
-                <li key={line}>
-                  <Check size={15} aria-hidden="true" />
-                  {line}
-                </li>
-              ))}
-            </ul>
-            {expanded ? (
-              <>
-                <p>
-                  <strong>So prüfen wir den Nutzen</strong>
-                  <br />
-                  {item.outcome}
-                </p>
-                <p>
-                  <strong>Das brauchen wir von Ihnen</strong>
-                  <br />
-                  {item.requirement}
-                </p>
-                <nav
-                  className={styles.serviceDetails}
-                  aria-label={`Leistungen ${item.title}`}
-                >
-                  {serviceDetailLinks[item.id].map((link) => (
-                    <Link key={link.href} href={link.href}>
-                      {link.label} <ArrowUpRight size={15} aria-hidden="true" />
-                    </Link>
-                  ))}
-                </nav>
-              </>
-            ) : null}
-            <Link
-              href={
-                item.id === "acquisition"
-                  ? "/marketing-setup-check"
-                  : `/kundenreise-check?thema=${item.challenge}`
-              }
-              className={styles.secondary}
+      <MobileSwipe label="Services">
+        <div
+          className={`${styles.packageGrid} ${mobile.scrollRegion}`}
+          role="region"
+          aria-label="Unsere Services"
+          tabIndex={0}
+          data-swipe-track=""
+        >
+          {packages.map((item, index) => (
+            <article
+              key={item.id}
+              className={`${styles.package} ${index === 1 ? styles.featuredPackage : ""}`}
             >
-              Mein Potenzial berechnen{" "}
-              <ArrowUpRight size={16} aria-hidden="true" />
-            </Link>
-          </article>
-        ))}
-      </div>
+              <span className={styles.packageNumber}>
+                BEREICH {item.number}
+              </span>
+              {expanded ? <h2>{item.title}</h2> : <h3>{item.title}</h3>}
+              <p>{item.short}</p>
+              <p className={styles.scope}>{item.scope}</p>
+              <ul>
+                {item.items.map((line) => (
+                  <li key={line}>
+                    <Check size={15} aria-hidden="true" />
+                    {line}
+                  </li>
+                ))}
+              </ul>
+              {expanded ? (
+                <>
+                  <p>
+                    <strong>So prüfen wir den Nutzen</strong>
+                    <br />
+                    {item.outcome}
+                  </p>
+                  <p>
+                    <strong>Das brauchen wir von Ihnen</strong>
+                    <br />
+                    {item.requirement}
+                  </p>
+                  <nav
+                    className={styles.serviceDetails}
+                    aria-label={`Leistungen ${item.title}`}
+                  >
+                    {serviceDetailLinks[item.id].map((link) => (
+                      <Link key={link.href} href={link.href}>
+                        {link.label}{" "}
+                        <ArrowUpRight size={15} aria-hidden="true" />
+                      </Link>
+                    ))}
+                  </nav>
+                </>
+              ) : null}
+              <Link
+                href={
+                  item.id === "acquisition"
+                    ? "/marketing-setup-check"
+                    : `/kundenreise-check?thema=${item.challenge}`
+                }
+                className={styles.secondary}
+              >
+                Mein Potenzial berechnen{" "}
+                <ArrowUpRight size={16} aria-hidden="true" />
+              </Link>
+            </article>
+          ))}
+        </div>
+      </MobileSwipe>
       <p className={styles.packageNote}>
         Sie wählen Ihren Einstieg. Umfang, Preis, Dauer und Fremdkosten
         vereinbaren wir vor dem Start. Über den Ausbau entscheiden Sie.

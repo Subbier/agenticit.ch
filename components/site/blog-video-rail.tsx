@@ -1,5 +1,6 @@
 "use client"
 
+import { MobileSwipe } from "./mobile-swipe"
 import mobile from "./mobile-scroll.module.css"
 
 import { useRef, useState } from "react"
@@ -102,52 +103,55 @@ export function BlogVideoRail({ items }: { items: VideoCard[] }) {
         {visibleItems.length} Videos ·{" "}
         {filters.find((topic) => topic.id === topicId)?.label}
       </p>
-      <ul
-        key={topicId}
-        ref={rail}
-        id="home-video-rail"
-        className={`${styles.rail} ${mobile.scrollRegion}`}
-        tabIndex={0}
-        aria-label="Videos von AgenticIT"
-      >
-        {visibleItems.map((item) => (
-          <li key={item.slug} className={styles.railCard}>
-            <button
-              type="button"
-              className={styles.watch}
-              onClick={(event) => {
-                trigger.current = event.currentTarget
-                setActive(item)
-              }}
-              aria-label={`${item.title}: Video ansehen (${formatVideoDuration(item.video.durationSeconds)})`}
-            >
-              <span className={styles.cover}>
-                <img
-                  src={item.video.poster}
-                  alt=""
-                  width={960}
-                  height={540}
-                  loading="lazy"
-                  decoding="async"
-                />
-                <span className={styles.play}>
-                  <Play fill="currentColor" size={22} aria-hidden="true" />
+      <MobileSwipe label="Videos">
+        <ul
+          key={topicId}
+          ref={rail}
+          id="home-video-rail"
+          data-swipe-track=""
+          className={`${styles.rail} ${mobile.scrollRegion}`}
+          tabIndex={0}
+          aria-label="Videos von AgenticIT"
+        >
+          {visibleItems.map((item) => (
+            <li key={item.slug} className={styles.railCard}>
+              <button
+                type="button"
+                className={styles.watch}
+                onClick={(event) => {
+                  trigger.current = event.currentTarget
+                  setActive(item)
+                }}
+                aria-label={`${item.title}: Video ansehen (${formatVideoDuration(item.video.durationSeconds)})`}
+              >
+                <span className={styles.cover}>
+                  <img
+                    src={item.video.poster}
+                    alt=""
+                    width={960}
+                    height={540}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span className={styles.play}>
+                    <Play fill="currentColor" size={22} aria-hidden="true" />
+                  </span>
+                  <span className={styles.duration}>
+                    {formatVideoDuration(item.video.durationSeconds)}
+                  </span>
                 </span>
-                <span className={styles.duration}>
-                  {formatVideoDuration(item.video.durationSeconds)}
+                <span className={styles.cardCopy}>
+                  <span className={styles.eyebrow}>{item.category}</span>
+                  <span className={styles.cardTitle}>{item.title}</span>
+                  <span className={styles.watchLabel}>
+                    Video ansehen <ArrowRight size={16} aria-hidden="true" />
+                  </span>
                 </span>
-              </span>
-              <span className={styles.cardCopy}>
-                <span className={styles.eyebrow}>{item.category}</span>
-                <span className={styles.cardTitle}>{item.title}</span>
-                <span className={styles.watchLabel}>
-                  Video ansehen <ArrowRight size={16} aria-hidden="true" />
-                </span>
-              </span>
-            </button>
-          </li>
-        ))}
-      </ul>
+              </button>
+            </li>
+          ))}
+        </ul>
+      </MobileSwipe>
       <p className={styles.hint}>
         Weiterwischen. Neues entdecken. <span aria-hidden="true">→</span>
       </p>

@@ -8,6 +8,7 @@ import type { BlogPostMeta } from "@/lib/blog"
 import { filterBlogPosts } from "@/lib/blog-search"
 import { createBlogSearchState } from "@/lib/blog-search-state"
 import styles from "./blog-index-grid.module.css"
+import { MobileSwipe } from "./mobile-swipe"
 import mobile from "./mobile-scroll.module.css"
 import { Play } from "lucide-react"
 import { getBlogVideo, formatVideoDuration } from "@/lib/blog-videos"
@@ -167,47 +168,52 @@ export function BlogIndexGrid({
           </button>
         ) : null}
       </div>
-      <section
-        id="blog-post-results"
-        aria-label="Gefundene Ratgeber"
-        className={mobile.scrollRegion}
-        tabIndex={0}
-      >
-        {featured.length ? (
+      <MobileSwipe label="Blogbeiträge">
+        <section
+          data-swipe-track=""
+          id="blog-post-results"
+          aria-label="Gefundene Ratgeber"
+          className={mobile.scrollRegion}
+          tabIndex={0}
+        >
+          {featured.length ? (
+            <div
+              data-swipe-group=""
+              className={`mb-6 grid gap-4 ${featured.length === 1 ? "max-w-[680px]" : "md:grid-cols-2"}`}
+            >
+              {featured.map((p) => (
+                <PostCard key={p.slug} post={p} featured />
+              ))}
+            </div>
+          ) : null}
           <div
-            className={`mb-6 grid gap-4 ${featured.length === 1 ? "max-w-[680px]" : "md:grid-cols-2"}`}
+            data-swipe-group=""
+            className={`grid gap-4 ${
+              regular.length === 1
+                ? "max-w-[680px]"
+                : regular.length === 2
+                  ? "sm:grid-cols-2"
+                  : "sm:grid-cols-2 lg:grid-cols-3"
+            }`}
           >
-            {featured.map((p) => (
-              <PostCard key={p.slug} post={p} featured />
+            {regular.map((p) => (
+              <PostCard key={p.slug} post={p} />
             ))}
           </div>
-        ) : null}
-        <div
-          className={`grid gap-4 ${
-            regular.length === 1
-              ? "max-w-[680px]"
-              : regular.length === 2
-                ? "sm:grid-cols-2"
-                : "sm:grid-cols-2 lg:grid-cols-3"
-          }`}
-        >
-          {regular.map((p) => (
-            <PostCard key={p.slug} post={p} />
-          ))}
-        </div>
-        {visible.length === 0 ? (
-          <div className={styles.empty}>
-            <h3>Dazu haben wir noch keinen passenden Ratgeber.</h3>
-            <p>
-              Versuchen Sie einen anderen Begriff oder setzen Sie die Filter
-              zurück.
-            </p>
-            <Link href="#kontakt" className={styles.contactLink}>
-              Ihr Anliegen direkt besprechen →
-            </Link>
-          </div>
-        ) : null}
-      </section>
+          {visible.length === 0 ? (
+            <div className={styles.empty}>
+              <h3>Dazu haben wir noch keinen passenden Ratgeber.</h3>
+              <p>
+                Versuchen Sie einen anderen Begriff oder setzen Sie die Filter
+                zurück.
+              </p>
+              <Link href="#kontakt" className={styles.contactLink}>
+                Ihr Anliegen direkt besprechen →
+              </Link>
+            </div>
+          ) : null}
+        </section>
+      </MobileSwipe>
     </div>
   )
 }

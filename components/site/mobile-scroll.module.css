@@ -1,3 +1,9 @@
+.frame {
+  min-width: 0;
+}
+.controls {
+  display: none;
+}
 .scrollRegion:focus-visible {
   outline: 2px solid #4d7c36;
   outline-offset: 3px;
@@ -5,17 +11,55 @@
 
 @media (max-width: 760px) {
   .scrollRegion[tabindex] {
-    max-height: 520px;
-    max-height: min(68svh, 520px);
-    overflow-y: auto;
-    overflow-x: hidden;
-    align-content: start;
-    grid-auto-rows: max-content;
-    grid-template-columns: minmax(0, 1fr);
-    padding: 4px 8px 12px 4px;
+    display: grid;
+    max-height: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+    grid-auto-flow: column;
+    grid-template-columns: none;
+    grid-auto-columns: calc(100% - 32px);
+    grid-template-rows: auto;
+    align-items: stretch;
+    gap: 12px;
+    scroll-snap-type: x proximity;
+    overscroll-behavior-x: contain;
+    padding: 4px 4px 12px;
     scrollbar-width: thin;
     scrollbar-color: #4d7c36 #edf1e9;
-    scroll-padding-block: 4px;
+    scroll-padding-inline: 4px;
+  }
+  .scrollRegion > [data-swipe-group] {
+    display: contents;
+  }
+  .scrollRegion > *,
+  .scrollRegion > [data-swipe-group] > * {
+    scroll-snap-align: start;
+  }
+  .controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+    color: #365d24;
+    font-size: 13px;
+  }
+  .controls button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    width: 44px;
+    height: 44px;
+    border: 1px solid #b7c9ac;
+    border-radius: 50%;
+    background: #f1f7ed;
+    color: #365d24;
+    cursor: pointer;
+  }
+  .controls button:focus-visible {
+    outline: 2px solid #365d24;
+    outline-offset: 2px;
   }
 }
 

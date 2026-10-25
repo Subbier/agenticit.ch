@@ -1,3 +1,4 @@
+import { MobileSwipe } from "../site/mobile-swipe"
 import mobile from "../site/mobile-scroll.module.css"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
@@ -25,29 +26,32 @@ export function Careers() {
           Zur Bewerbung <ArrowUpRight size={16} aria-hidden="true" />
         </Link>
       </div>
-      <div
-        className={`${styles.careerList} ${mobile.scrollRegion}`}
-        role="region"
-        aria-label="Offene Stellen"
-        tabIndex={0}
-      >
-        {KARRIERE_JOBS.map((job) => (
-          <Link
-            key={job.slug}
-            href={`/karriere/${job.slug}`}
-            className={styles.careerRow}
-          >
-            <div>
-              <span className={styles.careerTag}>{job.tagLabel}</span>
-              <h3>{job.title}</h3>
-              <p>
-                {job.pensum} · {job.setup}
-              </p>
-            </div>
-            <ArrowUpRight size={22} aria-hidden="true" />
-          </Link>
-        ))}
-      </div>
+      <MobileSwipe label="Stellen">
+        <div
+          className={`${styles.careerList} ${mobile.scrollRegion}`}
+          role="region"
+          aria-label="Offene Stellen"
+          tabIndex={0}
+          data-swipe-track=""
+        >
+          {KARRIERE_JOBS.map((job) => (
+            <Link
+              key={job.slug}
+              href={`/karriere/${job.slug}`}
+              className={styles.careerRow}
+            >
+              <div>
+                <span className={styles.careerTag}>{job.tagLabel}</span>
+                <h3>{job.title}</h3>
+                <p>
+                  {job.pensum} · {job.setup}
+                </p>
+              </div>
+              <ArrowUpRight size={22} aria-hidden="true" />
+            </Link>
+          ))}
+        </div>
+      </MobileSwipe>
     </section>
   )
 }
