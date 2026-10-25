@@ -9,8 +9,8 @@ export const coreServices = [
     headline: "KI-Entwicklung, die im Alltag weiterhilft.",
     intro:
       "Kundenfragen beantworten, Wissen finden oder eine Aufgabe vorbereiten: Wir entwickeln KI-Anwendungen, die zu Ihrem Betrieb passen und mit Ihren bestehenden Tools zusammenarbeiten.",
-    checkHref: "/kundenreise-check?thema=partnership",
-    checkLabel: "Passenden Einstieg finden",
+    checkHref: "/automatisierungs-check",
+    checkLabel: "Mein Zeitpotenzial berechnen",
     visualLabel: "So kann Ihre Lösung arbeiten",
     visualTitle: "Von einer Frage zum nächsten Schritt.",
     visualSteps: [
@@ -114,8 +114,8 @@ export const coreServices = [
     headline: "Webdesign, das Ihre Leistung sichtbar macht.",
     intro:
       "Ihre Website soll zeigen, wem Sie helfen und warum sich ein Gespräch lohnt. Wir verbinden Design, Inhalte und Technik mit einem Anfrageweg, der auch nach dem Absenden funktioniert.",
-    checkHref: "/marketing-setup-check",
-    checkLabel: "Ihren Auftritt einordnen",
+    checkHref: "/loesungen/webdesign#potenzial-rechner",
+    checkLabel: "Meine Website planen",
     visualLabel: "Ein Auftritt mit Richtung",
     visualTitle: "Verstehen. Vertrauen. Anfragen.",
     visualSteps: [

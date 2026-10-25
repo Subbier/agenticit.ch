@@ -8,7 +8,7 @@ import { createPageMetadata } from "@/lib/seo"
 import styles from "@/components/journey/journey.module.css"
 
 export const metadata = createPageMetadata({
-  title: "Kostenlose Checks und Vorlagen für Ihre Kundenreise",
+  title: "Kostenlose Checks und Vorlagen für KMU",
   description:
     "Checks für Marketing, Anfragen, CRM und Automatisierung. Finden Sie konkrete nächste Schritte und direkt nutzbare Vorlagen für Ihr Team.",
   path: "/werkzeuge",
@@ -23,15 +23,13 @@ export default function Page() {
             <span className={styles.eyebrow}>
               Eine Frage. Eine passende Hilfe.
             </span>
-            <h1>
-              Etwas mitnehmen,
-              <br />
-              das Sie weiterbringt.
+            <h1 style={{ fontSize: "clamp(28px, 4vw, 42px)" }}>
+              Was könnten Sie gewinnen?
             </h1>
             <p>
-              Unsere Checks verbinden Ihre Antworten mit konkreten Schritten und
-              einer Vorlage. Kostenlos, direkt sichtbar und speicherbar. Sie
-              entscheiden, ob Sie danach mit uns sprechen möchten.
+              Mehr Umsatz. Mehr freie Zeit. Ihr passender Webauftritt. Ein Klick
+              öffnet Ihre Entscheidungshilfe. Ihr persönliches PDF erhalten Sie
+              nach Ihren Kontaktdaten.
             </p>
           </div>
           <section
@@ -39,19 +37,6 @@ export default function Page() {
             aria-label="Checks und Vorlagen"
           >
             <ChallengeCards />
-            <div className={styles.crmEntry}>
-              <div>
-                <h2>Ihre Daten. Ein klarer Ablauf.</h2>
-                <p>
-                  Weniger doppelt erfassen, sauber übergeben. Fünf Fragen zu
-                  Ihrem CRM-Ablauf – mit einer ausfüllbaren Vorlage für Ihr
-                  Team.
-                </p>
-              </div>
-              <Link className={styles.secondary} href="/crm-ablauf-check">
-                CRM-Ablauf prüfen <ArrowUpRight size={17} aria-hidden="true" />
-              </Link>
-            </div>
             <WorksheetLibrary />
             <JourneyCta />
           </section>

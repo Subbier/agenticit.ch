@@ -1,5 +1,6 @@
 import assert from "node:assert/strict"
 import test from "node:test"
+import { coreServices } from "./core-services"
 
 const baseUrl = process.env.SITE_TEST_BASE_URL ?? "http://127.0.0.1:3105"
 const services = [
@@ -19,7 +20,9 @@ test("desktop and mobile offer navigation expose all five services on every page
     const header = html.match(/<header\b[^>]*>([\s\S]*?)<\/header>/)?.[1] ?? ""
     for (const view of ["desktop", "mobile"]) {
       const group = header.match(
-        new RegExp(`data-offer-navigation="${view}"[\\s\\S]*?<\\/(?:details|div)>`),
+        new RegExp(
+          `data-offer-navigation="${view}"[\\s\\S]*?<\\/(?:details|div)>`,
+        ),
       )?.[0]
       assert.ok(group, `${path}: ${view} offer navigation is missing`)
       assert.match(group, /Angebote/)
@@ -51,11 +54,14 @@ for (const [slug, intent] of services) {
     assert.ok(html.includes('data-site-design="journey"'))
     assert.ok(html.includes('"@type":"Service"'))
     assert.ok(html.includes('href="/datenschutz"'))
-    assert.match(
-      html,
-      /href="\/(automatisierungs-check|kundenreise-check|marketing-setup-check|anfragen-check)/,
+    assert.ok(html.includes('data-inline-lead-magnet="true"'))
+    assert.ok(
+      html.includes(
+        slug === "webdesign" ? 'data-webdesign-check="true"' : 'name="volume"',
+      ),
     )
     assert.ok((html.match(/<details\b/g) ?? []).length >= 4)
+    const main = html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/)?.[1] ?? ""
   })
 }
 
@@ -67,7 +73,7 @@ for (const [slug, checkHref] of [
     const response = await fetch(new URL(`/loesungen/${slug}`, baseUrl))
     const html = await response.text()
     const main = html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/)?.[1] ?? ""
-    assert.ok(main.includes(`href="${checkHref}"`))
+    assert.ok(main.includes('href="#potenzial-rechner"'))
     assert.ok(
       !/171\s*%|fehlerfrei|24\/7, auch am Sonntag|Daten bleiben in der Schweiz/.test(
         main,
@@ -79,7 +85,10 @@ for (const [slug, checkHref] of [
       ),
     ].flatMap(([, json]) => JSON.parse(json))
     const faq = data.find((item) => item["@type"] === "FAQPage")
-    assert.equal(faq?.mainEntity.length, 5)
+    assert.equal(
+      faq?.mainEntity.length,
+      coreServices.find((service) => service.slug === slug)!.faqs.length,
+    )
     for (const question of faq.mainEntity) {
       assert.ok(main.includes(question.name.replace(/&/g, "&amp;")))
       assert.ok(

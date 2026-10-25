@@ -3,7 +3,7 @@ import test from "node:test"
 
 const baseUrl = process.env.SITE_TEST_BASE_URL ?? "http://127.0.0.1:3105"
 
-test("the marketing setup check has an indexable canonical page, native choices and useful answers", async () => {
+test("marketing potential starts with business numbers and an explicit contact gate", async () => {
   const response = await fetch(new URL("/marketing-setup-check", baseUrl), {
     redirect: "manual",
   })
@@ -11,10 +11,7 @@ test("the marketing setup check has an indexable canonical page, native choices 
   const html = await response.text()
   const main = html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/)?.[1] ?? ""
   assert.ok(main.length > 0)
-  assert.ok(
-    !/<form\b/.test(main),
-    "Question navigation must not emit contact-form submissions",
-  )
+  assert.ok(/<form\b/.test(main))
   assert.ok(
     html.includes(
       'rel="canonical" href="https://agenticit.ch/marketing-setup-check"',
@@ -22,17 +19,15 @@ test("the marketing setup check has an indexable canonical page, native choices 
   )
   assert.ok(!html.includes('content="noindex'))
   assert.equal((html.match(/<h1\b/g) ?? []).length, 1)
-  assert.equal((html.match(/type="radio"/g) ?? []).length, 4)
-  assert.ok(html.includes('name="offer"'))
-  assert.ok(html.includes("<legend"))
-  assert.ok(html.includes("<progress"))
-  assert.ok(html.includes('"@type":"FAQPage"'))
-  assert.ok(html.includes("keine bezahlte Werbung"))
-  assert.ok(html.includes('href="/datenschutz"'))
+  assert.ok(main.includes('name="volume"'))
+  assert.ok(main.includes('name="currentRate"'))
+  assert.ok(main.includes('aria-label="Ihr Fortschritt"'))
+  assert.ok(main.includes("nach Eingabe Ihrer Kontaktdaten"))
+  assert.ok(!main.includes('download="'))
 })
 
 test("relevant entry points find the marketing check and the sitemap includes it", async () => {
-  for (const path of ["/", "/werkzeuge", "/pakete", "/loesungen/webdesign"]) {
+  for (const path of ["/", "/werkzeuge", "/pakete"]) {
     const html = await (await fetch(new URL(path, baseUrl))).text()
     assert.ok(html.includes('href="/marketing-setup-check"'), path)
   }

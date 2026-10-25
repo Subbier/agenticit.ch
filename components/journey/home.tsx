@@ -39,7 +39,7 @@ export function JourneyHome() {
               </p>
               <div className={styles.actions}>
                 <Link href="/kundenreise-check" className={styles.button}>
-                  Unverbindlichen Check starten{" "}
+                  Mein Potenzial berechnen{" "}
                   <ArrowUpRight size={18} aria-hidden="true" />
                 </Link>
                 <Link className={styles.textLink} href="#firmenvideo">
@@ -47,7 +47,7 @@ export function JourneyHome() {
                 </Link>
               </div>
               <p className={`${styles.fine} ${styles.heroFine}`}>
-                Unverbindlicher Check · Ergebnis sofort
+                Kostenlos · Persönliches PDF nach Ihren Kontaktdaten
               </p>
             </div>
             <ServiceShowcase />
@@ -65,9 +65,8 @@ export function JourneyHome() {
                   besser laufen?
                 </h2>
                 <p className={styles.sectionIntro}>
-                  Wählen Sie Ihre Herausforderung. Sie erhalten einen passenden
-                  Check und einen Plan, mit dem Sie direkt weiterarbeiten
-                  können.
+                  Mehr Umsatz oder mehr freie Zeit? Ein Klick öffnet Ihren
+                  Rechner. Ihr persönliches Ergebnis nehmen Sie als PDF mit.
                 </p>
               </div>
               <Link href="/werkzeuge" className={styles.textLink}>

@@ -1,0 +1,134 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #ccd9c5;
+  border-radius: 12px;
+  color: #183024;
+  background: white;
+  text-decoration: none;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+  min-width: 0;
+}
+.card:hover {
+  border-color: #4d7c36;
+  box-shadow: 0 5px 20px #1830240d;
+}
+.card:focus-visible {
+  outline: 3px solid #4d7c36;
+  outline-offset: 3px;
+}
+.art {
+  background: #edf3e8;
+  padding: 8px 20px;
+}
+.art svg {
+  display: block;
+  width: 100%;
+  height: 106px;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 20px;
+  min-width: 0;
+}
+.content h3 {
+  font-size: 19px;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  margin: 0 0 9px;
+  font-weight: 650;
+}
+.content p {
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0 0 14px;
+  color: #45614d;
+}
+.result {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #426534;
+  margin-top: auto;
+  margin-bottom: 16px;
+}
+.result svg {
+  flex-shrink: 0;
+}
+.action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 650;
+  border-top: 1px solid #e0e8db;
+  padding-top: 13px;
+  min-height: 44px;
+}
+.action svg {
+  flex-shrink: 0;
+}
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .card {
+    flex-direction: row;
+  }
+  .art {
+    display: flex;
+    align-items: center;
+    width: 94px;
+    flex: 0 0 94px;
+    padding: 5px;
+  }
+  .art svg {
+    height: 100px;
+  }
+  .content {
+    padding: 15px 13px;
+  }
+  .content h3 {
+    font-size: 17px;
+    margin-bottom: 6px;
+  }
+  .content p {
+    font-size: 13px;
+    margin-bottom: 9px;
+  }
+  .result {
+    font-size: 11px;
+    margin-bottom: 8px;
+    gap: 5px;
+  }
+  .action {
+    font-size: 12px;
+    padding-top: 8px;
+    min-height: 44px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+}

@@ -1,0 +1,66 @@
+.preview {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  background: #f3f7ef;
+  border: 1px solid #d6e2ce;
+  border-radius: 10px;
+  padding: 14px 20px;
+  margin: 0 0 22px;
+  color: #183024;
+}
+.preview > svg {
+  width: 92px;
+  flex-shrink: 0;
+}
+.label {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  font-weight: 650;
+  color: #4d7c36;
+  margin-bottom: 7px;
+}
+.preview strong {
+  display: block;
+  font-size: 16px;
+  line-height: 1.4;
+}
+.preview p {
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 6px 0 9px;
+  color: #45614d;
+}
+.download {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  font-size: 11px;
+  line-height: 1.4;
+  color: #45614d;
+}
+.download svg {
+  flex-shrink: 0;
+}
+@media (max-width: 640px) {
+  .preview {
+    gap: 10px;
+    padding: 12px;
+  }
+  .preview > svg {
+    width: 65px;
+  }
+  .preview strong {
+    font-size: 14px;
+  }
+  .preview p {
+    font-size: 12px;
+  }
+  .download {
+    font-size: 10px;
+  }
+  .label {
+    font-size: 9px;
+  }
+}

@@ -101,7 +101,7 @@ export function CompanyVideo({ standalone = false }: { standalone?: boolean }) {
         <p className={styles.fine}>
           Wo steckt Ihr Zeitpotenzial?
           <br />
-          Unverbindlicher Check · Ergebnis sofort
+          Kostenlos · Persönliches PDF nach Ihren Kontaktdaten
         </p>
         <Link href="/automatisierungs-check" className={styles.button}>
           Unverbindlichen Check starten

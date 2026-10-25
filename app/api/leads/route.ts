@@ -103,6 +103,28 @@ export async function POST(request: Request) {
         { status: 502 },
       )
     }
+    if (parsed.data.potentialReport || parsed.data.websiteBrief) {
+      // Some receivers return an application error inside an HTTP 200 response.
+      const receipt = await response.text()
+      try {
+        const result = JSON.parse(receipt)
+        if (
+          result.ok === false ||
+          result.success === false ||
+          result.status === "error"
+        )
+          return NextResponse.json(
+            {
+              ok: false,
+              message:
+                "Ihre PDF-Anfrage wurde noch nicht angenommen. Bitte versuchen Sie es später erneut.",
+            },
+            { status: 502 },
+          )
+      } catch {
+        /* Existing webhook also permits an empty acceptance body. */
+      }
+    }
   } catch {
     return NextResponse.json(
       {

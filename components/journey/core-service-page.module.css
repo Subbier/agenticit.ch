@@ -221,6 +221,9 @@
   padding: 32px 0 64px;
   scroll-margin-top: 24px;
 }
+.expert {
+  padding-top: 32px;
+}
 .examples {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -384,6 +387,9 @@
 }
 
 @media (max-width: 960px) {
+  .expert {
+    padding-top: 24px;
+  }
   .hero {
     grid-template-columns: 1fr;
     gap: 32px;
@@ -562,5 +568,91 @@
   .process ol {
     grid-template-columns: 1fr;
     gap: 20px;
+  }
+}
+
+.calculator {
+  min-width: 0;
+  scroll-margin-top: 24px;
+}
+.hero {
+  align-items: start;
+  gap: 32px;
+  grid-template-columns: 1fr 1.1fr;
+  padding-bottom: 32px;
+}
+.serviceDetailIntro {
+  max-width: 75ch;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.65;
+  margin: 24px 0;
+}
+.heroContent {
+  padding-top: 12px;
+}
+@media (max-width: 960px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .hero h1 {
+    max-width: 26ch;
+    font-size: 36px;
+  }
+}
+@media (max-width: 640px) {
+  .breadcrumb {
+    padding-top: 16px;
+  }
+  .hero {
+    padding: 20px 0 0;
+    gap: 20px;
+  }
+  .heroContent {
+    padding-top: 0;
+  }
+  .hero h1 {
+    font-size: 28px;
+    margin: 12px 0 !important;
+    line-height: 1.18;
+    letter-spacing: -0.6px;
+  }
+  .hero .lede {
+    font-size: 15px;
+    line-height: 1.55;
+  }
+  .actions {
+    display: none;
+  }
+  .hero .note {
+    display: none;
+  }
+  .serviceDetailIntro {
+    margin-top: 16px;
+  }
+  .sectionHeading h2,
+  .process h2,
+  .nextStep h2 {
+    font-size: 24px;
+    line-height: 1.25;
+  }
+}
+
+.webdesignHero {
+  grid-template-columns: 1fr;
+  gap: 24px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+.webdesignHero .heroContent {
+  max-width: 760px;
+}
+.webdesignHero h1 {
+  font-size: 38px;
+}
+@media (max-width: 640px) {
+  .webdesignHero h1 {
+    font-size: 28px;
   }
 }

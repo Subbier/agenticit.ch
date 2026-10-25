@@ -1,65 +1,12 @@
 import Link from "next/link"
-import {
-  ArrowRight,
-  ArrowUpRight,
-  Check,
-  Clock3,
-  HeartHandshake,
-  MessagesSquare,
-  Phone,
-  Search,
-  ClipboardCheck,
-  Network,
-} from "lucide-react"
-import { challenges, journeyFaqs, packages } from "@/lib/journey"
+import { ArrowRight, ArrowUpRight, Check } from "lucide-react"
+import { journeyFaqs, packages } from "@/lib/journey"
 import { serviceDetailLinks } from "@/lib/core-services"
+import { LeadEntryCards } from "./lead-entry-cards"
 import styles from "./journey.module.css"
 
-const icons = {
-  search: Search,
-  messages: MessagesSquare,
-  clock: Clock3,
-  check: ClipboardCheck,
-  phone: Phone,
-  heart: HeartHandshake,
-  network: Network,
-}
-
 export function ChallengeCards() {
-  return (
-    <div className={styles.challengeGrid}>
-      {challenges.map((challenge) => {
-        const Icon = icons[challenge.icon]
-        return (
-          <Link
-            href={
-              challenge.id === "admin"
-                ? "/automatisierungs-check"
-                : challenge.id === "acquisition"
-                  ? "/marketing-setup-check"
-                  : challenge.id === "conversion"
-                    ? "/anfragen-check"
-                    : `/kundenreise-check?thema=${challenge.id}`
-            }
-            key={challenge.id}
-            className={`${styles.challengeCard} ${challenge.id === "partnership" ? styles.challengeWide : ""}`}
-          >
-            <span className={styles.cardIcon}>
-              <Icon size={21} strokeWidth={1.5} aria-hidden="true" />
-            </span>
-            <h3>{challenge.label}</h3>
-            <p>{challenge.description}</p>
-            <span className={styles.cardBottom}>
-              {challenge.id === "conversion"
-                ? "Ihr Anfragen-Check"
-                : challenge.magnet}
-              <ArrowUpRight size={17} aria-hidden="true" />
-            </span>
-          </Link>
-        )
-      })}
-    </div>
-  )
+  return <LeadEntryCards />
 }
 
 export function PackageCards({ expanded = false }: { expanded?: boolean }) {
@@ -115,7 +62,8 @@ export function PackageCards({ expanded = false }: { expanded?: boolean }) {
               }
               className={styles.secondary}
             >
-              Einstieg finden <ArrowUpRight size={16} aria-hidden="true" />
+              Mein Potenzial berechnen{" "}
+              <ArrowUpRight size={16} aria-hidden="true" />
             </Link>
           </article>
         ))}
@@ -181,12 +129,11 @@ export function JourneyCta() {
   return (
     <div className={styles.cta}>
       <div>
-        <h2>Wo liegt Ihr nächster sinnvoller Schritt?</h2>
-        <p>Wenige Fragen. Ein konkreter Plan. Direkt für Sie nutzbar.</p>
+        <h2>Was könnten Sie gewinnen?</h2>
+        <p>Ihre Zahlen. Ihr Szenario. Ihr persönliches Potenzial als PDF.</p>
       </div>
       <Link href="/kundenreise-check" className={styles.button}>
-        Unverbindlichen Check starten{" "}
-        <ArrowRight size={17} aria-hidden="true" />
+        Mein Potenzial berechnen <ArrowRight size={17} aria-hidden="true" />
       </Link>
     </div>
   )

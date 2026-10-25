@@ -1,4 +1,10 @@
 import { z } from "zod"
+import { websiteBriefSchema, websiteBriefSummary } from "./webdesign-brief"
+import {
+  potentialInputSchema,
+  potentialConfigs,
+  reportSummary,
+} from "./potential-report"
 import { contactSummary } from "./contact-inquiry"
 import {
   CALLBACK_GOALS,
@@ -129,8 +135,62 @@ export const leadSchema = z
     inquiryCheck: inquirySchema.optional(),
     crmCheck: crmSchema.optional(),
     acquisitionPlan: acquisitionPlanSchema.optional(),
+    potentialReport: potentialInputSchema.optional(),
+    websiteBrief: websiteBriefSchema.optional(),
   })
   .superRefine((data, ctx) => {
+    if (data.websiteBrief) {
+      if (
+        data.source !== "journey-check" ||
+        data.potentialReport ||
+        data.journey ||
+        data.callback ||
+        data.automation ||
+        data.marketingSetup ||
+        data.inquiryCheck ||
+        data.crmCheck ||
+        data.acquisitionPlan ||
+        data.contactMethod === "phone"
+      )
+        ctx.addIssue({
+          code: "custom",
+          path: ["websiteBrief"],
+          message: "Bitte nur die Angaben Ihres Website-Konzepts übermitteln.",
+        })
+      if (!data.company || data.company.length < 2)
+        ctx.addIssue({
+          code: "custom",
+          path: ["company"],
+          message: "Bitte geben Sie Ihr Unternehmen an.",
+        })
+      return
+    }
+    if (data.potentialReport) {
+      if (
+        data.source !== potentialConfigs[data.potentialReport.kind].source ||
+        data.callback ||
+        data.journey ||
+        data.automation ||
+        data.marketingSetup ||
+        data.inquiryCheck ||
+        data.crmCheck ||
+        data.acquisitionPlan ||
+        data.contactMethod === "phone"
+      )
+        ctx.addIssue({
+          code: "custom",
+          path: ["potentialReport"],
+          message:
+            "Bitte nur die Angaben dieses Potenzialrechners übermitteln.",
+        })
+      if (!data.company || data.company.length < 2)
+        ctx.addIssue({
+          code: "custom",
+          path: ["company"],
+          message: "Bitte geben Sie Ihr Unternehmen an.",
+        })
+      return
+    }
     if (data.source === "contact-page") {
       if (!data.message || data.message.length < 5)
         ctx.addIssue({
@@ -410,7 +470,37 @@ export function prepareLeadPayload(
                 }
               : {}),
     crm: "zoho",
+    ...(lead.websiteBrief
+      ? {
+          message: websiteBriefSummary(lead.websiteBrief),
+          goal: "Persönliches Website-Konzept",
+          challenge: "webdesign",
+          pagePath: "/loesungen/webdesign",
+          contactMethod: "email" as const,
+          marketingConsent: false,
+        }
+      : {}),
+    ...(lead.potentialReport
+      ? {
+          message: reportSummary(lead.potentialReport),
+          challenge: lead.potentialReport.kind,
+          goal: `${potentialConfigs[lead.potentialReport.kind].label}: Potenzial-PDF`,
+          pagePath: potentialConfigs[lead.potentialReport.kind].path,
+          contactMethod: "email" as const,
+          marketingConsent: false,
+        }
+      : {}),
     tags: [
+      ...(lead.websiteBrief
+        ? ["quelle:webdesign", "service:webdesign", "download:website-konzept"]
+        : []),
+      ...(lead.potentialReport
+        ? [
+            `quelle:${lead.source}`,
+            `potenzial:${lead.potentialReport.kind}`,
+            "download:potenzial-pdf",
+          ]
+        : []),
       ...(lead.source === "contact-page"
         ? ["quelle:kontakt", "kontakt:nachricht"]
         : []),
@@ -459,24 +549,27 @@ export function prepareLeadPayload(
                     ]
                   : []),
     ].filter((tag): tag is string => Boolean(tag)),
-    followUpTask:
-      lead.source === "contact-page"
-        ? "Kontaktanfrage persönlich prüfen"
-        : lead.callback
-          ? "Website-Rückruf persönlich prüfen"
-          : plan
-            ? "Kundenreise-Check persönlich prüfen"
-            : automationPlan
-              ? "Automatisierungs-Check persönlich prüfen"
-              : marketingPlan
-                ? "Marketing-Setup-Check persönlich prüfen"
-                : inquiryPlan
-                  ? "Anfragen-Check persönlich prüfen"
-                  : crmPlan
-                    ? "CRM-Ablauf-Check persönlich prüfen"
-                    : acquisitionPlan
-                      ? "Anfragenplanung persönlich prüfen"
-                      : "Rückruf",
+    followUpTask: lead.websiteBrief
+      ? "Website-Konzept-Anfrage persönlich prüfen"
+      : lead.potentialReport
+        ? "Potenzial-PDF-Anfrage persönlich prüfen"
+        : lead.source === "contact-page"
+          ? "Kontaktanfrage persönlich prüfen"
+          : lead.callback
+            ? "Website-Rückruf persönlich prüfen"
+            : plan
+              ? "Kundenreise-Check persönlich prüfen"
+              : automationPlan
+                ? "Automatisierungs-Check persönlich prüfen"
+                : marketingPlan
+                  ? "Marketing-Setup-Check persönlich prüfen"
+                  : inquiryPlan
+                    ? "Anfragen-Check persönlich prüfen"
+                    : crmPlan
+                      ? "CRM-Ablauf-Check persönlich prüfen"
+                      : acquisitionPlan
+                        ? "Anfragenplanung persönlich prüfen"
+                        : "Rückruf",
     submittedAt,
     userAgent,
   }

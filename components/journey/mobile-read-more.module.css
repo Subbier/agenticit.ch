@@ -1,0 +1,40 @@
+.toggle {
+  display: none;
+}
+.content {
+  display: block;
+}
+@media (max-width: 640px) {
+  .wrap {
+    border-top: 1px solid var(--line, #d8e0d3);
+    margin-top: 24px;
+  }
+  .toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 48px;
+    width: 100%;
+    padding: 12px 0;
+    color: var(--ink, #183024);
+    background: transparent;
+    border: 0;
+    font-size: 15px;
+    text-align: left;
+    cursor: pointer;
+  }
+  .toggle span {
+    font-size: 20px;
+  }
+  .toggle:focus-visible {
+    outline: 2px solid #285c3d;
+    outline-offset: 3px;
+  }
+  .content {
+    display: none;
+  }
+  .content.expanded {
+    display: block;
+  }
+}
