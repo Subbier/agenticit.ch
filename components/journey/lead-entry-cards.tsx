@@ -1,3 +1,4 @@
+import mobile from "../site/mobile-scroll.module.css"
 import Link from "next/link"
 import { ArrowUpRight, FileDown } from "lucide-react"
 import { leadEntries } from "@/lib/lead-entry"
@@ -7,7 +8,13 @@ import styles from "./lead-entry-cards.module.css"
 
 export function LeadEntryCards() {
   return (
-    <div className={styles.grid} data-visual-lead-entries="true">
+    <div
+      className={`${styles.grid} ${mobile.scrollRegion}`}
+      data-visual-lead-entries="true"
+      role="region"
+      aria-label="Was soll besser laufen?"
+      tabIndex={0}
+    >
       {leadEntries.map((entry) => (
         <Link
           key={entry.id}

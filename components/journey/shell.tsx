@@ -150,91 +150,6 @@ export function JourneyShell({ children }: { children: React.ReactNode }) {
                 <span>Bern, Schweiz</span>
               </div>
             </nav>
-            <div
-              className={styles.footerTrust}
-              aria-label="Mitgliedschaften und Ausbildung"
-            >
-              <a
-                href="https://www.swissict.ch/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.footerTrustLink}
-                aria-label="Mitglied bei swissICT"
-                title="Mitglied bei swissICT"
-              >
-                <span className={styles.footerTrustImage}>
-                  <img
-                    src="/logos/swissict-src.png"
-                    alt="swissICT"
-                    width="166"
-                    height="74"
-                    loading="lazy"
-                    className={styles.swissictLogo}
-                  />
-                </span>
-                <span>Mitglied</span>
-              </a>
-              <a
-                href={company.swico.directoryUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.footerTrustLink}
-                aria-label="Mitglied bei Swico"
-                title="Mitglied bei Swico"
-              >
-                <span
-                  className={`${styles.footerTrustImage} ${styles.swicoImage}`}
-                >
-                  <img
-                    src="/logos/swico-rgb.jpg"
-                    alt="Swico"
-                    width="2000"
-                    height="852"
-                    loading="lazy"
-                    className={styles.swicoLogo}
-                  />
-                </span>
-                <span>Mitglied</span>
-              </a>
-              <a
-                href="https://swissmarketing.ch/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.footerTrustLink}
-                aria-label="Mitglied bei Swiss Marketing"
-                title="Mitglied bei Swiss Marketing"
-              >
-                <span className={styles.footerTrustImage}>
-                  <img
-                    src="/logos/swiss-marketing.png"
-                    alt="Swiss Marketing"
-                    width="278"
-                    height="102"
-                    loading="lazy"
-                    className={styles.swissMarketingLogo}
-                  />
-                </span>
-                <span>Mitglied</span>
-              </a>
-              <Link
-                href="/karriere"
-                className={`${styles.footerTrustLink} ${styles.footerTrustTraining}`}
-                aria-label="Wir bilden aus – Ausbildung und Karriere"
-                title="Ausbildung und Karriere bei AgenticIT"
-              >
-                <span className={styles.footerTrustImage}>
-                  <img
-                    src="/logos/wir-bilden-aus.png"
-                    alt=""
-                    width="600"
-                    height="600"
-                    loading="lazy"
-                    className={styles.trainingLogo}
-                  />
-                </span>
-                <span>Wir bilden aus</span>
-              </Link>
-            </div>
           </div>
           <div className={styles.footerBottom}>
             <span>
@@ -266,6 +181,91 @@ export function JourneyShell({ children }: { children: React.ReactNode }) {
               <WebsiteFeedbackLink />
               <a href="https://admin.agenticit.ch">Login</a>
             </div>
+          </div>
+          <div
+            className={styles.footerTrust}
+            aria-label="Mitgliedschaften und Ausbildung"
+          >
+            <a
+              href="https://www.swissict.ch/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.footerTrustLink}
+              aria-label="Mitglied bei swissICT"
+              title="Mitglied bei swissICT"
+            >
+              <span className={styles.footerTrustImage}>
+                <img
+                  src="/logos/swissict-src.png"
+                  alt="swissICT"
+                  width="166"
+                  height="74"
+                  loading="lazy"
+                  className={styles.swissictLogo}
+                />
+              </span>
+              <span>Mitglied</span>
+            </a>
+            <a
+              href={company.swico.directoryUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.footerTrustLink}
+              aria-label="Mitglied bei Swico"
+              title="Mitglied bei Swico"
+            >
+              <span
+                className={`${styles.footerTrustImage} ${styles.swicoImage}`}
+              >
+                <img
+                  src="/logos/swico-rgb.jpg"
+                  alt="Swico"
+                  width="2000"
+                  height="852"
+                  loading="lazy"
+                  className={styles.swicoLogo}
+                />
+              </span>
+              <span>Mitglied</span>
+            </a>
+            <a
+              href="https://swissmarketing.ch/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.footerTrustLink}
+              aria-label="Mitglied bei Swiss Marketing"
+              title="Mitglied bei Swiss Marketing"
+            >
+              <span className={styles.footerTrustImage}>
+                <img
+                  src="/logos/swiss-marketing.png"
+                  alt="Swiss Marketing"
+                  width="278"
+                  height="102"
+                  loading="lazy"
+                  className={styles.swissMarketingLogo}
+                />
+              </span>
+              <span>Mitglied</span>
+            </a>
+            <Link
+              href="/karriere"
+              className={`${styles.footerTrustLink} ${styles.footerTrustTraining}`}
+              aria-label="Wir bilden aus – Ausbildung und Karriere"
+              title="Ausbildung und Karriere bei AgenticIT"
+            >
+              <span className={styles.footerTrustImage}>
+                <img
+                  src="/logos/wir-bilden-aus.png"
+                  alt=""
+                  width="600"
+                  height="600"
+                  loading="lazy"
+                  className={styles.trainingLogo}
+                />
+              </span>
+              <span>Wir bilden aus</span>
+            </Link>
           </div>
         </div>
       </footer>

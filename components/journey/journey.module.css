@@ -1432,7 +1432,7 @@
 }
 .footerTop {
   display: grid;
-  grid-template-columns: minmax(0, 255px) minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 255px) minmax(0, 1fr);
   align-items: start;
   gap: 24px clamp(24px, 3vw, 48px);
 }
@@ -1495,7 +1495,10 @@
 .footerTrust {
   display: flex;
   align-items: flex-start;
-  justify-self: end;
+  justify-content: center;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
   gap: 16px;
 }
 .footerTrustLink {
@@ -2316,9 +2319,12 @@
     grid-template-columns: 1fr;
     gap: 24px 18px;
   }
+  .footer {
+    padding-bottom: 84px;
+  }
   .footerLinks {
     grid-column: 1 / -1;
-    grid-row: 3;
+    grid-row: 2;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 25px 18px;

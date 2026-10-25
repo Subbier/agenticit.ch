@@ -1,5 +1,7 @@
 "use client"
 
+import mobile from "./mobile-scroll.module.css"
+
 import { useRef, useState } from "react"
 import Link from "next/link"
 import * as Dialog from "@radix-ui/react-dialog"
@@ -104,7 +106,8 @@ export function BlogVideoRail({ items }: { items: VideoCard[] }) {
         key={topicId}
         ref={rail}
         id="home-video-rail"
-        className={styles.rail}
+        className={`${styles.rail} ${mobile.scrollRegion}`}
+        tabIndex={0}
         aria-label="Videos von AgenticIT"
       >
         {visibleItems.map((item) => (

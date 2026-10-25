@@ -1,3 +1,4 @@
+import mobile from "../site/mobile-scroll.module.css"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import { decisionGuides } from "@/lib/decision-guides"
@@ -19,7 +20,12 @@ export function DecisionGuides() {
           Mehr Praxiswissen <ArrowUpRight size={16} aria-hidden="true" />
         </Link>
       </div>
-      <div className={styles.challengeGrid}>
+      <div
+        className={`${styles.challengeGrid} ${mobile.scrollRegion}`}
+        role="region"
+        aria-label="Ratgeber"
+        tabIndex={0}
+      >
         {decisionGuides.map((guide) => (
           <Link
             className={styles.challengeCard}

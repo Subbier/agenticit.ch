@@ -8,6 +8,7 @@ import type { BlogPostMeta } from "@/lib/blog"
 import { filterBlogPosts } from "@/lib/blog-search"
 import { createBlogSearchState } from "@/lib/blog-search-state"
 import styles from "./blog-index-grid.module.css"
+import mobile from "./mobile-scroll.module.css"
 import { Play } from "lucide-react"
 import { getBlogVideo, formatVideoDuration } from "@/lib/blog-videos"
 
@@ -166,7 +167,12 @@ export function BlogIndexGrid({
           </button>
         ) : null}
       </div>
-      <section id="blog-post-results" aria-label="Gefundene Ratgeber">
+      <section
+        id="blog-post-results"
+        aria-label="Gefundene Ratgeber"
+        className={mobile.scrollRegion}
+        tabIndex={0}
+      >
         {featured.length ? (
           <div
             className={`mb-6 grid gap-4 ${featured.length === 1 ? "max-w-[680px]" : "md:grid-cols-2"}`}

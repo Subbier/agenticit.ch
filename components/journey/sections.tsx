@@ -1,3 +1,4 @@
+import mobile from "../site/mobile-scroll.module.css"
 import Link from "next/link"
 import { ArrowRight, ArrowUpRight, Check } from "lucide-react"
 import { journeyFaqs, packages } from "@/lib/journey"
@@ -12,7 +13,12 @@ export function ChallengeCards() {
 export function PackageCards({ expanded = false }: { expanded?: boolean }) {
   return (
     <>
-      <div className={styles.packageGrid}>
+      <div
+        className={`${styles.packageGrid} ${mobile.scrollRegion}`}
+        role="region"
+        aria-label="Unsere Services"
+        tabIndex={0}
+      >
         {packages.map((item, index) => (
           <article
             key={item.id}

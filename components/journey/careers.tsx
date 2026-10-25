@@ -1,3 +1,4 @@
+import mobile from "../site/mobile-scroll.module.css"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import { KARRIERE_JOBS } from "@/lib/karriere-content"
@@ -24,7 +25,12 @@ export function Careers() {
           Zur Bewerbung <ArrowUpRight size={16} aria-hidden="true" />
         </Link>
       </div>
-      <div className={styles.careerList}>
+      <div
+        className={`${styles.careerList} ${mobile.scrollRegion}`}
+        role="region"
+        aria-label="Offene Stellen"
+        tabIndex={0}
+      >
         {KARRIERE_JOBS.map((job) => (
           <Link
             key={job.slug}
