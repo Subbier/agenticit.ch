@@ -32,6 +32,7 @@ export function JourneyShell({ children }: { children: React.ReactNode }) {
         <header className={styles.header}>
           <Brand />
           <nav aria-label="Hauptnavigation" className={styles.nav}>
+            <Link href="/">Home</Link>
             <Link href="/werkzeuge">Ihr Ansatzpunkt</Link>
             <details
               className={styles.offerNav}
@@ -80,6 +81,7 @@ export function JourneyShell({ children }: { children: React.ReactNode }) {
               />
             </summary>
             <div>
+              <Link href="/">Home</Link>
               <Link href="/werkzeuge">Ihr Ansatzpunkt</Link>
               <div
                 className={styles.mobileOffers}
