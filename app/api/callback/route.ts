@@ -1,3 +1,4 @@
+import { readBoundedJson } from "@/lib/request-security"
 import { NextResponse } from "next/server"
 import { z } from "zod"
 import { sendVoiceConfirmation, type VoiceBooking } from "@/lib/voice/mailer"
@@ -49,8 +50,10 @@ function chOffset(date: string): string {
   const [y, m, d] = date.split("-").map(Number)
   const month0 = m - 1
   let dst = false
-  if (month0 > 2 && month0 < 9) dst = true // Apr–Sep
-  else if (month0 === 2) dst = d >= lastSunday(y, 2) // März
+  if (month0 > 2 && month0 < 9)
+    dst = true // Apr–Sep
+  else if (month0 === 2)
+    dst = d >= lastSunday(y, 2) // März
   else if (month0 === 9) dst = d < lastSunday(y, 9) // Oktober
   return dst ? "+02:00" : "+01:00"
 }
@@ -64,25 +67,36 @@ function addMinutes(time: string, mins: number): string {
 }
 
 export async function POST(request: Request) {
-  const ip = request.headers.get("x-forwarded-for")?.split(",")[0].trim() || "unknown"
+  const ip =
+    request.headers.get("x-forwarded-for")?.split(",")[0].trim() || "unknown"
   if (limited(ip)) {
     return NextResponse.json(
-      { ok: false, message: "Zu viele Anfragen. Bitte in einer Minute erneut versuchen." },
+      {
+        ok: false,
+        message: "Zu viele Anfragen. Bitte in einer Minute erneut versuchen.",
+      },
       { status: 429 },
     )
   }
 
   let json: unknown
   try {
-    json = await request.json()
+    json = await readBoundedJson(request)
   } catch {
-    return NextResponse.json({ ok: false, message: "Ungültiges JSON." }, { status: 400 })
+    return NextResponse.json(
+      { ok: false, message: "Ungültiges JSON." },
+      { status: 400 },
+    )
   }
 
   const parsed = schema.safeParse(json)
   if (!parsed.success) {
     return NextResponse.json(
-      { ok: false, message: "Bitte prüfen Sie die Angaben.", issues: parsed.error.flatten().fieldErrors },
+      {
+        ok: false,
+        message: "Bitte prüfen Sie die Angaben.",
+        issues: parsed.error.flatten().fieldErrors,
+      },
       { status: 400 },
     )
   }
@@ -92,11 +106,14 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true })
   }
 
-  const { name, phone, email, topic, callback_date, callback_time } = parsed.data
+  const { name, phone, email, topic, callback_date, callback_time } =
+    parsed.data
   const offset = chOffset(callback_date)
   const startIso = `${callback_date}T${callback_time}:00${offset}`
   const endIso = `${callback_date}T${addMinutes(callback_time, 30)}:00${offset}`
-  const interest = topic ? `Website-Chatbot – ${topic}` : "Rückruf via Website-Chatbot"
+  const interest = topic
+    ? `Website-Chatbot – ${topic}`
+    : "Rückruf via Website-Chatbot"
 
   // Body für den bestehenden Zoho-Voice-Flow (Lead + Termin in Meliksahs Kalender).
   const zohoBody = {
@@ -116,22 +133,39 @@ export async function POST(request: Request) {
 
   async function forwardToZoho(): Promise<{ ok: boolean; note?: string }> {
     const url = process.env.VOICE_WEBHOOK_URL
-    if (!url) return { ok: false, note: "VOICE_WEBHOOK_URL fehlt – Zoho-Weiterleitung übersprungen." }
+    if (!url)
+      return {
+        ok: false,
+        note: "VOICE_WEBHOOK_URL fehlt – Zoho-Weiterleitung übersprungen.",
+      }
     try {
       const res = await fetch(url, {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(zohoBody),
       })
-      return { ok: res.ok, note: res.ok ? undefined : `Zoho-Webhook antwortete mit ${res.status}` }
+      return {
+        ok: res.ok,
+        note: res.ok ? undefined : `Zoho-Webhook antwortete mit ${res.status}`,
+      }
     } catch {
       return { ok: false, note: "Zoho-Webhook nicht erreichbar." }
     }
   }
 
-  const booking: VoiceBooking = { name, phone, email, interest, callback_date, callback_time }
+  const booking: VoiceBooking = {
+    name,
+    phone,
+    email,
+    interest,
+    callback_date,
+    callback_time,
+  }
 
-  const [mail, zoho] = await Promise.allSettled([sendVoiceConfirmation(booking), forwardToZoho()])
+  const [mail, zoho] = await Promise.allSettled([
+    sendVoiceConfirmation(booking),
+    forwardToZoho(),
+  ])
   const mailSent = mail.status === "fulfilled" && mail.value.sent
   const zohoOk = zoho.status === "fulfilled" && zoho.value.ok
 

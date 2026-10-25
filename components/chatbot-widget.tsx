@@ -263,7 +263,7 @@ export function ChatbotWidget() {
   }
 
   // Zentrale Dialog-Logik
-  function process(value: string, display?: string) {
+  function handleAnswer(value: string, display?: string) {
     if (display !== "") pushUser(display ?? value)
 
     // Fragen aus dem Menü sind jederzeit beantwortbar
@@ -379,7 +379,7 @@ export function ChatbotWidget() {
   }
 
   function handleQuick(qr: QuickReply) {
-    process(qr.value, qr.label)
+    handleAnswer(qr.value, qr.label)
   }
 
   function handleSubmit(e: React.FormEvent) {
@@ -387,7 +387,7 @@ export function ChatbotWidget() {
     const v = text.trim()
     if (!v || typing) return
     setText("")
-    process(v)
+    handleAnswer(v)
   }
 
   const inputDisabled = typing || phase === "submitting" || phase === "done"

@@ -2,13 +2,19 @@ import { NextResponse } from "next/server"
 import { kvConfigured, kvGetJson, kvSetJson } from "@/lib/store/kv"
 import { sendText, normalizePhone } from "@/lib/whatsapp/twilio"
 import type { Analysis } from "@/lib/analyse/types"
+import { readBoundedText, validTwilioSignature } from "@/lib/request-security"
 
 export const runtime = "nodejs"
 
 type Pending = { analysis: Analysis; createdAt: number; status: string }
 
 // Morgen um <hour> Uhr (Europe/Zurich, Sommerzeit +02:00) als ISO-Zeitfenster (30 Min).
-function tomorrowAt(hour: number): { date: string; time: string; startIso: string; endIso: string } {
+function tomorrowAt(hour: number): {
+  date: string
+  time: string
+  startIso: string
+  endIso: string
+} {
   const d = new Date()
   d.setDate(d.getDate() + 1)
   const y = d.getFullYear()
@@ -53,8 +59,27 @@ async function bookZoho(p: Pending, hour: number): Promise<void> {
 
 // Twilio sendet eingehende WhatsApp-Nachrichten (Button-Klicks & Texte) als form-urlencoded POST.
 export async function POST(request: Request) {
-  const form = await request.formData().catch(() => null)
-  if (!form) return new NextResponse("", { status: 200 })
+  const token = process.env.TWILIO_AUTH_TOKEN || ""
+  const signature = request.headers.get("x-twilio-signature") || ""
+  if (!token || !signature) return new NextResponse("", { status: 403 })
+  if (
+    !request.headers
+      .get("content-type")
+      ?.startsWith("application/x-www-form-urlencoded")
+  )
+    return new NextResponse("", { status: 415 })
+  let form: URLSearchParams
+  try {
+    form = new URLSearchParams(await readBoundedText(request))
+  } catch {
+    return new NextResponse("", { status: 413 })
+  }
+  // Use the configured public callback URL, never untrusted forwarding headers.
+  const publicUrl =
+    process.env.TWILIO_INBOUND_WEBHOOK_URL ||
+    `https://agenticit.ch${new URL(request.url).pathname}${new URL(request.url).search}`
+  if (!validTwilioSignature(publicUrl, form, signature, token))
+    return new NextResponse("", { status: 403 })
 
   const from = String(form.get("From") || "")
   const buttonPayload = String(form.get("ButtonPayload") || "")
@@ -79,10 +104,16 @@ export async function POST(request: Request) {
         `Wir melden uns pünktlich, das Gespräch dauert max. 3 Minuten. Bis dann!`,
     )
   } else if (choice === "slot_anderer") {
-    await sendText(phone, "Gerne – wann passt es Ihnen besser? Schreiben Sie mir einfach Ihren Wunschtag und die Uhrzeit.")
+    await sendText(
+      phone,
+      "Gerne – wann passt es Ihnen besser? Schreiben Sie mir einfach Ihren Wunschtag und die Uhrzeit.",
+    )
   } else if (p && p.status === "pending" && body) {
     // Freie Antwort (z. B. nach „Anderer Zeitpunkt") → an Berater übergeben, keine Auto-Mail.
-    await sendText(phone, "Danke! Ich habe Ihren Wunsch notiert – einer unserer Berater meldet sich zur Abstimmung. 🙌")
+    await sendText(
+      phone,
+      "Danke! Ich habe Ihren Wunsch notiert – einer unserer Berater meldet sich zur Abstimmung. 🙌",
+    )
     await bookZoho(p, 10) // Platzhalter-Termin morgen, Berater verschiebt nach Wunsch
     await kvSetJson(key, { ...p, status: "manual" }, 60 * 60 * 72)
   }

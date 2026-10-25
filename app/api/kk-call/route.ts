@@ -1,3 +1,4 @@
+import { readBoundedJson } from "@/lib/request-security"
 import { NextResponse } from "next/server"
 import { z } from "zod"
 
@@ -48,14 +49,23 @@ function withinCallingHours(): boolean {
 
 let cachedPhoneId: string | null = null
 
-async function resolvePhoneNumberId(apiKey: string, number: string): Promise<string | null> {
+async function resolvePhoneNumberId(
+  apiKey: string,
+  number: string,
+): Promise<string | null> {
   if (cachedPhoneId) return cachedPhoneId
   const res = await fetch("https://api.elevenlabs.io/v1/convai/phone-numbers", {
     headers: { "xi-api-key": apiKey },
   })
   if (!res.ok) return null
-  const list = (await res.json()) as Array<{ phone_number_id?: string; id?: string; phone_number?: string }>
-  const hit = list.find((p) => (p.phone_number || "").replace(/\s/g, "") === number)
+  const list = (await res.json()) as Array<{
+    phone_number_id?: string
+    id?: string
+    phone_number?: string
+  }>
+  const hit = list.find(
+    (p) => (p.phone_number || "").replace(/\s/g, "") === number,
+  )
   cachedPhoneId = hit?.phone_number_id || hit?.id || null
   return cachedPhoneId
 }
@@ -63,63 +73,93 @@ async function resolvePhoneNumberId(apiKey: string, number: string): Promise<str
 export async function POST(request: Request) {
   const secret = process.env.KK_CALL_SECRET
   if (!secret || request.headers.get("x-kk-secret") !== secret) {
-    return NextResponse.json({ ok: false, error: "unauthorized" }, { status: 401 })
+    return NextResponse.json(
+      { ok: false, error: "unauthorized" },
+      { status: 401 },
+    )
   }
 
   let parsed: z.infer<typeof schema>
   try {
-    parsed = schema.parse(await request.json())
+    parsed = schema.parse(await readBoundedJson(request))
   } catch {
     return NextResponse.json({ ok: false, error: "invalid" }, { status: 400 })
   }
 
   const to = toE164(parsed.telefon)
-  if (!to) return NextResponse.json({ ok: false, error: "bad_phone" }, { status: 400 })
+  if (!to)
+    return NextResponse.json({ ok: false, error: "bad_phone" }, { status: 400 })
 
   if (!withinCallingHours()) {
     // Ausserhalb der Anrufzeiten: kein Anruf. (Zoho kann später erneut senden.)
-    return NextResponse.json({ ok: false, deferred: true, note: "outside_calling_hours" })
+    return NextResponse.json({
+      ok: false,
+      deferred: true,
+      note: "outside_calling_hours",
+    })
   }
 
   const apiKey = process.env.ELEVENLABS_API_KEY
   const agentId = process.env.KK_OUTBOUND_AGENT_ID
   const ownNumber = process.env.KK_OUTBOUND_NUMBER
   if (!apiKey || !agentId || !ownNumber) {
-    return NextResponse.json({ ok: false, error: "not_configured" }, { status: 503 })
+    return NextResponse.json(
+      { ok: false, error: "not_configured" },
+      { status: 503 },
+    )
   }
 
   const phoneNumberId = await resolvePhoneNumberId(apiKey, ownNumber)
   if (!phoneNumberId) {
-    return NextResponse.json({ ok: false, error: "phone_number_not_found" }, { status: 503 })
+    return NextResponse.json(
+      { ok: false, error: "phone_number_not_found" },
+      { status: 503 },
+    )
   }
 
-  const res = await fetch("https://api.elevenlabs.io/v1/convai/twilio/outbound-call", {
-    method: "POST",
-    headers: { "xi-api-key": apiKey, "Content-Type": "application/json" },
-    body: JSON.stringify({
-      agent_id: agentId,
-      agent_phone_number_id: phoneNumberId,
-      to_number: to,
-      conversation_initiation_client_data: {
-        dynamic_variables: {
-          vorname: parsed.vorname,
-          nachname: parsed.nachname,
-          telefon: to,
-          email: parsed.email,
-          kasse: parsed.kasse,
-          franchise: parsed.franchise,
-          record_id: parsed.record_id,
+  const res = await fetch(
+    "https://api.elevenlabs.io/v1/convai/twilio/outbound-call",
+    {
+      method: "POST",
+      headers: { "xi-api-key": apiKey, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        agent_id: agentId,
+        agent_phone_number_id: phoneNumberId,
+        to_number: to,
+        conversation_initiation_client_data: {
+          dynamic_variables: {
+            vorname: parsed.vorname,
+            nachname: parsed.nachname,
+            telefon: to,
+            email: parsed.email,
+            kasse: parsed.kasse,
+            franchise: parsed.franchise,
+            record_id: parsed.record_id,
+          },
         },
-      },
-    }),
-  })
+      }),
+    },
+  )
 
   if (!res.ok) {
     const detail = await res.text().catch(() => "")
-    console.error("ElevenLabs outbound-call fehlgeschlagen:", res.status, detail.slice(0, 300))
-    return NextResponse.json({ ok: false, error: "call_failed" }, { status: 502 })
+    console.error(
+      "ElevenLabs outbound-call fehlgeschlagen:",
+      res.status,
+      detail.slice(0, 300),
+    )
+    return NextResponse.json(
+      { ok: false, error: "call_failed" },
+      { status: 502 },
+    )
   }
 
-  const data = (await res.json().catch(() => ({}))) as { conversation_id?: string; callSid?: string }
-  return NextResponse.json({ ok: true, conversation_id: data.conversation_id ?? null })
+  const data = (await res.json().catch(() => ({}))) as {
+    conversation_id?: string
+    callSid?: string
+  }
+  return NextResponse.json({
+    ok: true,
+    conversation_id: data.conversation_id ?? null,
+  })
 }

@@ -74,7 +74,7 @@ export const testLeadDetailsSchema = z.object({
     .min(2, "Bitte deinen vollständigen Namen eingeben.")
     .max(120),
   gender: z.enum(["female", "male"], {
-    errorMap: () => ({ message: "Bitte dein Geschlecht auswählen." }),
+    error: "Bitte dein Geschlecht auswählen.",
   }),
   birthDate: z
     .string()

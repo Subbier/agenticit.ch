@@ -1,10 +1,15 @@
+import { readBoundedJson } from "@/lib/request-security"
 import { NextResponse } from "next/server"
 import { z } from "zod"
 import { buildAnalysis } from "@/lib/analyse/engine"
 import { generatePdf } from "@/lib/analyse/pdf"
 import { sendReportMail } from "@/lib/analyse/mailer"
 import { forwardLeadToZoho } from "@/lib/analyse/zoho"
-import { whatsappConfigured, sendTemplate, normalizePhone } from "@/lib/whatsapp/twilio"
+import {
+  whatsappConfigured,
+  sendTemplate,
+  normalizePhone,
+} from "@/lib/whatsapp/twilio"
 import { kvConfigured, kvSetJson } from "@/lib/store/kv"
 import type { AnalysePayload } from "@/lib/analyse/types"
 
@@ -33,10 +38,10 @@ const schema = z.object({
     marketing: str().optional().default(""),
     web_anfragen: str().optional().default(""),
     routine_stunden: str().optional().default(""),
-    automation_done: z.array(str(120)).optional().default([]),
-    automation_todo: z.array(str(120)).optional().default([]),
-    revops_done: z.array(str(120)).optional().default([]),
-    revops_todo: z.array(str(120)).optional().default([]),
+    automation_done: z.array(str(120)).max(40).optional().default([]),
+    automation_todo: z.array(str(120)).max(40).optional().default([]),
+    revops_done: z.array(str(120)).max(40).optional().default([]),
+    revops_todo: z.array(str(120)).max(40).optional().default([]),
   }),
   consent: z.literal(true),
   whatsapp_opt_in: z.boolean().optional().default(false),
@@ -59,22 +64,36 @@ function limited(ip: string): boolean {
 }
 
 export async function POST(request: Request) {
-  const ip = request.headers.get("x-forwarded-for")?.split(",")[0].trim() || "unknown"
+  const ip =
+    request.headers.get("x-forwarded-for")?.split(",")[0].trim() || "unknown"
   if (limited(ip)) {
-    return NextResponse.json({ ok: false, message: "Zu viele Anfragen. Bitte in einer Minute erneut versuchen." }, { status: 429 })
+    return NextResponse.json(
+      {
+        ok: false,
+        message: "Zu viele Anfragen. Bitte in einer Minute erneut versuchen.",
+      },
+      { status: 429 },
+    )
   }
 
   let json: unknown
   try {
-    json = await request.json()
+    json = await readBoundedJson(request)
   } catch {
-    return NextResponse.json({ ok: false, message: "Ungültiges JSON." }, { status: 400 })
+    return NextResponse.json(
+      { ok: false, message: "Ungültiges JSON." },
+      { status: 400 },
+    )
   }
 
   const parsed = schema.safeParse(json)
   if (!parsed.success) {
     return NextResponse.json(
-      { ok: false, message: "Bitte prüfen Sie die Pflichtfelder.", issues: parsed.error.flatten().fieldErrors },
+      {
+        ok: false,
+        message: "Bitte prüfen Sie die Pflichtfelder.",
+        issues: parsed.error.flatten().fieldErrors,
+      },
       { status: 400 },
     )
   }
@@ -103,7 +122,10 @@ export async function POST(request: Request) {
     }
 
     // Lead immer ans CRM (unabhängig vom Kanal).
-    const zoho = await forwardLeadToZoho(analysis).catch(() => ({ ok: false, note: "Zoho-Weiterleitung fehlgeschlagen." }))
+    const zoho = await forwardLeadToZoho(analysis).catch(() => ({
+      ok: false,
+      note: "Zoho-Weiterleitung fehlgeschlagen.",
+    }))
 
     const notes: string[] = []
     let mailSent = false
@@ -111,7 +133,10 @@ export async function POST(request: Request) {
 
     // E-Mail IMMER sofort senden – der Besucher soll den Report ohne Wartezeit erhalten.
     if (pdf) {
-      const r = await sendReportMail(analysis, pdf).catch(() => ({ sent: false, note: "Mailversand fehlgeschlagen." }))
+      const r = await sendReportMail(analysis, pdf).catch(() => ({
+        sent: false,
+        note: "Mailversand fehlgeschlagen.",
+      }))
       mailSent = r.sent
       if (r.note) notes.push(r.note)
     } else {
@@ -128,8 +153,15 @@ export async function POST(request: Request) {
 
     if (wantsWhatsApp) {
       const c = analysis.contact
-      const greetName = [c.anrede?.trim(), c.nachname?.trim()].filter(Boolean).join(" ") || c.vorname || "dort"
-      const wa = await sendTemplate(c.phone, process.env.WHATSAPP_TEMPLATE_SID!, { "1": greetName }).catch(() => ({
+      const greetName =
+        [c.anrede?.trim(), c.nachname?.trim()].filter(Boolean).join(" ") ||
+        c.vorname ||
+        "dort"
+      const wa = await sendTemplate(
+        c.phone,
+        process.env.WHATSAPP_TEMPLATE_SID!,
+        { "1": greetName },
+      ).catch(() => ({
         ok: false as const,
         note: "WhatsApp-Versand fehlgeschlagen.",
       }))
@@ -138,10 +170,16 @@ export async function POST(request: Request) {
         // Status "mail_sent": Der 2-h-Fallback-Cron darf KEINE zweite Mail senden.
         await kvSetJson(
           `wa:pending:${normalizePhone(c.phone)}`,
-          { analysis, createdAt: Date.now(), status: mailSent ? "mail_sent" : "pending" },
+          {
+            analysis,
+            createdAt: Date.now(),
+            status: mailSent ? "mail_sent" : "pending",
+          },
           60 * 60 * 72,
         ).catch(() => {})
-        notes.push("WhatsApp-Flow gestartet – Mail wurde bereits direkt gesendet.")
+        notes.push(
+          "WhatsApp-Flow gestartet – Mail wurde bereits direkt gesendet.",
+        )
       } else {
         notes.push(`WhatsApp nicht gestartet (${wa.note ?? "?"}).`)
       }
@@ -181,6 +219,9 @@ export async function POST(request: Request) {
     })
   } catch (err) {
     console.error("[/api/analyse] Fehler:", err)
-    return NextResponse.json({ ok: false, message: "Analyse konnte nicht erstellt werden." }, { status: 500 })
+    return NextResponse.json(
+      { ok: false, message: "Analyse konnte nicht erstellt werden." },
+      { status: 500 },
+    )
   }
 }

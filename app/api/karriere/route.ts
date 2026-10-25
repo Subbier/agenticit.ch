@@ -1,11 +1,18 @@
+import { readBoundedJson } from "@/lib/request-security"
 import { NextResponse } from "next/server"
 import { z } from "zod"
 import { KARRIERE_JOBS } from "@/lib/karriere-content"
 
 const optionalText = (max = 500) =>
-  z.preprocess((value) => (value === "" ? undefined : value), z.string().trim().max(max).optional())
+  z.preprocess(
+    (value) => (value === "" ? undefined : value),
+    z.string().trim().max(max).optional(),
+  )
 
-const POSITION_TITLES = KARRIERE_JOBS.map((job) => job.title) as [string, ...string[]]
+const POSITION_TITLES = KARRIERE_JOBS.map((job) => job.title) as [
+  string,
+  ...string[],
+]
 
 const karriereSchema = z.object({
   name: z.string().trim().min(2).max(120),
@@ -46,7 +53,11 @@ function isRateLimited(ip: string): boolean {
 export async function POST(request: Request) {
   if (isRateLimited(getClientIp(request))) {
     return NextResponse.json(
-      { ok: false, message: "Zu viele Anfragen. Bitte versuchen Sie es in einer Minute erneut." },
+      {
+        ok: false,
+        message:
+          "Zu viele Anfragen. Bitte versuchen Sie es in einer Minute erneut.",
+      },
       { status: 429 },
     )
   }
@@ -54,9 +65,12 @@ export async function POST(request: Request) {
   let json: unknown
 
   try {
-    json = await request.json()
+    json = await readBoundedJson(request)
   } catch {
-    return NextResponse.json({ ok: false, message: "Ungültiges JSON." }, { status: 400 })
+    return NextResponse.json(
+      { ok: false, message: "Ungültiges JSON." },
+      { status: 400 },
+    )
   }
 
   const parsed = karriereSchema.safeParse(json)
@@ -81,7 +95,10 @@ export async function POST(request: Request) {
 
   if (!webhookUrl) {
     return NextResponse.json(
-      { ok: false, message: "Der Bewerbungs-Webhook ist noch nicht konfiguriert." },
+      {
+        ok: false,
+        message: "Der Bewerbungs-Webhook ist noch nicht konfiguriert.",
+      },
       { status: 500 },
     )
   }
@@ -108,13 +125,19 @@ export async function POST(request: Request) {
 
     if (!response.ok) {
       return NextResponse.json(
-        { ok: false, message: "Der Bewerbungs-Webhook hat die Anfrage abgelehnt." },
+        {
+          ok: false,
+          message: "Der Bewerbungs-Webhook hat die Anfrage abgelehnt.",
+        },
         { status: 502 },
       )
     }
   } catch {
     return NextResponse.json(
-      { ok: false, message: "Der Bewerbungs-Webhook ist aktuell nicht erreichbar." },
+      {
+        ok: false,
+        message: "Der Bewerbungs-Webhook ist aktuell nicht erreichbar.",
+      },
       { status: 502 },
     )
   }

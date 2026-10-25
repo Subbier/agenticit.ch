@@ -1,3 +1,4 @@
+import { readBoundedJson } from "@/lib/request-security"
 import { NextResponse } from "next/server"
 import { leadSchema, prepareLeadPayload } from "@/lib/lead-intake"
 
@@ -40,7 +41,7 @@ export async function POST(request: Request) {
   let json: unknown
 
   try {
-    json = await request.json()
+    json = await readBoundedJson(request)
   } catch {
     return NextResponse.json(
       { ok: false, message: "Ungültiges JSON." },

@@ -5,10 +5,16 @@ import type { Analysis } from "./types"
 
 export type MailResult = { sent: boolean; note?: string }
 
-export async function sendReportMail(analysis: Analysis, pdf: Buffer): Promise<MailResult> {
+export async function sendReportMail(
+  analysis: Analysis,
+  pdf: Buffer,
+): Promise<MailResult> {
   const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, MAIL_FROM } = process.env
   if (!SMTP_HOST || !SMTP_USER || !SMTP_PASS) {
-    return { sent: false, note: "SMTP nicht konfiguriert – Versand übersprungen." }
+    return {
+      sent: false,
+      note: "SMTP nicht konfiguriert – Versand übersprungen.",
+    }
   }
 
   const transporter = nodemailer.createTransport({
@@ -55,7 +61,7 @@ export async function sendReportMail(analysis: Analysis, pdf: Buffer): Promise<M
         <div style="color:#9fb8d6;font-size:12px;margin-top:2px;">Ihre KI-Standortbestimmung</div>
       </div>
       <div style="background:#ffffff;border:1px solid #e6ecf3;border-top:none;border-radius:0 0 14px 14px;padding:28px;color:#16233B;font-size:15px;line-height:1.6;">
-        <p style="margin:0 0 14px;">${anrede}</p>
+        <p style="margin:0 0 14px;">${anrede.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")}</p>
         <p style="margin:0 0 14px;">vielen Dank für Ihr Interesse an <strong>AgenticIT</strong> und dass Sie unsere KI-Blitzanalyse genutzt haben. Im Anhang finden Sie Ihre persönliche <strong>KI-Standortbestimmung</strong> als PDF.</p>
         <p style="margin:0 0 14px;">Sie zeigt Ihre digitale Sichtbarkeit, welche Aufgaben sich automatisieren lassen, den möglichen Wertbeitrag und einen 1-Jahres-Fahrplan.</p>
         <p style="margin:0 0 18px;">Wir <strong>melden uns am nächsten Arbeitstag</strong> bei Ihnen, um offene Fragen zu beantworten und die Auswertung gemeinsam durchzugehen.</p>
@@ -85,7 +91,13 @@ export async function sendReportMail(analysis: Analysis, pdf: Buffer): Promise<M
     subject: `Ihre KI-Standortbestimmung – ${c.firma || "AgenticIT"}`,
     text,
     html,
-    attachments: [{ filename: "AgenticIT_Standortbestimmung.pdf", content: pdf, contentType: "application/pdf" }],
+    attachments: [
+      {
+        filename: "AgenticIT_Standortbestimmung.pdf",
+        content: pdf,
+        contentType: "application/pdf",
+      },
+    ],
   })
 
   return { sent: true }

@@ -1,3 +1,4 @@
+import { readBoundedJson } from "@/lib/request-security"
 import { NextResponse } from "next/server"
 import { z } from "zod"
 
@@ -14,7 +15,10 @@ const schema = z.object({
   email: z.string().trim().email().max(180),
   plz: z.string().trim().max(4).optional().default(""),
   kasse: z.string().trim().min(2).max(60),
-  franchise: z.enum(["", "300", "500", "1000", "1500", "2000", "2500"]).optional().default(""),
+  franchise: z
+    .enum(["", "300", "500", "1000", "1500", "2000", "2500"])
+    .optional()
+    .default(""),
   consent: z.literal(true),
   // Honeypot: legitime Nutzer lassen dieses Feld leer.
   company_website: z.string().trim().max(200).optional().default(""),
@@ -41,12 +45,15 @@ export async function POST(request: Request) {
     request.headers.get("x-real-ip") ||
     "unknown"
   if (limited(ip)) {
-    return NextResponse.json({ ok: false, error: "rate_limited" }, { status: 429 })
+    return NextResponse.json(
+      { ok: false, error: "rate_limited" },
+      { status: 429 },
+    )
   }
 
   let parsed: z.infer<typeof schema>
   try {
-    parsed = schema.parse(await request.json())
+    parsed = schema.parse(await readBoundedJson(request))
   } catch {
     return NextResponse.json({ ok: false, error: "invalid" }, { status: 400 })
   }
@@ -73,8 +80,14 @@ export async function POST(request: Request) {
 
   const url = process.env.KK_WEBHOOK_URL
   if (!url) {
-    console.error("KK_WEBHOOK_URL fehlt – Krankenkassen-Lead nicht weitergeleitet:", record.Name)
-    return NextResponse.json({ ok: false, error: "not_configured" }, { status: 503 })
+    console.error(
+      "KK_WEBHOOK_URL fehlt – Krankenkassen-Lead nicht weitergeleitet:",
+      record.Name,
+    )
+    return NextResponse.json(
+      { ok: false, error: "not_configured" },
+      { status: 503 },
+    )
   }
 
   try {
@@ -85,10 +98,16 @@ export async function POST(request: Request) {
     })
     if (!res.ok) {
       console.error("KK-Webhook antwortete mit", res.status)
-      return NextResponse.json({ ok: false, error: "upstream" }, { status: 502 })
+      return NextResponse.json(
+        { ok: false, error: "upstream" },
+        { status: 502 },
+      )
     }
   } catch {
-    return NextResponse.json({ ok: false, error: "unreachable" }, { status: 502 })
+    return NextResponse.json(
+      { ok: false, error: "unreachable" },
+      { status: 502 },
+    )
   }
 
   return NextResponse.json({ ok: true })

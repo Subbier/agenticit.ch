@@ -1,3 +1,4 @@
+import { readBoundedJson } from "@/lib/request-security"
 import { NextResponse } from "next/server"
 import { z } from "zod"
 import { sendVoiceConfirmation, type VoiceBooking } from "@/lib/voice/mailer"
@@ -41,7 +42,11 @@ function addMinutes(time: string, mins: number): string {
   return `${String(Math.floor(total / 60) % 24).padStart(2, "0")}:${String(total % 60).padStart(2, "0")}`
 }
 
-async function post(url: string | undefined, body: unknown, label: string): Promise<boolean> {
+async function post(
+  url: string | undefined,
+  body: unknown,
+  label: string,
+): Promise<boolean> {
   if (!url) {
     console.error(`${label}: Webhook-URL fehlt.`)
     return false
@@ -63,12 +68,15 @@ async function post(url: string | undefined, body: unknown, label: string): Prom
 export async function POST(request: Request) {
   const secret = process.env.KK_CALL_SECRET
   if (!secret || request.headers.get("x-kk-secret") !== secret) {
-    return NextResponse.json({ ok: false, error: "unauthorized" }, { status: 401 })
+    return NextResponse.json(
+      { ok: false, error: "unauthorized" },
+      { status: 401 },
+    )
   }
 
   let parsed: z.infer<typeof schema>
   try {
-    parsed = schema.parse(await request.json())
+    parsed = schema.parse(await readBoundedJson(request))
   } catch {
     return NextResponse.json({ ok: false, error: "invalid" }, { status: 400 })
   }
@@ -120,6 +128,8 @@ export async function POST(request: Request) {
     ok: true,
     calendar: calendar.status === "fulfilled" && calendar.value === true,
     status_updated: status.status === "fulfilled" && status.value === true,
-    mail_sent: mail.status === "fulfilled" && (mail.value as { sent?: boolean }).sent === true,
+    mail_sent:
+      mail.status === "fulfilled" &&
+      (mail.value as { sent?: boolean }).sent === true,
   })
 }

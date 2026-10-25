@@ -17,10 +17,14 @@ type Pending = { analysis: Analysis; createdAt: number; status: string }
 export async function GET(request: Request) {
   const secret = process.env.CRON_SECRET
   const auth = request.headers.get("authorization")
-  if (secret && auth !== `Bearer ${secret}`) {
-    return NextResponse.json({ ok: false, message: "Unauthorized" }, { status: 401 })
+  if (!secret || auth !== `Bearer ${secret}`) {
+    return NextResponse.json(
+      { ok: false, message: "Unauthorized" },
+      { status: 401 },
+    )
   }
-  if (!kvConfigured()) return NextResponse.json({ ok: true, note: "KV nicht konfiguriert" })
+  if (!kvConfigured())
+    return NextResponse.json({ ok: true, note: "KV nicht konfiguriert" })
 
   const keys = await kvKeys("wa:pending:*")
   const now = Date.now()
